@@ -63,7 +63,11 @@ const LanguageSelector = () => {
               transition={{ duration: 0.3, delay: 0.1 }}
               className="text-center mb-6"
             >
-              <span className="text-6xl">🌐</span>
+              <img 
+                src="/images/OE_Sprache_64 1.svg" 
+                alt="Language selector" 
+                className="w-16 h-16 mx-auto"
+              />
             </motion.div>
 
             {/* Title */}

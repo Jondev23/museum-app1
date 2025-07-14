@@ -1,28 +1,26 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
-import ProgressBar from './ProgressBar';
 import { useState } from 'react';
 
 const QuestionScreen = () => {
-  const { 
-    getCurrentQuestion, 
+  const {
+    getCurrentQuestion,
     answerQuestion,
     content,
     language,
-    currentQuestionIndex 
+    currentQuestionIndex,
+    setShowLanguageSelector
   } = useApp();
 
+  const totalQuestions = 5; // Ajusta esto si el número varía
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const question = getCurrentQuestion();
 
   if (!question || !content?.[language]) return null;
 
   const handleAnswerClick = (answerIndex) => {
-    if (selectedAnswer !== null) return; // Prevent multiple selections
-    
+    if (selectedAnswer !== null) return;
     setSelectedAnswer(answerIndex);
-    
-    // Delay before showing feedback
     setTimeout(() => {
       answerQuestion(answerIndex);
     }, 500);
@@ -42,78 +40,137 @@ const QuestionScreen = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-museum-cream/85 to-white/85" />
-      
-      {/* Content */}
+      <div className="absolute inset-0 bg-black/40" />
+
       <div className="relative z-10 flex flex-col h-full">
-        {/* Header with progress */}
-        <div className="p-8">
-          <ProgressBar />
+        {/* Main content */}
+        <div className="flex-1 flex flex-col justify-center items-center px-8 pt-16">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-6xl w-full text-center"
+          >
+            <motion.h1
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mb-16"
+              style={{
+                color: '#D9D9D9',
+                fontFamily: '"Tisa Pro", serif',
+                fontSize: '54px',
+                fontStyle: 'italic',
+                fontWeight: 750,
+                lineHeight: '70.2px',
+                textAlign: 'center'
+              }}
+            >
+              {question.question}
+            </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="space-y-6 max-w-4xl mx-auto"
+            >
+              {question.answers.map((answer, index) => (
+                <motion.button
+                  key={index}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
+                  onClick={() => handleAnswerClick(index)}
+                  disabled={selectedAnswer !== null}
+                  className={`
+                    w-full max-w-4xl mx-auto block rounded-2xl transition-all duration-300 transform
+                    border-2 border-white bg-transparent backdrop-blur-sm
+                    ${selectedAnswer === null
+                      ? 'hover:bg-white/20 hover:shadow-lg hover:scale-102 active:scale-98 cursor-pointer'
+                      : selectedAnswer === index
+                        ? 'bg-white/30 scale-102 shadow-xl border-white/80'
+                        : 'opacity-60 cursor-not-allowed border-white/40'
+                    }
+                  `}
+                  style={{
+                    padding: '24px 32px',
+                    minHeight: '80px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <span
+                    style={{
+                      color: '#D9D9D9',
+                      fontFamily: '"Tisa Sans Pro", sans-serif',
+                      fontSize: '48px',
+                      fontStyle: 'normal',
+                      fontWeight: 400,
+                      lineHeight: '57.6px',
+                      letterSpacing: '0.48px',
+                      textAlign: 'center'
+                    }}
+                  >
+                    {answer}
+                  </span>
+                </motion.button>
+              ))}
+            </motion.div>
+          </motion.div>
         </div>
 
-      {/* Question content */}
-      <div className="flex-1 flex flex-col justify-center items-center px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl w-full text-center"
-        >
-          {/* Question number */}
+        {/* Footer: Pagination dots + language icon */}
+        <div className="relative flex justify-between items-center p-8">
+          {/* Language selector icon */}
           <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.3, delay: 0.2 }}
-            className="inline-block bg-museum-brown text-white px-6 py-2 rounded-full text-lg font-semibold mb-8"
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
           >
-            Frage {currentQuestionIndex + 1} von 5
+            <motion.button
+              onClick={() => setShowLanguageSelector(true)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white/20 backdrop-blur-sm p-4 rounded-full shadow-lg hover:bg-white/30 transition-all cursor-pointer border-2 border-white/40"
+            >
+              <motion.img
+                src="/images/OE_Sprache_64 1.svg"
+                alt="Language selector"
+                className="w-8 h-8 block"
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+              />
+            </motion.button>
           </motion.div>
 
-          {/* Question text */}
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-4xl font-bold text-museum-brown mb-12 leading-tight max-w-3xl mx-auto"
-          >
-            {question.question}
-          </motion.h2>
-
-          {/* Answer options */}
+          {/* Pagination dots */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="space-y-6"
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="absolute flex gap-6"
+            style={{
+              left: '43%',
+              transform: 'translateX(calc(-50% - 64px))'
+            }}
           >
-            {question.answers.map((answer, index) => (
-              <motion.button
-                key={index}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                onClick={() => handleAnswerClick(index)}
-                disabled={selectedAnswer !== null}
-                className={`
-                  w-full max-w-2xl mx-auto block px-8 py-6 rounded-xl text-xl font-medium
-                  transition-all duration-300 transform
-                  ${selectedAnswer === null 
-                    ? 'bg-white border-2 border-museum-brown text-museum-brown hover:bg-museum-brown hover:text-white hover:scale-105 active:scale-95' 
-                    : selectedAnswer === index 
-                      ? 'bg-museum-brown text-white scale-105'
-                      : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  }
-                `}
-                whileHover={selectedAnswer === null ? { scale: 1.02 } : {}}
-                whileTap={selectedAnswer === null ? { scale: 0.98 } : {}}
-              >
-                {answer}
-              </motion.button>
+            {[...Array(totalQuestions)].map((_, i) => (
+              <div
+                key={i}
+                className="w-5 h-5 rounded-full"
+                style={{
+                  border: '3px solid #D9D9D9',
+                  backgroundColor: i === currentQuestionIndex ? '#D9D9D9' : 'transparent'
+                }}
+              />
             ))}
           </motion.div>
-        </motion.div>
-      </div>
+
+          {/* Spacer for symmetry */}
+          <div className="w-16"></div>
+        </div>
       </div>
     </motion.div>
   );

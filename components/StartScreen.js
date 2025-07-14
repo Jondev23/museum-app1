@@ -174,13 +174,13 @@ const StartScreen = () => {
           whileTap={{ scale: 0.95 }}
           className="bg-white bg-opacity-95 p-5 rounded-full shadow-2xl hover:bg-opacity-100 transition-all cursor-pointer border-2 border-museum-brown border-opacity-20 relative"
         >
-          <motion.span 
-            className="text-4xl block"
+          <motion.img
+            src="/images/OE_Sprache_64 1.svg"
+            alt="Language selector"
+            className="w-10 h-10 block"
             animate={{ rotate: [0, 10, -10, 0] }}
             transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-          >
-            🌐
-          </motion.span>
+          />
           
           {/* Pulse indicator */}
           <motion.div
