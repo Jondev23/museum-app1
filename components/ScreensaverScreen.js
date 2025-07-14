@@ -5,95 +5,109 @@ const ScreensaverScreen = () => {
   const { startQuiz, content, language } = useApp();
 
   const handleTouch = () => {
+    console.log('Screensaver touched, transitioning to start screen');
     startQuiz();
   };
-
-  // Show loading state if content is not yet loaded
-  if (!content) {
-    return (
-      <div className="fixed inset-0 bg-gradient-to-br from-museum-brown to-black flex flex-col items-center justify-center">
-        <div className="text-white text-4xl mb-4">🏛️</div>
-        <div className="text-white text-xl">Lade Inhalte...</div>
-      </div>
-    );
-  }
-
-  if (!content[language]) {
-    return (
-      <div className="fixed inset-0 bg-gradient-to-br from-museum-brown to-black flex flex-col items-center justify-center">
-        <div className="text-white text-4xl mb-4">⚠️</div>
-        <div className="text-white text-xl">Sprache nicht verfügbar</div>
-      </div>
-    );
-  }
-
-  const screensaverContent = content[language].screensaver;
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-gradient-to-br from-museum-brown to-black flex flex-col items-center justify-center cursor-pointer"
+      className="fixed inset-0 bg-black flex flex-col items-center justify-center cursor-pointer"
       onClick={handleTouch}
       onTouchStart={handleTouch}
     >
-      {/* Background video placeholder */}
-      <div className="absolute inset-0 bg-black opacity-50"></div>
-      
-      {/* Animated hand icon */}
+      {/* Main title - Animation Loop */}
       <motion.div
-        animate={{ 
-          y: [0, -20, 0],
-          rotate: [0, 10, -10, 0]
-        }}
-        transition={{ 
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="text-8xl mb-8 z-10"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="flex-1 flex items-center justify-center"
       >
-        {screensaverContent.handIcon}
+        <motion.h1
+          animate={{ 
+            scale: [1, 1.02, 1],
+            opacity: [0.9, 1, 0.9]
+          }}
+          transition={{ 
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="text-white text-8xl md:text-9xl font-serif text-center leading-tight"
+        >
+          Animation Loop
+        </motion.h1>
       </motion.div>
 
-      {/* Message */}
-      <motion.p
-        animate={{ opacity: [0.7, 1, 0.7] }}
-        transition={{ 
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="text-white text-2xl text-center z-10 max-w-md"
+      {/* Interactive hand icon at bottom */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="mb-16"
       >
-        {screensaverContent.message}
-      </motion.p>
-
-      {/* Ambient particles effect */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        <motion.div
+          animate={{ 
+            y: [0, -15, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 2.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.5
+          }}
+          className="relative"
+        >
+          {/* Circular background for hand icon */}
           <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-museum-gold rounded-full"
             animate={{
-              x: [0, Math.random() * 100 - 50],
-              y: [0, Math.random() * 100 - 50],
-              opacity: [0, 1, 0],
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3]
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: 2.5,
               repeat: Infinity,
-              delay: Math.random() * 2,
               ease: "easeInOut"
             }}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
+            className="absolute inset-0 bg-white rounded-full w-24 h-24 -m-3"
           />
-        ))}
-      </div>
+          
+          {/* Hand icon */}
+          <div className="relative z-10 text-6xl w-18 h-18 flex items-center justify-center">
+            👆
+          </div>
+        </motion.div>
+        
+        {/* Pulse rings around the icon */}
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center"
+          style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+        >
+          {[0, 0.5, 1].map((delay) => (
+            <motion.div
+              key={delay}
+              className="absolute border-2 border-white rounded-full"
+              animate={{
+                scale: [1, 2.5],
+                opacity: [0.6, 0]
+              }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                delay: delay,
+                ease: "easeOut"
+              }}
+              style={{
+                width: '96px',
+                height: '96px'
+              }}
+            />
+          ))}
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 };

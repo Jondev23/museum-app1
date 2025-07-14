@@ -34,7 +34,7 @@ function createWindow() {
 
   // Load the Next.js app
   const startUrl = isDev 
-    ? 'http://localhost:3001' 
+    ? 'http://localhost:3000' 
     : `file://${path.join(__dirname, '../out/index.html')}`;
   
   if (isDev) {
