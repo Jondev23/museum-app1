@@ -1,0 +1,278 @@
+{
+  "de": {
+    "screensaver": {
+      "handIcon": "👋",
+      "message": "Berühren Sie den Bildschirm um zu beginnen"
+    },
+    "startScreen": {
+      "title": "Kutschen",
+      "subtitle": "Eleganz auf Rädern",
+      "highlightText": "Kiosk 2 - Thema: Luxuskutschen",
+      "introText": "Erleben Sie die Pracht und den Luxus historischer Kutschen der Oberschicht. Wie viel wissen Sie über diese prächtigen Fahrzeuge?",
+      "swipeText": "Wischen Sie nach links oder berühren Sie hier",
+      "backgroundImage": "/images/luxury-carriage-background.jpg"
+    },
+    "languageSelector": {
+      "title": "Sprache wählen / Change language",
+      "german": "DEUTSCH",
+      "english": "ENGLISH"
+    },
+    "quiz": {
+      "nextQuestion": "Nächste Frage",
+      "showResults": "Zur Auswertung",
+      "correctFeedback": [
+        "Richtig! Sehr gut!",
+        "Exzellent! Das ist korrekt!",
+        "Perfekt! Sie kennen sich aus!",
+        "Fantastisch! Genau richtig!",
+        "Bravo! Das stimmt!"
+      ],
+      "incorrectFeedback": [
+        "Das ist leider nicht richtig.",
+        "Nicht ganz korrekt.",
+        "Das war nicht die richtige Antwort.",
+        "Leider falsch."
+      ]
+    },
+    "results": {
+      "scoreText": "Sie haben {score} von 5 Fragen richtig beantwortet.",
+      "messages": {
+        "0": "Keine Sorge! Besuchen Sie die Luxuskutschen-Ausstellung für mehr Informationen.",
+        "1": "Ein guter Anfang! Es gibt noch viel über Luxuskutschen zu entdecken.",
+        "2": "Nicht schlecht! Sie wissen schon einiges über edle Kutschen.",
+        "3": "Gut gemacht! Sie haben solides Wissen über Luxuskutschen.",
+        "4": "Sehr gut! Sie sind fast ein Luxuskutschen-Experte!",
+        "5": "Exzellent! Sie sind ein wahrer Kenner edler Kutschen!"
+      },
+      "playAgain": "Noch einmal"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "question": "Was zeichnete eine Staatskarosse besonders aus?",
+        "answers": [
+          "Goldverzierungen und Wappen",
+          "Besonders große Räder",
+          "Extra starke Federn"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Staatskarossen waren mit aufwendigen Goldverzierungen, Wappen und kostbaren Materialien geschmückt, um den Status des Besitzers zu zeigen."
+      },
+      {
+        "id": "q2",
+        "question": "Wie viele Pferde spannte man vor eine schwere Gala-Kutsche?",
+        "answers": [
+          "Zwei Pferde",
+          "Vier bis sechs Pferde",
+          "Acht bis zehn Pferde"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Schwere Gala-Kutschen benötigten meist vier bis sechs Pferde, bei besonderen Zeremonien auch mehr."
+      },
+      {
+        "id": "q3",
+        "question": "Was war das teuerste Material für Kutschenpolster?",
+        "answers": [
+          "Leder",
+          "Samt",
+          "Seide und Brokat"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Seide und Brokat waren die kostbarsten Materialien für Kutschenpolster und zeugten von höchstem Luxus."
+      },
+      {
+        "id": "q4",
+        "question": "Welche Farbe war traditionell dem Adel vorbehalten?",
+        "answers": [
+          "Schwarz",
+          "Purpur",
+          "Gold"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Purpur war die traditionelle Farbe des Adels und durfte nur von hochrangigen Persönlichkeiten verwendet werden."
+      },
+      {
+        "id": "q5",
+        "question": "Was machte eine Berline zu einer Luxuskutsche?",
+        "answers": [
+          "Geschlossener Aufbau und Komfort",
+          "Offenes Verdeck",
+          "Besonders hohe Geschwindigkeit"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Die Berline war eine geschlossene, komfortable Kutsche mit aufwendiger Innenausstattung für wettergeschütztes Reisen."
+      },
+      {
+        "id": "q6",
+        "question": "Wie hießen die Bediensteten, die neben der Kutsche liefen?",
+        "answers": [
+          "Stallknechte",
+          "Läufer oder Vorreiter",
+          "Diener"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Läufer oder Vorreiter liefen neben oder vor der Kutsche, um den Weg zu bahnen und den Status zu demonstrieren."
+      },
+      {
+        "id": "q7",
+        "question": "Was war eine Vis-à-vis Kutsche?",
+        "answers": [
+          "Eine offene Kutsche",
+          "Eine Kutsche mit gegenüberliegenden Sitzen",
+          "Eine besonders schnelle Kutsche"
+        ],
+        "correctAnswer": 1,
+        "explanation": "In einer Vis-à-vis Kutsche saßen sich die Passagiere gegenüber, was gesellige Unterhaltung während der Fahrt ermöglichte."
+      },
+      {
+        "id": "q8",
+        "question": "Welche Kutschen verwendete man für die Jagd?",
+        "answers": [
+          "Staatskarossen",
+          "Jagdwagen oder Break",
+          "Berlines"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Jagdwagen oder Break waren speziell für die Jagd konzipierte Kutschen mit erhöhten Sitzen für bessere Sicht."
+      }
+    ]
+  },
+  "en": {
+    "screensaver": {
+      "handIcon": "👋",
+      "message": "Touch the screen to begin"
+    },
+    "startScreen": {
+      "title": "Carriages",
+      "subtitle": "Elegance on Wheels",
+      "highlightText": "Kiosk 2 - Theme: Luxury Carriages",
+      "introText": "Experience the splendor and luxury of historic upper-class carriages. How much do you know about these magnificent vehicles?",
+      "swipeText": "Swipe left or touch here",
+      "backgroundImage": "/images/luxury-carriage-background.jpg"
+    },
+    "languageSelector": {
+      "title": "Choose language / Sprache wählen",
+      "german": "DEUTSCH",
+      "english": "ENGLISH"
+    },
+    "quiz": {
+      "nextQuestion": "Next Question",
+      "showResults": "Show Results",
+      "correctFeedback": [
+        "Correct! Very good!",
+        "Excellent! That's right!",
+        "Perfect! You know your stuff!",
+        "Fantastic! Exactly right!",
+        "Bravo! That's correct!"
+      ],
+      "incorrectFeedback": [
+        "That's unfortunately not correct.",
+        "Not quite right.",
+        "That wasn't the right answer.",
+        "Unfortunately wrong."
+      ]
+    },
+    "results": {
+      "scoreText": "You answered {score} out of 5 questions correctly.",
+      "messages": {
+        "0": "Don't worry! Visit the luxury carriage exhibition for more information.",
+        "1": "A good start! There's still much to discover about luxury carriages.",
+        "2": "Not bad! You already know something about fine carriages.",
+        "3": "Well done! You have solid knowledge about luxury carriages.",
+        "4": "Very good! You're almost a luxury carriage expert!",
+        "5": "Excellent! You are a true connoisseur of fine carriages!"
+      },
+      "playAgain": "Play Again"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "question": "What particularly distinguished a state coach?",
+        "answers": [
+          "Gold decorations and coats of arms",
+          "Particularly large wheels",
+          "Extra strong springs"
+        ],
+        "correctAnswer": 0,
+        "explanation": "State coaches were decorated with elaborate gold ornaments, coats of arms, and precious materials to display the owner's status."
+      },
+      {
+        "id": "q2",
+        "question": "How many horses were typically harnessed to a heavy gala carriage?",
+        "answers": [
+          "Two horses",
+          "Four to six horses",
+          "Eight to ten horses"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Heavy gala carriages usually required four to six horses, sometimes more for special ceremonies."
+      },
+      {
+        "id": "q3",
+        "question": "What was the most expensive material for carriage upholstery?",
+        "answers": [
+          "Leather",
+          "Velvet",
+          "Silk and brocade"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Silk and brocade were the most precious materials for carriage upholstery and indicated the highest luxury."
+      },
+      {
+        "id": "q4",
+        "question": "Which color was traditionally reserved for nobility?",
+        "answers": [
+          "Black",
+          "Purple",
+          "Gold"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Purple was the traditional color of nobility and could only be used by high-ranking personalities."
+      },
+      {
+        "id": "q5",
+        "question": "What made a Berlin carriage a luxury vehicle?",
+        "answers": [
+          "Closed body and comfort",
+          "Open top",
+          "Particularly high speed"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The Berlin was a closed, comfortable carriage with elaborate interior fittings for weather-protected travel."
+      },
+      {
+        "id": "q6",
+        "question": "What were the servants called who ran beside the carriage?",
+        "answers": [
+          "Stable boys",
+          "Runners or outriders",
+          "Servants"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Runners or outriders ran beside or in front of the carriage to clear the way and demonstrate status."
+      },
+      {
+        "id": "q7",
+        "question": "What was a vis-à-vis carriage?",
+        "answers": [
+          "An open carriage",
+          "A carriage with opposite-facing seats",
+          "A particularly fast carriage"
+        ],
+        "correctAnswer": 1,
+        "explanation": "In a vis-à-vis carriage, passengers sat facing each other, enabling sociable conversation during the journey."
+      },
+      {
+        "id": "q8",
+        "question": "Which carriages were used for hunting?",
+        "answers": [
+          "State coaches",
+          "Hunting wagons or breaks",
+          "Berlins"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Hunting wagons or breaks were specially designed carriages for hunting with elevated seats for better visibility."
+      }
+    ]
+  }
+}

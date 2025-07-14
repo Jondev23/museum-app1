@@ -1,0 +1,72 @@
+{
+  "name": "museum-kutschen-app",
+  "version": "1.0.0",
+  "description": "Interactive kiosk app for Kutschen exhibition",
+  "main": "electron/main.js",
+  "homepage": "./",
+  "scripts": {
+    "dev": "concurrently \"npm run next-dev\" \"npm run electron-dev\"",
+    "dev-safe": "NODE_ENV=development concurrently \"npm run next-dev\" \"npm run electron-dev\"",
+    "next-dev": "next dev",
+    "electron-dev": "wait-on http://localhost:3000 && NODE_ENV=development electron .",
+    "electron-dev-manual": "NODE_ENV=development electron .",
+    "dev-step": "echo 'Step 1: Run npm run next-dev' && echo 'Step 2: In another terminal run npm run electron-dev-manual'",
+    "build": "next build",
+    "build-electron": "npm run build && electron-builder",
+    "dist": "npm run build && electron-builder --publish=never",
+    "pack": "npm run build && electron-builder --dir",
+    "start": "next start",
+    "export": "next export",
+    "dev:kiosk1": "KIOSK_ID=kiosk1 npm run dev-safe",
+    "dev:kiosk2": "KIOSK_ID=kiosk2 npm run dev-safe",
+    "dev:kiosk3": "KIOSK_ID=kiosk3 npm run dev-safe",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": ["kiosk", "museum", "exhibition", "kutschen"],
+  "author": "Museum Team",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^15.3.5",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "framer-motion": "^11.3.0",
+    "react-confetti": "^6.1.0",
+    "lottie-react": "^2.4.0"
+  },
+  "devDependencies": {
+    "electron": "^37.2.1",
+    "electron-builder": "^24.13.3",
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.2.0",
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.3.0",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0"
+  },
+  "build": {
+    "appId": "com.museum.kutschen",
+    "productName": "Museum Kutschen Kiosk",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "out/**/*",
+      "electron/**/*",
+      "content/**/*",
+      "node_modules/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.education"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}

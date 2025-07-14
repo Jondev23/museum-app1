@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    font-family: Inter, system-ui, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-museum-brown hover:bg-opacity-90 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95;
+  }
+  
+  .btn-answer {
+    @apply bg-white border-2 border-museum-brown text-museum-brown hover:bg-museum-brown hover:text-white font-medium py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 min-w-48;
+  }
+  
+  .btn-disabled {
+    @apply bg-gray-300 text-gray-500 cursor-not-allowed transform-none hover:scale-100;
+  }
+  
+  .progress-dot {
+    @apply w-4 h-4 rounded-full mx-1 transition-all duration-300;
+  }
+  
+  .progress-current {
+    @apply bg-white border-2 border-museum-brown;
+  }
+  
+  .progress-correct {
+    @apply bg-feedback-correct;
+  }
+  
+  .progress-incorrect {
+    @apply bg-feedback-incorrect;
+  }
+  
+  .progress-unanswered {
+    @apply bg-gray-400;
+  }
+}
