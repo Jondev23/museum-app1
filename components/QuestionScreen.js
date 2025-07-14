@@ -84,8 +84,8 @@ const QuestionScreen = () => {
                   onClick={() => handleAnswerClick(index)}
                   disabled={selectedAnswer !== null}
                   className={`
-                    w-full max-w-4xl mx-auto block rounded-2xl transition-all duration-300 transform
-                    border-2 border-white bg-transparent backdrop-blur-sm
+                    w-full max-w-4xl mx-auto block rounded-[60px] transition-all duration-300 transform
+                    border-2 border-white bg-transparent
                     ${selectedAnswer === null
                       ? 'hover:bg-white/20 hover:shadow-lg hover:scale-102 active:scale-98 cursor-pointer'
                       : selectedAnswer === index
