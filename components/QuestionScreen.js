@@ -40,7 +40,7 @@ const QuestionScreen = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/75" />
 
       <div className="relative z-10 flex flex-col h-full">
         {/* Main content */}
@@ -84,7 +84,7 @@ const QuestionScreen = () => {
                   onClick={() => handleAnswerClick(index)}
                   disabled={selectedAnswer !== null}
                   className={`
-                    w-full max-w-4xl mx-auto block transition-all duration-300 transform bg-transparent
+                    w-full max-w-3xl mx-auto block transition-all duration-300 transform bg-transparent
                     ${selectedAnswer === null
                       ? 'hover:bg-white/20 hover:shadow-lg hover:scale-102 active:scale-98 cursor-pointer'
                       : selectedAnswer === index
@@ -95,8 +95,8 @@ const QuestionScreen = () => {
                   style={{
                     borderRadius: '60px',
                     border: '2px solid #D9D9D9',
-                    padding: '24px 32px',
-                    minHeight: '80px',
+                    padding: '14px 12px', // padding horizontal reducido de 16px a 12px
+                    minHeight: '32px', // altura aumentada de 24px a 32px
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
@@ -106,11 +106,11 @@ const QuestionScreen = () => {
                     style={{
                       color: '#D9D9D9',
                       fontFamily: '"Tisa Sans Pro", sans-serif',
-                      fontSize: '48px',
+                      fontSize: '40px', // tamaño aumentado de 36px a 40px
                       fontStyle: 'normal',
                       fontWeight: 400,
-                      lineHeight: '57.6px',
-                      letterSpacing: '0.48px',
+                      lineHeight: '1.3', // line-height aumentado para mejor legibilidad
+                      letterSpacing: '0.40px', // letter-spacing ajustado proporcionalmente
                       textAlign: 'center'
                     }}
                   >

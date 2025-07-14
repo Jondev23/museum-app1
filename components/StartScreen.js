@@ -59,7 +59,7 @@ const StartScreen = () => {
       }}
     >
       {/* Black overlay for better text contrast */}
-      <div className="absolute inset-0 bg-black/70" />
+      <div className="absolute inset-0 bg-black/75" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center px-8">

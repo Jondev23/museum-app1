@@ -51,7 +51,7 @@ const ResultsScreen = () => {
       }}
     >
       {/* Dark overlay for better text contrast */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/75" />
       
       {/* Content - Centered vertically and horizontally */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-8">
