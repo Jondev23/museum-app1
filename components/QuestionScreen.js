@@ -84,16 +84,17 @@ const QuestionScreen = () => {
                   onClick={() => handleAnswerClick(index)}
                   disabled={selectedAnswer !== null}
                   className={`
-                    w-full max-w-4xl mx-auto block rounded-[60px] transition-all duration-300 transform
-                    border-2 border-white bg-transparent
+                    w-full max-w-4xl mx-auto block transition-all duration-300 transform bg-transparent
                     ${selectedAnswer === null
                       ? 'hover:bg-white/20 hover:shadow-lg hover:scale-102 active:scale-98 cursor-pointer'
                       : selectedAnswer === index
-                        ? 'bg-white/30 scale-102 shadow-xl border-white/80'
-                        : 'opacity-60 cursor-not-allowed border-white/40'
+                        ? 'bg-white/30 scale-102 shadow-xl'
+                        : 'opacity-60 cursor-not-allowed'
                     }
                   `}
                   style={{
+                    borderRadius: '60px',
+                    border: '2px solid #D9D9D9',
                     padding: '24px 32px',
                     minHeight: '80px',
                     display: 'flex',

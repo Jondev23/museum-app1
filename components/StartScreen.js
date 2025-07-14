@@ -136,13 +136,15 @@ const StartScreen = () => {
           initial={{ y: 100, opacity: 0 }}
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 1.0 }}
-          className="absolute bottom-16 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-8 cursor-pointer"
+          style={{
+            left: 'calc(50% - 30px)'
+          }}
         >
           <motion.div
             onClick={handleSwipeLeft}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white rounded-full p-6 shadow-2xl cursor-pointer flex items-center justify-center"
             animate={{ 
               y: [0, -15, 0],
               scale: [1, 1.05, 1]
@@ -153,7 +155,14 @@ const StartScreen = () => {
               ease: "easeInOut"
             }}
           >
-            <span className="text-5xl">👆</span>
+            <img
+              src="/images/OE_Swipe_128.svg"
+              alt="Swipe indicator"
+              style={{
+                width: '64px',
+                height: '64px'
+              }}
+            />
           </motion.div>
         </motion.div>
       </div>
