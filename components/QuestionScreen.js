@@ -34,12 +34,23 @@ const QuestionScreen = () => {
       animate={{ x: 0 }}
       exit={{ x: '-100%' }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 bg-gradient-to-br from-museum-cream to-white flex flex-col"
+      className="fixed inset-0 flex flex-col"
+      style={{
+        backgroundImage: 'url(/images/Bild_Kutsche.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
     >
-      {/* Header with progress */}
-      <div className="p-8">
-        <ProgressBar />
-      </div>
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-museum-cream/85 to-white/85" />
+      
+      {/* Content */}
+      <div className="relative z-10 flex flex-col h-full">
+        {/* Header with progress */}
+        <div className="p-8">
+          <ProgressBar />
+        </div>
 
       {/* Question content */}
       <div className="flex-1 flex flex-col justify-center items-center px-8">
@@ -102,6 +113,7 @@ const QuestionScreen = () => {
             ))}
           </motion.div>
         </motion.div>
+      </div>
       </div>
     </motion.div>
   );

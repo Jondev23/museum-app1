@@ -35,7 +35,15 @@ const ScreensaverScreen = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="text-white text-8xl md:text-9xl font-serif text-center leading-tight"
+          className="text-center leading-tight"
+          style={{
+            color: '#61809D',
+            fontFamily: '"Tisa Pro", serif',
+            fontSize: '96px',
+            fontStyle: 'normal',
+            fontWeight: 500,
+            lineHeight: '112px'
+          }}
         >
           Animation Loop
         </motion.h1>
@@ -79,33 +87,6 @@ const ScreensaverScreen = () => {
           <div className="relative z-10 text-6xl w-18 h-18 flex items-center justify-center">
             👆
           </div>
-        </motion.div>
-        
-        {/* Pulse rings around the icon */}
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center"
-          style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
-        >
-          {[0, 0.5, 1].map((delay) => (
-            <motion.div
-              key={delay}
-              className="absolute border-2 border-white rounded-full"
-              animate={{
-                scale: [1, 2.5],
-                opacity: [0.6, 0]
-              }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                delay: delay,
-                ease: "easeOut"
-              }}
-              style={{
-                width: '96px',
-                height: '96px'
-              }}
-            />
-          ))}
         </motion.div>
       </motion.div>
     </motion.div>

@@ -68,16 +68,27 @@ const ResultsScreen = () => {
       animate={{ x: 0 }}
       exit={{ x: '100%' }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 bg-gradient-to-br from-museum-cream to-museum-gold flex flex-col cursor-pointer"
+      className="fixed inset-0 flex flex-col cursor-pointer"
       onClick={handleTouchAnywhere}
+      style={{
+        backgroundImage: 'url(/images/Bild_Kutsche.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
     >
-      {showConfetti && (
-        <Confetti
-          width={windowDimensions.width}
-          height={windowDimensions.height}
-          recycle={false}
-          numberOfPieces={200}
-          gravity={0.1}
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-museum-cream/85 to-museum-gold/85" />
+      
+      {/* Content */}
+      <div className="relative z-10 flex flex-col h-full">
+        {showConfetti && (
+          <Confetti
+            width={windowDimensions.width}
+            height={windowDimensions.height}
+            recycle={false}
+            numberOfPieces={200}
+            gravity={0.1}
         />
       )}
 
@@ -186,6 +197,7 @@ const ResultsScreen = () => {
           {resultsContent.playAgain}
         </motion.button>
       </motion.div>
+      </div>
     </motion.div>
   );
 };

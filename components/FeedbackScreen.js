@@ -32,16 +32,25 @@ const FeedbackScreen = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      className="fixed inset-0 flex items-center justify-center z-50"
       onClick={(e) => e.stopPropagation()}
+      style={{
+        backgroundImage: 'url(/images/Bild_Kutsche.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
     >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-60" />
+      
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.8, opacity: 0 }}
         transition={{ duration: 0.3 }}
         className={`
-          max-w-3xl w-full mx-8 p-8 rounded-2xl shadow-2xl
+          relative z-10 max-w-3xl w-full mx-8 p-8 rounded-2xl shadow-2xl
           ${isCorrect ? 'bg-feedback-correct' : 'bg-feedback-incorrect'}
           text-white
         `}

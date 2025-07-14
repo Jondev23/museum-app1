@@ -49,16 +49,17 @@ const StartScreen = () => {
       animate={{ opacity: 1 }}
       exit={{ x: '-100%' }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 bg-gradient-to-br from-museum-cream to-museum-gold overflow-hidden"
+      className="fixed inset-0 overflow-hidden"
       onTouchStart={handleTouchStart}
+      style={{
+        backgroundImage: 'url(/images/Bild_Kutsche.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
     >
-      {/* Background image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-20"
-        style={{ 
-          backgroundImage: `url(${startContent.backgroundImage})`,
-        }}
-      />
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-museum-cream/80 to-museum-gold/80" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center px-8">
