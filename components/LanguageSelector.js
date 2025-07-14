@@ -13,6 +13,7 @@ const LanguageSelector = () => {
   if (!showLanguageSelector || !content) return null;
 
   const handleLanguageChange = (newLanguage) => {
+    console.log('Changing language from', language, 'to', newLanguage);
     changeLanguage(newLanguage);
   };
 
@@ -21,6 +22,21 @@ const LanguageSelector = () => {
       setShowLanguageSelector(false);
     }
   };
+
+  // Get language selector content based on current language or fallback
+  const getSelectorContent = () => {
+    if (content[language]?.languageSelector) {
+      return content[language].languageSelector;
+    }
+    // Fallback to German if current language selector is not available
+    return content.de?.languageSelector || {
+      title: "Sprache wählen / Choose language",
+      german: "DEUTSCH",
+      english: "ENGLISH"
+    };
+  };
+
+  const selectorContent = getSelectorContent();
 
   return (
     <AnimatePresence>
@@ -57,7 +73,7 @@ const LanguageSelector = () => {
               transition={{ duration: 0.3, delay: 0.2 }}
               className="text-2xl font-bold text-center text-museum-brown mb-8"
             >
-              {content.de.languageSelector.title}
+              {selectorContent.title}
             </motion.h2>
 
             {/* Language buttons */}
@@ -79,7 +95,7 @@ const LanguageSelector = () => {
                   }
                 `}
               >
-                🇩🇪 {content.de.languageSelector.german}
+                🇩🇪 {selectorContent.german}
               </motion.button>
 
               <motion.button
@@ -94,7 +110,7 @@ const LanguageSelector = () => {
                   }
                 `}
               >
-                🇬🇧 {content.en.languageSelector.english}
+                🇬🇧 {selectorContent.english}
               </motion.button>
             </motion.div>
 

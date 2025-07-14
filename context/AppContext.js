@@ -138,9 +138,23 @@ export const AppProvider = ({ children }) => {
   };
 
   const changeLanguage = (newLanguage) => {
+    console.log('changeLanguage called:', { from: language, to: newLanguage });
+    
+    if (newLanguage === language) {
+      console.log('Same language selected, just closing selector');
+      setShowLanguageSelector(false);
+      return;
+    }
+    
     setLanguage(newLanguage);
     setShowLanguageSelector(false);
     setCurrentScreen('start');
+    
+    // Reset quiz state when changing language
+    setCurrentQuestionIndex(0);
+    setAnswers([]);
+    
+    console.log('Language changed successfully to:', newLanguage);
   };
 
   const getScore = () => {

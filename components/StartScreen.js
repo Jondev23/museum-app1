@@ -137,15 +137,48 @@ const StartScreen = () => {
       </div>
 
       {/* Language selector icon */}
-      <motion.button
+      <motion.div
         initial={{ y: '100%', opacity: 0 }}
         animate={showContent ? { y: 0, opacity: 1 } : {}}
         transition={{ duration: 0.8, delay: 1.2 }}
-        onClick={() => setShowLanguageSelector(true)}
-        className="absolute bottom-8 left-8 bg-white bg-opacity-90 p-4 rounded-full shadow-lg hover:bg-opacity-100 transition-all"
+        className="absolute bottom-8 left-8 z-50"
       >
-        <span className="text-3xl">🌐</span>
-      </motion.button>
+        <motion.button
+          onClick={() => {
+            console.log('Globe icon clicked, opening language selector');
+            setShowLanguageSelector(true);
+          }}
+          whileHover={{ scale: 1.1, boxShadow: '0 8px 32px rgba(0,0,0,0.3)' }}
+          whileTap={{ scale: 0.95 }}
+          className="bg-white bg-opacity-95 p-5 rounded-full shadow-2xl hover:bg-opacity-100 transition-all cursor-pointer border-2 border-museum-brown border-opacity-20 relative"
+        >
+          <motion.span 
+            className="text-4xl block"
+            animate={{ rotate: [0, 10, -10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+          >
+            🌐
+          </motion.span>
+          
+          {/* Pulse indicator */}
+          <motion.div
+            className="absolute inset-0 rounded-full border-2 border-museum-brown opacity-30"
+            animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0, 0.3] }}
+            transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+          />
+        </motion.button>
+        
+        {/* Tooltip */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 2, duration: 0.5 }}
+          className="absolute left-full ml-4 top-1/2 transform -translate-y-1/2 bg-museum-brown text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap"
+        >
+          Sprache / Language
+          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1 w-0 h-0 border-t-4 border-b-4 border-r-4 border-transparent border-r-museum-brown" />
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 };
