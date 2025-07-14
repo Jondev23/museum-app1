@@ -1,7 +1,5 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
-import ProgressBar from './ProgressBar';
-import Confetti from 'react-confetti';
 import { useState, useEffect } from 'react';
 
 const ResultsScreen = () => {
@@ -10,26 +8,19 @@ const ResultsScreen = () => {
     beginQuiz,
     content,
     language,
-    questions
+    questions,
+    answers
   } = useApp();
 
-  const [showConfetti, setShowConfetti] = useState(false);
-  const [windowDimensions, setWindowDimensions] = useState({ width: 0, height: 0 });
+  const [showContent, setShowContent] = useState(false);
 
   const score = getScore();
 
   useEffect(() => {
-    setWindowDimensions({
-      width: window.innerWidth,
-      height: window.innerHeight
-    });
-
-    if (score >= 4) {
-      setShowConfetti(true);
-      const timer = setTimeout(() => setShowConfetti(false), 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [score]);
+    // Trigger content animation after component mounts
+    const timer = setTimeout(() => setShowContent(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handlePlayAgain = () => {
     beginQuiz();
@@ -43,24 +34,6 @@ const ResultsScreen = () => {
   };
 
   if (!content?.[language]) return null;
-
-  const resultsContent = content[language].results;
-  const scoreText = resultsContent.scoreText.replace('{score}', score);
-  const message = resultsContent.messages[score.toString()];
-
-  const getScoreEmoji = () => {
-    if (score === 5) return '🏆';
-    if (score >= 4) return '🎉';
-    if (score >= 3) return '👍';
-    if (score >= 2) return '💪';
-    return '📚';
-  };
-
-  const getScoreColor = () => {
-    if (score >= 4) return 'text-feedback-correct';
-    if (score >= 2) return 'text-yellow-500';
-    return 'text-feedback-incorrect';
-  };
 
   return (
     <motion.div
@@ -77,126 +50,114 @@ const ResultsScreen = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-museum-cream/85 to-museum-gold/85" />
+      {/* Dark overlay for better text contrast */}
+      <div className="absolute inset-0 bg-black/40" />
       
-      {/* Content */}
-      <div className="relative z-10 flex flex-col h-full">
-        {showConfetti && (
-          <Confetti
-            width={windowDimensions.width}
-            height={windowDimensions.height}
-            recycle={false}
-            numberOfPieces={200}
-            gravity={0.1}
-        />
-      )}
-
-      {/* Header */}
-      <div className="p-8">
+      {/* Content - Centered vertically and horizontally */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full px-8">
+        
+        {/* Main title */}
         <motion.h1
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-6xl font-bold text-center text-museum-brown mb-8"
+          initial={{ y: 50, opacity: 0 }}
+          animate={showContent ? { y: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-8"
+          style={{
+            color: '#D9D9D9',
+            fontFamily: '"Tisa Pro", serif',
+            fontSize: '96px',
+            fontStyle: 'italic',
+            fontWeight: 700,
+            lineHeight: '120%',
+            textAlign: 'center'
+          }}
         >
-          Quiz Ergebnis
+          Hü! Sehr gut!
         </motion.h1>
-        <ProgressBar />
-      </div>
 
-      {/* Results content */}
-      <div className="flex-1 flex flex-col justify-center items-center px-8">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center max-w-4xl"
+        {/* Secondary text with score */}
+        <motion.p
+          initial={{ y: 50, opacity: 0 }}
+          animate={showContent ? { y: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mb-12"
+          style={{
+            color: '#85AF8B',
+            fontFamily: '"Tisa Sans Pro", sans-serif',
+            fontSize: '64px',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            lineHeight: '120%',
+            textAlign: 'center'
+          }}
         >
-          {/* Score emoji */}
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-9xl mb-8"
-          >
-            {getScoreEmoji()}
-          </motion.div>
+          Du hast {score} von {questions.length} Fragen richtig beantwortet.
+        </motion.p>
 
-          {/* Score text */}
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className={`text-5xl font-bold mb-8 ${getScoreColor()}`}
-          >
-            {scoreText}
-          </motion.h2>
-
-          {/* Score visualization */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex justify-center space-x-4 mb-8"
-          >
-            {[...Array(5)].map((_, index) => (
+        {/* Answer indicators - circles */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={showContent ? { y: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex gap-4 mb-16"
+        >
+          {questions.map((question, index) => {
+            const userAnswer = answers[index];
+            const isCorrect = userAnswer === question.correctAnswer;
+            const backgroundColor = isCorrect ? '#85AF8B' : '#A94930';
+            
+            return (
               <motion.div
                 key={index}
                 initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.3, delay: 0.7 + index * 0.1 }}
-                className={`
-                  w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold
-                  ${index < score 
-                    ? 'bg-feedback-correct text-white' 
-                    : 'bg-gray-300 text-gray-500'
-                  }
-                `}
-              >
-                {index < score ? '✓' : '✗'}
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Message */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="text-3xl text-museum-brown mb-12 leading-relaxed max-w-3xl"
-          >
-            {message}
-          </motion.p>
-
-          {/* Play again hint */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-            className="text-xl text-museum-brown opacity-70 mb-8"
-          >
-            Berühren Sie den Bildschirm für ein neues Quiz
-          </motion.p>
+                animate={showContent ? { scale: 1 } : {}}
+                transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '9999px',
+                  backgroundColor: backgroundColor
+                }}
+              />
+            );
+          })}
         </motion.div>
-      </div>
 
-      {/* Play again button */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.2 }}
-        className="p-8 flex justify-center"
-      >
+        {/* "NOCH EINMAL" button */}
         <motion.button
+          initial={{ y: 50, opacity: 0 }}
+          animate={showContent ? { y: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 1.0 }}
           onClick={handlePlayAgain}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-museum-brown text-white px-12 py-6 rounded-xl text-2xl font-semibold shadow-lg hover:bg-opacity-90 transition-all"
+          className="flex items-center gap-2"
+          style={{
+            background: 'transparent',
+            border: 'none',
+            color: '#FFF',
+            fontFamily: '"Tisa Sans Pro", sans-serif',
+            fontSize: '30px',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            lineHeight: 'normal',
+            textAlign: 'center',
+            textTransform: 'uppercase',
+            letterSpacing: '1px',
+            padding: '16px 32px',
+            borderRadius: '24px'
+          }}
         >
-          {resultsContent.playAgain}
+          NOCH EINMAL
+          <img
+            src="/images/GUI.svg"
+            alt="Restart icon"
+            style={{
+              width: '48px',
+              height: '78px'
+            }}
+          />
         </motion.button>
-      </motion.div>
       </div>
     </motion.div>
   );

@@ -10,7 +10,9 @@ const FeedbackScreen = () => {
     content,
     language,
     currentQuestionIndex,
-    questions
+    questions,
+    setShowLanguageSelector,
+    answers
   } = useApp();
 
   const question = getCurrentQuestion();
@@ -20,6 +22,7 @@ const FeedbackScreen = () => {
 
   const isCorrect = userAnswer === question.correctAnswer;
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
+  const totalQuestions = 5; // Adjust if the number varies
   
   const quizContent = content[language].quiz;
   const feedbackMessages = isCorrect ? quizContent.correctFeedback : quizContent.incorrectFeedback;
@@ -49,7 +52,9 @@ const FeedbackScreen = () => {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.8, opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="relative z-10 bg-[#A94930] rounded-[30px] px-8 py-12 max-w-5xl mx-auto text-center"
+        className={`relative z-10 rounded-[30px] px-8 py-12 max-w-5xl mx-auto text-center ${
+          isCorrect ? 'bg-[#598364]' : 'bg-[#A94930]'
+        }`}
       >
         {/* Question title */}
         <motion.h1
@@ -149,6 +154,68 @@ const FeedbackScreen = () => {
           </motion.button>
         </motion.div>
       </motion.div>
+
+      {/* Footer: Language selector + pagination dots */}
+      <div className="absolute bottom-8 left-0 right-0 flex justify-between items-center px-8 z-50">
+        {/* Language selector icon */}
+        <motion.div
+          initial={{ y: '100%', opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <motion.button
+            onClick={() => setShowLanguageSelector(true)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="transition-all cursor-pointer"
+          >
+            <motion.img
+              src="/images/OE_Sprache_64 1.svg"
+              alt="Language selector"
+              className="w-10 h-10 block"
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+            />
+          </motion.button>
+        </motion.div>
+
+        {/* Pagination dots */}
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="flex gap-6"
+        >
+          {[...Array(totalQuestions)].map((_, i) => {
+            let dotColor = 'transparent';
+            let borderColor = '#D9D9D9';
+            
+            if (i < currentQuestionIndex || (i === currentQuestionIndex && answers[i] !== undefined)) {
+              // Question has been answered
+              const questionAnswered = questions[i];
+              const userAnswerForQuestion = answers[i];
+              const wasCorrect = userAnswerForQuestion === questionAnswered.correctAnswer;
+              dotColor = wasCorrect ? '#598364' : '#A94930'; // Green for correct, copper for incorrect
+            } else if (i === currentQuestionIndex) {
+              dotColor = '#D9D9D9'; // Current question
+            }
+            
+            return (
+              <div
+                key={i}
+                className="w-5 h-5 rounded-full"
+                style={{
+                  border: `3px solid ${borderColor}`,
+                  backgroundColor: dotColor
+                }}
+              />
+            );
+          })}
+        </motion.div>
+
+        {/* Spacer for symmetry */}
+        <div className="w-10"></div>
+      </div>
     </motion.div>
   );
 };
