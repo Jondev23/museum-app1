@@ -133,7 +133,7 @@ const QuestionScreen = () => {
               onClick={() => setShowLanguageSelector(true)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white/20 backdrop-blur-sm p-4 rounded-full shadow-lg hover:bg-white/30 transition-all cursor-pointer border-2 border-white/40"
+              className="transition-all cursor-pointer"
             >
               <motion.img
                 src="/images/OE_Sprache_64 1.svg"

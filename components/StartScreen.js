@@ -170,9 +170,9 @@ const StartScreen = () => {
             console.log('Globe icon clicked, opening language selector');
             setShowLanguageSelector(true);
           }}
-          whileHover={{ scale: 1.1, boxShadow: '0 8px 32px rgba(0,0,0,0.3)' }}
+          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-white bg-opacity-95 p-5 rounded-full shadow-2xl hover:bg-opacity-100 transition-all cursor-pointer border-2 border-museum-brown border-opacity-20 relative"
+          className="transition-all cursor-pointer"
         >
           <motion.img
             src="/images/OE_Sprache_64 1.svg"
@@ -180,13 +180,6 @@ const StartScreen = () => {
             className="w-10 h-10 block"
             animate={{ rotate: [0, 10, -10, 0] }}
             transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-          />
-          
-          {/* Pulse indicator */}
-          <motion.div
-            className="absolute inset-0 rounded-full border-2 border-museum-brown opacity-30"
-            animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0, 0.3] }}
-            transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
           />
         </motion.button>
         
