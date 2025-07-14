@@ -49,77 +49,101 @@ const FeedbackScreen = () => {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.8, opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className={`
-          relative z-10 max-w-3xl w-full mx-8 p-8 rounded-2xl shadow-2xl
-          ${isCorrect ? 'bg-feedback-correct' : 'bg-feedback-incorrect'}
-          text-white
-        `}
+        className="relative z-10 bg-[#A94930] rounded-[30px] px-8 py-12 max-w-5xl mx-auto text-center"
       >
-        {/* Progress bar */}
-        <div className="mb-8">
-          <ProgressBar />
-        </div>
-
         {/* Question title */}
-        <motion.h3
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-2xl font-bold mb-6 text-center opacity-90"
+          className="mb-8"
+          style={{
+            color: '#D9D9D9',
+            fontFamily: '"Tisa Pro", serif',
+            fontSize: '54px',
+            fontStyle: 'italic',
+            fontWeight: 750,
+            lineHeight: '70.2px',
+            textAlign: 'center'
+          }}
         >
           {question.question}
-        </motion.h3>
+        </motion.h1>
 
-        {/* Selected answer */}
+        {/* Selected answer container */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mb-6"
+          className="inline-block px-10 py-5 rounded-full bg-[#D9D9D9] mb-8"
         >
-          <p className="text-lg opacity-80 mb-3">Ihre Antwort:</p>
-          <div className="bg-white bg-opacity-20 p-4 rounded-lg">
-            <p className="text-xl font-semibold">{question.answers[userAnswer]}</p>
-          </div>
+          <span
+            style={{
+              color: '#344243',
+              fontFamily: '"Tisa Sans Pro", sans-serif',
+              fontSize: '48px',
+              fontStyle: 'normal',
+              fontWeight: 400,
+              lineHeight: '57.6px',
+              letterSpacing: '0.48px',
+              textAlign: 'center'
+            }}
+          >
+            {question.answers[userAnswer]}
+          </span>
         </motion.div>
 
-        {/* Feedback message */}
+        {/* Feedback text */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="mb-6 text-center"
         >
-          <p className="text-3xl font-bold mb-4">
-            {isCorrect ? '✓' : '✗'} {randomMessage}
+          <p
+            style={{
+              color: '#D9D9D9',
+              fontFamily: '"Tisa Pro", serif',
+              fontSize: '36px',
+              fontStyle: 'normal',
+              fontWeight: 700,
+              lineHeight: '50.4px',
+              letterSpacing: '0.36px',
+              textAlign: 'center'
+            }}
+          >
+            {isCorrect ? 'Das ist richtig!' : 'Das ist leider falsch.'}
           </p>
-        </motion.div>
-
-        {/* Explanation */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="mb-8"
-        >
-          <p className="text-lg opacity-90 mb-2">Erklärung:</p>
-          <p className="text-xl leading-relaxed bg-white bg-opacity-10 p-4 rounded-lg">
-            {question.explanation}
-          </p>
+          {question.explanation && (
+            <p
+              className="mt-4"
+              style={{
+                color: '#D9D9D9',
+                fontFamily: '"Tisa Pro", serif',
+                fontSize: '36px',
+                fontStyle: 'normal',
+                fontWeight: 700,
+                lineHeight: '50.4px',
+                letterSpacing: '0.36px',
+                textAlign: 'center'
+              }}
+            >
+              {question.explanation}
+            </p>
+          )}
         </motion.div>
 
         {/* Next button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="flex justify-end"
+          transition={{ delay: 0.4 }}
+          className="flex justify-center mt-8"
         >
           <motion.button
             onClick={nextQuestion}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white text-gray-800 px-8 py-4 rounded-lg font-semibold text-xl hover:bg-opacity-90 transition-all"
+            className="bg-white text-[#344243] px-8 py-4 rounded-lg font-semibold text-xl hover:bg-opacity-90 transition-all"
           >
             {buttonText}
           </motion.button>
