@@ -1,0 +1,110 @@
+/* Custom fonts for museum app */
+
+/* Tisa Pro Font Family */
+@font-face {
+  font-family: 'Tisa Pro';
+  src: url('/fonts/TisaPro-Regular.woff2') format('woff2'),
+       url('/fonts/TisaPro-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tisa Pro';
+  src: url('/fonts/TisaPro-Bold.woff2') format('woff2'),
+       url('/fonts/TisaPro-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tisa Pro';
+  src: url('/fonts/TisaPro-Italic.woff2') format('woff2'),
+       url('/fonts/TisaPro-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tisa Pro';
+  src: url('/fonts/TisaPro-BoldItalic.woff2') format('woff2'),
+       url('/fonts/TisaPro-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Tisa Sans Pro Font Family */
+@font-face {
+  font-family: 'Tisa Sans Pro';
+  src: url('/fonts/TisaSansPro-Regular.woff2') format('woff2'),
+       url('/fonts/TisaSansPro-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tisa Sans Pro';
+  src: url('/fonts/TisaSansPro-Bold.woff2') format('woff2'),
+       url('/fonts/TisaSansPro-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallback fonts for better compatibility */
+.font-tisa-pro {
+  font-family: 'Tisa Pro', 'Times New Roman', serif;
+}
+
+.font-tisa-sans-pro {
+  font-family: 'Tisa Sans Pro', 'Arial', sans-serif;
+}
+
+/* Custom utility classes for museum design */
+.text-museum-light-gray {
+  color: #D9D9D9;
+}
+
+.text-museum-green {
+  color: #85AF8B;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 1200px) {
+  .text-start-title {
+    font-size: 72px !important;
+    line-height: 86.4px !important;
+  }
+  
+  .text-start-subtitle {
+    font-size: 48px !important;
+    line-height: 57.6px !important;
+  }
+  
+  .text-start-body {
+    font-size: 28px !important;
+    line-height: 39.2px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-start-title {
+    font-size: 48px !important;
+    line-height: 57.6px !important;
+  }
+  
+  .text-start-subtitle {
+    font-size: 32px !important;
+    line-height: 38.4px !important;
+  }
+  
+  .text-start-body {
+    font-size: 24px !important;
+    line-height: 33.6px !important;
+  }
+}

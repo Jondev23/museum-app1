@@ -58,54 +58,82 @@ const StartScreen = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-museum-cream/80 to-museum-gold/80" />
+      {/* Black overlay for better text contrast */}
+      <div className="absolute inset-0 bg-black/70" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center px-8">
         
         {/* Main content */}
-        <div className="text-center max-w-4xl">
+        <div className="text-center max-w-6xl">
+          {/* Main title */}
           <motion.h1
-            initial={{ x: '100%', opacity: 0 }}
-            animate={showContent ? { x: 0, opacity: 1 } : {}}
+            initial={{ y: 50, opacity: 0 }}
+            animate={showContent ? { y: 0, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-8xl font-bold text-museum-brown mb-4 font-serif"
+            className="mb-8 text-start-title"
+            style={{
+              color: '#D9D9D9',
+              fontFamily: '"Tisa Pro", "Times New Roman", serif',
+              fontSize: '96px',
+              fontStyle: 'italic',
+              fontWeight: 700,
+              lineHeight: '115.2px',
+              textAlign: 'center'
+            }}
           >
-            {startContent.title}
+            Wie weit? Wie lange?
           </motion.h1>
 
+          {/* Subtitle */}
           <motion.h2
-            initial={{ x: '100%', opacity: 0 }}
-            animate={showContent ? { x: 0, opacity: 1 } : {}}
+            initial={{ y: 50, opacity: 0 }}
+            animate={showContent ? { y: 0, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl text-museum-brown mb-6 font-serif opacity-80"
+            className="mb-12 text-start-subtitle"
+            style={{
+              color: '#85AF8B',
+              fontFamily: '"Tisa Sans Pro", "Arial", sans-serif',
+              fontSize: '64px',
+              fontWeight: 400,
+              lineHeight: '76.8px',
+              textAlign: 'center'
+            }}
           >
-            {startContent.subtitle}
+            Distanzen des Reisens im 19. Jahrhundert
           </motion.h2>
 
+          {/* Introductory paragraphs */}
           <motion.div
-            initial={{ x: '100%', opacity: 0 }}
-            animate={showContent ? { x: 0, opacity: 1 } : {}}
+            initial={{ y: 50, opacity: 0 }}
+            animate={showContent ? { y: 0, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="bg-museum-brown text-white px-6 py-3 rounded-full text-xl font-semibold mb-8 inline-block"
+            className="mb-16 text-start-body"
+            style={{
+              color: '#D9D9D9',
+              fontFamily: '"Tisa Pro", "Times New Roman", serif',
+              fontSize: '36px',
+              fontWeight: 700,
+              lineHeight: '50.4px',
+              letterSpacing: '0.36px',
+              textAlign: 'center'
+            }}
           >
-            {startContent.highlightText}
+            <p className="mb-6">
+              Teste dein Wissen!<br />
+              Fünf Fragen rund um das Reisen mit der Kutsche warten auf dich.<br />
+              Wie weit kam man an einem Tag? Wie lange dauerte eine Reise von Leipzig nach München?
+            </p>
+            <p>
+              Stell dich der Herausforderung – vielleicht weißt du mehr, als du denkst.<br />
+              Und falls nicht: unterwegs lernst du garantiert etwas dazu!
+            </p>
           </motion.div>
-
-          <motion.p
-            initial={{ x: '100%', opacity: 0 }}
-            animate={showContent ? { x: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-2xl text-museum-brown mb-16 leading-relaxed"
-          >
-            {startContent.introText}
-          </motion.p>
         </div>
 
-        {/* Swipe indicator */}
+        {/* Touch indicator with bouncing animation */}
         <motion.div
-          initial={{ y: '100%', opacity: 0 }}
+          initial={{ y: 100, opacity: 0 }}
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 1.0 }}
           className="absolute bottom-16 left-1/2 transform -translate-x-1/2"
@@ -114,25 +142,18 @@ const StartScreen = () => {
             onClick={handleSwipeLeft}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center space-x-4 bg-white bg-opacity-90 px-8 py-4 rounded-full shadow-lg cursor-pointer"
+            className="bg-white rounded-full p-6 shadow-2xl cursor-pointer flex items-center justify-center"
+            animate={{ 
+              y: [0, -15, 0],
+              scale: [1, 1.05, 1]
+            }}
+            transition={{ 
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
           >
-            <motion.div
-              animate={{ x: [-10, 0, -10] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="text-4xl"
-            >
-              👋
-            </motion.div>
-            <motion.div
-              animate={{ x: [-5, 5, -5] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="text-4xl"
-            >
-              ←
-            </motion.div>
-            <span className="text-xl font-semibold text-museum-brown">
-              {startContent.swipeText}
-            </span>
+            <span className="text-5xl">👆</span>
           </motion.div>
         </motion.div>
       </div>
