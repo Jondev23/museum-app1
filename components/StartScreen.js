@@ -136,7 +136,7 @@ const StartScreen = () => {
           initial={{ y: 100, opacity: 0 }}
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 1.0 }}
-          className="absolute bottom-8 cursor-pointer"
+          className="absolute bottom-5 cursor-pointer"
           style={{
             left: 'calc(50% - 30px)'
           }}
@@ -191,17 +191,6 @@ const StartScreen = () => {
             transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
           />
         </motion.button>
-        
-        {/* Tooltip */}
-        <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 2, duration: 0.5 }}
-          className="absolute left-full ml-4 top-1/2 transform -translate-y-1/2 bg-museum-brown text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap"
-        >
-          Sprache / Language
-          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1 w-0 h-0 border-t-4 border-b-4 border-r-4 border-transparent border-r-museum-brown" />
-        </motion.div>
       </motion.div>
     </motion.div>
   );
