@@ -45,7 +45,8 @@ const LanguageSelector = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          className="fixed inset-0 flex items-center justify-center z-50"
+          style={{ backgroundColor: '#344243' }} // Fondo color Schiefer
           onClick={handleOverlayClick}
         >
           <motion.div
@@ -53,7 +54,8 @@ const LanguageSelector = () => {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-white rounded-2xl p-8 max-w-md w-full mx-8 shadow-2xl"
+            className="text-center"
+            style={{ width: 'auto', maxWidth: '850px' }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Globe icon */}
@@ -61,7 +63,7 @@ const LanguageSelector = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.3, delay: 0.1 }}
-              className="text-center mb-6"
+              className="mb-8"
             >
               <img 
                 src="/images/OE_Sprache_64 1.svg" 
@@ -75,9 +77,19 @@ const LanguageSelector = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.2 }}
-              className="text-2xl font-bold text-center text-museum-brown mb-8"
+              className="mb-12"
+              style={{
+                color: '#D9D9D9',
+                fontFamily: '"Tisa Sans Pro", sans-serif',
+                fontSize: '32px',
+                fontWeight: 400,
+                textAlign: 'center',
+                textTransform: 'uppercase'
+              }}
             >
-              {selectorContent.title}
+              CHOOSE LANGUAGE
+              <br />
+              Sprache wählen
             </motion.h2>
 
             {/* Language buttons */}
@@ -85,48 +97,56 @@ const LanguageSelector = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.3 }}
-              className="space-y-4"
+              className="space-y-6"
             >
               <motion.button
                 onClick={() => handleLanguageChange('de')}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`
-                  w-full py-4 px-6 rounded-lg text-xl font-semibold transition-all
-                  ${language === 'de' 
-                    ? 'bg-museum-brown text-white' 
-                    : 'bg-gray-100 text-museum-brown hover:bg-gray-200'
-                  }
-                `}
+                className="transition-all"
+                style={{
+                  width: '750px', // aumentado de 567px a 800px (aproximadamente 21 cm)
+                  background: '#A94930', // Kupfer
+                  border: '2px solid #A94930',
+                  borderRadius: '60px',
+                  color: '#D9D9D9',
+                  textAlign: 'center',
+                  fontFamily: '"Tisa Sans Pro", sans-serif',
+                  fontSize: '21px', // aumentado de 20px a 21px
+                  fontWeight: 300, // reducido de 400 a 300 para hacer el texto más delgado
+                  fontStyle: 'normal',
+                  lineHeight: '50px', // reducido de 88px a 50px para hacer el botón más bajo
+                  textTransform: 'uppercase',
+                  padding: '0'
+                }}
               >
-                🇩🇪 {selectorContent.german}
+                {selectorContent.german}
               </motion.button>
 
               <motion.button
                 onClick={() => handleLanguageChange('en')}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`
-                  w-full py-4 px-6 rounded-lg text-xl font-semibold transition-all
-                  ${language === 'en' 
-                    ? 'bg-museum-brown text-white' 
-                    : 'bg-gray-100 text-museum-brown hover:bg-gray-200'
-                  }
-                `}
+                className="transition-all"
+                style={{
+                  width: '750px', // aumentado de 567px a 800px (aproximadamente 21 cm)
+                  background: '#344243', // Schiefer (mismo color que el fondo)
+                  border: '2px solid #D9D9D9',
+                  borderRadius: '60px',
+                  color: '#D9D9D9',
+                  textAlign: 'center',
+                  fontFamily: '"Tisa Sans Pro", sans-serif',
+                  fontSize: '21px', // aumentado de 20px a 21px
+                  fontWeight: 300, // reducido de 400 a 300 para hacer el texto más delgado
+                  fontStyle: 'normal',
+                  lineHeight: '50px', // reducido de 88px a 50px para hacer el botón más bajo
+                  textTransform: 'uppercase',
+                  padding: '0'
+                }}
               >
-                🇬🇧 {selectorContent.english}
+                {selectorContent.english}
               </motion.button>
             </motion.div>
-
-            {/* Close hint */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-              className="text-center text-gray-500 text-sm mt-6"
-            >
-              Tippen Sie außerhalb um zu schließen
-            </motion.p>
           </motion.div>
         </motion.div>
       )}
