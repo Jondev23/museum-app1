@@ -68,7 +68,7 @@ const LanguageSelector = () => {
               <img 
                 src="/images/OE_Sprache_64 1.svg" 
                 alt="Language selector" 
-                className="w-16 h-16 mx-auto"
+                className="w-24 h-24 mx-auto"
               />
             </motion.div>
 
@@ -80,9 +80,10 @@ const LanguageSelector = () => {
               className="mb-12"
               style={{
                 color: '#D9D9D9',
-                fontFamily: '"Tisa Sans Pro", sans-serif',
+                fontFamily: "Tisa Pro",
                 fontSize: '32px',
                 fontWeight: 400,
+                fontStyle: 'italic',
                 textAlign: 'center',
                 textTransform: 'uppercase'
               }}
@@ -135,7 +136,7 @@ const LanguageSelector = () => {
                   borderRadius: '60px',
                   color: '#D9D9D9',
                   textAlign: 'center',
-                  fontFamily: '"Tisa Sans Pro", sans-serif',
+                  fontFamily: '"Tisa Sans Pro"s',
                   fontSize: '21px', // aumentado de 20px a 21px
                   fontWeight: 300, // reducido de 400 a 300 para hacer el texto más delgado
                   fontStyle: 'normal',
