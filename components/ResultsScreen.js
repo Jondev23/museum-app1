@@ -72,7 +72,8 @@ const ResultsScreen = () => {
             textAlign: 'center'
           }}
         >
-          Hü! Sehr gut!
+          {content[language]?.results?.messages?.[score] || 
+           (language === 'en' ? 'Great job!' : 'Hü! Sehr gut!')}
         </motion.h1>
 
         {/* Secondary text with score */}
@@ -91,7 +92,8 @@ const ResultsScreen = () => {
             textAlign: 'center'
           }}
         >
-          Du hast {score} von {questions.length} Fragen richtig beantwortet.
+          {content[language]?.results?.scoreText?.replace('{score}', score).replace('{total}', questions.length) || 
+           `Du hast ${score} von ${questions.length} Fragen richtig beantwortet.`}
         </motion.p>
 
         {/* Answer indicators - circles */}
@@ -148,7 +150,7 @@ const ResultsScreen = () => {
             borderRadius: '24px'
           }}
         >
-          NOCH EINMAL
+          {content[language]?.results?.playAgain || 'NOCH EINMAL'}
           <img
             src="/images/GUI.svg"
             alt="Restart icon"

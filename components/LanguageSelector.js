@@ -55,7 +55,7 @@ const LanguageSelector = () => {
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="text-center"
-            style={{ width: 'auto', maxWidth: '850px' }}
+            style={{ width: 'auto', maxWidth: '100vw', padding: '0 min(2rem, 4vw)' }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Globe icon */}
@@ -63,12 +63,17 @@ const LanguageSelector = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.3, delay: 0.1 }}
-              className="mb-8"
+              style={{ marginBottom: '3.75rem' }}
             >
               <img 
                 src="/images/OE_Sprache_64 1.svg" 
                 alt="Language selector" 
-                className="w-24 h-24 mx-auto"
+                style={{
+                  width: '6rem',
+                  height: '6rem',
+                  margin: '0 auto',
+                  display: 'block'
+                }}
               />
             </motion.div>
 
@@ -77,20 +82,34 @@ const LanguageSelector = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.2 }}
-              className="mb-12"
               style={{
+                marginBottom: '3rem',
                 color: '#D9D9D9',
                 fontFamily: "Tisa Pro",
-                fontSize: '32px',
-                fontWeight: 400,
+                fontSize: 'min(3.375rem, 8vw)',
+                fontWeight: 750,
                 fontStyle: 'italic',
                 textAlign: 'center',
-                textTransform: 'uppercase'
+                lineHeight: '130%'
               }}
             >
-              CHOOSE LANGUAGE
-              <br />
-              Sprache wählen
+              <span style={{ 
+                width: 'min(26.75rem, 80vw)', 
+                height: 'min(4.375rem, 10vw)',
+                display: 'block',
+                margin: '0 auto'
+              }}>
+                Change language
+              </span>
+              <span style={{ 
+                opacity: 0.6,
+                width: 'min(24.9375rem, 75vw)',
+                height: 'min(4.375rem, 10vw)',
+                display: 'block',
+                margin: '0 auto'
+              }}>
+                Sprache wählen
+              </span>
             </motion.h2>
 
             {/* Language buttons */}
@@ -98,7 +117,11 @@ const LanguageSelector = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.3 }}
-              className="space-y-6"
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'min(1rem, 2vw)'
+              }}
             >
               <motion.button
                 onClick={() => handleLanguageChange('de')}
@@ -106,19 +129,25 @@ const LanguageSelector = () => {
                 whileTap={{ scale: 0.98 }}
                 className="transition-all"
                 style={{
-                  width: '750px', // aumentado de 567px a 800px (aproximadamente 21 cm)
-                  background: '#A94930', // Kupfer
+                  display: 'flex',
+                  width: 'min(62.5rem, 90vw)',
+                  height: 'min(5rem, 12vw)',
+                  padding: 'min(0.4375rem, 1vw) min(5rem, 10vw)',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: 'min(0.625rem, 1.5vw)',
+                  borderRadius: 'min(3.75rem, 8vw)',
                   border: '2px solid #A94930',
-                  borderRadius: '60px',
+                  background: '#A94930',
                   color: '#D9D9D9',
                   textAlign: 'center',
                   fontFamily: '"Tisa Sans Pro", sans-serif',
-                  fontSize: '21px', // aumentado de 20px a 21px
-                  fontWeight: 300, // reducido de 400 a 300 para hacer el texto más delgado
+                  fontSize: 'min(2rem, 4vw)',
+                  fontWeight: 400,
                   fontStyle: 'normal',
-                  lineHeight: '50px', // reducido de 88px a 50px para hacer el botón más bajo
+                  lineHeight: 'min(5.5rem, 12vw)', /* 275% */
                   textTransform: 'uppercase',
-                  padding: '0'
+                  margin: '0 auto'
                 }}
               >
                 {selectorContent.german}
@@ -130,19 +159,25 @@ const LanguageSelector = () => {
                 whileTap={{ scale: 0.98 }}
                 className="transition-all"
                 style={{
-                  width: '750px', // aumentado de 567px a 800px (aproximadamente 21 cm)
-                  background: '#344243', // Schiefer (mismo color que el fondo)
+                  display: 'flex',
+                  width: 'min(62.5rem, 90vw)',
+                  height: 'min(5rem, 12vw)',
+                  padding: 'min(0.4375rem, 1vw) min(5rem, 10vw)',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: 'min(0.625rem, 1.5vw)',
+                  borderRadius: 'min(3.75rem, 8vw)',
                   border: '2px solid #D9D9D9',
-                  borderRadius: '60px',
+                  background: '#344243', // Schiefer (mismo color que el fondo)
                   color: '#D9D9D9',
                   textAlign: 'center',
-                  fontFamily: '"Tisa Sans Pro"s',
-                  fontSize: '21px', // aumentado de 20px a 21px
-                  fontWeight: 300, // reducido de 400 a 300 para hacer el texto más delgado
+                  fontFamily: '"Tisa Sans Pro", sans-serif',
+                  fontSize: 'min(2rem, 4vw)',
+                  fontWeight: 400,
                   fontStyle: 'normal',
-                  lineHeight: '50px', // reducido de 88px a 50px para hacer el botón más bajo
+                  lineHeight: 'min(5.5rem, 12vw)', /* 275% */
                   textTransform: 'uppercase',
-                  padding: '0'
+                  margin: '0 auto'
                 }}
               >
                 {selectorContent.english}
