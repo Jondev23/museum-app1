@@ -53,19 +53,19 @@ const ResultsScreen = () => {
       {/* Dark overlay for better text contrast */}
       <div className="absolute inset-0 bg-black/75" />
       
-      {/* Content - Centered vertically and horizontally */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-8">
+      {/* Content - Centered vertically and horizontally - totalmente responsivo */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full" style={{ padding: 'min(2rem, 4vw)' }}>
         
         {/* Main title */}
         <motion.h1
           initial={{ y: 50, opacity: 0 }}
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-8"
           style={{
+            marginBottom: 'min(2rem, 4vw)', // Responsive margin
             color: '#D9D9D9',
             fontFamily: '"Tisa Pro", serif',
-            fontSize: '96px',
+            fontSize: 'min(6rem, 12vw)', // Responsive font size
             fontStyle: 'italic',
             fontWeight: 700,
             lineHeight: '120%',
@@ -81,11 +81,11 @@ const ResultsScreen = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-12"
           style={{
+            marginBottom: 'min(3rem, 6vw)', // Responsive margin
             color: '#85AF8B',
             fontFamily: '"Tisa Sans Pro", sans-serif',
-            fontSize: '64px',
+            fontSize: 'min(4rem, 8vw)', // Responsive font size
             fontStyle: 'normal',
             fontWeight: 400,
             lineHeight: '120%',
@@ -96,12 +96,16 @@ const ResultsScreen = () => {
            `Du hast ${score} von ${questions.length} Fragen richtig beantwortet.`}
         </motion.p>
 
-        {/* Answer indicators - circles */}
+        {/* Answer indicators - circles responsivos */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex gap-4 mb-16"
+          className="flex"
+          style={{ 
+            gap: 'min(1rem, 2vw)', // Gap responsivo
+            marginBottom: 'min(4rem, 8vw)' // Responsive margin
+          }}
         >
           {questions.map((question, index) => {
             const userAnswer = answers[index];
@@ -115,8 +119,8 @@ const ResultsScreen = () => {
                 animate={showContent ? { scale: 1 } : {}}
                 transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
                 style={{
-                  width: '32px',
-                  height: '32px',
+                  width: 'min(2rem, 4vw)', // Tamaño responsivo
+                  height: 'min(2rem, 4vw)', // Tamaño responsivo
                   borderRadius: '9999px',
                   backgroundColor: backgroundColor
                 }}
@@ -125,7 +129,7 @@ const ResultsScreen = () => {
           })}
         </motion.div>
 
-        {/* "NOCH EINMAL" button */}
+        {/* "NOCH EINMAL" button responsivo */}
         <motion.button
           initial={{ y: 50, opacity: 0 }}
           animate={showContent ? { y: 0, opacity: 1 } : {}}
@@ -133,21 +137,22 @@ const ResultsScreen = () => {
           onClick={handlePlayAgain}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-2"
+          className="flex items-center"
           style={{
             background: 'transparent',
             border: 'none',
             color: '#FFF',
             fontFamily: '"Tisa Sans Pro", sans-serif',
-            fontSize: '30px',
+            fontSize: 'min(1.875rem, 3.75vw)', // Responsive font size
             fontStyle: 'normal',
             fontWeight: 400,
             lineHeight: 'normal',
             textAlign: 'center',
             textTransform: 'uppercase',
-            letterSpacing: '1px',
-            padding: '16px 32px',
-            borderRadius: '24px'
+            letterSpacing: '0.0625rem', // Responsive letter spacing
+            padding: 'min(1rem, 2vw) min(2rem, 4vw)', // Responsive padding
+            borderRadius: 'min(1.5rem, 3vw)', // Responsive border radius
+            gap: 'min(0.5rem, 1vw)' // Responsive gap
           }}
         >
           {content[language]?.results?.playAgain || 'NOCH EINMAL'}
@@ -155,8 +160,8 @@ const ResultsScreen = () => {
             src="/images/GUI.svg"
             alt="Restart icon"
             style={{
-              width: '48px',
-              height: '78px'
+              width: 'min(3rem, 6vw)', // Responsive width
+              height: 'min(4.875rem, 9.75vw)' // Responsive height
             }}
           />
         </motion.button>
