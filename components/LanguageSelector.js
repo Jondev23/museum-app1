@@ -54,8 +54,19 @@ const LanguageSelector = () => {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="text-center"
-            style={{ width: 'auto', maxWidth: '100vw', padding: '0 min(2rem, 4vw)' }}
+            style={{ 
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 'min(5rem, 10vw)', 
+              width: 'auto', 
+              maxWidth: '100vw', 
+              padding: '0 min(2rem, 4vw)',
+              minHeight: '100vh',
+              paddingTop: 'min(2.5rem, 5vw)',
+              paddingBottom: 'min(2.5rem, 5vw)'
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Globe icon */}
@@ -63,54 +74,63 @@ const LanguageSelector = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.3, delay: 0.1 }}
-              style={{ marginBottom: '3.75rem' }}
+              style={{ 
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
             >
               <img 
                 src="/images/OE_Sprache_64 1.svg" 
                 alt="Language selector" 
                 style={{
-                  width: '6rem',
-                  height: '6rem',
-                  margin: '0 auto',
+                  width: 'min(6rem, 15vw)',
+                  height: 'min(6rem, 15vw)',
                   display: 'block'
                 }}
               />
             </motion.div>
 
             {/* Title */}
-            <motion.h2
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.2 }}
               style={{
-                marginBottom: '3rem',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center'
+              }}
+            >
+              <h1 style={{
                 color: '#D9D9D9',
                 fontFamily: "Tisa Pro",
                 fontSize: 'min(3.375rem, 8vw)',
                 fontWeight: 750,
                 fontStyle: 'italic',
                 textAlign: 'center',
-                lineHeight: '130%'
-              }}
-            >
-              <span style={{ 
-                width: 'min(26.75rem, 80vw)', 
-                height: 'min(4.375rem, 10vw)',
-                display: 'block',
-                margin: '0 auto'
+                lineHeight: '130%',
+                margin: 0,
+                whiteSpace: 'nowrap'
               }}>
                 Change language
-              </span>
-              <span style={{ 
+              </h1>
+              <h2 style={{
+                color: '#D9D9D9',
                 opacity: 0.6,
-                width: 'min(24.9375rem, 75vw)',
-                height: 'min(4.375rem, 10vw)',
-                display: 'block',
-                margin: '0 auto'
+                fontFamily: "Tisa Pro",
+                fontSize: 'min(3.375rem, 8vw)',
+                fontWeight: 750,
+                fontStyle: 'italic',
+                textAlign: 'center',
+                lineHeight: '130%',
+                margin: 0,
+                whiteSpace: 'nowrap'
               }}>
                 Sprache wählen
-              </span>
-            </motion.h2>
+              </h2>
+            </motion.div>
 
             {/* Language buttons */}
             <motion.div
@@ -118,70 +138,84 @@ const LanguageSelector = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.3 }}
               style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 'min(1rem, 2vw)'
+                backgroundColor: 'transparent',
+                border: 'none',
+                boxShadow: 'none'
               }}
             >
-              <motion.button
-                onClick={() => handleLanguageChange('de')}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="transition-all"
-                style={{
-                  display: 'flex',
-                  width: 'min(62.5rem, 90vw)',
-                  height: 'min(5rem, 12vw)',
-                  padding: 'min(0.4375rem, 1vw) min(5rem, 10vw)',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: 'min(0.625rem, 1.5vw)',
-                  borderRadius: 'min(3.75rem, 8vw)',
-                  border: '2px solid #A94930',
-                  background: '#A94930',
-                  color: '#D9D9D9',
-                  textAlign: 'center',
-                  fontFamily: '"Tisa Sans Pro", sans-serif',
-                  fontSize: 'min(2rem, 4vw)',
-                  fontWeight: 400,
-                  fontStyle: 'normal',
-                  lineHeight: 'min(5.5rem, 12vw)', /* 275% */
-                  textTransform: 'uppercase',
-                  margin: '0 auto'
-                }}
-              >
-                {selectorContent.german}
-              </motion.button>
+              <div style={{
+                padding: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 'min(1.5rem, 3vw)'
+              }}>
+                <motion.button
+                  onClick={() => handleLanguageChange('de')}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="transition-all"
+                  style={{
+                    width: 'min(max(20rem, 50vw), 62.5rem)', // Responsive: 320px min, grows with viewport, max 1000px
+                    height: 'min(5rem, 12vw)',
+                    borderRadius: 'min(3.75rem, 8vw)',
+                    border: '2px solid #A94930',
+                    background: '#A94930', // Siempre Kupfer como en la referencia (selected)
+                    padding: 'min(0.625rem, 1.5vw)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <span style={{
+                    flex: 1,
+                    fontFamily: '"Tisa Sans Pro", Helvetica, sans-serif',
+                    fontWeight: 400,
+                    color: '#D9D9D9',
+                    fontSize: 'min(2rem, 4vw)',
+                    textAlign: 'center',
+                    lineHeight: 'min(5.5rem, 12vw)',
+                    textTransform: 'uppercase'
+                  }}>
+                    {selectorContent.german}
+                  </span>
+                </motion.button>
 
-              <motion.button
-                onClick={() => handleLanguageChange('en')}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="transition-all"
-                style={{
-                  display: 'flex',
-                  width: 'min(62.5rem, 90vw)',
-                  height: 'min(5rem, 12vw)',
-                  padding: 'min(0.4375rem, 1vw) min(5rem, 10vw)',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: 'min(0.625rem, 1.5vw)',
-                  borderRadius: 'min(3.75rem, 8vw)',
-                  border: '2px solid #D9D9D9',
-                  background: '#344243', // Schiefer (mismo color que el fondo)
-                  color: '#D9D9D9',
-                  textAlign: 'center',
-                  fontFamily: '"Tisa Sans Pro", sans-serif',
-                  fontSize: 'min(2rem, 4vw)',
-                  fontWeight: 400,
-                  fontStyle: 'normal',
-                  lineHeight: 'min(5.5rem, 12vw)', /* 275% */
-                  textTransform: 'uppercase',
-                  margin: '0 auto'
-                }}
-              >
-                {selectorContent.english}
-              </motion.button>
+                <motion.button
+                  onClick={() => handleLanguageChange('en')}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="transition-all"
+                  style={{
+                    width: 'min(max(20rem, 50vw), 62.5rem)', // Responsive: 320px min, grows with viewport, max 1000px
+                    height: 'min(5rem, 12vw)',
+                    borderRadius: 'min(3.75rem, 8vw)',
+                    border: '2px solid #D9D9D9',
+                    background: 'transparent', // Transparente como en la referencia (outline)
+                    padding: 'min(0.625rem, 1.5vw)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <span style={{
+                    flex: 1,
+                    fontFamily: '"Tisa Sans Pro", Helvetica, sans-serif',
+                    fontWeight: 400,
+                    color: '#D9D9D9',
+                    fontSize: 'min(2rem, 4vw)',
+                    textAlign: 'center',
+                    lineHeight: 'min(5.5rem, 12vw)',
+                    textTransform: 'uppercase'
+                  }}>
+                    {selectorContent.english}
+                  </span>
+                </motion.button>
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>
