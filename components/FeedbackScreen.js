@@ -47,13 +47,13 @@ const FeedbackScreen = () => {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/75" />
       
-      {/* Main content container - dimensiones fijas específicas */}
+      {/* Main content container - totalmente responsivo */}
       <div 
         className="flex-1 flex items-center justify-center overflow-hidden"
         style={{
-          maxHeight: 'calc(100vh - 60px)', // más espacio para el contenedor
-          paddingTop: '30px', // padding superior reducido
-          paddingBottom: '30px' // padding inferior para balancear
+          maxHeight: 'calc(100vh - min(3.75rem, 7.5vw))', // más espacio para el contenedor
+          paddingTop: 'min(1.875rem, 3.75vw)', // padding superior reducido
+          paddingBottom: 'min(1.875rem, 3.75vw)' // padding inferior para balancear
         }}
       >
         <motion.div
@@ -65,13 +65,13 @@ const FeedbackScreen = () => {
             isCorrect ? 'bg-[#598364]' : 'bg-[#A94930]'
           }`}
           style={{
-            width: '1440px', // ancho total del contenedor
-            height: '666px', // alto total del contenedor
-            padding: '80px 72px', // padding específico (arriba/abajo: 80px, izquierda/derecha: 72px)
-            margin: '30px 120px 55px 120px', // margin: 30px arriba, 120px laterales, 55px abajo
+            width: 'min(90rem, 90vw)', // ancho total del contenedor responsivo
+            height: 'min(41.625rem, 85vh)', // alto total del contenedor responsivo
+            padding: 'min(5rem, 10vw) min(4.5rem, 9vw)', // padding específico responsivo
+            margin: 'min(1.875rem, 3.75vw) min(7.5rem, 15vw) min(3.4375rem, 6.875vw) min(7.5rem, 15vw)', // margin responsivo
             boxSizing: 'border-box', // incluye padding en las dimensiones totales
-            maxWidth: 'calc(100vw - 240px)', // fallback considerando margin lateral aumentado
-            maxHeight: 'calc(100vh - 205px)', // fallback considerando margin aumentado y footer
+            maxWidth: 'calc(100vw - min(15rem, 30vw))', // fallback considerando margin lateral
+            maxHeight: 'calc(100vh - min(12.8125rem, 25.625vw))', // fallback considerando margin y footer
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
@@ -87,7 +87,7 @@ const FeedbackScreen = () => {
             style={{
               color: '#D9D9D9',
               fontFamily: '"Tisa Pro", serif',
-              fontSize: 'clamp(28px, 5vw, 54px)', // responsive font size
+              fontSize: 'min(3.375rem, 6.75vw)', // responsive font size
               fontStyle: 'italic',
               fontWeight: 750,
               lineHeight: '1.3',
@@ -99,7 +99,7 @@ const FeedbackScreen = () => {
             {question.question}
           </motion.h1>
 
-          {/* Selected answer container - ancho fijo ~15cm */}
+          {/* Selected answer container - ancho responsivo */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -109,16 +109,16 @@ const FeedbackScreen = () => {
             <div
               className="rounded-full bg-[#D9D9D9] flex items-center justify-center"
               style={{
-                width: 'clamp(750px, 35vw, 600px)', // ancho específico ~15cm
-                minHeight: 'clamp(55px, 7vw, 80px)', // altura aumentada
-                padding: 'clamp(0.8rem, 2vw, 1.2rem) clamp(0.8rem, 2vw, 1.2rem)' // padding vertical aumentado
+                width: 'min(37.5rem, 75vw)', // ancho específico responsivo
+                minHeight: 'min(5rem, 10vw)', // altura responsiva
+                padding: 'min(1.25rem, 2.5vw) min(1.25rem, 2.5vw)' // padding responsivo
               }}
             >
               <span
                 style={{
                   color: '#344243',
                   fontFamily: '"Tisa Sans Pro", sans-serif',
-                  fontSize: 'clamp(18px, 3vw, 32px)',
+                  fontSize: 'min(2rem, 4vw)',
                   fontStyle: 'normal',
                   fontWeight: 400,
                   lineHeight: '1.2',
@@ -144,7 +144,7 @@ const FeedbackScreen = () => {
               style={{
                 color: '#D9D9D9',
                 fontFamily: '"Tisa Pro", serif',
-                fontSize: 'clamp(20px, 3.5vw, 36px)', // responsive font size
+                fontSize: 'min(2.25rem, 4.5vw)', // responsive font size
                 fontStyle: 'normal',
                 fontWeight: 700,
                 lineHeight: '1.4',
@@ -152,7 +152,7 @@ const FeedbackScreen = () => {
                 textAlign: 'center',
                 maxWidth: '100%',
                 overflowWrap: 'break-word',
-                margin: 0
+                margin: '0'
               }}
             >
               {isCorrect ? 'Das ist richtig!' : 'Das ist leider falsch.'}
@@ -163,7 +163,7 @@ const FeedbackScreen = () => {
                 style={{
                   color: '#D9D9D9',
                   fontFamily: '"Tisa Pro", serif',
-                  fontSize: 'clamp(18px, 3vw, 32px)', // slightly smaller for explanation
+                  fontSize: 'min(2rem, 4vw)', // slightly smaller for explanation
                   fontStyle: 'normal',
                   fontWeight: 700,
                   lineHeight: '1.4',
@@ -171,7 +171,7 @@ const FeedbackScreen = () => {
                   textAlign: 'center',
                   maxWidth: '100%',
                   overflowWrap: 'break-word',
-                  margin: 0
+                  margin: '0'
                 }}
               >
                 {question.explanation}
@@ -181,17 +181,17 @@ const FeedbackScreen = () => {
         </motion.div>
       </div>
 
-      {/* Fixed footer - language selector + pagination dots (sin fondo difuminado) */}
+      {/* Fixed footer - language selector + pagination dots totalmente responsivo */}
       <div 
         className="relative z-20 flex justify-between items-center"
         style={{
           position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: 'clamp(50px, 6vh, 70px)', // altura reducida del footer
-          padding: 'clamp(0.3rem, 1.5vw, 0.8rem) clamp(0.8rem, 3vw, 1.5rem)', // padding reducido
-          minHeight: '50px' // altura mínima reducida
+          bottom: '0',
+          left: '0',
+          right: '0',
+          height: 'min(4.375rem, 8.75vw)', // altura responsiva del footer
+          padding: 'min(0.625rem, 1.25vw) min(1.25rem, 2.5vw)', // padding responsivo
+          minHeight: 'min(3.125rem, 6.25vw)' // altura mínima responsiva
         }}
       >
         {/* Language selector icon */}
@@ -201,8 +201,8 @@ const FeedbackScreen = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           style={{ 
             flexShrink: 0,
-            marginBottom: '90px', // espacio en la parte inferior igual que "ZUR AUSWERTUNG"
-            marginLeft: '98px' // mover más hacia la derecha
+            marginBottom: 'min(5.625rem, 11.25vw)', // espacio en la parte inferior responsivo
+            marginLeft: 'min(6.125rem, 12.25vw)' // mover más hacia la derecha responsivo
           }}
         >
           <motion.button
@@ -211,8 +211,8 @@ const FeedbackScreen = () => {
             whileTap={{ scale: 0.95 }}
             className="transition-all cursor-pointer"
             style={{
-              minWidth: 'clamp(40px, 7vw, 56px)', // tamaño mínimo aumentado de 32px a 40px
-              minHeight: 'clamp(40px, 7vw, 56px)' // tamaño mínimo aumentado de 32px a 40px
+              minWidth: 'min(3.5rem, 7vw)', // tamaño mínimo responsivo
+              minHeight: 'min(3.5rem, 7vw)' // tamaño mínimo responsivo
             }}
           >
             <motion.img
@@ -220,8 +220,8 @@ const FeedbackScreen = () => {
               alt="Language selector"
               className="block"
               style={{
-                width: 'clamp(40px, 7vw, 56px)', // icono aumentado de 32px a 40px
-                height: 'clamp(40px, 7vw, 56px)' // icono aumentado de 32px a 40px
+                width: 'min(3.5rem, 7vw)', // icono responsivo
+                height: 'min(3.5rem, 7vw)' // icono responsivo
               }}
               animate={{ rotate: [0, 10, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
@@ -236,10 +236,10 @@ const FeedbackScreen = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex justify-center"
           style={{
-            gap: 'clamp(0.3rem, 1.2vw, 0.8rem)', // gap reducido (antes: 0.5rem, 2vw, 1.5rem)
+            gap: 'min(0.75rem, 1.5vw)', // gap responsivo
             flexShrink: 0,
-            marginBottom: '90px', // espacio en la parte inferior igual que los otros elementos
-            marginLeft: '220px' // mover los dots hacia la derecha
+            marginBottom: 'min(5.625rem, 11.25vw)', // espacio en la parte inferior responsivo
+            marginLeft: 'min(13.75rem, 27.5vw)' // mover los dots hacia la derecha responsivo
           }}
         >
           {[...Array(totalQuestions)].map((_, i) => {
@@ -261,9 +261,9 @@ const FeedbackScreen = () => {
                 key={i}
                 className="rounded-full"
                 style={{
-                  width: 'clamp(14px, 2.8vw, 18px)', // dots un poco más grandes (antes: 12px, 2.5vw, 16px)
-                  height: 'clamp(14px, 2.8vw, 18px)', // dots un poco más grandes
-                  border: `clamp(1.8px, 0.45vw, 2.8px) solid ${borderColor}`, // borde proporcionalmente más grande
+                  width: 'min(1.125rem, 2.25vw)', // dots responsivos
+                  height: 'min(1.125rem, 2.25vw)', // dots responsivos
+                  border: `min(0.175rem, 0.35vw) solid ${borderColor}`, // borde responsivo
                   backgroundColor: dotColor,
                   flexShrink: 0 // evita compresión
                 }}
@@ -279,8 +279,8 @@ const FeedbackScreen = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           style={{ 
             flexShrink: 0,
-            marginRight: '90px',
-            marginBottom: '90px' // espacio en la parte inferior
+            marginRight: 'min(5.625rem, 11.25vw)',
+            marginBottom: 'min(5.625rem, 11.25vw)' // espacio en la parte inferior responsivo
           }}
         >
           <motion.button
@@ -289,8 +289,8 @@ const FeedbackScreen = () => {
             whileTap={{ scale: 0.95 }}
             className="flex items-center gap-2 transition-all cursor-pointer"
             style={{
-              minWidth: 'clamp(120px, 15vw, 180px)',
-              minHeight: 'clamp(32px, 6vw, 48px)',
+              minWidth: 'min(11.25rem, 22.5vw)',
+              minHeight: 'min(3rem, 6vw)',
               background: 'transparent',
               border: 'none',
               justifyContent: 'flex-start' // alineación hacia la izquierda
@@ -301,10 +301,10 @@ const FeedbackScreen = () => {
                 color: '#D9D9D9',
                 textAlign: 'center',
                 fontFamily: '"Tisa Sans Pro", sans-serif',
-                fontSize: '22px', // tamaño reducido de 30px a 20px
+                fontSize: 'min(1.375rem, 2.75vw)', // tamaño responsivo
                 fontStyle: 'normal',
                 fontWeight: 300,
-                lineHeight: '112px',
+                lineHeight: 'min(7rem, 14vw)',
                 textTransform: 'uppercase'
               }}
             >
@@ -314,8 +314,8 @@ const FeedbackScreen = () => {
               src="/images/GUI-2.svg"
               alt="Zur Auswertung"
               style={{
-                width: 'clamp(40px, 6vw, 56px)', // imagen más grande
-                height: 'clamp(40px, 6vw, 56px)' // imagen más grande
+                width: 'min(3.5rem, 7vw)', // imagen responsiva
+                height: 'min(3.5rem, 7vw)' // imagen responsiva
               }}
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 2 }}
