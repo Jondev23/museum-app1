@@ -61,24 +61,24 @@ const StartScreen = () => {
       {/* Black overlay for better text contrast */}
       <div className="absolute inset-0 bg-black/75" />
 
-      {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center px-8">
+      {/* Content - totalmente responsivo */}
+      <div className="relative z-10 h-full flex flex-col justify-center items-center" style={{ padding: 'min(2rem, 4vw)' }}>
         
         {/* Main content */}
-        <div className="text-center max-w-6xl">
+        <div className="text-center" style={{ maxWidth: 'min(96rem, 90vw)' }}>
           {/* Main title */}
           <motion.h1
             initial={{ y: 50, opacity: 0 }}
             animate={showContent ? { y: 0, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-8 text-start-title"
             style={{
+              marginBottom: 'min(2rem, 4vw)', // Responsive margin
               color: '#D9D9D9',
               fontFamily: '"Tisa Pro", "Times New Roman", serif',
-              fontSize: '96px',
+              fontSize: 'min(6rem, 12vw)', // Responsive font size
               fontStyle: 'italic',
               fontWeight: 700,
-              lineHeight: '115.2px',
+              lineHeight: 'min(7.2rem, 14.4vw)', // Responsive line height
               textAlign: 'center'
             }}
           >
@@ -90,13 +90,13 @@ const StartScreen = () => {
             initial={{ y: 50, opacity: 0 }}
             animate={showContent ? { y: 0, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-12 text-start-subtitle"
             style={{
+              marginBottom: 'min(3rem, 6vw)', // Responsive margin
               color: '#85AF8B',
               fontFamily: '"Tisa Sans Pro", "Arial", sans-serif',
-              fontSize: '64px',
+              fontSize: 'min(4rem, 8vw)', // Responsive font size
               fontWeight: 400,
-              lineHeight: '76.8px',
+              lineHeight: 'min(4.8rem, 9.6vw)', // Responsive line height
               textAlign: 'center'
             }}
           >
@@ -108,37 +108,38 @@ const StartScreen = () => {
             initial={{ y: 50, opacity: 0 }}
             animate={showContent ? { y: 0, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mb-16 text-start-body"
             style={{
+              marginBottom: 'min(4rem, 8vw)', // Responsive margin
               color: '#D9D9D9',
               fontFamily: '"Tisa Pro", "Times New Roman", serif',
-              fontSize: '36px',
+              fontSize: 'min(2.25rem, 4.5vw)', // Responsive font size
               fontWeight: 700,
-              lineHeight: '50.4px',
-              letterSpacing: '0.36px',
+              lineHeight: 'min(3.15rem, 6.3vw)', // Responsive line height
+              letterSpacing: 'min(0.0225rem, 0.045vw)', // Responsive letter spacing
               textAlign: 'center'
             }}
           >
-            <p className="mb-6">
+            <p style={{ marginBottom: 'min(1.5rem, 3vw)' }}>
               Teste dein Wissen!<br />
               Fünf Fragen rund um das Reisen mit der Kutsche warten auf dich.<br />
               Wie weit kam man an einem Tag? Wie lange dauerte eine Reise von Leipzig nach München?
             </p>
-            <p>
+            <p style={{ margin: '0' }}>
               Stell dich der Herausforderung – vielleicht weißt du mehr, als du denkst.<br />
               Und falls nicht: unterwegs lernst du garantiert etwas dazu!
             </p>
           </motion.div>
         </div>
 
-        {/* Touch indicator with bouncing animation */}
+        {/* Touch indicator with bouncing animation - responsivo */}
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 1.0 }}
-          className="absolute bottom-5 cursor-pointer"
+          className="absolute cursor-pointer"
           style={{
-            left: 'calc(50% - 30px)'
+            bottom: 'min(1.25rem, 2.5vw)', // Responsive bottom position
+            left: 'calc(50% - min(2rem, 4vw))' // Responsive centering
           }}
         >
           <motion.div
@@ -159,20 +160,24 @@ const StartScreen = () => {
               src="/images/OE_Swipe_128.svg"
               alt="Swipe indicator"
               style={{
-                width: '64px',
-                height: '64px'
+                width: 'min(4rem, 8vw)', // Responsive width
+                height: 'min(4rem, 8vw)' // Responsive height
               }}
             />
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Language selector icon */}
+      {/* Language selector icon - responsivo */}
       <motion.div
         initial={{ y: '100%', opacity: 0 }}
         animate={showContent ? { y: 0, opacity: 1 } : {}}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="absolute bottom-8 left-8 z-50"
+        className="absolute z-50"
+        style={{
+          bottom: 'min(2rem, 4vw)', // Responsive bottom position
+          left: 'min(2rem, 4vw)' // Responsive left position
+        }}
       >
         <motion.button
           onClick={() => {
@@ -186,7 +191,11 @@ const StartScreen = () => {
           <motion.img
             src="/images/OE_Sprache_64 1.svg"
             alt="Language selector"
-            className="w-12 h-12 block"
+            style={{
+              width: 'min(3rem, 6vw)', // Responsive width
+              height: 'min(3rem, 6vw)', // Responsive height
+              display: 'block'
+            }}
             animate={{ rotate: [0, 10, -10, 0] }}
             transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
           />

@@ -39,10 +39,10 @@ const ScreensaverScreen = () => {
           style={{
             color: '#61809D',
             fontFamily: '"Tisa Pro", serif',
-            fontSize: '96px',
+            fontSize: 'min(6rem, 12vw)', // Responsive font size
             fontStyle: 'normal',
             fontWeight: 500,
-            lineHeight: '112px'
+            lineHeight: 'min(7rem, 14vw)' // Responsive line height
           }}
         >
           Animation Loop
@@ -54,7 +54,7 @@ const ScreensaverScreen = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1 }}
-        className="mb-16"
+        style={{ marginBottom: 'min(4rem, 8vw)' }} // Responsive margin
       >
         <motion.div
           animate={{ 
@@ -70,13 +70,16 @@ const ScreensaverScreen = () => {
           className="relative"
         >
           {/* Touch icon */}
-          <div className="relative z-10 w-18 h-18 flex items-center justify-center">
+          <div className="relative z-10 flex items-center justify-center" style={{
+            width: 'min(4.5rem, 9vw)', // Responsive width
+            height: 'min(4.5rem, 9vw)' // Responsive height
+          }}>
             <img
               src="/images/OE_Touch_128 2.svg"
               alt="Touch indicator"
               style={{
-                width: '64px',
-                height: '64px'
+                width: 'min(4rem, 8vw)', // Responsive image width
+                height: 'min(4rem, 8vw)' // Responsive image height
               }}
             />
           </div>

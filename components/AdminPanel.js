@@ -68,21 +68,37 @@ const AdminPanel = () => {
 
   return (
     <>
-      {/* Invisible corner triggers */}
+      {/* Invisible corner triggers - responsivos */}
       <div 
-        className="fixed top-0 left-0 w-8 h-8 z-50 opacity-0"
+        className="fixed top-0 left-0 z-50 opacity-0"
+        style={{
+          width: 'min(2rem, 4vw)', // Responsive width
+          height: 'min(2rem, 4vw)' // Responsive height
+        }}
         onClick={() => handleCornerClick('tl')}
       />
       <div 
-        className="fixed top-0 right-0 w-8 h-8 z-50 opacity-0"
+        className="fixed top-0 right-0 z-50 opacity-0"
+        style={{
+          width: 'min(2rem, 4vw)', // Responsive width
+          height: 'min(2rem, 4vw)' // Responsive height
+        }}
         onClick={() => handleCornerClick('tr')}
       />
       <div 
-        className="fixed bottom-0 right-0 w-8 h-8 z-50 opacity-0"
+        className="fixed bottom-0 right-0 z-50 opacity-0"
+        style={{
+          width: 'min(2rem, 4vw)', // Responsive width
+          height: 'min(2rem, 4vw)' // Responsive height
+        }}
         onClick={() => handleCornerClick('br')}
       />
       <div 
-        className="fixed bottom-0 left-0 w-8 h-8 z-50 opacity-0"
+        className="fixed bottom-0 left-0 z-50 opacity-0"
+        style={{
+          width: 'min(2rem, 4vw)', // Responsive width
+          height: 'min(2rem, 4vw)' // Responsive height
+        }}
         onClick={() => handleCornerClick('bl')}
       />
 
@@ -99,65 +115,128 @@ const AdminPanel = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-white p-8 rounded-lg max-w-md w-full mx-4"
+              className="bg-white rounded-lg w-full"
+              style={{
+                padding: 'min(2rem, 4vw)', // Responsive padding
+                borderRadius: 'min(0.5rem, 1vw)', // Responsive border radius
+                maxWidth: 'min(28rem, 90vw)', // Responsive max width
+                margin: 'min(1rem, 2vw)' // Responsive margin
+              }}
             >
-              <h2 className="text-2xl font-bold mb-6 text-center">
+              <h2 
+                className="font-bold text-center"
+                style={{
+                  fontSize: 'min(1.5rem, 3vw)', // Responsive font size
+                  marginBottom: 'min(1.5rem, 3vw)' // Responsive margin
+                }}
+              >
                 Admin Panel
               </h2>
 
               {!isAuthenticated ? (
-                <form onSubmit={handlePasswordSubmit} className="space-y-4">
+                <form 
+                  onSubmit={handlePasswordSubmit} 
+                  style={{ 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    gap: 'min(1rem, 2vw)' 
+                  }}
+                >
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label 
+                      className="block font-medium text-gray-700"
+                      style={{
+                        fontSize: 'min(0.875rem, 1.75vw)', // Responsive font size
+                        marginBottom: 'min(0.5rem, 1vw)' // Responsive margin
+                      }}
+                    >
                       Passwort:
                     </label>
                     <input
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-museum-brown"
+                      className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-museum-brown"
+                      style={{
+                        padding: 'min(0.5rem, 1vw) min(0.75rem, 1.5vw)', // Responsive padding
+                        borderRadius: 'min(0.375rem, 0.75vw)' // Responsive border radius
+                      }}
                       autoFocus
                     />
                   </div>
-                  <div className="flex space-x-3">
+                  <div 
+                    className="flex"
+                    style={{ gap: 'min(0.75rem, 1.5vw)' }}
+                  >
                     <button
                       type="submit"
-                      className="flex-1 bg-museum-brown text-white py-2 px-4 rounded-md hover:bg-opacity-90"
+                      className="flex-1 bg-museum-brown text-white rounded-md hover:bg-opacity-90"
+                      style={{
+                        padding: 'min(0.5rem, 1vw) min(1rem, 2vw)', // Responsive padding
+                        borderRadius: 'min(0.375rem, 0.75vw)' // Responsive border radius
+                      }}
                     >
                       Anmelden
                     </button>
                     <button
                       type="button"
                       onClick={handleClose}
-                      className="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400"
+                      className="flex-1 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+                      style={{
+                        padding: 'min(0.5rem, 1vw) min(1rem, 2vw)', // Responsive padding
+                        borderRadius: 'min(0.375rem, 0.75vw)' // Responsive border radius
+                      }}
                     >
                       Abbrechen
                     </button>
                   </div>
                 </form>
               ) : (
-                <div className="space-y-4">
-                  <p className="text-green-600 font-medium text-center mb-6">
+                <div style={{ 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  gap: 'min(1rem, 2vw)' 
+                }}>
+                  <p 
+                    className="text-green-600 font-medium text-center"
+                    style={{
+                      marginBottom: 'min(1.5rem, 3vw)' // Responsive margin
+                    }}
+                  >
                     ✓ Erfolgreich angemeldet
                   </p>
                   
                   <button
                     onClick={handleReloadContent}
-                    className="w-full bg-blue-500 text-white py-3 px-4 rounded-md hover:bg-blue-600 mb-3"
+                    className="w-full bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                    style={{
+                      padding: 'min(0.75rem, 1.5vw) min(1rem, 2vw)', // Responsive padding
+                      borderRadius: 'min(0.375rem, 0.75vw)', // Responsive border radius
+                      marginBottom: 'min(0.75rem, 1.5vw)' // Responsive margin
+                    }}
                   >
                     Inhalte neu laden
                   </button>
                   
                   <button
                     onClick={handleExitKiosk}
-                    className="w-full bg-red-500 text-white py-3 px-4 rounded-md hover:bg-red-600 mb-3"
+                    className="w-full bg-red-500 text-white rounded-md hover:bg-red-600"
+                    style={{
+                      padding: 'min(0.75rem, 1.5vw) min(1rem, 2vw)', // Responsive padding
+                      borderRadius: 'min(0.375rem, 0.75vw)', // Responsive border radius
+                      marginBottom: 'min(0.75rem, 1.5vw)' // Responsive margin
+                    }}
                   >
                     Kiosk-Modus beenden
                   </button>
                   
                   <button
                     onClick={handleClose}
-                    className="w-full bg-gray-300 text-gray-700 py-3 px-4 rounded-md hover:bg-gray-400"
+                    className="w-full bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+                    style={{
+                      padding: 'min(0.75rem, 1.5vw) min(1rem, 2vw)', // Responsive padding
+                      borderRadius: 'min(0.375rem, 0.75vw)' // Responsive border radius
+                    }}
                   >
                     Panel schließen
                   </button>
