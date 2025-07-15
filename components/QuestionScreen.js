@@ -68,14 +68,14 @@ const QuestionScreen = () => {
               width: '100%',
               borderRadius: 'min(1.875rem, 4vw)', // 30px base
               overflow: 'hidden',
-              border: 0,
+              border: '0',
               backgroundColor: 'transparent',
               marginTop: 'min(4rem, 8vw)' // Agregado margen superior para empujar contenido abajo
             }}
           >
             {/* Content */}
             <div style={{ 
-              padding: 0, 
+              padding: '0', 
               width: '100%', 
               display: 'flex', 
               flexDirection: 'column', 
@@ -139,9 +139,9 @@ const QuestionScreen = () => {
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: 'min(0.5rem, 1vw)',
-                      padding: 'min(2.1rem, 4.2vw) min(0.375rem, 0.75vw)', // Reducido padding horizontal también
+                      padding: 'min(2rem, 4vw) min(0.75rem, 1.5vw)', // Ajustado para mejor responsividad
                       borderRadius: 'min(3rem, 6vw)', // Mantenido redondeado
-                      border: '2px solid #D9D9D9',
+                      border: 'min(0.125rem, 0.25vw) solid #D9D9D9', // Responsive border width
                       position: 'relative'
                     }}
                   >
