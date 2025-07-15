@@ -95,8 +95,8 @@ const QuestionScreen = () => {
                   style={{
                     borderRadius: '60px',
                     border: '2px solid #D9D9D9',
-                    padding: '14px 12px', // padding horizontal reducido de 16px a 12px
-                    minHeight: '32px', // altura aumentada de 24px a 32px
+                    padding: '10px 12px', // padding vertical reducido de 14px a 10px
+                    minHeight: '24px', // altura mínima reducida de 32px a 24px
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
@@ -129,6 +129,7 @@ const QuestionScreen = () => {
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
+            style={{ marginLeft: '90px' }} // aumentar espacio a la izquierda de 30px a 50px
           >
             <motion.button
               onClick={() => setShowLanguageSelector(true)}
@@ -139,7 +140,7 @@ const QuestionScreen = () => {
               <motion.img
                 src="/images/OE_Sprache_64 1.svg"
                 alt="Language selector"
-                className="w-8 h-8 block"
+                className="w-12 h-12 block"
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
               />
@@ -151,18 +152,18 @@ const QuestionScreen = () => {
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="absolute flex gap-6"
+            className="absolute flex gap-3"
             style={{
-              left: '43%',
+              left: '46%', // mover a la derecha de 43% a 48%
               transform: 'translateX(calc(-50% - 64px))'
             }}
           >
             {[...Array(totalQuestions)].map((_, i) => (
               <div
                 key={i}
-                className="w-5 h-5 rounded-full"
+                className="w-4 h-4 rounded-full"
                 style={{
-                  border: '3px solid #D9D9D9',
+                  border: '2px solid #D9D9D9',
                   backgroundColor: i === currentQuestionIndex ? '#D9D9D9' : 'transparent'
                 }}
               />

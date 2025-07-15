@@ -186,7 +186,7 @@ const StartScreen = () => {
           <motion.img
             src="/images/OE_Sprache_64 1.svg"
             alt="Language selector"
-            className="w-10 h-10 block"
+            className="w-12 h-12 block"
             animate={{ rotate: [0, 10, -10, 0] }}
             transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
           />

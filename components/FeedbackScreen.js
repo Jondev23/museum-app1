@@ -211,8 +211,8 @@ const FeedbackScreen = () => {
             whileTap={{ scale: 0.95 }}
             className="transition-all cursor-pointer"
             style={{
-              minWidth: 'clamp(32px, 6vw, 48px)', // tamaño mínimo touch-friendly
-              minHeight: 'clamp(32px, 6vw, 48px)'
+              minWidth: 'clamp(40px, 7vw, 56px)', // tamaño mínimo aumentado de 32px a 40px
+              minHeight: 'clamp(40px, 7vw, 56px)' // tamaño mínimo aumentado de 32px a 40px
             }}
           >
             <motion.img
@@ -220,8 +220,8 @@ const FeedbackScreen = () => {
               alt="Language selector"
               className="block"
               style={{
-                width: 'clamp(32px, 6vw, 48px)', // icono adaptativo
-                height: 'clamp(32px, 6vw, 48px)'
+                width: 'clamp(40px, 7vw, 56px)', // icono aumentado de 32px a 40px
+                height: 'clamp(40px, 7vw, 56px)' // icono aumentado de 32px a 40px
               }}
               animate={{ rotate: [0, 10, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
