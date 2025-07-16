@@ -28,13 +28,14 @@ const StandardFooter = ({
 
   return (
     <div 
-      className={`relative flex justify-between items-center ${className}`}
+      className={`relative flex ${alignProgressDots === 'inline' && showProgressDots ? 'justify-center' : 'justify-between'} items-center ${className}`}
       style={baseFooterStyles}
     >
       {/* Language selector icon - always in same position */}
       <LanguageSelectorIcon 
         variant="standard" 
         delay={0.6}
+        style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', left: 'min(1.25rem, 2vw)' } : {}}
       />
 
       {/* Pagination dots - conditional with alignment options */}
@@ -49,10 +50,9 @@ const StandardFooter = ({
           style={
             alignProgressDots === 'inline' 
             ? {
-                // Inline alignment for FeedbackScreen - aligned with other elements
+                // Inline alignment for FeedbackScreen - perfectly centered
                 flexShrink: 0,
-                marginBottom: 'min(5.625rem, 9vh)',
-                marginLeft: 'min(6.125rem, 10vw)' // Same as language icon spacing
+                marginBottom: 'min(5.625rem, 9vh)'
               }
             : {
                 // Centered positioning for QuestionScreen
@@ -67,8 +67,10 @@ const StandardFooter = ({
         <div style={{ flex: 1 }} /> // Spacer when no progress dots
       )}
 
-      {/* Custom content (buttons, etc.) */}
-      {children}
+      {/* Custom content (buttons, etc.) - positioned absolutely when progress dots are centered */}
+      <div style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', right: 0 } : {}}>
+        {children}
+      </div>
     </div>
   );
 };
