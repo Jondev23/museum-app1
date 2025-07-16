@@ -1,6 +1,6 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
-import ProgressBar from './ProgressBar';
+
 
 const FeedbackScreen = () => {
   const { 
@@ -47,13 +47,13 @@ const FeedbackScreen = () => {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/75" />
       
-      {/* Main content container - totalmente responsivo */}
+      {/* Main content container - optimizado para landscape tablet */}
       <div 
         className="flex-1 flex items-center justify-center overflow-hidden"
         style={{
-          maxHeight: 'calc(100vh - min(3.75rem, 7.5vw))', // más espacio para el contenedor
-          paddingTop: 'min(1.875rem, 3.75vw)', // padding superior reducido
-          paddingBottom: 'min(1.875rem, 3.75vw)' // padding inferior para balancear
+          maxHeight: 'calc(100vh - min(3.75rem, 6vh))', // Optimizado para landscape tablet
+          paddingTop: 'min(1.875rem, 3vh)', // Usa vh para vertical en landscape
+          paddingBottom: 'min(1.875rem, 3vh)' // Usa vh para vertical en landscape
         }}
       >
         <motion.div
@@ -65,13 +65,13 @@ const FeedbackScreen = () => {
             isCorrect ? 'bg-[#598364]' : 'bg-[#A94930]'
           }`}
           style={{
-            width: 'min(90rem, 90vw)', // ancho total del contenedor responsivo
-            height: 'min(41.625rem, 85vh)', // alto total del contenedor responsivo
-            padding: 'min(5rem, 10vw) min(4.5rem, 9vw)', // padding específico responsivo
-            margin: 'min(1.875rem, 3.75vw) min(7.5rem, 15vw) min(3.4375rem, 6.875vw) min(7.5rem, 15vw)', // margin responsivo
-            boxSizing: 'border-box', // incluye padding en las dimensiones totales
-            maxWidth: 'calc(100vw - min(15rem, 30vw))', // fallback considerando margin lateral
-            maxHeight: 'calc(100vh - min(12.8125rem, 25.625vw))', // fallback considerando margin y footer
+            width: 'min(90rem, 80vw)', // Optimizado para pantalla más ancha
+            height: 'min(41.625rem, 75vh)', // Usa vh para altura en landscape
+            padding: 'min(5rem, 6vh) min(4.5rem, 7vw)', // vh para vertical, vw para horizontal
+            margin: 'min(1.875rem, 3vh) min(7.5rem, 12vw) min(3.4375rem, 5vh) min(7.5rem, 12vw)', // Optimizado para landscape
+            boxSizing: 'border-box',
+            maxWidth: 'calc(100vw - min(15rem, 24vw))', // Optimizado para pantalla más ancha
+            maxHeight: 'calc(100vh - min(12.8125rem, 20vh))', // Usa vh para altura en landscape
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
@@ -87,7 +87,7 @@ const FeedbackScreen = () => {
             style={{
               color: '#D9D9D9',
               fontFamily: '"Tisa Pro", serif',
-              fontSize: 'min(3.375rem, 6.75vw)', // responsive font size
+              fontSize: 'min(3.375rem, 5.5vw)', // Optimizado para pantalla más ancha
               fontStyle: 'italic',
               fontWeight: 750,
               lineHeight: '1.3',
@@ -109,20 +109,20 @@ const FeedbackScreen = () => {
             <div
               className="rounded-full bg-[#D9D9D9] flex items-center justify-center"
               style={{
-                width: 'min(37.5rem, 75vw)', // ancho específico responsivo
-                minHeight: 'min(5rem, 10vw)', // altura responsiva
-                padding: 'min(1.25rem, 2.5vw) min(1.25rem, 2.5vw)' // padding responsivo
+                width: 'min(37.5rem, 65vw)', // Optimizado para pantalla más ancha
+                minHeight: 'min(5rem, 8vh)', // Usa vh para altura en landscape
+                padding: 'min(1.25rem, 2vh) min(1.25rem, 2vw)' // vh para vertical, vw para horizontal
               }}
             >
               <span
                 style={{
                   color: '#344243',
                   fontFamily: '"Tisa Sans Pro", sans-serif',
-                  fontSize: 'min(2rem, 4vw)',
+                  fontSize: 'min(2rem, 3.5vw)', // Optimizado para pantalla más ancha
                   fontStyle: 'normal',
                   fontWeight: 400,
                   lineHeight: '1.2',
-                  letterSpacing: '0.02em',
+                  letterSpacing: 'min(0.02em, 0.05vw)', // Usa min() para letterSpacing
                   textAlign: 'center',
                   maxWidth: '100%',
                   overflowWrap: 'break-word'
@@ -144,11 +144,11 @@ const FeedbackScreen = () => {
               style={{
                 color: '#D9D9D9',
                 fontFamily: '"Tisa Pro", serif',
-                fontSize: 'min(2.25rem, 4.5vw)', // responsive font size
+                fontSize: 'min(2.25rem, 3.8vw)', // Optimizado para pantalla más ancha
                 fontStyle: 'normal',
                 fontWeight: 700,
                 lineHeight: '1.4',
-                letterSpacing: '0.02em',
+                letterSpacing: 'min(0.02em, 0.05vw)', // Usa min() para letterSpacing
                 textAlign: 'center',
                 maxWidth: '100%',
                 overflowWrap: 'break-word',
@@ -163,11 +163,11 @@ const FeedbackScreen = () => {
                 style={{
                   color: '#D9D9D9',
                   fontFamily: '"Tisa Pro", serif',
-                  fontSize: 'min(2rem, 4vw)', // slightly smaller for explanation
+                  fontSize: 'min(2rem, 3.5vw)', // Optimizado para pantalla más ancha
                   fontStyle: 'normal',
                   fontWeight: 700,
                   lineHeight: '1.4',
-                  letterSpacing: '0.02em',
+                  letterSpacing: 'min(0.02em, 0.05vw)', // Usa min() para letterSpacing
                   textAlign: 'center',
                   maxWidth: '100%',
                   overflowWrap: 'break-word',
@@ -189,9 +189,9 @@ const FeedbackScreen = () => {
           bottom: '0',
           left: '0',
           right: '0',
-          height: 'min(4.375rem, 8.75vw)', // altura responsiva del footer
-          padding: 'min(0.625rem, 1.25vw) min(1.25rem, 2.5vw)', // padding responsivo
-          minHeight: 'min(3.125rem, 6.25vw)' // altura mínima responsiva
+          height: 'min(4.375rem, 7vh)', // Usa vh para altura en landscape
+          padding: 'min(0.625rem, 1vh) min(1.25rem, 2vw)', // vh para vertical, vw para horizontal
+          minHeight: 'min(3.125rem, 5vh)' // Usa vh para altura mínima en landscape
         }}
       >
         {/* Language selector icon */}
@@ -201,8 +201,8 @@ const FeedbackScreen = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           style={{ 
             flexShrink: 0,
-            marginBottom: 'min(5.625rem, 11.25vw)', // espacio en la parte inferior responsivo
-            marginLeft: 'min(6.125rem, 12.25vw)' // mover más hacia la derecha responsivo
+            marginBottom: 'min(5.625rem, 9vh)', // Usa vh para vertical en landscape
+            marginLeft: 'min(6.125rem, 10vw)' // Optimizado para pantalla más ancha
           }}
         >
           <motion.button
@@ -211,8 +211,8 @@ const FeedbackScreen = () => {
             whileTap={{ scale: 0.95 }}
             className="transition-all cursor-pointer"
             style={{
-              minWidth: 'min(3.5rem, 7vw)', // tamaño mínimo responsivo
-              minHeight: 'min(3.5rem, 7vw)' // tamaño mínimo responsivo
+              minWidth: 'min(3.5rem, 6vw)', // Optimizado para pantalla más ancha
+              minHeight: 'min(3.5rem, 6vh)' // Usa vh para altura en landscape
             }}
           >
             <motion.img
@@ -220,8 +220,8 @@ const FeedbackScreen = () => {
               alt="Language selector"
               className="block"
               style={{
-                width: 'min(3.5rem, 7vw)', // icono responsivo
-                height: 'min(3.5rem, 7vw)' // icono responsivo
+                width: 'min(3.5rem, 6vw)', // Optimizado para pantalla más ancha
+                height: 'min(3.5rem, 6vh)' // Usa vh para altura en landscape
               }}
               animate={{ rotate: [0, 10, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
@@ -236,10 +236,10 @@ const FeedbackScreen = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex justify-center"
           style={{
-            gap: 'min(0.75rem, 1.5vw)', // gap responsivo
+            gap: 'min(0.75rem, 1.2vw)', // Optimizado para pantalla más ancha
             flexShrink: 0,
-            marginBottom: 'min(5.625rem, 11.25vw)', // espacio en la parte inferior responsivo
-            marginLeft: 'min(13.75rem, 27.5vw)' // mover los dots hacia la derecha responsivo
+            marginBottom: 'min(5.625rem, 9vh)', // Usa vh para vertical en landscape
+            marginLeft: 'min(13.75rem, 22vw)' // Optimizado para pantalla más ancha
           }}
         >
           {[...Array(totalQuestions)].map((_, i) => {
@@ -261,11 +261,11 @@ const FeedbackScreen = () => {
                 key={i}
                 className="rounded-full"
                 style={{
-                  width: 'min(1.125rem, 2.25vw)', // dots responsivos
-                  height: 'min(1.125rem, 2.25vw)', // dots responsivos
-                  border: `min(0.175rem, 0.35vw) solid ${borderColor}`, // borde responsivo
+                  width: 'min(1.125rem, 1.8vw)', // Optimizado para pantalla más ancha
+                  height: 'min(1.125rem, 1.8vw)', // Mismo valor que width para mantener círculos perfectos
+                  border: `min(0.175rem, 0.3vw) solid ${borderColor}`, // Optimizado para pantalla más ancha
                   backgroundColor: dotColor,
-                  flexShrink: 0 // evita compresión
+                  flexShrink: 0
                 }}
               />
             );
@@ -279,8 +279,8 @@ const FeedbackScreen = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           style={{ 
             flexShrink: 0,
-            marginRight: 'min(5.625rem, 11.25vw)',
-            marginBottom: 'min(5.625rem, 11.25vw)' // espacio en la parte inferior responsivo
+            marginRight: 'min(5.625rem, 9vw)', // Optimizado para pantalla más ancha
+            marginBottom: 'min(5.625rem, 9vh)' // Usa vh para vertical en landscape
           }}
         >
           <motion.button
@@ -289,11 +289,11 @@ const FeedbackScreen = () => {
             whileTap={{ scale: 0.95 }}
             className="flex items-center gap-2 transition-all cursor-pointer"
             style={{
-              minWidth: 'min(11.25rem, 22.5vw)',
-              minHeight: 'min(3rem, 6vw)',
+              minWidth: 'min(11.25rem, 18vw)', // Optimizado para pantalla más ancha
+              minHeight: 'min(3rem, 5vh)', // Usa vh para altura en landscape
               background: 'transparent',
               border: 'none',
-              justifyContent: 'flex-start' // alineación hacia la izquierda
+              justifyContent: 'flex-start'
             }}
           >
             <span
@@ -301,10 +301,10 @@ const FeedbackScreen = () => {
                 color: '#D9D9D9',
                 textAlign: 'center',
                 fontFamily: '"Tisa Sans Pro", sans-serif',
-                fontSize: 'min(1.375rem, 2.75vw)', // tamaño responsivo
+                fontSize: 'min(1.375rem, 2.2vw)', // Optimizado para pantalla más ancha
                 fontStyle: 'normal',
                 fontWeight: 300,
-                lineHeight: 'min(7rem, 14vw)',
+                lineHeight: 'min(7rem, 11vh)', // Usa vh para altura en landscape
                 textTransform: 'uppercase'
               }}
             >
@@ -314,8 +314,8 @@ const FeedbackScreen = () => {
               src="/images/GUI-2.svg"
               alt="Zur Auswertung"
               style={{
-                width: 'min(3.5rem, 7vw)', // imagen responsiva
-                height: 'min(3.5rem, 7vw)' // imagen responsiva
+                width: 'min(3.5rem, 6vw)', // Optimizado para pantalla más ancha
+                height: 'min(3.5rem, 6vh)' // Usa vh para altura en landscape
               }}
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 2 }}
