@@ -97,10 +97,10 @@ const StartScreen = () => {
                     color: '#D9D9D9', // var(--Neutral_Light, #D9D9D9)
                     textAlign: 'center',
                     fontFamily: '"Tisa Pro", "Times New Roman", serif', // Head & Auswertung
-                    fontSize: 'min(4.8rem, 9vw)', // Reducido de 6rem a 4.5rem
+                    fontSize: 'min(4.8rem, 9vw, 11vh)', // Añadido vh para escalar verticalmente
                     fontStyle: 'italic',
                     fontWeight: 700, // Corregido a 700 según especificación
-                    lineHeight: 'min(5.4rem, 10.8vw)' // 120% = 5.4rem responsive (reducido proporcionalmente)
+                    lineHeight: 'min(5.4rem, 10.8vw, 12.4vh)' // Añadido vh para escalar verticalmente
                   }}
                 >
                   Wie weit? Wie lange?
@@ -115,10 +115,10 @@ const StartScreen = () => {
                     color: '#85AF8B', // var(--Blassgruen, #85AF8B)
                     textAlign: 'center',
                     fontFamily: '"Tisa Sans Pro", "Arial", sans-serif', // Subline
-                    fontSize: 'min(2.8rem, 5.6vw)', // Reducido de 3.2rem a 2.8rem
+                    fontSize: 'min(2.8rem, 5.6vw, 7vh)', // Añadido vh para escalar verticalmente
                     fontStyle: 'normal',
                     fontWeight: 400,
-                    lineHeight: 'min(3.36rem, 6.72vw)' // 120% = 3.36rem responsive
+                    lineHeight: 'min(3.36rem, 6.72vw, 8.4vh)' // Añadido vh para escalar verticalmente
                   }}
                 >
                   Distanzen des Reisens im 19. Jahrhundert
@@ -138,22 +138,22 @@ const StartScreen = () => {
                 }}
               >
                 <span style={{
-                  fontSize: 'min(1.9rem, 3.8vw)', // Reducido de 2.2rem a 1.9rem
+                  fontSize: 'min(1.9rem, 3.8vw, 4.8vh)', // Añadido vh para escalar verticalmente
                   fontWeight: 700, // Más pesado
                   fontFamily: '"Tisa Pro", "Times New Roman", serif',
-                  lineHeight: 'min(2.66rem, 5.32vw)', // 140% = 2.66rem
-                  letterSpacing: 'min(0.019rem, 0.038vw)'
+                  lineHeight: 'min(2.66rem, 5.32vw, 6.7vh)', // Añadido vh para escalar verticalmente
+                  letterSpacing: 'min(0.019rem, 0.038vw, 0.048vh)' // Añadido vh para escalar verticalmente
                 }}>
                   Teste dein Wissen!&nbsp;&nbsp;
                   <br />
                 </span>
 
                 <span style={{
-                  fontSize: 'min(1.6rem, 3.4vw)', // Reducido de 1.8rem a 1.7rem (6.25% aumento desde 1.6rem)
+                  fontSize: 'min(1.6rem, 3.4vw, 4.2vh)', // Añadido vh para escalar verticalmente
                   fontWeight: 400, // Más ligero
                   fontFamily: '"Tisa Pro", "Times New Roman", serif',
-                  lineHeight: 'min(2.38rem, 4.76vw)', // 140% = 2.38rem
-                  letterSpacing: 'min(0.017rem, 0.034vw)'
+                  lineHeight: 'min(2.38rem, 4.76vw, 5.9vh)', // Añadido vh para escalar verticalmente
+                  letterSpacing: 'min(0.017rem, 0.034vw, 0.042vh)' // Añadido vh para escalar verticalmente
                 }}>
                   Fünf Fragen rund um das Reisen mit der Kutsche warten auf dich.
                   <br />
@@ -194,8 +194,8 @@ const StartScreen = () => {
               src="/images/OE_Sprache_64 1.svg"
               alt="Language selector"
               style={{
-                width: 'min(3rem, 6vw)', // Responsive width
-                height: 'min(3rem, 6vw)', // Responsive height
+                width: 'min(3rem, 6vw, 7.5vh)', // Añadido vh para escalar verticalmente
+                height: 'min(3rem, 6vw, 7.5vh)', // Añadido vh para escalar verticalmente
                 display: 'block'
               }}
               animate={{ rotate: [0, 10, -10, 0] }}
@@ -223,14 +223,14 @@ const StartScreen = () => {
               src="/images/OE_Swipe_128.svg"
               alt="Swipe indicator"
               style={{
-                width: 'min(5.8rem, 9.6vw)', // Aumentado de 4rem a 4.8rem (20% más grande)
-                height: 'min(5.8rem, 9.6vw)' // Aumentado de 4rem a 4.8rem (20% más grande)
+                width: 'min(5.8rem, 9.6vw, 12vh)', // Añadido vh para escalar verticalmente
+                height: 'min(5.8rem, 9.6vw, 12vh)' // Añadido vh para escalar verticalmente
               }}
             />
           </motion.div>
 
           {/* Espacio vacío para equilibrar - derecha */}
-          <div style={{ width: 'min(3rem, 6vw)', height: 'min(3rem, 6vw)' }} />
+          <div style={{ width: 'min(3rem, 6vw, 7.5vh)', height: 'min(3rem, 6vw, 7.5vh)' }} />
         </motion.div>
       </div>
 
