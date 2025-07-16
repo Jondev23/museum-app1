@@ -171,7 +171,7 @@ const QuestionScreen = () => {
 
         {/* Footer section with separate positioning */}
         <div className="relative">
-          {/* Pagination dots - positioned independently */}
+          {/* Pagination dots - positioned independently but aligned vertically with language icon */}
           <ProgressDots
             totalQuestions={totalQuestions}
             currentQuestionIndex={currentQuestionIndex}
@@ -179,7 +179,7 @@ const QuestionScreen = () => {
             className="absolute"
             style={{
               left: '46%',
-              bottom: 'min(5.625rem, 9vh)',
+              bottom: 'min(5.625rem, 9vh)', // Misma altura que el icono de idioma
               transform: 'translateX(calc(-50% - min(4rem, 8vw)))',
               zIndex: 30
             }}
