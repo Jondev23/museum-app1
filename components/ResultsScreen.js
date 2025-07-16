@@ -42,7 +42,7 @@ const ResultsScreen = () => {
     <motion.div
       initial={{ x: '100%' }}
       animate={{ x: 0 }}
-      exit={{ x: '100%' }}
+      exit={{ x: '-100%' }}
       transition={{ duration: 0.5 }}
       className="fixed inset-0 flex flex-col cursor-pointer"
       onClick={handleTouchAnywhere}
