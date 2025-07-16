@@ -10,7 +10,7 @@ const AdminPanel = () => {
   const [showKioskSelector, setShowKioskSelector] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
 
-  // Secuencia secreta: click en las 4 esquinas en orden (top-left, top-right, bottom-right, bottom-left)
+  // Geheime Sequenz: Klick auf die 4 Ecken in der Reihenfolge (oben-links, oben-rechts, unten-rechts, unten-links)
   const SECRET_SEQUENCE = ['tl', 'tr', 'br', 'bl'];
   const ADMIN_PASSWORD = 'museum2024';
 
@@ -63,44 +63,40 @@ const AdminPanel = () => {
     }
   };
 
-  const handleReloadContent = () => {
-    if (window.confirm('Inhalte neu laden?')) {
-      window.location.reload();
-    }
-  };
+
 
   return (
     <>
-      {/* Invisible corner triggers - responsivos */}
+      {/* Unsichtbare Eck-Trigger - responsiv */}
       <div 
         className="fixed top-0 left-0 z-50 opacity-0"
         style={{
-          width: 'min(2rem, 4vw)', // Responsive width
-          height: 'min(2rem, 4vw)' // Responsive height
+          width: 'min(2rem, 4vw)', // Responsive Breite
+          height: 'min(2rem, 4vw)' // Responsive Höhe
         }}
         onClick={() => handleCornerClick('tl')}
       />
       <div 
         className="fixed top-0 right-0 z-50 opacity-0"
         style={{
-          width: 'min(2rem, 4vw)', // Responsive width
-          height: 'min(2rem, 4vw)' // Responsive height
+          width: 'min(2rem, 4vw)', // Responsive Breite
+          height: 'min(2rem, 4vw)' // Responsive Höhe
         }}
         onClick={() => handleCornerClick('tr')}
       />
       <div 
         className="fixed bottom-0 right-0 z-50 opacity-0"
         style={{
-          width: 'min(2rem, 4vw)', // Responsive width
-          height: 'min(2rem, 4vw)' // Responsive height
+          width: 'min(2rem, 4vw)', // Responsive Breite
+          height: 'min(2rem, 4vw)' // Responsive Höhe
         }}
         onClick={() => handleCornerClick('br')}
       />
       <div 
         className="fixed bottom-0 left-0 z-50 opacity-0"
         style={{
-          width: 'min(2rem, 4vw)', // Responsive width
-          height: 'min(2rem, 4vw)' // Responsive height
+          width: 'min(2rem, 4vw)', // Responsive Breite
+          height: 'min(2rem, 4vw)' // Responsive Höhe
         }}
         onClick={() => handleCornerClick('bl')}
       />
@@ -118,25 +114,38 @@ const AdminPanel = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-white rounded-lg w-full"
+              className="bg-white rounded-lg w-full shadow-2xl"
               style={{
-                padding: 'min(2rem, 4vw)', // Responsive padding
-                borderRadius: 'min(0.5rem, 1vw)', // Responsive border radius
-                maxWidth: 'min(28rem, 90vw)', // Responsive max width
-                margin: 'min(1rem, 2vw)' // Responsive margin
+                padding: 'min(2.5rem, 5vw)', // Mehr Padding im Apple-Stil
+                borderRadius: 'min(1rem, 2vw)', // Rundere Ecken
+                maxWidth: 'min(24rem, 85vw)', // Kompakter
+                margin: 'min(1rem, 2vw)',
+                backdropFilter: 'blur(20px)', // Glassmorphism-Effekt
+                backgroundColor: 'rgba(255, 255, 255, 0.95)' // Halbtransparenter Hintergrund
               }}
             >
               <h2 
-                className="font-bold text-center"
+                className="font-medium text-center text-gray-800"
                 style={{
-                  fontSize: 'min(1.5rem, 3vw)', // Responsive font size
-                  marginBottom: 'min(1.5rem, 3vw)' // Responsive margin
+                  fontSize: 'min(1.375rem, 2.75vw)', // Subtilere Schrift
+                  marginBottom: 'min(2rem, 4vw)',
+                  fontWeight: '500' // Mittleres Gewicht, nicht fett
                 }}
               >
                 Admin Panel
               </h2>
               {successMsg && (
-                <div className="text-green-600 text-center mb-2">{successMsg}</div>
+                <div 
+                  className="text-green-600 text-center rounded-lg"
+                  style={{
+                    marginBottom: 'min(1rem, 2vw)',
+                    padding: 'min(0.75rem, 1.5vw)',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)', // Subtiler grüner Hintergrund
+                    fontSize: 'min(0.875rem, 1.75vw)'
+                  }}
+                >
+                  {successMsg}
+                </div>
               )}
               {!isAuthenticated ? (
                 <form 
@@ -144,27 +153,30 @@ const AdminPanel = () => {
                   style={{ 
                     display: 'flex', 
                     flexDirection: 'column', 
-                    gap: 'min(1rem, 2vw)' 
+                    gap: 'min(1.5rem, 3vw)' // Mehr Abstand im Apple-Stil
                   }}
                 >
                   <div>
                     <label 
-                      className="block font-medium text-gray-700"
+                      className="block font-medium text-gray-600"
                       style={{
-                        fontSize: 'min(0.875rem, 1.75vw)', // Responsive font size
-                        marginBottom: 'min(0.5rem, 1vw)' // Responsive margin
+                        fontSize: 'min(0.875rem, 1.75vw)',
+                        marginBottom: 'min(0.75rem, 1.5vw)',
+                        fontWeight: '500'
                       }}
                     >
-                      Passwort:
+                      Passwort
                     </label>
                     <input
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-museum-brown"
+                      className="w-full border-0 bg-gray-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                       style={{
-                        padding: 'min(0.5rem, 1vw) min(0.75rem, 1.5vw)', // Responsive padding
-                        borderRadius: 'min(0.375rem, 0.75vw)' // Responsive border radius
+                        padding: 'min(0.875rem, 1.75vw) min(1rem, 2vw)', // Mehr Padding
+                        borderRadius: 'min(0.5rem, 1vw)',
+                        fontSize: 'min(1rem, 2vw)',
+                        backgroundColor: '#f8f9fa' // Sehr subtiles Grau
                       }}
                       autoFocus
                     />
@@ -175,10 +187,12 @@ const AdminPanel = () => {
                   >
                     <button
                       type="submit"
-                      className="flex-1 bg-museum-brown text-white rounded-md hover:bg-opacity-90"
+                      className="flex-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all font-medium"
                       style={{
-                        padding: 'min(0.5rem, 1vw) min(1rem, 2vw)', // Responsive padding
-                        borderRadius: 'min(0.375rem, 0.75vw)' // Responsive border radius
+                        padding: 'min(0.875rem, 1.75vw) min(1.25rem, 2.5vw)',
+                        borderRadius: 'min(0.5rem, 1vw)',
+                        fontSize: 'min(1rem, 2vw)',
+                        fontWeight: '500'
                       }}
                     >
                       Anmelden
@@ -186,10 +200,12 @@ const AdminPanel = () => {
                     <button
                       type="button"
                       onClick={handleClose}
-                      className="flex-1 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+                      className="flex-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-all font-medium"
                       style={{
-                        padding: 'min(0.5rem, 1vw) min(1rem, 2vw)', // Responsive padding
-                        borderRadius: 'min(0.375rem, 0.75vw)' // Responsive border radius
+                        padding: 'min(0.875rem, 1.75vw) min(1.25rem, 2.5vw)',
+                        borderRadius: 'min(0.5rem, 1vw)',
+                        fontSize: 'min(1rem, 2vw)',
+                        fontWeight: '500'
                       }}
                     >
                       Abbrechen
@@ -202,51 +218,55 @@ const AdminPanel = () => {
                   flexDirection: 'column', 
                   gap: 'min(1rem, 2vw)' 
                 }}>
+                  {/* Hauptbuttons */}
                   <button
                     onClick={() => setShowKioskSelector(true)}
-                    className="w-full bg-museum-brown text-white rounded-md hover:bg-opacity-90"
+                    className="w-full bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all font-medium"
                     style={{
-                      padding: 'min(0.5rem, 1vw) min(1rem, 2vw)',
-                      borderRadius: 'min(0.375rem, 0.75vw)',
-                      marginBottom: 'min(0.75rem, 1.5vw)'
+                      padding: 'min(0.875rem, 1.75vw) min(1.25rem, 2.5vw)',
+                      borderRadius: 'min(0.5rem, 1vw)',
+                      fontSize: 'min(1rem, 2vw)',
+                      fontWeight: '500'
                     }}
                   >
                     Kiosk auswählen
                   </button>
                   
                   <button
-                    onClick={handleReloadContent}
-                    className="w-full bg-museum-brown text-white rounded-md hover:bg-opacity-90"
-                    style={{
-                      padding: 'min(0.5rem, 1vw) min(1rem, 2vw)',
-                      borderRadius: 'min(0.375rem, 0.75vw)',
-                      marginBottom: 'min(0.75rem, 1.5vw)'
-                    }}
-                  >
-                    Inhalte neu laden
-                  </button>
-                  
-                  <button
-                    onClick={handleExitKiosk}
-                    className="w-full bg-museum-brown text-white rounded-md hover:bg-opacity-90"
-                    style={{
-                      padding: 'min(0.5rem, 1vw) min(1rem, 2vw)',
-                      borderRadius: 'min(0.375rem, 0.75vw)',
-                      marginBottom: 'min(0.75rem, 1.5vw)'
-                    }}
-                  >
-                    Kiosk-Modus beenden
-                  </button>
-                  
-                  <button
                     onClick={handleClose}
-                    className="w-full bg-museum-brown text-white rounded-md hover:bg-opacity-90"
+                    className="w-full bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-all font-medium"
                     style={{
-                      padding: 'min(0.5rem, 1vw) min(1rem, 2vw)',
-                      borderRadius: 'min(0.375rem, 0.75vw)'
+                      padding: 'min(0.875rem, 1.75vw) min(1.25rem, 2.5vw)',
+                      borderRadius: 'min(0.5rem, 1vw)',
+                      fontSize: 'min(1rem, 2vw)',
+                      fontWeight: '500',
+                      marginBottom: 'min(1.5rem, 3vw)'
                     }}
                   >
                     Panel schließen
+                  </button>
+
+                  {/* Visueller Trenner im Apple-Stil */}
+                  <div 
+                    style={{
+                      height: '1px',
+                      background: 'linear-gradient(90deg, transparent, #e5e7eb, transparent)',
+                      margin: 'min(0.5rem, 1vw) 0'
+                    }}
+                  />
+                  
+                  {/* Separater Exit-Button */}
+                  <button
+                    onClick={handleExitKiosk}
+                    className="w-full bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-all font-medium"
+                    style={{
+                      padding: 'min(0.875rem, 1.75vw) min(1.25rem, 2.5vw)',
+                      borderRadius: 'min(0.5rem, 1vw)',
+                      fontSize: 'min(1rem, 2vw)',
+                      fontWeight: '500'
+                    }}
+                  >
+                    Kiosk-Modus beenden
                   </button>
                 </div>
               )}
@@ -257,7 +277,7 @@ const AdminPanel = () => {
           <KioskSelectorScreen
             onKioskSelected={(id) => {
               setShowKioskSelector(false);
-              setSuccessMsg('Kiosk seleccionado correctamente.');
+              setSuccessMsg('Kiosk erfolgreich ausgewählt.');
               setTimeout(() => setSuccessMsg(''), 2000);
             }}
             onBack={() => setShowKioskSelector(false)}
