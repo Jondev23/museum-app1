@@ -91,11 +91,11 @@ const QuestionScreen = () => {
                   alignSelf: 'stretch',
                   color: '#D9D9D9',
                   fontFamily: '"Tisa Pro", serif',
-                  fontSize: 'min(2.5rem, 5vw)', 
+                  fontSize: 'min(2.5rem, 5vw, 6vh)', // Añadido vh para escalar verticalmente
                   fontStyle: 'italic',
                   fontWeight: 750,
                   textAlign: 'center',
-                  lineHeight: 'min(3.25rem, 6vw)', // Reducido proporcionalmente
+                  lineHeight: 'min(3.25rem, 6vw, 7.5vh)', // Añadido vh para escalar verticalmente
                   marginBottom: 'min(3rem, 4vh)' // Optimizado para landscape: cambio de 5vw a 4vh
                 }}
               >
@@ -134,14 +134,14 @@ const QuestionScreen = () => {
                     `}
                     style={{
                       display: 'inline-flex',
-                      minWidth: 'min(42.3rem, 63vw)', // Reducido 10%: de 47rem a 42.3rem, de 70vw a 63vw
-                      height: 'min(4.62rem, 6.93vh)', // Aumentado 5%: de 4.4rem a 4.62rem, de 6.6vh a 6.93vh
+                      minWidth: 'min(42.3rem, 63vw, 80vh)', // Añadido vh para escalar verticalmente
+                      height: 'min(4.62rem, 6.93vh, 8vw)', // Añadido vw para escalar horizontalmente también
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: 'min(0.5rem, 1vw)',
-                      padding: 'min(2.89rem, 4.62vh) min(0.75rem, 1.5vw)', // Aumentado 5%: de 2.75rem a 2.89rem, de 4.4vh a 4.62vh
-                      borderRadius: 'min(4.62rem, 6.93vh)', // Aumentado 5%: de 4.4rem a 4.62rem, de 6.6vh a 6.93vh
-                      border: 'min(0.1125rem, 0.225vw) solid #D9D9D9', // Reducido 10%: de 0.125rem a 0.1125rem, de 0.25vw a 0.225vw
+                      padding: 'min(2.89rem, 4.62vh, 6vw) min(0.75rem, 1.5vw)', // Añadido vw al padding vertical
+                      borderRadius: 'min(4.62rem, 6.93vh, 8vw)', // Añadido vw para escalar horizontalmente también
+                      border: 'min(0.1125rem, 0.225vw, 0.3vh) solid #D9D9D9', // Añadido vh al border
                       position: 'relative'
                     }}
                   >
@@ -151,10 +151,10 @@ const QuestionScreen = () => {
                         width: 'fit-content',
                         color: '#D9D9D9',
                         fontFamily: '"Tisa Sans Pro", sans-serif',
-                        fontSize: 'min(1.8rem, 3.6vw)', // Reducido 10%: de 2rem a 1.8rem, de 4vw a 3.6vw
+                        fontSize: 'min(1.8rem, 3.6vw, 4.5vh)', // Añadido vh para escalar verticalmente
                         fontWeight: 400,
                         textAlign: 'center',
-                        lineHeight: 'min(2.25rem, 4.5vw)', // Reducido 10%: de 2.5rem a 2.25rem, de 5vw a 4.5vw
+                        lineHeight: 'min(2.25rem, 4.5vw, 5.6vh)', // Añadido vh para escalar verticalmente
                         whiteSpace: 'nowrap',
                         fontStyle: 'normal'
                       }}
