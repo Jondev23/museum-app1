@@ -14,16 +14,31 @@ const ScreensaverScreen = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black flex flex-col items-center justify-center cursor-pointer"
+      className="fixed inset-0 flex flex-col items-center justify-center cursor-pointer"
       onClick={handleTouch}
       onTouchStart={handleTouch}
     >
+      {/* Background video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        style={{ pointerEvents: 'none' }}
+      >
+        <source src="/videos/Mi proyecto (7).mp4" type="video/mp4" />
+        {/* Fallback to black background if video fails to load */}
+      </video>
+      
+      {/* Dark overlay for better text contrast */}
+      <div className="absolute inset-0 bg-black/30 z-10" />
       {/* Main title - Animation Loop */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="flex-1 flex items-center justify-center"
+        className="flex-1 flex items-center justify-center relative z-20"
       >
         <motion.h1
           animate={{ 
@@ -55,6 +70,7 @@ const ScreensaverScreen = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1 }}
         style={{ marginBottom: 'min(4rem, 8vw)' }} // Responsive margin
+        className="relative z-20"
       >
         <motion.div
           animate={{ 
@@ -69,11 +85,14 @@ const ScreensaverScreen = () => {
           }}
           className="relative"
         >
-          {/* Touch icon */}
-          <div className="relative z-10 flex items-center justify-center" style={{
-            width: 'min(4.5rem, 9vw)', // Responsive width
-            height: 'min(4.5rem, 9vw)' // Responsive height
-          }}>
+          {/* Touch icon with circular background */}
+          <div 
+            className="relative z-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm border border-white/30" 
+            style={{
+              width: 'min(6rem, 12vw)', // Responsive width - increased for circular background
+              height: 'min(6rem, 12vw)' // Responsive height - increased for circular background
+            }}
+          >
             <img
               src="/images/OE_Touch_128 2.svg"
               alt="Touch indicator"
