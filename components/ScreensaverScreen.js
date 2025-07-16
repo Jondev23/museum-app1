@@ -130,12 +130,23 @@ const ScreensaverScreen = () => {
             }}
           >
             {screensaverContent?.handIcon ? (
-              <span style={{
-                fontSize: 'min(3rem, 6vw)',
-                lineHeight: 1
-              }}>
-                {screensaverContent.handIcon}
-              </span>
+              screensaverContent.handIcon.includes('.svg') ? (
+                <img
+                  src={screensaverContent.handIcon}
+                  alt="Touch indicator"
+                  style={{
+                    width: 'min(4rem, 8vw)', // Responsive image width
+                    height: 'min(4rem, 8vw)' // Responsive image height
+                  }}
+                />
+              ) : (
+                <span style={{
+                  fontSize: 'min(3rem, 6vw)',
+                  lineHeight: 1
+                }}>
+                  {screensaverContent.handIcon}
+                </span>
+              )
             ) : (
               <img
                 src="/images/OE_Touch_128 2.svg"
