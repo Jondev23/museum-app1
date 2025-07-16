@@ -1,5 +1,6 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
+import ProgressDots from './shared/ProgressDots';
 import { useState } from 'react';
 
 const QuestionScreen = () => {
@@ -202,30 +203,16 @@ const QuestionScreen = () => {
           </motion.div>
 
           {/* Pagination dots */}
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="absolute flex"
+          <ProgressDots
+            totalQuestions={totalQuestions}
+            currentQuestionIndex={currentQuestionIndex}
+            variant="default"
+            className="absolute"
             style={{
-              gap: 'min(1rem, 2vw)', // Aumentado gap: de 0.75rem, 1.5vw a 1rem, 2vw para más separación entre círculos
               left: '46%',
               transform: 'translateX(calc(-50% - min(4rem, 8vw)))'
             }}
-          >
-            {[...Array(totalQuestions)].map((_, i) => (
-              <div
-                key={i}
-                style={{
-                  width: 'min(1rem, 2vw, 2.5vh)', // Añadido vh para escalar verticalmente
-                  height: 'min(1rem, 2vw, 2.5vh)', // Añadido vh para escalar verticalmente
-                  borderRadius: '50%',
-                  border: '2px solid #D9D9D9',
-                  backgroundColor: i === currentQuestionIndex ? '#D9D9D9' : 'transparent'
-                }}
-              />
-            ))}
-          </motion.div>
+          />
 
           {/* Spacer for symmetry */}
           <div style={{ width: 'min(5rem, 10vw)' }}></div>

@@ -1,6 +1,7 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import ProgressDots from './shared/ProgressDots';
 
 const ResultsScreen = () => {
   const { 
@@ -98,37 +99,15 @@ const ResultsScreen = () => {
         </motion.p>
 
         {/* Answer indicators - circles responsivos */}
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={showContent ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex"
+        <ProgressDots
+          totalQuestions={questions.length}
+          answers={answers}
+          questions={questions}
+          variant="results"
           style={{ 
-            gap: 'min(2.2rem, 3.5vw)', // Optimizado para landscape tablet
             marginBottom: 'min(4rem, 6vh)' // Optimizado para landscape tablet
           }}
-        >
-          {questions.map((question, index) => {
-            const userAnswer = answers[index];
-            const isCorrect = userAnswer === question.correctAnswer;
-            const backgroundColor = isCorrect ? '#85AF8B' : '#A94930';
-            
-            return (
-              <motion.div
-                key={index}
-                initial={{ scale: 0 }}
-                animate={showContent ? { scale: 1 } : {}}
-                transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
-                style={{
-                  width: 'min(3.31rem, 5.5vw)', // Optimizado para landscape tablet
-                  height: 'min(3.31rem, 5.5vw)', // Optimizado para landscape tablet
-                  borderRadius: '9999px',
-                  backgroundColor: backgroundColor
-                }}
-              />
-            );
-          })}
-        </motion.div>
+        />
 
         {/* "NOCH EINMAL" button responsivo */}
         <motion.button

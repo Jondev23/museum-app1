@@ -1,5 +1,6 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
+import ProgressDots from './shared/ProgressDots';
 
 
 const FeedbackScreen = () => {
@@ -230,47 +231,18 @@ const FeedbackScreen = () => {
         </motion.div>
 
         {/* Pagination dots */}
-        <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex justify-center"
+        <ProgressDots
+          totalQuestions={totalQuestions}
+          currentQuestionIndex={currentQuestionIndex}
+          answers={answers}
+          questions={questions}
+          variant="feedback"
           style={{
-            gap: 'min(0.75rem, 1.2vw)', // Optimizado para pantalla más ancha
             flexShrink: 0,
             marginBottom: 'min(5.625rem, 9vh)', // Usa vh para vertical en landscape
             marginLeft: 'min(13.75rem, 22vw)' // Optimizado para pantalla más ancha
           }}
-        >
-          {[...Array(totalQuestions)].map((_, i) => {
-            let dotColor = 'transparent';
-            let borderColor = '#D9D9D9';
-            
-            if (i < currentQuestionIndex || (i === currentQuestionIndex && answers[i] !== undefined)) {
-              // Question has been answered
-              const questionAnswered = questions[i];
-              const userAnswerForQuestion = answers[i];
-              const wasCorrect = userAnswerForQuestion === questionAnswered.correctAnswer;
-              dotColor = wasCorrect ? '#598364' : '#A94930'; // Green for correct, copper for incorrect
-            } else if (i === currentQuestionIndex) {
-              dotColor = '#D9D9D9'; // Current question
-            }
-            
-            return (
-              <div
-                key={i}
-                className="rounded-full"
-                style={{
-                  width: 'min(1.125rem, 1.8vw)', // Optimizado para pantalla más ancha
-                  height: 'min(1.125rem, 1.8vw)', // Mismo valor que width para mantener círculos perfectos
-                  border: `min(0.175rem, 0.3vw) solid ${borderColor}`, // Optimizado para pantalla más ancha
-                  backgroundColor: dotColor,
-                  flexShrink: 0
-                }}
-              />
-            );
-          })}
-        </motion.div>
+        />
 
         {/* Spacer para simetría - reemplazado por "zur Auswertung" */}
         <motion.div
