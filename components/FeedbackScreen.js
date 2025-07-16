@@ -87,7 +87,7 @@ const FeedbackScreen = () => {
             style={{
               color: '#D9D9D9',
               fontFamily: '"Tisa Pro", serif',
-              fontSize: 'min(3.375rem, 5.5vw)', // Optimizado para pantalla más ancha
+              fontSize: 'min(3.375rem, 5.5vw, 8vh)', // Añadido vh para escalar verticalmente
               fontStyle: 'italic',
               fontWeight: 750,
               lineHeight: '1.3',
@@ -118,7 +118,7 @@ const FeedbackScreen = () => {
                 style={{
                   color: '#344243',
                   fontFamily: '"Tisa Sans Pro", sans-serif',
-                  fontSize: 'min(2rem, 3.5vw)', // Optimizado para pantalla más ancha
+                  fontSize: 'min(2rem, 3.5vw, 5vh)', // Añadido vh para escalar verticalmente
                   fontStyle: 'normal',
                   fontWeight: 400,
                   lineHeight: '1.2',
@@ -144,7 +144,7 @@ const FeedbackScreen = () => {
               style={{
                 color: '#D9D9D9',
                 fontFamily: '"Tisa Pro", serif',
-                fontSize: 'min(2.25rem, 3.8vw)', // Optimizado para pantalla más ancha
+                fontSize: 'min(2.25rem, 3.8vw, 6vh)', // Añadido vh para escalar verticalmente
                 fontStyle: 'normal',
                 fontWeight: 700,
                 lineHeight: '1.4',
@@ -163,7 +163,7 @@ const FeedbackScreen = () => {
                 style={{
                   color: '#D9D9D9',
                   fontFamily: '"Tisa Pro", serif',
-                  fontSize: 'min(2rem, 3.5vw)', // Optimizado para pantalla más ancha
+                  fontSize: 'min(2rem, 3.5vw, 5vh)', // Añadido vh para escalar verticalmente
                   fontStyle: 'normal',
                   fontWeight: 700,
                   lineHeight: '1.4',
