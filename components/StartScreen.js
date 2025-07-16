@@ -1,9 +1,10 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import LanguageSelectorIcon from './shared/LanguageSelectorIcon';
 
 const StartScreen = () => {
-  const { beginQuiz, content, language, setShowLanguageSelector } = useApp();
+  const { beginQuiz, content, language } = useApp();
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
@@ -173,27 +174,7 @@ const StartScreen = () => {
           }}
         >
           {/* Language selector icon - izquierda */}
-          <motion.button
-            onClick={() => {
-              console.log('Globe icon clicked, opening language selector');
-              setShowLanguageSelector(true);
-            }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="transition-all cursor-pointer"
-          >
-            <motion.img
-              src="/images/OE_Sprache_64 1.svg"
-              alt="Language selector"
-              style={{
-                width: 'min(3rem, 6vw, 7.5vh)', // Añadido vh para escalar verticalmente
-                height: 'min(3rem, 6vw, 7.5vh)', // Añadido vh para escalar verticalmente
-                display: 'block'
-              }}
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-            />
-          </motion.button>
+          <LanguageSelectorIcon variant="default" delay={1.0} />
 
           {/* Touch indicator - centro */}
           <motion.div

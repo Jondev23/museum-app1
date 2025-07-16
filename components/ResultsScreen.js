@@ -2,6 +2,7 @@ import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import ProgressDots from './shared/ProgressDots';
+import LanguageSelectorIcon from './shared/LanguageSelectorIcon';
 
 const ResultsScreen = () => {
   const { 
@@ -10,8 +11,7 @@ const ResultsScreen = () => {
     content,
     language,
     questions,
-    answers,
-    setShowLanguageSelector
+    answers
   } = useApp();
 
   const [showContent, setShowContent] = useState(false);
@@ -148,41 +148,12 @@ const ResultsScreen = () => {
       </div>
 
       {/* Language selector icon - positioned in bottom left */}
-      <motion.div
-        initial={{ y: 100, opacity: 0 }}
-        animate={showContent ? { y: 0, opacity: 1 } : {}}
-        transition={{ duration: 0.6, delay: 1.2 }}
+      <LanguageSelectorIcon 
+        variant="absolute"
+        delay={1.2}
+        opacity={0.8}
         className="absolute bottom-0 left-0 z-20"
-        style={{ 
-          marginLeft: 'min(3.5rem, 5vw)', // Optimizado para landscape tablet
-          marginBottom: 'min(2.5rem, 4vh)' // Mantiene vh para vertical
-        }}
-      >
-        <motion.button
-          onClick={() => setShowLanguageSelector(true)}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="transition-all cursor-pointer"
-          style={{
-            background: 'transparent',
-            border: 'none',
-            padding: 0
-          }}
-        >
-          <motion.img
-            src="/images/OE_Sprache_64 1.svg"
-            alt="Language selector"
-            style={{
-              width: 'min(2.7rem, 4vw)', // Optimizado para landscape tablet
-              height: 'min(2.7rem, 4vw)', // Optimizado para landscape tablet
-              display: 'block',
-              opacity: 0.8
-            }}
-            animate={{ rotate: [0, 10, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-          />
-        </motion.button>
-      </motion.div>
+      />
     </motion.div>
   );
 };

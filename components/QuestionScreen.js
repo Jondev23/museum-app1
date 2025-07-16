@@ -1,6 +1,7 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
 import ProgressDots from './shared/ProgressDots';
+import LanguageSelectorIcon from './shared/LanguageSelectorIcon';
 import { useState } from 'react';
 
 const QuestionScreen = () => {
@@ -9,8 +10,7 @@ const QuestionScreen = () => {
     answerQuestion,
     content,
     language,
-    currentQuestionIndex,
-    setShowLanguageSelector
+    currentQuestionIndex
   } = useApp();
 
   const totalQuestions = 5; // Ajusta esto si el número varía
@@ -175,32 +175,12 @@ const QuestionScreen = () => {
           style={{ padding: 'min(1rem, 1.8vh) min(3.5rem, 6.5vw) min(2.5rem, 4vh)' }} // Aumentado padding horizontal: de 2.8rem, 5.3vw a 3.5rem, 6.5vw y padding inferior: de 1.82rem, 3.03vh a 2.5rem, 4vh
         >
           {/* Language selector icon */}
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            style={{ marginLeft: 'min(6.5rem, 12vw)' }} // Aumentado margen: de 5.625rem, 10vw a 6.5rem, 12vw para más separación
-          >
-            <motion.button
-              onClick={() => setShowLanguageSelector(true)}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="transition-all cursor-pointer"
-            >
-              <motion.img
-                src="/images/OE_Sprache_64 1.svg"
-                alt="Language selector"
-                style={{
-                  width: 'min(2.7rem, 5.4vw, 6vh)', // Añadido vh para escalar verticalmente
-                  height: 'min(2.7rem, 5.4vw, 6vh)', // Añadido vh para escalar verticalmente
-                  display: 'block',
-                  opacity: 0.8 // Agregada transparencia del 20%
-                }}
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-              />
-            </motion.button>
-          </motion.div>
+          <LanguageSelectorIcon 
+            variant="default" 
+            delay={0.8}
+            opacity={0.8}
+            style={{ marginLeft: 'min(6.5rem, 12vw)' }}
+          />
 
           {/* Pagination dots */}
           <ProgressDots

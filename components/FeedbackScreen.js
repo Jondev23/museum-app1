@@ -1,6 +1,7 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
 import ProgressDots from './shared/ProgressDots';
+import LanguageSelectorIcon from './shared/LanguageSelectorIcon';
 
 
 const FeedbackScreen = () => {
@@ -12,18 +13,17 @@ const FeedbackScreen = () => {
     language,
     currentQuestionIndex,
     questions,
-    setShowLanguageSelector,
     answers
   } = useApp();
 
   const question = getCurrentQuestion();
   const userAnswer = getCurrentAnswer();
+  const totalQuestions = questions.length; // Add this line
   
   if (!question || userAnswer === undefined || !content?.[language]) return null;
 
   const isCorrect = userAnswer === question.correctAnswer;
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
-  const totalQuestions = 5; // Adjust if the number varies
   
   const quizContent = content[language].quiz;
   const feedbackMessages = isCorrect ? quizContent.correctFeedback : quizContent.incorrectFeedback;
@@ -196,39 +196,10 @@ const FeedbackScreen = () => {
         }}
       >
         {/* Language selector icon */}
-        <motion.div
-          initial={{ y: '100%', opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          style={{ 
-            flexShrink: 0,
-            marginBottom: 'min(5.625rem, 9vh)', // Usa vh para vertical en landscape
-            marginLeft: 'min(6.125rem, 10vw)' // Optimizado para pantalla más ancha
-          }}
-        >
-          <motion.button
-            onClick={() => setShowLanguageSelector(true)}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="transition-all cursor-pointer"
-            style={{
-              minWidth: 'min(3.5rem, 6vw)', // Optimizado para pantalla más ancha
-              minHeight: 'min(3.5rem, 6vh)' // Usa vh para altura en landscape
-            }}
-          >
-            <motion.img
-              src="/images/OE_Sprache_64 1.svg"
-              alt="Language selector"
-              className="block"
-              style={{
-                width: 'min(3.5rem, 6vw)', // Optimizado para pantalla más ancha
-                height: 'min(3.5rem, 6vh)' // Usa vh para altura en landscape
-              }}
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-            />
-          </motion.button>
-        </motion.div>
+        <LanguageSelectorIcon 
+          variant="footer" 
+          delay={0.6}
+        />
 
         {/* Pagination dots */}
         <ProgressDots
