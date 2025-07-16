@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import KioskSelectorScreen from './KioskSelector';
 
 const AdminPanel = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [clickSequence, setClickSequence] = useState([]);
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showKioskSelector, setShowKioskSelector] = useState(false);
+  const [successMsg, setSuccessMsg] = useState('');
 
   // Secuencia secreta: click en las 4 esquinas en orden (top-left, top-right, bottom-right, bottom-left)
   const SECRET_SEQUENCE = ['tl', 'tr', 'br', 'bl'];
@@ -104,7 +107,7 @@ const AdminPanel = () => {
 
       {/* Admin Panel */}
       <AnimatePresence>
-        {isVisible && (
+        {isVisible && !showKioskSelector && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -132,7 +135,9 @@ const AdminPanel = () => {
               >
                 Admin Panel
               </h2>
-
+              {successMsg && (
+                <div className="text-green-600 text-center mb-2">{successMsg}</div>
+              )}
               {!isAuthenticated ? (
                 <form 
                   onSubmit={handlePasswordSubmit} 
@@ -197,22 +202,25 @@ const AdminPanel = () => {
                   flexDirection: 'column', 
                   gap: 'min(1rem, 2vw)' 
                 }}>
-                  <p 
-                    className="text-green-600 font-medium text-center"
+                  <button
+                    onClick={() => setShowKioskSelector(true)}
+                    className="w-full bg-museum-brown text-white rounded-md hover:bg-opacity-90"
                     style={{
-                      marginBottom: 'min(1.5rem, 3vw)' // Responsive margin
+                      padding: 'min(0.5rem, 1vw) min(1rem, 2vw)',
+                      borderRadius: 'min(0.375rem, 0.75vw)',
+                      marginBottom: 'min(0.75rem, 1.5vw)'
                     }}
                   >
-                    ✓ Erfolgreich angemeldet
-                  </p>
+                    Kiosk auswählen
+                  </button>
                   
                   <button
                     onClick={handleReloadContent}
-                    className="w-full bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                    className="w-full bg-museum-brown text-white rounded-md hover:bg-opacity-90"
                     style={{
-                      padding: 'min(0.75rem, 1.5vw) min(1rem, 2vw)', // Responsive padding
-                      borderRadius: 'min(0.375rem, 0.75vw)', // Responsive border radius
-                      marginBottom: 'min(0.75rem, 1.5vw)' // Responsive margin
+                      padding: 'min(0.5rem, 1vw) min(1rem, 2vw)',
+                      borderRadius: 'min(0.375rem, 0.75vw)',
+                      marginBottom: 'min(0.75rem, 1.5vw)'
                     }}
                   >
                     Inhalte neu laden
@@ -220,11 +228,11 @@ const AdminPanel = () => {
                   
                   <button
                     onClick={handleExitKiosk}
-                    className="w-full bg-red-500 text-white rounded-md hover:bg-red-600"
+                    className="w-full bg-museum-brown text-white rounded-md hover:bg-opacity-90"
                     style={{
-                      padding: 'min(0.75rem, 1.5vw) min(1rem, 2vw)', // Responsive padding
-                      borderRadius: 'min(0.375rem, 0.75vw)', // Responsive border radius
-                      marginBottom: 'min(0.75rem, 1.5vw)' // Responsive margin
+                      padding: 'min(0.5rem, 1vw) min(1rem, 2vw)',
+                      borderRadius: 'min(0.375rem, 0.75vw)',
+                      marginBottom: 'min(0.75rem, 1.5vw)'
                     }}
                   >
                     Kiosk-Modus beenden
@@ -232,10 +240,10 @@ const AdminPanel = () => {
                   
                   <button
                     onClick={handleClose}
-                    className="w-full bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+                    className="w-full bg-museum-brown text-white rounded-md hover:bg-opacity-90"
                     style={{
-                      padding: 'min(0.75rem, 1.5vw) min(1rem, 2vw)', // Responsive padding
-                      borderRadius: 'min(0.375rem, 0.75vw)' // Responsive border radius
+                      padding: 'min(0.5rem, 1vw) min(1rem, 2vw)',
+                      borderRadius: 'min(0.375rem, 0.75vw)'
                     }}
                   >
                     Panel schließen
@@ -244,6 +252,16 @@ const AdminPanel = () => {
               )}
             </motion.div>
           </motion.div>
+        )}
+        {isVisible && showKioskSelector && (
+          <KioskSelectorScreen
+            onKioskSelected={(id) => {
+              setShowKioskSelector(false);
+              setSuccessMsg('Kiosk seleccionado correctamente.');
+              setTimeout(() => setSuccessMsg(''), 2000);
+            }}
+            onBack={() => setShowKioskSelector(false)}
+          />
         )}
       </AnimatePresence>
     </>

@@ -1,80 +1,54 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
+import { KIOSK_CONFIGS } from '../utils/kioskConfig';
 
-const KioskSelector = () => {
+const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
   const { setKioskId, kioskId } = useApp();
 
-  const kiosks = [
-    { id: 'kiosk1', title: 'Allgemeine Geschichte', description: 'Grundlagen der Kutschengeschichte' },
-    { id: 'kiosk2', title: 'Luxuskutschen', description: 'Prachtvolle Kutschen des Adels' },
-    { id: 'kiosk3', title: 'Kutschenbau', description: 'Handwerk und Technik' },
-  ];
+  // Convertimos el objeto de kioscos a un array
+  const kiosks = Object.values(KIOSK_CONFIGS);
 
-  // Only show in development mode
-  if (process.env.NODE_ENV !== 'development') {
-    return null;
-  }
+  const handleSelect = (id) => {
+    setKioskId(id);
+    if (onKioskSelected) onKioskSelected(id);
+  };
 
   return (
     <div 
-      className="fixed z-50 bg-black bg-opacity-50 rounded-lg"
-      style={{
-        top: 'min(1rem, 2vw)', // Responsive top position
-        right: 'min(1rem, 2vw)', // Responsive right position
-        padding: 'min(1rem, 2vw)', // Responsive padding
-        borderRadius: 'min(0.5rem, 1vw)' // Responsive border radius
-      }}
+      className="fixed inset-0 z-50 bg-black bg-opacity-80 flex flex-col items-center justify-center"
+      style={{ padding: 'min(2rem, 4vw)' }}
     >
-      <h3 
-        className="text-white mb-2"
-        style={{
-          fontSize: 'min(0.875rem, 1.75vw)', // Responsive font size
-          marginBottom: 'min(0.5rem, 1vw)' // Responsive margin
-        }}
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 flex flex-col items-center"
       >
-        Kiosk Auswahl (Dev Mode)
-      </h3>
-      <div style={{ gap: 'min(0.5rem, 1vw)', display: 'flex', flexDirection: 'column' }}>
-        {kiosks.map((kiosk) => (
-          <button
-            key={kiosk.id}
-            onClick={() => setKioskId(kiosk.id)}
-            className={`
-              block w-full text-left rounded
-              ${kioskId === kiosk.id 
-                ? 'bg-museum-gold text-black' 
-                : 'bg-white text-black hover:bg-gray-200'
-              }
-            `}
-            style={{
-              padding: 'min(0.5rem, 1vw)', // Responsive padding
-              borderRadius: 'min(0.25rem, 0.5vw)', // Responsive border radius
-              fontSize: 'min(0.875rem, 1.75vw)' // Responsive font size
-            }}
-          >
-            <div 
-              className="font-bold"
-              style={{
-                fontSize: 'min(0.875rem, 1.75vw)', // Responsive font size
-                fontWeight: 'bold'
-              }}
+        <h2 className="font-bold text-center mb-6" style={{ fontSize: 'min(1.5rem, 3vw)' }}>
+          Kiosk auswählen
+        </h2>
+        <div className="w-full flex flex-col gap-4 mb-6">
+          {kiosks.map((kiosk) => (
+            <button
+              key={kiosk.id}
+              onClick={() => handleSelect(kiosk.id)}
+              className={`w-full rounded px-4 py-3 text-left font-bold transition-all ${kioskId === kiosk.id ? 'bg-museum-gold text-black' : 'bg-gray-100 text-black hover:bg-gray-200'}`}
+              style={{ fontSize: 'min(1rem, 2vw)' }}
             >
-              {kiosk.title}
-            </div>
-            <div 
-              className="opacity-70"
-              style={{
-                fontSize: 'min(0.75rem, 1.5vw)', // Responsive font size
-                opacity: 0.7
-              }}
-            >
-              {kiosk.description}
-            </div>
-          </button>
-        ))}
-      </div>
+              <div>{kiosk.name}</div>
+              <div className="font-normal text-sm opacity-70">{kiosk.theme}</div>
+            </button>
+          ))}
+        </div>
+        <button
+          onClick={onBack}
+          className="w-full bg-museum-brown text-white rounded-md hover:bg-opacity-90 py-2 font-medium"
+        >
+          Zurück
+        </button>
+      </motion.div>
     </div>
   );
 };
 
-export default KioskSelector;
+export default KioskSelectorScreen;
