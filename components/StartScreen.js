@@ -165,7 +165,7 @@ const StartScreen = () => {
 
         {/* Footer con icono de idioma y swipe indicator */}
         <StandardFooter>
-          {/* Touch indicator - centro */}
+          {/* Touch indicator - centro absoluto respecto a la pantalla completa */}
           <motion.div
             initial={{ y: 100, opacity: 0 }}
             animate={{ 
@@ -182,15 +182,27 @@ const StartScreen = () => {
             onClick={handleSwipeLeft}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="cursor-pointer absolute left-1/2 transform -translate-x-1/2"
-            style={{ marginBottom: 'min(5.625rem, 9vh)' }}
+            className="cursor-pointer"
+            style={{ 
+              position: 'fixed',
+              left: 0,
+              right: 0,
+              bottom: 'min(5.625rem, 9vh)',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              zIndex: 30,
+              pointerEvents: 'none'
+            }}
           >
             <img
               src="/images/OE_Swipe_128.svg"
               alt="Swipe indicator"
               style={{
                 width: 'min(5.8rem, 9.6vw, 12vh)',
-                height: 'min(5.8rem, 9.6vw, 12vh)'
+                height: 'min(5.8rem, 9.6vw, 12vh)',
+                pointerEvents: 'auto',
+                cursor: 'pointer'
               }}
             />
           </motion.div>
