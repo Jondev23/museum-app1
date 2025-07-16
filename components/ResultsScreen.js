@@ -54,8 +54,8 @@ const ResultsScreen = () => {
       {/* Dark overlay for better text contrast */}
       <div className="absolute inset-0 bg-black/75" />
       
-      {/* Content - Centered vertically and horizontally - totalmente responsivo */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full" style={{ padding: 'min(2rem, 4vw)' }}>
+      {/* Content - Centered vertically and horizontally - optimizado para tableta landscape */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full" style={{ padding: 'min(2rem, 3vh)' }}>
         
         {/* Main title */}
         <motion.h1
@@ -63,10 +63,10 @@ const ResultsScreen = () => {
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
           style={{
-            marginBottom: 'min(2rem, 4vw)', // Responsive margin
+            marginBottom: 'min(2rem, 3vh)', // Optimizado para landscape tablet
             color: '#D9D9D9',
             fontFamily: '"Tisa Pro", serif',
-            fontSize: 'min(4.8rem, 9.6vw)', // Responsive font size - 20% smaller
+            fontSize: 'min(4.8rem, 8vw)', // Optimizado para pantalla más ancha
             fontStyle: 'italic',
             fontWeight: 700,
             lineHeight: '120%',
@@ -83,10 +83,10 @@ const ResultsScreen = () => {
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
           style={{
-            marginBottom: 'min(3rem, 6vw)', // Responsive margin
+            marginBottom: 'min(3rem, 4vh)', // Optimizado para landscape tablet
             color: '#85AF8B',
             fontFamily: '"Tisa Sans Pro", sans-serif',
-            fontSize: 'min(3.2rem, 6.4vw)', // Responsive font size - 20% smaller
+            fontSize: 'min(3.2rem, 5.5vw)', // Optimizado para pantalla más ancha
             fontStyle: 'normal',
             fontWeight: 400,
             lineHeight: '120%',
@@ -104,8 +104,8 @@ const ResultsScreen = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex"
           style={{ 
-            gap: 'min(2.2rem, 4.4vw)', // Gap responsivo - 10% más espacio
-            marginBottom: 'min(4rem, 8vw)' // Responsive margin
+            gap: 'min(2.2rem, 3.5vw)', // Optimizado para landscape tablet
+            marginBottom: 'min(4rem, 6vh)' // Optimizado para landscape tablet
           }}
         >
           {questions.map((question, index) => {
@@ -120,8 +120,8 @@ const ResultsScreen = () => {
                 animate={showContent ? { scale: 1 } : {}}
                 transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
                 style={{
-                  width: 'min(3.31rem, 6.6vw)', // Tamaño responsivo - 5% más grande
-                  height: 'min(3.31rem, 6.6vw)', // Tamaño responsivo - 5% más grande
+                  width: 'min(3.31rem, 5.5vw)', // Optimizado para landscape tablet
+                  height: 'min(3.31rem, 5.5vw)', // Optimizado para landscape tablet
                   borderRadius: '9999px',
                   backgroundColor: backgroundColor
                 }}
@@ -144,16 +144,16 @@ const ResultsScreen = () => {
             border: 'none',
             color: '#FFF',
             fontFamily: '"Tisa Sans Pro", sans-serif',
-            fontSize: 'min(1.5rem, 3vw)', // Responsive font size - 20% smaller
+            fontSize: 'min(1.5rem, 2.5vw)', // Optimizado para landscape tablet
             fontStyle: 'normal',
             fontWeight: 400,
             lineHeight: 'normal',
             textAlign: 'center',
             textTransform: 'uppercase',
-            letterSpacing: '0.0625rem', // Responsive letter spacing
-            padding: 'min(1rem, 2vw) min(2rem, 4vw)', // Responsive padding
-            borderRadius: 'min(1.5rem, 3vw)', // Responsive border radius
-            gap: 'min(0.5rem, 1vw)' // Responsive gap
+            letterSpacing: 'min(0.0625rem, 0.1vw)', // Optimizado con min()
+            padding: 'min(1rem, 1.5vh) min(2rem, 3vw)', // Optimizado para landscape tablet
+            borderRadius: 'min(1.5rem, 2.5vw)', // Optimizado para landscape tablet
+            gap: 'min(0.5rem, 0.8vw)' // Optimizado para landscape tablet
           }}
         >
           {content[language]?.results?.playAgain || 'NOCH EINMAL'}
@@ -161,8 +161,8 @@ const ResultsScreen = () => {
             src="/images/GUI.svg"
             alt="Restart icon"
             style={{
-              width: 'min(3rem, 6vw)', // Responsive width
-              height: 'min(4.875rem, 9.75vw)' // Responsive height
+              width: 'min(3rem, 4.5vw)', // Optimizado para landscape tablet
+              height: 'min(4.875rem, 7vw)' // Optimizado para landscape tablet
             }}
           />
         </motion.button>
@@ -175,8 +175,8 @@ const ResultsScreen = () => {
         transition={{ duration: 0.6, delay: 1.2 }}
         className="absolute bottom-0 left-0 z-20"
         style={{ 
-          marginLeft: 'min(3.5rem, 6.5vw)',
-          marginBottom: 'min(2.5rem, 4vh)'
+          marginLeft: 'min(3.5rem, 5vw)', // Optimizado para landscape tablet
+          marginBottom: 'min(2.5rem, 4vh)' // Mantiene vh para vertical
         }}
       >
         <motion.button
@@ -194,8 +194,8 @@ const ResultsScreen = () => {
             src="/images/OE_Sprache_64 1.svg"
             alt="Language selector"
             style={{
-              width: 'min(2.7rem, 5.4vw)',
-              height: 'min(2.7rem, 5.4vw)',
+              width: 'min(2.7rem, 4vw)', // Optimizado para landscape tablet
+              height: 'min(2.7rem, 4vw)', // Optimizado para landscape tablet
               display: 'block',
               opacity: 0.8
             }}
