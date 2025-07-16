@@ -30,13 +30,18 @@ const LanguageSelector = () => {
     }
     // Fallback to German if current language selector is not available
     return content.de?.languageSelector || {
-      title: "Sprache wählen / Choose language",
+      title: "Sprache wählen / Change language",
       german: "DEUTSCH",
       english: "ENGLISH"
     };
   };
 
   const selectorContent = getSelectorContent();
+  
+  // Parse title to get German and English parts
+  const titleParts = selectorContent.title.split(' / ');
+  const germanTitle = titleParts[0] || "Sprache wählen";
+  const englishTitle = titleParts[1] || "Change language";
 
   return (
     <AnimatePresence>
@@ -116,7 +121,7 @@ const LanguageSelector = () => {
                 margin: 0,
                 whiteSpace: 'nowrap'
               }}>
-                Change language
+                {englishTitle}
               </h1>
               <h2 style={{
                 color: '#D9D9D9',
@@ -130,7 +135,7 @@ const LanguageSelector = () => {
                 margin: 0,
                 whiteSpace: 'nowrap'
               }}>
-                Sprache wählen
+                {germanTitle}
               </h2>
             </motion.div>
 
@@ -161,8 +166,8 @@ const LanguageSelector = () => {
                     width: 'min(max(21rem, 53vw), 75rem)', // Aumentado: 24rem min (era 20rem), 60vw (era 50vw), 75rem max (era 62.5rem)
                     height: 'min(3.47rem, 8.31vw)', // Reducido 10%: de 3.85rem a 3.47rem, de 9.23vw a 8.31vw
                     borderRadius: 'min(3.75rem, 8vw)',
-                    border: '2px solid #A94930',
-                    background: '#A94930', // Siempre Kupfer como en la referencia (selected)
+                    border: `2px solid ${language === 'de' ? '#A94930' : '#D9D9D9'}`,
+                    background: language === 'de' ? '#A94930' : 'transparent', // Dinámico según idioma actual
                     padding: 'min(0.625rem, 1.5vw)',
                     display: 'flex',
                     alignItems: 'center',
@@ -194,8 +199,8 @@ const LanguageSelector = () => {
                     width: 'min(max(21rem, 53vw), 75rem)', // Igualado al primer botón
                     height: 'min(3.47rem, 8.31vw)', // Reducido 10%: de 3.85rem a 3.47rem, de 9.23vw a 8.31vw
                     borderRadius: 'min(3.75rem, 8vw)',
-                    border: '2px solid #D9D9D9',
-                    background: 'transparent', // Transparente como en la referencia (outline)
+                    border: `2px solid ${language === 'en' ? '#A94930' : '#D9D9D9'}`,
+                    background: language === 'en' ? '#A94930' : 'transparent', // Dinámico según idioma actual
                     padding: 'min(0.625rem, 1.5vw)',
                     display: 'flex',
                     alignItems: 'center',
