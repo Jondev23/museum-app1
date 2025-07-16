@@ -103,7 +103,7 @@ const StartScreen = () => {
                     lineHeight: 'min(5.4rem, 10.8vw, 12.4vh)' // Añadido vh para escalar verticalmente
                   }}
                 >
-                  Wie weit? Wie lange?
+                  {startContent?.title || 'Wie weit? Wie lange?'}
                 </motion.h1>
 
                 {/* Subtitle */}
@@ -121,7 +121,7 @@ const StartScreen = () => {
                     lineHeight: 'min(3.36rem, 6.72vw, 8.4vh)' // Añadido vh para escalar verticalmente
                   }}
                 >
-                  Distanzen des Reisens im 19. Jahrhundert
+                  {startContent?.subtitle || 'Distanzen des Reisens im 19. Jahrhundert'}
                 </motion.h2>
               </div>
 
@@ -144,7 +144,7 @@ const StartScreen = () => {
                   lineHeight: 'min(2.66rem, 5.32vw, 6.7vh)', // Añadido vh para escalar verticalmente
                   letterSpacing: 'min(0.019rem, 0.038vw, 0.048vh)' // Añadido vh para escalar verticalmente
                 }}>
-                  Teste dein Wissen!&nbsp;&nbsp;
+                  {startContent?.highlightText || 'Teste dein Wissen!'}&nbsp;&nbsp;
                   <br />
                 </span>
 
@@ -155,15 +155,7 @@ const StartScreen = () => {
                   lineHeight: 'min(2.38rem, 4.76vw, 5.9vh)', // Añadido vh para escalar verticalmente
                   letterSpacing: 'min(0.017rem, 0.034vw, 0.042vh)' // Añadido vh para escalar verticalmente
                 }}>
-                  Fünf Fragen rund um das Reisen mit der Kutsche warten auf dich.
-                  <br />
-                  Wie weit kam man an einem Tag? Wie lange dauerte eine Reise von
-                  Leipzig nach München?
-                  <br /> <br />
-                  Stell dich der Herausforderung – vielleicht weißt du mehr, als
-                  du denkst.
-                  <br />
-                  Und falls nicht: unterwegs lernst du garantiert etwas dazu!{" "}
+                  {startContent?.introText || 'Entdecken Sie die faszinierende Welt historischer Kutschen. Testen Sie Ihr Wissen mit unserem Quiz!'}
                 </span>
               </motion.div>
             </div>
