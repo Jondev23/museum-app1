@@ -59,7 +59,7 @@ const LanguageSelector = () => {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: 'min(4rem, 7.5vw)', // Aumentado de 3rem a 4rem, de 6vw a 7.5vw para más espacio entre textos y botones
+              gap: 'min(3.24rem, 6.08vw)', // Reducido 10% adicional: de 3.6rem a 3.24rem, de 6.75vw a 6.08vw
               width: 'auto', 
               maxWidth: '100vw', 
               padding: '0 min(2rem, 4vw)',
@@ -86,7 +86,8 @@ const LanguageSelector = () => {
                 style={{
                   width: 'min(5.4rem, 13.5vw)', // Reducido 10%: de 6rem a 5.4rem, de 15vw a 13.5vw
                   height: 'min(5.4rem, 13.5vw)', // Reducido 10%: de 6rem a 5.4rem, de 15vw a 13.5vw
-                  display: 'block'
+                  display: 'block',
+                  opacity: 0.8 // Añadido transparencia del 20%
                 }}
               />
             </motion.div>
@@ -107,8 +108,8 @@ const LanguageSelector = () => {
               <h1 style={{
                 color: '#D9D9D9',
                 fontFamily: "Tisa Pro",
-                fontSize: 'min(2.7rem, 6.4vw)', // Reducido 20%: de 3.375rem a 2.7rem, de 8vw a 6.4vw
-                fontWeight: 750,
+                fontSize: 'min(2.5rem, 6.2vw)', // Reducido 20%: de 3.375rem a 2.7rem, de 8vw a 6.4vw
+                fontWeight: 800,
                 fontStyle: 'italic',
                 textAlign: 'center',
                 lineHeight: '130%',
@@ -121,8 +122,8 @@ const LanguageSelector = () => {
                 color: '#D9D9D9',
                 opacity: 0.6,
                 fontFamily: "Tisa Pro",
-                fontSize: 'min(2.7rem, 6.4vw)', // Reducido 20%: de 3.375rem a 2.7rem, de 8vw a 6.4vw
-                fontWeight: 750,
+                fontSize: 'min(2.5rem, 6.2vw)', // Reducido 20%: de 3.375rem a 2.7rem, de 8vw a 6.4vw
+                fontWeight: 800,
                 fontStyle: 'italic',
                 textAlign: 'center',
                 lineHeight: '130%',
