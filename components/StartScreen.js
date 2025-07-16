@@ -223,8 +223,8 @@ const StartScreen = () => {
               src="/images/OE_Swipe_128.svg"
               alt="Swipe indicator"
               style={{
-                width: 'min(4rem, 8vw)', // Responsive width
-                height: 'min(4rem, 8vw)' // Responsive height
+                width: 'min(5.8rem, 9.6vw)', // Aumentado de 4rem a 4.8rem (20% más grande)
+                height: 'min(5.8rem, 9.6vw)' // Aumentado de 4rem a 4.8rem (20% más grande)
               }}
             />
           </motion.div>
