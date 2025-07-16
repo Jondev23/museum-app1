@@ -38,10 +38,29 @@ const LanguageSelector = () => {
 
   const selectorContent = getSelectorContent();
   
-  // Parse title to get German and English parts
+  // Parse title to get German and English parts intelligently
   const titleParts = selectorContent.title.split(' / ');
-  const germanTitle = titleParts[0] || "Sprache wählen";
-  const englishTitle = titleParts[1] || "Change language";
+  let germanTitle, englishTitle;
+  
+  if (titleParts.length === 2) {
+    // Check which part contains German words (contains 'ä', 'ü', 'ö' or starts with 'Sprache')
+    const firstPart = titleParts[0].trim();
+    const secondPart = titleParts[1].trim();
+    
+    const isFirstPartGerman = /[äöüÄÖÜ]/.test(firstPart) || firstPart.toLowerCase().includes('sprache');
+    
+    if (isFirstPartGerman) {
+      germanTitle = firstPart;
+      englishTitle = secondPart;
+    } else {
+      englishTitle = firstPart;
+      germanTitle = secondPart;
+    }
+  } else {
+    // Fallback if format is unexpected
+    germanTitle = "Sprache wählen";
+    englishTitle = "Change language";
+  }
 
   return (
     <AnimatePresence>
