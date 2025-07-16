@@ -179,7 +179,7 @@ const QuestionScreen = () => {
             className="absolute"
             style={{
               left: '46%',
-              bottom: 'min(5.625rem, 9vh)', // Mismo espaciado que FeedbackScreen
+              bottom: 'min(5.625rem, 9vh)',
               transform: 'translateX(calc(-50% - min(4rem, 8vw)))',
               zIndex: 30
             }}
@@ -188,6 +188,7 @@ const QuestionScreen = () => {
           {/* Standard footer with language icon only */}
           <StandardFooter
             showProgressDots={false}
+            alignProgressDots="center"
           />
         </div>
       </div>

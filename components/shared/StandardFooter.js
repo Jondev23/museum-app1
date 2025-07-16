@@ -11,7 +11,8 @@ const StandardFooter = ({
   questions = [],
   progressDotsVariant = 'default',
   className = '',
-  style = {}
+  style = {},
+  alignProgressDots = 'center' // 'center' for QuestionScreen, 'inline' for FeedbackScreen
 }) => {
   const baseFooterStyles = {
     position: 'fixed',
@@ -36,7 +37,7 @@ const StandardFooter = ({
         delay={0.6}
       />
 
-      {/* Pagination dots - conditional */}
+      {/* Pagination dots - conditional with alignment options */}
       {showProgressDots ? (
         <ProgressDots
           totalQuestions={totalQuestions}
@@ -44,11 +45,23 @@ const StandardFooter = ({
           answers={answers}
           questions={questions}
           variant={progressDotsVariant}
-          style={{
-            flexShrink: 0,
-            marginBottom: 'min(5.625rem, 9vh)',
-            marginLeft: 'min(13.75rem, 22vw)'
-          }}
+          className={alignProgressDots === 'inline' ? '' : 'absolute'}
+          style={
+            alignProgressDots === 'inline' 
+            ? {
+                // Inline alignment for FeedbackScreen - aligned with other elements
+                flexShrink: 0,
+                marginBottom: 'min(5.625rem, 9vh)',
+                marginLeft: 'min(6.125rem, 10vw)' // Same as language icon spacing
+              }
+            : {
+                // Centered positioning for QuestionScreen
+                left: '46%',
+                transform: 'translateX(calc(-50% - min(4rem, 8vw)))',
+                bottom: 'min(5.625rem, 9vh)',
+                zIndex: 25
+              }
+          }
         />
       ) : (
         <div style={{ flex: 1 }} /> // Spacer when no progress dots

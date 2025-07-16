@@ -189,6 +189,7 @@ const FeedbackScreen = () => {
         answers={answers}
         questions={questions}
         progressDotsVariant="feedback"
+        alignProgressDots="inline"
       >
         {/* Next Question Button */}
         <motion.div
