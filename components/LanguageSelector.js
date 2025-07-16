@@ -84,8 +84,8 @@ const LanguageSelector = () => {
                 src="/images/OE_Sprache_64 1.svg" 
                 alt="Language selector" 
                 style={{
-                  width: 'min(6rem, 15vw)',
-                  height: 'min(6rem, 15vw)',
+                  width: 'min(5.4rem, 13.5vw)', // Reducido 10%: de 6rem a 5.4rem, de 15vw a 13.5vw
+                  height: 'min(5.4rem, 13.5vw)', // Reducido 10%: de 6rem a 5.4rem, de 15vw a 13.5vw
                   display: 'block'
                 }}
               />
@@ -158,7 +158,7 @@ const LanguageSelector = () => {
                   className="transition-all"
                   style={{
                     width: 'min(max(21rem, 53vw), 75rem)', // Aumentado: 24rem min (era 20rem), 60vw (era 50vw), 75rem max (era 62.5rem)
-                    height: 'min(4.05rem, 9.72vw)', // Reducido 10% adicional: de 4.5rem a 4.05rem, de 10.8vw a 9.72vw
+                    height: 'min(3.47rem, 8.31vw)', // Reducido 10%: de 3.85rem a 3.47rem, de 9.23vw a 8.31vw
                     borderRadius: 'min(3.75rem, 8vw)',
                     border: '2px solid #A94930',
                     background: '#A94930', // Siempre Kupfer como en la referencia (selected)
@@ -175,7 +175,7 @@ const LanguageSelector = () => {
                     fontFamily: '"Tisa Sans Pro", Helvetica, sans-serif',
                     fontWeight: 400,
                     color: '#D9D9D9',
-                    fontSize: 'min(2rem, 4vw)',
+                    fontSize: 'min(1.25rem, 2.5vw)', // Reducido de 1.4rem a 1.25rem, de 2.8vw a 2.5vw (10.7% menos)
                     textAlign: 'center',
                     lineHeight: 'min(5.5rem, 12vw)',
                     textTransform: 'uppercase'
@@ -191,7 +191,7 @@ const LanguageSelector = () => {
                   className="transition-all"
                   style={{
                     width: 'min(max(21rem, 53vw), 75rem)', // Igualado al primer botón
-                    height: 'min(4.05rem, 9.72vw)', // Reducido 10% adicional: de 4.5rem a 4.05rem, de 10.8vw a 9.72vw
+                    height: 'min(3.47rem, 8.31vw)', // Reducido 10%: de 3.85rem a 3.47rem, de 9.23vw a 8.31vw
                     borderRadius: 'min(3.75rem, 8vw)',
                     border: '2px solid #D9D9D9',
                     background: 'transparent', // Transparente como en la referencia (outline)
@@ -208,7 +208,7 @@ const LanguageSelector = () => {
                     fontFamily: '"Tisa Sans Pro", Helvetica, sans-serif',
                     fontWeight: 400,
                     color: '#D9D9D9',
-                    fontSize: 'min(2rem, 4vw)',
+                    fontSize: 'min(1.25rem, 2.5vw)', // Reducido de 1.4rem a 1.25rem, de 2.8vw a 2.5vw (10.7% menos)
                     textAlign: 'center',
                     lineHeight: 'min(5.5rem, 12vw)',
                     textTransform: 'uppercase'
