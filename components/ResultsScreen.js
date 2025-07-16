@@ -9,7 +9,8 @@ const ResultsScreen = () => {
     content,
     language,
     questions,
-    answers
+    answers,
+    setShowLanguageSelector
   } = useApp();
 
   const [showContent, setShowContent] = useState(false);
@@ -27,7 +28,7 @@ const ResultsScreen = () => {
   };
 
   const handleTouchAnywhere = (e) => {
-    // Only trigger if not clicking on the play again button
+    // Only trigger if not clicking on the play again button or language selector
     if (!e.target.closest('button')) {
       handlePlayAgain();
     }
@@ -65,7 +66,7 @@ const ResultsScreen = () => {
             marginBottom: 'min(2rem, 4vw)', // Responsive margin
             color: '#D9D9D9',
             fontFamily: '"Tisa Pro", serif',
-            fontSize: 'min(6rem, 12vw)', // Responsive font size
+            fontSize: 'min(4.8rem, 9.6vw)', // Responsive font size - 20% smaller
             fontStyle: 'italic',
             fontWeight: 700,
             lineHeight: '120%',
@@ -85,7 +86,7 @@ const ResultsScreen = () => {
             marginBottom: 'min(3rem, 6vw)', // Responsive margin
             color: '#85AF8B',
             fontFamily: '"Tisa Sans Pro", sans-serif',
-            fontSize: 'min(4rem, 8vw)', // Responsive font size
+            fontSize: 'min(3.2rem, 6.4vw)', // Responsive font size - 20% smaller
             fontStyle: 'normal',
             fontWeight: 400,
             lineHeight: '120%',
@@ -103,7 +104,7 @@ const ResultsScreen = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex"
           style={{ 
-            gap: 'min(1rem, 2vw)', // Gap responsivo
+            gap: 'min(2.2rem, 4.4vw)', // Gap responsivo - 10% más espacio
             marginBottom: 'min(4rem, 8vw)' // Responsive margin
           }}
         >
@@ -119,8 +120,8 @@ const ResultsScreen = () => {
                 animate={showContent ? { scale: 1 } : {}}
                 transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
                 style={{
-                  width: 'min(2rem, 4vw)', // Tamaño responsivo
-                  height: 'min(2rem, 4vw)', // Tamaño responsivo
+                  width: 'min(3.31rem, 6.6vw)', // Tamaño responsivo - 5% más grande
+                  height: 'min(3.31rem, 6.6vw)', // Tamaño responsivo - 5% más grande
                   borderRadius: '9999px',
                   backgroundColor: backgroundColor
                 }}
@@ -143,7 +144,7 @@ const ResultsScreen = () => {
             border: 'none',
             color: '#FFF',
             fontFamily: '"Tisa Sans Pro", sans-serif',
-            fontSize: 'min(1.875rem, 3.75vw)', // Responsive font size
+            fontSize: 'min(1.5rem, 3vw)', // Responsive font size - 20% smaller
             fontStyle: 'normal',
             fontWeight: 400,
             lineHeight: 'normal',
@@ -166,6 +167,43 @@ const ResultsScreen = () => {
           />
         </motion.button>
       </div>
+
+      {/* Language selector icon - positioned in bottom left */}
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={showContent ? { y: 0, opacity: 1 } : {}}
+        transition={{ duration: 0.6, delay: 1.2 }}
+        className="absolute bottom-0 left-0 z-20"
+        style={{ 
+          marginLeft: 'min(3.5rem, 6.5vw)',
+          marginBottom: 'min(2.5rem, 4vh)'
+        }}
+      >
+        <motion.button
+          onClick={() => setShowLanguageSelector(true)}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="transition-all cursor-pointer"
+          style={{
+            background: 'transparent',
+            border: 'none',
+            padding: 0
+          }}
+        >
+          <motion.img
+            src="/images/OE_Sprache_64 1.svg"
+            alt="Language selector"
+            style={{
+              width: 'min(2.7rem, 5.4vw)',
+              height: 'min(2.7rem, 5.4vw)',
+              display: 'block',
+              opacity: 0.8
+            }}
+            animate={{ rotate: [0, 10, -10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+          />
+        </motion.button>
+      </motion.div>
     </motion.div>
   );
 };
