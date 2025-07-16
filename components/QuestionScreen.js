@@ -1,7 +1,7 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
+import StandardFooter from './shared/StandardFooter';
 import ProgressDots from './shared/ProgressDots';
-import LanguageSelectorIcon from './shared/LanguageSelectorIcon';
 import { useState } from 'react';
 
 const QuestionScreen = () => {
@@ -169,20 +169,9 @@ const QuestionScreen = () => {
           </div>
         </div>
 
-        {/* Footer: Pagination dots + language icon */}
-        <div 
-          className="relative flex justify-between items-center"
-          style={{ padding: 'min(1rem, 1.8vh) min(3.5rem, 6.5vw) min(2.5rem, 4vh)' }} // Aumentado padding horizontal: de 2.8rem, 5.3vw a 3.5rem, 6.5vw y padding inferior: de 1.82rem, 3.03vh a 2.5rem, 4vh
-        >
-          {/* Language selector icon */}
-          <LanguageSelectorIcon 
-            variant="default" 
-            delay={0.8}
-            opacity={0.8}
-            style={{ marginLeft: 'min(6.5rem, 12vw)' }}
-          />
-
-          {/* Pagination dots */}
+        {/* Footer section with separate positioning */}
+        <div className="relative">
+          {/* Pagination dots - positioned independently */}
           <ProgressDots
             totalQuestions={totalQuestions}
             currentQuestionIndex={currentQuestionIndex}
@@ -190,12 +179,16 @@ const QuestionScreen = () => {
             className="absolute"
             style={{
               left: '46%',
-              transform: 'translateX(calc(-50% - min(4rem, 8vw)))'
+              bottom: 'min(5.625rem, 9vh)', // Mismo espaciado que FeedbackScreen
+              transform: 'translateX(calc(-50% - min(4rem, 8vw)))',
+              zIndex: 30
             }}
           />
-
-          {/* Spacer for symmetry */}
-          <div style={{ width: 'min(5rem, 10vw)' }}></div>
+          
+          {/* Standard footer with language icon only */}
+          <StandardFooter
+            showProgressDots={false}
+          />
         </div>
       </div>
     </motion.div>

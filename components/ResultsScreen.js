@@ -2,7 +2,7 @@ import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import ProgressDots from './shared/ProgressDots';
-import LanguageSelectorIcon from './shared/LanguageSelectorIcon';
+import StandardFooter from './shared/StandardFooter';
 
 const ResultsScreen = () => {
   const { 
@@ -147,13 +147,8 @@ const ResultsScreen = () => {
         </motion.button>
       </div>
 
-      {/* Language selector icon - positioned in bottom left */}
-      <LanguageSelectorIcon 
-        variant="absolute"
-        delay={1.2}
-        opacity={0.8}
-        className="absolute bottom-0 left-0 z-20"
-      />
+      {/* Standard footer with language selector */}
+      <StandardFooter />
     </motion.div>
   );
 };

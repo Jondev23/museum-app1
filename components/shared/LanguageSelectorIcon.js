@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
 
 const LanguageSelectorIcon = ({ 
-  variant = 'default', // 'default', 'footer', 'absolute'
+  variant = 'standard', // 'standard' uses FeedbackScreen position as default
   className = '',
   style = {},
   delay = 0.6,
@@ -18,64 +18,27 @@ const LanguageSelectorIcon = ({
     opacity: opacity
   };
 
-  // Variant-specific container styles
+  // Standard position based on FeedbackScreen layout
   const getContainerStyles = () => {
-    switch (variant) {
-      case 'footer':
-        // For footer positioning (FeedbackScreen)
-        return {
-          flexShrink: 0,
-          marginBottom: 'min(5.625rem, 9vh)',
-          marginLeft: 'min(6.125rem, 10vw)',
-          ...style
-        };
-        
-      case 'absolute':
-        // For absolute positioning (ResultsScreen)
-        return {
-          marginLeft: 'min(3.5rem, 5vw)',
-          marginBottom: 'min(2.5rem, 4vh)',
-          ...style
-        };
-        
-      default:
-        // Default positioning (StartScreen, QuestionScreen)
-        return {
-          marginLeft: 'min(6.5rem, 12vw)',
-          ...style
-        };
-    }
+    return {
+      flexShrink: 0,
+      marginBottom: 'min(5.625rem, 9vh)', // Uses vh for vertical in landscape
+      marginLeft: 'min(6.125rem, 10vw)', // Standard left margin
+      ...style
+    };
   };
 
-  // Variant-specific button styles
+  // Standard button styles based on FeedbackScreen
   const getButtonStyles = () => {
-    switch (variant) {
-      case 'footer':
-        return {
-          minWidth: 'min(3.5rem, 6vw)',
-          minHeight: 'min(3.5rem, 6vh)'
-        };
-        
-      case 'absolute':
-        return {
-          background: 'transparent',
-          border: 'none',
-          padding: 0
-        };
-        
-      default:
-        return {};
-    }
+    return {
+      minWidth: 'min(3.5rem, 6vw)',
+      minHeight: 'min(3.5rem, 6vh)'
+    };
   };
 
-  // Animation variants
+  // Standard animation - uses FeedbackScreen animation
   const getInitialAnimation = () => {
-    switch (variant) {
-      case 'footer':
-        return { y: '100%', opacity: 0 };
-      default:
-        return { y: 100, opacity: 0 };
-    }
+    return { y: '100%', opacity: 0 };
   };
 
   const handleClick = () => {

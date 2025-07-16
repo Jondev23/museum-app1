@@ -1,7 +1,7 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import LanguageSelectorIcon from './shared/LanguageSelectorIcon';
+import StandardFooter from './shared/StandardFooter';
 
 const StartScreen = () => {
   const { beginQuiz, content, language } = useApp();
@@ -163,48 +163,38 @@ const StartScreen = () => {
           </div>
         </div>
 
-        {/* Footer con ambas imágenes - posicionado naturalmente */}
-        <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={showContent ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 1.0 }}
-          className="flex justify-between items-center w-full"
-          style={{
-            marginTop: 'min(3rem, 6vw)' // Solo margen superior, el padding bottom del contenedor padre da el espacio inferior
-          }}
-        >
-          {/* Language selector icon - izquierda */}
-          <LanguageSelectorIcon variant="default" delay={1.0} />
-
+        {/* Footer con icono de idioma y swipe indicator */}
+        <StandardFooter>
           {/* Touch indicator - centro */}
           <motion.div
-            onClick={handleSwipeLeft}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="cursor-pointer"
+            initial={{ y: 100, opacity: 0 }}
             animate={{ 
               y: [0, -15, 0],
-              scale: [1, 1.05, 1]
+              scale: [1, 1.05, 1],
+              opacity: showContent ? 1 : 0
             }}
             transition={{ 
               duration: 2,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut",
+              delay: 1.0
             }}
+            onClick={handleSwipeLeft}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="cursor-pointer absolute left-1/2 transform -translate-x-1/2"
+            style={{ marginBottom: 'min(5.625rem, 9vh)' }}
           >
             <img
               src="/images/OE_Swipe_128.svg"
               alt="Swipe indicator"
               style={{
-                width: 'min(5.8rem, 9.6vw, 12vh)', // Añadido vh para escalar verticalmente
-                height: 'min(5.8rem, 9.6vw, 12vh)' // Añadido vh para escalar verticalmente
+                width: 'min(5.8rem, 9.6vw, 12vh)',
+                height: 'min(5.8rem, 9.6vw, 12vh)'
               }}
             />
           </motion.div>
-
-          {/* Espacio vacío para equilibrar - derecha */}
-          <div style={{ width: 'min(3rem, 6vw, 7.5vh)', height: 'min(3rem, 6vw, 7.5vh)' }} />
-        </motion.div>
+        </StandardFooter>
       </div>
 
     </motion.div>

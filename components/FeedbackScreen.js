@@ -1,7 +1,6 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
-import ProgressDots from './shared/ProgressDots';
-import LanguageSelectorIcon from './shared/LanguageSelectorIcon';
+import StandardFooter from './shared/StandardFooter';
 
 
 const FeedbackScreen = () => {
@@ -183,47 +182,23 @@ const FeedbackScreen = () => {
       </div>
 
       {/* Fixed footer - language selector + pagination dots totalmente responsivo */}
-      <div 
-        className="relative z-20 flex justify-between items-center"
-        style={{
-          position: 'fixed',
-          bottom: '0',
-          left: '0',
-          right: '0',
-          height: 'min(4.375rem, 7vh)', // Usa vh para altura en landscape
-          padding: 'min(0.625rem, 1vh) min(1.25rem, 2vw)', // vh para vertical, vw para horizontal
-          minHeight: 'min(3.125rem, 5vh)' // Usa vh para altura mínima en landscape
-        }}
+      <StandardFooter
+        showProgressDots={true}
+        totalQuestions={totalQuestions}
+        currentQuestionIndex={currentQuestionIndex}
+        answers={answers}
+        questions={questions}
+        progressDotsVariant="feedback"
       >
-        {/* Language selector icon */}
-        <LanguageSelectorIcon 
-          variant="footer" 
-          delay={0.6}
-        />
-
-        {/* Pagination dots */}
-        <ProgressDots
-          totalQuestions={totalQuestions}
-          currentQuestionIndex={currentQuestionIndex}
-          answers={answers}
-          questions={questions}
-          variant="feedback"
-          style={{
-            flexShrink: 0,
-            marginBottom: 'min(5.625rem, 9vh)', // Usa vh para vertical en landscape
-            marginLeft: 'min(13.75rem, 22vw)' // Optimizado para pantalla más ancha
-          }}
-        />
-
-        {/* Spacer para simetría - reemplazado por "zur Auswertung" */}
+        {/* Next Question Button */}
         <motion.div
           initial={{ y: '100%', opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.7 }}
           style={{ 
             flexShrink: 0,
-            marginRight: 'min(5.625rem, 9vw)', // Optimizado para pantalla más ancha
-            marginBottom: 'min(5.625rem, 9vh)' // Usa vh para vertical en landscape
+            marginRight: 'min(5.625rem, 9vw)',
+            marginBottom: 'min(5.625rem, 9vh)'
           }}
         >
           <motion.button
@@ -232,8 +207,8 @@ const FeedbackScreen = () => {
             whileTap={{ scale: 0.95 }}
             className="flex items-center gap-2 transition-all cursor-pointer"
             style={{
-              minWidth: 'min(11.25rem, 18vw)', // Optimizado para pantalla más ancha
-              minHeight: 'min(3rem, 5vh)', // Usa vh para altura en landscape
+              minWidth: 'min(11.25rem, 18vw)',
+              minHeight: 'min(3rem, 5vh)',
               background: 'transparent',
               border: 'none',
               justifyContent: 'flex-start'
@@ -244,10 +219,10 @@ const FeedbackScreen = () => {
                 color: '#D9D9D9',
                 textAlign: 'center',
                 fontFamily: '"Tisa Sans Pro", sans-serif',
-                fontSize: 'min(1.375rem, 2.2vw, 3.5vh)', // Añadido vh para escalar verticalmente
+                fontSize: 'min(1.375rem, 2.2vw, 3.5vh)',
                 fontStyle: 'normal',
                 fontWeight: 300,
-                lineHeight: 'min(7rem, 11vh)', // Usa vh para altura en landscape
+                lineHeight: 'min(7rem, 11vh)',
                 textTransform: 'uppercase'
               }}
             >
@@ -260,15 +235,15 @@ const FeedbackScreen = () => {
               src="/images/GUI-2.svg"
               alt="Zur Auswertung"
               style={{
-                width: 'min(3.5rem, 6vw)', // Optimizado para pantalla más ancha
-                height: 'min(3.5rem, 6vh)' // Usa vh para altura en landscape
+                width: 'min(3.5rem, 6vw)',
+                height: 'min(3.5rem, 6vh)'
               }}
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 2 }}
             />
           </motion.button>
         </motion.div>
-      </div>
+      </StandardFooter>
     </motion.div>
   );
 };
