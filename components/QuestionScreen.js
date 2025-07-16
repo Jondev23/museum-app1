@@ -49,9 +49,9 @@ const QuestionScreen = () => {
           style={{ 
             width: '100%',
             maxWidth: 'min(120rem, 95vw)', // 1920px base
-            gap: 'min(1.5rem, 3vw)', // Reducido de 2.5rem
-            paddingTop: 'min(4rem, 8vw)', // Aumentado para compensar justify-start
-            paddingBottom: '0', // Eliminado completamente para mínimo espacio con footer
+            gap: 'min(1.5rem, 3vw)', // Mantenido tamaño actual
+            paddingTop: 'min(4rem, 6vh)', // Optimizado para landscape: cambio de 8vw a 6vh
+            paddingBottom: 'min(0.5rem, 1vh)', // Reducido para menor espacio con footer: de 1rem, 2vh a 0.5rem, 1vh
             paddingLeft: 'min(4rem, 6vw)', // Reducido de 10rem
             paddingRight: 'min(4rem, 6vw)', // Reducido de 10rem
             margin: '0 auto'
@@ -63,14 +63,14 @@ const QuestionScreen = () => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              gap: 'min(1.5rem, 3vw)', // Reducido de 2.5rem
-              padding: 'min(2rem, 4vw)', // Simplificado y reducido
+              gap: 'min(1.5rem, 3vw)', // Mantenido tamaño actual
+              padding: 'min(2rem, 4vw)', // Mantenido tamaño actual
               width: '100%',
               borderRadius: 'min(1.875rem, 4vw)', // 30px base
               overflow: 'hidden',
               border: '0',
               backgroundColor: 'transparent',
-              marginTop: 'min(4rem, 8vw)' // Agregado margen superior para empujar contenido abajo
+              marginTop: 'min(4rem, 6vh)' // Optimizado para landscape: cambio de 8vw a 6vh
             }}
           >
             {/* Content */}
@@ -96,7 +96,7 @@ const QuestionScreen = () => {
                   fontWeight: 750,
                   textAlign: 'center',
                   lineHeight: 'min(3.25rem, 6vw)', // Reducido proporcionalmente
-                  marginBottom: 'min(3rem, 5vw)' // Aumentado de 1rem para más espacio con botones
+                  marginBottom: 'min(3rem, 4vh)' // Optimizado para landscape: cambio de 5vw a 4vh
                 }}
               >
                 {question.question}
@@ -110,7 +110,7 @@ const QuestionScreen = () => {
                 style={{ 
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: 'min(1.75rem, 3.5vw)', 
+                  gap: 'min(2.52rem, 3.6vh)', // Aumentado 20% adicional: de 2.1rem a 2.52rem, de 3vh a 3.6vh
                   width: '100%',
                   alignItems: 'center'
                 }}
@@ -134,14 +134,14 @@ const QuestionScreen = () => {
                     `}
                     style={{
                       display: 'inline-flex',
-                      minWidth: 'min(47rem, 70vw)', // Reducido de 50rem para ser más compacto en X
-                      height: 'min(3rem, 6vw)', // Reducido de 3.5rem a 3rem
+                      minWidth: 'min(42.3rem, 63vw)', // Reducido 10%: de 47rem a 42.3rem, de 70vw a 63vw
+                      height: 'min(4.62rem, 6.93vh)', // Aumentado 5%: de 4.4rem a 4.62rem, de 6.6vh a 6.93vh
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: 'min(0.5rem, 1vw)',
-                      padding: 'min(2rem, 4vw) min(0.75rem, 1.5vw)', // Ajustado para mejor responsividad
-                      borderRadius: 'min(3rem, 6vw)', // Mantenido redondeado
-                      border: 'min(0.125rem, 0.25vw) solid #D9D9D9', // Responsive border width
+                      padding: 'min(2.89rem, 4.62vh) min(0.75rem, 1.5vw)', // Aumentado 5%: de 2.75rem a 2.89rem, de 4.4vh a 4.62vh
+                      borderRadius: 'min(4.62rem, 6.93vh)', // Aumentado 5%: de 4.4rem a 4.62rem, de 6.6vh a 6.93vh
+                      border: 'min(0.1125rem, 0.225vw) solid #D9D9D9', // Reducido 10%: de 0.125rem a 0.1125rem, de 0.25vw a 0.225vw
                       position: 'relative'
                     }}
                   >
@@ -151,10 +151,10 @@ const QuestionScreen = () => {
                         width: 'fit-content',
                         color: '#D9D9D9',
                         fontFamily: '"Tisa Sans Pro", sans-serif',
-                        fontSize: 'min(2rem, 4vw)', // Aumentado de 1.75rem
+                        fontSize: 'min(1.8rem, 3.6vw)', // Reducido 10%: de 2rem a 1.8rem, de 4vw a 3.6vw
                         fontWeight: 400,
                         textAlign: 'center',
-                        lineHeight: 'min(2.5rem, 5vw)', // Aumentado proporcionalmente
+                        lineHeight: 'min(2.25rem, 4.5vw)', // Reducido 10%: de 2.5rem a 2.25rem, de 5vw a 4.5vw
                         whiteSpace: 'nowrap',
                         fontStyle: 'normal'
                       }}
@@ -171,14 +171,14 @@ const QuestionScreen = () => {
         {/* Footer: Pagination dots + language icon */}
         <div 
           className="relative flex justify-between items-center"
-          style={{ padding: 'min(2.8rem, 5.3vw)' }}
+          style={{ padding: 'min(1rem, 1.8vh) min(3.5rem, 6.5vw) min(2.5rem, 4vh)' }} // Aumentado padding horizontal: de 2.8rem, 5.3vw a 3.5rem, 6.5vw y padding inferior: de 1.82rem, 3.03vh a 2.5rem, 4vh
         >
           {/* Language selector icon */}
           <motion.div
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            style={{ marginLeft: 'min(5.625rem, 10vw)' }} // 90px base
+            style={{ marginLeft: 'min(6.5rem, 12vw)' }} // Aumentado margen: de 5.625rem, 10vw a 6.5rem, 12vw para más separación
           >
             <motion.button
               onClick={() => setShowLanguageSelector(true)}
@@ -190,9 +190,10 @@ const QuestionScreen = () => {
                 src="/images/OE_Sprache_64 1.svg"
                 alt="Language selector"
                 style={{
-                  width: 'min(3rem, 6vw)',
-                  height: 'min(3rem, 6vw)',
-                  display: 'block'
+                  width: 'min(2.7rem, 5.4vw)', // Reducido 10%: de 3rem a 2.7rem, de 6vw a 5.4vw
+                  height: 'min(2.7rem, 5.4vw)', // Reducido 10%: de 3rem a 2.7rem, de 6vw a 5.4vw
+                  display: 'block',
+                  opacity: 0.8 // Agregada transparencia del 20%
                 }}
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
@@ -207,7 +208,7 @@ const QuestionScreen = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="absolute flex"
             style={{
-              gap: 'min(0.75rem, 1.5vw)',
+              gap: 'min(1rem, 2vw)', // Aumentado gap: de 0.75rem, 1.5vw a 1rem, 2vw para más separación entre círculos
               left: '46%',
               transform: 'translateX(calc(-50% - min(4rem, 8vw)))'
             }}
@@ -227,7 +228,7 @@ const QuestionScreen = () => {
           </motion.div>
 
           {/* Spacer for symmetry */}
-          <div style={{ width: 'min(4rem, 8vw)' }}></div>
+          <div style={{ width: 'min(5rem, 10vw)' }}></div>
         </div>
       </div>
     </motion.div>
