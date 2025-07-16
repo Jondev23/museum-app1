@@ -16,6 +16,7 @@ const QuestionScreen = () => {
   const totalQuestions = 5; // Ajusta esto si el número varía
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const question = getCurrentQuestion();
+  const startContent = content?.[language]?.startScreen;
 
   if (!question || !content?.[language]) return null;
 
@@ -35,7 +36,7 @@ const QuestionScreen = () => {
       transition={{ duration: 0.5 }}
       className="fixed inset-0 flex flex-col"
       style={{
-        backgroundImage: 'url(/images/Bild_Kutsche.webp)',
+        backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'

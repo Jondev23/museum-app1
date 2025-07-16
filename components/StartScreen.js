@@ -53,7 +53,7 @@ const StartScreen = () => {
       className="fixed inset-0 overflow-hidden"
       onTouchStart={handleTouchStart}
       style={{
-        backgroundImage: 'url(/images/Bild_Kutsche.webp)',
+        backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'

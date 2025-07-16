@@ -17,6 +17,7 @@ const ResultsScreen = () => {
   const [showContent, setShowContent] = useState(false);
 
   const score = getScore();
+  const startContent = content?.[language]?.startScreen;
 
   useEffect(() => {
     // Trigger content animation after component mounts
@@ -46,7 +47,7 @@ const ResultsScreen = () => {
       className="fixed inset-0 flex flex-col cursor-pointer"
       onClick={handleTouchAnywhere}
       style={{
-        backgroundImage: 'url(/images/Bild_Kutsche.webp)',
+        backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'

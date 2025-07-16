@@ -10,7 +10,7 @@
       "highlightText": "Interaktive Ausstellung",
       "introText": "Entdecken Sie die faszinierende Welt historischer Kutschen. Testen Sie Ihr Wissen mit unserem Quiz!",
       "swipeText": "Wischen Sie nach links oder berühren Sie hier",
-      "backgroundImage": "/images/kutschen-background.jpg"
+      "backgroundImage": "/images/Bild_Kutsche.webp"
     },
     "languageSelector": {
       "title": "Sprache wählen / Change language",
@@ -148,7 +148,7 @@
       "highlightText": "Interactive Exhibition",
       "introText": "Discover the fascinating world of historic carriages. Test your knowledge with our quiz!",
       "swipeText": "Swipe left or touch here",
-      "backgroundImage": "/images/kutschen-background.jpg"
+      "backgroundImage": "/images/Bild_Kutsche.webp"
     },
     "languageSelector": {
       "title": "Choose language / Sprache wählen",

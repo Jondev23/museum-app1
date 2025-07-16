@@ -10,7 +10,7 @@
       "highlightText": "Kiosk 3 - Thema: Kutschenbau",
       "introText": "Entdecken Sie die Geheimnisse des traditionellen Kutschenbaus. Testen Sie Ihr Wissen über Materialien, Techniken und Handwerk!",
       "swipeText": "Wischen Sie nach links oder berühren Sie hier",
-      "backgroundImage": "/images/craftsman-background.jpg"
+      "backgroundImage": "/images/Bild_Kutsche.webp"
     },
     "languageSelector": {
       "title": "Sprache wählen / Change language",
@@ -148,7 +148,7 @@
       "highlightText": "Kiosk 3 - Theme: Carriage Building",
       "introText": "Discover the secrets of traditional carriage building. Test your knowledge about materials, techniques, and craftsmanship!",
       "swipeText": "Swipe left or touch here",
-      "backgroundImage": "/images/craftsman-background.jpg"
+      "backgroundImage": "/images/Bild_Kutsche.webp"
     },
     "languageSelector": {
       "title": "Choose language / Sprache wählen",

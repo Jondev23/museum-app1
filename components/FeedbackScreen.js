@@ -29,6 +29,7 @@ const FeedbackScreen = () => {
   const randomMessage = feedbackMessages[Math.floor(Math.random() * feedbackMessages.length)];
 
   const buttonText = isLastQuestion ? quizContent.showResults : quizContent.nextQuestion;
+  const startContent = content[language].startScreen;
 
   return (
     <motion.div
@@ -38,7 +39,7 @@ const FeedbackScreen = () => {
       className="fixed inset-0 flex flex-col z-50"
       onClick={(e) => e.stopPropagation()}
       style={{
-        backgroundImage: 'url(/images/Bild_Kutsche.webp)',
+        backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
