@@ -156,7 +156,7 @@ const FeedbackScreen = () => {
                 margin: '0'
               }}
             >
-              {isCorrect ? 'Das ist richtig!' : 'Das ist leider falsch.'}
+              {randomMessage}
             </p>
             {question.explanation && (
               <p
