@@ -301,14 +301,17 @@ const FeedbackScreen = () => {
                 color: '#D9D9D9',
                 textAlign: 'center',
                 fontFamily: '"Tisa Sans Pro", sans-serif',
-                fontSize: 'min(1.375rem, 2.2vw)', // Optimizado para pantalla más ancha
+                fontSize: 'min(1.375rem, 2.2vw, 3.5vh)', // Añadido vh para escalar verticalmente
                 fontStyle: 'normal',
                 fontWeight: 300,
                 lineHeight: 'min(7rem, 11vh)', // Usa vh para altura en landscape
                 textTransform: 'uppercase'
               }}
             >
-              zur Auswertung
+              {isLastQuestion ? 
+                (content[language]?.quiz?.showResults || 'Show Results') : 
+                (content[language]?.quiz?.nextQuestion || 'Next Question')
+              }
             </span>
             <motion.img
               src="/images/GUI-2.svg"
