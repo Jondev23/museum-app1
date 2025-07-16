@@ -190,8 +190,8 @@ const QuestionScreen = () => {
                 src="/images/OE_Sprache_64 1.svg"
                 alt="Language selector"
                 style={{
-                  width: 'min(2.7rem, 5.4vw)', // Reducido 10%: de 3rem a 2.7rem, de 6vw a 5.4vw
-                  height: 'min(2.7rem, 5.4vw)', // Reducido 10%: de 3rem a 2.7rem, de 6vw a 5.4vw
+                  width: 'min(2.7rem, 5.4vw, 6vh)', // Añadido vh para escalar verticalmente
+                  height: 'min(2.7rem, 5.4vw, 6vh)', // Añadido vh para escalar verticalmente
                   display: 'block',
                   opacity: 0.8 // Agregada transparencia del 20%
                 }}
@@ -217,8 +217,8 @@ const QuestionScreen = () => {
               <div
                 key={i}
                 style={{
-                  width: 'min(1rem, 2vw)',
-                  height: 'min(1rem, 2vw)',
+                  width: 'min(1rem, 2vw, 2.5vh)', // Añadido vh para escalar verticalmente
+                  height: 'min(1rem, 2vw, 2.5vh)', // Añadido vh para escalar verticalmente
                   borderRadius: '50%',
                   border: '2px solid #D9D9D9',
                   backgroundColor: i === currentQuestionIndex ? '#D9D9D9' : 'transparent'
