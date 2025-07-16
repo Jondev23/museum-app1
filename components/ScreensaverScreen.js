@@ -9,6 +9,42 @@ const ScreensaverScreen = () => {
     startQuiz();
   };
 
+  // Show loading state if content is not yet loaded
+  if (!content?.[language]) {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="fixed inset-0 bg-black flex flex-col items-center justify-center cursor-pointer"
+      >
+        <motion.h1
+          animate={{ 
+            scale: [1, 1.02, 1],
+            opacity: [0.9, 1, 0.9]
+          }}
+          transition={{ 
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="text-center leading-tight"
+          style={{
+            color: '#61809D',
+            fontFamily: '"Tisa Pro", serif',
+            fontSize: 'min(6rem, 12vw)',
+            fontStyle: 'normal',
+            fontWeight: 500,
+            lineHeight: 'min(7rem, 14vw)'
+          }}
+        >
+          Loading...
+        </motion.h1>
+      </motion.div>
+    );
+  }
+
+  const screensaverContent = content[language].screensaver;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -60,7 +96,7 @@ const ScreensaverScreen = () => {
             lineHeight: 'min(7rem, 14vw)' // Responsive line height
           }}
         >
-          Animation Loop
+          {screensaverContent?.message || 'Touch the screen to begin'}
         </motion.h1>
       </motion.div>
 
@@ -93,14 +129,23 @@ const ScreensaverScreen = () => {
               height: 'min(6rem, 12vw)' // Responsive height - increased for circular background
             }}
           >
-            <img
-              src="/images/OE_Touch_128 2.svg"
-              alt="Touch indicator"
-              style={{
-                width: 'min(4rem, 8vw)', // Responsive image width
-                height: 'min(4rem, 8vw)' // Responsive image height
-              }}
-            />
+            {screensaverContent?.handIcon ? (
+              <span style={{
+                fontSize: 'min(3rem, 6vw)',
+                lineHeight: 1
+              }}>
+                {screensaverContent.handIcon}
+              </span>
+            ) : (
+              <img
+                src="/images/OE_Touch_128 2.svg"
+                alt="Touch indicator"
+                style={{
+                  width: 'min(4rem, 8vw)', // Responsive image width
+                  height: 'min(4rem, 8vw)' // Responsive image height
+                }}
+              />
+            )}
           </div>
         </motion.div>
       </motion.div>
