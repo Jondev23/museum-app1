@@ -59,13 +59,13 @@ const LanguageSelector = () => {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: 'min(5rem, 10vw)', 
+              gap: 'min(4rem, 7.5vw)', // Aumentado de 3rem a 4rem, de 6vw a 7.5vw para más espacio entre textos y botones
               width: 'auto', 
               maxWidth: '100vw', 
               padding: '0 min(2rem, 4vw)',
               minHeight: '100vh',
-              paddingTop: 'min(2.5rem, 5vw)',
-              paddingBottom: 'min(2.5rem, 5vw)'
+              paddingTop: 'min(4rem, 6vw)', // Reducido de 8rem a 4rem, de 12vw a 6vw para menos espacio superior
+              paddingBottom: 'min(5rem, 10vw)' // Aumentado de 4rem a 5rem, de 8vw a 10vw para más espacio inferior
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -100,13 +100,14 @@ const LanguageSelector = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                textAlign: 'center'
+                textAlign: 'center',
+                gap: 'min(0.0rem, 0vw)' // Agregado gap reducido entre los títulos
               }}
             >
               <h1 style={{
                 color: '#D9D9D9',
                 fontFamily: "Tisa Pro",
-                fontSize: 'min(3.375rem, 8vw)',
+                fontSize: 'min(2.7rem, 6.4vw)', // Reducido 20%: de 3.375rem a 2.7rem, de 8vw a 6.4vw
                 fontWeight: 750,
                 fontStyle: 'italic',
                 textAlign: 'center',
@@ -120,7 +121,7 @@ const LanguageSelector = () => {
                 color: '#D9D9D9',
                 opacity: 0.6,
                 fontFamily: "Tisa Pro",
-                fontSize: 'min(3.375rem, 8vw)',
+                fontSize: 'min(2.7rem, 6.4vw)', // Reducido 20%: de 3.375rem a 2.7rem, de 8vw a 6.4vw
                 fontWeight: 750,
                 fontStyle: 'italic',
                 textAlign: 'center',
@@ -156,8 +157,8 @@ const LanguageSelector = () => {
                   whileTap={{ scale: 0.98 }}
                   className="transition-all"
                   style={{
-                    width: 'min(max(20rem, 50vw), 62.5rem)', // Responsive: 320px min, grows with viewport, max 1000px
-                    height: 'min(5rem, 12vw)',
+                    width: 'min(max(21rem, 53vw), 75rem)', // Aumentado: 24rem min (era 20rem), 60vw (era 50vw), 75rem max (era 62.5rem)
+                    height: 'min(4.05rem, 9.72vw)', // Reducido 10% adicional: de 4.5rem a 4.05rem, de 10.8vw a 9.72vw
                     borderRadius: 'min(3.75rem, 8vw)',
                     border: '2px solid #A94930',
                     background: '#A94930', // Siempre Kupfer como en la referencia (selected)
@@ -189,8 +190,8 @@ const LanguageSelector = () => {
                   whileTap={{ scale: 0.98 }}
                   className="transition-all"
                   style={{
-                    width: 'min(max(20rem, 50vw), 62.5rem)', // Responsive: 320px min, grows with viewport, max 1000px
-                    height: 'min(5rem, 12vw)',
+                    width: 'min(max(21rem, 53vw), 75rem)', // Igualado al primer botón
+                    height: 'min(4.05rem, 9.72vw)', // Reducido 10% adicional: de 4.5rem a 4.05rem, de 10.8vw a 9.72vw
                     borderRadius: 'min(3.75rem, 8vw)',
                     border: '2px solid #D9D9D9',
                     background: 'transparent', // Transparente como en la referencia (outline)
