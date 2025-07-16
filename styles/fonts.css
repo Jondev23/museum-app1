@@ -1,10 +1,12 @@
 /* Custom fonts for museum app */
 
-/* Tisa Pro Font Family */
+/* Import Google Fonts as temporary fallback until client fonts are available */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:wght@400;700&display=swap');
+
+/* Tisa Pro Font Family - Client's required fonts */
 @font-face {
   font-family: 'Tisa Pro';
-  src: url('/fonts/TisaPro-Regular.woff2') format('woff2'),
-       url('/fonts/TisaPro-Regular.woff') format('woff');
+  src: url('/fonts/TisaPro-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -12,8 +14,7 @@
 
 @font-face {
   font-family: 'Tisa Pro';
-  src: url('/fonts/TisaPro-Bold.woff2') format('woff2'),
-       url('/fonts/TisaPro-Bold.woff') format('woff');
+  src: url('/fonts/TisaPro-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -21,8 +22,7 @@
 
 @font-face {
   font-family: 'Tisa Pro';
-  src: url('/fonts/TisaPro-Italic.woff2') format('woff2'),
-       url('/fonts/TisaPro-Italic.woff') format('woff');
+  src: url('/fonts/TisaPro-Italic.otf') format('opentype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -30,18 +30,16 @@
 
 @font-face {
   font-family: 'Tisa Pro';
-  src: url('/fonts/TisaPro-BoldItalic.woff2') format('woff2'),
-       url('/fonts/TisaPro-BoldItalic.woff') format('woff');
+  src: url('/fonts/TisaPro-BoldItalic.otf') format('opentype');
   font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
 
-/* Tisa Sans Pro Font Family */
+/* Tisa Sans Pro Font Family - Client's required fonts */
 @font-face {
   font-family: 'Tisa Sans Pro';
-  src: url('/fonts/TisaSansPro-Regular.woff2') format('woff2'),
-       url('/fonts/TisaSansPro-Regular.woff') format('woff');
+  src: url('/fonts/TisaSansPro-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -49,20 +47,25 @@
 
 @font-face {
   font-family: 'Tisa Sans Pro';
-  src: url('/fonts/TisaSansPro-Bold.woff2') format('woff2'),
-       url('/fonts/TisaSansPro-Bold.woff') format('woff');
+  src: url('/fonts/TisaSansPro-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-/* Fallback fonts for better compatibility */
+/* Font stack with client fonts first, then fallbacks */
 .font-tisa-pro {
-  font-family: 'Tisa Pro', 'Times New Roman', serif;
+  font-family: 'Tisa Pro', 'Playfair Display', 'Times New Roman', 'Georgia', serif;
 }
 
 .font-tisa-sans-pro {
-  font-family: 'Tisa Sans Pro', 'Arial', sans-serif;
+  font-family: 'Tisa Sans Pro', 'Source Sans Pro', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+/* Global font variables for consistent usage */
+* {
+  --font-serif: 'Tisa Pro', 'Playfair Display', 'Times New Roman', 'Georgia', serif;
+  --font-sans: 'Tisa Sans Pro', 'Source Sans Pro', 'Helvetica Neue', 'Arial', sans-serif;
 }
 
 /* Custom utility classes for museum design */

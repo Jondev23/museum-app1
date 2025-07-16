@@ -97,7 +97,7 @@ const StartScreen = () => {
                   style={{
                     color: '#D9D9D9', // var(--Neutral_Light, #D9D9D9)
                     textAlign: 'center',
-                    fontFamily: '"Tisa Pro", "Times New Roman", serif', // Head & Auswertung
+                    fontFamily: '"Tisa Pro", "Playfair Display", "Times New Roman", "Georgia", serif', // Head & Auswertung
                     fontSize: 'min(4.8rem, 9vw, 11vh)', // Añadido vh para escalar verticalmente
                     fontStyle: 'italic',
                     fontWeight: 700, // Corregido a 700 según especificación
@@ -115,7 +115,7 @@ const StartScreen = () => {
                   style={{
                     color: '#85AF8B', // var(--Blassgruen, #85AF8B)
                     textAlign: 'center',
-                    fontFamily: '"Tisa Sans Pro", "Arial", sans-serif', // Subline
+                    fontFamily: '"Tisa Sans Pro", "Source Sans Pro", "Helvetica Neue", "Arial", sans-serif', // Subline
                     fontSize: 'min(2.8rem, 5.6vw, 7vh)', // Añadido vh para escalar verticalmente
                     fontStyle: 'normal',
                     fontWeight: 400,
@@ -134,7 +134,7 @@ const StartScreen = () => {
                 style={{
                   color: '#D9D9D9', // var(--Neutral_Light, #D9D9D9)
                   textAlign: 'center',
-                  fontFamily: '"Tisa Pro", "Times New Roman", serif', // Antwort_Fließ_Bold
+                  fontFamily: '"Tisa Pro", "Playfair Display", "Times New Roman", "Georgia", serif', // Antwort_Fließ_Bold
                   maxWidth: 'min(120rem, 95vw)' // 1920px base
                 }}
               >
