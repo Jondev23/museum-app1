@@ -112,8 +112,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
 
   const buttonContainerStyle = useMemo(() => ({
     flexShrink: 0,
-    marginRight: 'min(5.625rem, 9vw)',
-    marginBottom: 'min(5.625rem, 9vh)'
+    marginRight: 'min(4.625rem, 7vw)',
+    marginBottom: 'min(6.8625rem, 10.8vh)'
   }), []);
 
   const buttonStyle = useMemo(() => ({
