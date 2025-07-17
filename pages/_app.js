@@ -1,5 +1,4 @@
 import '../styles/globals.css';
-import '../styles/fonts.css';
 import { AppProvider } from '../context/AppContext';
 
 export default function App({ Component, pageProps }) {
