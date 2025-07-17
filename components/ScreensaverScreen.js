@@ -30,7 +30,7 @@ const ScreensaverScreen = () => {
           className="text-center leading-tight"
           style={{
             color: '#61809D',
-            fontFamily: '"Tisa Pro", serif',
+            fontFamily: '"Tisa Pro"',
             fontSize: 'min(6rem, 12vw)',
             fontStyle: 'normal',
             fontWeight: 500,

@@ -67,7 +67,7 @@ const ResultsScreen = () => {
           style={{
             marginBottom: 'min(2rem, 3vh)', 
             color: '#D9D9D9',
-            fontFamily: '"Tisa Pro", serif',
+            fontFamily: '"Tisa Pro"',
             fontSize: 'min(4.8rem, 8vw)', 
             fontStyle: 'italic',
             fontWeight: 700,
@@ -87,7 +87,7 @@ const ResultsScreen = () => {
           style={{
             marginBottom: 'min(3rem, 4vh)', 
             color: '#85AF8B',
-            fontFamily: '"Tisa Sans Pro", sans-serif',
+            fontFamily: '"Tisa Sans Pro",',
             fontSize: 'min(3.2rem, 5.5vw)',
             fontStyle: 'normal',
             fontWeight: 400,
@@ -123,7 +123,7 @@ const ResultsScreen = () => {
             background: 'transparent',
             border: 'none',
             color: '#FFF',
-            fontFamily: '"Tisa Sans Pro", sans-serif',
+            fontFamily: '"Tisa Sans Pro"',
             fontSize: 'min(1.5rem, 2.5vw)',
             fontStyle: 'normal',
             fontWeight: 400,
