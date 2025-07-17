@@ -12,8 +12,8 @@ const LanguageSelectorIcon = ({
 
   // Consistent base styles for all variants
   const baseIconStyles = {
-    width: 'min(3rem, 5.4vw, 6.75vh)', 
-    height: 'min(3rem, 5.4vw, 6.75vh)',
+    width: 'min(2.7rem, 4.86vw, 6.075vh)', 
+    height: 'min(2.7rem, 4.86vw, 6.075vh)',
     display: 'block',
     opacity: opacity
   };
@@ -23,7 +23,7 @@ const LanguageSelectorIcon = ({
     return {
       flexShrink: 0,
       marginBottom: 'min(5.625rem, 9vh)',
-      marginLeft: 'min(6.125rem, 10vw)',
+      marginLeft: 'min(5.125rem, 8vw)',
       ...style
     };
   };
