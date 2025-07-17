@@ -22,7 +22,7 @@ const LanguageSelectorIcon = ({
   const getContainerStyles = () => {
     return {
       flexShrink: 0,
-      marginBottom: 'min(5.625rem, 9vh)',
+      marginBottom: 'min(6rem, 9.5vh)',
       marginLeft: 'min(5.125rem, 8vw)',
       ...style
     };
