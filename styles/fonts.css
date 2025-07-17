@@ -1,7 +1,5 @@
 /* Custom fonts for museum app */
 
-/* Import Google Fonts as temporary fallback until client fonts are available */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:wght@400;700&display=swap');
 
 /* Tisa Pro Font Family - Client's required fonts */
 @font-face {
