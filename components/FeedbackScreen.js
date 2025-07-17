@@ -48,7 +48,7 @@ const FeedbackScreen = () => {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/75" />
       
-      {/* Main content container - optimizado para landscape tablet */}
+      {/* Main content container – optimized for landscape tablet */}
       <div 
         className="flex-1 flex items-center justify-center overflow-hidden"
         style={{
@@ -87,7 +87,7 @@ const FeedbackScreen = () => {
             className="mb-4 flex-shrink-0"
             style={{
               color: '#D9D9D9',
-              fontFamily: '"Tisa Pro", serif',
+              fontFamily: '"Tisa Pro"',
               fontSize: 'min(3.375rem, 5.5vw, 8vh)',
               fontStyle: 'italic',
               fontWeight: 750,
@@ -100,7 +100,7 @@ const FeedbackScreen = () => {
             {question.question}
           </motion.h1>
 
-          {/* Selected answer container - ancho responsivo */}
+          {/* Selected answer container – responsive width */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ const FeedbackScreen = () => {
               <span
                 style={{
                   color: '#344243',
-                  fontFamily: '"Tisa Sans Pro", sans-serif',
+                  fontFamily: '"Tisa Sans Pro"',
                   fontSize: 'min(2rem, 3.5vw, 5vh)', 
                   fontStyle: 'normal',
                   fontWeight: 400,
@@ -144,7 +144,7 @@ const FeedbackScreen = () => {
             <p
               style={{
                 color: '#D9D9D9',
-                fontFamily: '"Tisa Pro", serif',
+                fontFamily: '"Tisa Pro"',
                 fontSize: 'min(2.25rem, 3.8vw, 6vh)',
                 fontStyle: 'normal',
                 fontWeight: 700,
@@ -163,10 +163,10 @@ const FeedbackScreen = () => {
                 className="mt-2"
                 style={{
                   color: '#D9D9D9',
-                  fontFamily: '"Tisa Pro", serif',
+                  fontFamily: '"Tisa Pro"',
                   fontSize: 'min(2rem, 3.5vw, 5vh)',
                   fontStyle: 'normal',
-                  fontWeight: 700,
+                  fontWeight: 400,
                   lineHeight: '1.4',
                   letterSpacing: 'min(0.02em, 0.05vw)',
                   textAlign: 'center',
@@ -182,7 +182,7 @@ const FeedbackScreen = () => {
         </motion.div>
       </div>
 
-      {/* Fixed footer - language selector + pagination dots totalmente responsivo */}
+      {/*Fixed footer – language selector + pagination dots fully responsive*/}
       <StandardFooter
         showProgressDots={true}
         totalQuestions={totalQuestions}
@@ -220,10 +220,10 @@ const FeedbackScreen = () => {
               style={{
                 color: '#D9D9D9',
                 textAlign: 'center',
-                fontFamily: '"Tisa Sans Pro", sans-serif',
+                fontFamily: '"Tisa Sans Pro"',
                 fontSize: 'min(1.375rem, 2.2vw, 3.5vh)',
                 fontStyle: 'normal',
-                fontWeight: 300,
+                fontWeight: 400,
                 lineHeight: 'min(7rem, 11vh)',
                 textTransform: 'uppercase'
               }}
