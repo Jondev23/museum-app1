@@ -95,9 +95,9 @@ const StartScreen = () => {
                   animate={showContent ? { y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   style={{
-                    color: '#D9D9D9', // var(--Neutral_Light, #D9D9D9)
+                    color: '#D9D9D9',
                     textAlign: 'center',
-                    fontFamily: '"Tisa Pro", "Playfair Display", "Times New Roman", "Georgia", serif', 
+                    fontFamily: '"Tisa Pro"', 
                     fontSize: 'min(4.8rem, 9vw, 11vh)', 
                     fontStyle: 'italic',
                     fontWeight: 700, 
@@ -113,9 +113,9 @@ const StartScreen = () => {
                   animate={showContent ? { y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.8, delay: 0.4 }}
                   style={{
-                    color: '#85AF8B', // var(--Blassgruen, #85AF8B)
+                    color: '#85AF8B', 
                     textAlign: 'center',
-                    fontFamily: '"Tisa Sans Pro", "Source Sans Pro", "Helvetica Neue", "Arial", sans-serif', 
+                    fontFamily: '"Tisa Sans Pro"', 
                     fontSize: 'min(2.8rem, 5.6vw, 7vh)',
                     fontStyle: 'normal',
                     fontWeight: 400,
@@ -134,14 +134,14 @@ const StartScreen = () => {
                 style={{
                   color: '#D9D9D9',
                   textAlign: 'center',
-                  fontFamily: '"Tisa Pro", "Playfair Display", "Times New Roman", "Georgia", serif', 
+                  fontFamily: '"Tisa Pro"',
                   maxWidth: 'min(120rem, 95vw)'
                 }}
               >
                 <span style={{
                   fontSize: 'min(1.9rem, 3.8vw, 4.8vh)', 
-                  fontWeight: 700, // Más pesado
-                  fontFamily: '"Tisa Pro", "Times New Roman", serif',
+                  fontWeight: 700,
+                  fontFamily: '"Tisa Pro"',
                   lineHeight: 'min(2.66rem, 5.32vw, 6.7vh)',
                   letterSpacing: 'min(0.019rem, 0.038vw, 0.048vh)'
                 }}>
@@ -151,8 +151,8 @@ const StartScreen = () => {
 
                 <span style={{
                   fontSize: 'min(1.6rem, 3.4vw, 4.2vh)',
-                  fontWeight: 400, // Más ligero
-                  fontFamily: '"Tisa Pro", "Times New Roman", serif',
+                  fontWeight: 400, 
+                  fontFamily: '"Tisa Pro"',
                   lineHeight: 'min(2.38rem, 4.76vw, 5.9vh)',
                   letterSpacing: 'min(0.017rem, 0.034vw, 0.042vh)'
                 }}>
@@ -163,9 +163,9 @@ const StartScreen = () => {
           </div>
         </div>
 
-        {/* Footer con icono de idioma y swipe indicator */}
+        {/* Footer with language icon and swipe indicator */}
         <StandardFooter>
-          {/* Touch indicator - centro absoluto respecto a la pantalla completa */}
+          {/* Touch indicator – absolutely centered relative to the full screen */}
           <motion.div
             initial={{ y: 100, opacity: 0 }}
             animate={{ 
