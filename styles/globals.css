@@ -2,12 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:wght@400;700&display=swap');
+@import './fonts.css';
 
 @layer base {
   html {
-    font-family: 'Source Sans Pro', Inter, system-ui, sans-serif;
+    font-family: 'Tisa Sans Pro', 'Tisa Pro', system-ui, sans-serif;
   }
   
   body {
@@ -18,11 +17,78 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    font-family: 'Source Sans Pro', Inter, system-ui, sans-serif;
+    font-family: 'Tisa Sans Pro', 'Tisa Pro', system-ui, sans-serif;
   }
 }
 
 @layer components {
+  /* Typography classes based on actual usage */
+  .font-tisa-pro {
+    font-family: 'Tisa Pro', serif;
+  }
+  
+  .font-tisa-sans-pro {
+    font-family: 'Tisa Sans Pro', sans-serif;
+  }
+  
+  /* Title styles */
+  .title-main {
+    font-family: 'Tisa Pro', serif;
+    font-style: italic;
+    font-weight: 700;
+    color: #D9D9D9;
+    text-align: center;
+  }
+  
+  .title-question {
+    font-family: 'Tisa Pro', serif;
+    font-style: italic;
+    font-weight: 750;
+    color: #D9D9D9;
+    text-align: center;
+  }
+  
+  .subtitle-main {
+    font-family: 'Tisa Sans Pro', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #85AF8B;
+    text-align: center;
+  }
+  
+  /* Text styles */
+  .text-body-primary {
+    font-family: 'Tisa Pro', serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #D9D9D9;
+    text-align: center;
+  }
+  
+  .text-body-bold {
+    font-family: 'Tisa Pro', serif;
+    font-style: normal;
+    font-weight: 700;
+    color: #D9D9D9;
+    text-align: center;
+  }
+  
+  .text-button {
+    font-family: 'Tisa Sans Pro', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #D9D9D9;
+    text-align: center;
+  }
+  
+  .text-answer {
+    font-family: 'Tisa Sans Pro', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+  }
+  
+  /* Button styles */
   .btn-primary {
     @apply bg-museum-brown hover:bg-opacity-90 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95;
   }
