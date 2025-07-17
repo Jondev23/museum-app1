@@ -50,12 +50,12 @@ const FeedbackScreen = () => {
       {/* Main content - usando el patrón de QuestionScreen */}
       <div className="relative z-10 flex flex-col h-full">
         <div 
-          className="flex flex-col items-center justify-center flex-1"
+          className="flex flex-col items-center justify-start flex-1"
           style={{ 
             width: '100%',
             maxWidth: 'min(120rem, 95vw)',
             gap: 'min(1.5rem, 3vw)', 
-            paddingTop: 'min(4rem, 6vh)',
+            paddingTop: 'min(6rem, 8vh)',
             paddingBottom: 'min(2rem, 3vh)', 
             paddingLeft: 'min(4rem, 6vw)', 
             paddingRight: 'min(4rem, 6vw)',
@@ -78,8 +78,8 @@ const FeedbackScreen = () => {
               gap: 'min(1.5rem, 3vw)',
               padding: 'min(3rem, 5vw)',
               width: '100%',
-              maxWidth: 'min(80rem, 90vw)',
-              minHeight: 'min(35rem, 60vh)',
+              maxWidth: 'min(73.7rem, 82.9vw)',
+              minHeight: 'min(43rem, 74vh)',
               justifyContent: 'space-evenly'
             }}
           >

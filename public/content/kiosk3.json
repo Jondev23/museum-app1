@@ -146,7 +146,7 @@
       "title": "General Travel",
       "subtitle": "What was traveling really like in the past?",
       "highlightText": "Daily life, comfort and challenges in the 19th century",
-      "introText": "Test your knowledge! Five questions guide you through the travel reality of bygone times. Was carriage travel a comfortable pleasure or rather an adventure on wheels? Face the challenge – you might know more than you think. And if not: you'll definitely learn something along the way!",
+      "introText": "Test your knowledge! Eight questions guide you through the travel reality of bygone times. Was carriage travel a comfortable pleasure or rather an adventure on wheels? Face the challenge – you might know more than you think. And if not: you'll definitely learn something along the way!",
       "swipeText": "Swipe left or touch here",
       "backgroundImage": "/images/Bild_Kutsche.webp"
     },
@@ -173,7 +173,7 @@
       ]
     },
     "results": {
-      "scoreText": "You answered {score} out of 5 questions correctly.",
+      "scoreText": "You answered {score} out of 8 questions correctly.",
       "messages": {
         "0": "Brrr! Looks like the carriage ended up in the ditch. Try again right away!",
         "1": "There's still room for improvement! You've at least got your foot on the running board.",
@@ -187,14 +187,14 @@
     "questions": [
       {
         "id": "q1",
-        "question": "What did a journey by mail coach from Leipzig to Dresden cost?",
+        "question": "How much did a journey by mail coach from Leipzig to Dresden cost?",
         "answers": [
           "approx. 30 Kreuzer",
           "approx. 1 Taler",
           "approx. 5 Taler"
         ],
         "correctAnswer": 1,
-        "explanation": "The journey cost 1 Taler. This corresponded roughly to a craftsman's daily wage in the 18th or early 19th century. For many people, this was a considerable expense – travel was therefore a luxury that mainly wealthier citizens could afford."
+        "explanation": "The journey cost 1 Taler, which corresponded roughly to a craftsman's daily wage in the 18th or early 19th century. For many people, this was a considerable expense – travel was therefore a luxury that mainly wealthier citizens could afford."
       },
       {
         "id": "q2",
@@ -205,7 +205,7 @@
           "Reclining seats and openable windows"
         ],
         "correctAnswer": 1,
-        "explanation": "A mail coach journey was usually uncomfortable and exhausting. The coaches were only lightly sprung, the seats hard and the space very cramped. There were hardly any breaks, except for changing horses."
+        "explanation": "A mail coach journey was usually uncomfortable and exhausting. The coaches were only lightly sprung, the seats were hard, and the space was very cramped. There were hardly any breaks, except for changing horses."
       },
       {
         "id": "q3",
@@ -227,7 +227,7 @@
           "It became unpleasantly wet, cold and slippery"
         ],
         "correctAnswer": 2,
-        "explanation": "In bad weather, traveling by mail coach was particularly arduous. The roads turned into mud and ice surfaces, making the journey slow and dangerous. The coaches were often drafty, the covers leaky, and there was no effective insulation against cold or moisture."
+        "explanation": "In bad weather, traveling by mail coach was particularly challenging. The roads turned into mud and icy surfaces, making the journey slow and dangerous. The coaches were often drafty, the covers leaked, and there was no effective insulation against cold or moisture."
       },
       {
         "id": "q5",
@@ -267,7 +267,7 @@
         "question": "What did you do during a coach journey if you needed to use the toilet?",
         "answers": [
           "There was an onboard toilet inside the wagon",
-          "You stopped at inns or \"behind the bush\"",
+          "You stopped at inns or went \"behind a bush\"",
           "Passengers had to use buckets during the journey"
         ],
         "correctAnswer": 1,
