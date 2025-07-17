@@ -1,46 +1,43 @@
-import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
-import StandardFooter from './shared/StandardFooter';
-import ProgressDots from './shared/ProgressDots';
-import { useState } from 'react';
+import { useQuestionScreen } from '../hooks/useQuestionScreen';
+import { useQuestionScreenStyles, QUESTION_CONFIG } from './QuestionScreen/QuestionScreenConfig';
+import QuestionTitle from './QuestionScreen/QuestionTitle';
+import AnswerButtons from './QuestionScreen/AnswerButtons';
+import QuestionFooter from './QuestionScreen/QuestionFooter';
 
 const QuestionScreen = () => {
   const {
-    getCurrentQuestion,
-    answerQuestion,
-    content,
-    language,
-    currentQuestionIndex
-  } = useApp();
+    question,
+    startContent,
+    currentQuestionIndex,
+    selectedAnswer,
+    isValidData,
+    handleAnswerClick,
+    getButtonClassName
+  } = useQuestionScreen();
 
-  const totalQuestions = 5; // Ajusta esto si el número varía
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const question = getCurrentQuestion();
-  const startContent = content?.[language]?.startScreen;
+  const {
+    backgroundStyle,
+    mainContentStyle,
+    cardContainerStyle,
+    contentStyle,
+    titleStyle,
+    answersContainerStyle,
+    progressDotsStyle,
+    getButtonStyle,
+    textStyle
+  } = useQuestionScreenStyles(startContent);
 
-  if (!question || !content?.[language]) return null;
-
-  const handleAnswerClick = (answerIndex) => {
-    if (selectedAnswer !== null) return;
-    setSelectedAnswer(answerIndex);
-    setTimeout(() => {
-      answerQuestion(answerIndex);
-    }, 500);
-  };
+  if (!isValidData) return null;
 
   return (
     <motion.div
       initial={{ x: '100%' }}
       animate={{ x: 0 }}
       exit={{ x: '-100%' }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: QUESTION_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
       className="fixed inset-0 flex flex-col"
-      style={{
-        backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
+      style={backgroundStyle}
     >
       <div className="absolute inset-0 bg-black/75" />
 
@@ -48,143 +45,35 @@ const QuestionScreen = () => {
         {/* Main content */}
         <div 
           className="flex flex-col items-center justify-start flex-1"
-          style={{ 
-            width: '100%',
-            maxWidth: 'min(120rem, 95vw)', // 1920px base
-            gap: 'min(1.5rem, 3vw)', 
-            paddingTop: 'min(4rem, 6vh)',
-            paddingBottom: 'min(0.5rem, 1vh)', 
-            paddingLeft: 'min(4rem, 6vw)', 
-            paddingRight: 'min(4rem, 6vw)',
-            margin: '0 auto'
-          }}
+          style={mainContentStyle}
         >
           {/* Card container */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: 'min(1.5rem, 3vw)', 
-              padding: 'min(2rem, 4vw)', 
-              width: '100%',
-              borderRadius: 'min(1.875rem, 4vw)', 
-              overflow: 'hidden',
-              border: '0',
-              backgroundColor: 'transparent',
-              marginTop: 'min(4rem, 6vh)'
-            }}
-          >
+          <div style={cardContainerStyle}>
             {/* Content */}
-            <div style={{ 
-              padding: '0', 
-              width: '100%', 
-              display: 'flex', 
-              flexDirection: 'column', 
-              alignItems: 'center', 
-              gap: 'min(1rem, 2vw)' 
-            }}>
-              <motion.h1
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="title-question"
-                style={{
-                  position: 'relative',
-                  alignSelf: 'stretch',
-                  fontSize: 'min(2.5rem, 5vw, 6vh)',
-                  lineHeight: 'min(3.25rem, 6vw, 7.5vh)',
-                  marginBottom: 'min(3rem, 4vh)' 
-                }}
-              >
-                {question.question}
-              </motion.h1>
+            <div style={contentStyle}>
+              <QuestionTitle 
+                question={question} 
+                titleStyle={titleStyle} 
+              />
 
-              {/* Answer buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                style={{ 
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 'min(2.52rem, 3.6vh)',
-                  width: '100%',
-                  alignItems: 'center'
-                }}
-              >
-                {question.answers.map((answer, index) => (
-                  <motion.button
-                    key={index}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                    onClick={() => handleAnswerClick(index)}
-                    disabled={selectedAnswer !== null}
-                    className={`
-                      transition-all duration-300 transform bg-transparent
-                      ${selectedAnswer === null
-                        ? 'hover:bg-white/10 hover:shadow-lg hover:scale-102 active:scale-98 cursor-pointer'
-                        : selectedAnswer === index
-                          ? 'bg-white/30 scale-102 shadow-xl'
-                          : 'opacity-60 cursor-not-allowed'
-                      }
-                    `}
-                    style={{
-                      display: 'inline-flex',
-                      minWidth: 'min(42.3rem, 63vw, 80vh)', 
-                      height: 'min(4.62rem, 6.93vh, 8vw)',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: 'min(0.5rem, 1vw)',
-                      padding: 'min(2.89rem, 4.62vh, 6vw) min(0.75rem, 1.5vw)', 
-                      borderRadius: 'min(4.62rem, 6.93vh, 8vw)', 
-                      border: 'min(0.1125rem, 0.225vw, 0.3vh) solid #D9D9D9',
-                      position: 'relative'
-                    }}
-                  >
-                    <span
-                      className="text-answer"
-                      style={{
-                        position: 'relative',
-                        width: 'fit-content',
-                        color: '#D9D9D9',
-                        fontSize: 'min(1.8rem, 3.6vw, 4.5vh)',
-                        lineHeight: 'min(2.25rem, 4.5vw, 5.6vh)',
-                        whiteSpace: 'nowrap'
-                      }}
-                    >
-                      {answer}
-                    </span>
-                  </motion.button>
-                ))}
-              </motion.div>
+              <AnswerButtons
+                question={question}
+                answersContainerStyle={answersContainerStyle}
+                getButtonStyle={getButtonStyle}
+                getButtonClassName={getButtonClassName}
+                textStyle={textStyle}
+                handleAnswerClick={handleAnswerClick}
+                selectedAnswer={selectedAnswer}
+              />
             </div>
           </div>
         </div>
 
-        {/* Footer section with separate positioning */}
-        <div className="relative">
-          {/* Pagination dots - positioned independently but aligned vertically with language icon */}
-          <ProgressDots
-            totalQuestions={totalQuestions}
-            currentQuestionIndex={currentQuestionIndex}
-            variant="default"
-            className="absolute"
-            style={{
-              left: '46%',
-              bottom: 'min(5.625rem, 9vh)',
-              transform: 'translateX(calc(-50% - min(4rem, 8vw)))',
-              zIndex: 30
-            }}
-          />
-          
-          {/* Standard footer with language icon only */}
-          <StandardFooter
-            showProgressDots={false}
-            alignProgressDots="center"
-          />
-        </div>
+        {/* Footer section */}
+        <QuestionFooter
+          currentQuestionIndex={currentQuestionIndex}
+          progressDotsStyle={progressDotsStyle}
+        />
       </div>
     </motion.div>
   );
