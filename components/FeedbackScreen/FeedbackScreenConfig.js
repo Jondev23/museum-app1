@@ -112,7 +112,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
 
   const buttonContainerStyle = useMemo(() => ({
     flexShrink: 0,
-    marginRight: 'min(4.625rem, 7vw)',
+    marginRight: 'min(6.43125rem, 10.5vw)',
     marginBottom: 'min(6.8625rem, 10.8vh)'
   }), []);
 
@@ -125,7 +125,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const buttonTextStyle = useMemo(() => ({
-    fontSize: 'min(1.175rem, 2.2vw, 3.5vh)',
+    fontSize: 'min(1.23375rem, 2.31vw, 3.675vh)',
     lineHeight: 'min(7rem, 11vh)',
     textTransform: 'uppercase'
   }), []);
