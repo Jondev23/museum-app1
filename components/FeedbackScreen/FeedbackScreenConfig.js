@@ -121,7 +121,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     minHeight: 'min(3rem, 5vh)',
     background: 'transparent',
     border: 'none',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    gap: 'min(1rem, 2vw)'
   }), []);
 
   const buttonTextStyle = useMemo(() => ({
