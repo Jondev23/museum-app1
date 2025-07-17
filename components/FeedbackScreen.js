@@ -88,14 +88,10 @@ const FeedbackScreen = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
+              className="title-question"
               style={{
-                color: '#D9D9D9',
-                fontFamily: '"Tisa Pro"',
                 fontSize: 'min(2.5rem, 5vw, 6vh)',
-                fontStyle: 'italic',
-                fontWeight: 750,
                 lineHeight: 'min(3.25rem, 6vw, 7.5vh)',
-                textAlign: 'center',
                 maxWidth: '100%',
                 overflowWrap: 'break-word'
               }}
@@ -121,14 +117,11 @@ const FeedbackScreen = () => {
                 }}
               >
                 <span
+                  className="text-answer"
                   style={{
                     color: '#344243',
-                    fontFamily: '"Tisa Sans Pro"',
                     fontSize: 'min(1.8rem, 3.6vw, 4.5vh)',
-                    fontStyle: 'normal',
-                    fontWeight: 400,
                     lineHeight: 'min(2.25rem, 4.5vw, 5.6vh)',
-                    textAlign: 'center',
                     maxWidth: '100%',
                     overflowWrap: 'break-word'
                   }}
@@ -154,14 +147,10 @@ const FeedbackScreen = () => {
               }}
             >
               <p
+                className="text-body-bold"
                 style={{
-                  color: '#D9D9D9',
-                  fontFamily: '"Tisa Pro"',
                   fontSize: 'min(2rem, 4vw, 5vh)',
-                  fontStyle: 'normal',
-                  fontWeight: 700,
                   lineHeight: 'min(2.5rem, 5vw, 6vh)',
-                  textAlign: 'center',
                   maxWidth: '100%',
                   overflowWrap: 'break-word',
                   margin: '0'
@@ -171,14 +160,10 @@ const FeedbackScreen = () => {
               </p>
               {question.explanation && (
                 <p
+                  className="text-body-primary"
                   style={{
-                    color: '#D9D9D9',
-                    fontFamily: '"Tisa Pro"',
                     fontSize: 'min(1.6rem, 3.2vw, 4vh)',
-                    fontStyle: 'normal',
-                    fontWeight: 400,
                     lineHeight: 'min(2rem, 4vw, 5vh)',
-                    textAlign: 'center',
                     maxWidth: '100%',
                     overflowWrap: 'break-word',
                     margin: '0'
@@ -226,13 +211,9 @@ const FeedbackScreen = () => {
               }}
             >
               <span
+                className="text-button"
                 style={{
-                  color: '#D9D9D9',
-                  textAlign: 'center',
-                  fontFamily: '"Tisa Sans Pro"',
                   fontSize: 'min(1.375rem, 2.2vw, 3.5vh)',
-                  fontStyle: 'normal',
-                  fontWeight: 400,
                   lineHeight: 'min(7rem, 11vh)',
                   textTransform: 'uppercase'
                 }}

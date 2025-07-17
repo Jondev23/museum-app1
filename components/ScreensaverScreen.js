@@ -27,10 +27,9 @@ const ScreensaverScreen = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="text-center leading-tight"
+          className="text-center leading-tight font-tisa-pro"
           style={{
             color: '#61809D',
-            fontFamily: '"Tisa Pro"',
             fontSize: 'min(6rem, 12vw)',
             fontStyle: 'normal',
             fontWeight: 500,
@@ -86,10 +85,9 @@ const ScreensaverScreen = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="text-center leading-tight"
+          className="text-center leading-tight font-tisa-pro"
           style={{
             color: '#61809D',
-            fontFamily: '"Tisa Pro", serif',
             fontSize: 'min(6rem, 12vw)', 
             fontStyle: 'normal',
             fontWeight: 500,

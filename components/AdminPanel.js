@@ -12,7 +12,7 @@ const AdminPanel = () => {
 
   // Geheime Sequenz: Klick auf die 4 Ecken in der Reihenfolge (oben-links, oben-rechts, unten-rechts, unten-links)
   const SECRET_SEQUENCE = ['tl', 'tr', 'br', 'bl'];
-  const ADMIN_PASSWORD = 'museum2024';
+  const ADMIN_PASSWORD = 'museum2025';
 
   useEffect(() => {
     // Reset sequence after 10 seconds of inactivity

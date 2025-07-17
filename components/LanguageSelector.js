@@ -129,31 +129,27 @@ const LanguageSelector = () => {
                 gap: 'min(0.0rem, 0vw)'
               }}
             >
-              <h1 style={{
-                color: '#D9D9D9',
-                fontFamily: "Tisa Pro",
-                fontSize: 'min(2.5rem, 6.2vw)',
-                fontWeight: 750,
-                fontStyle: 'italic',
-                textAlign: 'center',
-                lineHeight: '130%',
-                margin: 0,
-                whiteSpace: 'nowrap'
-              }}>
+              <h1 
+                className="title-question"
+                style={{
+                  fontSize: 'min(2.5rem, 6.2vw)',
+                  lineHeight: '130%',
+                  margin: 0,
+                  whiteSpace: 'nowrap'
+                }}
+              >
                 {englishTitle}
               </h1>
-              <h2 style={{
-                color: '#D9D9D9',
-                opacity: 0.6,
-                fontFamily: "Tisa Pro",
-                fontSize: 'min(2.5rem, 6.2vw)', 
-                fontWeight: 750,
-                fontStyle: 'italic',
-                textAlign: 'center',
-                lineHeight: '130%',
-                margin: 0,
-                whiteSpace: 'nowrap'
-              }}>
+              <h2 
+                className="title-question"
+                style={{
+                  opacity: 0.6,
+                  fontSize: 'min(2.5rem, 6.2vw)', 
+                  lineHeight: '130%',
+                  margin: 0,
+                  whiteSpace: 'nowrap'
+                }}
+              >
                 {germanTitle}
               </h2>
             </motion.div>
@@ -195,16 +191,15 @@ const LanguageSelector = () => {
                     transition: 'all 0.3s ease'
                   }}
                 >
-                  <span style={{
-                    flex: 1,
-                    fontFamily: '"Tisa Sans Pro"',
-                    fontWeight: 400,
-                    color: '#D9D9D9',
-                    fontSize: 'min(1.25rem, 2.5vw)', 
-                    textAlign: 'center',
-                    lineHeight: 'min(5.5rem, 12vw)',
-                    textTransform: 'uppercase'
-                  }}>
+                  <span 
+                    className="text-button"
+                    style={{
+                      flex: 1,
+                      fontSize: 'min(1.25rem, 2.5vw)', 
+                      lineHeight: 'min(5.5rem, 12vw)',
+                      textTransform: 'uppercase'
+                    }}
+                  >
                     {selectorContent.german}
                   </span>
                 </motion.button>
@@ -228,16 +223,15 @@ const LanguageSelector = () => {
                     transition: 'all 0.3s ease'
                   }}
                 >
-                  <span style={{
-                    flex: 1,
-                    fontFamily: '"Tisa Sans Pro"',
-                    fontWeight: 400,
-                    color: '#D9D9D9',
-                    fontSize: 'min(1.25rem, 2.5vw)',
-                    textAlign: 'center',
-                    lineHeight: 'min(5.5rem, 12vw)',
-                    textTransform: 'uppercase'
-                  }}>
+                  <span 
+                    className="text-button"
+                    style={{
+                      flex: 1,
+                      fontSize: 'min(1.25rem, 2.5vw)',
+                      lineHeight: 'min(5.5rem, 12vw)',
+                      textTransform: 'uppercase'
+                    }}
+                  >
                     {selectorContent.english}
                   </span>
                 </motion.button>
