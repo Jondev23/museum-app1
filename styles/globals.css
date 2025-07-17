@@ -81,6 +81,14 @@
   --color-screensaver-overlay: rgba(0, 0, 0, 0.3);
   --color-screensaver-touch-bg: rgba(255, 255, 255, 0.2);
   --color-screensaver-touch-border: rgba(255, 255, 255, 0.3);
+  
+  /* Results screen specific colors */
+  --color-results-title: var(--color-text-primary);
+  --color-results-score-text: var(--color-text-primary);
+  --color-results-button-text: var(--color-text-primary);
+  --color-results-overlay: rgba(0, 0, 0, 0.75);
+  --color-results-success: var(--color-success);
+  --color-results-background: var(--color-background);
 }
 
 @layer base {

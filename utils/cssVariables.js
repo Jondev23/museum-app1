@@ -41,6 +41,14 @@ export const CSS_VARIABLES = {
   COLOR_SCREENSAVER_OVERLAY: '--color-screensaver-overlay',
   COLOR_SCREENSAVER_TOUCH_BG: '--color-screensaver-touch-bg',
   COLOR_SCREENSAVER_TOUCH_BORDER: '--color-screensaver-touch-border',
+  
+  // Results screen colors
+  COLOR_RESULTS_TITLE: '--color-results-title',
+  COLOR_RESULTS_SCORE_TEXT: '--color-results-score-text',
+  COLOR_RESULTS_BUTTON_TEXT: '--color-results-button-text',
+  COLOR_RESULTS_OVERLAY: '--color-results-overlay',
+  COLOR_RESULTS_SUCCESS: '--color-results-success',
+  COLOR_RESULTS_BACKGROUND: '--color-results-background',
 };
 
 // Función helper para usar variables CSS en JavaScript

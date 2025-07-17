@@ -1,155 +1,64 @@
-import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import ProgressDots from './shared/ProgressDots';
 import StandardFooter from './shared/StandardFooter';
+import useResultsScreen from '../hooks/useResultsScreen';
+import ResultsTitle from './ResultsScreen/ResultsTitle';
+import ResultsScoreText from './ResultsScreen/ResultsScoreText';
+import ResultsPlayAgainButton from './ResultsScreen/ResultsPlayAgainButton';
+import ResultsProgress from './ResultsScreen/ResultsProgress';
+import ResultsBackground from './ResultsScreen/ResultsBackground';
+import { ANIMATION_CONFIG, STYLE_CONFIG } from './ResultsScreen/ResultsScreenConfig';
 
 const ResultsScreen = () => {
-  const { 
-    getScore, 
-    beginQuiz,
-    content,
-    language,
+  const {
+    showContent,
+    contentData,
     questions,
-    answers
-  } = useApp();
+    answers,
+    handlePlayAgain,
+    handleTouchAnywhere,
+    isValid
+  } = useResultsScreen();
 
-  const [showContent, setShowContent] = useState(false);
-
-  const score = getScore();
-  const startContent = content?.[language]?.startScreen;
-
-  useEffect(() => {
-    // Trigger content animation after component mounts
-    const timer = setTimeout(() => setShowContent(true), 300);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handlePlayAgain = () => {
-    beginQuiz();
-  };
-
-  const handleTouchAnywhere = (e) => {
-    // Only trigger if not clicking on the play again button or language selector
-    if (!e.target.closest('button')) {
-      handlePlayAgain();
-    }
-  };
-
-  if (!content?.[language]) return null;
+  if (!isValid) return null;
 
   return (
     <motion.div
-      initial={{ x: '100%' }}
-      animate={{ x: 0 }}
-      exit={{ x: '-100%' }}
-      transition={{ duration: 0.5 }}
+      initial={ANIMATION_CONFIG.CONTAINER.INITIAL}
+      animate={ANIMATION_CONFIG.CONTAINER.ANIMATE}
+      exit={ANIMATION_CONFIG.CONTAINER.EXIT}
+      transition={ANIMATION_CONFIG.CONTAINER.TRANSITION}
       className="fixed inset-0 flex flex-col cursor-pointer"
       onClick={handleTouchAnywhere}
-      style={{
-        backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
     >
-      {/* Dark overlay for better text contrast */}
-      <div className="absolute inset-0 bg-black/75" />
+      <ResultsBackground backgroundImage={contentData.backgroundImage} />
       
-      {/* Content - Centered vertically and horizontally - optimizado para tableta landscape */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full" style={{ padding: 'min(2rem, 3vh)' }}>
-        
-        {/* Main title */}
-        <motion.h1
-          initial={{ y: 50, opacity: 0 }}
-          animate={showContent ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="title-main"
-          style={{
-            marginBottom: 'min(2rem, 3vh)', 
-            fontSize: 'min(4.8rem, 8vw)', 
-            lineHeight: '120%'
-          }}
-        >
-          {content[language]?.results?.messages?.[score] || 
-           (language === 'en' ? 'Great job!' : 'Hü! Sehr gut!')}
-        </motion.h1>
+      {/* Content - Centered vertically and horizontally */}
+      <div 
+        className="relative z-10 flex flex-col items-center justify-center h-full" 
+        style={STYLE_CONFIG.CONTAINER}
+      >
+        <ResultsTitle 
+          title={contentData.title} 
+          showContent={showContent} 
+        />
 
-        {/* Secondary text with score */}
-        <motion.p
-          initial={{ y: 50, opacity: 0 }}
-          animate={showContent ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="subtitle-main"
-          style={{
-            marginBottom: 'min(3rem, 4vh)', 
-            fontSize: 'min(3.2rem, 5.5vw)',
-            lineHeight: '120%'
-          }}
-        >
-          {content[language]?.results?.scoreText?.replace('{score}', score).replace('{total}', questions.length) || 
-           `Du hast ${score} von ${questions.length} Fragen richtig beantwortet.`}
-        </motion.p>
+        <ResultsScoreText 
+          scoreText={contentData.scoreText} 
+          showContent={showContent} 
+        />
 
-        {/* Answer indicators - circles responsivos */}
-        <ProgressDots
-          totalQuestions={questions.length}
-          answers={answers}
-          questions={questions}
-          variant="results"
-          style={{ 
-            marginBottom: 'min(4rem, 6vh)' 
-          }}
+        <ResultsProgress 
+          questions={questions} 
+          answers={answers} 
         />
       </div>
 
-      {/* "NOCH EINMAL" button responsivo - positioned at footer level, outside StandardFooter */}
-      <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={showContent ? { y: 0, opacity: 1 } : {}}
-        transition={{ duration: 0.8, delay: 1.0 }}
-        style={{
-          position: 'fixed',
-          left: '0',
-          right: '0',
-          bottom: 'min(1.5rem, 2.5vh)',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          zIndex: 50
-        }}
-      >
-        <motion.button
-          onClick={handlePlayAgain}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex items-center text-button"
-          style={{
-            background: 'transparent',
-            border: 'none',
-            fontSize: 'min(1.5rem, 2.5vw)',
-            lineHeight: 'normal',
-            textTransform: 'uppercase',
-            letterSpacing: 'min(0.0625rem, 0.1vw)',
-            padding: 'min(1rem, 1.5vh) min(2rem, 3vw)',
-            borderRadius: 'min(1.5rem, 2.5vw)', 
-            gap: 'min(0.5rem, 0.8vw)',
-            cursor: 'pointer'
-          }}
-        >
-          {content[language]?.results?.playAgain || 'NOCH EINMAL'}
-          <img
-            src="/images/GUI.svg"
-            alt="Restart icon"
-            style={{
-              width: 'min(3rem, 4.5vw)',
-              height: 'min(4.875rem, 7vw)' 
-            }}
-          />
-        </motion.button>
-      </motion.div>
+      <ResultsPlayAgainButton 
+        playAgainText={contentData.playAgainText}
+        showContent={showContent}
+        onPlayAgain={handlePlayAgain}
+      />
 
-      {/* Standard footer with language selector */}
       <StandardFooter />
     </motion.div>
   );
