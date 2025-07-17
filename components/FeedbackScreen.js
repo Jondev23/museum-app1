@@ -68,7 +68,7 @@ const FeedbackScreen = () => {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className={`rounded-[30px] ${
+            className={`rounded-[19px] ${
               isCorrect ? 'bg-[#598364]' : 'bg-[#A94930]'
             }`}
             style={{
@@ -78,7 +78,7 @@ const FeedbackScreen = () => {
               gap: 'min(1.5rem, 3vw)',
               padding: 'min(3rem, 5vw)',
               width: '100%',
-              maxWidth: 'min(73.7rem, 82.9vw)',
+              maxWidth: 'min(74.42226rem, 83.71242vw)',
               minHeight: 'min(43rem, 74vh)',
               justifyContent: 'space-evenly'
             }}
