@@ -19,7 +19,7 @@ export const FEEDBACK_CONFIG = {
     INCORRECT_BG: COLORS.FEEDBACK_INCORRECT,
     ANSWER_BG: COLORS.FEEDBACK_ANSWER_BG,
     ANSWER_TEXT: COLORS.FEEDBACK_ANSWER_TEXT,
-    OVERLAY: 'bg-black/75', // Mantener como clase de Tailwind por conveniencia
+    OVERLAY: 'bg-black/75', 
   },
   SIZES: {
     BORDER_RADIUS: '19px',
@@ -54,7 +54,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     gap: 'min(1.5rem, 3vw)',
     padding: 'min(3rem, 5vw)',
     width: '100%',
-    maxWidth: 'min(74.42226rem, 83.71242vw)',
+    maxWidth: 'min(80rem, 90vw)',
     minHeight: 'min(43rem, 74vh)',
     justifyContent: 'space-evenly'
   }), []);
@@ -67,10 +67,10 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const answerButtonStyle = useMemo(() => ({
-    minWidth: 'min(35rem, 70vw)',
-    minHeight: 'min(4rem, 6vh)',
-    padding: 'min(1.5rem, 3vh) min(2rem, 4vw)',
-    maxWidth: '90%'
+    minWidth: 'min(40.74rem, 81.48vw)',
+    minHeight: 'min(3.0174375rem, 4.2244125vh)',
+    padding: 'min(0.96558rem, 1.81046vh) min(2rem, 4vw)',
+    maxWidth: '100%'
   }), []);
 
   const answerTextStyle = useMemo(() => ({
