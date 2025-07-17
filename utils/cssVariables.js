@@ -49,6 +49,16 @@ export const CSS_VARIABLES = {
   COLOR_RESULTS_OVERLAY: '--color-results-overlay',
   COLOR_RESULTS_SUCCESS: '--color-results-success',
   COLOR_RESULTS_BACKGROUND: '--color-results-background',
+  
+  // Language selector colors
+  COLOR_LANGUAGE_OVERLAY: '--color-language-overlay',
+  COLOR_LANGUAGE_TITLE: '--color-language-title',
+  COLOR_LANGUAGE_SUBTITLE: '--color-language-subtitle',
+  COLOR_LANGUAGE_BUTTON_ACTIVE: '--color-language-button-active',
+  COLOR_LANGUAGE_BUTTON_INACTIVE: '--color-language-button-inactive',
+  COLOR_LANGUAGE_BUTTON_TEXT: '--color-language-button-text',
+  COLOR_LANGUAGE_ICON: '--color-language-icon',
+  COLOR_RESULTS_BACKGROUND: '--color-results-background',
 };
 
 // Función helper para usar variables CSS en JavaScript

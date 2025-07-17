@@ -89,6 +89,15 @@
   --color-results-overlay: rgba(0, 0, 0, 0.75);
   --color-results-success: var(--color-success);
   --color-results-background: var(--color-background);
+  
+  /* Language selector specific colors */
+  --color-language-overlay: #344243;
+  --color-language-title: var(--color-text-primary);
+  --color-language-subtitle: var(--color-text-primary);
+  --color-language-button-active: #A94930;
+  --color-language-button-inactive: #D9D9D9;
+  --color-language-button-text: var(--color-text-primary);
+  --color-language-icon: var(--color-text-primary);
 }
 
 @layer base {

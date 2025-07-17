@@ -1,244 +1,43 @@
-import { useApp } from '../context/AppContext';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import useLanguageSelector from '../hooks/useLanguageSelector';
+import LanguageIcon from './LanguageSelector/LanguageIcon';
+import LanguageTitle from './LanguageSelector/LanguageTitle';
+import LanguageButtons from './LanguageSelector/LanguageButtons';
+import LanguageOverlay from './LanguageSelector/LanguageOverlay';
+import LanguageContainer from './LanguageSelector/LanguageContainer';
 
 const LanguageSelector = () => {
-  const { 
-    showLanguageSelector, 
-    setShowLanguageSelector, 
-    changeLanguage, 
-    language,
-    content 
-  } = useApp();
+  const {
+    isVisible,
+    contentData,
+    handleLanguageChange,
+    handleOverlayClick,
+    handleContentClick,
+    getButtonState
+  } = useLanguageSelector();
 
-  if (!showLanguageSelector || !content) return null;
-
-  const handleLanguageChange = (newLanguage) => {
-    console.log('Changing language from', language, 'to', newLanguage);
-    changeLanguage(newLanguage);
-  };
-
-  const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) {
-      setShowLanguageSelector(false);
-    }
-  };
-
-  // Get language selector content based on current language or fallback
-  const getSelectorContent = () => {
-    if (content[language]?.languageSelector) {
-      return content[language].languageSelector;
-    }
-    // Fallback to German if current language selector is not available
-    return content.de?.languageSelector || {
-      title: "Sprache wählen / Change language",
-      german: "DEUTSCH",
-      english: "ENGLISH"
-    };
-  };
-
-  const selectorContent = getSelectorContent();
-  
-  // Parse title to get German and English parts intelligently
-  const titleParts = selectorContent.title.split(' / ');
-  let germanTitle, englishTitle;
-  
-  if (titleParts.length === 2) {
-    // Check which part contains German words (contains 'ä', 'ü', 'ö' or starts with 'Sprache')
-    const firstPart = titleParts[0].trim();
-    const secondPart = titleParts[1].trim();
-    
-    const isFirstPartGerman = /[äöüÄÖÜ]/.test(firstPart) || firstPart.toLowerCase().includes('sprache');
-    
-    if (isFirstPartGerman) {
-      germanTitle = firstPart;
-      englishTitle = secondPart;
-    } else {
-      englishTitle = firstPart;
-      germanTitle = secondPart;
-    }
-  } else {
-    // Fallback if format is unexpected
-    germanTitle = "Sprache wählen";
-    englishTitle = "Change language";
-  }
+  if (!isVisible) return null;
 
   return (
     <AnimatePresence>
-      {showLanguageSelector && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 flex items-center justify-center z-50"
-          style={{ backgroundColor: '#344243' }} 
-          onClick={handleOverlayClick}
-        >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            style={{ 
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 'min(3.24rem, 6.08vw)',
-              width: 'auto', 
-              maxWidth: '100vw', 
-              padding: '0 min(2rem, 4vw)',
-              minHeight: '100vh',
-              paddingTop: 'min(4rem, 6vw)',
-              paddingBottom: 'min(5rem, 10vw)'
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Globe icon */}
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
-              style={{ 
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              <img 
-                src="/images/OE_Sprache_64 1.svg" 
-                alt="Language selector" 
-                style={{
-                  width: 'min(5.4rem, 13.5vw)',
-                  height: 'min(5.4rem, 13.5vw)',
-                  display: 'block',
-                  opacity: 0.8 
-                }}
-              />
-            </motion.div>
+      {isVisible && (
+        <LanguageOverlay onOverlayClick={handleOverlayClick}>
+          <LanguageContainer onContentClick={handleContentClick}>
+            <LanguageIcon />
+            
+            <LanguageTitle
+              englishTitle={contentData.englishTitle}
+              germanTitle={contentData.germanTitle}
+            />
 
-            {/* Title */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                textAlign: 'center',
-                gap: 'min(0.0rem, 0vw)'
-              }}
-            >
-              <h1 
-                className="title-question"
-                style={{
-                  fontSize: 'min(2.5rem, 6.2vw)',
-                  lineHeight: '130%',
-                  margin: 0,
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                {englishTitle}
-              </h1>
-              <h2 
-                className="title-question"
-                style={{
-                  opacity: 0.6,
-                  fontSize: 'min(2.5rem, 6.2vw)', 
-                  lineHeight: '130%',
-                  margin: 0,
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                {germanTitle}
-              </h2>
-            </motion.div>
-
-            {/* Language buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
-              style={{
-                backgroundColor: 'transparent',
-                border: 'none',
-                boxShadow: 'none'
-              }}
-            >
-              <div style={{
-                padding: 0,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 'min(1.5rem, 3vw)'
-              }}>
-                <motion.button
-                  onClick={() => handleLanguageChange('de')}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="transition-all"
-                  style={{
-                    width: 'min(max(21rem, 53vw), 75rem)',
-                    height: 'min(3.47rem, 8.31vw)', 
-                    borderRadius: 'min(3.75rem, 8vw)',
-                    border: `2px solid ${language === 'de' ? '#A94930' : '#D9D9D9'}`,
-                    background: language === 'de' ? '#A94930' : 'transparent', 
-                    padding: 'min(0.625rem, 1.5vw)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  <span 
-                    className="text-button"
-                    style={{
-                      flex: 1,
-                      fontSize: 'min(1.25rem, 2.5vw)', 
-                      lineHeight: 'min(5.5rem, 12vw)',
-                      textTransform: 'uppercase'
-                    }}
-                  >
-                    {selectorContent.german}
-                  </span>
-                </motion.button>
-
-                <motion.button
-                  onClick={() => handleLanguageChange('en')}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="transition-all"
-                  style={{
-                    width: 'min(max(21rem, 53vw), 75rem)', 
-                    height: 'min(3.47rem, 8.31vw)', 
-                    borderRadius: 'min(3.75rem, 8vw)',
-                    border: `2px solid ${language === 'en' ? '#A94930' : '#D9D9D9'}`,
-                    background: language === 'en' ? '#A94930' : 'transparent', 
-                    padding: 'min(0.625rem, 1.5vw)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  <span 
-                    className="text-button"
-                    style={{
-                      flex: 1,
-                      fontSize: 'min(1.25rem, 2.5vw)',
-                      lineHeight: 'min(5.5rem, 12vw)',
-                      textTransform: 'uppercase'
-                    }}
-                  >
-                    {selectorContent.english}
-                  </span>
-                </motion.button>
-              </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            <LanguageButtons
+              germanButtonText={contentData.germanButtonText}
+              englishButtonText={contentData.englishButtonText}
+              getButtonState={getButtonState}
+              handleLanguageChange={handleLanguageChange}
+            />
+          </LanguageContainer>
+        </LanguageOverlay>
       )}
     </AnimatePresence>
   );
