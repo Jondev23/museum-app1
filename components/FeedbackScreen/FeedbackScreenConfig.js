@@ -1,0 +1,161 @@
+import { useMemo } from 'react';
+import { COLORS } from '../../utils/cssVariables';
+
+// Constantes de configuración
+export const FEEDBACK_CONFIG = {
+  ANIMATION_DURATIONS: {
+    SCREEN_TRANSITION: 0.3,
+    CONTAINER: 0.3,
+    TITLE: 0.1,
+    ANSWER: 0.2,
+    MESSAGE: 0.3,
+    BUTTON: 0.8,
+    BUTTON_DELAY: 0.7,
+    ARROW_ANIMATION: 2,
+    ARROW_REPEAT_DELAY: 2,
+  },
+  COLORS: {
+    CORRECT_BG: COLORS.FEEDBACK_CORRECT,
+    INCORRECT_BG: COLORS.FEEDBACK_INCORRECT,
+    ANSWER_BG: COLORS.FEEDBACK_ANSWER_BG,
+    ANSWER_TEXT: COLORS.FEEDBACK_ANSWER_TEXT,
+    OVERLAY: 'bg-black/75', // Mantener como clase de Tailwind por conveniencia
+  },
+  SIZES: {
+    BORDER_RADIUS: '19px',
+    BUTTON_BORDER_RADIUS: 'rounded-full',
+  },
+};
+
+// Hook para estilos memoizados
+export const useFeedbackScreenStyles = (startContent, isCorrect) => {
+  const backgroundStyle = useMemo(() => ({
+    backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }), [startContent?.backgroundImage]);
+
+  const mainContentStyle = useMemo(() => ({
+    width: '100%',
+    maxWidth: 'min(120rem, 95vw)',
+    gap: 'min(1.5rem, 3vw)', 
+    paddingTop: 'min(6rem, 8vh)',
+    paddingBottom: 'min(2rem, 3vh)', 
+    paddingLeft: 'min(4rem, 6vw)', 
+    paddingRight: 'min(4rem, 6vw)',
+    margin: '0 auto'
+  }), []);
+
+  const feedbackContainerStyle = useMemo(() => ({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 'min(1.5rem, 3vw)',
+    padding: 'min(3rem, 5vw)',
+    width: '100%',
+    maxWidth: 'min(74.42226rem, 83.71242vw)',
+    minHeight: 'min(43rem, 74vh)',
+    justifyContent: 'space-evenly'
+  }), []);
+
+  const titleStyle = useMemo(() => ({
+    fontSize: 'min(2.5rem, 5vw, 6vh)',
+    lineHeight: 'min(3.25rem, 6vw, 7.5vh)',
+    maxWidth: '100%',
+    overflowWrap: 'break-word'
+  }), []);
+
+  const answerButtonStyle = useMemo(() => ({
+    minWidth: 'min(35rem, 70vw)',
+    minHeight: 'min(4rem, 6vh)',
+    padding: 'min(1.5rem, 3vh) min(2rem, 4vw)',
+    maxWidth: '90%'
+  }), []);
+
+  const answerTextStyle = useMemo(() => ({
+    color: FEEDBACK_CONFIG.COLORS.ANSWER_TEXT,
+    fontSize: 'min(1.8rem, 3.6vw, 4.5vh)',
+    lineHeight: 'min(2.25rem, 4.5vw, 5.6vh)',
+    maxWidth: '100%',
+    overflowWrap: 'break-word'
+  }), []);
+
+  const messageContainerStyle = useMemo(() => ({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 'min(1rem, 2vh)',
+    width: '100%',
+    flex: 1,
+    justifyContent: 'center'
+  }), []);
+
+  const messageStyle = useMemo(() => ({
+    fontSize: 'min(2rem, 4vw, 5vh)',
+    lineHeight: 'min(2.5rem, 5vw, 6vh)',
+    maxWidth: '100%',
+    overflowWrap: 'break-word',
+    margin: '0'
+  }), []);
+
+  const explanationStyle = useMemo(() => ({
+    fontSize: 'min(1.6rem, 3.2vw, 4vh)',
+    lineHeight: 'min(2rem, 4vw, 5vh)',
+    maxWidth: '100%',
+    overflowWrap: 'break-word',
+    margin: '0'
+  }), []);
+
+  const buttonContainerStyle = useMemo(() => ({
+    flexShrink: 0,
+    marginRight: 'min(5.625rem, 9vw)',
+    marginBottom: 'min(5.625rem, 9vh)'
+  }), []);
+
+  const buttonStyle = useMemo(() => ({
+    minWidth: 'min(11.25rem, 18vw)',
+    minHeight: 'min(3rem, 5vh)',
+    background: 'transparent',
+    border: 'none',
+    justifyContent: 'flex-start'
+  }), []);
+
+  const buttonTextStyle = useMemo(() => ({
+    fontSize: 'min(1.375rem, 2.2vw, 3.5vh)',
+    lineHeight: 'min(7rem, 11vh)',
+    textTransform: 'uppercase'
+  }), []);
+
+  const arrowStyle = useMemo(() => ({
+    width: 'min(3.5rem, 6vw)',
+    height: 'min(3.5rem, 6vh)'
+  }), []);
+
+  const feedbackContainerClassName = useMemo(() => {
+    const bgColor = isCorrect ? COLORS.FEEDBACK_CORRECT : COLORS.FEEDBACK_INCORRECT;
+    return `rounded-[19px]`;
+  }, [isCorrect]);
+
+  const feedbackContainerStyleWithBg = useMemo(() => ({
+    ...feedbackContainerStyle,
+    backgroundColor: isCorrect ? COLORS.FEEDBACK_CORRECT : COLORS.FEEDBACK_INCORRECT,
+  }), [feedbackContainerStyle, isCorrect]);
+
+  return {
+    backgroundStyle,
+    mainContentStyle,
+    feedbackContainerStyle: feedbackContainerStyleWithBg,
+    feedbackContainerClassName,
+    titleStyle,
+    answerButtonStyle,
+    answerTextStyle,
+    messageContainerStyle,
+    messageStyle,
+    explanationStyle,
+    buttonContainerStyle,
+    buttonStyle,
+    buttonTextStyle,
+    arrowStyle
+  };
+};

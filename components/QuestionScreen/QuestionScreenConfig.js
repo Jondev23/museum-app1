@@ -1,4 +1,5 @@
 import { useMemo, useCallback } from 'react';
+import { COLORS } from '../../utils/cssVariables';
 
 // Constantes de configuración
 export const QUESTION_CONFIG = {
@@ -15,6 +16,10 @@ export const QUESTION_CONFIG = {
     TITLE: 0.6,
     BUTTONS: 0.6,
     BUTTON_INDIVIDUAL: 0.4,
+  },
+  COLORS: {
+    BUTTON_BORDER: COLORS.LIGHT_GRAY,
+    BUTTON_TEXT: COLORS.LIGHT_GRAY,
   },
 };
 
@@ -93,14 +98,14 @@ export const useQuestionScreenStyles = (startContent) => {
     gap: 'min(0.5rem, 1vw)',
     padding: 'min(2.89rem, 4.62vh, 6vw) min(0.75rem, 1.5vw)',
     borderRadius: 'min(4.62rem, 6.93vh, 8vw)',
-    border: 'min(0.1125rem, 0.225vw, 0.3vh) solid #D9D9D9',
+    border: `min(0.1125rem, 0.225vw, 0.3vh) solid ${COLORS.LIGHT_GRAY}`,
     position: 'relative'
   }), []);
 
   const textStyle = useMemo(() => ({
     position: 'relative',
     width: 'fit-content',
-    color: '#D9D9D9',
+    color: COLORS.LIGHT_GRAY,
     fontSize: 'min(1.8rem, 3.6vw, 4.5vh)',
     lineHeight: 'min(2.25rem, 4.5vw, 5.6vh)',
     whiteSpace: 'nowrap'

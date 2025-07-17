@@ -1,0 +1,72 @@
+/**
+ * Utilidades para trabajar con variables CSS globales
+ * Este archivo centraliza el acceso a las variables CSS definidas en globals.css
+ */
+
+// Función para obtener el valor de una variable CSS
+const getCSSVariable = (variableName) => {
+  if (typeof window !== 'undefined') {
+    return getComputedStyle(document.documentElement)
+      .getPropertyValue(variableName)
+      .trim();
+  }
+  return '';
+};
+
+// Objeto con las variables CSS disponibles
+export const CSS_VARIABLES = {
+  // Fonts
+  FONT_SERIF: '--font-serif',
+  FONT_SANS: '--font-sans',
+  
+  // Main colors
+  COLOR_LIGHT_GRAY: '--color-light-gray',
+  COLOR_GREEN: '--color-green',
+  
+  // Feedback colors
+  COLOR_FEEDBACK_CORRECT: '--color-feedback-correct',
+  COLOR_FEEDBACK_INCORRECT: '--color-feedback-incorrect',
+  COLOR_FEEDBACK_ANSWER_BG: '--color-feedback-answer-bg',
+  COLOR_FEEDBACK_ANSWER_TEXT: '--color-feedback-answer-text',
+  
+  // System colors
+  COLOR_OVERLAY: '--color-overlay',
+  COLOR_BACKGROUND_PRIMARY: '--color-background-primary',
+  COLOR_TEXT_PRIMARY: '--color-text-primary',
+  COLOR_TEXT_SECONDARY: '--color-text-secondary',
+  COLOR_ACCENT: '--color-accent',
+};
+
+// Función helper para usar variables CSS en JavaScript
+export const useCSS = (variableName) => {
+  return `var(${variableName})`;
+};
+
+// Objeto con los valores de colores para usar en JavaScript
+export const COLORS = {
+  // Feedback colors
+  FEEDBACK_CORRECT: useCSS(CSS_VARIABLES.COLOR_FEEDBACK_CORRECT),
+  FEEDBACK_INCORRECT: useCSS(CSS_VARIABLES.COLOR_FEEDBACK_INCORRECT),
+  FEEDBACK_ANSWER_BG: useCSS(CSS_VARIABLES.COLOR_FEEDBACK_ANSWER_BG),
+  FEEDBACK_ANSWER_TEXT: useCSS(CSS_VARIABLES.COLOR_FEEDBACK_ANSWER_TEXT),
+  
+  // Main colors
+  LIGHT_GRAY: useCSS(CSS_VARIABLES.COLOR_LIGHT_GRAY),
+  GREEN: useCSS(CSS_VARIABLES.COLOR_GREEN),
+  
+  // System colors
+  TEXT_PRIMARY: useCSS(CSS_VARIABLES.COLOR_TEXT_PRIMARY),
+  TEXT_SECONDARY: useCSS(CSS_VARIABLES.COLOR_TEXT_SECONDARY),
+  ACCENT: useCSS(CSS_VARIABLES.COLOR_ACCENT),
+};
+
+// Función para obtener un color específico
+export const getColor = (colorKey) => {
+  return COLORS[colorKey] || '';
+};
+
+// Función para generar className de Tailwind usando variables CSS
+export const getCSSVariableClass = (property, variableName) => {
+  // Para usar con Tailwind CSS con variables personalizadas
+  return `${property}-[var(${variableName})]`;
+};

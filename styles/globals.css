@@ -53,10 +53,28 @@
 
 /* CSS Variables for colors and fonts */
 :root {
+  /* Fonts */
   --font-serif: 'Tisa Pro';
   --font-sans: 'Tisa Sans Pro';
+  
+  /* Main colors */
   --color-light-gray: #D9D9D9;
   --color-green: #85AF8B;
+  
+  /* Feedback colors */
+  --color-feedback-correct: #598364;
+  --color-feedback-incorrect: #A94930;
+  --color-feedback-answer-bg: #D9D9D9;
+  --color-feedback-answer-text: #344243;
+  
+  /* Overlay */
+  --color-overlay: rgba(0, 0, 0, 0.75);
+  
+  /* Additional system colors */
+  --color-background-primary: #000000;
+  --color-text-primary: #D9D9D9;
+  --color-text-secondary: #344243;
+  --color-accent: #85AF8B;
 }
 
 @layer base {
@@ -82,7 +100,7 @@
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 700;
-    color: var(--color-light-gray);
+    color: var(--color-text-primary);
     text-align: center;
   }
   
@@ -90,35 +108,35 @@
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 750;
-    color: var(--color-light-gray);
+    color: var(--color-text-primary);
     text-align: center;
   }
   
   .subtitle-main {
     font-family: var(--font-sans);
     font-weight: 400;
-    color: var(--color-green);
+    color: var(--color-accent);
     text-align: center;
   }
   
   .text-body-primary {
     font-family: var(--font-serif);
     font-weight: 400;
-    color: var(--color-light-gray);
+    color: var(--color-text-primary);
     text-align: center;
   }
   
   .text-body-bold {
     font-family: var(--font-serif);
     font-weight: 700;
-    color: var(--color-light-gray);
+    color: var(--color-text-primary);
     text-align: center;
   }
   
   .text-button {
     font-family: var(--font-sans);
     font-weight: 400;
-    color: var(--color-light-gray);
+    color: var(--color-text-primary);
     text-align: center;
   }
   
@@ -126,6 +144,39 @@
     font-family: var(--font-sans);
     font-weight: 400;
     text-align: center;
+  }
+
+  /* Color utility classes */
+  .bg-feedback-correct {
+    background-color: var(--color-feedback-correct);
+  }
+  
+  .bg-feedback-incorrect {
+    background-color: var(--color-feedback-incorrect);
+  }
+  
+  .bg-feedback-answer {
+    background-color: var(--color-feedback-answer-bg);
+  }
+  
+  .text-feedback-answer {
+    color: var(--color-feedback-answer-text);
+  }
+  
+  .text-primary {
+    color: var(--color-text-primary);
+  }
+  
+  .text-secondary {
+    color: var(--color-text-secondary);
+  }
+  
+  .text-accent {
+    color: var(--color-accent);
+  }
+  
+  .border-primary {
+    border-color: var(--color-text-primary);
   }
 
   /* Admin Panel Styles */
