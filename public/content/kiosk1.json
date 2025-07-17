@@ -5,10 +5,10 @@
       "message": "Berühren Sie den Bildschirm um zu beginnen"
     },
     "startScreen": {
-      "title": "Kutschen",
-      "subtitle": "Eine Reise durch die Geschichte",
-      "highlightText": "Interaktive Ausstellung",
-      "introText": "Entdecken Sie die faszinierende Welt historischer Kutschen. Testen Sie Ihr Wissen mit unserem Quiz!",
+      "title": "Distanzen",
+      "subtitle": "Wie weit? Wie lange?",
+      "highlightText": "Distanzen des Reisens im 19. Jahrhundert",
+      "introText": "Teste dein Wissen! Fünf Fragen rund um das Reisen mit der Kutsche warten auf dich. Wie weit kam man an einem Tag? Wie lange dauerte eine Reise von Leipzig nach München? Stell dich der Herausforderung – vielleicht weißt du mehr, als du denkst. Und falls nicht: unterwegs lernst du garantiert etwas dazu!",
       "swipeText": "Wischen Sie nach links oder berühren Sie hier",
       "backgroundImage": "/images/Bild_Kutsche.webp"
     },
@@ -37,103 +37,103 @@
     "results": {
       "scoreText": "Sie haben {score} von 5 Fragen richtig beantwortet.",
       "messages": {
-        "0": "Keine Sorge! Besuchen Sie die Ausstellung für mehr Informationen.",
-        "1": "Ein guter Anfang! Es gibt noch viel zu entdecken.",
-        "2": "Nicht schlecht! Sie wissen schon einiges über Kutschen.",
-        "3": "Gut gemacht! Sie haben solides Wissen über Kutschen.",
-        "4": "Sehr gut! Sie sind fast ein Kutschen-Experte!",
-        "5": "Exzellent! Sie sind ein wahrer Kutschen-Experte!"
+        "0": "Brrr! Da ist wohl die Kutsche im Graben gelandet. Versuche es gleich noch einmal!",
+        "1": "Da geht noch was! Du hast zumindest den Fuß auf die Trittstufe gesetzt.",
+        "2": "Schon besser! Die Reise beginnt - aber der Weg ist noch holprig.",
+        "3": "Hü! Du hast den Kutschweg im Blick - weiter so!",
+        "4": "Bravo! Du bist fast am Etappenziel - noch ein kleiner Ruck, dann rollt der Wagen von selbst!",
+        "5": "Chapeau! Du gehörst auf den Kutschbock - ein echter Reiseprofi!"
       },
       "playAgain": "Noch einmal"
     },
     "questions": [
       {
         "id": "q1",
-        "question": "In welchem Jahrhundert erreichten Pferdekutschen ihre Blütezeit in Europa?",
+        "question": "Wie viele Kilometer konnte eine Postkutsche durchschnittlich an einem Tag zurücklegen?",
         "answers": [
-          "16. Jahrhundert",
-          "18. Jahrhundert",
-          "19. Jahrhundert"
+          "ca. 30 km",
+          "ca. 80 km",
+          "ca. 120 km"
         ],
-        "correctAnswer": 2,
-        "explanation": "Das 19. Jahrhundert war das goldene Zeitalter der Pferdekutschen, bevor sie vom Automobil abgelöst wurden."
+        "correctAnswer": 1,
+        "explanation": "Bei gutem Wetter und funktionierendem Pferdewechsel schaffte eine Postkutsche täglich etwa 60 bis maximal 100 Kilometer. Diese Strecke war allerdings nur auf gut ausgebauten Routen und mit regelmäßigem Pferdewechsel realistisch."
       },
       {
         "id": "q2",
-        "question": "Wie nennt man die Person, die eine Kutsche lenkt?",
+        "question": "Wie lange dauerte die Kutschfahrt von Augustusburg nach Dresden?",
         "answers": [
-          "Kutscher",
-          "Wagenmeister",
-          "Fahrer"
+          "6 Stunden",
+          "2 Stunden",
+          "1,5 Tage"
         ],
         "correctAnswer": 0,
-        "explanation": "Der Kutscher ist die traditionelle Bezeichnung für die Person, die eine Pferdekutsche lenkt."
+        "explanation": "Die Entfernung beträgt rund 60 Kilometer. Eine Postkutsche fuhr im Schnitt 10 bis 12 km/h. Mit Pausen und Pferdewechseln dauerte die Reise etwa 5 bis 6 Stunden – ein ganzer Tag auf holpriger Landstraße."
       },
       {
         "id": "q3",
-        "question": "Was ist eine Berline?",
+        "question": "Welche dieser Strecken waren an einem Tag mit der Postkutsche machbar?",
         "answers": [
-          "Ein Kutschenpferd",
-          "Ein Kutschentyp",
-          "Ein Kutschenteil"
+          "Leipzig - Dresden (ca. 100 km)",
+          "Leipzig - Erfurt (ca. 130 km)",
+          "Leipzig - Berlin (ca. 190 km)"
         ],
-        "correctAnswer": 1,
-        "explanation": "Eine Berline ist ein geschlossener, viersitziger Kutschentyp, der im 17. Jahrhundert in Berlin entwickelt wurde."
+        "correctAnswer": 0,
+        "explanation": "Auf gut ausgebauten Postrouten mit häufigem Pferdewechsel konnten täglich 80 bis 100 Kilometer zurückgelegt werden. Möglich machte das ein dichtes Netz an Poststationen, die meist im Abstand von 15 bis 20 Kilometern eingerichtet waren – dort wurden die Pferde gewechselt."
       },
       {
         "id": "q4",
-        "question": "Welches Material wurde traditionell für Kutschenräder verwendet?",
+        "question": "Wie viele Tage dauerte die Reise mit der Kutsche von Leipzig nach München um 1850?",
         "answers": [
-          "Nur Holz",
-          "Holz mit Eisenreifen",
-          "Gummi"
+          "3-4 Tage",
+          "5-6 Tage",
+          "7-8 Tage"
         ],
         "correctAnswer": 1,
-        "explanation": "Kutschenräder bestanden aus Holz und waren mit Eisenreifen beschlagen, um sie haltbarer zu machen."
+        "explanation": "Die Strecke beträgt etwa 450 Kilometer. Mit der Faustregel von 80 Kilometern pro Tag und abhängig von Wetter, Straßenverhältnissen und Pausen brauchte man 5 bis 6 Tage. Zum Vergleich: Heute schafft man die gleiche Strecke mit dem Auto in 4 bis 5 Stunden."
       },
       {
         "id": "q5",
-        "question": "Was bedeutet das Wort 'Equipage'?",
+        "question": "Die Postkutsche brauchte von Leipzig nach Dresden 6 bis 7 Stunden. Wie lange benötigte die Eisenbahn ab 1839 für die rund 120 km lange Strecke?",
         "answers": [
-          "Die Kutsche selbst",
-          "Die gesamte Kutschausstattung",
-          "Nur die Pferde"
+          "2 Stunden",
+          "4 Stunden",
+          "6 Stunden"
         ],
-        "correctAnswer": 1,
-        "explanation": "Equipage bezeichnet die gesamte Kutschausstattung inklusive Kutsche, Pferde, Geschirr und Personal."
+        "correctAnswer": 0,
+        "explanation": "1839 nahm die erste deutsche Fernbahn ihren Betrieb auf: Mit der Dampflok dauerte die Fahrt nur noch 2 Stunden. Ein technischer Durchbruch - die Eisenbahn war dreimal so schnell wie die Kutsche."
       },
       {
         "id": "q6",
-        "question": "Welche Kutschenart war besonders für den Adel reserviert?",
+        "question": "Welche dieser Strecken entsprach ungefähr einer Tagesetappe mit der Postkutsche?",
         "answers": [
-          "Staatskarosse",
-          "Omnibus",
-          "Bauernwagen"
+          "Dresden - Bautzen",
+          "Dresden - Erfurt",
+          "Dresden - Nürnberg"
         ],
         "correctAnswer": 0,
-        "explanation": "Staatskarossen waren prunkvolle Kutschen, die ausschließlich für königliche und adelige Zeremonien verwendet wurden."
+        "explanation": "Die Strecke Dresden - Bautzen misst rund 60 km. Das entsprach einer typischen Tagesleistung der Postkutsche. Für die anderen Ziele hätte man mehrere Tage gebraucht."
       },
       {
         "id": "q7",
-        "question": "Wie viele Pferde spannte man vor eine schwere Kutsche?",
+        "question": "Wie weit war es mit der Kutsche von Leipzig nach Berlin?",
         "answers": [
-          "Immer nur ein Pferd",
-          "Zwei bis sechs Pferde",
-          "Mindestens zehn Pferde"
+          "Ca. 100 km",
+          "Ca. 150 km",
+          "Ca. 190 km"
         ],
-        "correctAnswer": 1,
-        "explanation": "Je nach Gewicht und Zweck der Kutsche spannte man zwei bis sechs Pferde vor, manchmal auch mehr bei besonderen Anlässen."
+        "correctAnswer": 2,
+        "explanation": "Die Entfernung zwischen Leipzig und Berlin betrug rund 190 Kilometer. Selbst bei gutem Wetter und regelmäßigem Pferdewechsel brauchte man dafür mindestens zwei bis drei Tage."
       },
       {
         "id": "q8",
-        "question": "Was war ein Omnibus im 19. Jahrhundert?",
+        "question": "Warum war das Poststationsnetz für lange Reisen so wichtig?",
         "answers": [
-          "Ein privater Reisewagen",
-          "Ein öffentliches Verkehrsmittel",
-          "Ein Lastwagen"
+          "Die Stationen waren Tankstellen für die Pferde",
+          "An den Stationen wurden Pferde gewechselt & Reisende versorgt",
+          "Nur an den Stationen durfte übernachtet werden"
         ],
         "correctAnswer": 1,
-        "explanation": "Der Omnibus war eine große Kutsche für den öffentlichen Personentransport, der Vorläufer des heutigen Busses."
+        "explanation": "Entlang der Postrouten gab es ein dichtes Netz von Stationen, meist alle 15-20 km. Dort wurden die Pferde gewechselt, Reisende versorgt - und die Kutsche konnte ohne lange Verzögerung weiterfahren. Ein entscheidender Faktor für Tempo und Zuverlässigkeit."
       }
     ]
   },
@@ -143,10 +143,10 @@
       "message": "Touch the screen to begin"
     },
     "startScreen": {
-      "title": "Carriages",
-      "subtitle": "A Journey Through History",
-      "highlightText": "Interactive Exhibition",
-      "introText": "Discover the fascinating world of historic carriages. Test your knowledge with our quiz!",
+      "title": "Distances",
+      "subtitle": "How far? How long?",
+      "highlightText": "Travel distances in the 19th century",
+      "introText": "Test your knowledge! Five questions about traveling by carriage await you. How far could you travel in one day? How long did a journey from Leipzig to Munich take? Face the challenge - you might know more than you think. And if not: you'll definitely learn something along the way!",
       "swipeText": "Swipe left or touch here",
       "backgroundImage": "/images/Bild_Kutsche.webp"
     },
@@ -175,103 +175,103 @@
     "results": {
       "scoreText": "You answered {score} out of 5 questions correctly.",
       "messages": {
-        "0": "Don't worry! Visit the exhibition for more information.",
-        "1": "A good start! There's still much to discover.",
-        "2": "Not bad! You already know something about carriages.",
-        "3": "Well done! You have solid knowledge about carriages.",
-        "4": "Very good! You're almost a carriage expert!",
-        "5": "Excellent! You are a true carriage expert!"
+        "0": "Brrr! Looks like the carriage ended up in the ditch. Try again right away!",
+        "1": "There's still room for improvement! You've at least got your foot on the running board.",
+        "2": "Better! The journey begins - but the road is still bumpy.",
+        "3": "Giddy up! You've got the carriage route in sight - keep going!",
+        "4": "Bravo! You're almost at the stage destination - just one more push and the wagon will roll on its own!",
+        "5": "Chapeau! You belong on the driver's seat - a real travel professional!"
       },
       "playAgain": "Play Again"
     },
     "questions": [
       {
         "id": "q1",
-        "question": "In which century did horse-drawn carriages reach their peak in Europe?",
+        "question": "How many kilometers could a mail coach travel on average per day?",
         "answers": [
-          "16th century",
-          "18th century",
-          "19th century"
+          "approx. 30 km",
+          "approx. 80 km",
+          "approx. 120 km"
         ],
-        "correctAnswer": 2,
-        "explanation": "The 19th century was the golden age of horse-drawn carriages before they were replaced by automobiles."
+        "correctAnswer": 1,
+        "explanation": "In good weather and with functioning horse changes, a mail coach could travel about 60 to a maximum of 100 kilometers daily. However, this distance was only realistic on well-built routes with regular horse changes."
       },
       {
         "id": "q2",
-        "question": "What do you call the person who drives a carriage?",
+        "question": "How long did the carriage journey from Augustusburg to Dresden take?",
         "answers": [
-          "Coachman",
-          "Wagonmaster",
-          "Driver"
+          "6 hours",
+          "2 hours",
+          "1.5 days"
         ],
         "correctAnswer": 0,
-        "explanation": "Coachman is the traditional term for the person who drives a horse-drawn carriage."
+        "explanation": "The distance is about 60 kilometers. A mail coach traveled at an average of 10 to 12 km/h. With breaks and horse changes, the journey took about 5 to 6 hours - a full day on bumpy country roads."
       },
       {
         "id": "q3",
-        "question": "What is a Berlin carriage?",
+        "question": "Which of these routes could be traveled in one day by mail coach?",
         "answers": [
-          "A carriage horse",
-          "A type of carriage",
-          "A carriage part"
+          "Leipzig - Dresden (approx. 100 km)",
+          "Leipzig - Erfurt (approx. 130 km)",
+          "Leipzig - Berlin (approx. 190 km)"
         ],
-        "correctAnswer": 1,
-        "explanation": "A Berlin is a closed, four-seat carriage type developed in Berlin in the 17th century."
+        "correctAnswer": 0,
+        "explanation": "On well-built postal routes with frequent horse changes, 80 to 100 kilometers could be covered daily. This was made possible by a dense network of post stations, usually set up at intervals of 15 to 20 kilometers - where horses were changed."
       },
       {
         "id": "q4",
-        "question": "What material was traditionally used for carriage wheels?",
+        "question": "How many days did the carriage journey from Leipzig to Munich take around 1850?",
         "answers": [
-          "Wood only",
-          "Wood with iron rims",
-          "Rubber"
+          "3-4 days",
+          "5-6 days",
+          "7-8 days"
         ],
         "correctAnswer": 1,
-        "explanation": "Carriage wheels were made of wood and fitted with iron rims to make them more durable."
+        "explanation": "The route is about 450 kilometers. With the rule of thumb of 80 kilometers per day and depending on weather, road conditions and breaks, it took 5 to 6 days. For comparison: today you can cover the same distance by car in 4 to 5 hours."
       },
       {
         "id": "q5",
-        "question": "What does the word 'equipage' mean?",
+        "question": "The mail coach took 6 to 7 hours from Leipzig to Dresden. How long did the railway need from 1839 for the approximately 120 km long route?",
         "answers": [
-          "The carriage itself",
-          "The entire carriage outfit",
-          "Only the horses"
+          "2 hours",
+          "4 hours",
+          "6 hours"
         ],
-        "correctAnswer": 1,
-        "explanation": "Equipage refers to the entire carriage outfit including carriage, horses, harness, and personnel."
+        "correctAnswer": 0,
+        "explanation": "In 1839, the first German long-distance railway began operation: With the steam locomotive, the journey took only 2 hours. A technical breakthrough - the railway was three times faster than the carriage."
       },
       {
         "id": "q6",
-        "question": "Which type of carriage was especially reserved for nobility?",
+        "question": "Which of these routes corresponded approximately to a daily stage by mail coach?",
         "answers": [
-          "State coach",
-          "Omnibus",
-          "Farm wagon"
+          "Dresden - Bautzen",
+          "Dresden - Erfurt",
+          "Dresden - Nuremberg"
         ],
         "correctAnswer": 0,
-        "explanation": "State coaches were magnificent carriages used exclusively for royal and noble ceremonies."
+        "explanation": "The Dresden - Bautzen route measures about 60 km. This corresponded to a typical daily performance of the mail coach. For the other destinations, several days would have been needed."
       },
       {
         "id": "q7",
-        "question": "How many horses were typically harnessed to a heavy carriage?",
+        "question": "How far was it by carriage from Leipzig to Berlin?",
         "answers": [
-          "Always just one horse",
-          "Two to six horses",
-          "At least ten horses"
+          "Approx. 100 km",
+          "Approx. 150 km",
+          "Approx. 190 km"
         ],
-        "correctAnswer": 1,
-        "explanation": "Depending on the weight and purpose of the carriage, two to six horses were harnessed, sometimes more for special occasions."
+        "correctAnswer": 2,
+        "explanation": "The distance between Leipzig and Berlin was about 190 kilometers. Even in good weather and with regular horse changes, it took at least two to three days."
       },
       {
         "id": "q8",
-        "question": "What was an omnibus in the 19th century?",
+        "question": "Why was the postal station network so important for long journeys?",
         "answers": [
-          "A private travel wagon",
-          "A public transport vehicle",
-          "A truck"
+          "The stations were refueling stops for the horses",
+          "At the stations, horses were changed & travelers were supplied",
+          "Only at the stations was overnight stay allowed"
         ],
         "correctAnswer": 1,
-        "explanation": "The omnibus was a large carriage for public passenger transport, the predecessor of today's bus."
+        "explanation": "Along the postal routes there was a dense network of stations, usually every 15-20 km. There horses were changed, travelers were supplied with food and rest - and the carriage could continue without long delays. A decisive factor for speed and reliability."
       }
     ]
   }
