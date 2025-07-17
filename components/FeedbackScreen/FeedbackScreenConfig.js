@@ -38,12 +38,12 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
 
   const mainContentStyle = useMemo(() => ({
     width: '100%',
-    maxWidth: 'min(120rem, 95vw)',
+    maxWidth: 'min(127rem, 95vw)',
     gap: 'min(1.5rem, 3vw)', 
     paddingTop: 'min(6rem, 8vh)',
     paddingBottom: 'min(2rem, 3vh)', 
-    paddingLeft: 'min(4rem, 6vw)', 
-    paddingRight: 'min(4rem, 6vw)',
+    paddingLeft: 'min(5rem, 6vw)', 
+    paddingRight: 'min(5rem, 6vw)',
     margin: '0 auto'
   }), []);
 
@@ -51,11 +51,11 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 'min(1.5rem, 3vw)',
+    gap: 'min(2.6rem, 5.2vw)',
     padding: 'min(3rem, 5vw)',
     width: '100%',
-    maxWidth: 'min(80rem, 90vw)',
-    minHeight: 'min(43rem, 74vh)',
+    maxWidth: 'min(75.6rem, 83.05vw)',
+    minHeight: 'min(53rem, 74vh)',
     justifyContent: 'space-evenly'
   }), []);
 
@@ -69,7 +69,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   const answerButtonStyle = useMemo(() => ({
     minWidth: 'min(40.74rem, 81.48vw)',
     minHeight: 'min(3.0174375rem, 4.2244125vh)',
-    padding: 'min(0.96558rem, 1.81046vh) min(2rem, 4vw)',
+    padding: 'min(1.96558rem, 1.81046vh) min(2rem, 4vw)',
     maxWidth: '100%'
   }), []);
 
@@ -85,10 +85,11 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 'min(1rem, 2vh)',
+    gap: 'min(0.0rem, 0vh)',
     width: '100%',
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'flex-start',
+    marginTop: 'min(0.0rem, 0.0vh)'
   }), []);
 
   const messageStyle = useMemo(() => ({
@@ -100,7 +101,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const explanationStyle = useMemo(() => ({
-    fontSize: 'min(1.6rem, 3.2vw, 4vh)',
+    fontSize: 'min(1.2rem, 3.2vw, 4vh)',
     lineHeight: 'min(2rem, 4vw, 5vh)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
@@ -122,13 +123,13 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const buttonTextStyle = useMemo(() => ({
-    fontSize: 'min(1.375rem, 2.2vw, 3.5vh)',
+    fontSize: 'min(1.175rem, 2.2vw, 3.5vh)',
     lineHeight: 'min(7rem, 11vh)',
     textTransform: 'uppercase'
   }), []);
 
   const arrowStyle = useMemo(() => ({
-    width: 'min(3.5rem, 6vw)',
+    width: 'min(3.2rem, 6vw)',
     height: 'min(3.5rem, 6vh)'
   }), []);
 
