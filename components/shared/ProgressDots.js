@@ -26,7 +26,7 @@ const ProgressDots = ({
 
   const getDotStyles = (index) => {
     const baseSize = 'min(1rem, 1.8vw, 2.25vh)';
-    const baseBorder = 'min(0.125rem, 0.2vw, 0.25vh)';
+    const baseBorder = 'min(0.1575rem, 0.252vw, 0.315vh)';
     
     let dotColor = 'transparent';
     let borderColor = '#D9D9D9';
