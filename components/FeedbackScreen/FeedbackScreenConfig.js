@@ -101,8 +101,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const explanationStyle = useMemo(() => ({
-    fontSize: 'min(1.2rem, 3.2vw, 4vh)',
-    lineHeight: 'min(2rem, 4vw, 5vh)',
+    fontSize: 'min(1.32rem, 3.52vw, 4.4vh)',
+    lineHeight: 'min(2.2rem, 4.4vw, 5.5vh)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0',
