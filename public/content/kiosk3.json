@@ -5,10 +5,10 @@
       "message": "Berühren Sie den Bildschirm um zu beginnen"
     },
     "startScreen": {
-      "title": "Kutschen",
-      "subtitle": "Handwerk und Technik",
-      "highlightText": "Kiosk 3 - Thema: Kutschenbau",
-      "introText": "Entdecken Sie die Geheimnisse des traditionellen Kutschenbaus. Testen Sie Ihr Wissen über Materialien, Techniken und Handwerk!",
+      "title": "Reisen allgemein",
+      "subtitle": "Wie war das Reisen früher wirklich?",
+      "highlightText": "Alltag, Komfort und Herausforderungen im 19. Jahrhundert",
+      "introText": "Testen Sie Ihr Wissen! Fünf Fragen führen Sie durch den Reisealltag vergangener Zeiten. War Kutschenfahren ein bequemes Vergnügen oder eher ein Abenteuer auf Rädern? Stellen Sie sich der Herausforderung – vielleicht wissen Sie mehr, als Sie denken. Und falls nicht: unterwegs lernen Sie garantiert etwas dazu!",
       "swipeText": "Wischen Sie nach links oder berühren Sie hier",
       "backgroundImage": "/images/Bild_Kutsche.webp"
     },
@@ -37,103 +37,103 @@
     "results": {
       "scoreText": "Sie haben {score} von 5 Fragen richtig beantwortet.",
       "messages": {
-        "0": "Keine Sorge! Besuchen Sie die Handwerks-Ausstellung für mehr Informationen.",
-        "1": "Ein guter Anfang! Es gibt noch viel über Kutschenbau zu entdecken.",
-        "2": "Nicht schlecht! Sie wissen schon einiges über das Handwerk.",
-        "3": "Gut gemacht! Sie haben solides Wissen über Kutschenbau.",
-        "4": "Sehr gut! Sie sind fast ein Kutschenbau-Experte!",
-        "5": "Exzellent! Sie sind ein wahrer Handwerks-Kenner!"
+        "0": "Brrr! Da ist wohl die Kutsche im Graben gelandet. Versuchen Sie es gleich noch einmal!",
+        "1": "Da geht noch was! Sie haben zumindest den Fuß auf die Trittstufe gesetzt.",
+        "2": "Schon besser! Die Reise beginnt – aber der Weg ist noch holprig.",
+        "3": "Hü! Sie haben den Kutschweg im Blick – weiter so!",
+        "4": "Bravo! Sie sind fast am Etappenziel – noch ein kleiner Ruck, dann rollt der Wagen von selbst!",
+        "5": "Chapeau! Sie gehören auf den Kutschbock – ein echter Reiseprofi!"
       },
       "playAgain": "Noch einmal"
     },
     "questions": [
       {
         "id": "q1",
-        "question": "Welches Holz wurde bevorzugt für Kutschenrahmen verwendet?",
+        "question": "Was kostete eine Reise mit der Postkutsche von Leipzig nach Dresden?",
         "answers": [
-          "Eiche und Esche",
-          "Kiefer und Fichte",
-          "Buche und Birke"
+          "ca. 30 Kreuzer",
+          "ca. 1 Taler",
+          "ca. 5 Taler"
         ],
-        "correctAnswer": 0,
-        "explanation": "Eiche und Esche waren wegen ihrer Festigkeit und Elastizität die bevorzugten Hölzer für Kutschenrahmen."
+        "correctAnswer": 1,
+        "explanation": "Die Reise kostete 1 Taler. Das entsprach ungefähr dem Tageslohn eines Handwerkers im 18. oder frühen 19. Jahrhundert. Für viele Menschen war das eine erhebliche Ausgabe – Reisen war daher ein Luxus, den sich vor allem wohlhabendere Bürger leisten konnten."
       },
       {
         "id": "q2",
-        "question": "Wie wurden die Räder wasserdicht gemacht?",
+        "question": "Wie komfortabel war eine typische Postkutschenfahrt?",
         "answers": [
-          "Mit Wachs versiegelt",
-          "In Wasser eingeweicht",
-          "Mit Teer gestrichen"
+          "Bequeme Sitze, Verpflegung und Toilettenpause",
+          "Harte Sitze, wenig Platz, kein Halt",
+          "Liegesitze und Fenster zum Öffnen"
         ],
         "correctAnswer": 1,
-        "explanation": "Die Holzräder wurden in Wasser eingeweicht, damit das Holz aufquoll und die Fugen dicht wurden."
+        "explanation": "Eine Postkutschenfahrt war meist unbequem und anstrengend. Die Kutschen waren nur schwach gefedert, die Sitze hart und der Platz sehr beengt. Es gab kaum Pausen, außer zum Wechseln der Pferde."
       },
       {
         "id": "q3",
-        "question": "Was war die Aufgabe der Federn an einer Kutsche?",
+        "question": "Wie viel Gepäck durfte man kostenlos auf einer Reise mit der Postkutsche mitnehmen?",
         "answers": [
-          "Dekoration",
-          "Stoßdämpfung",
-          "Geschwindigkeitssteigerung"
+          "Handgepäck (ca. 10 kg)",
+          "Einen großen Koffer pro Person",
+          "Unbegrenzt, wenn man zahlte"
         ],
-        "correctAnswer": 1,
-        "explanation": "Die Federn dienten der Stoßdämpfung und machten die Fahrt für die Passagiere komfortabler."
+        "correctAnswer": 0,
+        "explanation": "Nur eine kleine Tasche oder ein leichtes Handgepäck waren im Fahrpreis enthalten – meist etwa 10 Kilogramm. Für größere oder zusätzliche Gepäckstücke musste man einen Aufpreis zahlen. Diese wurden dann auf dem Dach der Kutsche festgeschnallt, oft ungeschützt vor Wind und Wetter."
       },
       {
         "id": "q4",
-        "question": "Welcher Handwerker war für die Räder zuständig?",
+        "question": "Was geschah bei schlechtem Wetter wie Regen oder Schnee während einer Postkutschenfahrt?",
         "answers": [
-          "Schmied",
-          "Wagner (Stellmacher)",
-          "Sattler"
+          "Fahrten wurden abgesagt",
+          "Fenster wurden geschlossen, man blieb trocken",
+          "Es wurde unangenehm nass, kalt und rutschig"
         ],
-        "correctAnswer": 1,
-        "explanation": "Der Wagner oder Stellmacher war der spezialisierte Handwerker für Räder und Wagenteile."
+        "correctAnswer": 2,
+        "explanation": "Bei schlechtem Wetter war das Reisen mit der Postkutsche besonders beschwerlich. Die Straßen verwandelten sich in Schlamm und Eisflächen, was die Fahrt langsam und gefährlich machte. Die Kutschen waren oft zugig, die Verdecke undicht, und es gab keine wirksame Isolierung gegen Kälte oder Nässe."
       },
       {
         "id": "q5",
-        "question": "Womit wurden Kutschenkasten traditionell bemalt?",
+        "question": "Wo saßen die Fahrgäste in einer typischen Kutsche mit mehreren Klassen?",
         "answers": [
-          "Ölfarben",
-          "Wasserfarben",
-          "Kreidefarben"
+          "Alle im selben Abteil",
+          "Innenraum (1. & 2. Klasse) | Auf dem Wagen (3. Klasse)",
+          "Jeder durfte sich seinen Platz wählen"
         ],
-        "correctAnswer": 0,
-        "explanation": "Ölfarben wurden verwendet, da sie wetterbeständig waren und einen schönen Glanz erzeugten."
+        "correctAnswer": 1,
+        "explanation": "Auf den Postkutschenlinien gab es in der Regel drei Klassen, ähnlich wie später bei der Eisenbahn. Die Passagiere der 1. und 2. Klasse saßen im Inneren der Kutsche. In der 3. Klasse zahlte man weniger und saß draußen auf dem Kutschbock oder auf dem Dach, ungeschützt vor Wind und Wetter."
       },
       {
         "id": "q6",
-        "question": "Was verstärkte man mit Eisenbeschlägen?",
+        "question": "Durfte man während einer Kutschfahrt selbst bestimmen, wann eine Pause gemacht wurde?",
         "answers": [
-          "Nur die Räder",
-          "Alle Verbindungsstellen",
-          "Nur den Kutschbock"
+          "Ja, jeder Fahrgast konnte jederzeit einen Halt verlangen",
+          "Nur gegen Aufpreis war eine persönliche Pause möglich",
+          "Nein, Pausen richteten sich nach festen Routen"
         ],
-        "correctAnswer": 1,
-        "explanation": "Eisenbeschläge verstärkten alle wichtigen Verbindungsstellen und machten die Kutsche haltbarer."
+        "correctAnswer": 2,
+        "explanation": "Pausen während einer Kutschfahrt waren nicht flexibel. Sie fanden nach einem festgelegten Fahrplan statt – meist an Poststationen, wo die Pferde gewechselt wurden. Diese lagen etwa alle 10 bis 15 Kilometer entlang der Strecke."
       },
       {
         "id": "q7",
-        "question": "Welches Material wurde für die Polsterung verwendet?",
+        "question": "Wie laut war eine Fahrt mit der Postkutsche?",
         "answers": [
-          "Stroh und Heu",
-          "Rosshaar und Daunen",
-          "Wolle und Baumwolle"
+          "Angenehm ruhig, nur das Klappern der Hufe",
+          "Sehr laut – Räder, Hufe, Rufe, Wind und Gepolter",
+          "Leise im Innenraum, da gut gedämmt"
         ],
         "correctAnswer": 1,
-        "explanation": "Rosshaar und Daunen waren die bevorzugten Materialien für hochwertige Kutschenpolsterung."
+        "explanation": "Eine Kutschfahrt war alles andere als ruhig. Die Eisenreifen der Räder polterten auf dem unebenen Straßenbelag, meist aus Kopfsteinpflaster oder Lehm. Dazu kamen das laute Schnauben und Traben der Pferde, das Knarren und Quietschen der Holzachsen, die Rufe des Kutschers sowie der Wind, der durch die schlecht isolierten Kutschen zog."
       },
       {
         "id": "q8",
-        "question": "Wie lange dauerte der Bau einer hochwertigen Kutsche?",
+        "question": "Was tat man während einer Kutschfahrt, wenn man auf die Toilette musste?",
         "answers": [
-          "Wenige Wochen",
-          "Mehrere Monate",
-          "Über ein Jahr"
+          "Es gab eine Bordtoilette im Wageninneren",
+          "Man hielt an Gasthöfen oder \"hinterm Busch\"",
+          "Die Fahrgäste mussten während der Fahrt in Eimer machen"
         ],
         "correctAnswer": 1,
-        "explanation": "Der Bau einer hochwertigen Kutsche dauerte mehrere Monate, da jeder Arbeitsschritt von Hand ausgeführt wurde."
+        "explanation": "Postkutschen hatten keine Toiletten. Wenn ein Fahrgast dringend musste, konnte der Kutscher auf Bitten hin einen kurzen Halt einlegen – meist am Wegesrand oder in der Nähe einer Poststation oder eines Gasthofs."
       }
     ]
   },
@@ -143,10 +143,10 @@
       "message": "Touch the screen to begin"
     },
     "startScreen": {
-      "title": "Carriages",
-      "subtitle": "Craftsmanship and Technology",
-      "highlightText": "Kiosk 3 - Theme: Carriage Building",
-      "introText": "Discover the secrets of traditional carriage building. Test your knowledge about materials, techniques, and craftsmanship!",
+      "title": "General Travel",
+      "subtitle": "What was traveling really like in the past?",
+      "highlightText": "Daily life, comfort and challenges in the 19th century",
+      "introText": "Test your knowledge! Five questions guide you through the travel reality of bygone times. Was carriage travel a comfortable pleasure or rather an adventure on wheels? Face the challenge – you might know more than you think. And if not: you'll definitely learn something along the way!",
       "swipeText": "Swipe left or touch here",
       "backgroundImage": "/images/Bild_Kutsche.webp"
     },
@@ -175,103 +175,103 @@
     "results": {
       "scoreText": "You answered {score} out of 5 questions correctly.",
       "messages": {
-        "0": "Don't worry! Visit the craftsmanship exhibition for more information.",
-        "1": "A good start! There's still much to discover about carriage building.",
-        "2": "Not bad! You already know something about the craft.",
-        "3": "Well done! You have solid knowledge about carriage building.",
-        "4": "Very good! You're almost a carriage building expert!",
-        "5": "Excellent! You are a true craftsmanship connoisseur!"
+        "0": "Brrr! Looks like the carriage ended up in the ditch. Try again right away!",
+        "1": "There's still room for improvement! You've at least got your foot on the running board.",
+        "2": "Better! The journey begins – but the road is still bumpy.",
+        "3": "Giddy up! You've got the carriage route in sight – keep going!",
+        "4": "Bravo! You're almost at the stage destination – just one more push and the wagon will roll on its own!",
+        "5": "Chapeau! You belong on the driver's seat – a real travel professional!"
       },
       "playAgain": "Play Again"
     },
     "questions": [
       {
         "id": "q1",
-        "question": "Which wood was preferred for carriage frames?",
+        "question": "What did a journey by mail coach from Leipzig to Dresden cost?",
         "answers": [
-          "Oak and ash",
-          "Pine and spruce",
-          "Beech and birch"
+          "approx. 30 Kreuzer",
+          "approx. 1 Taler",
+          "approx. 5 Taler"
         ],
-        "correctAnswer": 0,
-        "explanation": "Oak and ash were preferred woods for carriage frames due to their strength and elasticity."
+        "correctAnswer": 1,
+        "explanation": "The journey cost 1 Taler. This corresponded roughly to a craftsman's daily wage in the 18th or early 19th century. For many people, this was a considerable expense – travel was therefore a luxury that mainly wealthier citizens could afford."
       },
       {
         "id": "q2",
-        "question": "How were the wheels made waterproof?",
+        "question": "How comfortable was a typical mail coach journey?",
         "answers": [
-          "Sealed with wax",
-          "Soaked in water",
-          "Painted with tar"
+          "Comfortable seats, meals and toilet breaks",
+          "Hard seats, little space, no stops",
+          "Reclining seats and openable windows"
         ],
         "correctAnswer": 1,
-        "explanation": "The wooden wheels were soaked in water so the wood would swell and seal the joints."
+        "explanation": "A mail coach journey was usually uncomfortable and exhausting. The coaches were only lightly sprung, the seats hard and the space very cramped. There were hardly any breaks, except for changing horses."
       },
       {
         "id": "q3",
-        "question": "What was the purpose of springs on a carriage?",
+        "question": "How much luggage could you take for free on a mail coach journey?",
         "answers": [
-          "Decoration",
-          "Shock absorption",
-          "Speed enhancement"
+          "Hand luggage (approx. 10 kg)",
+          "One large suitcase per person",
+          "Unlimited, if you paid"
         ],
-        "correctAnswer": 1,
-        "explanation": "The springs served for shock absorption and made the ride more comfortable for passengers."
+        "correctAnswer": 0,
+        "explanation": "Only a small bag or light hand luggage was included in the fare – usually about 10 kilograms. For larger or additional pieces of luggage, you had to pay a surcharge. These were then strapped to the roof of the coach, often unprotected from wind and weather."
       },
       {
         "id": "q4",
-        "question": "Which craftsman was responsible for the wheels?",
+        "question": "What happened in bad weather like rain or snow during a mail coach journey?",
         "answers": [
-          "Blacksmith",
-          "Wheelwright",
-          "Saddler"
+          "Journeys were cancelled",
+          "Windows were closed, you stayed dry",
+          "It became unpleasantly wet, cold and slippery"
         ],
-        "correctAnswer": 1,
-        "explanation": "The wheelwright was the specialized craftsman for wheels and wagon parts."
+        "correctAnswer": 2,
+        "explanation": "In bad weather, traveling by mail coach was particularly arduous. The roads turned into mud and ice surfaces, making the journey slow and dangerous. The coaches were often drafty, the covers leaky, and there was no effective insulation against cold or moisture."
       },
       {
         "id": "q5",
-        "question": "What were carriage bodies traditionally painted with?",
+        "question": "Where did passengers sit in a typical multi-class coach?",
         "answers": [
-          "Oil paints",
-          "Water colors",
-          "Chalk paints"
+          "All in the same compartment",
+          "Interior (1st & 2nd class) | On the wagon (3rd class)",
+          "Everyone could choose their seat"
         ],
-        "correctAnswer": 0,
-        "explanation": "Oil paints were used because they were weather-resistant and produced a beautiful shine."
+        "correctAnswer": 1,
+        "explanation": "Mail coach lines usually had three classes, similar to later railways. First and second class passengers sat inside the coach. In third class, you paid less and sat outside on the driver's box or on the roof, unprotected from wind and weather."
       },
       {
         "id": "q6",
-        "question": "What was reinforced with iron fittings?",
+        "question": "Could you decide when to take a break during a coach journey?",
         "answers": [
-          "Only the wheels",
-          "All connection points",
-          "Only the driver's seat"
+          "Yes, any passenger could request a stop at any time",
+          "Only for a surcharge was a personal break possible",
+          "No, breaks followed fixed routes"
         ],
-        "correctAnswer": 1,
-        "explanation": "Iron fittings reinforced all important connection points and made the carriage more durable."
+        "correctAnswer": 2,
+        "explanation": "Breaks during a coach journey were not flexible. They took place according to a fixed schedule – usually at post stations where horses were changed. These were located about every 10 to 15 kilometers along the route."
       },
       {
         "id": "q7",
-        "question": "Which material was used for upholstery?",
+        "question": "How loud was a journey by mail coach?",
         "answers": [
-          "Straw and hay",
-          "Horsehair and down",
-          "Wool and cotton"
+          "Pleasantly quiet, only the clatter of hooves",
+          "Very loud – wheels, hooves, calls, wind and rumbling",
+          "Quiet in the interior, as it was well insulated"
         ],
         "correctAnswer": 1,
-        "explanation": "Horsehair and down were the preferred materials for high-quality carriage upholstery."
+        "explanation": "A coach journey was anything but quiet. The iron rims of the wheels rumbled on the uneven road surface, usually made of cobblestones or clay. Added to this were the loud snorting and trotting of horses, the creaking and squeaking of wooden axles, the coachman's calls, and the wind blowing through the poorly insulated coaches."
       },
       {
         "id": "q8",
-        "question": "How long did it take to build a high-quality carriage?",
+        "question": "What did you do during a coach journey if you needed to use the toilet?",
         "answers": [
-          "A few weeks",
-          "Several months",
-          "Over a year"
+          "There was an onboard toilet inside the wagon",
+          "You stopped at inns or \"behind the bush\"",
+          "Passengers had to use buckets during the journey"
         ],
         "correctAnswer": 1,
-        "explanation": "Building a high-quality carriage took several months, as every step was done by hand."
+        "explanation": "Mail coaches had no toilets. If a passenger urgently needed to go, the coachman could make a brief stop upon request – usually at the roadside or near a post station or inn."
       }
     ]
   }
