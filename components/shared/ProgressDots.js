@@ -13,7 +13,7 @@ const ProgressDots = ({
   const getGap = () => {
     switch (variant) {
       case 'results':
-        return 'min(2.2rem, 3.5vw, 4.4vh)'; 
+        return 'min(2.8rem, 4.5vw, 5.6vh)'; // Espacio más grande para results
       default:
         return 'min(0.75rem, 1.2vw, 1.5vh)'; 
     }
@@ -53,8 +53,8 @@ const ProgressDots = ({
         const isCorrect = userAnswer === questions[index]?.correctAnswer;
         dotColor = isCorrect ? '#85AF8B' : '#A94930';
         return {
-          width: 'min(2.75rem, 4.4vw, 5.5vh)',
-          height: 'min(2.75rem, 4.4vw, 5.5vh)',
+          width: 'min(3.5rem, 5.6vw, 7vh)', // Más grande para results
+          height: 'min(3.5rem, 5.6vw, 7vh)',
           borderRadius: '50%',
           backgroundColor: dotColor,
           border: 'none'

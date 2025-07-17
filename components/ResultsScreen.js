@@ -109,12 +109,25 @@ const ResultsScreen = () => {
             marginBottom: 'min(4rem, 6vh)' 
           }}
         />
+      </div>
 
-        {/* "NOCH EINMAL" button responsivo */}
+      {/* "NOCH EINMAL" button responsivo - positioned at footer level, outside StandardFooter */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={showContent ? { y: 0, opacity: 1 } : {}}
+        transition={{ duration: 0.8, delay: 1.0 }}
+        style={{
+          position: 'fixed',
+          left: '0',
+          right: '0',
+          bottom: 'min(1.5rem, 2.5vh)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 50
+        }}
+      >
         <motion.button
-          initial={{ y: 50, opacity: 0 }}
-          animate={showContent ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 1.0 }}
           onClick={handlePlayAgain}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -122,7 +135,7 @@ const ResultsScreen = () => {
           style={{
             background: 'transparent',
             border: 'none',
-            color: '#FFF',
+            color: '#D9D9D9',
             fontFamily: '"Tisa Sans Pro"',
             fontSize: 'min(1.5rem, 2.5vw)',
             fontStyle: 'normal',
@@ -133,7 +146,8 @@ const ResultsScreen = () => {
             letterSpacing: 'min(0.0625rem, 0.1vw)',
             padding: 'min(1rem, 1.5vh) min(2rem, 3vw)',
             borderRadius: 'min(1.5rem, 2.5vw)', 
-            gap: 'min(0.5rem, 0.8vw)'
+            gap: 'min(0.5rem, 0.8vw)',
+            cursor: 'pointer'
           }}
         >
           {content[language]?.results?.playAgain || 'NOCH EINMAL'}
@@ -146,7 +160,7 @@ const ResultsScreen = () => {
             }}
           />
         </motion.button>
-      </div>
+      </motion.div>
 
       {/* Standard footer with language selector */}
       <StandardFooter />
