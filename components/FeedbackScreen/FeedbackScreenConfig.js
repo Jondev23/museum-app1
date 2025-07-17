@@ -105,7 +105,9 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     lineHeight: 'min(2rem, 4vw, 5vh)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
-    margin: '0'
+    margin: '0',
+    paddingLeft: 'min(7rem, 14vw)',
+    paddingRight: 'min(7rem, 14vw)'
   }), []);
 
   const buttonContainerStyle = useMemo(() => ({
