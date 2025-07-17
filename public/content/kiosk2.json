@@ -5,10 +5,10 @@
       "message": "Berühren Sie den Bildschirm um zu beginnen"
     },
     "startScreen": {
-      "title": "Kutschen",
-      "subtitle": "Eleganz auf Rädern",
-      "highlightText": "Kiosk 2 - Thema: Luxuskutschen",
-      "introText": "Erleben Sie die Pracht und den Luxus historischer Kutschen der Oberschicht. Wie viel wissen Sie über diese prächtigen Fahrzeuge?",
+      "title": "Geschwindigkeiten",
+      "subtitle": "Wie schnell war das eigentlich?",
+      "highlightText": "Reisegeschwindigkeiten im 19. Jahrhundert",
+      "introText": "Teste dein Wissen! Fünf Fragen rund um Tempo und Technik im Zeitalter der Pferdestärken warten auf dich. Fußgänger, Reiter, Kutsche oder Eisenbahn – wer war am flottesten unterwegs? Stell dich der Herausforderung – vielleicht weißt du mehr, als du denkst. Und falls nicht: unterwegs lernst du garantiert etwas dazu!",
       "swipeText": "Wischen Sie nach links oder berühren Sie hier",
       "backgroundImage": "/images/Bild_Kutsche.webp"
     },
@@ -37,103 +37,92 @@
     "results": {
       "scoreText": "Sie haben {score} von 5 Fragen richtig beantwortet.",
       "messages": {
-        "0": "Keine Sorge! Besuchen Sie die Luxuskutschen-Ausstellung für mehr Informationen.",
-        "1": "Ein guter Anfang! Es gibt noch viel über Luxuskutschen zu entdecken.",
-        "2": "Nicht schlecht! Sie wissen schon einiges über edle Kutschen.",
-        "3": "Gut gemacht! Sie haben solides Wissen über Luxuskutschen.",
-        "4": "Sehr gut! Sie sind fast ein Luxuskutschen-Experte!",
-        "5": "Exzellent! Sie sind ein wahrer Kenner edler Kutschen!"
+        "0": "Brrr! Da ist wohl die Kutsche im Graben gelandet. Versuche es gleich noch einmal!",
+        "1": "Da geht noch was! Du hast zumindest den Fuß auf die Trittstufe gesetzt.",
+        "2": "Schon besser! Die Reise beginnt - aber der Weg ist noch holprig.",
+        "3": "Hü! Du hast den Kutschweg im Blick - weiter so!",
+        "4": "Bravo! Du bist fast am Etappenziel - noch ein kleiner Ruck, dann rollt der Wagen von selbst!",
+        "5": "Chapeau! Du gehörst auf den Kutschbock - ein echter Reiseprofi!"
       },
       "playAgain": "Noch einmal"
     },
     "questions": [
       {
         "id": "q1",
-        "question": "Was zeichnete eine Staatskarosse besonders aus?",
+        "question": "Wie schnell fuhren Kutschen typischerweise auf Landstraßen?",
         "answers": [
-          "Goldverzierungen und Wappen",
-          "Besonders große Räder",
-          "Extra starke Federn"
+          "ca. 8 km/h",
+          "ca. 12 km/h",
+          "ca. 20 km/h"
         ],
-        "correctAnswer": 0,
-        "explanation": "Staatskarossen waren mit aufwendigen Goldverzierungen, Wappen und kostbaren Materialien geschmückt, um den Status des Besitzers zu zeigen."
+        "correctAnswer": 1,
+        "explanation": "Die Reisegeschwindigkeit von Postkutschen hing stark von Faktoren wie Streckenbeschaffenheit, Wetter, Straßenqualität, Beladung und Häufigkeit der Pferdewechsel ab. Unter günstigen Bedingungen erreichten sie typischerweise eine Geschwindigkeit von 10 bis 15 Kilometern pro Stunde."
       },
       {
         "id": "q2",
-        "question": "Wie viele Pferde spannte man vor eine schwere Gala-Kutsche?",
+        "question": "Was war schneller: ein Reiter oder eine Kutsche?",
         "answers": [
-          "Zwei Pferde",
-          "Vier bis sechs Pferde",
-          "Acht bis zehn Pferde"
+          "Reiter",
+          "Kutsche",
+          "Gleich schnell"
         ],
-        "correctAnswer": 1,
-        "explanation": "Schwere Gala-Kutschen benötigten meist vier bis sechs Pferde, bei besonderen Zeremonien auch mehr."
+        "correctAnswer": 0,
+        "explanation": "Ein erfahrener Reiter konnte im Galopp Geschwindigkeiten von 30 bis 50 km/h erreichen – allerdings nur über kurze Distanzen. Auch auf längeren Strecken war ein Reiter im Schnitt schneller unterwegs als eine Kutsche. Dafür bot die Kutsche deutlich mehr Komfort und Platz, etwa für Gepäck oder mehrere Personen, und war ausdauernder bei regelmäßigem Pferdewechsel."
       },
       {
         "id": "q3",
-        "question": "Was war das teuerste Material für Kutschenpolster?",
+        "question": "Wie schnell war die Eisenbahn um das Jahr 1850?",
         "answers": [
-          "Leder",
-          "Samt",
-          "Seide und Brokat"
+          "ca. 25 km/h",
+          "ca. 40 km/h",
+          "ca. 80 km/h"
         ],
-        "correctAnswer": 2,
-        "explanation": "Seide und Brokat waren die kostbarsten Materialien für Kutschenpolster und zeugten von höchstem Luxus."
+        "correctAnswer": 1,
+        "explanation": "Um 1850 erreichten die ersten Eisenbahnlinien in Deutschland, etwa die Strecke Leipzig - Dresden, Geschwindigkeiten von etwa 40 km/h. Für damalige Verhältnisse war das revolutionär schnell. Im Vergleich zur Postkutsche bedeutete das eine mehr als doppelt so hohe Reisegeschwindigkeit bei gleichzeitig größerer Zuverlässigkeit und Kapazität."
       },
       {
         "id": "q4",
-        "question": "Welche Farbe war traditionell dem Adel vorbehalten?",
+        "question": "Wie lange brauchte man zu Fuß für 100 km?",
         "answers": [
-          "Schwarz",
-          "Purpur",
-          "Gold"
+          "ca. 1 Tag",
+          "ca. 2 Tage",
+          "ca. 4 Tage"
         ],
         "correctAnswer": 1,
-        "explanation": "Purpur war die traditionelle Farbe des Adels und durfte nur von hochrangigen Persönlichkeiten verwendet werden."
+        "explanation": "Geübte Fußgänger legten täglich etwa 40 bis 50 Kilometer zurück. Wandernde Händler, Handwerksburschen oder Pilger benötigten für eine Strecke von 100 Kilometern in der Regel 2 bis 3 Tage, abhängig von Gelände, Wetter und Gepäck."
       },
       {
         "id": "q5",
-        "question": "Was machte eine Berline zu einer Luxuskutsche?",
+        "question": "Wie viel schneller war die Eisenbahn im Vergleich zur Kutsche?",
         "answers": [
-          "Geschlossener Aufbau und Komfort",
-          "Offenes Verdeck",
-          "Besonders hohe Geschwindigkeit"
+          "etwa dreimal so schnell",
+          "etwa gleich schnell",
+          "sechsmal so schnell"
         ],
         "correctAnswer": 0,
-        "explanation": "Die Berline war eine geschlossene, komfortable Kutsche mit aufwendiger Innenausstattung für wettergeschütztes Reisen."
+        "explanation": "Mit einer Durchschnittsgeschwindigkeit von rund 40 km/h war die Eisenbahn im 19. Jahrhundert etwa dreimal so schnell wie eine Postkutsche – ein drastischer Unterschied, der das Reiseverhalten grundlegend veränderte."
       },
       {
         "id": "q6",
-        "question": "Wie hießen die Bediensteten, die neben der Kutsche liefen?",
+        "question": "Wie viel Zeit benötigte eine Postkutsche typischerweise für 100 Kilometer?",
         "answers": [
-          "Stallknechte",
-          "Läufer oder Vorreiter",
-          "Diener"
+          "Etwa 2 bis 3 Stunden",
+          "Etwa 7 bis 10 Stunden",
+          "Etwa 8 bis 10 Stunden"
         ],
-        "correctAnswer": 1,
-        "explanation": "Läufer oder Vorreiter liefen neben oder vor der Kutsche, um den Weg zu bahnen und den Status zu demonstrieren."
+        "correctAnswer": 2,
+        "explanation": "Bei einer Durchschnittsgeschwindigkeit von 10-12 km/h benötigte eine Postkutsche für 100 km etwa 8 bis 10 Stunden, unter schlechten Bedingungen auch deutlich länger."
       },
       {
         "id": "q7",
-        "question": "Was war eine Vis-à-vis Kutsche?",
+        "question": "Warum konnten sich viele Menschen trotz der Eisenbahn nicht schneller fortbewegen?",
         "answers": [
-          "Eine offene Kutsche",
-          "Eine Kutsche mit gegenüberliegenden Sitzen",
-          "Eine besonders schnelle Kutsche"
+          "Weil sie keine Fahrkarten kaufen konnten",
+          "Weil ländliche Regionen trotz Bahn schlecht erreichbar blieben",
+          "Weil Züge oft langsamer fuhren als Kutschen"
         ],
         "correctAnswer": 1,
-        "explanation": "In einer Vis-à-vis Kutsche saßen sich die Passagiere gegenüber, was gesellige Unterhaltung während der Fahrt ermöglichte."
-      },
-      {
-        "id": "q8",
-        "question": "Welche Kutschen verwendete man für die Jagd?",
-        "answers": [
-          "Staatskarossen",
-          "Jagdwagen oder Break",
-          "Berlines"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Jagdwagen oder Break waren speziell für die Jagd konzipierte Kutschen mit erhöhten Sitzen für bessere Sicht."
+        "explanation": "Der Eisenbahnausbau begann in den Städten. Viele Dörfer blieben zunächst vom schnellen Verkehr ausgeschlossen. Kutschen und Fußwege blieben dort Alltag."
       }
     ]
   },
@@ -143,10 +132,10 @@
       "message": "Touch the screen to begin"
     },
     "startScreen": {
-      "title": "Carriages",
-      "subtitle": "Elegance on Wheels",
-      "highlightText": "Kiosk 2 - Theme: Luxury Carriages",
-      "introText": "Experience the splendor and luxury of historic upper-class carriages. How much do you know about these magnificent vehicles?",
+      "title": "Speeds",
+      "subtitle": "How fast was it actually?",
+      "highlightText": "Travel speeds in the 19th century",
+      "introText": "Test your knowledge! Five questions about speed and technology in the age of horsepower await you. Pedestrians, riders, carriages or railways – who traveled fastest? Face the challenge – you might know more than you think. And if not: you'll definitely learn something along the way!",
       "swipeText": "Swipe left or touch here",
       "backgroundImage": "/images/Bild_Kutsche.webp"
     },
@@ -175,103 +164,92 @@
     "results": {
       "scoreText": "You answered {score} out of 5 questions correctly.",
       "messages": {
-        "0": "Don't worry! Visit the luxury carriage exhibition for more information.",
-        "1": "A good start! There's still much to discover about luxury carriages.",
-        "2": "Not bad! You already know something about fine carriages.",
-        "3": "Well done! You have solid knowledge about luxury carriages.",
-        "4": "Very good! You're almost a luxury carriage expert!",
-        "5": "Excellent! You are a true connoisseur of fine carriages!"
+        "0": "Brrr! Looks like the carriage ended up in the ditch. Try again right away!",
+        "1": "There's still room for improvement! You've at least got your foot on the running board.",
+        "2": "Better! The journey begins - but the road is still bumpy.",
+        "3": "Giddy up! You've got the carriage route in sight - keep going!",
+        "4": "Bravo! You're almost at the stage destination - just one more push and the wagon will roll on its own!",
+        "5": "Chapeau! You belong on the driver's seat - a real travel professional!"
       },
       "playAgain": "Play Again"
     },
     "questions": [
       {
         "id": "q1",
-        "question": "What particularly distinguished a state coach?",
+        "question": "How fast did carriages typically travel on country roads?",
         "answers": [
-          "Gold decorations and coats of arms",
-          "Particularly large wheels",
-          "Extra strong springs"
+          "approx. 8 km/h",
+          "approx. 12 km/h",
+          "approx. 20 km/h"
         ],
-        "correctAnswer": 0,
-        "explanation": "State coaches were decorated with elaborate gold ornaments, coats of arms, and precious materials to display the owner's status decorated with elaborate gold ornaments, coats of arms, and precious materials to display the owner's status decorated with elaborate gold ornaments, coats of arms, and precious materials to display the owner's status decorated with elaborate gold ornaments, coats of arms, and precious materials to display the owner's status decorated with elaborate gold ornaments, coats of arms, and precious materials to display the owner's status decorated with elaborate gold ornaments, coats of arms, and precious materials to display the owner's status."
+        "correctAnswer": 1,
+        "explanation": "The travel speed of mail coaches depended heavily on factors such as road conditions, weather, road quality, load and frequency of horse changes. Under favorable conditions, they typically reached speeds of 10 to 15 kilometers per hour."
       },
       {
         "id": "q2",
-        "question": "How many horses were typically harnessed to a heavy gala carriage?",
+        "question": "What was faster: a rider or a carriage?",
         "answers": [
-          "Two horses",
-          "Four to six horses",
-          "Eight to ten horses"
+          "Rider",
+          "Carriage",
+          "Equally fast"
         ],
-        "correctAnswer": 1,
-        "explanation": "Heavy gala carriages usually required four to six horses, sometimes more for special ceremonies.Heavy gala carriages usually required four to six horses, sometimes more for special ceremonies.Heavy gala carriages usually required four to six horses, sometimes more for special ceremonies.Heavy gala carriages usually required four to six horses, sometimes more for special ceremoniesHeavy gala carriages usually required four to six horses, sometimes more for special ceremonies.Heavy gala carriages usually required four to six horses, sometimes more for special ceremoniesHeavy gala carriages usually required four to six horses, sometimes more for special ceremonies.Heavy gala carriages usually required four to six horses, sometimes more for special ceremoniesHeavy gala carriages usually required four to six horses, sometimes more for special ceremonies.Heavy gala carriages usually required four to six horses, sometimes more for special ceremoniesHeavy gala carriages usually required four to six horses, sometimes more for special ceremonies.Heavy gala carriages usually required four to six horses, sometimes more for special ceremonies"
+        "correctAnswer": 0,
+        "explanation": "An experienced rider could reach speeds of 30 to 50 km/h at gallop - but only over short distances. Even on longer routes, a rider was on average faster than a carriage. However, the carriage offered significantly more comfort and space, for luggage or multiple passengers, and was more enduring with regular horse changes."
       },
       {
         "id": "q3",
-        "question": "What was the most expensive material for carriage upholstery?",
+        "question": "How fast was the railway around 1850?",
         "answers": [
-          "Leather",
-          "Velvet",
-          "Silk and brocade"
+          "approx. 25 km/h",
+          "approx. 40 km/h",
+          "approx. 80 km/h"
         ],
-        "correctAnswer": 2,
-        "explanation": "Silk and brocade were the most precious materials for carriage upholstery and indicated the highest luxury Silk and brocade were the most precious materials for carriage upholstery and indicatedSilk and brocade were the most precious materials for carriage upholstery and indicatedSilk and brocade were the most precious materials for carriage upholstery and indicatedSilk and brocade were the most precious materials for carriage upholstery and indicatedSilk and brocade were the most precious materials for carriage upholstery and indicatedSilk and brocade were the most precious materials for carriage upholstery and indicatedSilk and brocade were the most precious materials for carriage upholstery and indicatedSilk and brocade were the most precious materials for carriage upholstery and indicated."
+        "correctAnswer": 1,
+        "explanation": "Around 1850, the first railway lines in Germany, such as the Leipzig - Dresden route, reached speeds of about 40 km/h. For the standards of that time, this was revolutionarily fast. Compared to the mail coach, this meant more than double the travel speed with greater reliability and capacity."
       },
       {
         "id": "q4",
-        "question": "Which color was traditionally reserved for nobility?",
+        "question": "How long did it take to walk 100 km?",
         "answers": [
-          "Black",
-          "Purple",
-          "Gold"
+          "approx. 1 day",
+          "approx. 2 days",
+          "approx. 4 days"
         ],
         "correctAnswer": 1,
-        "explanation": "Purple was the traditional color of nobility and could only be used by high-ranking personalities.Purple was the traditional color of nobility and could only be used by high-ranking personalitiesPurple was the traditional color of nobility and could only be used by high-ranking personalitiesPurple was the traditional color of nobility and could only be used by high-ranking personalitiesPurple was the traditional color of nobility and could only be used by high-ranking personalitiesPurple was the traditional color of nobility and could only be used by high-ranking personalitiesPurple was the traditional color of nobility and could only be used by high-ranking personalitiesPurple was the traditional color of nobility and could only be used by high-ranking personalitiesPurple was the traditional color of nobility and could only be used by high-ranking personalitiesPurple was the traditional color of nobility and could only be used by high-ranking personalities"
+        "explanation": "Experienced walkers covered about 40 to 50 kilometers daily. Traveling merchants, journeymen or pilgrims usually needed 2 to 3 days for a distance of 100 kilometers, depending on terrain, weather and luggage."
       },
       {
         "id": "q5",
-        "question": "What made a Berlin carriage a luxury vehicle?",
+        "question": "How much faster was the railway compared to the carriage?",
         "answers": [
-          "Closed body and comfort",
-          "Open top",
-          "Particularly high speed"
+          "about three times as fast",
+          "about equally fast",
+          "six times as fast"
         ],
         "correctAnswer": 0,
-        "explanation": "The Berlin was a closed, comfortable carriage with elaborate interior fittings for weather-protected travel. The Berlin was a closed, comfortable carriage with elaborate interior fittings for weather-protected travelThe Berlin was a closed, comfortable carriage with elaborate interior fittings for weather-protected travelThe Berlin was a closed, comfortable carriage with elaborate interior fittings for weather-protected travelThe Berlin was a closed, comfortable carriage with elaborate interior fittings for weather-protected travelThe Berlin was a closed, comfortable carriage with elaborate interior fittings for weather-protected travelThe Berlin was a closed, comfortable carriage with elaborate interior fittings for weather-protected travelThe Berlin was a closed, comfortable carriage with elaborate interior fittings for weather-protected travelThe Berlin was a closed, comfortable carriage with elaborate interior fittings for weather-protected travel"
+        "explanation": "With an average speed of around 40 km/h, the railway in the 19th century was about three times as fast as a mail coach – a drastic difference that fundamentally changed travel behavior."
       },
       {
         "id": "q6",
-        "question": "What were the servants called who ran beside the carriage?",
+        "question": "How much time did a mail coach typically need for 100 kilometers?",
         "answers": [
-          "Stable boys",
-          "Runners or outriders",
-          "Servants"
+          "About 2 to 3 hours",
+          "About 7 to 10 hours",
+          "About 8 to 10 hours"
         ],
-        "correctAnswer": 1,
-        "explanation": "Runners or outriders ran beside or in front of the carriage to clear the way and demonstrate status."
+        "correctAnswer": 2,
+        "explanation": "At an average speed of 10-12 km/h, a mail coach needed about 8 to 10 hours for 100 km, significantly longer under poor conditions."
       },
       {
         "id": "q7",
-        "question": "What was a vis-à-vis carriage?",
+        "question": "Why couldn't many people travel faster despite the railway?",
         "answers": [
-          "An open carriage",
-          "A carriage with opposite-facing seats",
-          "A particularly fast carriage"
+          "Because they couldn't buy tickets",
+          "Because rural regions remained poorly accessible despite the railway",
+          "Because trains often traveled slower than carriages"
         ],
         "correctAnswer": 1,
-        "explanation": "In a vis-à-vis carriage, passengers sat facing each other, enabling sociable conversation during the journey."
-      },
-      {
-        "id": "q8",
-        "question": "Which carriages were used for hunting?",
-        "answers": [
-          "State coaches",
-          "Hunting wagons or breaks",
-          "Berlins"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Hunting wagons or breaks were specially designed carriages for hunting with elevated seats for better visibility.Hunting wagons or breaks were specially designed carriages for hunting with elevated Hunting wagons or breaks were specially designed carriages for hunting with elevated Hunting wagons or breaks were specially designed carriages for hunting with elevated Hunting wagons or breaks were specially designed carriages for hunting with elevated Hunting wagons or breaks were specially designed carriages for hunting with elevated Hunting wagons or breaks were specially designed carriages for hunting with elevated Hunting wagons or breaks were specially designed carriages for hunting with elevated Hunting wagons or breaks were specially designed carriages for hunting with elevated "
+        "explanation": "Railway expansion began in the cities. Many villages initially remained excluded from fast transport. Carriages and walking remained everyday reality there."
       }
     ]
   }
