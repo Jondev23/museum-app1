@@ -6,7 +6,7 @@
 
 @layer base {
   html {
-    font-family: 'Tisa Sans Pro', 'Tisa Pro', system-ui, sans-serif;
+    font-family: 'Tisa Sans Pro', 'Tisa Pro', system-ui;
   }
   
   body {
@@ -17,7 +17,7 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    font-family: 'Tisa Sans Pro', 'Tisa Pro', system-ui, sans-serif;
+    font-family: 'Tisa Sans Pro', 'Tisa Pro', system-ui;
   }
 }
 
@@ -28,12 +28,12 @@
   }
   
   .font-tisa-sans-pro {
-    font-family: 'Tisa Sans Pro', sans-serif;
+    font-family: 'Tisa Sans Pro';
   }
   
   /* Title styles */
   .title-main {
-    font-family: 'Tisa Pro', serif;
+    font-family: 'Tisa Pro';
     font-style: italic;
     font-weight: 700;
     color: #D9D9D9;
@@ -41,7 +41,7 @@
   }
   
   .title-question {
-    font-family: 'Tisa Pro', serif;
+    font-family: 'Tisa Pro';
     font-style: italic;
     font-weight: 750;
     color: #D9D9D9;
@@ -49,7 +49,7 @@
   }
   
   .subtitle-main {
-    font-family: 'Tisa Sans Pro', sans-serif;
+    font-family: 'Tisa Sans Pro';
     font-style: normal;
     font-weight: 400;
     color: #85AF8B;
@@ -58,7 +58,7 @@
   
   /* Text styles */
   .text-body-primary {
-    font-family: 'Tisa Pro', serif;
+    font-family: 'Tisa Pro';
     font-style: normal;
     font-weight: 400;
     color: #D9D9D9;
@@ -66,7 +66,7 @@
   }
   
   .text-body-bold {
-    font-family: 'Tisa Pro', serif;
+    font-family: 'Tisa Pro';
     font-style: normal;
     font-weight: 700;
     color: #D9D9D9;
@@ -74,7 +74,7 @@
   }
   
   .text-button {
-    font-family: 'Tisa Sans Pro', sans-serif;
+    font-family: 'Tisa Sans Pro';
     font-style: normal;
     font-weight: 400;
     color: #D9D9D9;
@@ -82,7 +82,7 @@
   }
   
   .text-answer {
-    font-family: 'Tisa Sans Pro', sans-serif;
+    font-family: 'Tisa Sans Pro';
     font-style: normal;
     font-weight: 400;
     text-align: center;
