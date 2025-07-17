@@ -17,7 +17,7 @@ const FeedbackScreen = () => {
 
   const question = getCurrentQuestion();
   const userAnswer = getCurrentAnswer();
-  const totalQuestions = questions.length; // Add this line
+  const totalQuestions = questions.length;
   
   if (!question || userAnswer === undefined || !content?.[language]) return null;
 
@@ -52,9 +52,9 @@ const FeedbackScreen = () => {
       <div 
         className="flex-1 flex items-center justify-center overflow-hidden"
         style={{
-          maxHeight: 'calc(100vh - min(3.75rem, 6vh))', // Optimizado para landscape tablet
-          paddingTop: 'min(1.875rem, 3vh)', // Usa vh para vertical en landscape
-          paddingBottom: 'min(1.875rem, 3vh)' // Usa vh para vertical en landscape
+          maxHeight: 'calc(100vh - min(3.75rem, 6vh))', 
+          paddingTop: 'min(1.875rem, 3vh)', 
+          paddingBottom: 'min(1.875rem, 3vh)' 
         }}
       >
         <motion.div
@@ -66,13 +66,13 @@ const FeedbackScreen = () => {
             isCorrect ? 'bg-[#598364]' : 'bg-[#A94930]'
           }`}
           style={{
-            width: 'min(90rem, 80vw)', // Optimizado para pantalla más ancha
-            height: 'min(41.625rem, 75vh)', // Usa vh para altura en landscape
-            padding: 'min(5rem, 6vh) min(4.5rem, 7vw)', // vh para vertical, vw para horizontal
-            margin: 'min(1.875rem, 3vh) min(7.5rem, 12vw) min(3.4375rem, 5vh) min(7.5rem, 12vw)', // Optimizado para landscape
+            width: 'min(90rem, 80vw)', 
+            height: 'min(41.625rem, 75vh)', 
+            padding: 'min(5rem, 6vh) min(4.5rem, 7vw)',
+            margin: 'min(1.875rem, 3vh) min(7.5rem, 12vw) min(3.4375rem, 5vh) min(7.5rem, 12vw)', 
             boxSizing: 'border-box',
-            maxWidth: 'calc(100vw - min(15rem, 24vw))', // Optimizado para pantalla más ancha
-            maxHeight: 'calc(100vh - min(12.8125rem, 20vh))', // Usa vh para altura en landscape
+            maxWidth: 'calc(100vw - min(15rem, 24vw))', 
+            maxHeight: 'calc(100vh - min(12.8125rem, 20vh))', 
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
@@ -88,7 +88,7 @@ const FeedbackScreen = () => {
             style={{
               color: '#D9D9D9',
               fontFamily: '"Tisa Pro", serif',
-              fontSize: 'min(3.375rem, 5.5vw, 8vh)', // Añadido vh para escalar verticalmente
+              fontSize: 'min(3.375rem, 5.5vw, 8vh)',
               fontStyle: 'italic',
               fontWeight: 750,
               lineHeight: '1.3',
@@ -110,20 +110,20 @@ const FeedbackScreen = () => {
             <div
               className="rounded-full bg-[#D9D9D9] flex items-center justify-center"
               style={{
-                width: 'min(37.5rem, 65vw)', // Optimizado para pantalla más ancha
-                minHeight: 'min(5rem, 8vh)', // Usa vh para altura en landscape
-                padding: 'min(1.25rem, 2vh) min(1.25rem, 2vw)' // vh para vertical, vw para horizontal
+                width: 'min(37.5rem, 65vw)',
+                minHeight: 'min(5rem, 8vh)', 
+                padding: 'min(1.25rem, 2vh) min(1.25rem, 2vw)' 
               }}
             >
               <span
                 style={{
                   color: '#344243',
                   fontFamily: '"Tisa Sans Pro", sans-serif',
-                  fontSize: 'min(2rem, 3.5vw, 5vh)', // Añadido vh para escalar verticalmente
+                  fontSize: 'min(2rem, 3.5vw, 5vh)', 
                   fontStyle: 'normal',
                   fontWeight: 400,
                   lineHeight: '1.2',
-                  letterSpacing: 'min(0.02em, 0.05vw)', // Usa min() para letterSpacing
+                  letterSpacing: 'min(0.02em, 0.05vw)',
                   textAlign: 'center',
                   maxWidth: '100%',
                   overflowWrap: 'break-word'
@@ -145,11 +145,11 @@ const FeedbackScreen = () => {
               style={{
                 color: '#D9D9D9',
                 fontFamily: '"Tisa Pro", serif',
-                fontSize: 'min(2.25rem, 3.8vw, 6vh)', // Añadido vh para escalar verticalmente
+                fontSize: 'min(2.25rem, 3.8vw, 6vh)',
                 fontStyle: 'normal',
                 fontWeight: 700,
                 lineHeight: '1.4',
-                letterSpacing: 'min(0.02em, 0.05vw)', // Usa min() para letterSpacing
+                letterSpacing: 'min(0.02em, 0.05vw)',
                 textAlign: 'center',
                 maxWidth: '100%',
                 overflowWrap: 'break-word',
@@ -164,11 +164,11 @@ const FeedbackScreen = () => {
                 style={{
                   color: '#D9D9D9',
                   fontFamily: '"Tisa Pro", serif',
-                  fontSize: 'min(2rem, 3.5vw, 5vh)', // Añadido vh para escalar verticalmente
+                  fontSize: 'min(2rem, 3.5vw, 5vh)',
                   fontStyle: 'normal',
                   fontWeight: 700,
                   lineHeight: '1.4',
-                  letterSpacing: 'min(0.02em, 0.05vw)', // Usa min() para letterSpacing
+                  letterSpacing: 'min(0.02em, 0.05vw)',
                   textAlign: 'center',
                   maxWidth: '100%',
                   overflowWrap: 'break-word',
