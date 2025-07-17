@@ -12,16 +12,16 @@ const StandardFooter = ({
   progressDotsVariant = 'default',
   className = '',
   style = {},
-  alignProgressDots = 'center' // 'center' for QuestionScreen, 'inline' for FeedbackScreen
+  alignProgressDots = 'center'
 }) => {
   const baseFooterStyles = {
     position: 'fixed',
     bottom: '0',
     left: '0',
     right: '0',
-    height: 'min(4.375rem, 7vh)', // Same as FeedbackScreen
-    padding: 'min(0.625rem, 1vh) min(1.25rem, 2vw)', // Same as FeedbackScreen
-    minHeight: 'min(3.125rem, 5vh)', // Same as FeedbackScreen
+    height: 'min(4.375rem, 7vh)', 
+    padding: 'min(0.625rem, 1vh) min(1.25rem, 2vw)',
+    minHeight: 'min(3.125rem, 5vh)',
     zIndex: 20,
     ...style
   };
@@ -64,7 +64,7 @@ const StandardFooter = ({
           }
         />
       ) : (
-        <div style={{ flex: 1 }} /> // Spacer when no progress dots
+        <div style={{ flex: 1 }} />
       )}
 
       {/* Custom content (buttons, etc.) - positioned absolutely when progress dots are centered */}

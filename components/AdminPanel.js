@@ -71,32 +71,32 @@ const AdminPanel = () => {
       <div 
         className="fixed top-0 left-0 z-50 opacity-0"
         style={{
-          width: 'min(2rem, 4vw)', // Responsive Breite
-          height: 'min(2rem, 4vw)' // Responsive Höhe
+          width: 'min(2rem, 4vw)', 
+          height: 'min(2rem, 4vw)' 
         }}
         onClick={() => handleCornerClick('tl')}
       />
       <div 
         className="fixed top-0 right-0 z-50 opacity-0"
         style={{
-          width: 'min(2rem, 4vw)', // Responsive Breite
-          height: 'min(2rem, 4vw)' // Responsive Höhe
+          width: 'min(2rem, 4vw)', 
+          height: 'min(2rem, 4vw)' 
         }}
         onClick={() => handleCornerClick('tr')}
       />
       <div 
         className="fixed bottom-0 right-0 z-50 opacity-0"
         style={{
-          width: 'min(2rem, 4vw)', // Responsive Breite
-          height: 'min(2rem, 4vw)' // Responsive Höhe
+          width: 'min(2rem, 4vw)', 
+          height: 'min(2rem, 4vw)' 
         }}
         onClick={() => handleCornerClick('br')}
       />
       <div 
         className="fixed bottom-0 left-0 z-50 opacity-0"
         style={{
-          width: 'min(2rem, 4vw)', // Responsive Breite
-          height: 'min(2rem, 4vw)' // Responsive Höhe
+          width: 'min(2rem, 4vw)', 
+          height: 'min(2rem, 4vw)'
         }}
         onClick={() => handleCornerClick('bl')}
       />
@@ -116,20 +116,20 @@ const AdminPanel = () => {
               exit={{ scale: 0.8, opacity: 0 }}
               className="bg-white rounded-lg w-full shadow-2xl"
               style={{
-                padding: 'min(2.5rem, 5vw)', // Mehr Padding im Apple-Stil
-                borderRadius: 'min(1rem, 2vw)', // Rundere Ecken
-                maxWidth: 'min(24rem, 85vw)', // Kompakter
+                padding: 'min(2.5rem, 5vw)', 
+                borderRadius: 'min(1rem, 2vw)', 
+                maxWidth: 'min(24rem, 85vw)', 
                 margin: 'min(1rem, 2vw)',
-                backdropFilter: 'blur(20px)', // Glassmorphism-Effekt
-                backgroundColor: 'rgba(255, 255, 255, 0.95)' // Halbtransparenter Hintergrund
+                backdropFilter: 'blur(20px)',
+                backgroundColor: 'rgba(255, 255, 255, 0.95)'
               }}
             >
               <h2 
                 className="font-medium text-center text-gray-800"
                 style={{
-                  fontSize: 'min(1.375rem, 2.75vw)', // Subtilere Schrift
+                  fontSize: 'min(1.375rem, 2.75vw)', 
                   marginBottom: 'min(2rem, 4vw)',
-                  fontWeight: '500' // Mittleres Gewicht, nicht fett
+                  fontWeight: '500'
                 }}
               >
                 Admin Panel
@@ -140,7 +140,7 @@ const AdminPanel = () => {
                   style={{
                     marginBottom: 'min(1rem, 2vw)',
                     padding: 'min(0.75rem, 1.5vw)',
-                    backgroundColor: 'rgba(34, 197, 94, 0.1)', // Subtiler grüner Hintergrund
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)', 
                     fontSize: 'min(0.875rem, 1.75vw)'
                   }}
                 >
@@ -153,7 +153,7 @@ const AdminPanel = () => {
                   style={{ 
                     display: 'flex', 
                     flexDirection: 'column', 
-                    gap: 'min(1.5rem, 3vw)' // Mehr Abstand im Apple-Stil
+                    gap: 'min(1.5rem, 3vw)'
                   }}
                 >
                   <div>
@@ -173,10 +173,10 @@ const AdminPanel = () => {
                       onChange={(e) => setPassword(e.target.value)}
                       className="w-full border-0 bg-gray-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                       style={{
-                        padding: 'min(0.875rem, 1.75vw) min(1rem, 2vw)', // Mehr Padding
+                        padding: 'min(0.875rem, 1.75vw) min(1rem, 2vw)',
                         borderRadius: 'min(0.5rem, 1vw)',
                         fontSize: 'min(1rem, 2vw)',
-                        backgroundColor: '#f8f9fa' // Sehr subtiles Grau
+                        backgroundColor: '#f8f9fa' 
                       }}
                       autoFocus
                     />

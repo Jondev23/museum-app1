@@ -65,10 +65,10 @@ const ResultsScreen = () => {
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
           style={{
-            marginBottom: 'min(2rem, 3vh)', // Optimizado para landscape tablet
+            marginBottom: 'min(2rem, 3vh)', 
             color: '#D9D9D9',
             fontFamily: '"Tisa Pro", serif',
-            fontSize: 'min(4.8rem, 8vw)', // Optimizado para pantalla más ancha
+            fontSize: 'min(4.8rem, 8vw)', 
             fontStyle: 'italic',
             fontWeight: 700,
             lineHeight: '120%',
@@ -85,10 +85,10 @@ const ResultsScreen = () => {
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
           style={{
-            marginBottom: 'min(3rem, 4vh)', // Optimizado para landscape tablet
+            marginBottom: 'min(3rem, 4vh)', 
             color: '#85AF8B',
             fontFamily: '"Tisa Sans Pro", sans-serif',
-            fontSize: 'min(3.2rem, 5.5vw)', // Optimizado para pantalla más ancha
+            fontSize: 'min(3.2rem, 5.5vw)',
             fontStyle: 'normal',
             fontWeight: 400,
             lineHeight: '120%',
@@ -106,7 +106,7 @@ const ResultsScreen = () => {
           questions={questions}
           variant="results"
           style={{ 
-            marginBottom: 'min(4rem, 6vh)' // Optimizado para landscape tablet
+            marginBottom: 'min(4rem, 6vh)' 
           }}
         />
 
@@ -124,16 +124,16 @@ const ResultsScreen = () => {
             border: 'none',
             color: '#FFF',
             fontFamily: '"Tisa Sans Pro", sans-serif',
-            fontSize: 'min(1.5rem, 2.5vw)', // Optimizado para landscape tablet
+            fontSize: 'min(1.5rem, 2.5vw)',
             fontStyle: 'normal',
             fontWeight: 400,
             lineHeight: 'normal',
             textAlign: 'center',
             textTransform: 'uppercase',
-            letterSpacing: 'min(0.0625rem, 0.1vw)', // Optimizado con min()
-            padding: 'min(1rem, 1.5vh) min(2rem, 3vw)', // Optimizado para landscape tablet
-            borderRadius: 'min(1.5rem, 2.5vw)', // Optimizado para landscape tablet
-            gap: 'min(0.5rem, 0.8vw)' // Optimizado para landscape tablet
+            letterSpacing: 'min(0.0625rem, 0.1vw)',
+            padding: 'min(1rem, 1.5vh) min(2rem, 3vw)',
+            borderRadius: 'min(1.5rem, 2.5vw)', 
+            gap: 'min(0.5rem, 0.8vw)'
           }}
         >
           {content[language]?.results?.playAgain || 'NOCH EINMAL'}
@@ -141,8 +141,8 @@ const ResultsScreen = () => {
             src="/images/GUI.svg"
             alt="Restart icon"
             style={{
-              width: 'min(3rem, 4.5vw)', // Optimizado para landscape tablet
-              height: 'min(4.875rem, 7vw)' // Optimizado para landscape tablet
+              width: 'min(3rem, 4.5vw)',
+              height: 'min(4.875rem, 7vw)' 
             }}
           />
         </motion.button>

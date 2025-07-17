@@ -182,11 +182,11 @@ const LanguageSelector = () => {
                   whileTap={{ scale: 0.98 }}
                   className="transition-all"
                   style={{
-                    width: 'min(max(21rem, 53vw), 75rem)', // Aumentado: 24rem min (era 20rem), 60vw (era 50vw), 75rem max (era 62.5rem)
-                    height: 'min(3.47rem, 8.31vw)', // Reducido 10%: de 3.85rem a 3.47rem, de 9.23vw a 8.31vw
+                    width: 'min(max(21rem, 53vw), 75rem)',
+                    height: 'min(3.47rem, 8.31vw)', 
                     borderRadius: 'min(3.75rem, 8vw)',
                     border: `2px solid ${language === 'de' ? '#A94930' : '#D9D9D9'}`,
-                    background: language === 'de' ? '#A94930' : 'transparent', // Dinámico según idioma actual
+                    background: language === 'de' ? '#A94930' : 'transparent', 
                     padding: 'min(0.625rem, 1.5vw)',
                     display: 'flex',
                     alignItems: 'center',
@@ -200,7 +200,7 @@ const LanguageSelector = () => {
                     fontFamily: '"Tisa Sans Pro", Helvetica, sans-serif',
                     fontWeight: 400,
                     color: '#D9D9D9',
-                    fontSize: 'min(1.25rem, 2.5vw)', // Reducido de 1.4rem a 1.25rem, de 2.8vw a 2.5vw (10.7% menos)
+                    fontSize: 'min(1.25rem, 2.5vw)', 
                     textAlign: 'center',
                     lineHeight: 'min(5.5rem, 12vw)',
                     textTransform: 'uppercase'
@@ -215,11 +215,11 @@ const LanguageSelector = () => {
                   whileTap={{ scale: 0.98 }}
                   className="transition-all"
                   style={{
-                    width: 'min(max(21rem, 53vw), 75rem)', // Igualado al primer botón
-                    height: 'min(3.47rem, 8.31vw)', // Reducido 10%: de 3.85rem a 3.47rem, de 9.23vw a 8.31vw
+                    width: 'min(max(21rem, 53vw), 75rem)', 
+                    height: 'min(3.47rem, 8.31vw)', 
                     borderRadius: 'min(3.75rem, 8vw)',
                     border: `2px solid ${language === 'en' ? '#A94930' : '#D9D9D9'}`,
-                    background: language === 'en' ? '#A94930' : 'transparent', // Dinámico según idioma actual
+                    background: language === 'en' ? '#A94930' : 'transparent', 
                     padding: 'min(0.625rem, 1.5vw)',
                     display: 'flex',
                     alignItems: 'center',
@@ -233,7 +233,7 @@ const LanguageSelector = () => {
                     fontFamily: '"Tisa Sans Pro", Helvetica, sans-serif',
                     fontWeight: 400,
                     color: '#D9D9D9',
-                    fontSize: 'min(1.25rem, 2.5vw)', // Reducido de 1.4rem a 1.25rem, de 2.8vw a 2.5vw (10.7% menos)
+                    fontSize: 'min(1.25rem, 2.5vw)',
                     textAlign: 'center',
                     lineHeight: 'min(5.5rem, 12vw)',
                     textTransform: 'uppercase'

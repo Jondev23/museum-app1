@@ -90,10 +90,10 @@ const ScreensaverScreen = () => {
           style={{
             color: '#61809D',
             fontFamily: '"Tisa Pro", serif',
-            fontSize: 'min(6rem, 12vw)', // Responsive font size
+            fontSize: 'min(6rem, 12vw)', 
             fontStyle: 'normal',
             fontWeight: 500,
-            lineHeight: 'min(7rem, 14vw)' // Responsive line height
+            lineHeight: 'min(7rem, 14vw)' 
           }}
         >
           {screensaverContent?.message || 'Touch the screen to begin'}
@@ -105,7 +105,7 @@ const ScreensaverScreen = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1 }}
-        style={{ marginBottom: 'min(4rem, 8vw)' }} // Responsive margin
+        style={{ marginBottom: 'min(4rem, 8vw)' }}
         className="relative z-20"
       >
         <motion.div
@@ -125,8 +125,8 @@ const ScreensaverScreen = () => {
           <div 
             className="relative z-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm border border-white/30" 
             style={{
-              width: 'min(6rem, 12vw)', // Responsive width - increased for circular background
-              height: 'min(6rem, 12vw)' // Responsive height - increased for circular background
+              width: 'min(6rem, 12vw)', 
+              height: 'min(6rem, 12vw)'
             }}
           >
             {screensaverContent?.handIcon ? (
@@ -135,8 +135,8 @@ const ScreensaverScreen = () => {
                   src={screensaverContent.handIcon}
                   alt="Touch indicator"
                   style={{
-                    width: 'min(4rem, 8vw)', // Responsive image width
-                    height: 'min(4rem, 8vw)' // Responsive image height
+                    width: 'min(4rem, 8vw)',
+                    height: 'min(4rem, 8vw)'
                   }}
                 />
               ) : (
@@ -152,8 +152,8 @@ const ScreensaverScreen = () => {
                 src="/images/OE_Touch_128 2.svg"
                 alt="Touch indicator"
                 style={{
-                  width: 'min(4rem, 8vw)', // Responsive image width
-                  height: 'min(4rem, 8vw)' // Responsive image height
+                  width: 'min(4rem, 8vw)', 
+                  height: 'min(4rem, 8vw)'
                 }}
               />
             )}

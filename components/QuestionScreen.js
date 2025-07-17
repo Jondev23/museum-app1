@@ -51,11 +51,11 @@ const QuestionScreen = () => {
           style={{ 
             width: '100%',
             maxWidth: 'min(120rem, 95vw)', // 1920px base
-            gap: 'min(1.5rem, 3vw)', // Mantenido tamaño actual
-            paddingTop: 'min(4rem, 6vh)', // Optimizado para landscape: cambio de 8vw a 6vh
-            paddingBottom: 'min(0.5rem, 1vh)', // Reducido para menor espacio con footer: de 1rem, 2vh a 0.5rem, 1vh
-            paddingLeft: 'min(4rem, 6vw)', // Reducido de 10rem
-            paddingRight: 'min(4rem, 6vw)', // Reducido de 10rem
+            gap: 'min(1.5rem, 3vw)', 
+            paddingTop: 'min(4rem, 6vh)',
+            paddingBottom: 'min(0.5rem, 1vh)', 
+            paddingLeft: 'min(4rem, 6vw)', 
+            paddingRight: 'min(4rem, 6vw)',
             margin: '0 auto'
           }}
         >
@@ -65,14 +65,14 @@ const QuestionScreen = () => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              gap: 'min(1.5rem, 3vw)', // Mantenido tamaño actual
-              padding: 'min(2rem, 4vw)', // Mantenido tamaño actual
+              gap: 'min(1.5rem, 3vw)', 
+              padding: 'min(2rem, 4vw)', 
               width: '100%',
-              borderRadius: 'min(1.875rem, 4vw)', // 30px base
+              borderRadius: 'min(1.875rem, 4vw)', 
               overflow: 'hidden',
               border: '0',
               backgroundColor: 'transparent',
-              marginTop: 'min(4rem, 6vh)' // Optimizado para landscape: cambio de 8vw a 6vh
+              marginTop: 'min(4rem, 6vh)'
             }}
           >
             {/* Content */}
@@ -93,12 +93,12 @@ const QuestionScreen = () => {
                   alignSelf: 'stretch',
                   color: '#D9D9D9',
                   fontFamily: '"Tisa Pro", serif',
-                  fontSize: 'min(2.5rem, 5vw, 6vh)', // Añadido vh para escalar verticalmente
+                  fontSize: 'min(2.5rem, 5vw, 6vh)',
                   fontStyle: 'italic',
                   fontWeight: 750,
                   textAlign: 'center',
-                  lineHeight: 'min(3.25rem, 6vw, 7.5vh)', // Añadido vh para escalar verticalmente
-                  marginBottom: 'min(3rem, 4vh)' // Optimizado para landscape: cambio de 5vw a 4vh
+                  lineHeight: 'min(3.25rem, 6vw, 7.5vh)',
+                  marginBottom: 'min(3rem, 4vh)' 
                 }}
               >
                 {question.question}
@@ -112,7 +112,7 @@ const QuestionScreen = () => {
                 style={{ 
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: 'min(2.52rem, 3.6vh)', // Aumentado 20% adicional: de 2.1rem a 2.52rem, de 3vh a 3.6vh
+                  gap: 'min(2.52rem, 3.6vh)',
                   width: '100%',
                   alignItems: 'center'
                 }}
@@ -136,14 +136,14 @@ const QuestionScreen = () => {
                     `}
                     style={{
                       display: 'inline-flex',
-                      minWidth: 'min(42.3rem, 63vw, 80vh)', // Añadido vh para escalar verticalmente
-                      height: 'min(4.62rem, 6.93vh, 8vw)', // Añadido vw para escalar horizontalmente también
+                      minWidth: 'min(42.3rem, 63vw, 80vh)', 
+                      height: 'min(4.62rem, 6.93vh, 8vw)',
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: 'min(0.5rem, 1vw)',
-                      padding: 'min(2.89rem, 4.62vh, 6vw) min(0.75rem, 1.5vw)', // Añadido vw al padding vertical
-                      borderRadius: 'min(4.62rem, 6.93vh, 8vw)', // Añadido vw para escalar horizontalmente también
-                      border: 'min(0.1125rem, 0.225vw, 0.3vh) solid #D9D9D9', // Añadido vh al border
+                      padding: 'min(2.89rem, 4.62vh, 6vw) min(0.75rem, 1.5vw)', 
+                      borderRadius: 'min(4.62rem, 6.93vh, 8vw)', 
+                      border: 'min(0.1125rem, 0.225vw, 0.3vh) solid #D9D9D9',
                       position: 'relative'
                     }}
                   >
@@ -153,10 +153,10 @@ const QuestionScreen = () => {
                         width: 'fit-content',
                         color: '#D9D9D9',
                         fontFamily: '"Tisa Sans Pro", sans-serif',
-                        fontSize: 'min(1.8rem, 3.6vw, 4.5vh)', // Añadido vh para escalar verticalmente
+                        fontSize: 'min(1.8rem, 3.6vw, 4.5vh)',
                         fontWeight: 400,
                         textAlign: 'center',
-                        lineHeight: 'min(2.25rem, 4.5vw, 5.6vh)', // Añadido vh para escalar verticalmente
+                        lineHeight: 'min(2.25rem, 4.5vw, 5.6vh)',
                         whiteSpace: 'nowrap',
                         fontStyle: 'normal'
                       }}
@@ -180,7 +180,7 @@ const QuestionScreen = () => {
             className="absolute"
             style={{
               left: '46%',
-              bottom: 'min(5.625rem, 9vh)', // Misma altura que el icono de idioma
+              bottom: 'min(5.625rem, 9vh)',
               transform: 'translateX(calc(-50% - min(4rem, 8vw)))',
               zIndex: 30
             }}

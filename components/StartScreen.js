@@ -69,15 +69,15 @@ const StartScreen = () => {
           paddingTop: 'min(2rem, 4vw)',
           paddingLeft: 'min(2rem, 4vw)',
           paddingRight: 'min(2rem, 4vw)',
-          paddingBottom: 'min(4rem, 8vw)' // Padding bottom fijo para tablet landscape
+          paddingBottom: 'min(4rem, 8vw)'
         }}
       >
         
         {/* Main Card Container */}
         <div className="w-full bg-transparent flex items-center justify-center" style={{ 
           maxWidth: 'min(120rem, 95vw)',
-          minHeight: '0', // Permitir que se contraiga
-          flex: '1 1 auto' // Flexible pero no ocupa todo el espacio
+          minHeight: '0', 
+          flex: '1 1 auto' 
         }}>
           <div style={{ padding: '0' }}>
             <div className="flex flex-col items-center" style={{ gap: 'min(4.0rem, 6.4vw)' }}>
@@ -86,7 +86,7 @@ const StartScreen = () => {
               <div 
                 className="flex flex-col items-center" 
                 style={{ 
-                  gap: 'min(0.0rem, 0vw)' // Reducido de 0.8rem a 0.5rem para aún menos espacio entre título y subtítulo
+                  gap: 'min(0.0rem, 0vw)' 
                 }}
               >
                 {/* Main title */}
@@ -97,11 +97,11 @@ const StartScreen = () => {
                   style={{
                     color: '#D9D9D9', // var(--Neutral_Light, #D9D9D9)
                     textAlign: 'center',
-                    fontFamily: '"Tisa Pro", "Playfair Display", "Times New Roman", "Georgia", serif', // Head & Auswertung
-                    fontSize: 'min(4.8rem, 9vw, 11vh)', // Añadido vh para escalar verticalmente
+                    fontFamily: '"Tisa Pro", "Playfair Display", "Times New Roman", "Georgia", serif', 
+                    fontSize: 'min(4.8rem, 9vw, 11vh)', 
                     fontStyle: 'italic',
-                    fontWeight: 700, // Corregido a 700 según especificación
-                    lineHeight: 'min(5.4rem, 10.8vw, 12.4vh)' // Añadido vh para escalar verticalmente
+                    fontWeight: 700, 
+                    lineHeight: 'min(5.4rem, 10.8vw, 12.4vh)' 
                   }}
                 >
                   {startContent?.title || 'Wie weit? Wie lange?'}
@@ -115,11 +115,11 @@ const StartScreen = () => {
                   style={{
                     color: '#85AF8B', // var(--Blassgruen, #85AF8B)
                     textAlign: 'center',
-                    fontFamily: '"Tisa Sans Pro", "Source Sans Pro", "Helvetica Neue", "Arial", sans-serif', // Subline
-                    fontSize: 'min(2.8rem, 5.6vw, 7vh)', // Añadido vh para escalar verticalmente
+                    fontFamily: '"Tisa Sans Pro", "Source Sans Pro", "Helvetica Neue", "Arial", sans-serif', 
+                    fontSize: 'min(2.8rem, 5.6vw, 7vh)',
                     fontStyle: 'normal',
                     fontWeight: 400,
-                    lineHeight: 'min(3.36rem, 6.72vw, 8.4vh)' // Añadido vh para escalar verticalmente
+                    lineHeight: 'min(3.36rem, 6.72vw, 8.4vh)'
                   }}
                 >
                   {startContent?.subtitle || 'Distanzen des Reisens im 19. Jahrhundert'}
@@ -132,29 +132,29 @@ const StartScreen = () => {
                 animate={showContent ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 style={{
-                  color: '#D9D9D9', // var(--Neutral_Light, #D9D9D9)
+                  color: '#D9D9D9',
                   textAlign: 'center',
-                  fontFamily: '"Tisa Pro", "Playfair Display", "Times New Roman", "Georgia", serif', // Antwort_Fließ_Bold
-                  maxWidth: 'min(120rem, 95vw)' // 1920px base
+                  fontFamily: '"Tisa Pro", "Playfair Display", "Times New Roman", "Georgia", serif', 
+                  maxWidth: 'min(120rem, 95vw)'
                 }}
               >
                 <span style={{
-                  fontSize: 'min(1.9rem, 3.8vw, 4.8vh)', // Añadido vh para escalar verticalmente
+                  fontSize: 'min(1.9rem, 3.8vw, 4.8vh)', 
                   fontWeight: 700, // Más pesado
                   fontFamily: '"Tisa Pro", "Times New Roman", serif',
-                  lineHeight: 'min(2.66rem, 5.32vw, 6.7vh)', // Añadido vh para escalar verticalmente
-                  letterSpacing: 'min(0.019rem, 0.038vw, 0.048vh)' // Añadido vh para escalar verticalmente
+                  lineHeight: 'min(2.66rem, 5.32vw, 6.7vh)',
+                  letterSpacing: 'min(0.019rem, 0.038vw, 0.048vh)'
                 }}>
                   {startContent?.highlightText || 'Teste dein Wissen!'}&nbsp;&nbsp;
                   <br />
                 </span>
 
                 <span style={{
-                  fontSize: 'min(1.6rem, 3.4vw, 4.2vh)', // Añadido vh para escalar verticalmente
+                  fontSize: 'min(1.6rem, 3.4vw, 4.2vh)',
                   fontWeight: 400, // Más ligero
                   fontFamily: '"Tisa Pro", "Times New Roman", serif',
-                  lineHeight: 'min(2.38rem, 4.76vw, 5.9vh)', // Añadido vh para escalar verticalmente
-                  letterSpacing: 'min(0.017rem, 0.034vw, 0.042vh)' // Añadido vh para escalar verticalmente
+                  lineHeight: 'min(2.38rem, 4.76vw, 5.9vh)',
+                  letterSpacing: 'min(0.017rem, 0.034vw, 0.042vh)'
                 }}>
                   {startContent?.introText || 'Entdecken Sie die faszinierende Welt historischer Kutschen. Testen Sie Ihr Wissen mit unserem Quiz!'}
                 </span>

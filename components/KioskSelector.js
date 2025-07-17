@@ -24,19 +24,19 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
         exit={{ scale: 0.8, opacity: 0 }}
         className="bg-white rounded-lg shadow-2xl w-full flex flex-col items-center"
         style={{
-          maxWidth: 'min(26rem, 90vw)', // Más compacto al estilo Apple
-          padding: 'min(2.5rem, 5vw)', // Más padding
-          borderRadius: 'min(1rem, 2vw)', // Esquinas más redondeadas
-          backdropFilter: 'blur(20px)', // Efecto glassmorphism
-          backgroundColor: 'rgba(255, 255, 255, 0.95)' // Fondo semi-transparente
+          maxWidth: 'min(26rem, 90vw)', 
+          padding: 'min(2.5rem, 5vw)', 
+          borderRadius: 'min(1rem, 2vw)', 
+          backdropFilter: 'blur(20px)',
+          backgroundColor: 'rgba(255, 255, 255, 0.95)'
         }}
       >
         <h2 
           className="font-medium text-center text-gray-800" 
           style={{ 
-            fontSize: 'min(1.375rem, 2.75vw)', // Font más sutil
+            fontSize: 'min(1.375rem, 2.75vw)',
             marginBottom: 'min(2rem, 4vw)',
-            fontWeight: '500' // Peso medio, no bold
+            fontWeight: '500'
           }}
         >
           Kiosk auswählen
@@ -55,8 +55,8 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
               className={`w-full rounded-lg text-left font-medium transition-all ${kioskId === kiosk.id ? 'bg-blue-500 text-white' : 'bg-gray-50 text-gray-800 hover:bg-gray-100'}`}
               style={{ 
                 fontSize: 'min(1rem, 2vw)',
-                padding: 'min(1rem, 2vw) min(1.25rem, 2.5vw)', // Más padding al estilo Apple
-                borderRadius: 'min(0.5rem, 1vw)', // Esquinas redondeadas
+                padding: 'min(1rem, 2vw) min(1.25rem, 2.5vw)', 
+                borderRadius: 'min(0.5rem, 1vw)',
                 fontWeight: '500'
               }}
             >

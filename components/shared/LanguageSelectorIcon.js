@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
 
 const LanguageSelectorIcon = ({ 
-  variant = 'standard', // 'standard' uses FeedbackScreen position as default
+  variant = 'standard',
   className = '',
   style = {},
   delay = 0.6,
@@ -12,7 +12,7 @@ const LanguageSelectorIcon = ({
 
   // Consistent base styles for all variants
   const baseIconStyles = {
-    width: 'min(3rem, 5.4vw, 6.75vh)', // Consistent size across all screens
+    width: 'min(3rem, 5.4vw, 6.75vh)', 
     height: 'min(3rem, 5.4vw, 6.75vh)',
     display: 'block',
     opacity: opacity
@@ -22,8 +22,8 @@ const LanguageSelectorIcon = ({
   const getContainerStyles = () => {
     return {
       flexShrink: 0,
-      marginBottom: 'min(5.625rem, 9vh)', // Uses vh for vertical in landscape
-      marginLeft: 'min(6.125rem, 10vw)', // Standard left margin
+      marginBottom: 'min(5.625rem, 9vh)',
+      marginLeft: 'min(6.125rem, 10vw)',
       ...style
     };
   };
