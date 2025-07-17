@@ -52,7 +52,7 @@ const StandardFooter = ({
             ? {
                 // Inline alignment for FeedbackScreen - perfectly centered
                 flexShrink: 0,
-                marginBottom: 'min(5.625rem, 9vh)'
+                marginBottom: 'min(6.70698984375rem, 10.73148375vh)'
               }
             : {
                 // Centered positioning for QuestionScreen
