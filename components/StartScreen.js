@@ -94,13 +94,9 @@ const StartScreen = () => {
                   initial={{ y: 50, opacity: 0 }}
                   animate={showContent ? { y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.8, delay: 0.2 }}
+                  className="title-main"
                   style={{
-                    color: '#D9D9D9',
-                    textAlign: 'center',
-                    fontFamily: '"Tisa Pro"', 
                     fontSize: 'min(4.8rem, 9vw, 11vh)', 
-                    fontStyle: 'italic',
-                    fontWeight: 700, 
                     lineHeight: 'min(5.4rem, 10.8vw, 12.4vh)' 
                   }}
                 >
@@ -112,13 +108,9 @@ const StartScreen = () => {
                   initial={{ y: 50, opacity: 0 }}
                   animate={showContent ? { y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.8, delay: 0.4 }}
+                  className="subtitle-main"
                   style={{
-                    color: '#85AF8B', 
-                    textAlign: 'center',
-                    fontFamily: '"Tisa Sans Pro"', 
                     fontSize: 'min(2.8rem, 5.6vw, 7vh)',
-                    fontStyle: 'normal',
-                    fontWeight: 400,
                     lineHeight: 'min(3.36rem, 6.72vw, 8.4vh)'
                   }}
                 >
@@ -131,31 +123,31 @@ const StartScreen = () => {
                 initial={{ y: 50, opacity: 0 }}
                 animate={showContent ? { y: 0, opacity: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.6 }}
+                className="text-body-primary"
                 style={{
-                  color: '#D9D9D9',
-                  textAlign: 'center',
-                  fontFamily: '"Tisa Pro"',
                   maxWidth: 'min(120rem, 95vw)'
                 }}
               >
-                <span style={{
-                  fontSize: 'min(1.9rem, 3.8vw, 4.8vh)', 
-                  fontWeight: 700,
-                  fontFamily: '"Tisa Pro"',
-                  lineHeight: 'min(2.66rem, 5.32vw, 6.7vh)',
-                  letterSpacing: 'min(0.019rem, 0.038vw, 0.048vh)'
-                }}>
+                <span 
+                  className="text-body-bold"
+                  style={{
+                    fontSize: 'min(1.9rem, 3.8vw, 4.8vh)', 
+                    lineHeight: 'min(2.66rem, 5.32vw, 6.7vh)',
+                    letterSpacing: 'min(0.019rem, 0.038vw, 0.048vh)'
+                  }}
+                >
                   {startContent?.highlightText || 'Teste dein Wissen!'}&nbsp;&nbsp;
                   <br />
                 </span>
 
-                <span style={{
-                  fontSize: 'min(1.6rem, 3.4vw, 4.2vh)',
-                  fontWeight: 400, 
-                  fontFamily: '"Tisa Pro"',
-                  lineHeight: 'min(2.38rem, 4.76vw, 5.9vh)',
-                  letterSpacing: 'min(0.017rem, 0.034vw, 0.042vh)'
-                }}>
+                <span 
+                  className="text-body-primary"
+                  style={{
+                    fontSize: 'min(1.6rem, 3.4vw, 4.2vh)',
+                    lineHeight: 'min(2.38rem, 4.76vw, 5.9vh)',
+                    letterSpacing: 'min(0.017rem, 0.034vw, 0.042vh)'
+                  }}
+                >
                   {startContent?.introText || 'Entdecken Sie die faszinierende Welt historischer Kutschen. Testen Sie Ihr Wissen mit unserem Quiz!'}
                 </span>
               </motion.div>

@@ -64,15 +64,11 @@ const ResultsScreen = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
+          className="title-main"
           style={{
             marginBottom: 'min(2rem, 3vh)', 
-            color: '#D9D9D9',
-            fontFamily: '"Tisa Pro"',
             fontSize: 'min(4.8rem, 8vw)', 
-            fontStyle: 'italic',
-            fontWeight: 700,
-            lineHeight: '120%',
-            textAlign: 'center'
+            lineHeight: '120%'
           }}
         >
           {content[language]?.results?.messages?.[score] || 
@@ -84,15 +80,11 @@ const ResultsScreen = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
+          className="subtitle-main"
           style={{
             marginBottom: 'min(3rem, 4vh)', 
-            color: '#85AF8B',
-            fontFamily: '"Tisa Sans Pro",',
             fontSize: 'min(3.2rem, 5.5vw)',
-            fontStyle: 'normal',
-            fontWeight: 400,
-            lineHeight: '120%',
-            textAlign: 'center'
+            lineHeight: '120%'
           }}
         >
           {content[language]?.results?.scoreText?.replace('{score}', score).replace('{total}', questions.length) || 
@@ -131,17 +123,12 @@ const ResultsScreen = () => {
           onClick={handlePlayAgain}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="flex items-center"
+          className="flex items-center text-button"
           style={{
             background: 'transparent',
             border: 'none',
-            color: '#D9D9D9',
-            fontFamily: '"Tisa Sans Pro"',
             fontSize: 'min(1.5rem, 2.5vw)',
-            fontStyle: 'normal',
-            fontWeight: 400,
             lineHeight: 'normal',
-            textAlign: 'center',
             textTransform: 'uppercase',
             letterSpacing: 'min(0.0625rem, 0.1vw)',
             padding: 'min(1rem, 1.5vh) min(2rem, 3vw)',

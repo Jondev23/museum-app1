@@ -88,15 +88,11 @@ const QuestionScreen = () => {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
+                className="title-question"
                 style={{
                   position: 'relative',
                   alignSelf: 'stretch',
-                  color: '#D9D9D9',
-                  fontFamily: '"Tisa Pro", serif',
                   fontSize: 'min(2.5rem, 5vw, 6vh)',
-                  fontStyle: 'italic',
-                  fontWeight: 750,
-                  textAlign: 'center',
                   lineHeight: 'min(3.25rem, 6vw, 7.5vh)',
                   marginBottom: 'min(3rem, 4vh)' 
                 }}
@@ -148,17 +144,14 @@ const QuestionScreen = () => {
                     }}
                   >
                     <span
+                      className="text-answer"
                       style={{
                         position: 'relative',
                         width: 'fit-content',
                         color: '#D9D9D9',
-                        fontFamily: '"Tisa Sans Pro", sans-serif',
                         fontSize: 'min(1.8rem, 3.6vw, 4.5vh)',
-                        fontWeight: 400,
-                        textAlign: 'center',
                         lineHeight: 'min(2.25rem, 4.5vw, 5.6vh)',
-                        whiteSpace: 'nowrap',
-                        fontStyle: 'normal'
+                        whiteSpace: 'nowrap'
                       }}
                     >
                       {answer}
