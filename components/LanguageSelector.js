@@ -70,7 +70,7 @@ const LanguageSelector = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 flex items-center justify-center z-50"
-          style={{ backgroundColor: '#344243' }} // Fondo color Schiefer
+          style={{ backgroundColor: '#344243' }} 
           onClick={handleOverlayClick}
         >
           <motion.div
@@ -83,13 +83,13 @@ const LanguageSelector = () => {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: 'min(3.24rem, 6.08vw)', // Reducido 10% adicional: de 3.6rem a 3.24rem, de 6.75vw a 6.08vw
+              gap: 'min(3.24rem, 6.08vw)',
               width: 'auto', 
               maxWidth: '100vw', 
               padding: '0 min(2rem, 4vw)',
               minHeight: '100vh',
-              paddingTop: 'min(4rem, 6vw)', // Reducido de 8rem a 4rem, de 12vw a 6vw para menos espacio superior
-              paddingBottom: 'min(5rem, 10vw)' // Aumentado de 4rem a 5rem, de 8vw a 10vw para más espacio inferior
+              paddingTop: 'min(4rem, 6vw)',
+              paddingBottom: 'min(5rem, 10vw)'
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -108,10 +108,10 @@ const LanguageSelector = () => {
                 src="/images/OE_Sprache_64 1.svg" 
                 alt="Language selector" 
                 style={{
-                  width: 'min(5.4rem, 13.5vw)', // Reducido 10%: de 6rem a 5.4rem, de 15vw a 13.5vw
-                  height: 'min(5.4rem, 13.5vw)', // Reducido 10%: de 6rem a 5.4rem, de 15vw a 13.5vw
+                  width: 'min(5.4rem, 13.5vw)',
+                  height: 'min(5.4rem, 13.5vw)',
                   display: 'block',
-                  opacity: 0.8 // Añadido transparencia del 20%
+                  opacity: 0.8 
                 }}
               />
             </motion.div>
@@ -126,14 +126,14 @@ const LanguageSelector = () => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 textAlign: 'center',
-                gap: 'min(0.0rem, 0vw)' // Agregado gap reducido entre los títulos
+                gap: 'min(0.0rem, 0vw)'
               }}
             >
               <h1 style={{
                 color: '#D9D9D9',
                 fontFamily: "Tisa Pro",
-                fontSize: 'min(2.5rem, 6.2vw)', // Reducido 20%: de 3.375rem a 2.7rem, de 8vw a 6.4vw
-                fontWeight: 800,
+                fontSize: 'min(2.5rem, 6.2vw)',
+                fontWeight: 750,
                 fontStyle: 'italic',
                 textAlign: 'center',
                 lineHeight: '130%',
@@ -146,8 +146,8 @@ const LanguageSelector = () => {
                 color: '#D9D9D9',
                 opacity: 0.6,
                 fontFamily: "Tisa Pro",
-                fontSize: 'min(2.5rem, 6.2vw)', // Reducido 20%: de 3.375rem a 2.7rem, de 8vw a 6.4vw
-                fontWeight: 800,
+                fontSize: 'min(2.5rem, 6.2vw)', 
+                fontWeight: 750,
                 fontStyle: 'italic',
                 textAlign: 'center',
                 lineHeight: '130%',
@@ -197,7 +197,7 @@ const LanguageSelector = () => {
                 >
                   <span style={{
                     flex: 1,
-                    fontFamily: '"Tisa Sans Pro", Helvetica, sans-serif',
+                    fontFamily: '"Tisa Sans Pro"',
                     fontWeight: 400,
                     color: '#D9D9D9',
                     fontSize: 'min(1.25rem, 2.5vw)', 
@@ -230,7 +230,7 @@ const LanguageSelector = () => {
                 >
                   <span style={{
                     flex: 1,
-                    fontFamily: '"Tisa Sans Pro", Helvetica, sans-serif',
+                    fontFamily: '"Tisa Sans Pro"',
                     fontWeight: 400,
                     color: '#D9D9D9',
                     fontSize: 'min(1.25rem, 2.5vw)',
