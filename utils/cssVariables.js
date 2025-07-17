@@ -35,6 +35,12 @@ export const CSS_VARIABLES = {
   COLOR_TEXT_PRIMARY: '--color-text-primary',
   COLOR_TEXT_SECONDARY: '--color-text-secondary',
   COLOR_ACCENT: '--color-accent',
+  
+  // Screensaver colors
+  COLOR_SCREENSAVER_TITLE: '--color-screensaver-title',
+  COLOR_SCREENSAVER_OVERLAY: '--color-screensaver-overlay',
+  COLOR_SCREENSAVER_TOUCH_BG: '--color-screensaver-touch-bg',
+  COLOR_SCREENSAVER_TOUCH_BORDER: '--color-screensaver-touch-border',
 };
 
 // Función helper para usar variables CSS en JavaScript
@@ -58,6 +64,12 @@ export const COLORS = {
   TEXT_PRIMARY: useCSS(CSS_VARIABLES.COLOR_TEXT_PRIMARY),
   TEXT_SECONDARY: useCSS(CSS_VARIABLES.COLOR_TEXT_SECONDARY),
   ACCENT: useCSS(CSS_VARIABLES.COLOR_ACCENT),
+  
+  // Screensaver colors
+  SCREENSAVER_TITLE: useCSS(CSS_VARIABLES.COLOR_SCREENSAVER_TITLE),
+  SCREENSAVER_OVERLAY: useCSS(CSS_VARIABLES.COLOR_SCREENSAVER_OVERLAY),
+  SCREENSAVER_TOUCH_BG: useCSS(CSS_VARIABLES.COLOR_SCREENSAVER_TOUCH_BG),
+  SCREENSAVER_TOUCH_BORDER: useCSS(CSS_VARIABLES.COLOR_SCREENSAVER_TOUCH_BORDER),
 };
 
 // Función para obtener un color específico
