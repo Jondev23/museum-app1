@@ -36,10 +36,6 @@ export const useStartScreenStyles = (startContent) => {
   }), [startContent?.backgroundImage]);
 
   const containerStyle = useMemo(() => ({
-    paddingTop: 'min(2rem, 4vw)',
-    paddingLeft: 'min(2rem, 4vw)',
-    paddingRight: 'min(2rem, 4vw)',
-    paddingBottom: 'min(4rem, 8vw)'
   }), []);
 
   const mainCardStyle = useMemo(() => ({
