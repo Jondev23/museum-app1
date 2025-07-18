@@ -109,7 +109,7 @@ export const useStartScreenStyles = (startContent) => {
     position: 'fixed',
     left: 0,
     right: 0,
-    bottom: 0,
+    bottom: 'var(--spacing-sm)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
