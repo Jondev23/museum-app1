@@ -57,47 +57,78 @@
   --font-serif: 'Tisa Pro';
   --font-sans: 'Tisa Sans Pro';
   
+  /* Responsive font sizes for StartScreen */
+  --font-size-title: min(8.1vw, 4.32rem);
+  --line-height-title: min(9.72vw, 4.86rem);
+  --font-size-subtitle: min(5.04vw, 2.52rem);
+  --line-height-subtitle: min(6.048vw, 3.024rem);
+  --font-size-highlight: min(2.7702vw, 1.3851rem);
+  --line-height-highlight: min(3.87828vw, 1.93914rem);
+  --letter-spacing-highlight: min(0.027702vw, 0.013851rem);
+  --font-size-intro: min(2.4786vw, 1.1664rem);
+  --line-height-intro: min(3.47004vw, 1.73502rem);
+  --letter-spacing-intro: min(0.024786vw, 0.012393rem);
+  
+  /* Common responsive values */
+  --spacing-xs: min(0.5rem, 1vw);
+  --spacing-sm: min(0.75rem, 1.5vw);
+  --spacing-md: min(1rem, 2vw);
+  --spacing-lg: min(1.5rem, 3vw);
+  --spacing-xl: min(2rem, 4vw);
+  --spacing-2xl: min(2.5rem, 5vw);
+  
+  --border-radius-sm: min(0.5rem, 1vw);
+  --border-radius-md: min(1rem, 2vw);
+  
+  --font-size-admin: min(1rem, 2vw);
+  --font-size-admin-sm: min(0.875rem, 1.75vw);
+  --font-size-admin-title: min(1.375rem, 2.75vw);
+  
   /* Main colors */
   --color-light-gray: #D9D9D9;
   --color-green: #85AF8B;
+  --color-dark-gray: #344243;
+  --color-brown: #A94930;
   
-  /* Feedback colors */
+  /* Semantic color aliases */
   --color-feedback-correct: #598364;
-  --color-feedback-incorrect: #A94930;
-  --color-feedback-answer-bg: #D9D9D9;
-  --color-feedback-answer-text: #344243;
+  --color-feedback-incorrect: var(--color-brown);
+  --color-feedback-answer-bg: var(--color-light-gray);
+  --color-feedback-answer-text: var(--color-dark-gray);
   
-  /* Overlay */
+  /* Museum theme colors */
+  --color-museum-brown: var(--color-brown);
+  
+  /* Overlay colors */
   --color-overlay: rgba(0, 0, 0, 0.75);
+  --color-overlay-light: rgba(0, 0, 0, 0.3);
+  --color-white-overlay: rgba(255, 255, 255, 0.95);
+  --color-white-translucent-20: rgba(255, 255, 255, 0.2);
+  --color-white-translucent-30: rgba(255, 255, 255, 0.3);
+  
+  /* Admin specific colors */
+  --color-admin-input-bg: #f8f9fa;
+  --color-admin-success-bg: rgba(34, 197, 94, 0.1);
   
   /* Additional system colors */
   --color-background-primary: #000000;
-  --color-text-primary: #D9D9D9;
-  --color-text-secondary: #344243;
-  --color-accent: #85AF8B;
+  --color-text-primary: var(--color-light-gray);
+  --color-text-secondary: var(--color-dark-gray);
+  --color-accent: var(--color-green);
   
   /* Screensaver specific colors */
   --color-screensaver-title: #61809D;
-  --color-screensaver-overlay: rgba(0, 0, 0, 0.3);
-  --color-screensaver-touch-bg: rgba(255, 255, 255, 0.2);
-  --color-screensaver-touch-border: rgba(255, 255, 255, 0.3);
+  --color-screensaver-overlay: var(--color-overlay-light);
+  --color-screensaver-touch-bg: var(--color-white-translucent-20);
+  --color-screensaver-touch-border: var(--color-white-translucent-30);
   
   /* Results screen specific colors */
-  --color-results-title: var(--color-text-primary);
-  --color-results-score-text: var(--color-text-primary);
-  --color-results-button-text: var(--color-text-primary);
-  --color-results-overlay: rgba(0, 0, 0, 0.75);
-  --color-results-success: var(--color-success);
-  --color-results-background: var(--color-background);
+  --color-results-overlay: var(--color-overlay);
   
   /* Language selector specific colors */
-  --color-language-overlay: #344243;
-  --color-language-title: var(--color-text-primary);
-  --color-language-subtitle: var(--color-text-primary);
-  --color-language-button-active: #A94930;
-  --color-language-button-inactive: #D9D9D9;
-  --color-language-button-text: var(--color-text-primary);
-  --color-language-icon: var(--color-text-primary);
+  --color-language-overlay: var(--color-dark-gray);
+  --color-language-button-active: var(--color-brown);
+  --color-language-button-inactive: var(--color-light-gray);
 }
 
 @layer base {
@@ -118,57 +149,58 @@
 }
 
 @layer components {
+  /* Base typography classes */
+  .text-base {
+    text-align: center;
+    color: var(--color-text-primary);
+  }
+  
+  .text-serif-base {
+    font-family: var(--font-serif);
+    font-weight: 400;
+  }
+  
+  .text-sans-base {
+    font-family: var(--font-sans);
+    font-weight: 400;
+  }
+  
   /* Typography classes - optimized */
   .title-main {
-    font-family: var(--font-serif);
+    @apply text-base text-serif-base;
     font-style: italic;
     font-weight: 700;
-    color: var(--color-text-primary);
-    text-align: center;
   }
   
   .title-question {
-    font-family: var(--font-serif);
+    @apply text-base text-serif-base;
     font-style: italic;
     font-weight: 750;
-    color: var(--color-text-primary);
-    text-align: center;
     padding-left: min(12rem, 12vw, 15vh);
     padding-right: min(12rem, 12vw, 15vh);
     box-sizing: border-box;
   }
   
   .subtitle-main {
-    font-family: var(--font-sans);
-    font-weight: 400;
+    @apply text-base text-sans-base;
     color: var(--color-accent);
-    text-align: center;
   }
   
   .text-body-primary {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    color: var(--color-text-primary);
-    text-align: center;
+    @apply text-base text-serif-base;
   }
   
   .text-body-bold {
-    font-family: var(--font-serif);
+    @apply text-base text-serif-base;
     font-weight: 700;
-    color: var(--color-text-primary);
-    text-align: center;
   }
   
   .text-button {
-    font-family: var(--font-sans);
-    font-weight: 400;
-    color: var(--color-text-primary);
-    text-align: center;
+    @apply text-base text-sans-base;
   }
   
   .text-answer {
-    font-family: var(--font-sans);
-    font-weight: 400;
+    @apply text-sans-base;
     text-align: center;
   }
 
@@ -212,105 +244,102 @@
   
   .admin-panel {
     @apply bg-white rounded-lg w-full shadow-2xl;
-    padding: min(2.5rem, 5vw);
-    border-radius: min(1rem, 2vw);
+    padding: var(--spacing-2xl);
+    border-radius: var(--border-radius-md);
     max-width: min(24rem, 85vw);
-    margin: min(1rem, 2vw);
+    margin: var(--spacing-md);
     backdrop-filter: blur(20px);
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--color-white-overlay);
   }
   
   .admin-panel-wide {
     @apply bg-white rounded-lg shadow-2xl w-full flex flex-col items-center;
     max-width: min(26rem, 90vw);
-    padding: min(2.5rem, 5vw);
-    border-radius: min(1rem, 2vw);
+    padding: var(--spacing-2xl);
+    border-radius: var(--border-radius-md);
     backdrop-filter: blur(20px);
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--color-white-overlay);
   }
   
   .admin-title {
     @apply font-medium text-center text-gray-800;
-    font-size: min(1.375rem, 2.75vw);
-    margin-bottom: min(2rem, 4vw);
+    font-size: var(--font-size-admin-title);
+    margin-bottom: var(--spacing-xl);
     font-weight: 500;
   }
   
   .admin-form {
     display: flex;
     flex-direction: column;
-    gap: min(1.5rem, 3vw);
+    gap: var(--spacing-lg);
   }
   
   .admin-form-group {
     display: flex;
     flex-direction: column;
-    gap: min(1rem, 2vw);
+    gap: var(--spacing-md);
   }
   
   .admin-label {
     @apply block font-medium text-gray-600;
-    font-size: min(0.875rem, 1.75vw);
-    margin-bottom: min(0.75rem, 1.5vw);
+    font-size: var(--font-size-admin-sm);
+    margin-bottom: var(--spacing-sm);
     font-weight: 500;
   }
   
   .admin-input {
     @apply w-full border-0 bg-gray-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all;
-    padding: min(0.875rem, 1.75vw) min(1rem, 2vw);
-    border-radius: min(0.5rem, 1vw);
-    font-size: min(1rem, 2vw);
-    background-color: #f8f9fa;
+    padding: min(0.875rem, 1.75vw) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-admin);
+    background-color: var(--color-admin-input-bg);
   }
   
   .admin-button-group {
     @apply flex;
-    gap: min(0.75rem, 1.5vw);
+    gap: var(--spacing-sm);
+  }
+  
+  /* Base admin button class */
+  .admin-button-base {
+    @apply rounded-lg transition-all font-medium;
+    padding: min(0.875rem, 1.75vw) min(1.25rem, 2.5vw);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-admin);
+    font-weight: 500;
   }
   
   .admin-button-primary {
-    @apply bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all font-medium;
-    padding: min(0.875rem, 1.75vw) min(1.25rem, 2.5vw);
-    border-radius: min(0.5rem, 1vw);
-    font-size: min(1rem, 2vw);
-    font-weight: 500;
+    @apply admin-button-base bg-blue-500 text-white hover:bg-blue-600;
   }
   
   .admin-button-secondary {
-    @apply bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-all font-medium;
-    padding: min(0.875rem, 1.75vw) min(1.25rem, 2.5vw);
-    border-radius: min(0.5rem, 1vw);
-    font-size: min(1rem, 2vw);
-    font-weight: 500;
+    @apply admin-button-base bg-gray-100 text-gray-700 hover:bg-gray-200;
   }
   
   .admin-button-danger {
-    @apply bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-all font-medium;
-    padding: min(0.875rem, 1.75vw) min(1.25rem, 2.5vw);
-    border-radius: min(0.5rem, 1vw);
-    font-size: min(1rem, 2vw);
-    font-weight: 500;
+    @apply admin-button-base bg-gray-200 text-gray-800 hover:bg-gray-300;
   }
   
   .admin-success-message {
     @apply text-green-600 text-center rounded-lg;
-    margin-bottom: min(1rem, 2vw);
-    padding: min(0.75rem, 1.5vw);
-    background-color: rgba(34, 197, 94, 0.1);
-    font-size: min(0.875rem, 1.75vw);
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background-color: var(--color-admin-success-bg);
+    font-size: var(--font-size-admin-sm);
   }
   
   .admin-separator {
     height: 1px;
     background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
-    margin: min(0.5rem, 1vw) 0;
+    margin: var(--spacing-xs) 0;
   }
   
   .kiosk-item {
     @apply w-full rounded-lg text-left font-medium transition-all;
-    font-size: min(1rem, 2vw);
-    padding: min(1rem, 2vw) min(1.25rem, 2.5vw);
-    border-radius: min(0.5rem, 1vw);
+    font-size: var(--font-size-admin);
+    padding: var(--spacing-md) min(1.25rem, 2.5vw);
+    border-radius: var(--border-radius-sm);
     font-weight: 500;
   }
   
@@ -324,23 +353,36 @@
   
   .kiosk-item-subtitle {
     @apply font-normal opacity-70;
-    font-size: min(0.875rem, 1.75vw);
+    font-size: var(--font-size-admin-sm);
     margin-top: min(0.25rem, 0.5vw);
   }
   
   .admin-corner-trigger {
     @apply fixed z-50 opacity-0;
-    width: min(2rem, 4vw);
-    height: min(2rem, 4vw);
+    width: var(--spacing-xl);
+    height: var(--spacing-xl);
   }
   
   /* Button styles */
   .btn-primary {
-    @apply bg-museum-brown hover:bg-opacity-90 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95;
+    @apply text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95;
+    background-color: var(--color-museum-brown);
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--color-museum-brown);
+    opacity: 0.9;
   }
   
   .btn-answer {
-    @apply bg-white border-2 border-museum-brown text-museum-brown hover:bg-museum-brown hover:text-white font-medium py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 min-w-48;
+    @apply bg-white font-medium py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 min-w-48;
+    border: 2px solid var(--color-museum-brown);
+    color: var(--color-museum-brown);
+  }
+  
+  .btn-answer:hover {
+    background-color: var(--color-museum-brown);
+    color: white;
   }
   
   .btn-disabled {
@@ -352,15 +394,16 @@
   }
   
   .progress-current {
-    @apply bg-white border-2 border-museum-brown;
+    @apply bg-white;
+    border: 2px solid var(--color-museum-brown);
   }
   
   .progress-correct {
-    @apply bg-feedback-correct;
+    background-color: var(--color-feedback-correct);
   }
   
   .progress-incorrect {
-    @apply bg-feedback-incorrect;
+    background-color: var(--color-feedback-incorrect);
   }
   
   .progress-unanswered {

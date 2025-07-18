@@ -45,8 +45,7 @@ const StartScreenTitle = ({
             className="subtitle-main"
             style={{
               ...subtitleStyle,
-              width: '98%',
-              maxWidth: '100%'
+              width: '98%'
             }}
           >
             {startContent?.subtitle || defaultTexts.subtitle}

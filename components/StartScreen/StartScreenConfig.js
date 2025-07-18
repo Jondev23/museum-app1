@@ -35,8 +35,7 @@ export const useStartScreenStyles = (startContent) => {
     backgroundRepeat: 'no-repeat'
   }), [startContent?.backgroundImage]);
 
-  const containerStyle = useMemo(() => ({
-  }), []);
+  const containerStyle = useMemo(() => ({}), []);
 
   const mainCardStyle = useMemo(() => ({
     maxWidth: 'min(120rem, 95vw)',
@@ -53,27 +52,23 @@ export const useStartScreenStyles = (startContent) => {
   }), []);
 
   const titleStyle = useMemo(() => ({
-    // Tamaño optimizado para pantalla completa
-    fontSize: 'min(8.1vw, 4.32rem)',
-    lineHeight: 'min(9.72vw, 4.86rem)',
+    // Usando CSS custom properties para valores responsivos
+    fontSize: 'var(--font-size-title)',
+    lineHeight: 'var(--line-height-title)',
     // Dimensiones como porcentaje de la pantalla para coherencia
     width: '70%',
-    maxWidth: '100%',
     height: '10vh',
-    maxHeight: '20vh',
-    textAlign: 'center'
+    maxHeight: '20vh'
   }), []);
 
   const subtitleStyle = useMemo(() => ({
-    // Tamaño optimizado para subtítulo
-    fontSize: 'min(5.04vw, 2.52rem)',
-    lineHeight: 'min(6.048vw, 3.024rem)',
+    // Usando CSS custom properties para valores responsivos
+    fontSize: 'var(--font-size-subtitle)',
+    lineHeight: 'var(--line-height-subtitle)',
     // Dimensiones como porcentaje de la pantalla para coherencia
     width: '70%',
-    maxWidth: '100%',
     height: '10vh',
     maxHeight: '20vh',
-    textAlign: 'center',
     wordBreak: 'break-word',
     hyphens: 'auto'
   }), []);
@@ -81,28 +76,22 @@ export const useStartScreenStyles = (startContent) => {
   const descriptionContainerStyle = useMemo(() => ({
     // Dimensiones como porcentaje de la pantalla para coherencia
     width: '80%',
-    maxWidth: '100%',
     height: '40vh',
-    maxHeight: '40vh',
-    textAlign: 'center'
+    maxHeight: '40vh'
   }), []);
 
   const highlightTextStyle = useMemo(() => ({
-    // Tamaño optimizado para texto destacado
-    fontSize: 'min(2.7702vw, 1.3851rem)',
-    lineHeight: 'min(3.87828vw, 1.93914rem)',
-    letterSpacing: 'min(0.027702vw, 0.013851rem)',
-    maxWidth: '100%',
-    textAlign: 'center'
+    // Usando CSS custom properties para valores responsivos
+    fontSize: 'var(--font-size-highlight)',
+    lineHeight: 'var(--line-height-highlight)',
+    letterSpacing: 'var(--letter-spacing-highlight)'
   }), []);
 
   const introTextStyle = useMemo(() => ({
-    // Tamaño optimizado para texto introductorio
-    fontSize: 'min(2.4786vw, 1.1664rem)',
-    lineHeight: 'min(3.47004vw, 1.73502rem)',
-    letterSpacing: 'min(0.024786vw, 0.012393rem)',
-    maxWidth: '100%',
-    textAlign: 'center'
+    // Usando CSS custom properties para valores responsivos
+    fontSize: 'var(--font-size-intro)',
+    lineHeight: 'var(--line-height-intro)',
+    letterSpacing: 'var(--letter-spacing-intro)'
   }), []);
 
   const touchIndicatorContainerStyle = useMemo(() => ({
