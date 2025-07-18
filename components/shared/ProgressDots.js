@@ -29,7 +29,7 @@ const ProgressDots = ({
     const baseBorder = 'min(0.1575rem, 0.252vw, 0.315vh)';
     
     let dotColor = 'transparent';
-    let borderColor = '#D9D9D9';
+    let borderColor = 'var(--color-neutral-light)';
     let showBorder = true;
     
     switch (variant) {
@@ -39,10 +39,10 @@ const ProgressDots = ({
           const questionAnswered = questions[index];
           const userAnswerForQuestion = answers[index];
           const wasCorrect = userAnswerForQuestion === questionAnswered?.correctAnswer;
-          dotColor = wasCorrect ? '#598364' : '#A94930';
+          dotColor = wasCorrect ? 'var(--color-feedback-correct)' : 'var(--color-feedback-incorrect)';
           showBorder = false;
         } else if (index === currentQuestionIndex) {
-          dotColor = '#D9D9D9'; 
+          dotColor = 'var(--color-neutral-light)'; 
           showBorder = false; 
         }
         break;
@@ -51,7 +51,7 @@ const ProgressDots = ({
         
         const userAnswer = answers[index];
         const isCorrect = userAnswer === questions[index]?.correctAnswer;
-        dotColor = isCorrect ? '#85AF8B' : '#A94930';
+        dotColor = isCorrect ? 'var(--color-blassgruen)' : 'var(--color-feedback-incorrect)';
         return {
           width: 'min(3.5rem, 5.6vw, 7vh)', // Más grande para results
           height: 'min(3.5rem, 5.6vw, 7vh)',
@@ -62,7 +62,7 @@ const ProgressDots = ({
         
       default:
         // Default behavior for question screen
-        dotColor = index === currentQuestionIndex ? '#D9D9D9' : 'transparent';
+        dotColor = index === currentQuestionIndex ? 'var(--color-neutral-light)' : 'transparent';
         showBorder = index !== currentQuestionIndex; 
         break;
     }
