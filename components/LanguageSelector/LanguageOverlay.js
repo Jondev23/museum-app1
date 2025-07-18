@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ANIMATION_CONFIG, STYLE_CONFIG } from './LanguageSelectorConfig';
+import { ANIMATION_CONFIG } from './LanguageSelectorConfig';
 
 const LanguageOverlay = ({ onOverlayClick, children }) => {
   return (
@@ -8,8 +8,7 @@ const LanguageOverlay = ({ onOverlayClick, children }) => {
       animate={ANIMATION_CONFIG.OVERLAY.ANIMATE}
       exit={ANIMATION_CONFIG.OVERLAY.EXIT}
       transition={ANIMATION_CONFIG.OVERLAY.TRANSITION}
-      className={STYLE_CONFIG.OVERLAY.className}
-      style={{ backgroundColor: STYLE_CONFIG.OVERLAY.backgroundColor }}
+      className="language-overlay"
       onClick={onOverlayClick}
     >
       {children}

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ANIMATION_CONFIG, STYLE_CONFIG } from './LanguageSelectorConfig';
+import { ANIMATION_CONFIG } from './LanguageSelectorConfig';
 
 const LanguageContainer = ({ onContentClick, children }) => {
   return (
@@ -8,7 +8,7 @@ const LanguageContainer = ({ onContentClick, children }) => {
       animate={ANIMATION_CONFIG.CONTAINER.ANIMATE}
       exit={ANIMATION_CONFIG.CONTAINER.EXIT}
       transition={ANIMATION_CONFIG.CONTAINER.TRANSITION}
-      style={STYLE_CONFIG.CONTAINER}
+      className="language-container"
       onClick={onContentClick}
     >
       {children}

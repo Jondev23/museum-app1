@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ANIMATION_CONFIG, STYLE_CONFIG } from './LanguageSelectorConfig';
+import { ANIMATION_CONFIG } from './LanguageSelectorConfig';
 
 const LanguageButton = ({ 
   language, 
@@ -9,24 +9,18 @@ const LanguageButton = ({
   backgroundColor, 
   onLanguageChange 
 }) => {
-  const buttonStyle = {
-    ...STYLE_CONFIG.BUTTON,
-    borderColor,
-    background: backgroundColor
-  };
+  const buttonClass = isActive 
+    ? "language-button language-button-active transition-all"
+    : "language-button language-button-inactive transition-all";
 
   return (
     <motion.button
       onClick={() => onLanguageChange(language)}
       whileHover={ANIMATION_CONFIG.BUTTON_HOVER}
       whileTap={ANIMATION_CONFIG.BUTTON_TAP}
-      className="transition-all"
-      style={buttonStyle}
+      className={buttonClass}
     >
-      <span 
-        className="text-button"
-        style={STYLE_CONFIG.BUTTON_TEXT}
-      >
+      <span className="text-button language-button-text">
         {buttonText}
       </span>
     </motion.button>

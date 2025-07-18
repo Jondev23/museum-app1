@@ -127,6 +127,17 @@
   --language-button-radius: min(3.75rem, 8vw);
   --language-gap: min(3.24rem, 6.08vw);
 
+  /* Language Selector Icon Specific */
+  --language-selector-icon-size: min(2.7rem, 4.86vw, 6.075vh);
+  --language-selector-button-size: min(3.5rem, 6vw);
+  --language-selector-margin-bottom: min(6rem, 9.5vh);
+  --language-selector-margin-left: min(5.125rem, 8vw);
+
+  /* Language Selector Text Sizing */
+  --language-button-text-size: min(1.25rem, 2.5vw);
+  --language-button-text-line-height: min(5.5rem, 12vw);
+  --language-buttons-gap: min(1.5rem, 3vw);
+
   /* Responsive spacing */
   --spacing-xs: clamp(0.25rem, 1vw, 0.75rem);
   --spacing-sm: clamp(0.5rem, 1.5vw, 1rem);
@@ -473,5 +484,115 @@
     opacity: 0;
     width: var(--spacing-xl);
     height: var(--spacing-xl);
+  }
+
+  /* Language Selector Styles */
+  .language-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-language-overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+  }
+
+  .language-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--language-gap);
+    width: auto;
+    max-width: 100vw;
+    padding: 0 min(2rem, 4vw);
+    min-height: 100vh;
+    padding-top: min(4rem, 6vw);
+    padding-bottom: min(5rem, 10vw);
+  }
+
+  .language-icon {
+    width: var(--language-icon-size);
+    height: var(--language-icon-size);
+    display: block;
+    opacity: 0.8;
+  }
+
+  .language-title {
+    font-size: var(--language-title-size);
+    line-height: 130%;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .language-subtitle {
+    opacity: 0.6;
+    font-size: var(--language-title-size);
+    line-height: 130%;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .language-button {
+    width: var(--language-button-width);
+    height: var(--language-button-height);
+    border-radius: var(--language-button-radius);
+    border: 2px solid;
+    padding: min(0.625rem, 1.5vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .language-button-active {
+    background-color: var(--color-language-button-active);
+    border-color: var(--color-language-button-active);
+    color: var(--color-white);
+  }
+
+  .language-button-inactive {
+    background-color: transparent;
+    border-color: var(--color-language-button-inactive);
+    color: var(--color-neutral-light);
+  }
+
+  .language-buttons-container {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--language-buttons-gap);
+  }
+
+  .language-button-text {
+    flex: 1;
+    font-size: var(--language-button-text-size);
+    line-height: var(--language-button-text-line-height);
+    text-transform: uppercase;
+  }
+
+  /* Language Selector Icon Component */
+  .language-selector-icon-container {
+    flex-shrink: 0;
+    margin-bottom: var(--language-selector-margin-bottom);
+    margin-left: var(--language-selector-margin-left);
+  }
+
+  .language-selector-icon-button {
+    min-width: var(--language-selector-button-size);
+    min-height: var(--language-selector-button-size);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .language-selector-icon-image {
+    width: var(--language-selector-icon-size);
+    height: var(--language-selector-icon-size);
+    display: block;
   }
 }

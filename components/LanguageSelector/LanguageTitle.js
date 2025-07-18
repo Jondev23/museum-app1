@@ -9,16 +9,10 @@ const LanguageTitle = ({ englishTitle, germanTitle }) => {
       transition={ANIMATION_CONFIG.TITLE.TRANSITION}
       style={STYLE_CONFIG.TITLE_CONTAINER}
     >
-      <h1 
-        className="title-question"
-        style={STYLE_CONFIG.TITLE}
-      >
+      <h1 className="title-question language-title">
         {englishTitle}
       </h1>
-      <h2 
-        className="title-question"
-        style={STYLE_CONFIG.SUBTITLE}
-      >
+      <h2 className="title-question language-subtitle">
         {germanTitle}
       </h2>
     </motion.div>

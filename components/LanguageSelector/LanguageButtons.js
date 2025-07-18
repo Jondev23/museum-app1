@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import LanguageButton from './LanguageButton';
-import { ANIMATION_CONFIG, STYLE_CONFIG } from './LanguageSelectorConfig';
+import { ANIMATION_CONFIG } from './LanguageSelectorConfig';
 
 const LanguageButtons = ({ 
   germanButtonText, 
@@ -16,27 +16,21 @@ const LanguageButtons = ({
       initial={ANIMATION_CONFIG.BUTTONS.INITIAL}
       animate={ANIMATION_CONFIG.BUTTONS.ANIMATE}
       transition={ANIMATION_CONFIG.BUTTONS.TRANSITION}
-      style={STYLE_CONFIG.BUTTONS_CONTAINER}
+      className="language-buttons-container"
     >
-      <div style={STYLE_CONFIG.BUTTONS_CONTAINER}>
-        <LanguageButton
-          language="de"
-          buttonText={germanButtonText}
-          isActive={germanState.isActive}
-          borderColor={germanState.borderColor}
-          backgroundColor={germanState.backgroundColor}
-          onLanguageChange={handleLanguageChange}
-        />
+      <LanguageButton
+        language="de"
+        buttonText={germanButtonText}
+        isActive={germanState.isActive}
+        onLanguageChange={handleLanguageChange}
+      />
 
-        <LanguageButton
-          language="en"
-          buttonText={englishButtonText}
-          isActive={englishState.isActive}
-          borderColor={englishState.borderColor}
-          backgroundColor={englishState.backgroundColor}
-          onLanguageChange={handleLanguageChange}
-        />
-      </div>
+      <LanguageButton
+        language="en"
+        buttonText={englishButtonText}
+        isActive={englishState.isActive}
+        onLanguageChange={handleLanguageChange}
+      />
     </motion.div>
   );
 };
