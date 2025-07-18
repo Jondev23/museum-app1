@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { START_SCREEN_CONFIG } from './StartScreenConfig';
+import useResponsiveText from '../../hooks/useResponsiveText';
 
 const StartScreenTitle = ({ 
   startContent, 
@@ -14,11 +15,31 @@ const StartScreenTitle = ({
   const showTitle = showOnlyTitle || (!showOnlyTitle && !showOnlySubtitle);
   const showSubtitle = showOnlySubtitle || (!showOnlyTitle && !showOnlySubtitle);
 
+  // Hooks para texto responsive - DESACTIVADOS TEMPORALMENTE para probar variables CSS
+  // const { ref: titleRef, adjustedStyle: adjustedTitleStyle } = useResponsiveText(
+  //   titleStyle,
+  //   startContent?.title || defaultTexts.title,
+  //   { minScale: 0.4, step: 2, delay: 200 }
+  // );
+
+  // const { ref: subtitleRef, adjustedStyle: adjustedSubtitleStyle } = useResponsiveText(
+  //   subtitleStyle,
+  //   startContent?.subtitle || defaultTexts.subtitle,
+  //   { minScale: 0.4, step: 2, delay: 200 }
+  // );
+
+  // Referencias simples sin hooks responsivos
+  const titleRef = null;
+  const subtitleRef = null;
+  const adjustedTitleStyle = titleStyle;
+  const adjustedSubtitleStyle = subtitleStyle;
+
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex flex-col items-center w-full h-full justify-center">
       {/* Main title */}
       {showTitle && (
         <motion.h1
+          ref={titleRef}
           initial={{ y: 50, opacity: 0 }}
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ 
@@ -27,7 +48,7 @@ const StartScreenTitle = ({
           }}
           className="typography-head text-primary"
           style={{
-            ...titleStyle,
+            ...adjustedTitleStyle,
             color: 'var(--color-text-primary)'
           }}
         >
@@ -39,6 +60,7 @@ const StartScreenTitle = ({
       {showSubtitle && (
         <div className="w-full flex justify-center">
           <motion.h2
+            ref={subtitleRef}
             initial={{ y: 50, opacity: 0 }}
             animate={showContent ? { y: 0, opacity: 1 } : {}}
             transition={{ 
@@ -47,7 +69,7 @@ const StartScreenTitle = ({
             }}
             className="typography-subline"
             style={{
-              ...subtitleStyle,
+              ...adjustedSubtitleStyle,
               width: '98%',
               color: 'var(--color-blassgruen)'
             }}

@@ -1,6 +1,4 @@
-import { useMemo } from 'react';
-
-// Constantes de configuración
+// Configuración simple
 export const START_SCREEN_CONFIG = {
   ANIMATION_DELAYS: {
     CONTENT_TRIGGER: 300,
@@ -25,121 +23,110 @@ export const START_SCREEN_CONFIG = {
   },
 };
 
-// Hook para estilos memoizados
-export const useStartScreenStyles = (startContent) => {
-  const backgroundStyle = useMemo(() => ({
+// Estilos súper simples con porcentajes y responsivos
+export const useStartScreenStyles = (startContent) => ({
+  backgroundStyle: {
     backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
-  }), [startContent?.backgroundImage]);
+  },
 
-  const containerStyle = useMemo(() => ({}), []);
+  containerStyle: {
+    minHeight: '100vh',
+    minHeight: '100dvh' // Dynamic viewport height for mobile
+  },
 
-  const mainCardStyle = useMemo(() => ({
-    maxWidth: 'min(120rem, 95vw)',
-    minHeight: '0',
-    flex: 'none'
-  }), []);
+  mainCardStyle: { 
+    width: '100%', 
+    height: '100%',
+    minHeight: 'inherit'
+  },
 
-  const titleSectionStyle = useMemo(() => ({
-    gap: '0'
-  }), []);
+  contentSectionStyle: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    paddingTop: 'clamp(8.8rem, 17.6vh, 15.4rem)',
+    paddingLeft: 'clamp(1rem, 3vw, 3rem)',
+    paddingRight: 'clamp(1rem, 3vw, 3rem)'
+  },
 
-  const contentSectionStyle = useMemo(() => ({
-    gap: '0'
-  }), []);
-
-  const titleStyle = useMemo(() => ({
-    // Usando tokens oficiales de Figma para Head & Auswertung
+  // Título - responsivo 
+  titleStyle: {
     fontSize: 'var(--typography-head-font-size)',
-    lineHeight: 'var(--typography-head-line-height)',
     fontFamily: 'var(--typography-head-font-family)',
     fontWeight: 'var(--typography-head-font-weight)',
-    fontStyle: 'var(--typography-head-font-style)',
-    // Dimensiones responsivas
-    width: '70%',
-    height: '10vh',
-    maxHeight: '20vh'
-  }), []);
+    textAlign: 'center',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    lineHeight: 'var(--typography-head-line-height)'
+  },
 
-  const subtitleStyle = useMemo(() => ({
-    // Usando tokens oficiales de Figma para Subline
+  // Subtítulo - responsivo
+  subtitleStyle: {
     fontSize: 'var(--typography-subline-font-size)',
-    lineHeight: 'var(--typography-subline-line-height)',
     fontFamily: 'var(--typography-subline-font-family)',
     fontWeight: 'var(--typography-subline-font-weight)',
-    fontStyle: 'var(--typography-subline-font-style)',
-    // Dimensiones responsivas
-    width: '70%',
-    height: '10vh',
-    maxHeight: '20vh',
-    wordBreak: 'break-word',
-    hyphens: 'auto'
-  }), []);
+    textAlign: 'center',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    lineHeight: 'var(--typography-subline-line-height)',
+    marginTop: '-0.5rem'
+  },
 
-  const descriptionContainerStyle = useMemo(() => ({
-    // Dimensiones como porcentaje de la pantalla para coherencia
-    width: '80%',
-    height: '40vh',
-    maxHeight: '40vh'
-  }), []);
+  // Descripción - responsiva
+  descriptionSectionStyle: {
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 'clamp(3.5rem, 7vh, 5.5rem)',
+    paddingBottom: 'clamp(2rem, 6vh, 4rem)'
+  },
 
-  const highlightTextStyle = useMemo(() => ({
-    // Usando tokens oficiales de Figma para Antworten Buttons
+  descriptionContainerStyle: {
+    width: '90%',
+    maxWidth: '80rem',
+    textAlign: 'center'
+  },
+
+  highlightTextStyle: {
     fontSize: 'var(--typography-antworten-buttons-font-size)',
-    lineHeight: 'var(--typography-antworten-buttons-line-height)',
     fontFamily: 'var(--typography-antworten-buttons-font-family)',
     fontWeight: 'var(--typography-antworten-buttons-font-weight)',
-    fontStyle: 'var(--typography-antworten-buttons-font-style)',
-    letterSpacing: 'var(--typography-antworten-buttons-letter-spacing)'
-  }), []);
+    textAlign: 'center',
+    lineHeight: 'var(--typography-antworten-buttons-line-height)',
+    letterSpacing: 'var(--typography-antworten-buttons-letter-spacing)',
+    marginBottom: 'clamp(0.5rem, 2vh, 1.5rem)'
+  },
 
-  const introTextStyle = useMemo(() => ({
-    // Usando tokens oficiales de Figma para Antwort Fließ
+  introTextStyle: {
     fontSize: 'var(--typography-antwort-fliess-font-size)',
-    lineHeight: 'var(--typography-antwort-fliess-line-height)',
     fontFamily: 'var(--typography-antwort-fliess-font-family)',
     fontWeight: 'var(--typography-antwort-fliess-font-weight)',
-    fontStyle: 'var(--typography-antwort-fliess-font-style)',
+    textAlign: 'center',
+    lineHeight: 'var(--typography-antwort-fliess-line-height)',
     letterSpacing: 'var(--typography-antwort-fliess-letter-spacing)'
-  }), []);
+  },
 
-  const touchIndicatorContainerStyle = useMemo(() => ({
-    position: 'fixed',
-    left: 0,
-    right: 0,
-    bottom: 'var(--spacing-sm)',
+  // TouchIndicator responsivo
+  touchIndicatorContainerStyle: {
+    width: 'clamp(50px, 8vw, 80px)',
+    height: 'clamp(50px, 8vw, 80px)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 30,
-    pointerEvents: 'none'
-  }), []);
+    marginTop: 'clamp(1rem, 4vh, 3rem)'
+  },
 
-  const touchIndicatorStyle = useMemo(() => ({
-    // Escalado proporcional usando viewport units para coherencia - más grande
-    width: 'min(12vw, 10rem, 18vh)',
-    height: 'min(12vh, 8rem, 16vh)',
-    // Mantener aspect ratio
-    aspectRatio: '1/1',
-    objectFit: 'contain',
-    pointerEvents: 'auto',
-    cursor: 'pointer'
-  }), []);
-
-  return {
-    backgroundStyle,
-    containerStyle,
-    mainCardStyle,
-    titleSectionStyle,
-    contentSectionStyle,
-    titleStyle,
-    subtitleStyle,
-    descriptionContainerStyle,
-    highlightTextStyle,
-    introTextStyle,
-    touchIndicatorContainerStyle,
-    touchIndicatorStyle
-  };
-};
+  touchIndicatorStyle: {
+    width: '100%',
+    height: '100%',
+    cursor: 'pointer',
+    transition: 'transform 0.2s ease'
+  }
+});

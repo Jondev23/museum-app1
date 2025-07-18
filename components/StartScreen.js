@@ -20,8 +20,8 @@ const StartScreen = () => {
     backgroundStyle,
     containerStyle,
     mainCardStyle,
-    titleSectionStyle,
     contentSectionStyle,
+    descriptionSectionStyle,
     titleStyle,
     subtitleStyle,
     descriptionContainerStyle,
@@ -51,52 +51,58 @@ const StartScreen = () => {
 
       {/* Content */}
       <div 
-        className="relative z-10 h-full flex flex-col items-center w-full"
-        style={{
-          ...containerStyle,
-          paddingTop: 'min(14.52rem, 19.36vh)'
-        }}
+        className="relative z-10 h-full flex flex-col items-center w-full px-4 sm:px-6 md:px-8"
+        style={containerStyle}
       >
         {/* Main Card Container */}
         <div 
-          className="w-full bg-transparent flex items-start justify-center"
+          className="w-full max-w-7xl bg-transparent flex items-start justify-center flex-grow"
           style={mainCardStyle}
         >
-          <div>
+          <div className="w-full">
             <div 
-              className="flex flex-col items-center"
+              className="flex flex-col items-center h-full"
               style={contentSectionStyle}
             >
               {/* Title and Subtitle Section */}
-              <StartScreenTitle
-                startContent={startContent}
-                defaultTexts={defaultTexts}
-                showContent={showContent}
-                titleStyle={titleStyle}
-                subtitleStyle={subtitleStyle}
-              />
+              <div className="w-full flex flex-col items-center justify-center flex-shrink-0">
+                <StartScreenTitle
+                  startContent={startContent}
+                  defaultTexts={defaultTexts}
+                  showContent={showContent}
+                  titleStyle={titleStyle}
+                  subtitleStyle={subtitleStyle}
+                />
+              </div>
 
               {/* Description Section */}
-              <StartScreenDescription
-                startContent={startContent}
-                defaultTexts={defaultTexts}
-                showContent={showContent}
-                descriptionContainerStyle={descriptionContainerStyle}
-                highlightTextStyle={highlightTextStyle}
-                introTextStyle={introTextStyle}
-              />
+              <div className="flex-grow flex items-center justify-center w-full" style={descriptionSectionStyle}>
+                <StartScreenDescription
+                  startContent={startContent}
+                  defaultTexts={defaultTexts}
+                  showContent={showContent}
+                  descriptionContainerStyle={descriptionContainerStyle}
+                  highlightTextStyle={highlightTextStyle}
+                  introTextStyle={introTextStyle}
+                />
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Footer with language icon and swipe indicator */}
+        {/* Standard Footer with Language Selector and Touch Indicator */}
         <StandardFooter>
-          <StartScreenTouchIndicator
-            showContent={showContent}
-            handleSwipeLeft={handleSwipeLeft}
-            touchIndicatorContainerStyle={touchIndicatorContainerStyle}
-            touchIndicatorStyle={touchIndicatorStyle}
-          />
+          <div className="absolute left-1/2 transform -translate-x-1/2 flex justify-center items-center" 
+               style={{ 
+                 top: 'clamp(-80px, -10vh, -60px)'
+               }}>
+            <StartScreenTouchIndicator
+              showContent={showContent}
+              handleSwipeLeft={handleSwipeLeft}
+              touchIndicatorContainerStyle={touchIndicatorContainerStyle}
+              touchIndicatorStyle={touchIndicatorStyle}
+            />
+          </div>
         </StandardFooter>
       </div>
     </motion.div>

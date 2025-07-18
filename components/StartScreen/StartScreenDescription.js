@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { START_SCREEN_CONFIG } from './StartScreenConfig';
+import useResponsiveText from '../../hooks/useResponsiveText';
 
 const StartScreenDescription = ({ 
   startContent, 
@@ -9,6 +10,18 @@ const StartScreenDescription = ({
   highlightTextStyle,
   introTextStyle 
 }) => {
+  // Hooks para texto responsive
+  const { ref: highlightRef, adjustedStyle: adjustedHighlightStyle } = useResponsiveText(
+    highlightTextStyle,
+    startContent?.highlightText || defaultTexts.highlightText,
+    { minScale: 0.4, step: 2, delay: 200 }
+  );
+
+  const { ref: introRef, adjustedStyle: adjustedIntroStyle } = useResponsiveText(
+    introTextStyle,
+    startContent?.introText || defaultTexts.introText,
+    { minScale: 0.4, step: 1, delay: 200 }
+  );
   return (
     <motion.div
       initial={{ y: 50, opacity: 0 }}
@@ -24,14 +37,12 @@ const StartScreenDescription = ({
       }}
     >
       <div 
+        ref={highlightRef}
         className="typography-antworten-buttons text-primary"
         style={{
-          ...highlightTextStyle,
+          ...adjustedHighlightStyle,
           display: 'block',
           marginBottom: '0.5rem',
-          whiteSpace: 'nowrap',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
           color: 'var(--color-text-primary)',
           fontWeight: 'var(--typography-antworten-buttons-font-weight)'
         }}
@@ -40,9 +51,10 @@ const StartScreenDescription = ({
       </div>
 
       <div 
+        ref={introRef}
         className="typography-antwort-fliess text-primary"
         style={{
-          ...introTextStyle,
+          ...adjustedIntroStyle,
           display: 'block',
           color: 'var(--color-text-primary)'
         }}
