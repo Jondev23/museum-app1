@@ -61,9 +61,9 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const titleStyle = useMemo(() => ({
-    // Tamaño base del texto - se ajusta automáticamente si no cabe
-    fontSize: 'min(4vw, 2.5rem)',
-    lineHeight: 'min(5vw, 3.25rem)',
+    // Tamaño base del texto - se ajusta automáticamente si no cabe (21% más grande total)
+    fontSize: 'min(4.84vw, 3.025rem)',
+    lineHeight: 'min(6.05vw, 3.9325rem)',
     // Dimensiones fijas como porcentaje de la pantalla
     width: '85%', // Ocupa 85% del ancho disponible
     height: '15vh', // Ocupa 15% de la altura de la pantalla
@@ -82,7 +82,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   const answerButtonStyle = useMemo(() => ({
     // Dimensiones fijas como porcentaje de la pantalla
     width: '68%', // Ocupa 73% del ancho disponible
-    height: '9vh', // Ocupa 9% de la altura de la pantalla
+    height: '10vh', // Ocupa 9% de la altura de la pantalla
     // Valores mínimos para compatibilidad
     minWidth: 'min(40.74rem, 81.48vw)',
     minHeight: 'min(3.0174375rem, 4.2244125vh)',
@@ -97,9 +97,9 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
 
   const answerTextStyle = useMemo(() => ({
     color: FEEDBACK_CONFIG.COLORS.ANSWER_TEXT,
-    // Tamaño base del texto - se ajusta automáticamente si no cabe
-    fontSize: 'min(3.6vw, 1.8rem)',
-    lineHeight: 'min(4.5vw, 2.25rem)',
+    // Tamaño base del texto - se ajusta automáticamente si no cabe (10% más grande)
+    fontSize: 'min(3.96vw, 1.98rem)',
+    lineHeight: 'min(4.95vw, 2.475rem)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     // Propiedades para ajuste automático de texto
@@ -123,9 +123,9 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const messageStyle = useMemo(() => ({
-    // Tamaño base del texto - se ajusta automáticamente si no cabe (30% más grande)
-    fontSize: 'min(3.5143vw, 1.7572rem)',
-    lineHeight: 'min(4.3918vw, 2.1964rem)',
+    // Tamaño base del texto - se ajusta automáticamente si no cabe (43% más grande total)
+    fontSize: 'min(3.8657vw, 1.9329rem)',
+    lineHeight: 'min(4.2523vw, 2.1262rem)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0',
