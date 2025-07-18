@@ -115,7 +115,6 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     // Dimensiones fijas como porcentaje de la pantalla
     width: '100%', // Ocupa 85% del ancho disponible
     height: '35vh', // Ocupa 35% de la altura de la pantalla
-    flex: 1,
     justifyContent: 'flex-start',
     overflow: 'hidden'
   }), []);
@@ -164,7 +163,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
 
   const buttonTextStyle = useMemo(() => ({
     fontSize: 'min(2.31vw, 1.23375rem)',
-    lineHeight: 'min(11vh, 7rem)',
+    lineHeight: 'min(5vh, 3rem)',
     textTransform: 'uppercase'
   }), []);
 
