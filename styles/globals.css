@@ -340,7 +340,7 @@
     border-color: var(--color-text-primary);
   }
 
-  /* Button styles */
+  /* Button styles - NO HOVER EFFECTS */
   .btn-primary {
     @apply typography-antworten-buttons;
     background-color: var(--color-primary);
@@ -349,17 +349,6 @@
     border-radius: var(--border-radius-md);
     border: none;
     cursor: pointer;
-    transition: all 0.2s ease;
-    transform: scale(1);
-  }
-
-  .btn-primary:hover {
-    opacity: 0.9;
-    transform: scale(1.05);
-  }
-
-  .btn-primary:active {
-    transform: scale(0.95);
   }
 
   .btn-answer {
@@ -370,30 +359,13 @@
     padding: var(--spacing-lg) var(--spacing-xl);
     border-radius: var(--border-radius-md);
     cursor: pointer;
-    transition: all 0.2s ease;
-    transform: scale(1);
     min-width: 12rem;
-  }
-
-  .btn-answer:hover {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    transform: scale(1.05);
-  }
-
-  .btn-answer:active {
-    transform: scale(0.95);
   }
 
   .btn-disabled {
     background-color: var(--color-neutral-light);
     color: var(--color-schiefer);
     cursor: not-allowed;
-    transform: none;
-  }
-
-  .btn-disabled:hover {
-    transform: none;
   }
 
   /* Progress dots */
@@ -402,7 +374,6 @@
     height: 1rem;
     border-radius: 50%;
     margin: 0 0.25rem;
-    transition: all 0.3s ease;
   }
 
   .progress-current {
@@ -420,10 +391,9 @@
 
   .progress-unanswered {
     background-color: var(--color-neutral-light);
-    opacity: 0.6;
   }
 
-  /* Admin Panel Styles */
+  /* Admin Panel Styles - NO HOVER EFFECTS */
   .admin-overlay {
     position: fixed;
     inset: 0;
@@ -441,8 +411,6 @@
     width: 100%;
     max-width: min(24rem, 85vw);
     margin: var(--spacing-md);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   }
 
   .admin-panel-wide {
@@ -451,8 +419,6 @@
     padding: var(--spacing-2xl);
     width: 100%;
     max-width: min(26rem, 90vw);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -493,7 +459,6 @@
     border-radius: var(--border-radius-sm);
     font-size: var(--admin-font-size);
     outline: none;
-    transition: all 0.2s ease;
   }
 
   .admin-input:focus {
@@ -512,7 +477,6 @@
     font-weight: 500;
     border: none;
     cursor: pointer;
-    transition: all 0.2s ease;
   }
 
   .admin-button-primary {
@@ -521,30 +485,16 @@
     color: var(--color-white);
   }
 
-  .admin-button-primary:hover {
-    background-color: var(--color-primary-dark);
-  }
-
   .admin-button-secondary {
     @apply admin-button-base;
     background-color: var(--color-neutral-light);
     color: var(--color-schiefer-dark);
   }
 
-  .admin-button-secondary:hover {
-    background-color: var(--color-schiefer);
-    color: var(--color-white);
-  }
-
   .admin-button-danger {
     @apply admin-button-base;
     background-color: var(--color-neutral-light);
     color: var(--color-schiefer-dark);
-  }
-
-  .admin-button-danger:hover {
-    background-color: var(--color-kupfer);
-    color: var(--color-white);
   }
 
   .admin-success-message {
@@ -572,7 +522,6 @@
     text-align: left;
     border: none;
     cursor: pointer;
-    transition: all 0.2s ease;
   }
 
   .kiosk-item-selected {
@@ -583,10 +532,6 @@
   .kiosk-item-unselected {
     background-color: var(--color-admin-input-bg);
     color: var(--color-schiefer-dark);
-  }
-
-  .kiosk-item-unselected:hover {
-    background-color: var(--color-neutral-light);
   }
 
   .kiosk-item-subtitle {
