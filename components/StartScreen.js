@@ -50,8 +50,7 @@ const StartScreen = () => {
       <div 
         className="relative z-10 h-full flex flex-col items-center w-full"
         style={{
-          ...containerStyle,
-          paddingTop: 'min(8.5rem, 11vw)' 
+          ...containerStyle
         }}
       >
         {/* Main Card Container */}
@@ -62,12 +61,12 @@ const StartScreen = () => {
             flex: 'none' 
           }}
         >
-          <div style={{ padding: '0' }}>
+          <div style={{}}>
             <div 
               className="flex flex-col items-center"
               style={{
                 ...contentSectionStyle,
-                gap: 'min(3.5rem, 5.6vw)' 
+                gap: '0' 
               }}
             >
               {/* Title Section */}
@@ -78,13 +77,26 @@ const StartScreen = () => {
                 titleStyle={{
                   ...titleStyle,
                   fontSize: 'min(8.1vw, 4.32rem)', 
-                  lineHeight: 'min(9.72vw, 4.86rem)'
+                  lineHeight: 'min(9.72vw, 4.86rem)',
+                  height: '10vh',
+                  maxHeight: '20vh'
                 }}
+                showOnlyTitle={true}
+              />
+
+              {/* Subtitle Section */}
+              <StartScreenTitle
+                startContent={startContent}
+                defaultTexts={defaultTexts}
+                showContent={showContent}
                 subtitleStyle={{
                   ...subtitleStyle,
                   fontSize: 'min(5.04vw, 2.52rem)', 
-                  lineHeight: 'min(6.048vw, 3.024rem)'
+                  lineHeight: 'min(6.048vw, 3.024rem)',
+                  height: '10vh',
+                  maxHeight: '20vh'
                 }}
+                showOnlySubtitle={true}
               />
 
               {/* Description Section */}
@@ -93,7 +105,9 @@ const StartScreen = () => {
                 defaultTexts={defaultTexts}
                 showContent={showContent}
                 descriptionContainerStyle={{
-                  ...descriptionContainerStyle
+                  ...descriptionContainerStyle,
+                  height: '40vh',
+                  maxHeight: '40vh'
                 }}
                 highlightTextStyle={{
                   ...highlightTextStyle,
@@ -118,8 +132,7 @@ const StartScreen = () => {
             showContent={showContent}
             handleSwipeLeft={handleSwipeLeft}
             touchIndicatorContainerStyle={{
-              ...touchIndicatorContainerStyle,
-              bottom: 'min(1.0rem, 2vh)' 
+              ...touchIndicatorContainerStyle
             }}
             touchIndicatorStyle={touchIndicatorStyle}
           />

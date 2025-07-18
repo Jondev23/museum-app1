@@ -45,11 +45,11 @@ export const useStartScreenStyles = (startContent) => {
   }), []);
 
   const titleSectionStyle = useMemo(() => ({
-    gap: 'min(0.0rem, 0vw)'
+    gap: '0'
   }), []);
 
   const contentSectionStyle = useMemo(() => ({
-    gap: 'min(4.0rem, 6.4vw)'
+    gap: '0'
   }), []);
 
   const titleStyle = useMemo(() => ({
@@ -106,7 +106,7 @@ export const useStartScreenStyles = (startContent) => {
     position: 'fixed',
     left: 0,
     right: 0,
-    bottom: 'min(5.625rem, 9vh)',
+    bottom: 0,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

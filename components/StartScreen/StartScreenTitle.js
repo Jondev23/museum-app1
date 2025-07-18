@@ -1,42 +1,58 @@
 import { motion } from 'framer-motion';
 import { START_SCREEN_CONFIG } from './StartScreenConfig';
 
-const StartScreenTitle = ({ startContent, defaultTexts, showContent, titleStyle, subtitleStyle }) => {
-  return (
-    <div className="flex flex-col items-center w-full" style={{ gap: 'min(0.0rem, 0vw)' }}>
-      {/* Main title */}
-      <motion.h1
-        initial={{ y: 50, opacity: 0 }}
-        animate={showContent ? { y: 0, opacity: 1 } : {}}
-        transition={{ 
-          duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.CONTENT_FADE, 
-          delay: START_SCREEN_CONFIG.ANIMATION_DELAYS.TITLE 
-        }}
-        className="title-main"
-        style={titleStyle}
-      >
-        {startContent?.title || defaultTexts.title}
-      </motion.h1>
+const StartScreenTitle = ({ 
+  startContent, 
+  defaultTexts, 
+  showContent, 
+  titleStyle, 
+  subtitleStyle,
+  showOnlyTitle = false,
+  showOnlySubtitle = false
+}) => {
+  // Si no se especifica qué mostrar, mostrar ambos (comportamiento por defecto)
+  const showTitle = showOnlyTitle || (!showOnlyTitle && !showOnlySubtitle);
+  const showSubtitle = showOnlySubtitle || (!showOnlyTitle && !showOnlySubtitle);
 
-      {/* Subtitle - en su propio contenedor */}
-      <div className="w-full flex justify-center">
-        <motion.h2
+  return (
+    <div className="flex flex-col items-center w-full" style={{ gap: '0' }}>
+      {/* Main title */}
+      {showTitle && (
+        <motion.h1
           initial={{ y: 50, opacity: 0 }}
           animate={showContent ? { y: 0, opacity: 1 } : {}}
           transition={{ 
             duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.CONTENT_FADE, 
-            delay: START_SCREEN_CONFIG.ANIMATION_DELAYS.SUBTITLE 
+            delay: START_SCREEN_CONFIG.ANIMATION_DELAYS.TITLE 
           }}
-          className="subtitle-main"
-          style={{
-            ...subtitleStyle,
-            width: '98%',
-            maxWidth: '100%'
-          }}
+          className="title-main"
+          style={titleStyle}
         >
-          {startContent?.subtitle || defaultTexts.subtitle}
-        </motion.h2>
-      </div>
+          {startContent?.title || defaultTexts.title}
+        </motion.h1>
+      )}
+
+      {/* Subtitle - en su propio contenedor */}
+      {showSubtitle && (
+        <div className="w-full flex justify-center">
+          <motion.h2
+            initial={{ y: 50, opacity: 0 }}
+            animate={showContent ? { y: 0, opacity: 1 } : {}}
+            transition={{ 
+              duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.CONTENT_FADE, 
+              delay: START_SCREEN_CONFIG.ANIMATION_DELAYS.SUBTITLE 
+            }}
+            className="subtitle-main"
+            style={{
+              ...subtitleStyle,
+              width: '98%',
+              maxWidth: '100%'
+            }}
+          >
+            {startContent?.subtitle || defaultTexts.subtitle}
+          </motion.h2>
+        </div>
+      )}
     </div>
   );
 };
