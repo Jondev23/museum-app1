@@ -7,9 +7,9 @@ const FeedbackTitle = ({ question, titleStyle }) => {
     titleStyle,
     question.question,
     {
-      minScale: 0.5, // Puede reducirse hasta 50% del tamaño original
-      step: 1,       // Reduce de 1px en 1px
-      delay: 150     // Espera 150ms antes de ajustar
+      minScale: 0.5, 
+      step: 1,      
+      delay: 150    
     }
   );
 

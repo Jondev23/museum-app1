@@ -39,11 +39,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   const mainContentStyle = useMemo(() => ({
     width: '100%',
     maxWidth: 'min(127rem, 95vw)',
-    gap: 'min(1.5rem, 3vw)', 
     paddingTop: 'min(6rem, 8vh)',
     paddingBottom: 'min(2rem, 3vh)', 
-    paddingLeft: 'min(5rem, 6vw)', 
-    paddingRight: 'min(5rem, 6vw)',
     margin: '0 auto'
   }), []);
 
@@ -65,7 +62,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     fontSize: 'min(4.84vw, 3.025rem)',
     lineHeight: 'min(6.05vw, 3.9325rem)',
     // Dimensiones fijas como porcentaje de la pantalla
-    width: '85%', // Ocupa 85% del ancho disponible
+    width: '100%', // Ocupa 85% del ancho disponible
     height: '15vh', // Ocupa 15% de la altura de la pantalla
     maxWidth: '100%',
     overflowWrap: 'break-word',
@@ -86,7 +83,6 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     // Valores mínimos para compatibilidad
     minWidth: 'min(40.74rem, 81.48vw)',
     minHeight: 'min(3.0174375rem, 4.2244125vh)',
-    padding: 'min(1.96558rem, 1.81046vh) min(2rem, 4vw)',
     maxWidth: '100%',
     // Propiedades para centrado y ajuste automático
     display: 'flex',
@@ -142,8 +138,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0',
-    paddingLeft: 'min(7rem, 14vw)',
-    paddingRight: 'min(7rem, 14vw)',
+    
     // Propiedades para ajuste automático de texto
     wordBreak: 'break-word',
     hyphens: 'auto',
