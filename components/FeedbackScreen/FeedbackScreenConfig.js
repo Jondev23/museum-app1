@@ -55,7 +55,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     padding: 'min(3rem, 5vw)',
     width: '100%',
     maxWidth: 'min(75.6rem, 83.05vw)',
-    maxHeight: '78vh',
+    height: '74vh',
     justifyContent: 'space-evenly',
     overflow: 'hidden'
   }), []);
@@ -92,7 +92,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 'min(0.25rem, 0.5vw)',
+    gap: '0',
     width: '100%',
     flex: 1,
     justifyContent: 'flex-start',
@@ -102,16 +102,16 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const messageStyle = useMemo(() => ({
-    fontSize: 'min(1.7rem, 3.4vw, 4.25vh)',
-    lineHeight: 'min(2.125rem, 4.25vw, 5.1vh)',
+    fontSize: 'min(1.5264rem, 3.0528vw, 3.8151vh)',
+    lineHeight: 'min(1.908rem, 3.8151vw, 4.5783vh)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0'
   }), []);
 
   const explanationStyle = useMemo(() => ({
-    fontSize: 'min(1.188rem, 3.168vw, 3.96vh)',
-    lineHeight: 'min(1.98rem, 3.96vw, 4.95vh)',
+    fontSize: 'min(1.2474rem, 3.3264vw, 4.158vh)',
+    lineHeight: 'min(2.079rem, 4.158vw, 5.1975vh)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0',
