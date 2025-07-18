@@ -83,7 +83,7 @@ const StartScreen = () => {
                 subtitleStyle={{
                   ...subtitleStyle,
                   fontSize: 'min(5.04vw, 2.52rem)', 
-                  lineHeight: 'min(6.048vw, 3.024rem)' 
+                  lineHeight: 'min(6.048vw, 3.024rem)'
                 }}
               />
 
@@ -93,9 +93,7 @@ const StartScreen = () => {
                 defaultTexts={defaultTexts}
                 showContent={showContent}
                 descriptionContainerStyle={{
-                  ...descriptionContainerStyle,
-                  paddingLeft: 'min(6rem, 12vw)',
-                  paddingRight: 'min(6rem, 12vw)'
+                  ...descriptionContainerStyle
                 }}
                 highlightTextStyle={{
                   ...highlightTextStyle,

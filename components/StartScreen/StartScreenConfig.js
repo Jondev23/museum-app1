@@ -61,7 +61,7 @@ export const useStartScreenStyles = (startContent) => {
     fontSize: 'min(5.5vw, 3.5rem)',
     lineHeight: 'min(6.6vw, 4.2rem)',
     // Dimensiones como porcentaje de la pantalla para coherencia
-    width: '85%',
+    width: '70%',
     maxWidth: '100%',
     textAlign: 'center'
   }), []);
@@ -71,7 +71,7 @@ export const useStartScreenStyles = (startContent) => {
     fontSize: 'min(3.2vw, 2.1rem)',
     lineHeight: 'min(3.8vw, 2.5rem)',
     // Dimensiones como porcentaje de la pantalla para coherencia
-    width: '85%',
+    width: '70%',
     maxWidth: '100%',
     textAlign: 'center',
     wordBreak: 'break-word',
@@ -80,7 +80,7 @@ export const useStartScreenStyles = (startContent) => {
 
   const descriptionContainerStyle = useMemo(() => ({
     // Dimensiones como porcentaje de la pantalla para coherencia
-    width: '85%',
+    width: '80%',
     maxWidth: '100%',
     textAlign: 'center'
   }), []);
