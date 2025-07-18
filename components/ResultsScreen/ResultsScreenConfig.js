@@ -39,13 +39,13 @@ export const STYLE_CONFIG = {
   // Typography styles
   TITLE: {
     marginBottom: 'min(2rem, 3vh)',
-    fontSize: 'min(4.8rem, 8vw)',
+    fontSize: 'min(8vw, 4.8rem)',
     lineHeight: '120%'
   },
 
   SUBTITLE: {
     marginBottom: 'min(3rem, 4vh)',
-    fontSize: 'min(3.2rem, 5.5vw)',
+    fontSize: 'min(5.5vw, 3.2rem)',
     lineHeight: '120%'
   },
 
@@ -70,7 +70,7 @@ export const STYLE_CONFIG = {
   BUTTON: {
     background: 'transparent',
     border: 'none',
-    fontSize: 'min(1.5rem, 2.5vw)',
+    fontSize: 'min(2.5vw, 1.5rem)',
     lineHeight: 'normal',
     textTransform: 'uppercase',
     letterSpacing: 'min(0.0625rem, 0.1vw)',

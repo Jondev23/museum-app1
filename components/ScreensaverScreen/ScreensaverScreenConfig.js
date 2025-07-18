@@ -42,10 +42,10 @@ export const SCREENSAVER_CONFIG = {
 export const useScreensaverScreenStyles = () => {
   const titleStyle = useMemo(() => ({
     color: COLORS.SCREENSAVER_TITLE,
-    fontSize: 'min(6rem, 12vw)',
+    fontSize: 'min(12vw, 6rem)',
     fontStyle: 'normal',
     fontWeight: 500,
-    lineHeight: 'min(7rem, 14vw)'
+    lineHeight: 'min(14vw, 7rem)'
   }), []);
 
   const touchIndicatorContainerStyle = useMemo(() => ({
@@ -63,7 +63,7 @@ export const useScreensaverScreenStyles = () => {
   }), []);
 
   const touchIconTextStyle = useMemo(() => ({
-    fontSize: 'min(3rem, 6vw)',
+    fontSize: 'min(6vw, 3rem)',
     lineHeight: 1
   }), []);
 

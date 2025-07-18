@@ -61,8 +61,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const titleStyle = useMemo(() => ({
-    fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-    lineHeight: 'clamp(2rem, 5vw, 3.25rem)',
+    fontSize: 'min(4vw, 2.5rem)',
+    lineHeight: 'min(5vw, 3.25rem)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     maxHeight: '15vh',
@@ -82,8 +82,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
 
   const answerTextStyle = useMemo(() => ({
     color: FEEDBACK_CONFIG.COLORS.ANSWER_TEXT,
-    fontSize: 'min(1.8rem, 3.6vw, 4.5vh)',
-    lineHeight: 'min(2.25rem, 4.5vw, 5.6vh)',
+    fontSize: 'min(3.6vw, 1.8rem)',
+    lineHeight: 'min(4.5vw, 2.25rem)',
     maxWidth: '100%',
     overflowWrap: 'break-word'
   }), []);
@@ -102,16 +102,16 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const messageStyle = useMemo(() => ({
-    fontSize: 'min(1.5264rem, 3.0528vw, 3.8151vh)',
-    lineHeight: 'min(1.908rem, 3.8151vw, 4.5783vh)',
+    fontSize: 'min(3.0528vw, 1.5264rem)',
+    lineHeight: 'min(3.8151vw, 1.908rem)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0'
   }), []);
 
   const explanationStyle = useMemo(() => ({
-    fontSize: 'min(1.2474rem, 3.3264vw, 4.158vh)',
-    lineHeight: 'min(2.079rem, 4.158vw, 5.1975vh)',
+    fontSize: 'min(3.3264vw, 1.2474rem)',
+    lineHeight: 'min(4.158vw, 2.079rem)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0',
@@ -135,8 +135,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const buttonTextStyle = useMemo(() => ({
-    fontSize: 'min(1.23375rem, 2.31vw, 3.675vh)',
-    lineHeight: 'min(7rem, 11vh)',
+    fontSize: 'min(2.31vw, 1.23375rem)',
+    lineHeight: 'min(11vh, 7rem)',
     textTransform: 'uppercase'
   }), []);
 

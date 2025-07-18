@@ -77,13 +77,13 @@ const StartScreen = () => {
                 showContent={showContent}
                 titleStyle={{
                   ...titleStyle,
-                  fontSize: 'min(4.32rem, 8.1vw, 9.9vh)', // 10% más pequeño que min(4.8rem, 9vw, 11vh)
-                  lineHeight: 'min(4.86rem, 9.72vw, 11.16vh)' // 10% más pequeño que min(5.4rem, 10.8vw, 12.4vh)
+                  fontSize: 'min(8.1vw, 4.32rem)', // Prioriza vw para escalado proporcional
+                  lineHeight: 'min(9.72vw, 4.86rem)' // Prioriza vw para escalado proporcional
                 }}
                 subtitleStyle={{
                   ...subtitleStyle,
-                  fontSize: 'min(2.52rem, 5.04vw, 6.3vh)', // 10% más pequeño que min(2.8rem, 5.6vw, 7vh)
-                  lineHeight: 'min(3.024rem, 6.048vw, 7.56vh)' // 10% más pequeño que min(3.36rem, 6.72vw, 8.4vh)
+                  fontSize: 'min(5.04vw, 2.52rem)', // Prioriza vw para escalado proporcional
+                  lineHeight: 'min(6.048vw, 3.024rem)' // Prioriza vw para escalado proporcional
                 }}
               />
 
@@ -99,15 +99,15 @@ const StartScreen = () => {
                 }}
                 highlightTextStyle={{
                   ...highlightTextStyle,
-                  fontSize: 'min(1.3851rem, 2.7702vw, 3.4992vh)', // 10% más pequeño que min(1.539rem, 3.078vw, 3.888vh)
-                  lineHeight: 'min(1.93914rem, 3.87828vw, 4.8843vh)', // 10% más pequeño que min(2.1546rem, 4.3092vw, 5.427vh)
-                  letterSpacing: 'min(0.013851rem, 0.027702vw, 0.034992vh)' // 10% más pequeño que min(0.01539rem, 0.03078vw, 0.03888vh)
+                  fontSize: 'min(2.7702vw, 1.3851rem)', // Prioriza vw para escalado proporcional
+                  lineHeight: 'min(3.87828vw, 1.93914rem)', // Prioriza vw para escalado proporcional
+                  letterSpacing: 'min(0.027702vw, 0.013851rem)' // Prioriza vw para escalado proporcional
                 }}
                 introTextStyle={{
                   ...introTextStyle,
-                  fontSize: 'min(1.1664rem, 2.4786vw, 3.0618vh)', // 10% más pequeño que min(1.296rem, 2.754vw, 3.402vh)
-                  lineHeight: 'min(1.73502rem, 3.47004vw, 4.3011vh)', // 10% más pequeño que min(1.9278rem, 3.8556vw, 4.779vh)
-                  letterSpacing: 'min(0.012393rem, 0.024786vw, 0.030618vh)' // 10% más pequeño que min(0.01377rem, 0.02754vw, 0.03402vh)
+                  fontSize: 'min(2.4786vw, 1.1664rem)', // Prioriza vw para escalado proporcional
+                  lineHeight: 'min(3.47004vw, 1.73502rem)', // Prioriza vw para escalado proporcional
+                  letterSpacing: 'min(0.024786vw, 0.012393rem)' // Prioriza vw para escalado proporcional
                 }}
               />
             </div>
