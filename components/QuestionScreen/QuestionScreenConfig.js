@@ -54,7 +54,7 @@ export const useQuestionScreenStyles = (startContent) => {
     overflow: 'hidden',
     border: '0',
     backgroundColor: 'transparent',
-    marginTop: 'min(4rem, 6vh)'
+    marginTop: 'min(3.08rem, 4.62vh)'
   }), []);
 
   const contentStyle = useMemo(() => ({
@@ -63,15 +63,24 @@ export const useQuestionScreenStyles = (startContent) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 'min(1rem, 2vw)'
+    gap: 'min(4rem, 6vw)'
   }), []);
 
   const titleStyle = useMemo(() => ({
     position: 'relative',
     alignSelf: 'stretch',
-    fontSize: 'min(2.5rem, 5vw, 6vh)',
-    lineHeight: 'min(3.25rem, 6vw, 7.5vh)',
-    marginBottom: 'min(3rem, 4vh)'
+    fontSize: 'clamp(1.5rem, 4.28vw, 2.14rem)',
+    lineHeight: 'clamp(2rem, 5.13vw, 2.78rem)',
+    marginBottom: 'min(3rem, 4vh)',
+    marginLeft: 'min(4rem, 5vw, 6vh)',
+    marginRight: 'min(4rem, 5vw, 6vh)',
+    boxSizing: 'border-box',
+    maxHeight: '20vh',
+    overflow: 'hidden',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center'
   }), []);
 
   const answersContainerStyle = useMemo(() => ({
@@ -92,11 +101,11 @@ export const useQuestionScreenStyles = (startContent) => {
   const getButtonStyle = useCallback(() => ({
     display: 'inline-flex',
     minWidth: 'min(42.3rem, 63vw, 80vh)',
-    height: 'min(4.62rem, 6.93vh, 8vw)',
+    minHeight: 'min(4.62rem, 6.93vh, 8vw)',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 'min(0.5rem, 1vw)',
-    padding: 'min(2.89rem, 4.62vh, 6vw) min(0.75rem, 1.5vw)',
+    padding: 'min(1rem, 1.5vh, 2vw) min(4rem, 5vw, 6vh)',
     borderRadius: 'min(4.62rem, 6.93vh, 8vw)',
     border: `min(0.1125rem, 0.225vw, 0.3vh) solid ${COLORS.LIGHT_GRAY}`,
     position: 'relative'
@@ -104,11 +113,14 @@ export const useQuestionScreenStyles = (startContent) => {
 
   const textStyle = useMemo(() => ({
     position: 'relative',
-    width: 'fit-content',
+    width: '100%',
     color: COLORS.LIGHT_GRAY,
-    fontSize: 'min(1.8rem, 3.6vw, 4.5vh)',
-    lineHeight: 'min(2.25rem, 4.5vw, 5.6vh)',
-    whiteSpace: 'nowrap'
+    fontSize: 'min(1.70rem, 3.40vw, 4.25vh)',
+    lineHeight: 'min(2.13rem, 4.25vw, 5.29vh)',
+    textAlign: 'center',
+    wordWrap: 'break-word',
+    hyphens: 'auto',
+    maxWidth: '100%'
   }), []);
 
   return {
