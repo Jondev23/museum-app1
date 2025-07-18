@@ -3,12 +3,9 @@ import { QUESTION_CONFIG } from './QuestionScreenConfig';
 
 const AnswerButtons = ({ 
   question, 
-  answersContainerStyle, 
-  getButtonStyle, 
-  getButtonClassName,
-  textStyle,
   handleAnswerClick,
-  selectedAnswer 
+  selectedAnswer,
+  getButtonClassName
 }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
@@ -17,7 +14,7 @@ const AnswerButtons = ({
       duration: QUESTION_CONFIG.ANIMATION_DURATIONS.BUTTONS, 
       delay: QUESTION_CONFIG.ANIMATION_DELAYS.BUTTONS 
     }}
-    style={answersContainerStyle}
+    className="flex flex-col gap-[min(2.52rem,3.6vh)] w-full items-center"
   >
     {question.answers.map((answer, index) => (
       <motion.button
@@ -30,10 +27,10 @@ const AnswerButtons = ({
         }}
         onClick={() => handleAnswerClick(index, QUESTION_CONFIG.ANSWER_DELAY)}
         disabled={selectedAnswer !== null}
-        className={getButtonClassName(index)}
-        style={getButtonStyle()}
+        className={`btn-answer inline-flex min-w-[min(42.3rem,63vw,80vh)] min-h-[min(4.62rem,6.93vh,8vw)] items-center justify-center gap-[min(0.5rem,1vw)] px-[min(4rem,5vw,6vh)] py-[min(1rem,1.5vh,2vw)] rounded-[min(4.62rem,6.93vh,8vw)] border-[min(0.1125rem,0.225vw,0.3vh)] border-solid relative ${getButtonClassName(index)}`}
+        style={{ borderColor: 'var(--color-neutral-light)' }}
       >
-        <span className="text-answer" style={textStyle}>
+        <span className="typography-antworten-buttons text-primary relative w-full text-center break-words hyphens-auto max-w-full">
           {answer}
         </span>
       </motion.button>

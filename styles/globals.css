@@ -366,7 +366,7 @@
     @apply typography-antworten-buttons;
     background-color: var(--color-white);
     color: var(--color-primary);
-    border: 2px solid var(--color-primary);
+    border: 2px solid var(--color-neutral-light);
     padding: var(--spacing-lg) var(--spacing-xl);
     border-radius: var(--border-radius-md);
     cursor: pointer;

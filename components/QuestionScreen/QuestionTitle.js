@@ -2,8 +2,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { QUESTION_CONFIG } from './QuestionScreenConfig';
 
-const QuestionTitle = ({ question, titleStyle }) => {
-  const [adjustedStyle, setAdjustedStyle] = useState(titleStyle);
+const QuestionTitle = ({ question }) => {
   const titleRef = useRef(null);
 
   useEffect(() => {
@@ -14,7 +13,7 @@ const QuestionTitle = ({ question, titleStyle }) => {
       // Función para ajustar el tamaño de fuente
       const adjustFontSize = () => {
         let currentSize = parseFloat(window.getComputedStyle(element).fontSize);
-        const minSize = parseFloat(window.getComputedStyle(element).fontSize) * 0.6; // 60% del tamaño original
+        const minSize = parseFloat(window.getComputedStyle(element).fontSize) * 0.6;
         
         // Reducir el tamaño si el contenido es muy alto
         while (element.scrollHeight > maxHeight && currentSize > minSize) {
@@ -38,8 +37,7 @@ const QuestionTitle = ({ question, titleStyle }) => {
         duration: QUESTION_CONFIG.ANIMATION_DURATIONS.TITLE, 
         delay: QUESTION_CONFIG.ANIMATION_DELAYS.TITLE 
       }}
-      className="title-question"
-      style={adjustedStyle}
+      className="typography-fragen text-primary relative w-full max-h-[20vh] overflow-hidden flex items-center justify-center text-center mb-[min(3rem,4vh)] mx-[min(4rem,5vw,6vh)] box-border"
     >
       {question.question}
     </motion.h1>
