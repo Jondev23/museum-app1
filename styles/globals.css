@@ -54,12 +54,8 @@
 /* CSS Variables - Based on Official Figma Design Tokens */
 :root {
   /* Official Figma Color Tokens */
-  --color-bordeaux: #6f2149;
-  --color-bordeaux-dark: #501835;
   --color-kupfer: #a94930;
   --color-kupfer-dark: #7c3422;
-  --color-taube: #61809d;
-  --color-taube-dark: #42596e;
   --color-blassgruen: #85af8b;
   --color-blassgruen-dark: #598364;
   --color-schiefer: #344243;
@@ -67,8 +63,6 @@
   --color-neutral-light: #d9d9d9;
   --color-neutral-dark: #1e1e1e;
   --color-white: #ffffff;
-  --color-petrol: #017a99;
-  --color-petrol-dark: #015165;
 
   /* Official Figma Typography Tokens - Optimized for responsiveness */
   /* Head & Auswertung (Main titles) - Responsive 58px to 117px (another 10% increase) */
@@ -156,18 +150,6 @@
   --admin-font-size-title: min(1.375rem, 2.75vw);
   --color-admin-input-bg: #f8f9fa;
   --color-admin-success-bg: rgba(34, 197, 94, 0.1);
-
-  /* Legacy compatibility variables for StartScreen */
-  --font-size-title: var(--typography-head-font-size);
-  --line-height-title: var(--typography-head-line-height);
-  --font-size-subtitle: var(--typography-subline-font-size);
-  --line-height-subtitle: var(--typography-subline-line-height);
-  --font-size-highlight: var(--typography-antworten-buttons-font-size);
-  --line-height-highlight: var(--typography-antworten-buttons-line-height);
-  --letter-spacing-highlight: var(--typography-antworten-buttons-letter-spacing);
-  --font-size-intro: var(--typography-antwort-fliess-font-size);
-  --line-height-intro: var(--typography-antwort-fliess-line-height);
-  --letter-spacing-intro: var(--typography-antwort-fliess-letter-spacing);
 }
 
 /* Responsive breakpoints for better mobile support */
@@ -340,24 +322,6 @@
     padding: 0.5rem; /* Espacio interno para evitar cortes en los bordes */
   }
 
-  .feedback-message {
-    @apply typography-antwort-fliess-bold;
-    color: var(--color-white);
-    overflow-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
-    text-align: center;
-  }
-
-  .feedback-explanation {
-    @apply typography-antwort-fliess;
-    color: var(--color-white);
-    overflow-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
-    text-align: center;
-  }
-
   /* Color utility classes */
   .bg-feedback-correct {
     background-color: var(--color-feedback-correct);
@@ -388,16 +352,6 @@
   }
 
   /* Button styles - NO HOVER EFFECTS */
-  .btn-primary {
-    @apply typography-antworten-buttons;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    padding: var(--spacing-lg) var(--spacing-xl);
-    border-radius: var(--border-radius-md);
-    border: none;
-    cursor: pointer;
-  }
-
   .btn-answer {
     @apply typography-antworten-buttons;
     background-color: var(--color-white);
@@ -413,31 +367,6 @@
     background-color: var(--color-neutral-light);
     color: var(--color-schiefer);
     cursor: not-allowed;
-  }
-
-  /* Progress dots */
-  .progress-dot {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    margin: 0 0.25rem;
-  }
-
-  .progress-current {
-    background-color: var(--color-white);
-    border: 2px solid var(--color-primary);
-  }
-
-  .progress-correct {
-    background-color: var(--color-feedback-correct);
-  }
-
-  .progress-incorrect {
-    background-color: var(--color-feedback-incorrect);
-  }
-
-  .progress-unanswered {
-    background-color: var(--color-neutral-light);
   }
 
   /* Admin Panel Styles - NO HOVER EFFECTS */
@@ -483,19 +412,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
-  }
-
-  .admin-form-group {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-  }
-
-  .admin-label {
-    font-size: var(--admin-font-size-sm);
-    font-weight: 500;
-    color: var(--color-schiefer);
-    margin-bottom: var(--spacing-sm);
   }
 
   .admin-input {
@@ -594,24 +510,5 @@
     opacity: 0;
     width: var(--spacing-xl);
     height: var(--spacing-xl);
-  }
-
-  /* StartScreen specific responsive styles */
-  .start-screen-container {
-    height: 100vh;
-    height: 100dvh; /* Dynamic viewport height for mobile */
-  }
-
-  @media (max-width: 768px) {
-    .start-screen-container {
-      padding: clamp(0.5rem, 2vw, 1rem);
-    }
-  }
-
-  @media (orientation: landscape) and (max-height: 600px) {
-    .start-screen-container {
-      padding-top: clamp(0.25rem, 1vh, 0.5rem);
-      padding-bottom: clamp(0.25rem, 1vh, 0.5rem);
-    }
   }
 }
