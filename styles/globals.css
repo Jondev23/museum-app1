@@ -55,7 +55,6 @@
 :root {
   /* Official Figma Color Tokens */
   --color-kupfer: #a94930;
-  --color-kupfer-dark: #7c3422;
   --color-blassgruen: #85af8b;
   --color-blassgruen-dark: #598364;
   --color-schiefer: #344243;
@@ -112,14 +111,8 @@
 
   /* Semantic Color Mapping */
   --color-primary: var(--color-kupfer);
-  --color-primary-dark: var(--color-kupfer-dark);
-  --color-secondary: var(--color-blassgruen);
-  --color-secondary-dark: var(--color-blassgruen-dark);
-  --color-accent: var(--color-blassgruen);
   --color-text-primary: var(--color-neutral-light);
-  --color-text-secondary: var(--color-schiefer);
   --color-background-primary: var(--color-neutral-dark);
-  --color-background-secondary: var(--color-schiefer);
 
   /* UI Colors */
   --color-feedback-correct: var(--color-blassgruen-dark);
@@ -334,18 +327,6 @@
 
   .text-primary {
     color: var(--color-text-primary);
-  }
-
-  .text-secondary {
-    color: var(--color-text-secondary);
-  }
-
-  .text-accent {
-    color: var(--color-accent);
-  }
-
-  .border-primary {
-    border-color: var(--color-text-primary);
   }
 
   /* Button styles - NO HOVER EFFECTS */
