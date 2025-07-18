@@ -81,8 +81,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
 
   const answerButtonStyle = useMemo(() => ({
     // Dimensiones fijas como porcentaje de la pantalla
-    width: '75%', // Ocupa 75% del ancho disponible
-    height: '9vh', // Ocupa 7% de la altura de la pantalla
+    width: '68%', // Ocupa 73% del ancho disponible
+    height: '9vh', // Ocupa 9% de la altura de la pantalla
     // Valores mínimos para compatibilidad
     minWidth: 'min(40.74rem, 81.48vw)',
     minHeight: 'min(3.0174375rem, 4.2244125vh)',
@@ -172,11 +172,16 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const arrowStyle = useMemo(() => ({
-    width: 'min(4.977rem, 9.333vw, 6.219vh)',
-    height: 'min(5.445rem, 9.333vh, 6.219vh)',
+    // Escalado proporcional usando viewport units
+    width: 'min(6vw, 4.977rem, 8vh)',
+    height: 'min(6vh, 5.445rem, 8vh)',
     flexShrink: 0,
-    minWidth: '3.114rem',
-    minHeight: '3.114rem'
+    // Tamaños mínimos para pantallas pequeñas
+    minWidth: 'min(3.114rem, 5vw)',
+    minHeight: 'min(3.114rem, 5vh)',
+    // Mantener aspect ratio
+    aspectRatio: '1/1',
+    objectFit: 'contain'
   }), []);
 
   const feedbackContainerClassName = useMemo(() => {
