@@ -51,103 +51,72 @@
   font-display: swap;
 }
 
-/* CSS Variables for colors and fonts */
+/* CSS Variables - Based on Official Figma Design Tokens */
 :root {
-  /* Fonts */
-  --font-serif: 'Tisa Pro';
-  --font-sans: 'Tisa Sans Pro';
-  
-  /* Typography variables - Based on official Figma design tokens */
-  /* Head & Auswertung - Main titles */
-  --font-size-head: min(5vw, 96px);
-  --line-height-head: min(6vw, 115.2px);
-  --font-weight-head: 700;
-  --font-style-head: italic;
-  --font-family-head: 'Tisa Pro', serif;
-  
-  /* Subline - Subtitles */
-  --font-size-subline: min(3.5vw, 64px);
-  --line-height-subline: min(4.2vw, 76.8px);
-  --font-weight-subline: 400;
-  --font-style-subline: normal;
-  --font-family-subline: 'Tisa Sans Pro', sans-serif;
-  
-  /* Fragen - Questions */
-  --font-size-fragen: min(3vw, 54px);
-  --line-height-fragen: min(3.9vw, 70.2px);
-  --font-weight-fragen: 800;
-  --font-style-fragen: italic;
-  --font-family-fragen: 'Tisa Pro', serif;
-  
-  /* Antworten Buttons - Answer buttons */
-  --font-size-antworten-buttons: min(2.5vw, 48px);
-  --line-height-antworten-buttons: min(3.2vw, 57.6px);
-  --font-weight-antworten-buttons: 400;
-  --font-style-antworten-buttons: normal;
-  --font-family-antworten-buttons: 'Tisa Sans Pro', sans-serif;
-  --letter-spacing-antworten-buttons: 0.48px;
-  
-  /* Antwort Fließ - Flow text */
-  --font-size-antwort-fliess: min(2vw, 36px);
-  --line-height-antwort-fliess: min(2.8vw, 50.4px);
-  --font-weight-antwort-fliess: 400;
-  --font-style-antwort-fliess: normal;
-  --font-family-antwort-fliess: 'Tisa Pro', serif;
-  --letter-spacing-antwort-fliess: 0.36px;
-  
-  /* Antwort Fließ Bold - Flow text bold */
-  --font-size-antwort-fliess-bold: min(2vw, 36px);
-  --line-height-antwort-fliess-bold: min(2.8vw, 50.4px);
-  --font-weight-antwort-fliess-bold: 700;
-  --font-style-antwort-fliess-bold: normal;
-  --font-family-antwort-fliess-bold: 'Tisa Pro', serif;
-  --letter-spacing-antwort-fliess-bold: 0.36px;
-  
-  /* Responsive font sizes for StartScreen - mapped to design tokens */
-  --font-size-title: var(--font-size-head);
-  --line-height-title: var(--line-height-head);
-  --font-size-subtitle: var(--font-size-subline);
-  --line-height-subtitle: var(--line-height-subline);
-  --font-size-highlight: var(--font-size-antworten-buttons);
-  --line-height-highlight: var(--line-height-antworten-buttons);
-  --letter-spacing-highlight: var(--letter-spacing-antworten-buttons);
-  --font-size-intro: var(--font-size-antwort-fliess);
-  --line-height-intro: var(--line-height-antwort-fliess);
-  --letter-spacing-intro: var(--letter-spacing-antwort-fliess);
-  
-  /* Common responsive values */
-  --spacing-xs: min(0.5rem, 1vw);
-  --spacing-sm: min(0.75rem, 1.5vw);
-  --spacing-md: min(1rem, 2vw);
-  --spacing-lg: min(1.5rem, 3vw);
-  --spacing-xl: min(2rem, 4vw);
-  --spacing-2xl: min(2.5rem, 5vw);
-  
-  --border-radius-sm: min(0.5rem, 1vw);
-  --border-radius-md: min(1rem, 2vw);
-  
-  --font-size-admin: min(1rem, 2vw);
-  --font-size-admin-sm: min(0.875rem, 1.75vw);
-  --font-size-admin-title: min(1.375rem, 2.75vw);
-  
-  /* Design System Colors (from Figma tokens) */
-  --color-kupfer: #a94930;           /* Cobre - color principal del museo */
-  --color-kupfer-dark: #7c3422;      /* Cobre oscuro */
-  --color-blassgruen: #85af8b;       /* Verde claro */
-  --color-blassgruen-dark: #598364;  /* Verde oscuro */
-  --color-schiefer: #344243;         /* Pizarra */
-  --color-schiefer-dark: #273132;    /* Pizarra oscuro */
-  --color-taube: #61809d;            /* Paloma (azul grisáceo) */
-  --color-taube-dark: #42596e;       /* Paloma oscuro */
-  --color-neutral-light: #d9d9d9;    /* Gris claro */
-  --color-neutral-dark: #1e1e1e;     /* Gris oscuro */
-  --color-white: #ffffff;            /* Blanco */
-  --color-bordeaux: #6f2149;         /* Burdeos */
-  --color-bordeaux-dark: #501835;    /* Burdeos oscuro */
-  --color-petrol: #017a99;           /* Azul petróleo */
-  --color-petrol-dark: #015165;      /* Azul petróleo oscuro */
-  
-  /* Semantic color aliases - using design system */
+  /* Official Figma Color Tokens */
+  --color-bordeaux: #6f2149;
+  --color-bordeaux-dark: #501835;
+  --color-kupfer: #a94930;
+  --color-kupfer-dark: #7c3422;
+  --color-taube: #61809d;
+  --color-taube-dark: #42596e;
+  --color-blassgruen: #85af8b;
+  --color-blassgruen-dark: #598364;
+  --color-schiefer: #344243;
+  --color-schiefer-dark: #273132;
+  --color-neutral-light: #d9d9d9;
+  --color-neutral-dark: #1e1e1e;
+  --color-white: #ffffff;
+  --color-petrol: #017a99;
+  --color-petrol-dark: #015165;
+
+  /* Official Figma Typography Tokens */
+  /* Head & Auswertung (Main titles) - 96px, Tisa Pro Bold Italic */
+  --typography-head-font-size: min(5vw, 96px);
+  --typography-head-line-height: min(6vw, 115.2px);
+  --typography-head-font-weight: 700;
+  --typography-head-font-style: italic;
+  --typography-head-font-family: 'Tisa Pro', serif;
+
+  /* Subline (Subtitles) - 64px, Tisa Sans Pro Regular */
+  --typography-subline-font-size: min(3.5vw, 64px);
+  --typography-subline-line-height: min(4.2vw, 76.8px);
+  --typography-subline-font-weight: 400;
+  --typography-subline-font-style: normal;
+  --typography-subline-font-family: 'Tisa Sans Pro', sans-serif;
+
+  /* Fragen (Questions) - 54px, Tisa Pro ExtraBold Italic */
+  --typography-fragen-font-size: min(3vw, 54px);
+  --typography-fragen-line-height: min(3.9vw, 70.2px);
+  --typography-fragen-font-weight: 800;
+  --typography-fragen-font-style: italic;
+  --typography-fragen-font-family: 'Tisa Pro', serif;
+
+  /* Antworten Buttons (Answer buttons) - 48px, Tisa Sans Pro Regular */
+  --typography-antworten-buttons-font-size: min(2.5vw, 48px);
+  --typography-antworten-buttons-line-height: min(3.2vw, 57.6px);
+  --typography-antworten-buttons-font-weight: 400;
+  --typography-antworten-buttons-font-style: normal;
+  --typography-antworten-buttons-font-family: 'Tisa Sans Pro', sans-serif;
+  --typography-antworten-buttons-letter-spacing: 0.48px;
+
+  /* Antwort Fließ (Flow text) - 36px, Tisa Pro Regular */
+  --typography-antwort-fliess-font-size: min(2vw, 36px);
+  --typography-antwort-fliess-line-height: min(2.8vw, 50.4px);
+  --typography-antwort-fliess-font-weight: 400;
+  --typography-antwort-fliess-font-style: normal;
+  --typography-antwort-fliess-font-family: 'Tisa Pro', serif;
+  --typography-antwort-fliess-letter-spacing: 0.36px;
+
+  /* Antwort Fließ Bold (Flow text bold) - 36px, Tisa Pro Bold */
+  --typography-antwort-fliess-bold-font-size: min(2vw, 36px);
+  --typography-antwort-fliess-bold-line-height: min(2.8vw, 50.4px);
+  --typography-antwort-fliess-bold-font-weight: 700;
+  --typography-antwort-fliess-bold-font-style: normal;
+  --typography-antwort-fliess-bold-font-family: 'Tisa Pro', serif;
+  --typography-antwort-fliess-bold-letter-spacing: 0.36px;
+
+  /* Semantic Color Mapping */
   --color-primary: var(--color-kupfer);
   --color-primary-dark: var(--color-kupfer-dark);
   --color-secondary: var(--color-blassgruen);
@@ -157,57 +126,39 @@
   --color-text-secondary: var(--color-schiefer);
   --color-background-primary: var(--color-neutral-dark);
   --color-background-secondary: var(--color-schiefer);
-  
-  /* Feedback colors using design system */
+
+  /* UI Colors */
   --color-feedback-correct: var(--color-blassgruen-dark);
   --color-feedback-incorrect: var(--color-kupfer);
-  --color-feedback-answer-bg: var(--color-neutral-light);
-  --color-feedback-answer-text: var(--color-schiefer);
-  
-  /* Museum theme colors */
-  --color-museum-brown: var(--color-primary);
-  
-  /* Legacy aliases for backward compatibility */
-  --color-light-gray: var(--color-neutral-light);
-  --color-green: var(--color-secondary);
-  --color-dark-gray: var(--color-schiefer);
-  --color-brown: var(--color-primary);
-  
-  /* Overlay colors */
   --color-overlay: rgba(0, 0, 0, 0.75);
   --color-overlay-light: rgba(0, 0, 0, 0.3);
   --color-white-overlay: rgba(255, 255, 255, 0.95);
   --color-white-translucent-20: rgba(255, 255, 255, 0.2);
   --color-white-translucent-30: rgba(255, 255, 255, 0.3);
-  
-  /* Admin specific colors */
+
+  /* Responsive spacing */
+  --spacing-xs: min(0.5rem, 1vw);
+  --spacing-sm: min(0.75rem, 1.5vw);
+  --spacing-md: min(1rem, 2vw);
+  --spacing-lg: min(1.5rem, 3vw);
+  --spacing-xl: min(2rem, 4vw);
+  --spacing-2xl: min(2.5rem, 5vw);
+
+  /* Border radius */
+  --border-radius-sm: min(0.5rem, 1vw);
+  --border-radius-md: min(1rem, 2vw);
+
+  /* Admin specific */
+  --admin-font-size: min(1rem, 2vw);
+  --admin-font-size-sm: min(0.875rem, 1.75vw);
+  --admin-font-size-title: min(1.375rem, 2.75vw);
   --color-admin-input-bg: #f8f9fa;
   --color-admin-success-bg: rgba(34, 197, 94, 0.1);
-  
-  /* Additional system colors */
-  --color-background-primary: #000000;
-  --color-text-primary: var(--color-light-gray);
-  --color-text-secondary: var(--color-dark-gray);
-  --color-accent: var(--color-green);
-  
-  /* Screensaver specific colors */
-  --color-screensaver-title: #61809D;
-  --color-screensaver-overlay: var(--color-overlay-light);
-  --color-screensaver-touch-bg: var(--color-white-translucent-20);
-  --color-screensaver-touch-border: var(--color-white-translucent-30);
-  
-  /* Results screen specific colors */
-  --color-results-overlay: var(--color-overlay);
-  
-  /* Language selector specific colors */
-  --color-language-overlay: var(--color-dark-gray);
-  --color-language-button-active: var(--color-brown);
-  --color-language-button-inactive: var(--color-light-gray);
 }
 
 @layer base {
   html {
-    font-family: var(--font-sans), var(--font-serif);
+    font-family: 'Tisa Sans Pro', sans-serif;
   }
   
   body {
@@ -218,119 +169,105 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    font-family: var(--font-sans), var(--font-serif);
+    font-family: 'Tisa Sans Pro', sans-serif;
+    background-color: var(--color-background-primary);
+    color: var(--color-text-primary);
   }
 }
 
 @layer components {
-  /* Typography classes based on official Figma design tokens */
+  /* Official Figma Typography Classes */
   .typography-head {
-    font-family: var(--font-family-head);
-    font-size: var(--font-size-head);
-    line-height: var(--line-height-head);
-    font-weight: var(--font-weight-head);
-    font-style: var(--font-style-head);
+    font-family: var(--typography-head-font-family);
+    font-size: var(--typography-head-font-size);
+    line-height: var(--typography-head-line-height);
+    font-weight: var(--typography-head-font-weight);
+    font-style: var(--typography-head-font-style);
     text-align: center;
   }
-  
+
   .typography-subline {
-    font-family: var(--font-family-subline);
-    font-size: var(--font-size-subline);
-    line-height: var(--line-height-subline);
-    font-weight: var(--font-weight-subline);
-    font-style: var(--font-style-subline);
+    font-family: var(--typography-subline-font-family);
+    font-size: var(--typography-subline-font-size);
+    line-height: var(--typography-subline-line-height);
+    font-weight: var(--typography-subline-font-weight);
+    font-style: var(--typography-subline-font-style);
     text-align: center;
   }
-  
+
   .typography-fragen {
-    font-family: var(--font-family-fragen);
-    font-size: var(--font-size-fragen);
-    line-height: var(--line-height-fragen);
-    font-weight: var(--font-weight-fragen);
-    font-style: var(--font-style-fragen);
+    font-family: var(--typography-fragen-font-family);
+    font-size: var(--typography-fragen-font-size);
+    line-height: var(--typography-fragen-line-height);
+    font-weight: var(--typography-fragen-font-weight);
+    font-style: var(--typography-fragen-font-style);
     text-align: center;
     padding-left: min(12rem, 12vw, 15vh);
     padding-right: min(12rem, 12vw, 15vh);
     box-sizing: border-box;
   }
-  
+
   .typography-antworten-buttons {
-    font-family: var(--font-family-antworten-buttons);
-    font-size: var(--font-size-antworten-buttons);
-    line-height: var(--line-height-antworten-buttons);
-    font-weight: var(--font-weight-antworten-buttons);
-    font-style: var(--font-style-antworten-buttons);
-    letter-spacing: var(--letter-spacing-antworten-buttons);
-    text-align: center;
-  }
-  
-  .typography-antwort-fliess {
-    font-family: var(--font-family-antwort-fliess);
-    font-size: var(--font-size-antwort-fliess);
-    line-height: var(--line-height-antwort-fliess);
-    font-weight: var(--font-weight-antwort-fliess);
-    font-style: var(--font-style-antwort-fliess);
-    letter-spacing: var(--letter-spacing-antwort-fliess);
-    text-align: center;
-  }
-  
-  .typography-antwort-fliess-bold {
-    font-family: var(--font-family-antwort-fliess-bold);
-    font-size: var(--font-size-antwort-fliess-bold);
-    line-height: var(--line-height-antwort-fliess-bold);
-    font-weight: var(--font-weight-antwort-fliess-bold);
-    font-style: var(--font-style-antwort-fliess-bold);
-    letter-spacing: var(--letter-spacing-antwort-fliess-bold);
+    font-family: var(--typography-antworten-buttons-font-family);
+    font-size: var(--typography-antworten-buttons-font-size);
+    line-height: var(--typography-antworten-buttons-line-height);
+    font-weight: var(--typography-antworten-buttons-font-weight);
+    font-style: var(--typography-antworten-buttons-font-style);
+    letter-spacing: var(--typography-antworten-buttons-letter-spacing);
     text-align: center;
   }
 
-  /* Base typography classes - enhanced with design tokens */
-  .text-base {
+  .typography-antwort-fliess {
+    font-family: var(--typography-antwort-fliess-font-family);
+    font-size: var(--typography-antwort-fliess-font-size);
+    line-height: var(--typography-antwort-fliess-line-height);
+    font-weight: var(--typography-antwort-fliess-font-weight);
+    font-style: var(--typography-antwort-fliess-font-style);
+    letter-spacing: var(--typography-antwort-fliess-letter-spacing);
     text-align: center;
-    color: var(--color-text-primary);
   }
-  
-  .text-serif-base {
-    font-family: var(--font-serif);
-    font-weight: 400;
+
+  .typography-antwort-fliess-bold {
+    font-family: var(--typography-antwort-fliess-bold-font-family);
+    font-size: var(--typography-antwort-fliess-bold-font-size);
+    line-height: var(--typography-antwort-fliess-bold-line-height);
+    font-weight: var(--typography-antwort-fliess-bold-font-weight);
+    font-style: var(--typography-antwort-fliess-bold-font-style);
+    letter-spacing: var(--typography-antwort-fliess-bold-letter-spacing);
+    text-align: center;
   }
-  
-  .text-sans-base {
-    font-family: var(--font-sans);
-    font-weight: 400;
-  }
-  
-  /* Legacy typography classes mapped to design tokens */
+
+  /* Legacy compatibility classes */
   .title-main {
     @apply typography-head;
     color: var(--color-text-primary);
   }
-  
+
   .title-question {
     @apply typography-fragen;
     color: var(--color-text-primary);
   }
-  
+
   .subtitle-main {
     @apply typography-subline;
     color: var(--color-accent);
   }
-  
+
   .text-body-primary {
     @apply typography-antwort-fliess;
     color: var(--color-text-primary);
   }
-  
+
   .text-body-bold {
     @apply typography-antwort-fliess-bold;
     color: var(--color-text-primary);
   }
-  
+
   .text-button {
     @apply typography-antworten-buttons;
     color: var(--color-text-primary);
   }
-  
+
   .text-answer {
     @apply typography-antworten-buttons;
     color: var(--color-text-primary);
@@ -340,205 +277,288 @@
   .bg-feedback-correct {
     background-color: var(--color-feedback-correct);
   }
-  
+
   .bg-feedback-incorrect {
     background-color: var(--color-feedback-incorrect);
   }
-  
-  .bg-feedback-answer {
-    background-color: var(--color-feedback-answer-bg);
-  }
-  
-  .text-feedback-answer {
-    color: var(--color-feedback-answer-text);
-  }
-  
+
   .text-primary {
     color: var(--color-text-primary);
   }
-  
+
   .text-secondary {
     color: var(--color-text-secondary);
   }
-  
+
   .text-accent {
     color: var(--color-accent);
   }
-  
+
   .border-primary {
     border-color: var(--color-text-primary);
   }
 
+  /* Button styles */
+  .btn-primary {
+    @apply typography-antworten-buttons;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: var(--border-radius-md);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    transform: scale(1);
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.95);
+  }
+
+  .btn-answer {
+    @apply typography-antworten-buttons;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    transform: scale(1);
+    min-width: 12rem;
+  }
+
+  .btn-answer:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: scale(1.05);
+  }
+
+  .btn-answer:active {
+    transform: scale(0.95);
+  }
+
+  .btn-disabled {
+    background-color: var(--color-neutral-light);
+    color: var(--color-schiefer);
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-disabled:hover {
+    transform: none;
+  }
+
+  /* Progress dots */
+  .progress-dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    margin: 0 0.25rem;
+    transition: all 0.3s ease;
+  }
+
+  .progress-current {
+    background-color: var(--color-white);
+    border: 2px solid var(--color-primary);
+  }
+
+  .progress-correct {
+    background-color: var(--color-feedback-correct);
+  }
+
+  .progress-incorrect {
+    background-color: var(--color-feedback-incorrect);
+  }
+
+  .progress-unanswered {
+    background-color: var(--color-neutral-light);
+    opacity: 0.6;
+  }
+
   /* Admin Panel Styles */
   .admin-overlay {
-    @apply fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50;
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
   }
-  
+
   .admin-panel {
-    @apply bg-white rounded-lg w-full shadow-2xl;
-    padding: var(--spacing-2xl);
+    background-color: var(--color-white-overlay);
     border-radius: var(--border-radius-md);
+    padding: var(--spacing-2xl);
+    width: 100%;
     max-width: min(24rem, 85vw);
     margin: var(--spacing-md);
     backdrop-filter: blur(20px);
-    background-color: var(--color-white-overlay);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   }
-  
+
   .admin-panel-wide {
-    @apply bg-white rounded-lg shadow-2xl w-full flex flex-col items-center;
-    max-width: min(26rem, 90vw);
-    padding: var(--spacing-2xl);
-    border-radius: var(--border-radius-md);
-    backdrop-filter: blur(20px);
     background-color: var(--color-white-overlay);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-2xl);
+    width: 100%;
+    max-width: min(26rem, 90vw);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  
+
   .admin-title {
-    @apply font-medium text-center text-gray-800;
-    font-size: var(--font-size-admin-title);
-    margin-bottom: var(--spacing-xl);
+    font-size: var(--admin-font-size-title);
     font-weight: 500;
+    text-align: center;
+    color: var(--color-schiefer-dark);
+    margin-bottom: var(--spacing-xl);
   }
-  
+
   .admin-form {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
   }
-  
+
   .admin-form-group {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
   }
-  
+
   .admin-label {
-    @apply block font-medium text-gray-600;
-    font-size: var(--font-size-admin-sm);
-    margin-bottom: var(--spacing-sm);
+    font-size: var(--admin-font-size-sm);
     font-weight: 500;
+    color: var(--color-schiefer);
+    margin-bottom: var(--spacing-sm);
   }
-  
+
   .admin-input {
-    @apply w-full border-0 bg-gray-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all;
+    width: 100%;
     padding: min(0.875rem, 1.75vw) var(--spacing-md);
-    border-radius: var(--border-radius-sm);
-    font-size: var(--font-size-admin);
+    border: 0;
     background-color: var(--color-admin-input-bg);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--admin-font-size);
+    outline: none;
+    transition: all 0.2s ease;
   }
-  
+
+  .admin-input:focus {
+    ring: 2px solid var(--color-primary);
+  }
+
   .admin-button-group {
-    @apply flex;
+    display: flex;
     gap: var(--spacing-sm);
   }
-  
-  /* Base admin button class */
+
   .admin-button-base {
-    @apply rounded-lg transition-all font-medium;
     padding: min(0.875rem, 1.75vw) min(1.25rem, 2.5vw);
     border-radius: var(--border-radius-sm);
-    font-size: var(--font-size-admin);
+    font-size: var(--admin-font-size);
     font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
   }
-  
+
   .admin-button-primary {
-    @apply admin-button-base bg-blue-500 text-white hover:bg-blue-600;
+    @apply admin-button-base;
+    background-color: var(--color-primary);
+    color: var(--color-white);
   }
-  
+
+  .admin-button-primary:hover {
+    background-color: var(--color-primary-dark);
+  }
+
   .admin-button-secondary {
-    @apply admin-button-base bg-gray-100 text-gray-700 hover:bg-gray-200;
+    @apply admin-button-base;
+    background-color: var(--color-neutral-light);
+    color: var(--color-schiefer-dark);
   }
-  
+
+  .admin-button-secondary:hover {
+    background-color: var(--color-schiefer);
+    color: var(--color-white);
+  }
+
   .admin-button-danger {
-    @apply admin-button-base bg-gray-200 text-gray-800 hover:bg-gray-300;
+    @apply admin-button-base;
+    background-color: var(--color-neutral-light);
+    color: var(--color-schiefer-dark);
   }
-  
+
+  .admin-button-danger:hover {
+    background-color: var(--color-kupfer);
+    color: var(--color-white);
+  }
+
   .admin-success-message {
-    @apply text-green-600 text-center rounded-lg;
+    color: var(--color-feedback-correct);
+    text-align: center;
+    border-radius: var(--border-radius-sm);
     margin-bottom: var(--spacing-md);
     padding: var(--spacing-sm);
     background-color: var(--color-admin-success-bg);
-    font-size: var(--font-size-admin-sm);
+    font-size: var(--admin-font-size-sm);
   }
-  
+
   .admin-separator {
     height: 1px;
-    background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+    background: linear-gradient(90deg, transparent, var(--color-neutral-light), transparent);
     margin: var(--spacing-xs) 0;
   }
-  
+
   .kiosk-item {
-    @apply w-full rounded-lg text-left font-medium transition-all;
-    font-size: var(--font-size-admin);
+    width: 100%;
     padding: var(--spacing-md) min(1.25rem, 2.5vw);
     border-radius: var(--border-radius-sm);
+    font-size: var(--admin-font-size);
     font-weight: 500;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
   }
-  
+
   .kiosk-item-selected {
-    @apply bg-blue-500 text-white;
+    background-color: var(--color-primary);
+    color: var(--color-white);
   }
-  
+
   .kiosk-item-unselected {
-    @apply bg-gray-50 text-gray-800 hover:bg-gray-100;
+    background-color: var(--color-admin-input-bg);
+    color: var(--color-schiefer-dark);
   }
-  
+
+  .kiosk-item-unselected:hover {
+    background-color: var(--color-neutral-light);
+  }
+
   .kiosk-item-subtitle {
-    @apply font-normal opacity-70;
-    font-size: var(--font-size-admin-sm);
+    font-weight: 400;
+    opacity: 0.7;
+    font-size: var(--admin-font-size-sm);
     margin-top: min(0.25rem, 0.5vw);
   }
-  
+
   .admin-corner-trigger {
-    @apply fixed z-50 opacity-0;
+    position: fixed;
+    z-index: 50;
+    opacity: 0;
     width: var(--spacing-xl);
     height: var(--spacing-xl);
-  }
-  
-  /* Button styles */
-  .btn-primary {
-    @apply text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95;
-    background-color: var(--color-museum-brown);
-  }
-  
-  .btn-primary:hover {
-    background-color: var(--color-museum-brown);
-    opacity: 0.9;
-  }
-  
-  .btn-answer {
-    @apply bg-white font-medium py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 min-w-48;
-    border: 2px solid var(--color-museum-brown);
-    color: var(--color-museum-brown);
-  }
-  
-  .btn-answer:hover {
-    background-color: var(--color-museum-brown);
-    color: white;
-  }
-  
-  .btn-disabled {
-    @apply bg-gray-300 text-gray-500 cursor-not-allowed transform-none hover:scale-100;
-  }
-  
-  .progress-dot {
-    @apply w-4 h-4 rounded-full mx-1 transition-all duration-300;
-  }
-  
-  .progress-current {
-    @apply bg-white;
-    border: 2px solid var(--color-museum-brown);
-  }
-  
-  .progress-correct {
-    background-color: var(--color-feedback-correct);
-  }
-  
-  .progress-incorrect {
-    background-color: var(--color-feedback-incorrect);
-  }
-  
-  .progress-unanswered {
-    @apply bg-gray-400;
   }
 }
