@@ -13,14 +13,6 @@
 
 @font-face {
   font-family: 'Tisa Pro';
-  src: url('/fonts/TisaPro-Light.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Tisa Pro';
   src: url('/fonts/TisaPro-BoldItalic.otf') format('opentype');
   font-weight: 700;
   font-style: italic;
@@ -313,14 +305,6 @@
   }
 
   /* Color utility classes */
-  .bg-feedback-correct {
-    background-color: var(--color-feedback-correct);
-  }
-
-  .bg-feedback-incorrect {
-    background-color: var(--color-feedback-incorrect);
-  }
-
   .bg-overlay {
     background-color: var(--color-overlay);
   }
