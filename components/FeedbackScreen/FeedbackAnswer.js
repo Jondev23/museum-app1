@@ -1,28 +1,7 @@
 import { motion } from 'framer-motion';
 import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
-import useResponsiveText from '../../hooks/useResponsiveText';
 
 const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextStyle }) => {
-  // Usar solo los estilos de layout del answerTextStyle, no los de tipografía
-  const layoutStyle = {
-    maxWidth: answerTextStyle.maxWidth,
-    overflowWrap: answerTextStyle.overflowWrap,
-    wordBreak: answerTextStyle.wordBreak,
-    hyphens: answerTextStyle.hyphens,
-    textAlign: answerTextStyle.textAlign,
-    whiteSpace: answerTextStyle.whiteSpace
-  };
-
-  const { ref, adjustedStyle, isAdjusted } = useResponsiveText(
-    layoutStyle,
-    question.answers[userAnswer],
-    {
-      minScale: 0.6, // Puede reducirse hasta 60% del tamaño original
-      step: 0.5,     // Reduce de 0.5px en 0.5px
-      delay: 150     // Espera 150ms antes de ajustar
-    }
-  );
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -39,10 +18,15 @@ const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextSty
         }}
       >
         <span
-          ref={ref}
           className="text-answer"
-          style={adjustedStyle}
-          title={isAdjusted ? 'Texto ajustado automáticamente' : ''}
+          style={{
+            maxWidth: answerTextStyle.maxWidth,
+            overflowWrap: answerTextStyle.overflowWrap,
+            wordBreak: answerTextStyle.wordBreak,
+            hyphens: answerTextStyle.hyphens,
+            textAlign: answerTextStyle.textAlign,
+            whiteSpace: answerTextStyle.whiteSpace
+          }}
         >
           {question.answers[userAnswer]}
         </span>

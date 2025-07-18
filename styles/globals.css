@@ -316,6 +316,43 @@
   .text-answer {
     @apply typography-antworten-buttons;
     color: var(--color-text-primary);
+    /* Mejoras para texto responsivo */
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    line-height: 1.2;
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* Clases específicas para feedback screen */
+  .feedback-title {
+    @apply typography-fragen;
+    color: var(--color-white);
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .feedback-message {
+    @apply typography-antwort-fliess-bold;
+    color: var(--color-white);
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    text-align: center;
+  }
+
+  .feedback-explanation {
+    @apply typography-antwort-fliess;
+    color: var(--color-white);
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    text-align: center;
   }
 
   /* Color utility classes */
