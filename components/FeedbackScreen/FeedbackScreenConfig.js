@@ -49,7 +49,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     flexDirection: 'column',
     alignItems: 'center',
     gap: 'min(2rem, 3vw)',
-    paddingTop: 'min(3rem, 5vw)',
+    paddingTop: 'min(3.24rem, 5.4vw)',
     paddingBottom: 'min(3rem, 5vw)',
     paddingLeft: 'min(1.5rem, 2.5vw)',
     paddingRight: 'min(1.5rem, 2.5vw)',
@@ -113,7 +113,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     alignItems: 'center',
     gap: '0',
     // Dimensiones fijas como porcentaje de la pantalla
-    width: '85%', // Ocupa 85% del ancho disponible
+    width: '100%', // Ocupa 85% del ancho disponible
     height: '35vh', // Ocupa 35% de la altura de la pantalla
     flex: 1,
     justifyContent: 'flex-start',
@@ -125,7 +125,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     // Tamaño base del texto - se ajusta automáticamente si no cabe (43% más grande total)
     fontSize: 'min(3.8657vw, 1.9329rem)',
     lineHeight: 'min(4.2523vw, 2.1262rem)',
-    maxWidth: '100%',
+    maxWidth: '70%',
     overflowWrap: 'break-word',
     margin: '0',
     // Propiedades para ajuste automático de texto
@@ -138,7 +138,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     // Tamaño base del texto - se ajusta automáticamente si no cabe (15% más grande)
     fontSize: 'min(3.8254vw, 1.4345rem)',
     lineHeight: 'min(4.7817vw, 2.3909rem)',
-    maxWidth: '100%',
+    maxWidth: '70%',
     overflowWrap: 'break-word',
     margin: '0',
     
