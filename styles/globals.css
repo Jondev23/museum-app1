@@ -174,10 +174,6 @@
     padding: 0;
     overflow: hidden;
     user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    font-family: 'Tisa Sans Pro';
     background-color: var(--color-background-primary);
     color: var(--color-text-primary);
   }
