@@ -63,7 +63,7 @@ export const useQuestionScreenStyles = (startContent) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 'min(4rem, 6vw)'
+    gap: 'min(3rem, 4.5vw)'
   }), []);
 
   const titleStyle = useMemo(() => ({
