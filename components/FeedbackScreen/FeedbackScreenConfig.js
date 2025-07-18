@@ -51,19 +51,26 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 'min(2.6rem, 5.2vw)',
+    gap: 'min(2rem, 3vw)',
     padding: 'min(3rem, 5vw)',
     width: '100%',
     maxWidth: 'min(75.6rem, 83.05vw)',
-    minHeight: 'min(53rem, 74vh)',
-    justifyContent: 'space-evenly'
+    maxHeight: '78vh',
+    justifyContent: 'space-evenly',
+    overflow: 'hidden'
   }), []);
 
   const titleStyle = useMemo(() => ({
-    fontSize: 'min(2.5rem, 5vw, 6vh)',
-    lineHeight: 'min(3.25rem, 6vw, 7.5vh)',
+    fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
+    lineHeight: 'clamp(2rem, 5vw, 3.25rem)',
     maxWidth: '100%',
-    overflowWrap: 'break-word'
+    overflowWrap: 'break-word',
+    maxHeight: '15vh',
+    overflow: 'hidden',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center'
   }), []);
 
   const answerButtonStyle = useMemo(() => ({
@@ -85,11 +92,13 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 'min(0.0rem, 0vh)',
+    gap: 'min(1rem, 2vw)',
     width: '100%',
     flex: 1,
     justifyContent: 'flex-start',
-    marginTop: 'min(0.0rem, 0.0vh)'
+    marginTop: 'min(0.5rem, 1vh)',
+    maxHeight: '25vh',
+    overflow: 'hidden'
   }), []);
 
   const messageStyle = useMemo(() => ({
@@ -132,8 +141,11 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const arrowStyle = useMemo(() => ({
-    width: 'min(3.2rem, 6vw)',
-    height: 'min(3.5rem, 6vh)'
+    width: 'min(4.977rem, 9.333vw, 6.219vh)',
+    height: 'min(5.445rem, 9.333vh, 6.219vh)',
+    flexShrink: 0,
+    minWidth: '3.114rem',
+    minHeight: '3.114rem'
   }), []);
 
   const feedbackContainerClassName = useMemo(() => {
