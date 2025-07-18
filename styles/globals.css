@@ -57,17 +57,63 @@
   --font-serif: 'Tisa Pro';
   --font-sans: 'Tisa Sans Pro';
   
-  /* Responsive font sizes for StartScreen */
-  --font-size-title: min(8.1vw, 4.32rem);
-  --line-height-title: min(9.72vw, 4.86rem);
-  --font-size-subtitle: min(5.04vw, 2.52rem);
-  --line-height-subtitle: min(6.048vw, 3.024rem);
-  --font-size-highlight: min(2.7702vw, 1.3851rem);
-  --line-height-highlight: min(3.87828vw, 1.93914rem);
-  --letter-spacing-highlight: min(0.027702vw, 0.013851rem);
-  --font-size-intro: min(2.4786vw, 1.1664rem);
-  --line-height-intro: min(3.47004vw, 1.73502rem);
-  --letter-spacing-intro: min(0.024786vw, 0.012393rem);
+  /* Typography variables - Based on official Figma design tokens */
+  /* Head & Auswertung - Main titles */
+  --font-size-head: min(5vw, 96px);
+  --line-height-head: min(6vw, 115.2px);
+  --font-weight-head: 700;
+  --font-style-head: italic;
+  --font-family-head: 'Tisa Pro', serif;
+  
+  /* Subline - Subtitles */
+  --font-size-subline: min(3.5vw, 64px);
+  --line-height-subline: min(4.2vw, 76.8px);
+  --font-weight-subline: 400;
+  --font-style-subline: normal;
+  --font-family-subline: 'Tisa Sans Pro', sans-serif;
+  
+  /* Fragen - Questions */
+  --font-size-fragen: min(3vw, 54px);
+  --line-height-fragen: min(3.9vw, 70.2px);
+  --font-weight-fragen: 800;
+  --font-style-fragen: italic;
+  --font-family-fragen: 'Tisa Pro', serif;
+  
+  /* Antworten Buttons - Answer buttons */
+  --font-size-antworten-buttons: min(2.5vw, 48px);
+  --line-height-antworten-buttons: min(3.2vw, 57.6px);
+  --font-weight-antworten-buttons: 400;
+  --font-style-antworten-buttons: normal;
+  --font-family-antworten-buttons: 'Tisa Sans Pro', sans-serif;
+  --letter-spacing-antworten-buttons: 0.48px;
+  
+  /* Antwort Fließ - Flow text */
+  --font-size-antwort-fliess: min(2vw, 36px);
+  --line-height-antwort-fliess: min(2.8vw, 50.4px);
+  --font-weight-antwort-fliess: 400;
+  --font-style-antwort-fliess: normal;
+  --font-family-antwort-fliess: 'Tisa Pro', serif;
+  --letter-spacing-antwort-fliess: 0.36px;
+  
+  /* Antwort Fließ Bold - Flow text bold */
+  --font-size-antwort-fliess-bold: min(2vw, 36px);
+  --line-height-antwort-fliess-bold: min(2.8vw, 50.4px);
+  --font-weight-antwort-fliess-bold: 700;
+  --font-style-antwort-fliess-bold: normal;
+  --font-family-antwort-fliess-bold: 'Tisa Pro', serif;
+  --letter-spacing-antwort-fliess-bold: 0.36px;
+  
+  /* Responsive font sizes for StartScreen - mapped to design tokens */
+  --font-size-title: var(--font-size-head);
+  --line-height-title: var(--line-height-head);
+  --font-size-subtitle: var(--font-size-subline);
+  --line-height-subtitle: var(--line-height-subline);
+  --font-size-highlight: var(--font-size-antworten-buttons);
+  --line-height-highlight: var(--line-height-antworten-buttons);
+  --letter-spacing-highlight: var(--letter-spacing-antworten-buttons);
+  --font-size-intro: var(--font-size-antwort-fliess);
+  --line-height-intro: var(--line-height-antwort-fliess);
+  --letter-spacing-intro: var(--letter-spacing-antwort-fliess);
   
   /* Common responsive values */
   --spacing-xs: min(0.5rem, 1vw);
@@ -84,20 +130,48 @@
   --font-size-admin-sm: min(0.875rem, 1.75vw);
   --font-size-admin-title: min(1.375rem, 2.75vw);
   
-  /* Main colors */
-  --color-light-gray: #D9D9D9;
-  --color-green: #85AF8B;
-  --color-dark-gray: #344243;
-  --color-brown: #A94930;
+  /* Design System Colors (from Figma tokens) */
+  --color-kupfer: #a94930;           /* Cobre - color principal del museo */
+  --color-kupfer-dark: #7c3422;      /* Cobre oscuro */
+  --color-blassgruen: #85af8b;       /* Verde claro */
+  --color-blassgruen-dark: #598364;  /* Verde oscuro */
+  --color-schiefer: #344243;         /* Pizarra */
+  --color-schiefer-dark: #273132;    /* Pizarra oscuro */
+  --color-taube: #61809d;            /* Paloma (azul grisáceo) */
+  --color-taube-dark: #42596e;       /* Paloma oscuro */
+  --color-neutral-light: #d9d9d9;    /* Gris claro */
+  --color-neutral-dark: #1e1e1e;     /* Gris oscuro */
+  --color-white: #ffffff;            /* Blanco */
+  --color-bordeaux: #6f2149;         /* Burdeos */
+  --color-bordeaux-dark: #501835;    /* Burdeos oscuro */
+  --color-petrol: #017a99;           /* Azul petróleo */
+  --color-petrol-dark: #015165;      /* Azul petróleo oscuro */
   
-  /* Semantic color aliases */
-  --color-feedback-correct: #598364;
-  --color-feedback-incorrect: var(--color-brown);
-  --color-feedback-answer-bg: var(--color-light-gray);
-  --color-feedback-answer-text: var(--color-dark-gray);
+  /* Semantic color aliases - using design system */
+  --color-primary: var(--color-kupfer);
+  --color-primary-dark: var(--color-kupfer-dark);
+  --color-secondary: var(--color-blassgruen);
+  --color-secondary-dark: var(--color-blassgruen-dark);
+  --color-accent: var(--color-taube);
+  --color-text-primary: var(--color-neutral-light);
+  --color-text-secondary: var(--color-schiefer);
+  --color-background-primary: var(--color-neutral-dark);
+  --color-background-secondary: var(--color-schiefer);
+  
+  /* Feedback colors using design system */
+  --color-feedback-correct: var(--color-blassgruen-dark);
+  --color-feedback-incorrect: var(--color-kupfer);
+  --color-feedback-answer-bg: var(--color-neutral-light);
+  --color-feedback-answer-text: var(--color-schiefer);
   
   /* Museum theme colors */
-  --color-museum-brown: var(--color-brown);
+  --color-museum-brown: var(--color-primary);
+  
+  /* Legacy aliases for backward compatibility */
+  --color-light-gray: var(--color-neutral-light);
+  --color-green: var(--color-secondary);
+  --color-dark-gray: var(--color-schiefer);
+  --color-brown: var(--color-primary);
   
   /* Overlay colors */
   --color-overlay: rgba(0, 0, 0, 0.75);
@@ -149,7 +223,68 @@
 }
 
 @layer components {
-  /* Base typography classes */
+  /* Typography classes based on official Figma design tokens */
+  .typography-head {
+    font-family: var(--font-family-head);
+    font-size: var(--font-size-head);
+    line-height: var(--line-height-head);
+    font-weight: var(--font-weight-head);
+    font-style: var(--font-style-head);
+    text-align: center;
+  }
+  
+  .typography-subline {
+    font-family: var(--font-family-subline);
+    font-size: var(--font-size-subline);
+    line-height: var(--line-height-subline);
+    font-weight: var(--font-weight-subline);
+    font-style: var(--font-style-subline);
+    text-align: center;
+  }
+  
+  .typography-fragen {
+    font-family: var(--font-family-fragen);
+    font-size: var(--font-size-fragen);
+    line-height: var(--line-height-fragen);
+    font-weight: var(--font-weight-fragen);
+    font-style: var(--font-style-fragen);
+    text-align: center;
+    padding-left: min(12rem, 12vw, 15vh);
+    padding-right: min(12rem, 12vw, 15vh);
+    box-sizing: border-box;
+  }
+  
+  .typography-antworten-buttons {
+    font-family: var(--font-family-antworten-buttons);
+    font-size: var(--font-size-antworten-buttons);
+    line-height: var(--line-height-antworten-buttons);
+    font-weight: var(--font-weight-antworten-buttons);
+    font-style: var(--font-style-antworten-buttons);
+    letter-spacing: var(--letter-spacing-antworten-buttons);
+    text-align: center;
+  }
+  
+  .typography-antwort-fliess {
+    font-family: var(--font-family-antwort-fliess);
+    font-size: var(--font-size-antwort-fliess);
+    line-height: var(--line-height-antwort-fliess);
+    font-weight: var(--font-weight-antwort-fliess);
+    font-style: var(--font-style-antwort-fliess);
+    letter-spacing: var(--letter-spacing-antwort-fliess);
+    text-align: center;
+  }
+  
+  .typography-antwort-fliess-bold {
+    font-family: var(--font-family-antwort-fliess-bold);
+    font-size: var(--font-size-antwort-fliess-bold);
+    line-height: var(--line-height-antwort-fliess-bold);
+    font-weight: var(--font-weight-antwort-fliess-bold);
+    font-style: var(--font-style-antwort-fliess-bold);
+    letter-spacing: var(--letter-spacing-antwort-fliess-bold);
+    text-align: center;
+  }
+
+  /* Base typography classes - enhanced with design tokens */
   .text-base {
     text-align: center;
     color: var(--color-text-primary);
@@ -165,43 +300,40 @@
     font-weight: 400;
   }
   
-  /* Typography classes - optimized */
+  /* Legacy typography classes mapped to design tokens */
   .title-main {
-    @apply text-base text-serif-base;
-    font-style: italic;
-    font-weight: 700;
+    @apply typography-head;
+    color: var(--color-text-primary);
   }
   
   .title-question {
-    @apply text-base text-serif-base;
-    font-style: italic;
-    font-weight: 750;
-    padding-left: min(12rem, 12vw, 15vh);
-    padding-right: min(12rem, 12vw, 15vh);
-    box-sizing: border-box;
+    @apply typography-fragen;
+    color: var(--color-text-primary);
   }
   
   .subtitle-main {
-    @apply text-base text-sans-base;
+    @apply typography-subline;
     color: var(--color-accent);
   }
   
   .text-body-primary {
-    @apply text-base text-serif-base;
+    @apply typography-antwort-fliess;
+    color: var(--color-text-primary);
   }
   
   .text-body-bold {
-    @apply text-base text-serif-base;
-    font-weight: 700;
+    @apply typography-antwort-fliess-bold;
+    color: var(--color-text-primary);
   }
   
   .text-button {
-    @apply text-base text-sans-base;
+    @apply typography-antworten-buttons;
+    color: var(--color-text-primary);
   }
   
   .text-answer {
-    @apply text-sans-base;
-    text-align: center;
+    @apply typography-antworten-buttons;
+    color: var(--color-text-primary);
   }
 
   /* Color utility classes */
