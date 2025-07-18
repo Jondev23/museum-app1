@@ -18,7 +18,7 @@ export const FEEDBACK_CONFIG = {
     INCORRECT_BG: 'var(--color-feedback-incorrect)',
     ANSWER_BG: 'var(--color-feedback-answer-bg)',
     ANSWER_TEXT: 'var(--color-feedback-answer-text)',
-    OVERLAY: 'bg-black/75', 
+    OVERLAY: 'bg-overlay', 
   },
   SIZES: {
     BORDER_RADIUS: '19px',

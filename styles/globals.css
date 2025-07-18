@@ -367,6 +367,10 @@
     background-color: var(--color-feedback-incorrect);
   }
 
+  .bg-overlay {
+    background-color: var(--color-overlay);
+  }
+
   .text-primary {
     color: var(--color-text-primary);
   }
