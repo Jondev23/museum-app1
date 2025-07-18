@@ -17,28 +17,34 @@ const StartScreenDescription = ({
         duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.CONTENT_FADE, 
         delay: START_SCREEN_CONFIG.ANIMATION_DELAYS.DESCRIPTION 
       }}
-      className="text-body-primary"
-      style={descriptionContainerStyle}
+      className="typography-antwort-fliess text-primary"
+      style={{
+        ...descriptionContainerStyle,
+        color: 'var(--color-text-primary)'
+      }}
     >
       <div 
-        className="text-body-bold"
+        className="typography-antworten-buttons text-primary"
         style={{
           ...highlightTextStyle,
           display: 'block',
           marginBottom: '0.5rem',
           whiteSpace: 'nowrap',
           overflow: 'hidden',
-          textOverflow: 'ellipsis'
+          textOverflow: 'ellipsis',
+          color: 'var(--color-text-primary)',
+          fontWeight: 'var(--typography-antworten-buttons-font-weight)'
         }}
       >
         {startContent?.highlightText || defaultTexts.highlightText}
       </div>
 
       <div 
-        className="text-body-primary"
+        className="typography-antwort-fliess text-primary"
         style={{
           ...introTextStyle,
-          display: 'block'
+          display: 'block',
+          color: 'var(--color-text-primary)'
         }}
       >
         {startContent?.introText || defaultTexts.introText}

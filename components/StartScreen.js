@@ -44,7 +44,10 @@ const StartScreen = () => {
       style={backgroundStyle}
     >
       {/* Black overlay for better text contrast */}
-      <div className="absolute inset-0 bg-black/75" />
+      <div 
+        className="absolute inset-0" 
+        style={{ backgroundColor: 'var(--color-overlay)' }}
+      />
 
       {/* Content */}
       <div 

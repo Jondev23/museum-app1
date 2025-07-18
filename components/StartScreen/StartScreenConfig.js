@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { COLORS } from '../../utils/cssVariables';
 
 // Constantes de configuración
 export const START_SCREEN_CONFIG = {
@@ -52,20 +51,26 @@ export const useStartScreenStyles = (startContent) => {
   }), []);
 
   const titleStyle = useMemo(() => ({
-    // Usando CSS custom properties para valores responsivos
-    fontSize: 'var(--font-size-title)',
-    lineHeight: 'var(--line-height-title)',
-    // Dimensiones como porcentaje de la pantalla para coherencia
+    // Usando tokens oficiales de Figma para Head & Auswertung
+    fontSize: 'var(--typography-head-font-size)',
+    lineHeight: 'var(--typography-head-line-height)',
+    fontFamily: 'var(--typography-head-font-family)',
+    fontWeight: 'var(--typography-head-font-weight)',
+    fontStyle: 'var(--typography-head-font-style)',
+    // Dimensiones responsivas
     width: '70%',
     height: '10vh',
     maxHeight: '20vh'
   }), []);
 
   const subtitleStyle = useMemo(() => ({
-    // Usando CSS custom properties para valores responsivos
-    fontSize: 'var(--font-size-subtitle)',
-    lineHeight: 'var(--line-height-subtitle)',
-    // Dimensiones como porcentaje de la pantalla para coherencia
+    // Usando tokens oficiales de Figma para Subline
+    fontSize: 'var(--typography-subline-font-size)',
+    lineHeight: 'var(--typography-subline-line-height)',
+    fontFamily: 'var(--typography-subline-font-family)',
+    fontWeight: 'var(--typography-subline-font-weight)',
+    fontStyle: 'var(--typography-subline-font-style)',
+    // Dimensiones responsivas
     width: '70%',
     height: '10vh',
     maxHeight: '20vh',
@@ -81,17 +86,23 @@ export const useStartScreenStyles = (startContent) => {
   }), []);
 
   const highlightTextStyle = useMemo(() => ({
-    // Usando CSS custom properties para valores responsivos
-    fontSize: 'var(--font-size-highlight)',
-    lineHeight: 'var(--line-height-highlight)',
-    letterSpacing: 'var(--letter-spacing-highlight)'
+    // Usando tokens oficiales de Figma para Antworten Buttons
+    fontSize: 'var(--typography-antworten-buttons-font-size)',
+    lineHeight: 'var(--typography-antworten-buttons-line-height)',
+    fontFamily: 'var(--typography-antworten-buttons-font-family)',
+    fontWeight: 'var(--typography-antworten-buttons-font-weight)',
+    fontStyle: 'var(--typography-antworten-buttons-font-style)',
+    letterSpacing: 'var(--typography-antworten-buttons-letter-spacing)'
   }), []);
 
   const introTextStyle = useMemo(() => ({
-    // Usando CSS custom properties para valores responsivos
-    fontSize: 'var(--font-size-intro)',
-    lineHeight: 'var(--line-height-intro)',
-    letterSpacing: 'var(--letter-spacing-intro)'
+    // Usando tokens oficiales de Figma para Antwort Fließ
+    fontSize: 'var(--typography-antwort-fliess-font-size)',
+    lineHeight: 'var(--typography-antwort-fliess-line-height)',
+    fontFamily: 'var(--typography-antwort-fliess-font-family)',
+    fontWeight: 'var(--typography-antwort-fliess-font-weight)',
+    fontStyle: 'var(--typography-antwort-fliess-font-style)',
+    letterSpacing: 'var(--typography-antwort-fliess-letter-spacing)'
   }), []);
 
   const touchIndicatorContainerStyle = useMemo(() => ({

@@ -76,28 +76,28 @@
   --typography-head-line-height: min(6vw, 115.2px);
   --typography-head-font-weight: 700;
   --typography-head-font-style: italic;
-  --typography-head-font-family: 'Tisa Pro', serif;
+  --typography-head-font-family: 'Tisa Pro';
 
   /* Subline (Subtitles) - 64px, Tisa Sans Pro Regular */
   --typography-subline-font-size: min(3.5vw, 64px);
   --typography-subline-line-height: min(4.2vw, 76.8px);
   --typography-subline-font-weight: 400;
   --typography-subline-font-style: normal;
-  --typography-subline-font-family: 'Tisa Sans Pro', sans-serif;
+  --typography-subline-font-family: 'Tisa Sans Pro';
 
   /* Fragen (Questions) - 54px, Tisa Pro ExtraBold Italic */
   --typography-fragen-font-size: min(3vw, 54px);
   --typography-fragen-line-height: min(3.9vw, 70.2px);
   --typography-fragen-font-weight: 800;
   --typography-fragen-font-style: italic;
-  --typography-fragen-font-family: 'Tisa Pro', serif;
+  --typography-fragen-font-family: 'Tisa Pro';
 
   /* Antworten Buttons (Answer buttons) - 48px, Tisa Sans Pro Regular */
   --typography-antworten-buttons-font-size: min(2.5vw, 48px);
   --typography-antworten-buttons-line-height: min(3.2vw, 57.6px);
   --typography-antworten-buttons-font-weight: 400;
   --typography-antworten-buttons-font-style: normal;
-  --typography-antworten-buttons-font-family: 'Tisa Sans Pro', sans-serif;
+  --typography-antworten-buttons-font-family: 'Tisa Sans Pro';
   --typography-antworten-buttons-letter-spacing: 0.48px;
 
   /* Antwort Fließ (Flow text) - 36px, Tisa Pro Regular */
@@ -105,7 +105,7 @@
   --typography-antwort-fliess-line-height: min(2.8vw, 50.4px);
   --typography-antwort-fliess-font-weight: 400;
   --typography-antwort-fliess-font-style: normal;
-  --typography-antwort-fliess-font-family: 'Tisa Pro', serif;
+  --typography-antwort-fliess-font-family: 'Tisa Pro';
   --typography-antwort-fliess-letter-spacing: 0.36px;
 
   /* Antwort Fließ Bold (Flow text bold) - 36px, Tisa Pro Bold */
@@ -113,7 +113,7 @@
   --typography-antwort-fliess-bold-line-height: min(2.8vw, 50.4px);
   --typography-antwort-fliess-bold-font-weight: 700;
   --typography-antwort-fliess-bold-font-style: normal;
-  --typography-antwort-fliess-bold-font-family: 'Tisa Pro', serif;
+  --typography-antwort-fliess-bold-font-family: 'Tisa Pro';
   --typography-antwort-fliess-bold-letter-spacing: 0.36px;
 
   /* Semantic Color Mapping */
@@ -121,7 +121,7 @@
   --color-primary-dark: var(--color-kupfer-dark);
   --color-secondary: var(--color-blassgruen);
   --color-secondary-dark: var(--color-blassgruen-dark);
-  --color-accent: var(--color-taube);
+  --color-accent: var(--color-blassgruen);
   --color-text-primary: var(--color-neutral-light);
   --color-text-secondary: var(--color-schiefer);
   --color-background-primary: var(--color-neutral-dark);
@@ -154,11 +154,23 @@
   --admin-font-size-title: min(1.375rem, 2.75vw);
   --color-admin-input-bg: #f8f9fa;
   --color-admin-success-bg: rgba(34, 197, 94, 0.1);
+
+  /* Legacy compatibility variables for StartScreen */
+  --font-size-title: var(--typography-head-font-size);
+  --line-height-title: var(--typography-head-line-height);
+  --font-size-subtitle: var(--typography-subline-font-size);
+  --line-height-subtitle: var(--typography-subline-line-height);
+  --font-size-highlight: var(--typography-antworten-buttons-font-size);
+  --line-height-highlight: var(--typography-antworten-buttons-line-height);
+  --letter-spacing-highlight: var(--typography-antworten-buttons-letter-spacing);
+  --font-size-intro: var(--typography-antwort-fliess-font-size);
+  --line-height-intro: var(--typography-antwort-fliess-line-height);
+  --letter-spacing-intro: var(--typography-antwort-fliess-letter-spacing);
 }
 
 @layer base {
   html {
-    font-family: 'Tisa Sans Pro', sans-serif;
+    font-family: 'Tisa Sans Pro';
   }
   
   body {
@@ -169,7 +181,7 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    font-family: 'Tisa Sans Pro', sans-serif;
+    font-family: 'Tisa Sans Pro';
     background-color: var(--color-background-primary);
     color: var(--color-text-primary);
   }
@@ -250,7 +262,7 @@
 
   .subtitle-main {
     @apply typography-subline;
-    color: var(--color-accent);
+    color: var(--color-blassgruen);
   }
 
   .text-body-primary {

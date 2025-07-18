@@ -25,8 +25,11 @@ const StartScreenTitle = ({
             duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.CONTENT_FADE, 
             delay: START_SCREEN_CONFIG.ANIMATION_DELAYS.TITLE 
           }}
-          className="title-main"
-          style={titleStyle}
+          className="typography-head text-primary"
+          style={{
+            ...titleStyle,
+            color: 'var(--color-text-primary)'
+          }}
         >
           {startContent?.title || defaultTexts.title}
         </motion.h1>
@@ -42,10 +45,11 @@ const StartScreenTitle = ({
               duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.CONTENT_FADE, 
               delay: START_SCREEN_CONFIG.ANIMATION_DELAYS.SUBTITLE 
             }}
-            className="subtitle-main"
+            className="typography-subline"
             style={{
               ...subtitleStyle,
-              width: '98%'
+              width: '98%',
+              color: 'var(--color-blassgruen)'
             }}
           >
             {startContent?.subtitle || defaultTexts.subtitle}
