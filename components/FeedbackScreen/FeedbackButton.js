@@ -13,6 +13,11 @@ const FeedbackButton = ({
   const buttonRef = useRef(null);
   const textRef = useRef(null);
 
+  // Usar solo el textTransform del buttonTextStyle, el resto viene de la clase CSS
+  const layoutStyle = {
+    textTransform: buttonTextStyle.textTransform
+  };
+
   useEffect(() => {
     const adjustButtonSize = () => {
       if (textRef.current) {
@@ -73,7 +78,7 @@ const FeedbackButton = ({
         <span
           ref={textRef}
           className="text-button"
-          style={buttonTextStyle}
+          style={layoutStyle}
         >
           {buttonText}
         </span>

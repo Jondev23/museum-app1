@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { COLORS } from '../../utils/cssVariables';
 
 // Constantes de configuración
 export const SCREENSAVER_CONFIG = {
@@ -41,7 +40,7 @@ export const SCREENSAVER_CONFIG = {
 // Hook para estilos memoizados
 export const useScreensaverScreenStyles = () => {
   const titleStyle = useMemo(() => ({
-    color: COLORS.SCREENSAVER_TITLE,
+    color: 'var(--color-screensaver-title)',
     fontSize: 'min(12vw, 6rem)',
     fontStyle: 'normal',
     fontWeight: 500,

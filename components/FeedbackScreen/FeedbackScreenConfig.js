@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { COLORS } from '../../utils/cssVariables';
 
 // Constantes de configuración
 export const FEEDBACK_CONFIG = {
@@ -15,10 +14,10 @@ export const FEEDBACK_CONFIG = {
     ARROW_REPEAT_DELAY: 2,
   },
   COLORS: {
-    CORRECT_BG: COLORS.FEEDBACK_CORRECT,
-    INCORRECT_BG: COLORS.FEEDBACK_INCORRECT,
-    ANSWER_BG: COLORS.FEEDBACK_ANSWER_BG,
-    ANSWER_TEXT: COLORS.FEEDBACK_ANSWER_TEXT,
+    CORRECT_BG: 'var(--color-feedback-correct)',
+    INCORRECT_BG: 'var(--color-feedback-incorrect)',
+    ANSWER_BG: 'var(--color-feedback-answer-bg)',
+    ANSWER_TEXT: 'var(--color-feedback-answer-text)',
     OVERLAY: 'bg-black/75', 
   },
   SIZES: {
@@ -185,13 +184,12 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const feedbackContainerClassName = useMemo(() => {
-    const bgColor = isCorrect ? COLORS.FEEDBACK_CORRECT : COLORS.FEEDBACK_INCORRECT;
     return `rounded-[19px]`;
   }, [isCorrect]);
 
   const feedbackContainerStyleWithBg = useMemo(() => ({
     ...feedbackContainerStyle,
-    backgroundColor: isCorrect ? COLORS.FEEDBACK_CORRECT : COLORS.FEEDBACK_INCORRECT,
+    backgroundColor: isCorrect ? 'var(--color-feedback-correct)' : 'var(--color-feedback-incorrect)',
   }), [feedbackContainerStyle, isCorrect]);
 
   return {

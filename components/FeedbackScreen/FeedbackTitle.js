@@ -3,8 +3,23 @@ import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
 import useResponsiveText from '../../hooks/useResponsiveText';
 
 const FeedbackTitle = ({ question, titleStyle }) => {
+  // Usar solo los estilos de layout del titleStyle, no los de tipografía
+  const layoutStyle = {
+    width: titleStyle.width,
+    height: titleStyle.height,
+    maxWidth: titleStyle.maxWidth,
+    overflowWrap: titleStyle.overflowWrap,
+    overflow: titleStyle.overflow,
+    display: titleStyle.display,
+    alignItems: titleStyle.alignItems,
+    justifyContent: titleStyle.justifyContent,
+    textAlign: titleStyle.textAlign,
+    wordBreak: titleStyle.wordBreak,
+    hyphens: titleStyle.hyphens
+  };
+
   const { ref, adjustedStyle, isAdjusted } = useResponsiveText(
-    titleStyle,
+    layoutStyle,
     question.question,
     {
       minScale: 0.5, 

@@ -130,6 +130,9 @@
   /* UI Colors */
   --color-feedback-correct: var(--color-blassgruen-dark);
   --color-feedback-incorrect: var(--color-kupfer);
+  --color-feedback-answer-bg: var(--color-white-translucent-20);
+  --color-feedback-answer-text: var(--color-neutral-dark);
+  --color-screensaver-title: var(--color-white);
   --color-overlay: rgba(0, 0, 0, 0.75);
   --color-overlay-light: rgba(0, 0, 0, 0.3);
   --color-white-overlay: rgba(255, 255, 255, 0.95);

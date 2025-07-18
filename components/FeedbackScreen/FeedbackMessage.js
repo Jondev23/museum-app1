@@ -9,8 +9,27 @@ const FeedbackMessage = ({
   messageStyle, 
   explanationStyle 
 }) => {
+  // Usar solo los estilos de layout, no los de tipografía
+  const messageLayoutStyle = {
+    maxWidth: messageStyle.maxWidth,
+    overflowWrap: messageStyle.overflowWrap,
+    margin: messageStyle.margin,
+    wordBreak: messageStyle.wordBreak,
+    hyphens: messageStyle.hyphens,
+    textAlign: messageStyle.textAlign
+  };
+
+  const explanationLayoutStyle = {
+    maxWidth: explanationStyle.maxWidth,
+    overflowWrap: explanationStyle.overflowWrap,
+    margin: explanationStyle.margin,
+    wordBreak: explanationStyle.wordBreak,
+    hyphens: explanationStyle.hyphens,
+    textAlign: explanationStyle.textAlign
+  };
+
   const { ref: messageRef, adjustedStyle: adjustedMessageStyle, isAdjusted: isMessageAdjusted } = useResponsiveText(
-    messageStyle,
+    messageLayoutStyle,
     randomMessage,
     {
       minScale: 0.6, // Puede reducirse hasta 60% del tamaño original
@@ -20,7 +39,7 @@ const FeedbackMessage = ({
   );
 
   const { ref: explanationRef, adjustedStyle: adjustedExplanationStyle, isAdjusted: isExplanationAdjusted } = useResponsiveText(
-    explanationStyle,
+    explanationLayoutStyle,
     question?.explanation,
     {
       minScale: 0.6, // Puede reducirse hasta 60% del tamaño original
