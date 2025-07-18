@@ -57,29 +57,50 @@ export const useStartScreenStyles = (startContent) => {
   }), []);
 
   const titleStyle = useMemo(() => ({
-    fontSize: 'min(4.8rem, 9vw, 11vh)',
-    lineHeight: 'min(5.4rem, 10.8vw, 12.4vh)'
+    // Tamaño base del texto - se ajusta automáticamente si no cabe
+    fontSize: 'min(5.5vw, 3.5rem)',
+    lineHeight: 'min(6.6vw, 4.2rem)',
+    // Dimensiones como porcentaje de la pantalla para coherencia
+    width: '85%',
+    maxWidth: '100%',
+    textAlign: 'center'
   }), []);
 
   const subtitleStyle = useMemo(() => ({
-    fontSize: 'min(2.8rem, 5.6vw, 7vh)',
-    lineHeight: 'min(3.36rem, 6.72vw, 8.4vh)'
+    // Tamaño base del texto - se ajusta automáticamente si no cabe
+    fontSize: 'min(3.2vw, 2.1rem)',
+    lineHeight: 'min(3.8vw, 2.5rem)',
+    // Dimensiones como porcentaje de la pantalla para coherencia
+    width: '85%',
+    maxWidth: '100%',
+    textAlign: 'center',
+    wordBreak: 'break-word',
+    hyphens: 'auto'
   }), []);
 
   const descriptionContainerStyle = useMemo(() => ({
-    maxWidth: 'min(120rem, 95vw)'
+    // Dimensiones como porcentaje de la pantalla para coherencia
+    width: '85%',
+    maxWidth: '100%',
+    textAlign: 'center'
   }), []);
 
   const highlightTextStyle = useMemo(() => ({
-    fontSize: 'min(1.9rem, 3.8vw, 4.8vh)',
-    lineHeight: 'min(2.66rem, 5.32vw, 6.7vh)',
-    letterSpacing: 'min(0.019rem, 0.038vw, 0.048vh)'
+    // Tamaño base del texto - se ajusta automáticamente si no cabe
+    fontSize: 'min(2.8vw, 1.6rem)',
+    lineHeight: 'min(3.5vw, 2.0rem)',
+    letterSpacing: 'min(0.028vw, 0.016rem)',
+    maxWidth: '100%',
+    textAlign: 'center'
   }), []);
 
   const introTextStyle = useMemo(() => ({
-    fontSize: 'min(1.6rem, 3.4vw, 4.2vh)',
-    lineHeight: 'min(2.38rem, 4.76vw, 5.9vh)',
-    letterSpacing: 'min(0.017rem, 0.034vw, 0.042vh)'
+    // Tamaño base del texto - se ajusta automáticamente si no cabe
+    fontSize: 'min(2.5vw, 1.4rem)',
+    lineHeight: 'min(3.1vw, 1.75rem)',
+    letterSpacing: 'min(0.025vw, 0.014rem)',
+    maxWidth: '100%',
+    textAlign: 'center'
   }), []);
 
   const touchIndicatorContainerStyle = useMemo(() => ({
@@ -95,8 +116,12 @@ export const useStartScreenStyles = (startContent) => {
   }), []);
 
   const touchIndicatorStyle = useMemo(() => ({
-    width: 'min(5.8rem, 9.6vw, 12vh)',
-    height: 'min(5.8rem, 9.6vw, 12vh)',
+    // Escalado proporcional usando viewport units para coherencia - más grande
+    width: 'min(12vw, 10rem, 18vh)',
+    height: 'min(12vh, 8rem, 16vh)',
+    // Mantener aspect ratio
+    aspectRatio: '1/1',
+    objectFit: 'contain',
     pointerEvents: 'auto',
     cursor: 'pointer'
   }), []);

@@ -8,32 +8,43 @@ const StartScreenDescription = ({
   descriptionContainerStyle,
   highlightTextStyle,
   introTextStyle 
-}) => (
-  <motion.div
-    initial={{ y: 50, opacity: 0 }}
-    animate={showContent ? { y: 0, opacity: 1 } : {}}
-    transition={{ 
-      duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.CONTENT_FADE, 
-      delay: START_SCREEN_CONFIG.ANIMATION_DELAYS.DESCRIPTION 
-    }}
-    className="text-body-primary"
-    style={descriptionContainerStyle}
-  >
-    <span 
-      className="text-body-bold"
-      style={highlightTextStyle}
-    >
-      {startContent?.highlightText || defaultTexts.highlightText}&nbsp;&nbsp;
-      <br />
-    </span>
-
-    <span 
+}) => {
+  return (
+    <motion.div
+      initial={{ y: 50, opacity: 0 }}
+      animate={showContent ? { y: 0, opacity: 1 } : {}}
+      transition={{ 
+        duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.CONTENT_FADE, 
+        delay: START_SCREEN_CONFIG.ANIMATION_DELAYS.DESCRIPTION 
+      }}
       className="text-body-primary"
-      style={introTextStyle}
+      style={descriptionContainerStyle}
     >
-      {startContent?.introText || defaultTexts.introText}
-    </span>
-  </motion.div>
-);
+      <div 
+        className="text-body-bold"
+        style={{
+          ...highlightTextStyle,
+          display: 'block',
+          marginBottom: '0.5rem',
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis'
+        }}
+      >
+        {startContent?.highlightText || defaultTexts.highlightText}
+      </div>
+
+      <div 
+        className="text-body-primary"
+        style={{
+          ...introTextStyle,
+          display: 'block'
+        }}
+      >
+        {startContent?.introText || defaultTexts.introText}
+      </div>
+    </motion.div>
+  );
+};
 
 export default StartScreenDescription;

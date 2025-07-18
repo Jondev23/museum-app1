@@ -51,7 +51,7 @@ const StartScreen = () => {
         className="relative z-10 h-full flex flex-col items-center w-full"
         style={{
           ...containerStyle,
-          paddingTop: 'min(8.5rem, 11vw)' // Aumentamos más el padding para mover el contenido aún más abajo
+          paddingTop: 'min(8.5rem, 11vw)' 
         }}
       >
         {/* Main Card Container */}
@@ -59,7 +59,7 @@ const StartScreen = () => {
           className="w-full bg-transparent flex items-start justify-center"
           style={{
             ...mainCardStyle,
-            flex: 'none' // Eliminamos el flex auto que podría estar causando el espaciado
+            flex: 'none' 
           }}
         >
           <div style={{ padding: '0' }}>
@@ -67,7 +67,7 @@ const StartScreen = () => {
               className="flex flex-col items-center"
               style={{
                 ...contentSectionStyle,
-                gap: 'min(3.5rem, 5.6vw)' // Aumentamos el gap para más espacio entre subtítulo y descripción
+                gap: 'min(3.5rem, 5.6vw)' 
               }}
             >
               {/* Title Section */}
@@ -77,13 +77,13 @@ const StartScreen = () => {
                 showContent={showContent}
                 titleStyle={{
                   ...titleStyle,
-                  fontSize: 'min(8.1vw, 4.32rem)', // Prioriza vw para escalado proporcional
-                  lineHeight: 'min(9.72vw, 4.86rem)' // Prioriza vw para escalado proporcional
+                  fontSize: 'min(8.1vw, 4.32rem)', 
+                  lineHeight: 'min(9.72vw, 4.86rem)'
                 }}
                 subtitleStyle={{
                   ...subtitleStyle,
-                  fontSize: 'min(5.04vw, 2.52rem)', // Prioriza vw para escalado proporcional
-                  lineHeight: 'min(6.048vw, 3.024rem)' // Prioriza vw para escalado proporcional
+                  fontSize: 'min(5.04vw, 2.52rem)', 
+                  lineHeight: 'min(6.048vw, 3.024rem)' 
                 }}
               />
 
@@ -99,15 +99,15 @@ const StartScreen = () => {
                 }}
                 highlightTextStyle={{
                   ...highlightTextStyle,
-                  fontSize: 'min(2.7702vw, 1.3851rem)', // Prioriza vw para escalado proporcional
-                  lineHeight: 'min(3.87828vw, 1.93914rem)', // Prioriza vw para escalado proporcional
-                  letterSpacing: 'min(0.027702vw, 0.013851rem)' // Prioriza vw para escalado proporcional
+                  fontSize: 'min(2.7702vw, 1.3851rem)', 
+                  lineHeight: 'min(3.87828vw, 1.93914rem)', 
+                  letterSpacing: 'min(0.027702vw, 0.013851rem)' 
                 }}
                 introTextStyle={{
                   ...introTextStyle,
-                  fontSize: 'min(2.4786vw, 1.1664rem)', // Prioriza vw para escalado proporcional
-                  lineHeight: 'min(3.47004vw, 1.73502rem)', // Prioriza vw para escalado proporcional
-                  letterSpacing: 'min(0.024786vw, 0.012393rem)' // Prioriza vw para escalado proporcional
+                  fontSize: 'min(2.4786vw, 1.1664rem)', 
+                  lineHeight: 'min(3.47004vw, 1.73502rem)', 
+                  letterSpacing: 'min(0.024786vw, 0.012393rem)' 
                 }}
               />
             </div>
@@ -121,7 +121,7 @@ const StartScreen = () => {
             handleSwipeLeft={handleSwipeLeft}
             touchIndicatorContainerStyle={{
               ...touchIndicatorContainerStyle,
-              bottom: 'min(1.0rem, 2vh)' // Un poco más abajo
+              bottom: 'min(1.0rem, 2vh)' 
             }}
             touchIndicatorStyle={touchIndicatorStyle}
           />
