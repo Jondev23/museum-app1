@@ -46,7 +46,7 @@ export const ANIMATION_CONFIG = {
 export const STYLE_CONFIG = {
   // Overlay styles
   OVERLAY: {
-    backgroundColor: '#344243',
+    backgroundColor: 'var(--color-language-overlay)',
     className: 'fixed inset-0 flex items-center justify-center z-50'
   },
 
@@ -152,8 +152,8 @@ export const DEFAULT_CONTENT = {
 
 // Color configurations
 export const COLOR_CONFIG = {
-  OVERLAY_BG: '#344243',
-  ACTIVE_BUTTON: '#A94930',
-  INACTIVE_BUTTON: '#D9D9D9',
+  OVERLAY_BG: 'var(--color-language-overlay)',
+  ACTIVE_BUTTON: 'var(--color-language-button-active)',
+  INACTIVE_BUTTON: 'var(--color-language-button-inactive)',
   TRANSPARENT: 'transparent'
 };

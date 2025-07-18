@@ -114,6 +114,19 @@
   --color-overlay: rgba(0, 0, 0, 0.75);
   --color-white-overlay: rgba(255, 255, 255, 0.95);
 
+  /* Language Selector Colors */
+  --color-language-overlay: var(--color-schiefer);
+  --color-language-button-active: var(--color-kupfer);
+  --color-language-button-inactive: var(--color-neutral-light);
+
+  /* Language Selector Sizing */
+  --language-icon-size: min(5.4rem, 13.5vw);
+  --language-title-size: min(2.5rem, 6.2vw);
+  --language-button-width: min(max(21rem, 53vw), 75rem);
+  --language-button-height: min(3.47rem, 8.31vw);
+  --language-button-radius: min(3.75rem, 8vw);
+  --language-gap: min(3.24rem, 6.08vw);
+
   /* Responsive spacing */
   --spacing-xs: clamp(0.25rem, 1vw, 0.75rem);
   --spacing-sm: clamp(0.5rem, 1.5vw, 1rem);
