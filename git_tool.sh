@@ -117,4 +117,4 @@ case $opcion in
   *)
     echo "❌ Opción no válida"
     ;;
-esac
+esac 
