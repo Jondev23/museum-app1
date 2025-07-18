@@ -87,6 +87,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     minWidth: 'min(40.74rem, 81.48vw)',
     minHeight: 'min(3.0174375rem, 4.2244125vh)',
     maxWidth: '100%',
+    // Padding interno para separar texto de los bordes
+    padding: 'min(1rem, 2vw)',
     // Propiedades para centrado y ajuste automático
     display: 'flex',
     alignItems: 'center',
@@ -97,14 +99,16 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   const answerTextStyle = useMemo(() => ({
     color: FEEDBACK_CONFIG.COLORS.ANSWER_TEXT,
     // Tamaño base del texto - se ajusta automáticamente si no cabe (10% más grande)
-    fontSize: 'min(3.96vw, 1.98rem)',
-    lineHeight: 'min(4.95vw, 2.475rem)',
-    maxWidth: '100%',
+    fontSize: 'min(3.96vw, 1.98rem, 4vh)',
+    lineHeight: 'min(4.95vw, 2.475rem, 5vh)',
+    maxWidth: '90%',
     overflowWrap: 'break-word',
     // Propiedades para ajuste automático de texto
     wordBreak: 'break-word',
     hyphens: 'auto',
-    textAlign: 'center'
+    textAlign: 'center',
+    // Asegurar que el texto se adapte al contenedor
+    whiteSpace: 'normal'
   }), []);
 
   const messageContainerStyle = useMemo(() => ({
