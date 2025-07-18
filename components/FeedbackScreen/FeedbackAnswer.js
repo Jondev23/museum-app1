@@ -1,53 +1,18 @@
 import { motion } from 'framer-motion';
-import { useEffect, useRef } from 'react';
 import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
 import { COLORS } from '../../utils/cssVariables';
+import useResponsiveText from '../../hooks/useResponsiveText';
 
 const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextStyle }) => {
-  const textRef = useRef(null);
-  const buttonRef = useRef(null);
-
-  useEffect(() => {
-    const adjustTextSize = () => {
-      if (textRef.current && buttonRef.current) {
-        const text = textRef.current;
-        const button = buttonRef.current;
-        
-        let attempts = 0;
-        const maxAttempts = 30;
-        
-        const checkAndAdjust = () => {
-          if (attempts < maxAttempts) {
-            const textWidth = text.scrollWidth;
-            const buttonWidth = button.clientWidth;
-            const textHeight = text.scrollHeight;
-            const buttonHeight = button.clientHeight;
-            
-            // Verificar desbordamiento horizontal y vertical
-            if ((textWidth > buttonWidth || textHeight > buttonHeight) && attempts < maxAttempts) {
-              attempts++;
-              
-              let currentFontSize = parseFloat(window.getComputedStyle(text).fontSize);
-              const minFontSize = currentFontSize * 0.6; // Reducir hasta 60%
-              
-              if (currentFontSize > minFontSize) {
-                currentFontSize -= 0.5;
-                text.style.fontSize = `${currentFontSize}px`;
-                text.style.lineHeight = `${currentFontSize * 1.25}px`;
-                
-                setTimeout(checkAndAdjust, 10);
-              }
-            }
-          }
-        };
-        
-        checkAndAdjust();
-      }
-    };
-
-    const timer = setTimeout(adjustTextSize, 150);
-    return () => clearTimeout(timer);
-  }, [question.answers, userAnswer]);
+  const { ref, adjustedStyle, isAdjusted } = useResponsiveText(
+    answerTextStyle,
+    question.answers[userAnswer],
+    {
+      minScale: 0.6, // Puede reducirse hasta 60% del tamaño original
+      step: 0.5,     // Reduce de 0.5px en 0.5px
+      delay: 150     // Espera 150ms antes de ajustar
+    }
+  );
 
   return (
     <motion.div
@@ -58,7 +23,6 @@ const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextSty
       style={{ width: '100%' }}
     >
       <div
-        ref={buttonRef}
         className={`${FEEDBACK_CONFIG.SIZES.BUTTON_BORDER_RADIUS} flex items-center justify-center`}
         style={{
           ...answerButtonStyle,
@@ -66,9 +30,10 @@ const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextSty
         }}
       >
         <span
-          ref={textRef}
+          ref={ref}
           className="text-answer"
-          style={answerTextStyle}
+          style={adjustedStyle}
+          title={isAdjusted ? 'Texto ajustado automáticamente' : ''}
         >
           {question.answers[userAnswer]}
         </span>

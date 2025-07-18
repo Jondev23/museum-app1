@@ -61,31 +61,51 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const titleStyle = useMemo(() => ({
+    // Tamaño base del texto - se ajusta automáticamente si no cabe
     fontSize: 'min(4vw, 2.5rem)',
     lineHeight: 'min(5vw, 3.25rem)',
+    // Dimensiones fijas como porcentaje de la pantalla
+    width: '85%', // Ocupa 85% del ancho disponible
+    height: '15vh', // Ocupa 15% de la altura de la pantalla
     maxWidth: '100%',
     overflowWrap: 'break-word',
-    maxHeight: '15vh',
     overflow: 'hidden',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
+    // Propiedades para ajuste automático de texto
+    wordBreak: 'break-word',
+    hyphens: 'auto'
   }), []);
 
   const answerButtonStyle = useMemo(() => ({
+    // Dimensiones fijas como porcentaje de la pantalla
+    width: '75%', // Ocupa 75% del ancho disponible
+    height: '6vh', // Ocupa 6% de la altura de la pantalla
+    // Valores mínimos para compatibilidad
     minWidth: 'min(40.74rem, 81.48vw)',
     minHeight: 'min(3.0174375rem, 4.2244125vh)',
     padding: 'min(1.96558rem, 1.81046vh) min(2rem, 4vw)',
-    maxWidth: '100%'
+    maxWidth: '100%',
+    // Propiedades para centrado y ajuste automático
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden'
   }), []);
 
   const answerTextStyle = useMemo(() => ({
     color: FEEDBACK_CONFIG.COLORS.ANSWER_TEXT,
+    // Tamaño base del texto - se ajusta automáticamente si no cabe
     fontSize: 'min(3.6vw, 1.8rem)',
     lineHeight: 'min(4.5vw, 2.25rem)',
     maxWidth: '100%',
-    overflowWrap: 'break-word'
+    overflowWrap: 'break-word',
+    // Propiedades para ajuste automático de texto
+    wordBreak: 'break-word',
+    hyphens: 'auto',
+    textAlign: 'center'
   }), []);
 
   const messageContainerStyle = useMemo(() => ({
