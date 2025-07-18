@@ -46,12 +46,12 @@
 /* CSS Variables - Design Tokens */
 :root {
   /* Color Tokens */
-  --color-kupfer: #a94930;
-  --color-blassgruen: #85af8b;
+  --color-kupfer: #a94930; /* circulos indicativos*/
+  --color-blassgruen: #85af8b; /* circulos indicativos*/
   --color-blassgruen-dark: #598364;
-  --color-schiefer: #344243;
+  --color-schiefer: #344243; /* letra dentro de boton feedback */
   --color-schiefer-dark: #273132;
-  --color-neutral-light: #d9d9d9;
+  --color-neutral-light: #d9d9d9;/* texto*/
   --color-neutral-dark: #1e1e1e;
   --color-white: #ffffff;
 
