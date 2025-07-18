@@ -127,10 +127,7 @@
   --color-feedback-answer-text: var(--color-neutral-dark);
   --color-screensaver-title: var(--color-white);
   --color-overlay: rgba(0, 0, 0, 0.75);
-  --color-overlay-light: rgba(0, 0, 0, 0.3);
   --color-white-overlay: rgba(255, 255, 255, 0.95);
-  --color-white-translucent-20: rgba(255, 255, 255, 0.2);
-  --color-white-translucent-30: rgba(255, 255, 255, 0.3);
 
   /* Responsive spacing - Optimized with clamp */
   --spacing-xs: clamp(0.25rem, 1vw, 0.75rem);
@@ -361,12 +358,6 @@
     border-radius: var(--border-radius-md);
     cursor: pointer;
     min-width: 12rem;
-  }
-
-  .btn-disabled {
-    background-color: var(--color-neutral-light);
-    color: var(--color-schiefer);
-    cursor: not-allowed;
   }
 
   /* Admin Panel Styles - NO HOVER EFFECTS */
