@@ -88,7 +88,10 @@ const StartScreen = () => {
           <StartScreenTouchIndicator
             showContent={showContent}
             handleSwipeLeft={handleSwipeLeft}
-            touchIndicatorContainerStyle={touchIndicatorContainerStyle}
+            touchIndicatorContainerStyle={{
+              ...touchIndicatorContainerStyle,
+              bottom: 'min(1.0rem, 2vh)' // Un poco más abajo
+            }}
             touchIndicatorStyle={touchIndicatorStyle}
           />
         </StandardFooter>
