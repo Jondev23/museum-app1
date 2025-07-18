@@ -15,7 +15,7 @@ const StartScreenTitle = ({
   const showSubtitle = showOnlySubtitle || (!showOnlyTitle && !showOnlySubtitle);
 
   return (
-    <div className="flex flex-col items-center w-full" style={{ gap: '0' }}>
+    <div className="flex flex-col items-center w-full">
       {/* Main title */}
       {showTitle && (
         <motion.h1

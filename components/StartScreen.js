@@ -50,53 +50,27 @@ const StartScreen = () => {
       <div 
         className="relative z-10 h-full flex flex-col items-center w-full"
         style={{
-          ...containerStyle
+          ...containerStyle,
+          paddingTop: 'min(14.52rem, 19.36vh)'
         }}
       >
         {/* Main Card Container */}
         <div 
           className="w-full bg-transparent flex items-start justify-center"
-          style={{
-            ...mainCardStyle,
-            flex: 'none' 
-          }}
+          style={mainCardStyle}
         >
-          <div style={{}}>
+          <div>
             <div 
               className="flex flex-col items-center"
-              style={{
-                ...contentSectionStyle,
-                gap: '0' 
-              }}
+              style={contentSectionStyle}
             >
-              {/* Title Section */}
+              {/* Title and Subtitle Section */}
               <StartScreenTitle
                 startContent={startContent}
                 defaultTexts={defaultTexts}
                 showContent={showContent}
-                titleStyle={{
-                  ...titleStyle,
-                  fontSize: 'min(8.1vw, 4.32rem)', 
-                  lineHeight: 'min(9.72vw, 4.86rem)',
-                  height: '10vh',
-                  maxHeight: '20vh'
-                }}
-                showOnlyTitle={true}
-              />
-
-              {/* Subtitle Section */}
-              <StartScreenTitle
-                startContent={startContent}
-                defaultTexts={defaultTexts}
-                showContent={showContent}
-                subtitleStyle={{
-                  ...subtitleStyle,
-                  fontSize: 'min(5.04vw, 2.52rem)', 
-                  lineHeight: 'min(6.048vw, 3.024rem)',
-                  height: '10vh',
-                  maxHeight: '20vh'
-                }}
-                showOnlySubtitle={true}
+                titleStyle={titleStyle}
+                subtitleStyle={subtitleStyle}
               />
 
               {/* Description Section */}
@@ -104,23 +78,9 @@ const StartScreen = () => {
                 startContent={startContent}
                 defaultTexts={defaultTexts}
                 showContent={showContent}
-                descriptionContainerStyle={{
-                  ...descriptionContainerStyle,
-                  height: '40vh',
-                  maxHeight: '40vh'
-                }}
-                highlightTextStyle={{
-                  ...highlightTextStyle,
-                  fontSize: 'min(2.7702vw, 1.3851rem)', 
-                  lineHeight: 'min(3.87828vw, 1.93914rem)', 
-                  letterSpacing: 'min(0.027702vw, 0.013851rem)' 
-                }}
-                introTextStyle={{
-                  ...introTextStyle,
-                  fontSize: 'min(2.4786vw, 1.1664rem)', 
-                  lineHeight: 'min(3.47004vw, 1.73502rem)', 
-                  letterSpacing: 'min(0.024786vw, 0.012393rem)' 
-                }}
+                descriptionContainerStyle={descriptionContainerStyle}
+                highlightTextStyle={highlightTextStyle}
+                introTextStyle={introTextStyle}
               />
             </div>
           </div>
@@ -131,9 +91,7 @@ const StartScreen = () => {
           <StartScreenTouchIndicator
             showContent={showContent}
             handleSwipeLeft={handleSwipeLeft}
-            touchIndicatorContainerStyle={{
-              ...touchIndicatorContainerStyle
-            }}
+            touchIndicatorContainerStyle={touchIndicatorContainerStyle}
             touchIndicatorStyle={touchIndicatorStyle}
           />
         </StandardFooter>

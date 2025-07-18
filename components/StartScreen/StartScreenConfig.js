@@ -41,7 +41,7 @@ export const useStartScreenStyles = (startContent) => {
   const mainCardStyle = useMemo(() => ({
     maxWidth: 'min(120rem, 95vw)',
     minHeight: '0',
-    flex: '1 1 auto'
+    flex: 'none'
   }), []);
 
   const titleSectionStyle = useMemo(() => ({
@@ -53,24 +53,26 @@ export const useStartScreenStyles = (startContent) => {
   }), []);
 
   const titleStyle = useMemo(() => ({
-    // Tamaño base del texto - se ajusta automáticamente si no cabe
-    fontSize: 'min(5.5vw, 3.5rem)',
-    lineHeight: 'min(6.6vw, 4.2rem)',
+    // Tamaño optimizado para pantalla completa
+    fontSize: 'min(8.1vw, 4.32rem)',
+    lineHeight: 'min(9.72vw, 4.86rem)',
     // Dimensiones como porcentaje de la pantalla para coherencia
     width: '70%',
     maxWidth: '100%',
-    maxHeight: '15vh',
+    height: '10vh',
+    maxHeight: '20vh',
     textAlign: 'center'
   }), []);
 
   const subtitleStyle = useMemo(() => ({
-    // Tamaño base del texto - se ajusta automáticamente si no cabe
-    fontSize: 'min(3.2vw, 2.1rem)',
-    lineHeight: 'min(3.8vw, 2.5rem)',
+    // Tamaño optimizado para subtítulo
+    fontSize: 'min(5.04vw, 2.52rem)',
+    lineHeight: 'min(6.048vw, 3.024rem)',
     // Dimensiones como porcentaje de la pantalla para coherencia
     width: '70%',
     maxWidth: '100%',
-    maxHeight: '12vh',
+    height: '10vh',
+    maxHeight: '20vh',
     textAlign: 'center',
     wordBreak: 'break-word',
     hyphens: 'auto'
@@ -80,24 +82,25 @@ export const useStartScreenStyles = (startContent) => {
     // Dimensiones como porcentaje de la pantalla para coherencia
     width: '80%',
     maxWidth: '100%',
-    maxHeight: '50vh',
+    height: '40vh',
+    maxHeight: '40vh',
     textAlign: 'center'
   }), []);
 
   const highlightTextStyle = useMemo(() => ({
-    // Tamaño base del texto - se ajusta automáticamente si no cabe
-    fontSize: 'min(2.8vw, 1.6rem)',
-    lineHeight: 'min(3.5vw, 2.0rem)',
-    letterSpacing: 'min(0.028vw, 0.016rem)',
+    // Tamaño optimizado para texto destacado
+    fontSize: 'min(2.7702vw, 1.3851rem)',
+    lineHeight: 'min(3.87828vw, 1.93914rem)',
+    letterSpacing: 'min(0.027702vw, 0.013851rem)',
     maxWidth: '100%',
     textAlign: 'center'
   }), []);
 
   const introTextStyle = useMemo(() => ({
-    // Tamaño base del texto - se ajusta automáticamente si no cabe
-    fontSize: 'min(2.5vw, 1.4rem)',
-    lineHeight: 'min(3.1vw, 1.75rem)',
-    letterSpacing: 'min(0.025vw, 0.014rem)',
+    // Tamaño optimizado para texto introductorio
+    fontSize: 'min(2.4786vw, 1.1664rem)',
+    lineHeight: 'min(3.47004vw, 1.73502rem)',
+    letterSpacing: 'min(0.024786vw, 0.012393rem)',
     maxWidth: '100%',
     textAlign: 'center'
   }), []);
