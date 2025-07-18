@@ -12,6 +12,8 @@ const QuestionScreen = () => {
     currentQuestionIndex,
     selectedAnswer,
     isValidData,
+    answers,
+    questions,
     handleAnswerClick,
     getButtonClassName
   } = useQuestionScreen();
@@ -59,6 +61,8 @@ const QuestionScreen = () => {
         <QuestionFooter
           currentQuestionIndex={currentQuestionIndex}
           progressDotsStyle={progressDotsStyle}
+          answers={answers}
+          questions={questions}
         />
       </div>
     </motion.div>

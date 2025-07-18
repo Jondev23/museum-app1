@@ -7,7 +7,9 @@ export const useQuestionScreen = () => {
     answerQuestion,
     content,
     language,
-    currentQuestionIndex
+    currentQuestionIndex,
+    answers,
+    questions
   } = useApp();
 
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -57,6 +59,8 @@ export const useQuestionScreen = () => {
     currentQuestionIndex,
     selectedAnswer,
     isValidData,
+    answers,
+    questions,
     
     // Funciones
     handleAnswerClick,
