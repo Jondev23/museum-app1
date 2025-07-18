@@ -63,12 +63,13 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     // Tamaño base del texto - se ajusta automáticamente si no cabe (21% más grande total)
     fontSize: 'min(4.84vw, 3.025rem)',
     lineHeight: 'min(6.05vw, 3.9325rem)',
-    // Dimensiones fijas como porcentaje de la pantalla
-    width: '100%', // Ocupa 85% del ancho disponible
-    height: '15vh', // Ocupa 15% de la altura de la pantalla
+    // Dimensiones flexibles para adaptarse al contenido
+    width: '100%',
+    minHeight: '15vh', // Altura mínima en lugar de fija
+    maxHeight: '25vh', // Altura máxima para evitar que ocupe toda la pantalla
     maxWidth: '100%',
     overflowWrap: 'break-word',
-    overflow: 'hidden',
+    overflow: 'visible', // Cambiar de hidden a visible
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

@@ -314,7 +314,7 @@
 
   .text-answer {
     @apply typography-antworten-buttons;
-    color: var(--color-feedback-answer-text);
+    color: var(--color-schiefer);
     /* Mejoras para texto responsivo */
     overflow-wrap: break-word;
     word-break: break-word;
@@ -334,6 +334,10 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    /* Mejoras para textos largos */
+    white-space: normal;
+    line-height: 1.1; /* Líneas más compactas para títulos largos */
+    padding: 0.5rem; /* Espacio interno para evitar cortes en los bordes */
   }
 
   .feedback-message {
