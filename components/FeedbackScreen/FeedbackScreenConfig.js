@@ -92,7 +92,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 'min(1rem, 2vw)',
+    gap: 'min(0.25rem, 0.5vw)',
     width: '100%',
     flex: 1,
     justifyContent: 'flex-start',
@@ -102,16 +102,16 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const messageStyle = useMemo(() => ({
-    fontSize: 'min(2rem, 4vw, 5vh)',
-    lineHeight: 'min(2.5rem, 5vw, 6vh)',
+    fontSize: 'min(1.7rem, 3.4vw, 4.25vh)',
+    lineHeight: 'min(2.125rem, 4.25vw, 5.1vh)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0'
   }), []);
 
   const explanationStyle = useMemo(() => ({
-    fontSize: 'min(1.32rem, 3.52vw, 4.4vh)',
-    lineHeight: 'min(2.2rem, 4.4vw, 5.5vh)',
+    fontSize: 'min(1.188rem, 3.168vw, 3.96vh)',
+    lineHeight: 'min(1.98rem, 3.96vw, 4.95vh)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0',
