@@ -82,7 +82,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   const answerButtonStyle = useMemo(() => ({
     // Dimensiones fijas como porcentaje de la pantalla
     width: '75%', // Ocupa 75% del ancho disponible
-    height: '6vh', // Ocupa 6% de la altura de la pantalla
+    height: '9vh', // Ocupa 7% de la altura de la pantalla
     // Valores mínimos para compatibilidad
     minWidth: 'min(40.74rem, 81.48vw)',
     minHeight: 'min(3.0174375rem, 4.2244125vh)',
@@ -113,30 +113,41 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     flexDirection: 'column',
     alignItems: 'center',
     gap: '0',
-    width: '100%',
+    // Dimensiones fijas como porcentaje de la pantalla
+    width: '85%', // Ocupa 85% del ancho disponible
+    height: '35vh', // Ocupa 35% de la altura de la pantalla
     flex: 1,
     justifyContent: 'flex-start',
     marginTop: 'min(0.5rem, 1vh)',
-    maxHeight: '25vh',
     overflow: 'hidden'
   }), []);
 
   const messageStyle = useMemo(() => ({
-    fontSize: 'min(3.0528vw, 1.5264rem)',
-    lineHeight: 'min(3.8151vw, 1.908rem)',
+    // Tamaño base del texto - se ajusta automáticamente si no cabe (30% más grande)
+    fontSize: 'min(3.5143vw, 1.7572rem)',
+    lineHeight: 'min(4.3918vw, 2.1964rem)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
-    margin: '0'
+    margin: '0',
+    // Propiedades para ajuste automático de texto
+    wordBreak: 'break-word',
+    hyphens: 'auto',
+    textAlign: 'center'
   }), []);
 
   const explanationStyle = useMemo(() => ({
-    fontSize: 'min(3.3264vw, 1.2474rem)',
-    lineHeight: 'min(4.158vw, 2.079rem)',
+    // Tamaño base del texto - se ajusta automáticamente si no cabe (15% más grande)
+    fontSize: 'min(3.8254vw, 1.4345rem)',
+    lineHeight: 'min(4.7817vw, 2.3909rem)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0',
     paddingLeft: 'min(7rem, 14vw)',
-    paddingRight: 'min(7rem, 14vw)'
+    paddingRight: 'min(7rem, 14vw)',
+    // Propiedades para ajuste automático de texto
+    wordBreak: 'break-word',
+    hyphens: 'auto',
+    textAlign: 'center'
   }), []);
 
   const buttonContainerStyle = useMemo(() => ({
