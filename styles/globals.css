@@ -130,7 +130,6 @@
   /* UI Colors */
   --color-feedback-correct: var(--color-blassgruen-dark);
   --color-feedback-incorrect: var(--color-kupfer);
-  --color-feedback-answer-bg: var(--color-white-translucent-20);
   --color-feedback-answer-text: var(--color-neutral-dark);
   --color-screensaver-title: var(--color-white);
   --color-overlay: rgba(0, 0, 0, 0.75);
@@ -315,7 +314,7 @@
 
   .text-answer {
     @apply typography-antworten-buttons;
-    color: var(--color-text-primary);
+    color: var(--color-feedback-answer-text);
     /* Mejoras para texto responsivo */
     overflow-wrap: break-word;
     word-break: break-word;

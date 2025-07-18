@@ -14,7 +14,7 @@ const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextSty
         className={`${FEEDBACK_CONFIG.SIZES.BUTTON_BORDER_RADIUS} flex items-center justify-center`}
         style={{
           ...answerButtonStyle,
-          backgroundColor: 'var(--color-feedback-answer-bg)',
+          backgroundColor: 'var(--color-neutral-light)',
         }}
       >
         <span
