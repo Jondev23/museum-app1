@@ -117,7 +117,6 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     height: '35vh', // Ocupa 35% de la altura de la pantalla
     flex: 1,
     justifyContent: 'flex-start',
-    marginTop: 'min(0.5rem, 1vh)',
     overflow: 'hidden'
   }), []);
 
@@ -125,7 +124,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     // Tamaño base del texto - se ajusta automáticamente si no cabe (43% más grande total)
     fontSize: 'min(3.8657vw, 1.9329rem)',
     lineHeight: 'min(4.2523vw, 2.1262rem)',
-    maxWidth: '70%',
+    maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0',
     // Propiedades para ajuste automático de texto
