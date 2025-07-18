@@ -1,5 +1,3 @@
-import { BACKGROUND_CONFIG } from './ResultsScreenConfig';
-
 const ResultsBackground = ({ backgroundImage }) => {
   const bgImage = backgroundImage || '/images/Bild_Kutsche.webp';
   
@@ -7,13 +5,8 @@ const ResultsBackground = ({ backgroundImage }) => {
     <>
       {/* Background image */}
       <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${bgImage})`,
-          backgroundSize: BACKGROUND_CONFIG.SIZE,
-          backgroundPosition: BACKGROUND_CONFIG.POSITION,
-          backgroundRepeat: BACKGROUND_CONFIG.REPEAT
-        }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${bgImage})` }}
       />
       
       {/* Dark overlay for better text contrast */}

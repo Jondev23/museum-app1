@@ -33,7 +33,10 @@ const ResultsScreen = () => {
       <ResultsBackground backgroundImage={contentData.backgroundImage} />
       
       {/* Content - Centered vertically and horizontally */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full p-8">
+      <div 
+        className="relative z-10 flex flex-col items-center justify-center h-full"
+        style={{ padding: 'var(--spacing-lg)' }}
+      >
         <ResultsTitle 
           title={contentData.title} 
           showContent={showContent} 

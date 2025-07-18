@@ -10,7 +10,8 @@ const ResultsTitle = ({ title, showContent }) => {
         ...ANIMATION_CONFIG.CONTENT_REVEAL.TRANSITION, 
         delay: ANIMATION_CONFIG.DELAYS.TITLE 
       }}
-      className="title-main mb-8"
+      className="title-main"
+      style={{ marginBottom: 'var(--spacing-lg)' }}
     >
       {title}
     </motion.h1>

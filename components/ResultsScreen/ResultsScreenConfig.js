@@ -28,10 +28,3 @@ export const ANIMATION_CONFIG = {
     TAP: { scale: 0.95 }
   }
 };
-
-// Background and overlay configurations
-export const BACKGROUND_CONFIG = {
-  SIZE: 'cover',
-  POSITION: 'center',
-  REPEAT: 'no-repeat'
-};

@@ -16,19 +16,27 @@ const ResultsPlayAgainButton = ({
         ...ANIMATION_CONFIG.CONTENT_REVEAL.TRANSITION, 
         delay: ANIMATION_CONFIG.DELAYS.BUTTON 
       }}
-      className="fixed left-0 right-0 bottom-6 flex justify-center items-center z-50"
+      className="fixed left-0 right-0 flex justify-center items-center z-50"
+      style={{ bottom: 'var(--spacing-md)' }}
     >
       <motion.button
         onClick={onPlayAgain}
         whileHover={ANIMATION_CONFIG.BUTTON.HOVER}
         whileTap={ANIMATION_CONFIG.BUTTON.TAP}
-        className="text-button flex items-center gap-2 bg-transparent border-none p-4"
+        className="text-button flex items-center bg-transparent border-none"
+        style={{ 
+          gap: 'var(--spacing-sm)',
+          padding: 'var(--spacing-md)' 
+        }}
       >
         {playAgainText}
         <img
           src={iconSrc}
           alt={iconAlt}
-          className="w-12 h-20"
+          style={{
+            width: 'var(--spacing-2xl)',
+            height: 'calc(var(--spacing-2xl) * 1.6)'
+          }}
         />
       </motion.button>
     </motion.div>
