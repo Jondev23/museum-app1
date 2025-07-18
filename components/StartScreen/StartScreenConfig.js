@@ -63,6 +63,7 @@ export const useStartScreenStyles = (startContent) => {
     // Dimensiones como porcentaje de la pantalla para coherencia
     width: '70%',
     maxWidth: '100%',
+    maxHeight: '15vh',
     textAlign: 'center'
   }), []);
 
@@ -73,6 +74,7 @@ export const useStartScreenStyles = (startContent) => {
     // Dimensiones como porcentaje de la pantalla para coherencia
     width: '70%',
     maxWidth: '100%',
+    maxHeight: '12vh',
     textAlign: 'center',
     wordBreak: 'break-word',
     hyphens: 'auto'
@@ -82,6 +84,7 @@ export const useStartScreenStyles = (startContent) => {
     // Dimensiones como porcentaje de la pantalla para coherencia
     width: '80%',
     maxWidth: '100%',
+    maxHeight: '50vh',
     textAlign: 'center'
   }), []);
 
