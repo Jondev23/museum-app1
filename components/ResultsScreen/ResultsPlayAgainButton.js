@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { ANIMATION_CONFIG, STYLE_CONFIG, DEFAULT_CONTENT } from './ResultsScreenConfig';
+import { ANIMATION_CONFIG } from './ResultsScreenConfig';
 
 const ResultsPlayAgainButton = ({ 
   playAgainText, 
   showContent, 
   onPlayAgain,
-  iconSrc = DEFAULT_CONTENT.iconSrc,
-  iconAlt = DEFAULT_CONTENT.iconAlt
+  iconSrc = '/images/GUI.svg',
+  iconAlt = 'Restart icon'
 }) => {
   return (
     <motion.div
@@ -16,20 +16,19 @@ const ResultsPlayAgainButton = ({
         ...ANIMATION_CONFIG.CONTENT_REVEAL.TRANSITION, 
         delay: ANIMATION_CONFIG.DELAYS.BUTTON 
       }}
-      style={STYLE_CONFIG.BUTTON_CONTAINER}
+      className="fixed left-0 right-0 bottom-6 flex justify-center items-center z-50"
     >
       <motion.button
         onClick={onPlayAgain}
         whileHover={ANIMATION_CONFIG.BUTTON.HOVER}
         whileTap={ANIMATION_CONFIG.BUTTON.TAP}
-        className="flex items-center text-button"
-        style={STYLE_CONFIG.BUTTON}
+        className="text-button flex items-center gap-2 bg-transparent border-none p-4"
       >
         {playAgainText}
         <img
           src={iconSrc}
           alt={iconAlt}
-          style={STYLE_CONFIG.ICON}
+          className="w-12 h-20"
         />
       </motion.button>
     </motion.div>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ANIMATION_CONFIG, STYLE_CONFIG } from './ResultsScreenConfig';
+import { ANIMATION_CONFIG } from './ResultsScreenConfig';
 
 const ResultsScoreText = ({ scoreText, showContent }) => {
   return (
@@ -10,8 +10,7 @@ const ResultsScoreText = ({ scoreText, showContent }) => {
         ...ANIMATION_CONFIG.CONTENT_REVEAL.TRANSITION, 
         delay: ANIMATION_CONFIG.DELAYS.SUBTITLE 
       }}
-      className="subtitle-main"
-      style={STYLE_CONFIG.SUBTITLE}
+      className="subtitle-main mb-12"
     >
       {scoreText}
     </motion.p>

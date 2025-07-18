@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ANIMATION_CONFIG, STYLE_CONFIG } from './ResultsScreenConfig';
+import { ANIMATION_CONFIG } from './ResultsScreenConfig';
 
 const ResultsTitle = ({ title, showContent }) => {
   return (
@@ -10,8 +10,7 @@ const ResultsTitle = ({ title, showContent }) => {
         ...ANIMATION_CONFIG.CONTENT_REVEAL.TRANSITION, 
         delay: ANIMATION_CONFIG.DELAYS.TITLE 
       }}
-      className="title-main"
-      style={STYLE_CONFIG.TITLE}
+      className="title-main mb-8"
     >
       {title}
     </motion.h1>

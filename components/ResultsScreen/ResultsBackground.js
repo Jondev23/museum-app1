@@ -1,7 +1,7 @@
-import { BACKGROUND_CONFIG, DEFAULT_CONTENT } from './ResultsScreenConfig';
+import { BACKGROUND_CONFIG } from './ResultsScreenConfig';
 
 const ResultsBackground = ({ backgroundImage }) => {
-  const bgImage = backgroundImage || DEFAULT_CONTENT.backgroundImage;
+  const bgImage = backgroundImage || '/images/Bild_Kutsche.webp';
   
   return (
     <>
@@ -17,12 +17,7 @@ const ResultsBackground = ({ backgroundImage }) => {
       />
       
       {/* Dark overlay for better text contrast */}
-      <div 
-        className="absolute inset-0 bg-black"
-        style={{ 
-          opacity: BACKGROUND_CONFIG.OVERLAY_OPACITY 
-        }}
-      />
+      <div className="absolute inset-0 bg-overlay" />
     </>
   );
 };

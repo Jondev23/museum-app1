@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
+import useResponsiveText from '../../hooks/useResponsiveText';
 
 const FeedbackMessage = ({ 
   randomMessage, 
@@ -8,6 +9,26 @@ const FeedbackMessage = ({
   messageStyle, 
   explanationStyle 
 }) => {
+  const { ref: messageRef, adjustedStyle: adjustedMessageStyle, isAdjusted: isMessageAdjusted } = useResponsiveText(
+    messageStyle,
+    randomMessage,
+    {
+      minScale: 0.6, // Puede reducirse hasta 60% del tamaño original
+      step: 0.5,     // Reduce de 0.5px en 0.5px
+      delay: 150     // Espera 150ms antes de ajustar
+    }
+  );
+
+  const { ref: explanationRef, adjustedStyle: adjustedExplanationStyle, isAdjusted: isExplanationAdjusted } = useResponsiveText(
+    explanationStyle,
+    question?.explanation,
+    {
+      minScale: 0.6, // Puede reducirse hasta 60% del tamaño original
+      step: 0.33,    // Reduce de 0.33px en 0.33px (más fino)
+      delay: 200     // Espera 200ms antes de ajustar
+    }
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -17,18 +38,13 @@ const FeedbackMessage = ({
     >
       {/* Mensaje principal (¡Correcto! / ¡Incorrecto!) */}
       <motion.p
+        ref={messageRef}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE + 0.1 }}
-        className="feedback-message"
-        style={{
-          maxWidth: messageStyle.maxWidth,
-          overflowWrap: messageStyle.overflowWrap,
-          margin: messageStyle.margin,
-          wordBreak: messageStyle.wordBreak,
-          hyphens: messageStyle.hyphens,
-          textAlign: messageStyle.textAlign
-        }}
+        style={adjustedMessageStyle}
+        className="text-body-bold"
+        title={isMessageAdjusted ? 'Texto ajustado automáticamente' : ''}
       >
         {randomMessage}
       </motion.p>
@@ -36,18 +52,13 @@ const FeedbackMessage = ({
       {/* Explicación adicional */}
       {question?.explanation && (
         <motion.p
+          ref={explanationRef}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE + 0.2 }}
-          className="feedback-explanation"
-          style={{
-            maxWidth: explanationStyle.maxWidth,
-            overflowWrap: explanationStyle.overflowWrap,
-            margin: explanationStyle.margin,
-            wordBreak: explanationStyle.wordBreak,
-            hyphens: explanationStyle.hyphens,
-            textAlign: explanationStyle.textAlign
-          }}
+          style={adjustedExplanationStyle}
+          className="text-body-primary"
+          title={isExplanationAdjusted ? 'Texto ajustado automáticamente' : ''}
         >
           {question.explanation}
         </motion.p>

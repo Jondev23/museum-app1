@@ -6,7 +6,7 @@ import ResultsScoreText from './ResultsScreen/ResultsScoreText';
 import ResultsPlayAgainButton from './ResultsScreen/ResultsPlayAgainButton';
 import ResultsProgress from './ResultsScreen/ResultsProgress';
 import ResultsBackground from './ResultsScreen/ResultsBackground';
-import { ANIMATION_CONFIG, STYLE_CONFIG } from './ResultsScreen/ResultsScreenConfig';
+import { ANIMATION_CONFIG } from './ResultsScreen/ResultsScreenConfig';
 
 const ResultsScreen = () => {
   const {
@@ -33,10 +33,7 @@ const ResultsScreen = () => {
       <ResultsBackground backgroundImage={contentData.backgroundImage} />
       
       {/* Content - Centered vertically and horizontally */}
-      <div 
-        className="relative z-10 flex flex-col items-center justify-center h-full" 
-        style={STYLE_CONFIG.CONTAINER}
-      >
+      <div className="relative z-10 flex flex-col items-center justify-center h-full p-8">
         <ResultsTitle 
           title={contentData.title} 
           showContent={showContent} 

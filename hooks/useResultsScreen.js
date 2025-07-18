@@ -24,11 +24,10 @@ const useResultsScreen = () => {
     const results = content[language]?.results || {};
     
     return {
-      title: results.messages?.[score] || (language === 'en' ? 'Great job!' : 'Hü! Sehr gut!'),
-      scoreText: results.scoreText?.replace('{score}', score).replace('{total}', questions.length) || 
-                 `Du hast ${score} von ${questions.length} Fragen richtig beantwortet.`,
-      playAgainText: results.playAgain || 'NOCH EINMAL',
-      backgroundImage: startContent?.backgroundImage || '/images/Bild_Kutsche.webp'
+      title: results.messages?.[score],
+      scoreText: results.scoreText?.replace('{score}', score).replace('{total}', questions.length),
+      playAgainText: results.playAgain,
+      backgroundImage: startContent?.backgroundImage
     };
   }, [content, language, score, questions.length, startContent]);
 
