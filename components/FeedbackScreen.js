@@ -27,7 +27,6 @@ const FeedbackScreen = () => {
     backgroundStyle,
     mainContentStyle,
     feedbackContainerStyle,
-    feedbackContainerClassName,
     titleStyle,
     answerButtonStyle,
     answerTextStyle,
@@ -66,7 +65,6 @@ const FeedbackScreen = () => {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.CONTAINER }}
-            className={feedbackContainerClassName}
             style={feedbackContainerStyle}
           >
             <FeedbackTitle 

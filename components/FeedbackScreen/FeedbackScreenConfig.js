@@ -21,7 +21,7 @@ export const FEEDBACK_CONFIG = {
     OVERLAY: 'bg-overlay', 
   },
   SIZES: {
-    BORDER_RADIUS: '19px',
+    BORDER_RADIUS: 'var(--border-radius-md)',
     BUTTON_BORDER_RADIUS: 'rounded-full',
   },
 };
@@ -184,20 +184,16 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     objectFit: 'contain'
   }), []);
 
-  const feedbackContainerClassName = useMemo(() => {
-    return `rounded-[19px]`;
-  }, [isCorrect]);
-
   const feedbackContainerStyleWithBg = useMemo(() => ({
     ...feedbackContainerStyle,
     backgroundColor: isCorrect ? 'var(--color-feedback-correct)' : 'var(--color-feedback-incorrect)',
+    borderRadius: FEEDBACK_CONFIG.SIZES.BORDER_RADIUS,
   }), [feedbackContainerStyle, isCorrect]);
 
   return {
     backgroundStyle,
     mainContentStyle,
     feedbackContainerStyle: feedbackContainerStyleWithBg,
-    feedbackContainerClassName,
     titleStyle,
     answerButtonStyle,
     answerTextStyle,
