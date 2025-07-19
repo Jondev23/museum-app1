@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-// Constantes de configuración
+
 export const FEEDBACK_CONFIG = {
   ANIMATION_DURATIONS: {
     SCREEN_TRANSITION: 0.3,
@@ -65,8 +65,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     lineHeight: 'min(6.05vw, 3.9325rem)',
     // Dimensiones flexibles para adaptarse al contenido
     width: '100%',
-    minHeight: '15vh', // Altura mínima en lugar de fija
-    maxHeight: '25vh', // Altura máxima para evitar que ocupe toda la pantalla
+    minHeight: '15vh', 
+    maxHeight: '25vh', 
     maxWidth: '100%',
     overflowWrap: 'break-word',
     overflow: 'visible', // Cambiar de hidden a visible
@@ -74,22 +74,25 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
-    // Propiedades para ajuste automático de texto
+
+  
     wordBreak: 'break-word',
     hyphens: 'auto'
   }), []);
 
   const answerButtonStyle = useMemo(() => ({
-    // Dimensiones fijas como porcentaje de la pantalla
-    width: '68%', // Ocupa 73% del ancho disponible
-    height: '10vh', // Ocupa 9% de la altura de la pantalla
+    
+    width: '68%', 
+    height: '10vh', 
     // Valores mínimos para compatibilidad
     minWidth: 'min(40.74rem, 81.48vw)',
     minHeight: 'min(3.0174375rem, 4.2244125vh)',
     maxWidth: '100%',
-    // Padding interno para separar texto de los bordes
+    
+    flexGrow: 1,
+    
     padding: 'min(1rem, 2vw)',
-    // Propiedades para centrado y ajuste automático
+    
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -98,16 +101,16 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
 
   const answerTextStyle = useMemo(() => ({
     color: FEEDBACK_CONFIG.COLORS.ANSWER_TEXT,
-    // Tamaño base del texto - se ajusta automáticamente si no cabe (10% más grande)
+    
     fontSize: 'min(3.96vw, 1.98rem, 4vh)',
     lineHeight: 'min(4.95vw, 2.475rem, 5vh)',
     maxWidth: '90%',
     overflowWrap: 'break-word',
-    // Propiedades para ajuste automático de texto
+    
     wordBreak: 'break-word',
     hyphens: 'auto',
     textAlign: 'center',
-    // Asegurar que el texto se adapte al contenedor
+    
     whiteSpace: 'normal'
   }), []);
 
@@ -116,35 +119,35 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     flexDirection: 'column',
     alignItems: 'center',
     gap: '0',
-    // Dimensiones fijas como porcentaje de la pantalla
-    width: '100%', // Ocupa 85% del ancho disponible
-    height: '35vh', // Ocupa 35% de la altura de la pantalla
+    
+    width: '100%', 
+    height: '35vh', 
     justifyContent: 'flex-start',
     overflow: 'hidden'
   }), []);
 
   const messageStyle = useMemo(() => ({
-    // Tamaño base del texto - se ajusta automáticamente si no cabe (43% más grande total)
+    
     fontSize: 'min(3.8657vw, 1.9329rem)',
     lineHeight: 'min(4.2523vw, 2.1262rem)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0',
-    // Propiedades para ajuste automático de texto
+    
     wordBreak: 'break-word',
     hyphens: 'auto',
     textAlign: 'center'
   }), []);
 
   const explanationStyle = useMemo(() => ({
-    // Tamaño base del texto - se ajusta automáticamente si no cabe (15% más grande)
+    
     fontSize: 'min(3.8254vw, 1.4345rem)',
     lineHeight: 'min(4.7817vw, 2.3909rem)',
     maxWidth: '70%',
     overflowWrap: 'break-word',
     margin: '0',
     
-    // Propiedades para ajuste automático de texto
+    
     wordBreak: 'break-word',
     hyphens: 'auto',
     textAlign: 'center'
@@ -172,14 +175,14 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const arrowStyle = useMemo(() => ({
-    // Escalado proporcional usando viewport units
+    
     width: 'min(6vw, 4.977rem, 8vh)',
     height: 'min(6vh, 5.445rem, 8vh)',
     flexShrink: 0,
-    // Tamaños mínimos para pantallas pequeñas
+    
     minWidth: 'min(3.114rem, 5vw)',
     minHeight: 'min(3.114rem, 5vh)',
-    // Mantener aspect ratio
+    
     aspectRatio: '1/1',
     objectFit: 'contain'
   }), []);
