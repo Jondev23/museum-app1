@@ -36,17 +36,11 @@ const ScreensaverTouchIndicator = ({
         className={`relative z-10 flex items-center justify-center rounded-full ${SCREENSAVER_CONFIG.COLORS.TOUCH_BACKGROUND} backdrop-blur-sm border ${SCREENSAVER_CONFIG.COLORS.TOUCH_BORDER}`}
         style={touchIconBackgroundStyle}
       >
-        {iconConfig.isImage ? (
-          <img
-            src={iconConfig.source}
-            alt="Touch indicator"
-            style={touchIconStyle}
-          />
-        ) : (
-          <span style={touchIconTextStyle}>
-            {iconConfig.source}
-          </span>
-        )}
+        <img
+          src={iconConfig.source}
+          alt="Touch indicator"
+          style={touchIconStyle}
+        />
       </div>
     </motion.div>
   </motion.div>
