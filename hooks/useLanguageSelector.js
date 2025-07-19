@@ -88,8 +88,8 @@ const useLanguageSelector = () => {
     const isActive = language === buttonLanguage;
     return {
       isActive,
-      borderColor: isActive ? '#A94930' : '#D9D9D9',
-      backgroundColor: isActive ? '#A94930' : 'transparent'
+      borderColor: isActive ? 'var(--color-kupfer)' : 'var(--color-neutral-light)',
+      backgroundColor: isActive ? 'var(--color-kupfer)' : 'transparent'
     };
   }, [language]);
 
