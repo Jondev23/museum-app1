@@ -395,7 +395,16 @@
     background-color: var(--color-admin-input-bg);
     border-radius: var(--border-radius-sm);
     font-size: var(--admin-font-size);
+    color: var(--color-schiefer-dark);
     outline: none;
+  }
+
+  .admin-label {
+    font-size: var(--admin-font-size);
+    font-weight: 500;
+    color: var(--color-schiefer-dark);
+    margin-bottom: var(--spacing-sm);
+    display: block;
   }
 
   .admin-input:focus {
