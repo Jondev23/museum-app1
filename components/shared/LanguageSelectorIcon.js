@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 
 const LanguageSelectorIcon = ({ 
@@ -10,158 +9,57 @@ const LanguageSelectorIcon = ({
   opacity = 0.8
 }) => {
   const { setShowLanguageSelector } = useApp();
-  const [isPressed, setIsPressed] = useState(false);
-  const [touchStarted, setTouchStarted] = useState(false);
 
-  // Consistent base styles for all variants
-  const baseIconStyles = {
-    width: 'min(2.7rem, 4.86vw, 6.075vh)', 
-    height: 'min(2.7rem, 4.86vw, 6.075vh)',
-    display: 'block',
-    opacity: opacity
-  };
-
-  // Standard position based on FeedbackScreen layout
-  const getContainerStyles = () => {
-    return {
-      flexShrink: 0,
-      marginBottom: 'min(6rem, 9.5vh)',
-      marginLeft: 'min(5.125rem, 8vw)',
-      ...style
-    };
-  };
-
-  // Standard button styles based on FeedbackScreen
-  const getButtonStyles = () => {
-    return {
-      minWidth: 'min(3.5rem, 6vw)',
-      minHeight: 'min(3.5rem, 6vh)'
-    };
-  };
-
-  // Standard animation - uses FeedbackScreen animation
-  const getInitialAnimation = () => {
-    return { y: '100%', opacity: 0 };
-  };
-
-  const handleClick = (e) => {
-    // Solo manejar click si no fue iniciado por touch
-    if (!touchStarted) {
-      e.stopPropagation();
-      console.log('Globe icon clicked, opening language selector');
-      setShowLanguageSelector(true);
-    }
-    // Reset touch flag después de un delay corto
-    setTimeout(() => setTouchStarted(false), 100);
-  };
-
-  const handleTouchStart = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setTouchStarted(true);
-    setIsPressed(true);
-    console.log('Globe icon touched (touchstart), opening language selector', {
-      touches: e.touches.length,
-      type: e.type,
-      target: e.target.tagName
-    });
+  const handleAction = (eventType) => {
+    console.log(`🌍 Language selector triggered by: ${eventType}`);
     setShowLanguageSelector(true);
-  };
-
-  const handleTouchEnd = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsPressed(false);
-    console.log('Globe icon touch ended (touchend)', {
-      changedTouches: e.changedTouches.length,
-      type: e.type
-    });
-  };
-
-  const handlePointerDown = (e) => {
-    e.stopPropagation();
-    setIsPressed(true);
-    console.log('Globe icon pointer down, opening language selector', {
-      pointerType: e.pointerType,
-      type: e.type,
-      isPrimary: e.isPrimary
-    });
-    setShowLanguageSelector(true);
-  };
-
-  const handlePointerUp = (e) => {
-    e.stopPropagation();
-    setIsPressed(false);
-  };
-
-  const handleMouseDown = (e) => {
-    setIsPressed(true);
-    console.log('Globe icon mouse down detected', {
-      button: e.button,
-      type: e.type,
-      which: e.which
-    });
-  };
-
-  const handleMouseUp = (e) => {
-    setIsPressed(false);
   };
 
   return (
     <motion.div
-      initial={getInitialAnimation()}
+      initial={{ y: '100%', opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay }}
       className={className}
-      style={getContainerStyles()}
+      style={{
+        flexShrink: 0,
+        marginBottom: 'min(6rem, 9.5vh)',
+        marginLeft: 'min(5.125rem, 8vw)',
+        ...style
+      }}
     >
       <motion.button
-        onClick={handleClick}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
+        onClick={() => handleAction('CLICK')}
+        onTouchStart={(e) => {
+          e.preventDefault();
+          handleAction('TOUCH');
+        }}
+        onPointerDown={() => handleAction('POINTER')}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="transition-all cursor-pointer"
+        className="language-selector-icon-button"
         style={{
-          ...getButtonStyles(),
-          transform: isPressed ? 'scale(0.95)' : 'scale(1)',
-          transition: 'transform 0.1s ease',
-          touchAction: 'manipulation',
-          userSelect: 'none',
-          WebkitTouchCallout: 'none',
-          WebkitUserSelect: 'none',
-          MozUserSelect: 'none',
-          msUserSelect: 'none',
+          minWidth: '60px',
+          minHeight: '60px',
           background: 'none',
-          border: 'none',
-          padding: 'min(8px, 1.5vw)',
+          border: '2px solid red', // DEBUG
+          cursor: 'pointer',
+          touchAction: 'manipulation',
+          padding: '8px',
           borderRadius: '50%',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          position: 'relative',
-          zIndex: 80
+          justifyContent: 'center'
         }}
       >
-        <motion.img
+        <img
           src="/images/OE_Sprache_64 1.svg"
           alt="Language selector"
           style={{
-            ...baseIconStyles,
-            touchAction: 'none',
-            pointerEvents: 'none',
-            userSelect: 'none',
-            WebkitUserSelect: 'none',
-            WebkitTouchCallout: 'none',
-            draggable: false
+            width: 'min(2.7rem, 4.86vw, 6.075vh)',
+            height: 'min(2.7rem, 4.86vw, 6.075vh)',
+            pointerEvents: 'none'
           }}
-          animate={{ rotate: [0, 10, -10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-          draggable={false}
         />
       </motion.button>
     </motion.div>
