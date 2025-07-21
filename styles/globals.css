@@ -166,7 +166,15 @@
   --feedback-arrow-width: min(5.9565vw, 4.9409175rem, 7.942vh); 
   --feedback-arrow-height: min(5.9565vh, 5.40552375rem, 7.942vh);  
   --feedback-arrow-min-width: min(3.0914235rem, 4.96375vw);  
-  --feedback-arrow-min-height: min(3.0914235rem, 4.96375vh); 
+  --feedback-arrow-min-height: min(3.0914235rem, 4.96375vh);
+
+  /* Results Screen Title - 14.75% smaller than main title (additional 5% reduction) */
+  --results-title-font-size: clamp(3.10365rem, 4.9658vw, 6.2073rem); /* 5% smaller than previous size */
+  --results-title-line-height: clamp(3.7244rem, 5.9590vw, 7.4488rem); /* 5% smaller than previous line height */
+
+  /* Smaller Subtitles - 10% smaller than normal subtitles */
+  --subtitle-small-font-size: clamp(1.782rem, 3.2076vw, 3.564rem); /* 10% smaller than --typography-subline-font-size */
+  --subtitle-small-line-height: clamp(2.1384rem, 3.84912vw, 4.2768rem); /* 10% smaller than --typography-subline-line-height */
 }
 
 /* Responsive breakpoints for better mobile support */
@@ -177,6 +185,10 @@
     --typography-subline-font-size: clamp(1.25rem, 6vw, 2rem);
     --typography-antworten-buttons-font-size: clamp(0.9rem, 3.6vw, 1.35rem);
     --typography-antwort-fliess-font-size: clamp(0.7875rem, 3.15vw, 1.125rem);
+    /* Results title 14.75% smaller than main title */
+    --results-title-font-size: clamp(1.71rem, 6.84vw, 2.565rem); /* 5% smaller than previous mobile size */
+    /* Smaller subtitles - 10% smaller */
+    --subtitle-small-font-size: clamp(1.125rem, 5.4vw, 1.8rem); /* 10% smaller than mobile subtitle */
   }
 }
 
@@ -196,6 +208,10 @@
     --typography-subline-font-size: clamp(1rem, 3vh, 1.75rem);
     --spacing-lg: clamp(0.5rem, 2vh, 1rem);
     --spacing-xl: clamp(0.75rem, 3vh, 1.5rem);
+    /* Results title 14.75% smaller than main title */
+    --results-title-font-size: clamp(1.2825rem, 3.42vh, 2.1375rem); /* 5% smaller than previous landscape size */
+    /* Smaller subtitles - 10% smaller */
+    --subtitle-small-font-size: clamp(0.9rem, 2.7vh, 1.575rem); /* 10% smaller than landscape subtitle */
   }
 }
 
@@ -282,6 +298,16 @@
     color: var(--color-text-primary);
   }
 
+  .title-results {
+    font-family: var(--typography-head-font-family);
+    font-size: var(--results-title-font-size);
+    line-height: var(--results-title-line-height);
+    font-weight: var(--typography-head-font-weight);
+    font-style: var(--typography-head-font-style);
+    text-align: center;
+    color: var(--color-text-primary);
+  }
+
   .title-question {
     @apply typography-fragen;
     color: var(--color-text-primary);
@@ -289,6 +315,16 @@
 
   .subtitle-main {
     @apply typography-subline;
+    color: var(--color-blassgruen);
+  }
+
+  .subtitle-small {
+    font-family: var(--typography-subline-font-family);
+    font-size: var(--subtitle-small-font-size);
+    line-height: var(--subtitle-small-line-height);
+    font-weight: var(--typography-subline-font-weight);
+    font-style: var(--typography-subline-font-style);
+    text-align: center;
     color: var(--color-blassgruen);
   }
 

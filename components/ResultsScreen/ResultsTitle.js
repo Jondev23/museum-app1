@@ -10,7 +10,7 @@ const ResultsTitle = ({ title, showContent }) => {
         ...ANIMATION_CONFIG.CONTENT_REVEAL.TRANSITION, 
         delay: ANIMATION_CONFIG.DELAYS.TITLE 
       }}
-      className="title-main"
+      className="title-results"
       style={{ marginBottom: 'var(--spacing-lg)' }}
     >
       {title}

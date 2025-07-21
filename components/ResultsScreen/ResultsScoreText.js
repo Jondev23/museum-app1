@@ -10,7 +10,7 @@ const ResultsScoreText = ({ scoreText, showContent }) => {
         ...ANIMATION_CONFIG.CONTENT_REVEAL.TRANSITION, 
         delay: ANIMATION_CONFIG.DELAYS.SUBTITLE 
       }}
-      className="subtitle-main"
+      className="subtitle-small"
       style={{ marginBottom: 'var(--spacing-xl)' }}
     >
       {scoreText}
