@@ -15,11 +15,11 @@ function createWindow() {
   }
 
   mainWindow = new BrowserWindow({
-    width: isDev ? 1200 : 1920,
-    height: isDev ? 800 : 1080,
-    fullscreen: !isDev, // Fullscreen in production, windowed in dev
-    kiosk: !isDev, // Kiosk mode in production
-    frame: isDev, // Show frame in development
+    width: 1920, // Cambiado de isDev ? 1200 : 1920
+    height: 1080, // Cambiado de isDev ? 800 : 1080
+    fullscreen: !isDev, // Fullscreen en producción, ventana en dev
+    kiosk: !isDev, // Kiosk en producción
+    frame: isDev, // Muestra el marco en desarrollo
     show: false,
     webPreferences: {
       nodeIntegration: false,
