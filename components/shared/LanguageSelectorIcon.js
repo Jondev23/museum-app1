@@ -42,14 +42,50 @@ const LanguageSelectorIcon = ({
   };
 
   const handleClick = () => {
-    console.log('Globe icon clicked, opening language selector');
+    console.log('Globe icon clicked (click event), opening language selector');
     setShowLanguageSelector(true);
   };
 
   const handleTouchStart = (e) => {
     e.preventDefault();
-    console.log('Globe icon touched, opening language selector');
+    e.stopPropagation();
+    console.log('Globe icon touched (touchstart), opening language selector', {
+      touches: e.touches.length,
+      type: e.type,
+      target: e.target.tagName
+    });
     setShowLanguageSelector(true);
+  };
+
+  const handleTouchEnd = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Globe icon touch ended (touchend), opening language selector', {
+      changedTouches: e.changedTouches.length,
+      type: e.type
+    });
+    // No ejecutar aquí para evitar doble ejecución
+  };
+
+  const handlePointerDown = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Globe icon pointer down, opening language selector', {
+      pointerType: e.pointerType,
+      type: e.type,
+      isPrimary: e.isPrimary
+    });
+    if (e.pointerType === 'touch') {
+      setShowLanguageSelector(true);
+    }
+  };
+
+  const handleMouseDown = (e) => {
+    console.log('Globe icon mouse down detected', {
+      button: e.button,
+      type: e.type,
+      which: e.which
+    });
   };
 
   return (
@@ -63,15 +99,25 @@ const LanguageSelectorIcon = ({
       <motion.button
         onClick={handleClick}
         onTouchStart={handleTouchStart}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
+        onTouchEnd={handleTouchEnd}
+        onPointerDown={handlePointerDown}
+        onMouseDown={handleMouseDown}
         className="transition-all cursor-pointer"
         style={{
           ...getButtonStyles(),
           touchAction: 'manipulation',
           userSelect: 'none',
           WebkitTouchCallout: 'none',
-          WebkitUserSelect: 'none'
+          WebkitUserSelect: 'none',
+          MsTouchAction: 'manipulation', // Específico para IE/Edge
+          background: 'transparent',
+          border: 'none',
+          padding: '12px', // Área táctil aún más grande
+          margin: '-12px', // Compensar el padding
+          borderRadius: '50%',
+          minWidth: '60px',
+          minHeight: '60px',
+          outline: 'none'
         }}
       >
         <motion.img
@@ -79,11 +125,16 @@ const LanguageSelectorIcon = ({
           alt="Language selector"
           style={{
             ...baseIconStyles,
-            touchAction: 'manipulation',
-            pointerEvents: 'none'
+            touchAction: 'none',
+            pointerEvents: 'none',
+            userSelect: 'none',
+            WebkitUserSelect: 'none',
+            WebkitTouchCallout: 'none',
+            draggable: false
           }}
           animate={{ rotate: [0, 10, -10, 0] }}
           transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+          draggable={false}
         />
       </motion.button>
     </motion.div>
