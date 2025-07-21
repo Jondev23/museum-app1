@@ -35,6 +35,11 @@ const AdminPanel = () => {
     }
   };
 
+  const handleCornerTouch = (e, corner) => {
+    e.preventDefault();
+    handleCornerClick(corner);
+  };
+
   const handlePasswordSubmit = (e) => {
     e.preventDefault();
     if (password === ADMIN_PASSWORD) {
@@ -43,6 +48,11 @@ const AdminPanel = () => {
       setPassword('');
       alert('Passwort inkorrekt');
     }
+  };
+
+  const handlePasswordTouchSubmit = (e) => {
+    e.preventDefault();
+    handlePasswordSubmit(e);
   };
 
   const handleClose = () => {
@@ -71,18 +81,46 @@ const AdminPanel = () => {
       <div 
         className="admin-corner-trigger top-0 left-0"
         onClick={() => handleCornerClick('tl')}
+        onTouchStart={(e) => handleCornerTouch(e, 'tl')}
+        style={{
+          touchAction: 'manipulation',
+          userSelect: 'none',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none'
+        }}
       />
       <div 
         className="admin-corner-trigger top-0 right-0"
         onClick={() => handleCornerClick('tr')}
+        onTouchStart={(e) => handleCornerTouch(e, 'tr')}
+        style={{
+          touchAction: 'manipulation',
+          userSelect: 'none',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none'
+        }}
       />
       <div 
         className="admin-corner-trigger bottom-0 right-0"
         onClick={() => handleCornerClick('br')}
+        onTouchStart={(e) => handleCornerTouch(e, 'br')}
+        style={{
+          touchAction: 'manipulation',
+          userSelect: 'none',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none'
+        }}
       />
       <div 
         className="admin-corner-trigger bottom-0 left-0"
         onClick={() => handleCornerClick('bl')}
+        onTouchStart={(e) => handleCornerTouch(e, 'bl')}
+        style={{
+          touchAction: 'manipulation',
+          userSelect: 'none',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none'
+        }}
       />
 
       {/* Admin Panel */}
@@ -126,13 +164,27 @@ const AdminPanel = () => {
                     <button
                       type="submit"
                       className="flex-1 admin-button-primary"
+                      onTouchStart={handlePasswordTouchSubmit}
+                      style={{
+                        touchAction: 'manipulation',
+                        userSelect: 'none',
+                        WebkitTouchCallout: 'none',
+                        WebkitUserSelect: 'none'
+                      }}
                     >
                       Anmelden
                     </button>
                     <button
                       type="button"
                       onClick={handleClose}
+                      onTouchStart={(e) => { e.preventDefault(); handleClose(); }}
                       className="flex-1 admin-button-secondary"
+                      style={{
+                        touchAction: 'manipulation',
+                        userSelect: 'none',
+                        WebkitTouchCallout: 'none',
+                        WebkitUserSelect: 'none'
+                      }}
                     >
                       Abbrechen
                     </button>
@@ -143,15 +195,29 @@ const AdminPanel = () => {
                   {/* Hauptbuttons */}
                   <button
                     onClick={() => setShowKioskSelector(true)}
+                    onTouchStart={(e) => { e.preventDefault(); setShowKioskSelector(true); }}
                     className="w-full admin-button-primary"
+                    style={{
+                      touchAction: 'manipulation',
+                      userSelect: 'none',
+                      WebkitTouchCallout: 'none',
+                      WebkitUserSelect: 'none'
+                    }}
                   >
                     Kiosk auswählen
                   </button>
                   
                   <button
                     onClick={handleClose}
+                    onTouchStart={(e) => { e.preventDefault(); handleClose(); }}
                     className="w-full admin-button-secondary"
-                    style={{ marginBottom: 'min(1.5rem, 3vw)' }}
+                    style={{ 
+                      marginBottom: 'min(1.5rem, 3vw)',
+                      touchAction: 'manipulation',
+                      userSelect: 'none',
+                      WebkitTouchCallout: 'none',
+                      WebkitUserSelect: 'none'
+                    }}
                   >
                     Panel schließen
                   </button>
@@ -162,7 +228,14 @@ const AdminPanel = () => {
                   {/* Separater Exit-Button */}
                   <button
                     onClick={handleExitKiosk}
+                    onTouchStart={(e) => { e.preventDefault(); handleExitKiosk(); }}
                     className="w-full admin-button-danger"
+                    style={{
+                      touchAction: 'manipulation',
+                      userSelect: 'none',
+                      WebkitTouchCallout: 'none',
+                      WebkitUserSelect: 'none'
+                    }}
                   >
                     Kiosk-Modus beenden
                   </button>

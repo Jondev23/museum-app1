@@ -554,9 +554,26 @@
     position: fixed;
     z-index: 50;
     opacity: 0;
-    width: var(--spacing-xl);
-    height: var(--spacing-xl);
+    width: max(var(--spacing-xl), 60px); /* Minimum 60px for better touch targets */
+    height: max(var(--spacing-xl), 60px); /* Minimum 60px for better touch targets */
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
+
+  /* Debug mode - uncomment to make corner triggers visible during testing */
+  /*
+  .admin-corner-trigger {
+    opacity: 0.1 !important;
+    background-color: red !important;
+    border: 2px solid yellow !important;
+  }
+  */
 
   /* Language Selector Styles */
   .language-overlay {

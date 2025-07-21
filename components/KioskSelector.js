@@ -13,6 +13,16 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
     if (onKioskSelected) onKioskSelected(id);
   };
 
+  const handleTouchSelect = (e, id) => {
+    e.preventDefault();
+    handleSelect(id);
+  };
+
+  const handleTouchBack = (e) => {
+    e.preventDefault();
+    onBack();
+  };
+
   return (
     <div className="admin-overlay" style={{ padding: 'min(2rem, 4vw)' }}>
       <motion.div
@@ -35,7 +45,14 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
             <button
               key={kiosk.id}
               onClick={() => handleSelect(kiosk.id)}
+              onTouchStart={(e) => handleTouchSelect(e, kiosk.id)}
               className={`kiosk-item ${kioskId === kiosk.id ? 'kiosk-item-selected' : 'kiosk-item-unselected'}`}
+              style={{
+                touchAction: 'manipulation',
+                userSelect: 'none',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none'
+              }}
             >
               <div>{kiosk.name}</div>
               <div className="kiosk-item-subtitle">
@@ -46,7 +63,14 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
         </div>
         <button
           onClick={onBack}
+          onTouchStart={handleTouchBack}
           className="w-full admin-button-secondary"
+          style={{
+            touchAction: 'manipulation',
+            userSelect: 'none',
+            WebkitTouchCallout: 'none',
+            WebkitUserSelect: 'none'
+          }}
         >
           Zurück
         </button>
