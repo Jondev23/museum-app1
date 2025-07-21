@@ -35,7 +35,6 @@ const StandardFooter = ({
       <LanguageSelectorIcon 
         variant="standard" 
         delay={0.6}
-        className="language-selector-icon-container"
         style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', left: 'min(1.25rem, 2vw)' } : {}}
       />
 

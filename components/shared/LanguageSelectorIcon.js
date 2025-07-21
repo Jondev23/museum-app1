@@ -15,18 +15,31 @@ const LanguageSelectorIcon = ({
     setShowLanguageSelector(true);
   };
 
+  // Detectar si hay estilos de posicionamiento personalizados
+  const hasCustomPosition = style.position || style.left || style.right || style.top || style.bottom;
+
+  // Estilos base del contenedor
+  const containerStyle = {
+    flexShrink: 0,
+    position: 'relative',
+    zIndex: 75,
+    pointerEvents: 'auto',
+    ...style
+  };
+
+  // Solo aplicar márgenes por defecto si no hay posicionamiento personalizado
+  if (!hasCustomPosition) {
+    containerStyle.marginBottom = 'min(6rem, 9.5vh)';
+    containerStyle.marginLeft = 'min(5.125rem, 8vw)';
+  }
+
   return (
     <motion.div
       initial={{ y: '100%', opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay }}
       className={className}
-      style={{
-        flexShrink: 0,
-        marginBottom: 'min(6rem, 9.5vh)',
-        marginLeft: 'min(5.125rem, 8vw)',
-        ...style
-      }}
+      style={containerStyle}
     >
       <motion.button
         onClick={() => handleAction('CLICK')}
@@ -37,19 +50,25 @@ const LanguageSelectorIcon = ({
         onPointerDown={() => handleAction('POINTER')}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="language-selector-icon-button"
+        className="transition-all cursor-pointer"
         style={{
           minWidth: '60px',
           minHeight: '60px',
           background: 'none',
-          border: '2px solid red', // DEBUG
+          border: 'none',
           cursor: 'pointer',
           touchAction: 'manipulation',
           padding: '8px',
           borderRadius: '50%',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          position: 'relative',
+          zIndex: 80,
+          pointerEvents: 'auto',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+          userSelect: 'none'
         }}
       >
         <img
