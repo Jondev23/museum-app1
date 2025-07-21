@@ -637,6 +637,9 @@
     flex-shrink: 0;
     margin-bottom: var(--language-selector-margin-bottom);
     margin-left: var(--language-selector-margin-left);
+    position: relative !important;
+    z-index: 75 !important;
+    pointer-events: auto !important;
   }
 
   .language-selector-icon-button {
@@ -644,11 +647,45 @@
     min-height: var(--language-selector-button-size);
     transition: all 0.3s ease;
     cursor: pointer;
+    /* Optimización táctil */
+    min-width: 60px !important;
+    min-height: 60px !important;
+    touch-action: manipulation !important;
+    -ms-touch-action: manipulation !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    position: relative !important;
+    z-index: 80 !important;
+    pointer-events: auto !important;
+    /* Mejorar feedback táctil */
+    border-radius: 50% !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: min(8px, 1.5vw) !important;
+    transition: transform 0.1s ease, opacity 0.1s ease !important;
+  }
+
+  .language-selector-icon-button:hover {
+    opacity: 0.8 !important;
+  }
+
+  .language-selector-icon-button:active {
+    transform: scale(0.95) !important;
+    opacity: 0.7 !important;
   }
 
   .language-selector-icon-image {
     width: var(--language-selector-icon-size);
     height: var(--language-selector-icon-size);
     display: block;
+  }
+
+  /* Asegurar que el selector de idiomas esté siempre arriba */
+  .language-selector-icon-container * {
+    pointer-events: auto !important;
   }
 }
