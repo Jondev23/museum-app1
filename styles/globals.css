@@ -708,6 +708,24 @@
     position: relative !important;
     z-index: 80 !important;
     pointer-events: auto !important;
+    /* Enhanced touch targets */
+    border-radius: 50% !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: min(8px, 1.5vw) !important;
+    /* Improve touch feedback */
+    transition: transform 0.1s ease, opacity 0.1s ease !important;
+  }
+
+  .language-selector-icon-container button:hover,
+  .language-selector-icon-button:hover {
+    opacity: 0.8 !important;
+  }
+
+  .language-selector-icon-container button:active,
+  .language-selector-icon-button:active {
+    transform: scale(0.95) !important;
+    opacity: 0.7 !important;
   }
 
   /* Ensure language selector is always on top */

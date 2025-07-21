@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 
 const LanguageSelectorIcon = ({ 
@@ -9,6 +10,8 @@ const LanguageSelectorIcon = ({
   opacity = 0.8
 }) => {
   const { setShowLanguageSelector } = useApp();
+  const [isPressed, setIsPressed] = useState(false);
+  const [touchStarted, setTouchStarted] = useState(false);
 
   // Consistent base styles for all variants
   const baseIconStyles = {
@@ -43,14 +46,23 @@ const LanguageSelectorIcon = ({
     return { y: '100%', opacity: 0 };
   };
 
-  const handleClick = () => {
-    console.log('Globe icon clicked (click event), opening language selector');
-    setShowLanguageSelector(true);
+  const handleClick = (e) => {
+    // Only handle click if it wasn't initiated by touch
+    if (!touchStarted) {
+      e.stopPropagation();
+      console.log('Globe icon clicked (click event), opening language selector');
+      setShowLanguageSelector(true);
+    }
+    // Reset touch flag after a short delay
+    setTimeout(() => setTouchStarted(false), 100);
   };
 
   const handleTouchStart = (e) => {
-    // Don't use preventDefault on passive touch events
+    // Prevent default to avoid double-triggering and scroll behavior
+    e.preventDefault();
     e.stopPropagation();
+    setTouchStarted(true);
+    setIsPressed(true);
     console.log('Globe icon touched (touchstart), opening language selector', {
       touches: e.touches.length,
       type: e.type,
@@ -60,18 +72,19 @@ const LanguageSelectorIcon = ({
   };
 
   const handleTouchEnd = (e) => {
-    // Don't use preventDefault on passive touch events
+    // Prevent default to avoid unwanted clicks
+    e.preventDefault();
     e.stopPropagation();
-    console.log('Globe icon touch ended (touchend), opening language selector', {
+    setIsPressed(false);
+    console.log('Globe icon touch ended (touchend)', {
       changedTouches: e.changedTouches.length,
       type: e.type
     });
-    // No ejecutar aquí para evitar doble ejecución
   };
 
   const handlePointerDown = (e) => {
-    // Don't use preventDefault on passive touch events
     e.stopPropagation();
+    setIsPressed(true);
     console.log('🌍 Globe icon pointer down, opening language selector', {
       pointerType: e.pointerType,
       type: e.type,
@@ -80,12 +93,22 @@ const LanguageSelectorIcon = ({
     setShowLanguageSelector(true);
   };
 
+  const handlePointerUp = (e) => {
+    e.stopPropagation();
+    setIsPressed(false);
+  };
+
   const handleMouseDown = (e) => {
+    setIsPressed(true);
     console.log('Globe icon mouse down detected', {
       button: e.button,
       type: e.type,
       which: e.which
     });
+  };
+
+  const handleMouseUp = (e) => {
+    setIsPressed(false);
   };
 
   return (
@@ -105,8 +128,13 @@ const LanguageSelectorIcon = ({
         className="language-selector-icon-container"
       >
         <motion.button
+          onClick={handleClick}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
           onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
           onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
           style={{
             background: 'none',
             border: 'none',
@@ -124,6 +152,9 @@ const LanguageSelectorIcon = ({
             minHeight: '60px',
             touchAction: 'manipulation',
             WebkitTouchCallout: 'none',
+            WebkitUserSelect: 'none',
+            MozUserSelect: 'none',
+            msUserSelect: 'none',
             userSelect: 'none',
           }}
           className="language-selector-icon-button"
