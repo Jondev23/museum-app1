@@ -7,26 +7,22 @@ const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextSty
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: FEEDBACK_CONFIG.ANIMATION_DURATIONS.ANSWER }}
-      className="flex justify-center"
-      style={{ width: '100%' }}
+      className="flex justify-center w-full"
     >
       <div
-        className={`${FEEDBACK_CONFIG.SIZES.BUTTON_BORDER_RADIUS} flex items-center justify-center`}
+        className="inline-flex items-center justify-center gap-[min(0.5rem,1vw)] relative"
         style={{
           ...answerButtonStyle,
           backgroundColor: 'var(--color-neutral-light)',
+          touchAction: 'manipulation',
+          userSelect: 'none',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none'
         }}
       >
         <span
-          className="text-answer"
-          style={{
-            maxWidth: answerTextStyle.maxWidth,
-            overflowWrap: answerTextStyle.overflowWrap,
-            wordBreak: answerTextStyle.wordBreak,
-            hyphens: answerTextStyle.hyphens,
-            textAlign: answerTextStyle.textAlign,
-            whiteSpace: answerTextStyle.whiteSpace
-          }}
+          className="relative w-full text-center break-words hyphens-auto max-w-full"
+          style={answerTextStyle}
         >
           {question.answers[userAnswer]}
         </span>

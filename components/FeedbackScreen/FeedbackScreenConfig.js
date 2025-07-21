@@ -80,30 +80,31 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const answerButtonStyle = useMemo(() => ({
-    
-    width: '68%', 
-    height: '10vh', 
-    // Valores mínimos para compatibilidad
-    minWidth: 'min(40.74rem, 81.48vw)',
-    minHeight: 'min(3.0174375rem, 4.2244125vh)',
-    maxWidth: '100%',
-    
-    flexGrow: 1,
-    
-    padding: 'min(1rem, 2vw)',
-    
+    // Usar el mismo sistema adaptativo que QuestionScreen
+    minWidth: 'min(42.3rem, 63vw, 80vh)',
+    minHeight: 'min(4.62rem, 6.93vh, 8vw)',
+    maxWidth: '90vw',
+    width: 'auto', // Permitir que se ajuste al contenido
+    height: 'auto', // Permitir que crezca con el contenido
+    padding: 'min(1rem, 1.5vh, 2vw) min(4rem, 5vw, 6vh)',
+    borderRadius: 'min(4.62rem, 6.93vh, 8vw)',
+    border: 'min(0.1125rem, 0.225vw, 0.3vh) solid var(--color-neutral-light)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    overflow: 'hidden'
+    overflow: 'visible'
   }), []);
 
   const answerTextStyle = useMemo(() => ({
     color: FEEDBACK_CONFIG.COLORS.ANSWER_TEXT,
-    // Rango más amplio para respuestas largas
-    fontSize: 'clamp(1rem, 3.96vw, 1.98rem)',
-    lineHeight: 'clamp(1.3rem, 4.95vw, 2.475rem)',
-    maxWidth: '95%',
+    // Usar la misma tipografía que QuestionScreen
+    fontSize: 'var(--typography-antworten-buttons-font-size)',
+    lineHeight: 'var(--typography-antworten-buttons-line-height)',
+    fontWeight: 'var(--typography-antworten-buttons-font-weight)',
+    fontFamily: 'var(--typography-antworten-buttons-font-family)',
+    letterSpacing: 'var(--typography-antworten-buttons-letter-spacing)',
+    width: '100%',
+    maxWidth: '100%',
     overflowWrap: 'break-word',
     wordBreak: 'break-word',
     hyphens: 'auto',
