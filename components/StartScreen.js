@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import StandardFooter from './shared/StandardFooter';
+import LanguageSelectorIcon from './shared/LanguageSelectorIcon';
 import { useStartScreen } from '../hooks/useStartScreen';
 import { useStartScreenStyles, START_SCREEN_CONFIG } from './StartScreen/StartScreenConfig';
 import StartScreenTitle from './StartScreen/StartScreenTitle';
@@ -90,20 +91,29 @@ const StartScreen = () => {
           </div>
         </div>
 
-        {/* Standard Footer with Language Selector and Touch Indicator */}
-        <StandardFooter>
-          <div className="absolute left-1/2 transform -translate-x-1/2 flex justify-center items-center" 
-               style={{ 
-                 top: 'clamp(-80px, -10vh, -60px)'
-               }}>
-            <StartScreenTouchIndicator
-              showContent={showContent}
-              handleSwipeLeft={handleSwipeLeft}
-              touchIndicatorContainerStyle={touchIndicatorContainerStyle}
-              touchIndicatorStyle={touchIndicatorStyle}
-            />
-          </div>
-        </StandardFooter>
+        {/* Language Selector Icon */}
+        <LanguageSelectorIcon 
+          variant="standard" 
+          delay={0.6}
+          className="language-selector-icon-container"
+        />
+
+        {/* Standard Footer */}
+        <StandardFooter />
+
+        {/* Touch Indicator - positioned relative to footer */}
+        <div className="fixed left-1/2 transform -translate-x-1/2 flex justify-center items-center" 
+             style={{ 
+               bottom: 'calc(min(4.375rem, 7vh) + clamp(10px, 2vh, 20px))',
+               zIndex: 70
+             }}>
+          <StartScreenTouchIndicator
+            showContent={showContent}
+            handleSwipeLeft={handleSwipeLeft}
+            touchIndicatorContainerStyle={touchIndicatorContainerStyle}
+            touchIndicatorStyle={touchIndicatorStyle}
+          />
+        </div>
       </div>
     </motion.div>
   );

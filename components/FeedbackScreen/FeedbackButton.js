@@ -11,6 +11,13 @@ const FeedbackButton = ({
 }) => {
   const handleTouchStart = (e) => {
     e.preventDefault();
+    console.log('🔘 Feedback button touched!', e.type);
+    nextQuestion();
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log('🔘 Feedback button clicked!', e.type);
     nextQuestion();
   };
 
@@ -25,8 +32,9 @@ const FeedbackButton = ({
       style={buttonContainerStyle}
     >
       <motion.button
-        onClick={nextQuestion}
+        onClick={handleClick}
         onTouchStart={handleTouchStart}
+        onPointerDown={handleClick} // Add pointer events too
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className="flex items-center gap-2 transition-all cursor-pointer"
@@ -35,7 +43,14 @@ const FeedbackButton = ({
           touchAction: 'manipulation',
           userSelect: 'none',
           WebkitTouchCallout: 'none',
-          WebkitUserSelect: 'none'
+          WebkitUserSelect: 'none',
+          position: 'relative',
+          zIndex: 90,
+          pointerEvents: 'auto',
+          // Ensure full button area is clickable
+          padding: 'min(12px, 2vh) min(16px, 3vw)',
+          minHeight: '60px', // Minimum touch target
+          minWidth: '120px' // Minimum touch target
         }}
       >
         <span
@@ -54,7 +69,8 @@ const FeedbackButton = ({
           style={{
             ...arrowStyle,
             touchAction: 'manipulation',
-            pointerEvents: 'none'
+            pointerEvents: 'none',
+            transform: 'scale(0.9)' // 10% smaller
           }}
           animate={{ x: [0, 5, 0] }}
           transition={{ 

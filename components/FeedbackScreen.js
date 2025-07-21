@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import StandardFooter from './shared/StandardFooter';
+import LanguageSelectorIcon from './shared/LanguageSelectorIcon';
+import ProgressDots from './shared/ProgressDots';
 import { useFeedbackScreen } from '../hooks/useFeedbackScreen';
 import { useFeedbackScreenStyles, FEEDBACK_CONFIG } from './FeedbackScreen/FeedbackScreenConfig';
 import FeedbackTitle from './FeedbackScreen/FeedbackTitle';
@@ -89,25 +90,53 @@ const FeedbackScreen = () => {
           </motion.div>
         </div>
 
-        {/* Footer */}
-        <StandardFooter
-          showProgressDots={true}
-          totalQuestions={totalQuestions}
-          currentQuestionIndex={currentQuestionIndex}
-          answers={answers}
-          questions={questions}
-          progressDotsVariant="feedback"
-          alignProgressDots="inline"
-        >
+        {/* Language Selector Icon */}
+        <LanguageSelectorIcon 
+          variant="standard" 
+          delay={0.6}
+          className="" 
+          style={{
+            position: 'fixed',
+            bottom: '0.5rem',
+            left: 'min(5.125rem, 8vw)',
+            zIndex: 75,
+            margin: 0 
+          }}
+        />
+
+        {/* Progress Dots - centered */}
+        <div style={{
+          position: 'fixed',
+          bottom: 'min(2rem, 4vh)',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 70
+        }}>
+          <ProgressDots
+            totalQuestions={totalQuestions}
+            currentQuestionIndex={currentQuestionIndex}
+            answers={answers}
+            questions={questions}
+            variant="feedback"
+          />
+        </div>
+
+        {/* Feedback Button - bottom right */}
+        <div style={{
+          position: 'fixed',
+          bottom: '3vh',
+          right: '6rem',
+          zIndex: 80
+        }}>
           <FeedbackButton
             buttonText={buttonText}
             nextQuestion={nextQuestion}
-            buttonContainerStyle={buttonContainerStyle}
+            buttonContainerStyle={{}}
             buttonStyle={buttonStyle}
             buttonTextStyle={buttonTextStyle}
             arrowStyle={arrowStyle}
           />
-        </StandardFooter>
+        </div>
       </div>
     </motion.div>
   );

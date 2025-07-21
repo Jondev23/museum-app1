@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import LanguageSelectorIcon from './LanguageSelectorIcon';
 import ProgressDots from './ProgressDots';
 
 const StandardFooter = ({ 
@@ -28,20 +27,9 @@ const StandardFooter = ({
 
   return (
     <div 
-      className={`relative flex ${alignProgressDots === 'inline' && showProgressDots ? 'justify-center' : 'justify-between'} items-center ${className}`}
+      className={`relative flex justify-center items-center ${className}`}
       style={baseFooterStyles}
     >
-      {/* Language selector icon - always in same position */}
-      <LanguageSelectorIcon 
-        variant="standard" 
-        delay={0.6}
-        className="language-selector-icon-container"
-        style={{
-          ...((alignProgressDots === 'inline' && showProgressDots) ? { position: 'absolute', left: 'min(1.25rem, 2vw)' } : {}),
-          zIndex: 70 // Ensure it's above everything else
-        }}
-      />
-
       {/* Pagination dots - conditional with alignment options */}
       {showProgressDots ? (
         <ProgressDots
@@ -70,11 +58,6 @@ const StandardFooter = ({
       ) : (
         <div style={{ flex: 1 }} />
       )}
-
-      {/* Custom content (buttons, etc.) - positioned absolutely when progress dots are centered */}
-      <div style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', right: 0 } : {}}>
-        {children}
-      </div>
     </div>
   );
 };

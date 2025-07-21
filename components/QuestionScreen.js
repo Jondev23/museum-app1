@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import LanguageSelectorIcon from './shared/LanguageSelectorIcon';
 import { useQuestionScreen } from '../hooks/useQuestionScreen';
 import { useQuestionScreenStyles, QUESTION_CONFIG } from './QuestionScreen/QuestionScreenConfig';
 import QuestionTitle from './QuestionScreen/QuestionTitle';
@@ -56,6 +57,13 @@ const QuestionScreen = () => {
             </div>
           </div>
         </div>
+
+        {/* Language Selector Icon */}
+        <LanguageSelectorIcon 
+          variant="standard" 
+          delay={0.6}
+          className="language-selector-icon-container"
+        />
 
         {/* Footer section */}
         <QuestionFooter

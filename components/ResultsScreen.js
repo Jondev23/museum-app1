@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import StandardFooter from './shared/StandardFooter';
+import LanguageSelectorIcon from './shared/LanguageSelectorIcon';
 import useResultsScreen from '../hooks/useResultsScreen';
 import ResultsTitle from './ResultsScreen/ResultsTitle';
 import ResultsScoreText from './ResultsScreen/ResultsScoreText';
@@ -57,6 +58,13 @@ const ResultsScreen = () => {
         playAgainText={contentData.playAgainText}
         showContent={showContent}
         onPlayAgain={handlePlayAgain}
+      />
+
+      {/* Language Selector Icon */}
+      <LanguageSelectorIcon 
+        variant="standard" 
+        delay={0.6}
+        className="language-selector-icon-container"
       />
 
       <StandardFooter />
