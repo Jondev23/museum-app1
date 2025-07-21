@@ -47,7 +47,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 'min(2rem, 3vw)',
+    gap: 'min(1.5rem, 2.5vw)',
     paddingTop: 'min(3.24rem, 5.4vw)',
     paddingBottom: 'min(3rem, 5vw)',
     paddingLeft: 'min(1.5rem, 2.5vw)',
@@ -55,29 +55,28 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     width: '100%',
     maxWidth: 'min(75.6rem, 83.05vw)',
     height: '74vh',
-    justifyContent: 'space-evenly',
+    justifyContent: 'flex-start',
     overflow: 'hidden'
   }), []);
 
   const titleStyle = useMemo(() => ({
-    // Tamaño base del texto - se ajusta automáticamente si no cabe (21% más grande total)
-    fontSize: 'min(4.84vw, 3.025rem)',
-    lineHeight: 'min(6.05vw, 3.9325rem)',
+    // Tamaño base del texto con rango más amplio para ajuste automático
+    fontSize: 'clamp(1.2rem, 4.84vw, 3.025rem)',
+    lineHeight: 'clamp(1.4rem, 6.05vw, 3.9325rem)',
     // Dimensiones flexibles para adaptarse al contenido
-    width: '100%',
-    minHeight: '15vh', 
-    maxHeight: '25vh', 
+    width: '85%',
+    minHeight: 'auto', 
+    maxHeight: 'none', 
     maxWidth: '100%',
     overflowWrap: 'break-word',
-    overflow: 'visible', // Cambiar de hidden a visible
+    overflow: 'visible',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
-
-  
     wordBreak: 'break-word',
-    hyphens: 'auto'
+    hyphens: 'auto',
+    padding: '0.5rem'
   }), []);
 
   const answerButtonStyle = useMemo(() => ({
@@ -101,16 +100,14 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
 
   const answerTextStyle = useMemo(() => ({
     color: FEEDBACK_CONFIG.COLORS.ANSWER_TEXT,
-    
-    fontSize: 'min(3.96vw, 1.98rem, 4vh)',
-    lineHeight: 'min(4.95vw, 2.475rem, 5vh)',
-    maxWidth: '90%',
+    // Rango más amplio para respuestas largas
+    fontSize: 'clamp(1rem, 3.96vw, 1.98rem)',
+    lineHeight: 'clamp(1.3rem, 4.95vw, 2.475rem)',
+    maxWidth: '95%',
     overflowWrap: 'break-word',
-    
     wordBreak: 'break-word',
     hyphens: 'auto',
     textAlign: 'center',
-    
     whiteSpace: 'normal'
   }), []);
 
@@ -118,36 +115,34 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '0',
-    
+    gap: '0.5rem',
     width: '100%', 
-    height: '35vh', 
+    minHeight: '20vh',
+    maxHeight: 'none', 
     justifyContent: 'flex-start',
-    overflow: 'hidden'
+    overflow: 'visible',
+    flex: 1
   }), []);
 
   const messageStyle = useMemo(() => ({
-    
-    fontSize: 'min(3.8657vw, 1.9329rem)',
-    lineHeight: 'min(4.2523vw, 2.1262rem)',
+    // Rango más amplio para ajuste automático del texto
+    fontSize: 'clamp(0.8rem, 3.8657vw, 1.9329rem)',
+    lineHeight: 'clamp(1rem, 4.2523vw, 2.1262rem)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0',
-    
     wordBreak: 'break-word',
     hyphens: 'auto',
     textAlign: 'center'
   }), []);
 
   const explanationStyle = useMemo(() => ({
-    
-    fontSize: 'min(3.8254vw, 1.4345rem)',
-    lineHeight: 'min(4.7817vw, 2.3909rem)',
-    maxWidth: '70%',
+    // Rango más amplio para texto de explicación largo
+    fontSize: 'clamp(0.7rem, 3.8254vw, 1.4345rem)',
+    lineHeight: 'clamp(0.9rem, 4.7817vw, 2.3909rem)',
+    maxWidth: '85%',
     overflowWrap: 'break-word',
     margin: '0',
-    
-    
     wordBreak: 'break-word',
     hyphens: 'auto',
     textAlign: 'center'
