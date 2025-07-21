@@ -156,6 +156,17 @@
   --admin-font-size-title: min(1.375rem, 2.75vw);
   --color-admin-input-bg: #f8f9fa;
   --color-admin-success-bg: rgba(34, 197, 94, 0.1);
+
+  /* Feedback Button Sizing */
+  --feedback-button-width: min(14.0625rem, 22.5vw);
+  --feedback-button-height: min(3.75rem, 6.25vh);      
+  --feedback-button-gap: min(1.25rem, 2.5vw);             
+  --feedback-button-text-size: min(2.4688125vw, 1.318570313rem); 
+  --feedback-button-text-line-height: min(6.25vh, 3.75rem);
+  --feedback-arrow-width: min(5.9565vw, 4.9409175rem, 7.942vh); 
+  --feedback-arrow-height: min(5.9565vh, 5.40552375rem, 7.942vh);  
+  --feedback-arrow-min-width: min(3.0914235rem, 4.96375vw);  
+  --feedback-arrow-min-height: min(3.0914235rem, 4.96375vh); 
 }
 
 /* Responsive breakpoints for better mobile support */

@@ -29,6 +29,8 @@ const FeedbackButton = ({
         <span
           className="text-button"
           style={{
+            fontSize: buttonTextStyle.fontSize,
+            lineHeight: buttonTextStyle.lineHeight,
             textTransform: buttonTextStyle.textTransform
           }}
         >

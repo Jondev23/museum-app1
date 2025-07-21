@@ -160,28 +160,28 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const buttonStyle = useMemo(() => ({
-    minWidth: 'min(11.25rem, 18vw)',
-    minHeight: 'min(3rem, 5vh)',
+    minWidth: 'var(--feedback-button-width)',
+    minHeight: 'var(--feedback-button-height)',
     background: 'transparent',
     border: 'none',
     justifyContent: 'flex-start',
-    gap: 'min(1rem, 2vw)'
+    gap: 'var(--feedback-button-gap)'
   }), []);
 
   const buttonTextStyle = useMemo(() => ({
-    fontSize: 'min(2.31vw, 1.23375rem)',
-    lineHeight: 'min(5vh, 3rem)',
+    fontSize: 'var(--feedback-button-text-size)',
+    lineHeight: 'var(--feedback-button-text-line-height)',
     textTransform: 'uppercase'
   }), []);
 
   const arrowStyle = useMemo(() => ({
     
-    width: 'min(6vw, 4.977rem, 8vh)',
-    height: 'min(6vh, 5.445rem, 8vh)',
+    width: 'var(--feedback-arrow-width)',
+    height: 'var(--feedback-arrow-height)',
     flexShrink: 0,
     
-    minWidth: 'min(3.114rem, 5vw)',
-    minHeight: 'min(3.114rem, 5vh)',
+    minWidth: 'var(--feedback-arrow-min-width)',
+    minHeight: 'var(--feedback-arrow-min-height)',
     
     aspectRatio: '1/1',
     objectFit: 'contain'
