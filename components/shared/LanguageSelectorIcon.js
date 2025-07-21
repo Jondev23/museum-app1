@@ -23,12 +23,23 @@ const LanguageSelectorIcon = ({
 
   // Standard position based on FeedbackScreen layout
   const getContainerStyles = () => {
-    return {
+    // Only apply default positioning if no positioning styles are provided via props
+    const hasPositionOverrides = style.position || style.left || style.right || style.top || style.bottom;
+    
+    const baseStyles = {
       flexShrink: 0,
-      marginBottom: 'min(6rem, 9.5vh)',
-      marginLeft: 'min(5.125rem, 8vw)',
       position: 'relative', // Ensure stacking context
       zIndex: 75, // Above admin triggers and footer
+    };
+
+    // Only apply default margins if no position overrides are provided
+    if (!hasPositionOverrides) {
+      baseStyles.marginBottom = 'min(6rem, 9.5vh)';
+      baseStyles.marginLeft = 'min(5.125rem, 8vw)';
+    }
+
+    return {
+      ...baseStyles,
       ...style
     };
   };
