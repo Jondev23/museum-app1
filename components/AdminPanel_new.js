@@ -75,7 +75,7 @@ const AdminPanel = () => {
 
   return (
     <>
-      {/* Solo los triggers necesarios para la nueva secuencia */}
+      {/* Triggers para la nueva secuencia - solo esquinas necesarias */}
       {/* Esquina superior izquierda - para los 2 primeros toques */}
       <div 
         className="admin-corner-trigger top-0 left-0"
@@ -114,6 +114,8 @@ const AdminPanel = () => {
           WebkitUserSelect: 'none'
         }}
       />
+      
+      {/* Esquina inferior izquierda ELIMINADA - libre para el selector de idioma */}
 
       {/* Admin Panel Modal */}
       <AnimatePresence>
@@ -184,6 +186,7 @@ const AdminPanel = () => {
                 </form>
               ) : (
                 <div className="admin-form-group">
+                  {/* Hauptbuttons */}
                   <button
                     onClick={() => setShowKioskSelector(true)}
                     onTouchStart={(e) => { e.preventDefault(); setShowKioskSelector(true); }}
@@ -213,8 +216,10 @@ const AdminPanel = () => {
                     Panel schließen
                   </button>
 
+                  {/* Visueller Trenner im Apple-Stil */}
                   <div className="admin-separator" />
                   
+                  {/* Separater Exit-Button */}
                   <button
                     onClick={handleExitKiosk}
                     onTouchStart={(e) => { e.preventDefault(); handleExitKiosk(); }}
