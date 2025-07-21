@@ -97,8 +97,8 @@ const FeedbackScreen = () => {
           className="" 
           style={{
             position: 'fixed',
-            bottom: '0.5rem',
-            left: 'min(5.125rem, 8vw)',
+            bottom: '1rem', // 5% lower (was 1.5rem)
+            left: 'min(3rem, 6vw)', // 10% more to left (was min(5.125rem, 8vw))
             zIndex: 75,
             margin: 0 
           }}

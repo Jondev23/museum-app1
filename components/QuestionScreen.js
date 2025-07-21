@@ -62,7 +62,14 @@ const QuestionScreen = () => {
         <LanguageSelectorIcon 
           variant="standard" 
           delay={0.6}
-          className="language-selector-icon-container"
+          className=""
+          style={{
+            position: 'fixed',
+            bottom: '1rem', // 5% lower (was 1.5rem)
+            left: 'min(3rem, 6vw)', // 10% more to left (was min(5.125rem, 8vw))
+            zIndex: 75,
+            margin: 0 // Override CSS margins
+          }}
         />
 
         {/* Footer section */}
