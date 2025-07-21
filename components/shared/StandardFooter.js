@@ -22,7 +22,7 @@ const StandardFooter = ({
     height: 'min(4.375rem, 7vh)', 
     padding: 'min(0.625rem, 1vh) min(1.25rem, 2vw)',
     minHeight: 'min(3.125rem, 5vh)',
-    zIndex: 20,
+    zIndex: 60, // Increased to be above admin-corner-trigger (50)
     ...style
   };
 
@@ -36,7 +36,10 @@ const StandardFooter = ({
         variant="standard" 
         delay={0.6}
         className="language-selector-icon-container"
-        style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', left: 'min(1.25rem, 2vw)' } : {}}
+        style={{
+          ...((alignProgressDots === 'inline' && showProgressDots) ? { position: 'absolute', left: 'min(1.25rem, 2vw)' } : {}),
+          zIndex: 70 // Ensure it's above everything else
+        }}
       />
 
       {/* Pagination dots - conditional with alignment options */}

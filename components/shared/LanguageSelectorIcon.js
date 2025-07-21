@@ -24,6 +24,8 @@ const LanguageSelectorIcon = ({
       flexShrink: 0,
       marginBottom: 'min(6rem, 9.5vh)',
       marginLeft: 'min(5.125rem, 8vw)',
+      position: 'relative', // Ensure stacking context
+      zIndex: 75, // Above admin triggers and footer
       ...style
     };
   };
@@ -96,47 +98,59 @@ const LanguageSelectorIcon = ({
       className={className}
       style={getContainerStyles()}
     >
-      <motion.button
-        onClick={handleClick}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        onPointerDown={handlePointerDown}
-        onMouseDown={handleMouseDown}
-        className="transition-all cursor-pointer"
-        style={{
-          ...getButtonStyles(),
-          touchAction: 'manipulation',
-          userSelect: 'none',
-          WebkitTouchCallout: 'none',
-          WebkitUserSelect: 'none',
-          MsTouchAction: 'manipulation', // Específico para IE/Edge
-          background: 'transparent',
-          border: 'none',
-          padding: '12px', // Área táctil aún más grande
-          margin: '-12px', // Compensar el padding
-          borderRadius: '50%',
-          minWidth: '60px',
-          minHeight: '60px',
-          outline: 'none'
+      <div 
+        style={{ 
+          position: 'relative', 
+          zIndex: 75,
+          ...style 
         }}
+        className="language-selector-icon-container"
       >
-        <motion.img
-          src="/images/OE_Sprache_64 1.svg"
-          alt="Language selector"
+        <motion.button
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onPointerDown={handlePointerDown}
+          onMouseDown={handleMouseDown}
           style={{
-            ...baseIconStyles,
-            touchAction: 'none',
-            pointerEvents: 'none',
-            userSelect: 'none',
-            WebkitUserSelect: 'none',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 'min(8px, 1.5vw)',
+            borderRadius: '50%',
+            transition: 'transform 0.1s ease',
+            transform: isPressed ? 'scale(0.95)' : 'scale(1)',
+            position: 'relative',
+            zIndex: 80,
+            minWidth: '60px',
+            minHeight: '60px',
+            touchAction: 'manipulation',
             WebkitTouchCallout: 'none',
-            draggable: false
+            userSelect: 'none',
           }}
-          animate={{ rotate: [0, 10, -10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-          draggable={false}
-        />
-      </motion.button>
+          className="language-selector-icon-button"
+          aria-label="Select Language"
+        >
+          <motion.img
+            src="/images/OE_Sprache_64 1.svg"
+            alt="Language selector"
+            style={{
+              ...baseIconStyles,
+              touchAction: 'none',
+              pointerEvents: 'none',
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
+              WebkitTouchCallout: 'none',
+              draggable: false
+            }}
+            animate={{ rotate: [0, 10, -10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+            draggable={false}
+          />
+        </motion.button>
+      </div>
     </motion.div>
   );
 };

@@ -552,7 +552,7 @@
 
   .admin-corner-trigger {
     position: fixed;
-    z-index: 50;
+    z-index: 45;
     opacity: 0;
     width: max(var(--spacing-xl), 60px); /* Minimum 60px for better touch targets */
     height: max(var(--spacing-xl), 60px); /* Minimum 60px for better touch targets */
@@ -564,6 +564,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    pointer-events: auto;
   }
 
   /* Debug mode - uncomment to make corner triggers visible during testing */
@@ -686,7 +687,14 @@
   }
 
   /* Language Selector Icon Touch Optimization for Windows */
-  .language-selector-icon-container button {
+  .language-selector-icon-container {
+    position: relative !important;
+    z-index: 75 !important;
+    pointer-events: auto !important;
+  }
+
+  .language-selector-icon-container button,
+  .language-selector-icon-button {
     min-width: 60px !important;
     min-height: 60px !important;
     touch-action: manipulation !important;
@@ -697,5 +705,13 @@
     -moz-user-select: none !important;
     -ms-user-select: none !important;
     user-select: none !important;
+    position: relative !important;
+    z-index: 80 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Ensure language selector is always on top */
+  .language-selector-icon-container * {
+    pointer-events: auto !important;
   }
 }
