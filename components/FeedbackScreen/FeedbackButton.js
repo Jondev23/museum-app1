@@ -37,9 +37,10 @@ const FeedbackButton = ({
         onPointerDown={handleClick} // Add pointer events too
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="flex items-center gap-2 transition-all cursor-pointer"
+        className="flex items-center transition-all cursor-pointer"
         style={{
           ...buttonStyle,
+          gap: 'min(0.4rem, 1vw)', // 20% smaller gap - applied after buttonStyle
           touchAction: 'manipulation',
           userSelect: 'none',
           WebkitTouchCallout: 'none',
@@ -58,7 +59,8 @@ const FeedbackButton = ({
           style={{
             fontSize: buttonTextStyle.fontSize,
             lineHeight: buttonTextStyle.lineHeight,
-            textTransform: buttonTextStyle.textTransform
+            textTransform: buttonTextStyle.textTransform,
+            transform: 'scale(0.95)' // 5% smaller text
           }}
         >
           {buttonText}
@@ -69,10 +71,12 @@ const FeedbackButton = ({
           style={{
             ...arrowStyle,
             touchAction: 'manipulation',
-            pointerEvents: 'none',
-            transform: 'scale(0.9)' // 10% smaller
+            pointerEvents: 'none'
           }}
-          animate={{ x: [0, 5, 0] }}
+          animate={{ 
+            x: [0, 5, 0],
+            scale: 0.88825 // 10% larger than previous 0.8075
+          }}
           transition={{ 
             duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.ARROW_ANIMATION, 
             repeat: Infinity, 

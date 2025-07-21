@@ -97,8 +97,8 @@ const FeedbackScreen = () => {
           className="" 
           style={{
             position: 'fixed',
-            bottom: '1rem', // 5% lower (was 1.5rem)
-            left: 'min(3rem, 6vw)', // 10% more to left (was min(5.125rem, 8vw))
+            bottom: '1rem', 
+            left: 'min(3rem, 6vw)',
             zIndex: 75,
             margin: 0 
           }}
@@ -107,10 +107,12 @@ const FeedbackScreen = () => {
         {/* Progress Dots - centered */}
         <div style={{
           position: 'fixed',
-          bottom: 'min(2rem, 4vh)',
+          bottom: '1rem', 
           left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 70
+          transform: 'translateX(-50%) translateY(-230%)',
+          zIndex: 76, // Higher than language selector
+          margin: 0, 
+          padding: 0, 
         }}>
           <ProgressDots
             totalQuestions={totalQuestions}
@@ -118,15 +120,20 @@ const FeedbackScreen = () => {
             answers={answers}
             questions={questions}
             variant="feedback"
+            style={{
+              margin: 0,
+              padding: 0,
+              alignItems: 'center' 
+            }}
           />
         </div>
 
         {/* Feedback Button - bottom right */}
         <div style={{
           position: 'fixed',
-          bottom: '3vh',
+          bottom: '4vh',
           right: '6rem',
-          zIndex: 80
+          zIndex: 78
         }}>
           <FeedbackButton
             buttonText={buttonText}
