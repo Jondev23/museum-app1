@@ -8,7 +8,7 @@ const AnswerButtons = ({
   getButtonClassName
 }) => {
   const handleTouchStart = (e, index) => {
-    e.preventDefault();
+    // Don't use preventDefault on passive touch events
     if (selectedAnswer === null) {
       handleAnswerClick(index, QUESTION_CONFIG.ANSWER_DELAY);
     }

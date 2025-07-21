@@ -49,7 +49,7 @@ const LanguageSelectorIcon = ({
   };
 
   const handleTouchStart = (e) => {
-    e.preventDefault();
+    // Don't use preventDefault on passive touch events
     e.stopPropagation();
     console.log('Globe icon touched (touchstart), opening language selector', {
       touches: e.touches.length,
@@ -60,7 +60,7 @@ const LanguageSelectorIcon = ({
   };
 
   const handleTouchEnd = (e) => {
-    e.preventDefault();
+    // Don't use preventDefault on passive touch events
     e.stopPropagation();
     console.log('Globe icon touch ended (touchend), opening language selector', {
       changedTouches: e.changedTouches.length,
@@ -70,16 +70,14 @@ const LanguageSelectorIcon = ({
   };
 
   const handlePointerDown = (e) => {
-    e.preventDefault();
+    // Don't use preventDefault on passive touch events
     e.stopPropagation();
-    console.log('Globe icon pointer down, opening language selector', {
+    console.log('🌍 Globe icon pointer down, opening language selector', {
       pointerType: e.pointerType,
       type: e.type,
       isPrimary: e.isPrimary
     });
-    if (e.pointerType === 'touch') {
-      setShowLanguageSelector(true);
-    }
+    setShowLanguageSelector(true);
   };
 
   const handleMouseDown = (e) => {
@@ -107,8 +105,6 @@ const LanguageSelectorIcon = ({
         className="language-selector-icon-container"
       >
         <motion.button
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
           onPointerDown={handlePointerDown}
           onMouseDown={handleMouseDown}
           style={{

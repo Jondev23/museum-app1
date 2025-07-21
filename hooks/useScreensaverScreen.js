@@ -13,6 +13,11 @@ export const useScreensaverScreen = () => {
 
   // Handler para touch/click
   const handleTouch = useCallback(() => {
+    console.log('🔴 SCREENSAVER handleTouch called! This should only happen from ScreensaverScreen', {
+      currentLocation: window.location.href,
+      timestamp: new Date().toISOString(),
+      stackTrace: new Error().stack
+    });
     console.log('Screensaver touched, transitioning to start screen');
     startQuiz();
   }, [startQuiz]);

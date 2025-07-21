@@ -14,12 +14,12 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
   };
 
   const handleTouchSelect = (e, id) => {
-    e.preventDefault();
+    // Don't use preventDefault on passive touch events
     handleSelect(id);
   };
 
   const handleTouchBack = (e) => {
-    e.preventDefault();
+    // Don't use preventDefault on passive touch events
     onBack();
   };
 
