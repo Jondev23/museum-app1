@@ -58,26 +58,21 @@ const LanguageSelectorIcon = ({
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay }}
       className={className}
-      style={{
-        ...getContainerStyles(),
-        position: 'relative',
-        zIndex: 100  // Z-index muy alto para asegurar que esté encima de todo
-      }}
+      style={getContainerStyles()}
     >
       <motion.button
         onClick={handleClick}
         onTouchStart={handleTouchStart}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="transition-all cursor-pointer"
+        className="transition-all cursor-pointer relative"
         style={{
           ...getButtonStyles(),
           touchAction: 'manipulation',
           userSelect: 'none',
           WebkitTouchCallout: 'none',
           WebkitUserSelect: 'none',
-          position: 'relative',
-          zIndex: 101  // Incluso más alto que el contenedor
+          zIndex: 50  // Alto para estar encima del overlay de FeedbackScreen
         }}
       >
         <motion.img
