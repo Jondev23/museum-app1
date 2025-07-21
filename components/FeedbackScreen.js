@@ -89,7 +89,7 @@ const FeedbackScreen = () => {
           </motion.div>
         </div>
 
-        {/* Footer */}
+        {/* Footer - con z-index alto para estar encima del overlay */}
         <StandardFooter
           showProgressDots={true}
           totalQuestions={totalQuestions}
@@ -98,6 +98,7 @@ const FeedbackScreen = () => {
           questions={questions}
           progressDotsVariant="feedback"
           alignProgressDots="inline"
+          style={{ zIndex: 60 }} // Mayor que el overlay del FeedbackScreen
         >
           <FeedbackButton
             buttonText={buttonText}

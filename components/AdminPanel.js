@@ -10,8 +10,8 @@ const AdminPanel = () => {
   const [showKioskSelector, setShowKioskSelector] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
 
-  // Nueva secuencia: 2x toque en esquina superior izquierda, luego 1x en inferior derecha
-  const SECRET_SEQUENCE = ['tl', 'tl', 'br'];
+  // Nueva secuencia SIN esquina superior izquierda: 2x superior derecha, luego 1x inferior derecha
+  const SECRET_SEQUENCE = ['tr', 'tr', 'br'];
   const ADMIN_PASSWORD = 'museum2025';
 
   useEffect(() => {
@@ -76,20 +76,9 @@ const AdminPanel = () => {
   return (
     <>
       {/* Solo los triggers necesarios para la nueva secuencia */}
-      {/* Esquina superior izquierda - para los 2 primeros toques */}
-      <div 
-        className="admin-corner-trigger top-0 left-0"
-        onClick={() => handleCornerClick('tl')}
-        onTouchStart={(e) => handleCornerTouch(e, 'tl')}
-        style={{
-          touchAction: 'manipulation',
-          userSelect: 'none',
-          WebkitTouchCallout: 'none',
-          WebkitUserSelect: 'none'
-        }}
-      />
+      {/* ESQUINA SUPERIOR IZQUIERDA ELIMINADA - libre para el selector de idioma */}
       
-      {/* Esquina superior derecha - mantenida para posibles secuencias futuras */}
+      {/* Esquina superior derecha - para los 2 primeros toques */}
       <div 
         className="admin-corner-trigger top-0 right-0"
         onClick={() => handleCornerClick('tr')}

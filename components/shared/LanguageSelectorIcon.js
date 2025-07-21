@@ -58,7 +58,11 @@ const LanguageSelectorIcon = ({
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay }}
       className={className}
-      style={getContainerStyles()}
+      style={{
+        ...getContainerStyles(),
+        position: 'relative',
+        zIndex: 100  // Z-index muy alto para asegurar que esté encima de todo
+      }}
     >
       <motion.button
         onClick={handleClick}
@@ -71,7 +75,9 @@ const LanguageSelectorIcon = ({
           touchAction: 'manipulation',
           userSelect: 'none',
           WebkitTouchCallout: 'none',
-          WebkitUserSelect: 'none'
+          WebkitUserSelect: 'none',
+          position: 'relative',
+          zIndex: 101  // Incluso más alto que el contenedor
         }}
       >
         <motion.img
