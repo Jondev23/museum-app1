@@ -53,3 +53,5 @@ const AnswerButtons = ({
     </motion.div>
   );
 };
+
+export default AnswerButtons;
