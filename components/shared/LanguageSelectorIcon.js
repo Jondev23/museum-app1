@@ -46,6 +46,12 @@ const LanguageSelectorIcon = ({
     setShowLanguageSelector(true);
   };
 
+  const handleTouchStart = (e) => {
+    e.preventDefault();
+    console.log('Globe icon touched, opening language selector');
+    setShowLanguageSelector(true);
+  };
+
   return (
     <motion.div
       initial={getInitialAnimation()}
@@ -56,15 +62,26 @@ const LanguageSelectorIcon = ({
     >
       <motion.button
         onClick={handleClick}
+        onTouchStart={handleTouchStart}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         className="transition-all cursor-pointer"
-        style={getButtonStyles()}
+        style={{
+          ...getButtonStyles(),
+          touchAction: 'manipulation',
+          userSelect: 'none',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none'
+        }}
       >
         <motion.img
           src="/images/OE_Sprache_64 1.svg"
           alt="Language selector"
-          style={baseIconStyles}
+          style={{
+            ...baseIconStyles,
+            touchAction: 'manipulation',
+            pointerEvents: 'none'
+          }}
           animate={{ rotate: [0, 10, -10, 0] }}
           transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
         />

@@ -8,6 +8,11 @@ const ResultsPlayAgainButton = ({
   iconSrc = '/images/GUI.svg',
   iconAlt = 'Restart icon'
 }) => {
+  const handleTouchStart = (e) => {
+    e.preventDefault();
+    onPlayAgain();
+  };
+
   return (
     <motion.div
       initial={ANIMATION_CONFIG.CONTENT_REVEAL.INITIAL}
@@ -21,12 +26,17 @@ const ResultsPlayAgainButton = ({
     >
       <motion.button
         onClick={onPlayAgain}
+        onTouchStart={handleTouchStart}
         whileHover={ANIMATION_CONFIG.BUTTON.HOVER}
         whileTap={ANIMATION_CONFIG.BUTTON.TAP}
         className="text-button flex items-center bg-transparent border-none"
         style={{ 
           gap: 'var(--spacing-sm)',
-          padding: 'var(--spacing-md)' 
+          padding: 'var(--spacing-md)',
+          touchAction: 'manipulation',
+          userSelect: 'none',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none'
         }}
       >
         {playAgainText}
@@ -35,7 +45,9 @@ const ResultsPlayAgainButton = ({
           alt={iconAlt}
           style={{
             width: 'var(--spacing-2xl)',
-            height: 'calc(var(--spacing-2xl) * 1.6)'
+            height: 'calc(var(--spacing-2xl) * 1.6)',
+            touchAction: 'manipulation',
+            pointerEvents: 'none'
           }}
         />
       </motion.button>

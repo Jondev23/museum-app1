@@ -9,6 +9,11 @@ const FeedbackButton = ({
   buttonTextStyle, 
   arrowStyle 
 }) => {
+  const handleTouchStart = (e) => {
+    e.preventDefault();
+    nextQuestion();
+  };
+
   return (
     <motion.div
       initial={{ y: '100%', opacity: 0 }}
@@ -21,10 +26,17 @@ const FeedbackButton = ({
     >
       <motion.button
         onClick={nextQuestion}
+        onTouchStart={handleTouchStart}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className="flex items-center gap-2 transition-all cursor-pointer"
-        style={buttonStyle}
+        style={{
+          ...buttonStyle,
+          touchAction: 'manipulation',
+          userSelect: 'none',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none'
+        }}
       >
         <span
           className="text-button"
@@ -39,7 +51,11 @@ const FeedbackButton = ({
         <motion.img
           src="/images/GUI-2.svg"
           alt="Zur Auswertung"
-          style={arrowStyle}
+          style={{
+            ...arrowStyle,
+            touchAction: 'manipulation',
+            pointerEvents: 'none'
+          }}
           animate={{ x: [0, 5, 0] }}
           transition={{ 
             duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.ARROW_ANIMATION, 
