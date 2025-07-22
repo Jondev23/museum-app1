@@ -47,29 +47,29 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 'min(1rem, 1.5vw)', // Gap reducido para títulos largos
-    paddingTop: 'min(2rem, 3vw)', // Padding superior reducido
-    paddingBottom: 'min(2rem, 3vw)', // Padding inferior reducido
+    gap: 'min(1.2rem, 2vw)', // Gap moderado para balance
+    paddingTop: 'min(2rem, 3vw)', // Padding restaurado
+    paddingBottom: 'min(2rem, 3vw)', 
     paddingLeft: 'min(1.5rem, 2.5vw)',
     paddingRight: 'min(1.5rem, 2.5vw)',
     width: '100%',
     maxWidth: 'min(75.6rem, 83.05vw)',
     height: '74vh',
-    justifyContent: 'space-between', // Distribuir espacio entre elementos
+    justifyContent: 'space-evenly', // Distribución equilibrada
     overflow: 'hidden'
   }), []);
 
   const titleStyle = useMemo(() => ({
     // Tamaño base del texto con rango más amplio para ajuste automático
-    fontSize: 'clamp(1.2rem, 4.84vw, 3.025rem)',
-    lineHeight: 'clamp(1.4rem, 6.05vw, 3.9325rem)',
+    fontSize: 'clamp(1rem, 4.84vw, 3.025rem)', // Tamaño mínimo más pequeño
+    lineHeight: 'clamp(1.2rem, 6.05vw, 3.9325rem)',
     // Dimensiones flexibles para adaptarse al contenido
-    width: '90%',
+    width: '95%',
     minHeight: 'auto', 
-    maxHeight: '30vh', // Límite máximo para evitar que domine el espacio
+    maxHeight: '35vh', // Límite razonable para títulos muy largos
     maxWidth: '100%',
     overflowWrap: 'break-word',
-    overflow: 'hidden', // Ocultar si excede el límite
+    overflow: 'visible', 
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -77,7 +77,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     wordBreak: 'break-word',
     hyphens: 'auto',
     padding: '0.5rem',
-    flex: '0 0 auto' // No crecer ni encoger, tamaño automático
+    flex: '0 1 auto' // Puede encogerse si es necesario
   }), []);
 
   const answerButtonStyle = useMemo(() => ({
@@ -94,7 +94,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'visible',
-    flex: '0 0 auto' // No crecer ni encoger
+    flex: '0 0 auto' // Tamaño fijo, no se adapta
   }), []);
 
   const answerTextStyle = useMemo(() => ({
@@ -112,11 +112,11 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     alignItems: 'center',
     gap: '0.5rem',
     width: '100%', 
-    minHeight: '15vh', // Altura mínima reducida
-    maxHeight: '35vh', // Límite para evitar que crezca demasiado
-    justifyContent: 'center', // Centrar contenido verticalmente
-    overflow: 'hidden', // Ocultar desbordamiento
-    flex: '1 1 auto' // Puede crecer y encoger, toma espacio disponible
+    minHeight: 'auto',
+    maxHeight: '30vh', // Límite para no dominar el espacio
+    justifyContent: 'flex-start',
+    overflow: 'visible',
+    flex: '0 1 auto' // Puede encogerse si es necesario, no crece
   }), []);
 
   const messageStyle = useMemo(() => ({
