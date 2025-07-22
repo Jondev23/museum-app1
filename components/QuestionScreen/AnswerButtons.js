@@ -56,7 +56,8 @@ const AnswerButtons = ({
               overflowWrap: selectedAnswer === index ? 'break-word' : undefined,
               wordBreak: selectedAnswer === index ? 'break-word' : undefined,
               hyphens: selectedAnswer === index ? 'auto' : undefined,
-              whiteSpace: selectedAnswer === index ? 'normal' : undefined
+              whiteSpace: selectedAnswer === index ? 'normal' : undefined,
+              transform: 'translateY(7%)'
             }}
           >
             {answer}
