@@ -29,7 +29,7 @@ export const useQuestionScreenStyles = (startContent) => {
 
   const progressDotsStyle = useMemo(() => ({
     left: '50%',
-    bottom: 'min(5.625rem, 9vh)',
+    bottom: 'min(4.8rem, 7.8vh)',
     transform: 'translateX(-50%)',
     zIndex: 30
   }), []);
