@@ -4,7 +4,7 @@ import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
 const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextStyle }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.15, duration: 0.4 }}
       className="flex justify-center w-full"

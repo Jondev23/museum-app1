@@ -4,8 +4,8 @@ import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
 const FeedbackTitle = ({ question, titleStyle }) => {
   return (
     <motion.h1
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ delay: 0.6, duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.TITLE }}
       className="feedback-title"
       style={{
