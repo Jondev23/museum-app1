@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import KioskSelectorScreen from './KioskSelector';
 
@@ -9,6 +9,7 @@ const AdminPanel = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showKioskSelector, setShowKioskSelector] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
+  const passwordInputRef = useRef(null);
 
   // Nueva secuencia SIN esquina superior izquierda: 2x superior derecha, luego 1x inferior derecha
   const SECRET_SEQUENCE = ['tr', 'tr', 'br'];
@@ -22,6 +23,16 @@ const AdminPanel = () => {
 
     return () => clearTimeout(timer);
   }, [clickSequence]);
+
+  // Efecto para mantener el foco en el input de contraseña cuando es visible
+  useEffect(() => {
+    if (isVisible && !isAuthenticated && passwordInputRef.current) {
+      const timer = setTimeout(() => {
+        passwordInputRef.current.focus();
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible, isAuthenticated, password]);
 
   const handleCornerClick = (corner) => {
     const newSequence = [...clickSequence, corner];
@@ -47,6 +58,12 @@ const AdminPanel = () => {
     } else {
       setPassword('');
       alert('Passwort inkorrekt');
+      // Restaurar el foco al input después del alert
+      setTimeout(() => {
+        if (passwordInputRef.current) {
+          passwordInputRef.current.focus();
+        }
+      }, 100);
     }
   };
 
@@ -59,6 +76,8 @@ const AdminPanel = () => {
     setIsVisible(false);
     setPassword('');
     setIsAuthenticated(false);
+    setShowKioskSelector(false);
+    setSuccessMsg('');
   };
 
   const handleExitKiosk = () => {
@@ -134,6 +153,7 @@ const AdminPanel = () => {
                       Passwort
                     </label>
                     <input
+                      ref={passwordInputRef}
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -141,7 +161,7 @@ const AdminPanel = () => {
                       autoFocus
                     />
                   </div>
-                  <div className="admin-button-group">
+                  <div className="admin-button-group-spaced">
                     <button
                       type="submit"
                       className="flex-1 admin-button-primary"

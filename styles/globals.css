@@ -219,7 +219,7 @@
   html {
     font-family: 'Tisa Sans Pro';
   }
-  
+
   body {
     margin: 0;
     padding: 0;
@@ -451,6 +451,12 @@
     gap: var(--spacing-lg);
   }
 
+  .admin-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
   .admin-input {
     width: 100%;
     padding: min(0.875rem, 1.75vw) var(--spacing-md);
@@ -479,31 +485,47 @@
     gap: var(--spacing-sm);
   }
 
-  .admin-button-base {
+  .admin-button-group-spaced {
+    display: flex !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+  }
+
+  .admin-button-primary {
     padding: min(0.875rem, 1.75vw) min(1.25rem, 2.5vw);
     border-radius: var(--border-radius-sm);
     font-size: var(--admin-font-size);
     font-weight: 500;
     border: none;
     cursor: pointer;
-  }
-
-  .admin-button-primary {
-    @apply admin-button-base;
     background-color: var(--color-primary);
     color: var(--color-white);
   }
 
   .admin-button-secondary {
-    @apply admin-button-base;
+    padding: min(0.875rem, 1.75vw) min(1.25rem, 2.5vw);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--admin-font-size);
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
     background-color: var(--color-neutral-light);
     color: var(--color-schiefer-dark);
   }
 
   .admin-button-danger {
-    @apply admin-button-base;
+    padding: min(0.875rem, 1.75vw) min(1.25rem, 2.5vw);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--admin-font-size);
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
     background-color: var(--color-neutral-light);
     color: var(--color-schiefer-dark);
+  }
+
+  .admin-button-full-width {
+    width: 100%;
   }
 
   .admin-success-message {

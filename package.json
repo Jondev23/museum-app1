@@ -56,14 +56,15 @@
     "files": [
       "out/**/*",
       "electron/**/*",
-      "content/**/*",
+      "public/**/*",
       "node_modules/**/*"
     ],
     "mac": {
       "category": "public.app-category.education"
     },
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "sign": false
     },
     "linux": {
       "target": "AppImage"
