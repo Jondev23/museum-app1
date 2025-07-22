@@ -9,7 +9,7 @@ const StartScreenTouchIndicator = ({
 }) => {
   const animationStyles = {
     ...touchIndicatorStyle,
-    animation: 'fade-swipe 2.5s ease-in-out infinite',
+    animation: 'fade-swipe 4.5s ease-in-out infinite',
     cursor: 'pointer',
     transition: 'transform 0.2s ease, opacity 0.5s ease',
     opacity: showContent ? 1 : 0,
@@ -33,15 +33,23 @@ const StartScreenTouchIndicator = ({
       <style jsx>{`
         @keyframes fade-swipe {
           0% { 
-            transform: translateX(80px);
+            transform: translateX(56px);
             opacity: 0;
           }
-          50% { 
+          22% { 
+            transform: translateX(0px);
+            opacity: 1;
+          }
+          33% { 
+            transform: translateX(0px);
+            opacity: 1;
+          }
+          78% { 
             transform: translateX(0px);
             opacity: 1;
           }
           100% { 
-            transform: translateX(-80px);
+            transform: translateX(-56px);
             opacity: 0;
           }
         }
