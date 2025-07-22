@@ -103,7 +103,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     overflowWrap: 'break-word',
     wordBreak: 'break-word',
     hyphens: 'auto',
-    whiteSpace: 'normal'
+    whiteSpace: 'normal',
+    transform: 'translateY(5%)'
   }), []);
 
   const messageContainerStyle = useMemo(() => ({
