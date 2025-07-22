@@ -46,6 +46,7 @@ const FeedbackScreen = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
       className="fixed inset-0 flex flex-col z-50"
       onClick={(e) => e.stopPropagation()}
       style={backgroundStyle}
@@ -61,9 +62,9 @@ const FeedbackScreen = () => {
         >
           {/* Contenedor del feedback */}
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.CONTAINER }}
             style={feedbackContainerStyle}
           >
