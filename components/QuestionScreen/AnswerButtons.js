@@ -19,6 +19,7 @@ const AnswerButtons = ({
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 1 }}
       transition={{ 
         duration: QUESTION_CONFIG.ANIMATION_DURATIONS.BUTTONS, 
         delay: QUESTION_CONFIG.ANIMATION_DELAYS.BUTTONS 
@@ -30,6 +31,13 @@ const AnswerButtons = ({
           key={index}
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
+          exit={{ 
+            opacity: selectedAnswer === index ? 1 : 0,
+            transition: { 
+              duration: selectedAnswer === index ? 0.4 : 0.15,
+              delay: selectedAnswer === index ? 0.15 : 0
+            }
+          }}
           transition={{ 
             duration: QUESTION_CONFIG.ANIMATION_DURATIONS.BUTTON_INDIVIDUAL, 
             delay: QUESTION_CONFIG.ANIMATION_DELAYS.BUTTON_BASE + index * QUESTION_CONFIG.ANIMATION_DELAYS.BUTTON_STAGGER 
@@ -43,7 +51,12 @@ const AnswerButtons = ({
           <span 
             className={`typography-antworten-buttons relative w-full text-center break-words hyphens-auto max-w-full transition-colors duration-150 ${selectedAnswer === index ? '' : 'text-primary'}`}
             style={{
-              color: selectedAnswer === index ? 'var(--color-feedback-answer-text)' : undefined
+              color: selectedAnswer === index ? 'var(--color-feedback-answer-text)' : undefined,
+              // Exactamente los mismos estilos de texto que en FeedbackScreen cuando está seleccionado
+              overflowWrap: selectedAnswer === index ? 'break-word' : undefined,
+              wordBreak: selectedAnswer === index ? 'break-word' : undefined,
+              hyphens: selectedAnswer === index ? 'auto' : undefined,
+              whiteSpace: selectedAnswer === index ? 'normal' : undefined
             }}
           >
             {answer}

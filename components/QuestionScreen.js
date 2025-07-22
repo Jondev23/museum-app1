@@ -31,7 +31,10 @@ const QuestionScreen = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: QUESTION_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
+      transition={{ 
+        duration: QUESTION_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION,
+        when: "afterChildren"
+      }}
       className="fixed inset-0 flex flex-col"
       style={backgroundStyle}
     >

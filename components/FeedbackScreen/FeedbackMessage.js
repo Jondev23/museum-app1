@@ -33,7 +33,7 @@ const FeedbackMessage = ({
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE }}
+      transition={{ delay: 0.3, duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE }}
       style={messageContainerStyle}
     >
       {/* Mensaje principal (¡Correcto! / ¡Incorrecto!) */}
@@ -41,7 +41,7 @@ const FeedbackMessage = ({
         ref={messageRef}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE + 0.1 }}
+        transition={{ delay: 0.4, duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE }}
         style={{
           ...adjustedMessageStyle,
           color: 'var(--color-white)' // Color blanco para que se vea sobre el fondo colorido
@@ -57,7 +57,7 @@ const FeedbackMessage = ({
           ref={explanationRef}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE + 0.2 }}
+          transition={{ delay: 0.5, duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE }}
           style={{
             ...adjustedExplanationStyle,
             color: 'var(--color-white)' // Color blanco para que se vea sobre el fondo colorido

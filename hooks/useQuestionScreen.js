@@ -63,9 +63,23 @@ export const useQuestionScreen = () => {
     };
     
     if (selectedAnswer === index) {
+      // Exactamente el mismo estilo que en FeedbackScreen
       return {
         ...baseStyle,
-        backgroundColor: 'var(--color-neutral-light)'
+        backgroundColor: 'var(--color-neutral-light)',
+        border: 'min(0.1125rem, 0.225vw, 0.3vh) solid var(--color-neutral-light)',
+        minWidth: 'min(42.3rem, 63vw, 80vh)',
+        minHeight: 'min(4.62rem, 6.93vh, 8vw)',
+        maxWidth: '90vw',
+        width: 'auto',
+        height: 'auto',
+        padding: 'min(1rem, 1.5vh, 2vw) min(4rem, 5vw, 6vh)',
+        borderRadius: 'min(4.62rem, 6.93vh, 8vw)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'visible',
+        flex: '0 0 auto'
       };
     }
     
