@@ -97,18 +97,10 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
 
   const answerTextStyle = useMemo(() => ({
     color: FEEDBACK_CONFIG.COLORS.ANSWER_TEXT,
-    // Usar la misma tipografía que QuestionScreen
-    fontSize: 'var(--typography-antworten-buttons-font-size)',
-    lineHeight: 'var(--typography-antworten-buttons-line-height)',
-    fontWeight: 'var(--typography-antworten-buttons-font-weight)',
-    fontFamily: 'var(--typography-antworten-buttons-font-family)',
-    letterSpacing: 'var(--typography-antworten-buttons-letter-spacing)',
-    width: '100%',
-    maxWidth: '100%',
+    // Solo conservamos propiedades específicas para el centrado
     overflowWrap: 'break-word',
     wordBreak: 'break-word',
     hyphens: 'auto',
-    textAlign: 'center',
     whiteSpace: 'normal'
   }), []);
 

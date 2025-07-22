@@ -21,8 +21,10 @@ const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextSty
         }}
       >
         <span
-          className="relative w-full text-center break-words hyphens-auto max-w-full"
-          style={answerTextStyle}
+          className="typography-antworten-buttons relative w-full text-center break-words hyphens-auto max-w-full"
+          style={{
+            color: answerTextStyle.color
+          }}
         >
           {question.answers[userAnswer]}
         </span>
