@@ -50,6 +50,15 @@ const FeedbackScreen = () => {
       className="fixed inset-0 flex flex-col z-50"
       onClick={(e) => e.stopPropagation()}
       style={backgroundStyle}
+      drag="x"
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.2}
+      onDragEnd={(event, info) => {
+        if (info.offset.x < -100) {
+          nextQuestion();
+        }
+      }}
+      whileDrag={{ cursor: "grabbing" }}
     >
       {/* Dark overlay */}
       <div className={`absolute inset-0 ${FEEDBACK_CONFIG.COLORS.OVERLAY}`} />
