@@ -48,19 +48,14 @@ const FeedbackButton = ({
         >
           {buttonText}
         </span>
-        <motion.img
+        <img
           src="/images/GUI-2.svg"
           alt="Zur Auswertung"
           style={{
             ...arrowStyle,
             touchAction: 'manipulation',
-            pointerEvents: 'none'
-          }}
-          animate={{ x: [0, 5, 0] }}
-          transition={{ 
-            duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.ARROW_ANIMATION, 
-            repeat: Infinity, 
-            repeatDelay: FEEDBACK_CONFIG.ANIMATION_DURATIONS.ARROW_REPEAT_DELAY 
+            pointerEvents: 'none',
+            transform: 'translateY(-10%)'
           }}
         />
       </motion.button>
