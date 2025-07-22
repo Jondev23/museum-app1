@@ -15,7 +15,8 @@ const QuestionScreen = () => {
     answers,
     questions,
     handleAnswerClick,
-    getButtonClassName
+    getButtonClassName,
+    getButtonStyle
   } = useQuestionScreen();
 
   const {
@@ -52,6 +53,7 @@ const QuestionScreen = () => {
                 handleAnswerClick={handleAnswerClick}
                 selectedAnswer={selectedAnswer}
                 getButtonClassName={getButtonClassName}
+                getButtonStyle={getButtonStyle}
               />
             </div>
           </div>

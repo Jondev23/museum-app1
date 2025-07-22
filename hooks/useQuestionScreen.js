@@ -39,17 +39,37 @@ export const useQuestionScreen = () => {
 
   // Función para obtener el className del botón
   const getButtonClassName = useCallback((index) => {
-    const baseClasses = 'transition-all duration-300 transform bg-transparent';
+    const baseClasses = 'transition-all duration-150 transform bg-transparent';
     
     if (selectedAnswer === null) {
       return `${baseClasses} hover:bg-white/10 hover:shadow-lg hover:scale-102 active:scale-98 cursor-pointer`;
     }
     
     if (selectedAnswer === index) {
-      return `${baseClasses} bg-white/30 scale-102 shadow-xl`;
+      return `${baseClasses} scale-102 shadow-xl cursor-not-allowed`;
     }
     
     return `${baseClasses} opacity-60 cursor-not-allowed`;
+  }, [selectedAnswer]);
+
+  // Función para obtener el estilo del botón seleccionado
+  const getButtonStyle = useCallback((index) => {
+    const baseStyle = { 
+      borderColor: 'var(--color-neutral-light)',
+      touchAction: 'manipulation',
+      userSelect: 'none',
+      WebkitTouchCallout: 'none',
+      WebkitUserSelect: 'none'
+    };
+    
+    if (selectedAnswer === index) {
+      return {
+        ...baseStyle,
+        backgroundColor: 'var(--color-neutral-light)'
+      };
+    }
+    
+    return baseStyle;
   }, [selectedAnswer]);
 
   return {
@@ -64,6 +84,7 @@ export const useQuestionScreen = () => {
     
     // Funciones
     handleAnswerClick,
-    getButtonClassName
+    getButtonClassName,
+    getButtonStyle
   };
 };

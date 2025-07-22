@@ -5,7 +5,8 @@ const AnswerButtons = ({
   question, 
   handleAnswerClick,
   selectedAnswer,
-  getButtonClassName
+  getButtonClassName,
+  getButtonStyle
 }) => {
   const handleTouchStart = (e, index) => {
     e.preventDefault();
@@ -37,15 +38,14 @@ const AnswerButtons = ({
           onTouchStart={(e) => handleTouchStart(e, index)}
           disabled={selectedAnswer !== null}
           className={`btn-answer inline-flex min-w-[min(42.3rem,63vw,80vh)] min-h-[min(4.62rem,6.93vh,8vw)] items-center justify-center gap-[min(0.5rem,1vw)] px-[min(4rem,5vw,6vh)] py-[min(1rem,1.5vh,2vw)] rounded-[min(4.62rem,6.93vh,8vw)] border-[min(0.1125rem,0.225vw,0.3vh)] border-solid relative ${getButtonClassName(index)}`}
-          style={{ 
-            borderColor: 'var(--color-neutral-light)',
-            touchAction: 'manipulation',
-            userSelect: 'none',
-            WebkitTouchCallout: 'none',
-            WebkitUserSelect: 'none'
-          }}
+          style={getButtonStyle(index)}
         >
-          <span className="typography-antworten-buttons text-primary relative w-full text-center break-words hyphens-auto max-w-full">
+          <span 
+            className={`typography-antworten-buttons relative w-full text-center break-words hyphens-auto max-w-full transition-colors duration-150 ${selectedAnswer === index ? '' : 'text-primary'}`}
+            style={{
+              color: selectedAnswer === index ? 'var(--color-feedback-answer-text)' : undefined
+            }}
+          >
             {answer}
           </span>
         </motion.button>
