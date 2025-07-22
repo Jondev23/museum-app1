@@ -42,7 +42,6 @@ const StartScreenDescription = ({
         style={{
           ...adjustedHighlightStyle,
           display: 'block',
-          marginBottom: '0.5rem',
           color: 'var(--color-text-primary)',
           fontWeight: 'var(--typography-antwort-fliess-bold-font-weight) !important'
         }}

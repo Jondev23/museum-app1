@@ -101,7 +101,7 @@ export const useStartScreenStyles = (startContent) => ({
     textAlign: 'center',
     lineHeight: 'var(--typography-antwort-fliess-line-height)',
     letterSpacing: 'var(--typography-antwort-fliess-letter-spacing)',
-    marginBottom: 'clamp(0.5rem, 2vh, 1.5rem)'
+    marginBottom: '0'
   },
 
   introTextStyle: {
