@@ -42,8 +42,10 @@ const FeedbackMessage = ({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE + 0.1 }}
-        style={adjustedMessageStyle}
-        className="text-body-bold"
+        style={{
+          ...adjustedMessageStyle,
+          color: 'var(--color-white)' // Color blanco para que se vea sobre el fondo colorido
+        }}
         title={isMessageAdjusted ? 'Texto ajustado automáticamente' : ''}
       >
         {randomMessage}
@@ -56,8 +58,10 @@ const FeedbackMessage = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE + 0.2 }}
-          style={adjustedExplanationStyle}
-          className="text-body-primary"
+          style={{
+            ...adjustedExplanationStyle,
+            color: 'var(--color-white)' // Color blanco para que se vea sobre el fondo colorido
+          }}
           title={isExplanationAdjusted ? 'Texto ajustado automáticamente' : ''}
         >
           {question.explanation}

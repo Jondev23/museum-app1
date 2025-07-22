@@ -118,27 +118,29 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const messageStyle = useMemo(() => ({
-    // Rango más amplio para ajuste automático del texto
-    fontSize: 'clamp(0.8rem, 3.8657vw, 1.9329rem)',
-    lineHeight: 'clamp(1rem, 4.2523vw, 2.1262rem)',
+    // Mismo tamaño base para ambos textos
+    fontSize: 'clamp(0.8rem, 3.2vw, 1.6rem)',
+    lineHeight: 'clamp(1rem, 4vw, 2rem)',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0',
     wordBreak: 'break-word',
     hyphens: 'auto',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontWeight: '700' // Más grueso para el mensaje principal
   }), []);
 
   const explanationStyle = useMemo(() => ({
-    // Rango más amplio para texto de explicación largo
-    fontSize: 'clamp(0.7rem, 3.8254vw, 1.4345rem)',
-    lineHeight: 'clamp(0.9rem, 4.7817vw, 2.3909rem)',
+    // Mismo tamaño que messageStyle pero peso normal
+    fontSize: 'clamp(0.8rem, 3.2vw, 1.6rem)',
+    lineHeight: 'clamp(1rem, 4vw, 2rem)',
     maxWidth: '85%',
     overflowWrap: 'break-word',
     margin: '0',
     wordBreak: 'break-word',
     hyphens: 'auto',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontWeight: '400' // Peso normal para la explicación
   }), []);
 
   const buttonContainerStyle = useMemo(() => ({
