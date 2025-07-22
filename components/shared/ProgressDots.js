@@ -92,27 +92,17 @@ const ProgressDots = ({
   };
 
   return (
-    <motion.div
-      initial={{ y: 50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.5 }}
+    <div
       className={`flex justify-center ${className}`}
       style={baseStyles}
     >
       {[...Array(totalQuestions)].map((_, index) => (
-        <motion.div
+        <div
           key={index}
-          initial={variant === 'results' ? { scale: 0 } : { y: 20, opacity: 0 }}
-          animate={variant === 'results' ? { scale: 1 } : { y: 0, opacity: 1 }}
-          transition={
-            variant === 'results' 
-              ? { duration: 0.4, delay: 0.3 + index * 0.1 }
-              : { duration: 0.4, delay: 0.1 + index * 0.05 }
-          }
           style={getDotStyles(index)}
         />
       ))}
-    </motion.div>
+    </div>
   );
 };
 

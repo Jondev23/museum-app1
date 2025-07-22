@@ -53,10 +53,7 @@ const LanguageSelectorIcon = ({
   };
 
   return (
-    <motion.div
-      initial={getInitialAnimation()}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay }}
+    <div
       className={className}
       style={getContainerStyles()}
     >
@@ -83,11 +80,9 @@ const LanguageSelectorIcon = ({
             touchAction: 'manipulation',
             pointerEvents: 'none'
           }}
-          animate={{ rotate: [0, 10, -10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
         />
       </motion.button>
-    </motion.div>
+    </div>
   );
 };
 
