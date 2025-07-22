@@ -94,7 +94,7 @@ const StartScreen = () => {
         <StandardFooter>
           <div className="absolute left-1/2 transform -translate-x-1/2 flex justify-center items-center" 
                style={{ 
-                 top: 'clamp(-80px, -10vh, -60px)'
+                 top: 'clamp(-120px, -15vh, -100px)'
                }}>
             <StartScreenTouchIndicator
               showContent={showContent}

@@ -48,7 +48,7 @@ export const useStartScreenStyles = (startContent) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    paddingTop: 'clamp(8.8rem, 17.6vh, 15.4rem)',
+    paddingTop: 'clamp(4rem, 8vh, 6rem)',
     paddingLeft: 'clamp(1rem, 3vw, 3rem)',
     paddingRight: 'clamp(1rem, 3vw, 3rem)'
   },
@@ -84,7 +84,7 @@ export const useStartScreenStyles = (startContent) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 'clamp(3.5rem, 7vh, 5.5rem)',
+    paddingTop: 'clamp(1.5rem, 3vh, 2.5rem)',
     paddingBottom: 'clamp(2rem, 6vh, 4rem)'
   },
 
