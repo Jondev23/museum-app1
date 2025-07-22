@@ -34,8 +34,8 @@ const AnswerButtons = ({
           exit={{ 
             opacity: selectedAnswer === index ? 1 : 0,
             transition: { 
-              duration: selectedAnswer === index ? 0.4 : 0.2,
-              delay: selectedAnswer === index ? 0.4 : 0
+              duration: selectedAnswer === index ? 0.2 : 0.1,
+              delay: selectedAnswer === index ? 0.2 : 0
             }
           }}
           transition={{ 
@@ -49,7 +49,7 @@ const AnswerButtons = ({
           style={getButtonStyle(index)}
         >
           <span 
-            className={`typography-antworten-buttons relative w-full text-center break-words hyphens-auto max-w-full transition-colors duration-150 ${selectedAnswer === index ? '' : 'text-primary'}`}
+            className={`typography-antworten-buttons relative w-full text-center break-words hyphens-auto max-w-full transition-colors duration-75 ${selectedAnswer === index ? '' : 'text-primary'}`}
             style={{
               color: selectedAnswer === index ? 'var(--color-feedback-answer-text)' : undefined,
               // Exactamente los mismos estilos de texto que en FeedbackScreen cuando está seleccionado

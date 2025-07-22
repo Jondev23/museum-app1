@@ -39,7 +39,7 @@ export const useQuestionScreen = () => {
 
   // Función para obtener el className del botón
   const getButtonClassName = useCallback((index) => {
-    const baseClasses = 'transition-all duration-150 transform bg-transparent';
+    const baseClasses = 'transition-all duration-75 transform bg-transparent';
     
     if (selectedAnswer === null) {
       return `${baseClasses} hover:bg-white/10 hover:shadow-lg hover:scale-102 active:scale-98 cursor-pointer`;

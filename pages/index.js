@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <div className="w-screen h-screen overflow-hidden bg-black">
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {renderScreen()}
       </AnimatePresence>
       
