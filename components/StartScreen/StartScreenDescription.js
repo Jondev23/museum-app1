@@ -38,13 +38,13 @@ const StartScreenDescription = ({
     >
       <div 
         ref={highlightRef}
-        className="typography-antworten-buttons text-primary"
+        className="typography-antwort-fliess text-primary"
         style={{
           ...adjustedHighlightStyle,
           display: 'block',
           marginBottom: '0.5rem',
           color: 'var(--color-text-primary)',
-          fontWeight: 'var(--typography-antworten-buttons-font-weight)'
+          fontWeight: 'var(--typography-antwort-fliess-bold-font-weight) !important'
         }}
       >
         {startContent?.highlightText || defaultTexts.highlightText}

@@ -84,7 +84,7 @@ export const useStartScreenStyles = (startContent) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 'clamp(1.5rem, 3vh, 2.5rem)',
+    paddingTop: 'clamp(3.5rem, 7vh, 5.5rem)',
     paddingBottom: 'clamp(2rem, 6vh, 4rem)'
   },
 
@@ -95,12 +95,12 @@ export const useStartScreenStyles = (startContent) => ({
   },
 
   highlightTextStyle: {
-    fontSize: 'var(--typography-antworten-buttons-font-size)',
-    fontFamily: 'var(--typography-antworten-buttons-font-family)',
-    fontWeight: 'var(--typography-antworten-buttons-font-weight)',
+    fontSize: 'var(--typography-antwort-fliess-font-size)',
+    fontFamily: 'var(--typography-antwort-fliess-font-family)',
+    fontWeight: 'var(--typography-antwort-fliess-bold-font-weight)',
     textAlign: 'center',
-    lineHeight: 'var(--typography-antworten-buttons-line-height)',
-    letterSpacing: 'var(--typography-antworten-buttons-letter-spacing)',
+    lineHeight: 'var(--typography-antwort-fliess-line-height)',
+    letterSpacing: 'var(--typography-antwort-fliess-letter-spacing)',
     marginBottom: 'clamp(0.5rem, 2vh, 1.5rem)'
   },
 
