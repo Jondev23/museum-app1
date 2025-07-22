@@ -18,8 +18,8 @@ export const START_SCREEN_CONFIG = {
   TOUCH_INDICATOR: {
     ANIMATION_TYPE: "easeInOut",
     REPEAT: Infinity,
-    Y_MOVEMENT: [0, -15, 0],
-    SCALE_MOVEMENT: [1, 1.05, 1],
+    X_MOVEMENT: [0, -30, 0],
+    SCALE_MOVEMENT: [1, 1.1, 1],
   },
 };
 
