@@ -29,9 +29,10 @@ const FeedbackButton = ({
         onTouchStart={handleTouchStart}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="flex items-center gap-2 transition-all cursor-pointer"
+        className="flex items-center transition-all cursor-pointer"
         style={{
           ...buttonStyle,
+          gap: 'calc(var(--feedback-button-gap) * 0.7)',
           touchAction: 'manipulation',
           userSelect: 'none',
           WebkitTouchCallout: 'none',

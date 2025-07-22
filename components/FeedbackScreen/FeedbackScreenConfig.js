@@ -67,7 +67,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     width: '95%',
     minHeight: 'auto', 
     maxHeight: '35vh', // Límite razonable para títulos muy largos
-    maxWidth: '100%',
+    maxWidth: '80%',
     overflowWrap: 'break-word',
     overflow: 'visible', 
     display: 'flex',
