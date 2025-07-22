@@ -3,8 +3,8 @@ import { useMemo } from 'react';
 
 export const FEEDBACK_CONFIG = {
   ANIMATION_DURATIONS: {
-    SCREEN_TRANSITION: 0.2,
-    CONTAINER: 0.2,
+    SCREEN_TRANSITION: 0.4,
+    CONTAINER: 0.4,
     TITLE: 0.1,
     ANSWER: 0.2,
     MESSAGE: 0.3,

@@ -6,7 +6,7 @@ const FeedbackTitle = ({ question, titleStyle }) => {
     <motion.h1
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.15, duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.TITLE }}
+      transition={{ delay: 0.6, duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.TITLE }}
       className="feedback-title"
       style={{
         width: titleStyle.width,

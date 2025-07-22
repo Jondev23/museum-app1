@@ -34,8 +34,8 @@ const AnswerButtons = ({
           exit={{ 
             opacity: selectedAnswer === index ? 1 : 0,
             transition: { 
-              duration: selectedAnswer === index ? 0.4 : 0.15,
-              delay: selectedAnswer === index ? 0.15 : 0
+              duration: selectedAnswer === index ? 0.4 : 0.2,
+              delay: selectedAnswer === index ? 0.4 : 0
             }
           }}
           transition={{ 
