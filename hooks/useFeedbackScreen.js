@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 import { useApp } from '../context/AppContext';
 
 export const useFeedbackScreen = () => {
@@ -12,6 +12,36 @@ export const useFeedbackScreen = () => {
     questions,
     answers
   } = useApp();
+
+  // Handler para swipe left
+  const handleSwipeLeft = useCallback(() => {
+    nextQuestion();
+  }, [nextQuestion]);
+
+  // Handler para touch start con lógica de swipe
+  const handleTouchStart = useCallback((e) => {
+    const startX = e.touches[0].clientX;
+    
+    const handleTouchMove = (e) => {
+      const currentX = e.touches[0].clientX;
+      const diffX = startX - currentX;
+      
+      // Swipe left de mínimo 100px para pasar a siguiente pregunta
+      if (diffX > 100) {
+        handleSwipeLeft();
+        document.removeEventListener('touchmove', handleTouchMove);
+        document.removeEventListener('touchend', handleTouchEnd);
+      }
+    };
+
+    const handleTouchEnd = () => {
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+  }, [handleSwipeLeft]);
 
   // Datos memoizados
   const question = useMemo(() => getCurrentQuestion(), [getCurrentQuestion]);
@@ -67,6 +97,8 @@ export const useFeedbackScreen = () => {
     ...feedbackData,
     
     // Funciones
-    nextQuestion
+    nextQuestion,
+    handleSwipeLeft,
+    handleTouchStart
   };
 };

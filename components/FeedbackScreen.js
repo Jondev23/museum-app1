@@ -20,7 +20,8 @@ const FeedbackScreen = () => {
     isValidData,
     isCorrect,
     randomMessage,
-    nextQuestion
+    nextQuestion,
+    handleTouchStart
   } = useFeedbackScreen();
 
   const {
@@ -49,6 +50,7 @@ const FeedbackScreen = () => {
       transition={{ duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
       className="fixed inset-0 flex flex-col z-50"
       onClick={(e) => e.stopPropagation()}
+      onTouchStart={handleTouchStart}
       style={backgroundStyle}
     >
       {/* Dark overlay */}
