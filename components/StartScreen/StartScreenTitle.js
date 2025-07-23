@@ -71,7 +71,7 @@ const StartScreenTitle = ({
             style={{
               ...adjustedSubtitleStyle,
               width: '98%',
-              color: 'var(--color-blassgruen)'
+              color: startContent?.subtitleColor || 'var(--color-blassgruen)'
             }}
           >
             {startContent?.subtitle || defaultTexts.subtitle}

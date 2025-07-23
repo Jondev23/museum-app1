@@ -11,6 +11,7 @@ export interface Question {
 export interface ScreenContent {
   title: string;
   subtitle: string;
+  subtitleColor?: string;
   highlightText: string;
   introText: string;
   swipeText: string;

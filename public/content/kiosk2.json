@@ -6,6 +6,7 @@
     "startScreen": {
       "title": "Geschwindigkeiten",
       "subtitle": "Wie schnell war das eigentlich?",
+      "subtitleColor": "#a94930",
       "highlightText": "Reisegeschwindigkeiten im 19. Jahrhundert",
       "introText": "Teste dein Wissen! Fünf Fragen rund um Tempo und Technik im Zeitalter der Pferdestärken warten auf dich. Fußgänger, Reiter, Kutsche oder Eisenbahn – wer war am flottesten unterwegs? Stell dich der Herausforderung – vielleicht weißt du mehr, als du denkst. Und falls nicht: unterwegs lernst du garantiert etwas dazu!",
       "swipeText": "Wischen Sie nach links oder berühren Sie hier",
@@ -133,6 +134,7 @@
     "startScreen": {
       "title": "Speeds",
       "subtitle": "How fast was it actually?",
+      "subtitleColor": "#a94930",
       "highlightText": "Travel speeds in the 19th century",
       "introText": "Test your knowledge! Five questions about speed and technology in the age of horsepower await you. Pedestrians, riders, carriages or railways – who traveled fastest? Face the challenge – you might know more than you think. And if not: you'll definitely learn something along the way!",
       "swipeText": "Swipe left or touch here",
