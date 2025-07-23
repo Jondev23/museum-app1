@@ -8,11 +8,6 @@ const ResultsPlayAgainButton = ({
   iconSrc = '/images/GUI.svg',
   iconAlt = 'Restart icon'
 }) => {
-  const handleTouchStart = (e) => {
-    e.preventDefault();
-    onPlayAgain();
-  };
-
   return (
     <motion.div
       initial={ANIMATION_CONFIG.CONTENT_REVEAL.INITIAL}
@@ -26,7 +21,6 @@ const ResultsPlayAgainButton = ({
     >
       <motion.button
         onClick={onPlayAgain}
-        onTouchStart={handleTouchStart}
         whileHover={ANIMATION_CONFIG.BUTTON.HOVER}
         whileTap={ANIMATION_CONFIG.BUTTON.TAP}
         className="text-button flex items-center bg-transparent border-none"

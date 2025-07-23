@@ -4,7 +4,7 @@ export const ANIMATION_CONFIG = {
   CONTAINER: {
     INITIAL: { x: '100%' },
     ANIMATE: { x: 0 },
-    EXIT: { x: '-100%' },
+    EXIT: { opacity: 0 },
     TRANSITION: { duration: 0.8 }
   },
 

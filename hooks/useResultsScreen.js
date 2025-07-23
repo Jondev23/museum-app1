@@ -43,7 +43,7 @@ const useResultsScreen = () => {
   }, [beginQuiz]);
 
   const handleTouchAnywhere = useCallback((e) => {
-    // Only trigger if not clicking on the play again button or language selector
+    // Only trigger if not clicking on the play again button
     if (!e.target.closest('button')) {
       handlePlayAgain();
     }
