@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
 
 const FeedbackButton = ({ 
   buttonText, 
@@ -10,13 +9,7 @@ const FeedbackButton = ({
   arrowStyle 
 }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ 
-        duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.BUTTON, 
-        delay: FEEDBACK_CONFIG.ANIMATION_DURATIONS.BUTTON_DELAY 
-      }}
+    <div
       style={buttonContainerStyle}
     >
       <motion.button
@@ -54,7 +47,7 @@ const FeedbackButton = ({
           }}
         />
       </motion.button>
-    </motion.div>
+    </div>
   );
 };
 
