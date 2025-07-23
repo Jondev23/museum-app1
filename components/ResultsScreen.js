@@ -49,6 +49,7 @@ const ResultsScreen = () => {
 
         <ResultsScoreText 
           scoreText={contentData.scoreText} 
+          scoreTextColor={contentData.scoreTextColor}
           showContent={showContent} 
         />
 

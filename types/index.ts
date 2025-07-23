@@ -37,6 +37,7 @@ export interface QuizContent {
 
 export interface ResultsContent {
   scoreText: string;
+  scoreTextColor?: string;
   messages: Record<string, string>;
   playAgain: string;
 }

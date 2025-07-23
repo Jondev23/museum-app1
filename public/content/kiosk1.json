@@ -35,6 +35,7 @@
     },
     "results": {
       "scoreText": "Sie haben {score} von 5 Fragen richtig beantwortet.",
+      "scoreTextColor": "#A94930",
       "messages": {
         "0": "Brrr! Da ist wohl die Kutsche im Graben gelandet. Versuche es gleich noch einmal!",
         "1": "Da geht noch was! Du hast zumindest den Fuß auf die Trittstufe gesetzt.",
@@ -172,6 +173,7 @@
     },
     "results": {
       "scoreText": "You answered {score} out of 5 questions correctly.",
+      "scoreTextColor": "#85af8b",
       "messages": {
         "0": "Brrr! Looks like the carriage ended up in the ditch. Try again right away!",
         "1": "There's still room for improvement! You've at least got your foot on the running board.",
