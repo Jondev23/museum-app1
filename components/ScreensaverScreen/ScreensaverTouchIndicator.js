@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { SCREENSAVER_CONFIG } from './ScreensaverScreenConfig';
 
 const ScreensaverTouchIndicator = ({ 
-  iconConfig, 
   touchIndicatorContainerStyle,
   touchIconBackgroundStyle,
   touchIconStyle,
@@ -31,16 +30,12 @@ const ScreensaverTouchIndicator = ({
       }}
       className="relative"
     >
-      {/* Touch icon with circular background */}
+      {/* Touch indicator without icon - just circular background */}
       <div 
         className={`relative z-10 flex items-center justify-center rounded-full ${SCREENSAVER_CONFIG.COLORS.TOUCH_BACKGROUND} backdrop-blur-sm border ${SCREENSAVER_CONFIG.COLORS.TOUCH_BORDER}`}
         style={touchIconBackgroundStyle}
       >
-        <img
-          src={iconConfig.source}
-          alt="Touch indicator"
-          style={touchIconStyle}
-        />
+        {/* Icon removed - just empty circular indicator */}
       </div>
     </motion.div>
   </motion.div>

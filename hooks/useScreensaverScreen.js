@@ -20,21 +20,8 @@ export const useScreensaverScreen = () => {
   // Contenido por defecto memoizado
   const defaultContent = useMemo(() => ({
     message: 'Touch the screen to begin',
-    handIcon: '/images/OE_Touch_128 2.svg',
     videoSource: '/videos/Mi proyecto (7).mp4'
   }), []);
-
-  // Lógica para determinar el tipo de icono
-  const iconConfig = useMemo(() => {
-    const iconSource = screensaverContent?.handIcon || defaultContent.handIcon;
-    const isImageIcon = iconSource.includes('.svg') || iconSource.includes('.png') || iconSource.includes('.jpg');
-    
-    return {
-      source: iconSource,
-      isImage: isImageIcon,
-      fallback: defaultContent.handIcon
-    };
-  }, [screensaverContent?.handIcon, defaultContent.handIcon]);
 
   return {
     // Estados
@@ -44,7 +31,6 @@ export const useScreensaverScreen = () => {
     // Datos
     screensaverContent,
     defaultContent,
-    iconConfig,
     
     // Handlers
     handleTouch,

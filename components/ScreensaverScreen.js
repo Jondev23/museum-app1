@@ -4,7 +4,6 @@ import { useScreensaverScreenStyles } from './ScreensaverScreen/ScreensaverScree
 import ScreensaverLoading from './ScreensaverScreen/ScreensaverLoading';
 import ScreensaverBackground from './ScreensaverScreen/ScreensaverBackground';
 import ScreensaverTitle from './ScreensaverScreen/ScreensaverTitle';
-import ScreensaverTouchIndicator from './ScreensaverScreen/ScreensaverTouchIndicator';
 
 const ScreensaverScreen = () => {
   const {
@@ -12,16 +11,11 @@ const ScreensaverScreen = () => {
     isValidData,
     screensaverContent,
     defaultContent,
-    iconConfig,
     handleTouch,
   } = useScreensaverScreen();
 
   const {
     titleStyle,
-    touchIndicatorContainerStyle,
-    touchIconBackgroundStyle,
-    touchIconStyle,
-    touchIconTextStyle,
     videoStyle,
   } = useScreensaverScreenStyles();
 
@@ -50,14 +44,6 @@ const ScreensaverScreen = () => {
         screensaverContent={screensaverContent}
         defaultContent={defaultContent}
         titleStyle={titleStyle}
-      />
-
-      <ScreensaverTouchIndicator 
-        iconConfig={iconConfig}
-        touchIndicatorContainerStyle={touchIndicatorContainerStyle}
-        touchIconBackgroundStyle={touchIconBackgroundStyle}
-        touchIconStyle={touchIconStyle}
-        touchIconTextStyle={touchIconTextStyle}
       />
     </motion.div>
   );
