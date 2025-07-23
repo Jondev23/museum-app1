@@ -35,7 +35,12 @@ const ResultsScreen = () => {
       {/* Content - Centered vertically and horizontally */}
       <div 
         className="relative z-10 flex flex-col items-center justify-center h-full"
-        style={{ padding: 'var(--spacing-lg)' }}
+        style={{ 
+          paddingTop: 'var(--spacing-lg)',
+          paddingBottom: 'var(--spacing-lg)',
+          paddingLeft: 'var(--results-horizontal-padding)',
+          paddingRight: 'var(--results-horizontal-padding)'
+        }}
       >
         <ResultsTitle 
           title={contentData.title} 

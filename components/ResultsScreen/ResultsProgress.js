@@ -3,7 +3,10 @@ import ProgressDots from '../shared/ProgressDots';
 
 const ResultsProgress = ({ questions, answers }) => {
   return (
-    <div style={{ marginBottom: 'var(--spacing-2xl)' }}>
+    <div style={{ 
+      marginTop: 'var(--results-progress-margin)', 
+      marginBottom: 'var(--spacing-2xl)' 
+    }}>
       <ProgressDots
         totalQuestions={questions.length}
         answers={answers}

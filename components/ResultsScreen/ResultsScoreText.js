@@ -11,7 +11,7 @@ const ResultsScoreText = ({ scoreText, showContent }) => {
         delay: ANIMATION_CONFIG.DELAYS.SUBTITLE 
       }}
       className="subtitle-small"
-      style={{ marginBottom: 'var(--spacing-xl)' }}
+      style={{ marginBottom: 'var(--results-title-margin)' }}
     >
       {scoreText}
     </motion.p>

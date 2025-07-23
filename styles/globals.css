@@ -168,13 +168,25 @@
   --feedback-arrow-min-width: min(3.0914235rem, 4.96375vw);  
   --feedback-arrow-min-height: min(3.0914235rem, 4.96375vh);
 
-  /* Results Screen Title - 14.75% smaller than main title (additional 5% reduction) */
-  --results-title-font-size: clamp(3.10365rem, 4.9658vw, 6.2073rem); /* 5% smaller than previous size */
-  --results-title-line-height: clamp(3.7244rem, 5.9590vw, 7.4488rem); /* 5% smaller than previous line height */
+  /* Results Screen Title - 20% smaller than main title */
+  --results-title-font-size: clamp(2.48292rem, 3.9726vw, 4.96584rem); /* 20% smaller than main title */
+  --results-title-line-height: clamp(2.97952rem, 4.7672vw, 5.9590rem); /* 20% smaller than main title line height */
 
-  /* Smaller Subtitles - 10% smaller than normal subtitles */
-  --subtitle-small-font-size: clamp(1.782rem, 3.2076vw, 3.564rem); /* 10% smaller than --typography-subline-font-size */
-  --subtitle-small-line-height: clamp(2.1384rem, 3.84912vw, 4.2768rem); /* 10% smaller than --typography-subline-line-height */
+  /* Smaller Subtitles - 20% smaller than normal subtitles */
+  --subtitle-small-font-size: clamp(1.4256rem, 2.5661vw, 2.8512rem); /* 20% smaller than --typography-subline-font-size */
+  --subtitle-small-line-height: clamp(1.9008rem, 3.4214vw, 3.8016rem); /* 20% smaller than --typography-subline-line-height */
+
+  /* Results Screen Spacing - No spacing between title and subtitle */
+  --results-title-margin: 0; /* No space between title and subtitle */
+  
+  /* Results Screen Progress Spacing - More space between subtitle and progress dots */
+  --results-progress-margin: clamp(1.5rem, 4vw, 3rem); /* More space between subtitle and progress circles */
+  
+  /* Results Screen Lateral Spacing - Horizontal padding for the page */
+  --results-horizontal-padding: clamp(2rem, 6vw, 5rem); /* Generous horizontal spacing */
+  
+  /* Results Screen Play Again Button Positioning - Absolute bottom */
+  --results-play-again-bottom: clamp(0.015625rem, 0.046875vw, 0.03125rem); /* Absolute bottom of the screen */
 }
 
 /* Responsive breakpoints for better mobile support */
@@ -185,10 +197,18 @@
     --typography-subline-font-size: clamp(1.25rem, 6vw, 2rem);
     --typography-antworten-buttons-font-size: clamp(0.9rem, 3.6vw, 1.35rem);
     --typography-antwort-fliess-font-size: clamp(0.7875rem, 3.15vw, 1.125rem);
-    /* Results title 14.75% smaller than main title */
-    --results-title-font-size: clamp(1.71rem, 6.84vw, 2.565rem); /* 5% smaller than previous mobile size */
-    /* Smaller subtitles - 10% smaller */
-    --subtitle-small-font-size: clamp(1.125rem, 5.4vw, 1.8rem); /* 10% smaller than mobile subtitle */
+    /* Results title 20% smaller than main title for mobile */
+    --results-title-font-size: clamp(1.368rem, 5.472vw, 2.052rem); /* 20% smaller than mobile main title */
+    /* Smaller subtitles - 20% smaller for mobile */
+    --subtitle-small-font-size: clamp(0.9rem, 4.32vw, 1.44rem); /* 20% smaller than mobile subtitle */
+    /* Results Screen Spacing - No spacing for mobile */
+    --results-title-margin: 0; /* No space between title and subtitle for mobile */
+    /* Results Screen Progress Spacing - More space between subtitle and progress dots for mobile */
+    --results-progress-margin: clamp(1rem, 3.5vw, 2rem); /* More space between subtitle and progress circles for mobile */
+    /* Results Screen Lateral Spacing - Smaller horizontal padding for mobile */
+    --results-horizontal-padding: clamp(1.5rem, 4vw, 3rem); /* Smaller horizontal spacing for mobile */
+    /* Results Screen Play Again Button Positioning - Absolute bottom for mobile */
+    --results-play-again-bottom: clamp(0.0125rem, 0.03125vw, 0.025rem); /* Absolute bottom for mobile */
   }
 }
 
@@ -198,6 +218,14 @@
     --spacing-lg: clamp(0.75rem, 2.5vw, 1.5rem);
     --spacing-xl: clamp(1rem, 3vw, 2rem);
     --spacing-2xl: clamp(1.5rem, 4vw, 2.5rem);
+    /* Results Screen Spacing - No spacing for tablets */
+    --results-title-margin: 0; /* No space between title and subtitle for tablets */
+    /* Results Screen Progress Spacing - More space between subtitle and progress dots for tablets */
+    --results-progress-margin: clamp(1.2rem, 3.5vw, 2.5rem); /* More space between subtitle and progress circles for tablets */
+    /* Results Screen Lateral Spacing - Medium horizontal padding for tablets */
+    --results-horizontal-padding: clamp(1.75rem, 5vw, 4rem); /* Medium horizontal spacing for tablets */
+    /* Results Screen Play Again Button Positioning - Absolute bottom for tablets */
+    --results-play-again-bottom: clamp(0.015625rem, 0.046875vw, 0.03125rem); /* Absolute bottom for tablets */
   }
 }
 
@@ -208,10 +236,18 @@
     --typography-subline-font-size: clamp(1rem, 3vh, 1.75rem);
     --spacing-lg: clamp(0.5rem, 2vh, 1rem);
     --spacing-xl: clamp(0.75rem, 3vh, 1.5rem);
-    /* Results title 14.75% smaller than main title */
-    --results-title-font-size: clamp(1.2825rem, 3.42vh, 2.1375rem); /* 5% smaller than previous landscape size */
-    /* Smaller subtitles - 10% smaller */
-    --subtitle-small-font-size: clamp(0.9rem, 2.7vh, 1.575rem); /* 10% smaller than landscape subtitle */
+    /* Results title 20% smaller than main title for landscape */
+    --results-title-font-size: clamp(1.026rem, 2.736vh, 1.71rem); /* 20% smaller than landscape main title */
+    /* Smaller subtitles - 20% smaller for landscape */
+    --subtitle-small-font-size: clamp(0.72rem, 2.16vh, 1.26rem); /* 20% smaller than landscape subtitle */
+    /* Results Screen Spacing - No spacing for landscape */
+    --results-title-margin: 0; /* No space between title and subtitle for landscape */
+    /* Results Screen Progress Spacing - More space between subtitle and progress dots for landscape */
+    --results-progress-margin: clamp(0.75rem, 2.5vh, 1.5rem); /* More space between subtitle and progress circles for landscape */
+    /* Results Screen Lateral Spacing - Compact horizontal padding for landscape */
+    --results-horizontal-padding: clamp(1rem, 8vw, 3rem); /* Compact horizontal spacing for landscape */
+    /* Results Screen Play Again Button Positioning - Absolute bottom for landscape */
+    --results-play-again-bottom: clamp(0.007812rem, 0.0195vh, 0.015625rem); /* Absolute bottom for landscape */
   }
 }
 

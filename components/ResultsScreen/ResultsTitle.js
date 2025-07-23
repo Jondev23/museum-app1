@@ -11,7 +11,7 @@ const ResultsTitle = ({ title, showContent }) => {
         delay: ANIMATION_CONFIG.DELAYS.TITLE 
       }}
       className="title-results"
-      style={{ marginBottom: 'var(--spacing-lg)' }}
+      style={{ marginBottom: 'var(--results-title-margin)' }}
     >
       {title}
     </motion.h1>

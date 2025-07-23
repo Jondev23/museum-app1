@@ -17,7 +17,7 @@ const ResultsPlayAgainButton = ({
         delay: ANIMATION_CONFIG.DELAYS.BUTTON 
       }}
       className="fixed left-0 right-0 flex justify-center items-center z-50"
-      style={{ bottom: 'var(--spacing-md)' }}
+      style={{ bottom: 'var(--results-play-again-bottom)' }}
     >
       <motion.button
         onClick={onPlayAgain}
