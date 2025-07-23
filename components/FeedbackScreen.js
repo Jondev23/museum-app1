@@ -49,7 +49,7 @@ const FeedbackScreen = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
       className="fixed inset-0 flex flex-col z-50"
-      onClick={(e) => {
+      onTouchStart={(e) => {
         e.stopPropagation();
         handleTouchStart(e);
       }}
