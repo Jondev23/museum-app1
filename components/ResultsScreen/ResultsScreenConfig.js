@@ -5,7 +5,7 @@ export const ANIMATION_CONFIG = {
     INITIAL: { x: '100%' },
     ANIMATE: { x: 0 },
     EXIT: { x: '-100%' },
-    TRANSITION: { duration: 0.5 }
+    TRANSITION: { duration: 0.8 }
   },
 
   // Content reveal animation
