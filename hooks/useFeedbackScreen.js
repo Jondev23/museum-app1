@@ -1,4 +1,4 @@
-import { useMemo, useCallback } from 'react';
+import { useMemo, useCallback, useEffect, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 
 export const useFeedbackScreen = () => {
@@ -13,32 +13,62 @@ export const useFeedbackScreen = () => {
     answers
   } = useApp();
 
+  // Ref para tracking de listeners activos
+  const activeListenersRef = useRef(new Set());
+
+  // Limpiar listeners cuando el componente se desmonta o cambia la pregunta
+  useEffect(() => {
+    return () => {
+      // Limpiar todos los listeners activos
+      activeListenersRef.current.forEach(({ type, listener }) => {
+        document.removeEventListener(type, listener);
+      });
+      activeListenersRef.current.clear();
+    };
+  }, [currentQuestionIndex]);
+
   // Handler para touch start con lógica de swipe (simplificado)
   const handleTouchStart = useCallback((e) => {
     // Solo procesar si es un touch event real
     if (!e.touches || e.touches.length === 0) return;
     
+    // No procesar si el touch es en un botón o elemento interactivo
+    if (e.target.closest('button') || e.target.closest('[role="button"]')) return;
+    
     const startX = e.touches[0].clientX;
+    let hasExecuted = false; // Flag para evitar múltiples ejecuciones
     
     const handleTouchMove = (e) => {
+      if (hasExecuted) return; // Ya se ejecutó, ignorar
+      
       const currentX = e.touches[0].clientX;
       const diffX = startX - currentX;
       
       // Swipe left de mínimo 100px para pasar a siguiente pregunta
       if (diffX > 100) {
+        hasExecuted = true;
         nextQuestion();
-        document.removeEventListener('touchmove', handleTouchMove);
-        document.removeEventListener('touchend', handleTouchEnd);
+        cleanupListeners();
       }
     };
 
     const handleTouchEnd = () => {
+      cleanupListeners();
+    };
+
+    const cleanupListeners = () => {
       document.removeEventListener('touchmove', handleTouchMove);
       document.removeEventListener('touchend', handleTouchEnd);
+      activeListenersRef.current.delete({ type: 'touchmove', listener: handleTouchMove });
+      activeListenersRef.current.delete({ type: 'touchend', listener: handleTouchEnd });
     };
 
     document.addEventListener('touchmove', handleTouchMove);
     document.addEventListener('touchend', handleTouchEnd);
+    
+    // Track listeners activos
+    activeListenersRef.current.add({ type: 'touchmove', listener: handleTouchMove });
+    activeListenersRef.current.add({ type: 'touchend', listener: handleTouchEnd });
   }, [nextQuestion]);
 
   // Datos memoizados

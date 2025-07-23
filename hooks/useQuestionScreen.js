@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 
 export const useQuestionScreen = () => {
@@ -14,13 +14,23 @@ export const useQuestionScreen = () => {
 
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   
+  // Resetear selectedAnswer cuando cambia la pregunta
+  useEffect(() => {
+    console.log('Resetting selectedAnswer for question index:', currentQuestionIndex);
+    setSelectedAnswer(null);
+  }, [currentQuestionIndex]);
+  
   // Memoizar datos derivados
   const question = useMemo(() => getCurrentQuestion(), [getCurrentQuestion]);
   const startContent = useMemo(() => content?.[language]?.startScreen, [content, language]);
 
   // Handler para manejar el clic en respuestas
   const handleAnswerClick = useCallback((answerIndex, answerDelay) => {
-    if (selectedAnswer !== null) return;
+    // Doble verificación: asegurar que no hay respuesta seleccionada
+    if (selectedAnswer !== null) {
+      console.warn('Intento de seleccionar respuesta cuando ya hay una seleccionada:', { selectedAnswer, answerIndex });
+      return;
+    }
     
     setSelectedAnswer(answerIndex);
     

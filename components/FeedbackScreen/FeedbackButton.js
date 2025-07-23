@@ -13,7 +13,10 @@ const FeedbackButton = ({
       style={buttonContainerStyle}
     >
       <motion.button
-        onClick={nextQuestion}
+        onClick={(e) => {
+          e.stopPropagation(); // Prevenir propagación del evento
+          nextQuestion();
+        }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className="flex items-center transition-all cursor-pointer"

@@ -20,6 +20,7 @@ export const AppProvider = ({ children }) => {
   const [answers, setAnswers] = useState([]);
   const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const [kioskId, setKioskId] = useState(() => detectKioskId());
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Load content based on kiosk ID
   useEffect(() => {
@@ -141,12 +142,19 @@ export const AppProvider = ({ children }) => {
   };
 
   const nextQuestion = () => {
+    if (isTransitioning) return; // Prevenir múltiples llamadas simultáneas
+    
+    setIsTransitioning(true);
+    
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setCurrentScreen('question');
     } else {
       setCurrentScreen('results');
     }
+    
+    // Reset del flag después de un pequeño delay para permitir la transición
+    setTimeout(() => setIsTransitioning(false), 300);
   };
 
   const changeLanguage = (newLanguage) => {
