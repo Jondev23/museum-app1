@@ -17,22 +17,20 @@ export const useStartScreen = () => {
   // Validación de datos
   const isValidData = useMemo(() => Boolean(content?.[language]), [content, language]);
 
-  // Handler para swipe left
-  const handleSwipeLeft = useCallback(() => {
-    startQuestions();
-  }, [startQuestions]);
-
-  // Handler para touch start con lógica de swipe
+  // Handler para touch start con lógica de swipe (simplificado)
   const handleTouchStart = useCallback((e) => {
+    // Solo procesar si es un touch event real
+    if (!e.touches || e.touches.length === 0) return;
+    
     const startX = e.touches[0].clientX;
     
     const handleTouchMove = (e) => {
       const currentX = e.touches[0].clientX;
       const diffX = startX - currentX;
       
-      // Usar la constante de configuración para la distancia mínima
-      if (diffX > 100) { // Swipe left detected
-        handleSwipeLeft();
+      // Swipe left de mínimo 100px para ir a preguntas
+      if (diffX > 100) {
+        startQuestions();
         document.removeEventListener('touchmove', handleTouchMove);
         document.removeEventListener('touchend', handleTouchEnd);
       }
@@ -45,7 +43,7 @@ export const useStartScreen = () => {
 
     document.addEventListener('touchmove', handleTouchMove);
     document.addEventListener('touchend', handleTouchEnd);
-  }, [handleSwipeLeft]);
+  }, [startQuestions]);
 
   // Textos por defecto memoizados
   const defaultTexts = useMemo(() => ({
@@ -65,7 +63,6 @@ export const useStartScreen = () => {
     isValidData,
     
     // Handlers
-    handleSwipeLeft,
     handleTouchStart,
   };
 };

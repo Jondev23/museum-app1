@@ -13,13 +13,11 @@ export const useFeedbackScreen = () => {
     answers
   } = useApp();
 
-  // Handler para swipe left
-  const handleSwipeLeft = useCallback(() => {
-    nextQuestion();
-  }, [nextQuestion]);
-
-  // Handler para touch start con lógica de swipe
+  // Handler para touch start con lógica de swipe (simplificado)
   const handleTouchStart = useCallback((e) => {
+    // Solo procesar si es un touch event real
+    if (!e.touches || e.touches.length === 0) return;
+    
     const startX = e.touches[0].clientX;
     
     const handleTouchMove = (e) => {
@@ -28,7 +26,7 @@ export const useFeedbackScreen = () => {
       
       // Swipe left de mínimo 100px para pasar a siguiente pregunta
       if (diffX > 100) {
-        handleSwipeLeft();
+        nextQuestion();
         document.removeEventListener('touchmove', handleTouchMove);
         document.removeEventListener('touchend', handleTouchEnd);
       }
@@ -41,7 +39,7 @@ export const useFeedbackScreen = () => {
 
     document.addEventListener('touchmove', handleTouchMove);
     document.addEventListener('touchend', handleTouchEnd);
-  }, [handleSwipeLeft]);
+  }, [nextQuestion]);
 
   // Datos memoizados
   const question = useMemo(() => getCurrentQuestion(), [getCurrentQuestion]);
@@ -98,7 +96,6 @@ export const useFeedbackScreen = () => {
     
     // Funciones
     nextQuestion,
-    handleSwipeLeft,
     handleTouchStart
   };
 };

@@ -10,8 +10,6 @@ export const FEEDBACK_CONFIG = {
     MESSAGE: 0.3,
     BUTTON: 0.8,
     BUTTON_DELAY: 0.7,
-    ARROW_ANIMATION: 2,
-    ARROW_REPEAT_DELAY: 2,
   },
   COLORS: {
     CORRECT_BG: 'var(--color-feedback-correct)',

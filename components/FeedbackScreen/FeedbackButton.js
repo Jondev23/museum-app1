@@ -9,11 +9,6 @@ const FeedbackButton = ({
   buttonTextStyle, 
   arrowStyle 
 }) => {
-  const handleTouchStart = (e) => {
-    e.preventDefault();
-    nextQuestion();
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -26,7 +21,6 @@ const FeedbackButton = ({
     >
       <motion.button
         onClick={nextQuestion}
-        onTouchStart={handleTouchStart}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className="flex items-center transition-all cursor-pointer"
