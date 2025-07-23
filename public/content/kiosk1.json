@@ -175,7 +175,7 @@
     },
     "results": {
       "scoreText": "You answered {score} out of 5 questions correctly.",
-      "scoreTextColor": "#85af8b",
+      "scoreTextColor": "#FF0000",
       "messages": {
         "0": "Brrr! Looks like the carriage ended up in the ditch. Try again right away!",
         "1": "There's still room for improvement! You've at least got your foot on the running board.",
