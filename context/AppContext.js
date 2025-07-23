@@ -60,7 +60,7 @@ export const AppProvider = ({ children }) => {
       if (currentScreen !== 'screensaver') {
         timer = setTimeout(() => {
           goToScreensaver();
-        }, 3 * 60 * 1000); // 3 minutes
+        }, 3 * 60 * 1000);
       }
     };
 
@@ -110,6 +110,18 @@ export const AppProvider = ({ children }) => {
   };
 
   const beginQuiz = () => {
+    setCurrentScreen('start');
+    setCurrentQuestionIndex(0);
+    setAnswers([]);
+    
+    // Reshuffle questions when starting new quiz
+    if (content?.[language]?.questions) {
+      const shuffled = [...content[language].questions].sort(() => Math.random() - 0.5);
+      setQuestions(shuffled.slice(0, 5));
+    }
+  };
+
+  const startQuestions = () => {
     setCurrentScreen('question');
     setCurrentQuestionIndex(0);
     setAnswers([]);
@@ -196,6 +208,7 @@ export const AppProvider = ({ children }) => {
     goToScreensaver,
     startQuiz,
     beginQuiz,
+    startQuestions,
     answerQuestion,
     nextQuestion,
     changeLanguage,

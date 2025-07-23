@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
 
 export const useStartScreen = () => {
-  const { beginQuiz, content, language } = useApp();
+  const { startQuestions, content, language } = useApp();
   const [showContent, setShowContent] = useState(false);
 
   // Efecto para mostrar contenido con delay
@@ -19,8 +19,8 @@ export const useStartScreen = () => {
 
   // Handler para swipe left
   const handleSwipeLeft = useCallback(() => {
-    beginQuiz();
-  }, [beginQuiz]);
+    startQuestions();
+  }, [startQuestions]);
 
   // Handler para touch start con lógica de swipe
   const handleTouchStart = useCallback((e) => {
