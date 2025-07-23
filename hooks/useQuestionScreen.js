@@ -13,11 +13,13 @@ export const useQuestionScreen = () => {
   } = useApp();
 
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [isProcessing, setIsProcessing] = useState(false);
   
   // Resetear selectedAnswer cuando cambia la pregunta
   useEffect(() => {
     console.log('Resetting selectedAnswer for question index:', currentQuestionIndex);
     setSelectedAnswer(null);
+    setIsProcessing(false);
   }, [currentQuestionIndex]);
   
   // Memoizar datos derivados
@@ -26,21 +28,23 @@ export const useQuestionScreen = () => {
 
   // Handler para manejar el clic en respuestas
   const handleAnswerClick = useCallback((answerIndex, answerDelay) => {
-    // Doble verificación: asegurar que no hay respuesta seleccionada
-    if (selectedAnswer !== null) {
-      console.warn('Intento de seleccionar respuesta cuando ya hay una seleccionada:', { selectedAnswer, answerIndex });
+    // Doble verificación: asegurar que no hay respuesta seleccionada y no se está procesando
+    if (selectedAnswer !== null || isProcessing) {
+      console.warn('Intento de seleccionar respuesta cuando ya hay una seleccionada o se está procesando:', { selectedAnswer, answerIndex, isProcessing });
       return;
     }
     
+    setIsProcessing(true);
     setSelectedAnswer(answerIndex);
     
     const timeoutId = setTimeout(() => {
       answerQuestion(answerIndex);
+      setIsProcessing(false);
     }, answerDelay);
     
     // Cleanup implícito - React limpiará automáticamente el timeout
     return () => clearTimeout(timeoutId);
-  }, [selectedAnswer, answerQuestion]);
+  }, [selectedAnswer, isProcessing, answerQuestion]);
 
   // Validación de datos
   const isValidData = useMemo(() => {
@@ -51,7 +55,7 @@ export const useQuestionScreen = () => {
   const getButtonClassName = useCallback((index) => {
     const baseClasses = 'transition-all duration-75 transform bg-transparent';
     
-    if (selectedAnswer === null) {
+    if (selectedAnswer === null && !isProcessing) {
       return `${baseClasses} hover:bg-white/10 hover:shadow-lg hover:scale-102 active:scale-98 cursor-pointer`;
     }
     
@@ -60,16 +64,18 @@ export const useQuestionScreen = () => {
     }
     
     return `${baseClasses} opacity-60 cursor-not-allowed`;
-  }, [selectedAnswer]);
+  }, [selectedAnswer, isProcessing]);
 
   // Función para obtener el estilo del botón seleccionado
   const getButtonStyle = useCallback((index) => {
     const baseStyle = { 
-      borderColor: 'var(--color-neutral-light)',
       touchAction: 'manipulation',
       userSelect: 'none',
       WebkitTouchCallout: 'none',
-      WebkitUserSelect: 'none'
+      WebkitUserSelect: 'none',
+      borderWidth: 'min(0.1125rem, 0.225vw, 0.3vh)',
+      borderStyle: 'solid',
+      borderColor: 'var(--color-neutral-light)'
     };
     
     if (selectedAnswer === index) {
@@ -77,7 +83,7 @@ export const useQuestionScreen = () => {
       return {
         ...baseStyle,
         backgroundColor: 'var(--color-neutral-light)',
-        border: 'min(0.1125rem, 0.225vw, 0.3vh) solid var(--color-neutral-light)',
+        borderColor: 'var(--color-neutral-light)',
         minWidth: 'min(42.3rem, 63vw, 80vh)',
         minHeight: 'min(4.62rem, 6.93vh, 8vw)',
         maxWidth: '90vw',
@@ -105,6 +111,7 @@ export const useQuestionScreen = () => {
     isValidData,
     answers,
     questions,
+    isProcessing,
     
     // Funciones
     handleAnswerClick,

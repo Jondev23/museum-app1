@@ -3,7 +3,7 @@ import { useMemo, useCallback } from 'react';
 // Constantes de configuración
 export const QUESTION_CONFIG = {
   TOTAL_QUESTIONS: 5,
-  ANSWER_DELAY: 500,
+  ANSWER_DELAY: 800,
   ANIMATION_DELAYS: {
     TITLE: 0.2,
     BUTTONS: 0.4,

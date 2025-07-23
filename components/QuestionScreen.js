@@ -14,6 +14,7 @@ const QuestionScreen = () => {
     isValidData,
     answers,
     questions,
+    isProcessing,
     handleAnswerClick,
     getButtonClassName,
     getButtonStyle
@@ -55,6 +56,7 @@ const QuestionScreen = () => {
                 question={question}
                 handleAnswerClick={handleAnswerClick}
                 selectedAnswer={selectedAnswer}
+                isProcessing={isProcessing}
                 getButtonClassName={getButtonClassName}
                 getButtonStyle={getButtonStyle}
               />
