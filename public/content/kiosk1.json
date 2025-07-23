@@ -35,7 +35,7 @@
     },
     "results": {
       "scoreText": "Sie haben {score} von 5 Fragen richtig beantwortet.",
-      "scoreTextColor": "#A94930",
+      "scoreTextColor": "#FFFFFF",
       "messages": {
         "0": "Brrr! Da ist wohl die Kutsche im Graben gelandet. Versuche es gleich noch einmal!",
         "1": "Da geht noch was! Du hast zumindest den Fuß auf die Trittstufe gesetzt.",

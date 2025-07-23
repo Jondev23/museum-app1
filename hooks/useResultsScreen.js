@@ -26,6 +26,7 @@ const useResultsScreen = () => {
     return {
       title: results.messages?.[score],
       scoreText: results.scoreText?.replace('{score}', score).replace('{total}', questions.length),
+      scoreTextColor: results.scoreTextColor,
       playAgainText: results.playAgain,
       backgroundImage: startContent?.backgroundImage
     };
