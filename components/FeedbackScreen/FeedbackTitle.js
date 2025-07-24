@@ -1,7 +1,22 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
 
 const FeedbackTitle = ({ question, titleStyle }) => {
+  // Función para procesar saltos de línea con "/"
+  const processQuestionText = (text) => {
+    if (text.includes(' / ')) {
+      const parts = text.split(' / ');
+      return (
+        <>
+          {parts[0].trim()}
+          <br />
+          {parts[1].trim()}
+        </>
+      );
+    }
+    return text;
+  };
   return (
     <motion.h1
       initial={{ opacity: 0 }}
@@ -22,7 +37,7 @@ const FeedbackTitle = ({ question, titleStyle }) => {
         hyphens: titleStyle.hyphens
       }}
     >
-      {question.question}
+      {processQuestionText(question.question)}
     </motion.h1>
   );
 };
