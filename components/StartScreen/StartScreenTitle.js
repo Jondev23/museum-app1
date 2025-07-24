@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { START_SCREEN_CONFIG } from './StartScreenConfig';
 import useResponsiveText from '../../hooks/useResponsiveText';
@@ -11,6 +12,20 @@ const StartScreenTitle = ({
   showOnlyTitle = false,
   showOnlySubtitle = false
 }) => {
+  // Función para procesar saltos de línea con "/"
+  const processText = (text) => {
+    if (text && text.includes(' / ')) {
+      const parts = text.split(' / ');
+      return (
+        <>
+          {parts[0].trim()}
+          <br />
+          {parts[1].trim()}
+        </>
+      );
+    }
+    return text;
+  };
   // Si no se especifica qué mostrar, mostrar ambos (comportamiento por defecto)
   const showTitle = showOnlyTitle || (!showOnlyTitle && !showOnlySubtitle);
   const showSubtitle = showOnlySubtitle || (!showOnlyTitle && !showOnlySubtitle);
@@ -52,7 +67,7 @@ const StartScreenTitle = ({
             color: 'var(--color-text-primary)'
           }}
         >
-          {startContent?.title || defaultTexts.title}
+          {processText(startContent?.title || defaultTexts.title)}
         </motion.h1>
       )}
 
@@ -74,7 +89,7 @@ const StartScreenTitle = ({
               color: startContent?.subtitleColor || 'var(--color-blassgruen)'
             }}
           >
-            {startContent?.subtitle || defaultTexts.subtitle}
+            {processText(startContent?.subtitle || defaultTexts.subtitle)}
           </motion.h2>
         </div>
       )}

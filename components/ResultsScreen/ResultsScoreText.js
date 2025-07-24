@@ -1,7 +1,22 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './ResultsScreenConfig';
 
 const ResultsScoreText = ({ scoreText, scoreTextColor, showContent }) => {
+  // Función para procesar saltos de línea con "/"
+  const processText = (text) => {
+    if (text && text.includes(' / ')) {
+      const parts = text.split(' / ');
+      return (
+        <>
+          {parts[0].trim()}
+          <br />
+          {parts[1].trim()}
+        </>
+      );
+    }
+    return text;
+  };
   return (
     <motion.p
       initial={ANIMATION_CONFIG.CONTENT_REVEAL.INITIAL}
@@ -16,7 +31,7 @@ const ResultsScoreText = ({ scoreText, scoreTextColor, showContent }) => {
         color: scoreTextColor || 'var(--color-blassgruen)' // Use color from JSON or fallback to CSS variable
       }}
     >
-      {scoreText}
+      {processText(scoreText)}
     </motion.p>
   );
 };
