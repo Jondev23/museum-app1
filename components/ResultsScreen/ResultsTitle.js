@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './ResultsScreenConfig';
 
 const ResultsTitle = ({ title, showContent }) => {
-  // Función para procesar saltos de línea con "/"
   const processText = (text) => {
     if (text && text.includes(' / ')) {
       const parts = text.split(' / ');

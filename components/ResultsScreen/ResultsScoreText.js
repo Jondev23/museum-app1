@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './ResultsScreenConfig';
 
 const ResultsScoreText = ({ scoreText, scoreTextColor, showContent }) => {
-  // Función para procesar saltos de línea con "/"
   const processText = (text) => {
     if (text && text.includes(' / ')) {
       const parts = text.split(' / ');
@@ -28,7 +27,7 @@ const ResultsScoreText = ({ scoreText, scoreTextColor, showContent }) => {
       className="subtitle-small"
       style={{ 
         marginBottom: 'var(--results-title-margin)',
-        color: scoreTextColor || 'var(--color-blassgruen)' // Use color from JSON or fallback to CSS variable
+        color: scoreTextColor || 'var(--color-blassgruen)' 
       }}
     >
       {processText(scoreText)}

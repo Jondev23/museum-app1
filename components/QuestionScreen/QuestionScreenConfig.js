@@ -1,6 +1,5 @@
 import { useMemo, useCallback } from 'react';
 
-// Constantes de configuración
 export const QUESTION_CONFIG = {
   TOTAL_QUESTIONS: 5,
   ANSWER_DELAY: 800,
@@ -18,7 +17,6 @@ export const QUESTION_CONFIG = {
   },
 };
 
-// Hook para estilos memoizados - Solo mantiene estilos dinámicos y background
 export const useQuestionScreenStyles = (startContent) => {
   const backgroundStyle = useMemo(() => ({
     backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,

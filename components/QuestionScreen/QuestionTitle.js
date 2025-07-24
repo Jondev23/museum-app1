@@ -6,7 +6,6 @@ import { QUESTION_CONFIG } from './QuestionScreenConfig';
 const QuestionTitle = ({ question }) => {
   const titleRef = useRef(null);
 
-  // Función para procesar saltos de línea con "/"
   const processQuestionText = (text) => {
     if (text.includes(' / ')) {
       const parts = text.split(' / ');
@@ -26,12 +25,10 @@ const QuestionTitle = ({ question }) => {
       const element = titleRef.current;
       const maxHeight = window.innerHeight * 0.2; // 20vh
       
-      // Función para ajustar el tamaño de fuente
       const adjustFontSize = () => {
         let currentSize = parseFloat(window.getComputedStyle(element).fontSize);
         const minSize = parseFloat(window.getComputedStyle(element).fontSize) * 0.6;
         
-        // Reducir el tamaño si el contenido es muy alto
         while (element.scrollHeight > maxHeight && currentSize > minSize) {
           currentSize -= 1;
           element.style.fontSize = `${currentSize}px`;
@@ -39,7 +36,6 @@ const QuestionTitle = ({ question }) => {
         }
       };
 
-      // Ajustar tamaño después de que el contenido se renderice
       setTimeout(adjustFontSize, 100);
     }
   }, [question.question]);

@@ -15,22 +15,18 @@ export const useQuestionScreen = () => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   
-  // Resetear selectedAnswer cuando cambia la pregunta
   useEffect(() => {
     console.log('Resetting selectedAnswer for question index:', currentQuestionIndex);
     setSelectedAnswer(null);
     setIsProcessing(false);
   }, [currentQuestionIndex]);
   
-  // Memoizar datos derivados
   const question = useMemo(() => getCurrentQuestion(), [getCurrentQuestion]);
   const startContent = useMemo(() => content?.[language]?.startScreen, [content, language]);
 
-  // Handler para manejar el clic en respuestas
   const handleAnswerClick = useCallback((answerIndex, answerDelay) => {
-    // Doble verificación: asegurar que no hay respuesta seleccionada y no se está procesando
     if (selectedAnswer !== null || isProcessing) {
-      console.warn('Intento de seleccionar respuesta cuando ya hay una seleccionada o se está procesando:', { selectedAnswer, answerIndex, isProcessing });
+      console.warn('Attempt to select an answer when one is already selected or being processed.', { selectedAnswer, answerIndex, isProcessing });
       return;
     }
     
@@ -42,16 +38,13 @@ export const useQuestionScreen = () => {
       setIsProcessing(false);
     }, answerDelay);
     
-    // Cleanup implícito - React limpiará automáticamente el timeout
     return () => clearTimeout(timeoutId);
   }, [selectedAnswer, isProcessing, answerQuestion]);
 
-  // Validación de datos
   const isValidData = useMemo(() => {
     return question && content?.[language];
   }, [question, content, language]);
 
-  // Función para obtener el className del botón
   const getButtonClassName = useCallback((index) => {
     const baseClasses = 'transition-all duration-75 transform bg-transparent';
     
@@ -66,7 +59,6 @@ export const useQuestionScreen = () => {
     return `${baseClasses} opacity-60 cursor-not-allowed`;
   }, [selectedAnswer, isProcessing]);
 
-  // Función para obtener el estilo del botón seleccionado
   const getButtonStyle = useCallback((index) => {
     const baseStyle = { 
       touchAction: 'manipulation',
@@ -79,7 +71,6 @@ export const useQuestionScreen = () => {
     };
     
     if (selectedAnswer === index) {
-      // Exactamente el mismo estilo que en FeedbackScreen
       return {
         ...baseStyle,
         backgroundColor: 'var(--color-neutral-light)',

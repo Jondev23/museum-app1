@@ -3,13 +3,11 @@ const ResultsBackground = ({ backgroundImage }) => {
   
   return (
     <>
-      {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${bgImage})` }}
       />
       
-      {/* Dark overlay for better text contrast */}
       <div className="absolute inset-0 bg-overlay" />
     </>
   );

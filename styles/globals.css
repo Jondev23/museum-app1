@@ -46,17 +46,16 @@
 /* CSS Variables - Design Tokens */
 :root {
   /* Color Tokens */
-  --color-neutral-light: #d9d9d9;/* texto*/
-  --color-neutral-dark: #1a1a1a; /* background dark */
-  --color-white: #ffffff; /* white text and backgrounds */
-  --color-kupfer: #a94930; /* circulos indicativos rojo feedback*/
-  --color-blassgruen-dark: #598364; /* circulos indicadores y feddback pantalla*/
-  --color-blassgruen: #85af8b; /* circulos indicativos en pagina de resultados*/
-  --color-schiefer: #344243; /* letra dentro de boton feedback */
-  --color-schiefer-dark: #2a3334; /* darker schiefer variant */
+  --color-neutral-light: #d9d9d9;
+  --color-neutral-dark: #1a1a1a; 
+  --color-white: #ffffff; 
+  --color-kupfer: #a94930; 
+  --color-blassgruen-dark: #598364;
+  --color-blassgruen: #85af8b; 
+  --color-schiefer: #344243; 
+  --color-schiefer-dark: #2a3334; 
 
   /* Typography Tokens - Responsive */
-  /* Main titles - 58px to 117px */
   --typography-head-font-size: clamp(3.63rem, 5.808vw, 7.26rem);
   --typography-head-line-height: clamp(4.356rem, 6.9696vw, 8.712rem);
   --typography-head-font-weight: 700;
@@ -169,24 +168,24 @@
   --feedback-arrow-min-height: min(3.0914235rem, 4.96375vh);
 
   /* Results Screen Title - 20% smaller than main title */
-  --results-title-font-size: clamp(2.48292rem, 3.9726vw, 4.96584rem); /* 20% smaller than main title */
-  --results-title-line-height: clamp(2.97952rem, 4.7672vw, 5.9590rem); /* 20% smaller than main title line height */
+  --results-title-font-size: clamp(2.48292rem, 3.9726vw, 4.96584rem); 
+  --results-title-line-height: clamp(2.97952rem, 4.7672vw, 5.9590rem); 
 
   /* Smaller Subtitles - 20% smaller than normal subtitles */
-  --subtitle-small-font-size: clamp(1.4256rem, 2.5661vw, 2.8512rem); /* 20% smaller than --typography-subline-font-size */
-  --subtitle-small-line-height: clamp(1.9008rem, 3.4214vw, 3.8016rem); /* 20% smaller than --typography-subline-line-height */
+  --subtitle-small-font-size: clamp(1.4256rem, 2.5661vw, 2.8512rem); 
+  --subtitle-small-line-height: clamp(1.9008rem, 3.4214vw, 3.8016rem); 
 
   /* Results Screen Spacing - No spacing between title and subtitle */
-  --results-title-margin: 0; /* No space between title and subtitle */
+  --results-title-margin: 0; 
   
   /* Results Screen Progress Spacing - More space between subtitle and progress dots */
-  --results-progress-margin: clamp(1.5rem, 4vw, 3rem); /* More space between subtitle and progress circles */
+  --results-progress-margin: clamp(1.5rem, 4vw, 3rem); 
   
   /* Results Screen Lateral Spacing - Horizontal padding for the page */
-  --results-horizontal-padding: clamp(2rem, 6vw, 5rem); /* Generous horizontal spacing */
+  --results-horizontal-padding: clamp(2rem, 6vw, 5rem); 
   
   /* Results Screen Play Again Button Positioning - Absolute bottom */
-  --results-play-again-bottom: clamp(0.015625rem, 0.046875vw, 0.03125rem); /* Absolute bottom of the screen */
+  --results-play-again-bottom: clamp(0.015625rem, 0.046875vw, 0.03125rem); 
 }
 
 /* Responsive breakpoints for better mobile support */
@@ -198,11 +197,11 @@
     --typography-antworten-buttons-font-size: clamp(0.9rem, 3.6vw, 1.35rem);
     --typography-antwort-fliess-font-size: clamp(0.7875rem, 3.15vw, 1.125rem);
     /* Results title 20% smaller than main title for mobile */
-    --results-title-font-size: clamp(1.368rem, 5.472vw, 2.052rem); /* 20% smaller than mobile main title */
+    --results-title-font-size: clamp(1.368rem, 5.472vw, 2.052rem); 
     /* Smaller subtitles - 20% smaller for mobile */
-    --subtitle-small-font-size: clamp(0.9rem, 4.32vw, 1.44rem); /* 20% smaller than mobile subtitle */
+    --subtitle-small-font-size: clamp(0.9rem, 4.32vw, 1.44rem); 
     /* Results Screen Spacing - No spacing for mobile */
-    --results-title-margin: 0; /* No space between title and subtitle for mobile */
+    --results-title-margin: 0;
     /* Results Screen Progress Spacing - More space between subtitle and progress dots for mobile */
     --results-progress-margin: clamp(1rem, 3.5vw, 2rem); /* More space between subtitle and progress circles for mobile */
     /* Results Screen Lateral Spacing - Smaller horizontal padding for mobile */
@@ -236,19 +235,12 @@
     --typography-subline-font-size: clamp(1rem, 3vh, 1.75rem);
     --spacing-lg: clamp(0.5rem, 2vh, 1rem);
     --spacing-xl: clamp(0.75rem, 3vh, 1.5rem);
-    /* Results title 20% smaller than main title for landscape */
-    --results-title-font-size: clamp(1.026rem, 2.736vh, 1.71rem); /* 20% smaller than landscape main title */
-    /* Smaller subtitles - 20% smaller for landscape */
-    --subtitle-small-font-size: clamp(0.72rem, 2.16vh, 1.26rem); /* 20% smaller than landscape subtitle */
-    /* Results Screen Spacing - No spacing for landscape */
-    --results-title-margin: 0; /* No space between title and subtitle for landscape */
-    /* Results Screen Progress Spacing - More space between subtitle and progress dots for landscape */
-    --results-progress-margin: clamp(0.75rem, 2.5vh, 1.5rem); /* More space between subtitle and progress circles for landscape */
-    /* Results Screen Lateral Spacing - Compact horizontal padding for landscape */
-    --results-horizontal-padding: clamp(1rem, 8vw, 3rem); /* Compact horizontal spacing for landscape */
-    /* Results Screen Play Again Button Positioning - Absolute bottom for landscape */
-    --results-play-again-bottom: clamp(0.007812rem, 0.0195vh, 0.015625rem); /* Absolute bottom for landscape */
-  }
+    --results-title-font-size: clamp(1.026rem, 2.736vh, 1.71rem);
+    --subtitle-small-font-size: clamp(0.72rem, 2.16vh, 1.26rem);
+    --results-title-margin: 0; 
+    --results-progress-margin: clamp(0.75rem, 2.5vh, 1.5rem); 
+    --results-horizontal-padding: clamp(1rem, 8vw, 3rem); 
+    --results-play-again-bottom: clamp(0.007812rem, 0.0195vh, 0.015625rem); 
 }
 
 @layer base {
@@ -612,8 +604,8 @@
     position: fixed;
     z-index: 50;
     opacity: 0;
-    width: max(var(--spacing-xl), 60px); /* Minimum 60px for better touch targets */
-    height: max(var(--spacing-xl), 60px); /* Minimum 60px for better touch targets */
+    width: max(var(--spacing-xl), 60px); 
+    height: max(var(--spacing-xl), 60px); 
     cursor: pointer;
     touch-action: manipulation;
     -webkit-touch-callout: none;
@@ -624,14 +616,7 @@
     user-select: none;
   }
 
-  /* Debug mode - uncomment to make corner triggers visible during testing */
-  /*
-  .admin-corner-trigger {
-    opacity: 0.1 !important;
-    background-color: red !important;
-    border: 2px solid yellow !important;
-  }
-  */
+  
 
   /* Language Selector Styles */
   .language-overlay {

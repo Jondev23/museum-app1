@@ -24,7 +24,6 @@ export const FEEDBACK_CONFIG = {
   },
 };
 
-// Hook para estilos memoizados
 export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   const backgroundStyle = useMemo(() => ({
     backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
@@ -45,26 +44,24 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 'min(1.2rem, 2vw)', // Gap moderado para balance
-    paddingTop: 'min(2rem, 3vw)', // Padding restaurado
+    gap: 'min(1.2rem, 2vw)', 
+    paddingTop: 'min(2rem, 3vw)', 
     paddingBottom: 'min(2rem, 3vw)', 
     paddingLeft: 'min(1.5rem, 2.5vw)',
     paddingRight: 'min(1.5rem, 2.5vw)',
     width: '100%',
     maxWidth: 'min(75.6rem, 83.05vw)',
     height: '74vh',
-    justifyContent: 'space-evenly', // Distribución equilibrada
+    justifyContent: 'space-evenly', 
     overflow: 'hidden'
   }), []);
 
   const titleStyle = useMemo(() => ({
-    // Tamaño base del texto con rango más amplio para ajuste automático
-    fontSize: 'clamp(1rem, 4.84vw, 3.025rem)', // Tamaño mínimo más pequeño
+    fontSize: 'clamp(1rem, 4.84vw, 3.025rem)', 
     lineHeight: 'clamp(1.2rem, 6.05vw, 3.9325rem)',
-    // Dimensiones flexibles para adaptarse al contenido
     width: '95%',
     minHeight: 'auto', 
-    maxHeight: '35vh', // Límite razonable para títulos muy largos
+    maxHeight: '35vh', 
     maxWidth: '80%',
     overflowWrap: 'break-word',
     overflow: 'visible', 
@@ -75,16 +72,15 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     wordBreak: 'break-word',
     hyphens: 'auto',
     padding: '0.5rem',
-    flex: '0 1 auto' // Puede encogerse si es necesario
+    flex: '0 1 auto' 
   }), []);
 
   const answerButtonStyle = useMemo(() => ({
-    // Usar el mismo sistema adaptativo que QuestionScreen
     minWidth: 'min(42.3rem, 63vw, 80vh)',
     minHeight: 'min(4.62rem, 6.93vh, 8vw)',
     maxWidth: '90vw',
-    width: 'auto', // Permitir que se ajuste al contenido
-    height: 'auto', // Permitir que crezca con el contenido
+    width: 'auto', 
+    height: 'auto', 
     padding: 'min(1rem, 1.5vh, 2vw) min(4rem, 5vw, 6vh)',
     borderRadius: 'min(4.62rem, 6.93vh, 8vw)',
     border: 'min(0.1125rem, 0.225vw, 0.3vh) solid var(--color-neutral-light)',
@@ -92,12 +88,11 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'visible',
-    flex: '0 0 auto' // Tamaño fijo, no se adapta
+    flex: '0 0 auto'
   }), []);
 
   const answerTextStyle = useMemo(() => ({
     color: FEEDBACK_CONFIG.COLORS.ANSWER_TEXT,
-    // Solo conservamos propiedades específicas para el centrado
     overflowWrap: 'break-word',
     wordBreak: 'break-word',
     hyphens: 'auto',
@@ -112,14 +107,13 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     gap: '0.5rem',
     width: '100%', 
     minHeight: 'auto',
-    maxHeight: '30vh', // Límite para no dominar el espacio
+    maxHeight: '30vh', 
     justifyContent: 'flex-start',
     overflow: 'visible',
-    flex: '0 1 auto' // Puede encogerse si es necesario, no crece
+    flex: '0 1 auto' 
   }), []);
 
   const messageStyle = useMemo(() => ({
-    // Mismo tamaño base para ambos textos
     fontSize: 'clamp(0.8rem, 3.2vw, 1.6rem)',
     lineHeight: 'clamp(1rem, 4vw, 2rem)',
     maxWidth: '100%',
@@ -128,11 +122,10 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     wordBreak: 'break-word',
     hyphens: 'auto',
     textAlign: 'center',
-    fontWeight: '700' // Más grueso para el mensaje principal
+    fontWeight: '700' 
   }), []);
 
   const explanationStyle = useMemo(() => ({
-    // Mismo tamaño que messageStyle pero peso normal
     fontSize: 'clamp(0.8rem, 3.2vw, 1.6rem)',
     lineHeight: 'clamp(1rem, 4vw, 2rem)',
     maxWidth: '85%',
@@ -141,7 +134,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     wordBreak: 'break-word',
     hyphens: 'auto',
     textAlign: 'center',
-    fontWeight: '400' // Peso normal para la explicación
+    fontWeight: '400' 
   }), []);
 
   const buttonContainerStyle = useMemo(() => ({

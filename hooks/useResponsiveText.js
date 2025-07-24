@@ -1,15 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 
 /**
- * Hook personalizado para ajustar automáticamente el tamaño de texto
- * basado en el espacio disponible del contenedor
- * 
- * @param {Object} initialStyle - Estilo inicial del texto
- * @param {string} content - Contenido del texto que puede cambiar
- * @param {Object} options - Opciones de configuración
- * @param {number} options.minScale - Escala mínima (0.5 = 50% del tamaño original)
- * @param {number} options.step - Paso de reducción en pixels
- * @param {number} options.delay - Retraso antes de ajustar (ms)
+
+ * @param {Object} initialStyle 
+ * @param {string} content 
+ * @param {Object} options 
+ * @param {number} options.minScale 
+ * @param {number} options.step 
+ * @param {number} options.delay 
  * @returns {Object} { ref, adjustedStyle, isAdjusted }
  */
 export const useResponsiveText = (initialStyle, content, options = {}) => {
@@ -39,7 +37,6 @@ export const useResponsiveText = (initialStyle, content, options = {}) => {
         const minSize = currentSize * minScale;
         let wasAdjusted = false;
         
-        // Ajustar hasta que el texto quepa en el contenedor
         while ((element.scrollHeight > containerHeight || element.scrollWidth > containerWidth) && currentSize > minSize) {
           currentSize -= step;
           element.style.fontSize = `${currentSize}px`;
@@ -47,7 +44,6 @@ export const useResponsiveText = (initialStyle, content, options = {}) => {
           wasAdjusted = true;
         }
         
-        // Actualizar el estado con el nuevo estilo
         setAdjustedStyle({
           ...initialStyle,
           fontSize: `${currentSize}px`,
@@ -57,10 +53,8 @@ export const useResponsiveText = (initialStyle, content, options = {}) => {
         setIsAdjusted(wasAdjusted);
       };
 
-      // Ajustar tamaño después de que el contenido se renderice
       const timer = setTimeout(adjustTextSize, delay);
       
-      // Reajustar en cambios de ventana
       const handleResize = () => {
         clearTimeout(timer);
         setTimeout(adjustTextSize, 100);

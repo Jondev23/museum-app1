@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
 
 const FeedbackTitle = ({ question, titleStyle }) => {
-  // Función para procesar saltos de línea con "/"
   const processQuestionText = (text) => {
     if (text.includes(' / ')) {
       const parts = text.split(' / ');

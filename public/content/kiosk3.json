@@ -40,10 +40,10 @@
       "messages": {
         "0": "Brrr! Da ist wohl die Kutsche im Graben gelandet. Versuchen Sie es gleich noch einmal!",
         "1": "Da geht noch was! Sie haben zumindest den Fuß auf die Trittstufe gesetzt.",
-        "2": "Schon besser! Die Reise beginnt – aber der Weg ist noch holprig.",
-        "3": "Hü! Sie haben den Kutschweg im Blick – weiter so!",
-        "4": "Bravo! Sie sind fast am Etappenziel – noch ein kleiner Ruck, dann rollt der Wagen von selbst!",
-        "5": "Chapeau! Sie gehören auf den Kutschbock – ein echter Reiseprofi!"
+        "2": "Schon besser! Die Reise beginnt - aber der Weg ist noch holprig.",
+        "3": "Hü! Sie haben den Kutschweg im Blick - weiter so!",
+        "4": "Bravo! Sie sind fast am Etappenziel - noch ein kleiner Ruck, dann rollt der Wagen von selbst!",
+        "5": "Chapeau! Sie gehören auf den Kutschbock - ein echter Reiseprofi!"
       },
       "playAgain": "Noch einmal"
     },
@@ -179,10 +179,10 @@
       "messages": {
         "0": "Brrr! Looks like the carriage ended up in the ditch. Try again right away!",
         "1": "There's still room for improvement! You've at least got your foot on the running board.",
-        "2": "Better! The journey begins – but the road is still bumpy.",
-        "3": "Giddy up! You've got the carriage route in sight – keep going!",
-        "4": "Bravo! You're almost at the stage destination – just one more push and the wagon will roll on its own!",
-        "5": "Chapeau! You belong on the driver's seat – a real travel professional!"
+        "2": "Better! The journey begins - but the road is still bumpy.",
+        "3": "Giddy up! You've got the carriage route in sight - keep going!",
+        "4": "Bravo! You're almost at the stage destination - just one more push and the wagon will roll on its own!",
+        "5": "Chapeau! You belong on the driver's seat - a real travel professional!"
       },
       "playAgain": "Play Again"
     },

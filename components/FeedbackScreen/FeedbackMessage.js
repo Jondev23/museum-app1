@@ -13,9 +13,9 @@ const FeedbackMessage = ({
     messageStyle,
     randomMessage,
     {
-      minScale: 0.6, // Puede reducirse hasta 60% del tamaño original
-      step: 0.5,     // Reduce de 0.5px en 0.5px
-      delay: 150     // Espera 150ms antes de ajustar
+      minScale: 0.6, 
+      step: 0.5,    
+      delay: 150    
     }
   );
 
@@ -23,9 +23,9 @@ const FeedbackMessage = ({
     explanationStyle,
     question?.explanation,
     {
-      minScale: 0.6, // Puede reducirse hasta 60% del tamaño original
-      step: 0.33,    // Reduce de 0.33px en 0.33px (más fino)
-      delay: 200     // Espera 200ms antes de ajustar
+      minScale: 0.6, 
+      step: 0.33,    
+      delay: 200    
     }
   );
 
@@ -36,7 +36,6 @@ const FeedbackMessage = ({
       transition={{ delay: 0.6, duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE }}
       style={messageContainerStyle}
     >
-      {/* Mensaje principal (¡Correcto! / ¡Incorrecto!) */}
       <motion.p
         ref={messageRef}
         initial={{ opacity: 0 }}
@@ -44,14 +43,13 @@ const FeedbackMessage = ({
         transition={{ delay: 0.6, duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE }}
         style={{
           ...adjustedMessageStyle,
-          color: 'var(--color-white)' // Color blanco para que se vea sobre el fondo colorido
+          color: 'var(--color-white)' 
         }}
-        title={isMessageAdjusted ? 'Texto ajustado automáticamente' : ''}
+        title={isMessageAdjusted ? 'Text adjusted automatically' : ''}
       >
         {randomMessage}
       </motion.p>
 
-      {/* Explicación adicional */}
       {question?.explanation && (
         <motion.p
           ref={explanationRef}
@@ -60,9 +58,9 @@ const FeedbackMessage = ({
           transition={{ delay: 0.6, duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE }}
           style={{
             ...adjustedExplanationStyle,
-            color: 'var(--color-white)' // Color blanco para que se vea sobre el fondo colorido
+            color: 'var(--color-white)' 
           }}
-          title={isExplanationAdjusted ? 'Texto ajustado automáticamente' : ''}
+          title={isExplanationAdjusted ? 'Text adjusted automatically' : ''}
         >
           {question.explanation}
         </motion.p>

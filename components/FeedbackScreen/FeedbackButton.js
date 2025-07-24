@@ -14,7 +14,7 @@ const FeedbackButton = ({
     >
       <motion.button
         onClick={(e) => {
-          e.stopPropagation(); // Prevenir propagación del evento
+          e.stopPropagation();
           nextQuestion();
         }}
         whileHover={{ scale: 1.05 }}

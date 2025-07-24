@@ -1,4 +1,3 @@
-// ResultsScreen components barrel export
 export { default as ResultsTitle } from './ResultsTitle';
 export { default as ResultsScoreText } from './ResultsScoreText';
 export { default as ResultsPlayAgainButton } from './ResultsPlayAgainButton';

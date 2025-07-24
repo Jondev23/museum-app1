@@ -10,12 +10,10 @@ const useLanguageSelector = () => {
     content 
   } = useApp();
 
-  // Get language selector content based on current language or fallback
   const getSelectorContent = useCallback(() => {
     if (content?.[language]?.languageSelector) {
       return content[language].languageSelector;
     }
-    // Fallback to German if current language selector is not available
     return content?.de?.languageSelector || {
       title: "Sprache wählen / Change language",
       german: "DEUTSCH",
@@ -23,13 +21,11 @@ const useLanguageSelector = () => {
     };
   }, [content, language]);
 
-  // Parse title to get German and English parts intelligently
   const parseTitleParts = useCallback((title) => {
     const titleParts = title.split(' / ');
     let germanTitle, englishTitle;
     
     if (titleParts.length === 2) {
-      // Check which part contains German words (contains 'ä', 'ü', 'ö' or starts with 'Sprache')
       const firstPart = titleParts[0].trim();
       const secondPart = titleParts[1].trim();
       
@@ -51,7 +47,6 @@ const useLanguageSelector = () => {
     return { germanTitle, englishTitle };
   }, []);
 
-  // Memoized content data
   const contentData = useMemo(() => {
     if (!content) return null;
 
@@ -67,7 +62,6 @@ const useLanguageSelector = () => {
     };
   }, [content, getSelectorContent, parseTitleParts]);
 
-  // Event handlers
   const handleLanguageChange = useCallback((newLanguage) => {
     console.log('Changing language from', language, 'to', newLanguage);
     changeLanguage(newLanguage);
@@ -83,7 +77,6 @@ const useLanguageSelector = () => {
     e.stopPropagation();
   }, []);
 
-  // Button state helpers
   const getButtonState = useCallback((buttonLanguage) => {
     const isActive = language === buttonLanguage;
     return {
@@ -93,25 +86,20 @@ const useLanguageSelector = () => {
     };
   }, [language]);
 
-  // Validation
   const isVisible = useMemo(() => {
     return Boolean(showLanguageSelector && content);
   }, [showLanguageSelector, content]);
 
   return {
-    // State
     isVisible,
     currentLanguage: language,
     
-    // Data
     contentData,
     
-    // Handlers
     handleLanguageChange,
     handleOverlayClick,
     handleContentClick,
     
-    // Helpers
     getButtonState
   };
 };

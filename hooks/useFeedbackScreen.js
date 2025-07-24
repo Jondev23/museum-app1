@@ -13,13 +13,10 @@ export const useFeedbackScreen = () => {
     answers
   } = useApp();
 
-  // Ref para tracking de listeners activos
   const activeListenersRef = useRef(new Set());
 
-  // Limpiar listeners cuando el componente se desmonta o cambia la pregunta
   useEffect(() => {
     return () => {
-      // Limpiar todos los listeners activos
       activeListenersRef.current.forEach(({ type, listener }) => {
         document.removeEventListener(type, listener);
       });
@@ -27,24 +24,20 @@ export const useFeedbackScreen = () => {
     };
   }, [currentQuestionIndex]);
 
-  // Handler para touch start con lógica de swipe (simplificado)
   const handleTouchStart = useCallback((e) => {
-    // Solo procesar si es un touch event real
     if (!e.touches || e.touches.length === 0) return;
     
-    // No procesar si el touch es en un botón o elemento interactivo
     if (e.target.closest('button') || e.target.closest('[role="button"]')) return;
     
     const startX = e.touches[0].clientX;
-    let hasExecuted = false; // Flag para evitar múltiples ejecuciones
+    let hasExecuted = false; 
     
     const handleTouchMove = (e) => {
-      if (hasExecuted) return; // Ya se ejecutó, ignorar
+      if (hasExecuted) return; 
       
       const currentX = e.touches[0].clientX;
       const diffX = startX - currentX;
       
-      // Swipe left de mínimo 100px para pasar a siguiente pregunta
       if (diffX > 100) {
         hasExecuted = true;
         nextQuestion();
@@ -98,10 +91,10 @@ export const useFeedbackScreen = () => {
     };
   }, [question, userAnswer, content, language, currentQuestionIndex, questions.length]);
 
-  // Contenido de inicio memoizado
+
   const startContent = useMemo(() => content?.[language]?.startScreen, [content, language]);
 
-  // Texto del botón memoizado
+
   const buttonText = useMemo(() => {
     if (!feedbackData.isValidData) return '';
     
@@ -111,7 +104,7 @@ export const useFeedbackScreen = () => {
   }, [feedbackData.isValidData, feedbackData.isLastQuestion, content, language]);
 
   return {
-    // Datos básicos
+    
     question,
     userAnswer,
     totalQuestions,
@@ -121,10 +114,10 @@ export const useFeedbackScreen = () => {
     startContent,
     buttonText,
     
-    // Datos de feedback
+   
     ...feedbackData,
     
-    // Funciones
+  
     nextQuestion,
     handleTouchStart
   };

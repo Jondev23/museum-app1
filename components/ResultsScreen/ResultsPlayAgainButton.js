@@ -26,7 +26,7 @@ const ResultsPlayAgainButton = ({
         className="text-button flex items-center bg-transparent border-none"
         style={{ 
           gap: 'var(--spacing-sm)',
-          padding: '0', // Removed padding to allow button to go to absolute bottom
+          padding: '0', 
           touchAction: 'manipulation',
           userSelect: 'none',
           WebkitTouchCallout: 'none',

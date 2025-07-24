@@ -1,4 +1,3 @@
-// Tipos TypeScript para la aplicación del museo
 
 export interface Question {
   id: string;
