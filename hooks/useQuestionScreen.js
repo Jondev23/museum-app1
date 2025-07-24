@@ -1,7 +1,10 @@
+// Import React hooks and app context
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 
+// Custom hook for question screen functionality
 export const useQuestionScreen = () => {
+  // Get quiz data and functions from app context
   const {
     getCurrentQuestion,
     answerQuestion,
@@ -12,19 +15,24 @@ export const useQuestionScreen = () => {
     questions
   } = useApp();
 
+  // Local state for answer selection and processing
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   
+  // Reset state when moving to a new question
   useEffect(() => {
     console.log('Resetting selectedAnswer for question index:', currentQuestionIndex);
     setSelectedAnswer(null);
     setIsProcessing(false);
   }, [currentQuestionIndex]);
   
+  // Get current question data
   const question = useMemo(() => getCurrentQuestion(), [getCurrentQuestion]);
   const startContent = useMemo(() => content?.[language]?.startScreen, [content, language]);
 
+  // Handle answer selection with processing delay
   const handleAnswerClick = useCallback((answerIndex, answerDelay) => {
+    // Prevent multiple selections or processing
     if (selectedAnswer !== null || isProcessing) {
       console.warn('Attempt to select an answer when one is already selected or being processed.', { selectedAnswer, answerIndex, isProcessing });
       return;
@@ -33,6 +41,7 @@ export const useQuestionScreen = () => {
     setIsProcessing(true);
     setSelectedAnswer(answerIndex);
     
+    // Process answer after delay for better UX
     const timeoutId = setTimeout(() => {
       answerQuestion(answerIndex);
       setIsProcessing(false);
@@ -41,10 +50,12 @@ export const useQuestionScreen = () => {
     return () => clearTimeout(timeoutId);
   }, [selectedAnswer, isProcessing, answerQuestion]);
 
+  // Check if we have valid question data
   const isValidData = useMemo(() => {
     return question && content?.[language];
   }, [question, content, language]);
 
+  // Generate CSS classes for answer buttons based on selection state
   const getButtonClassName = useCallback((index) => {
     const baseClasses = 'transition-all duration-75 transform bg-transparent';
     

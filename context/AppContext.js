@@ -1,8 +1,11 @@
+// Import React hooks and utilities for kiosk configuration
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { detectKioskId, getCurrentKioskConfig } from '../utils/kioskConfig';
 
+// Create context for global app state
 const AppContext = createContext();
 
+// Custom hook to access app context with error handling
 export const useApp = () => {
   const context = useContext(AppContext);
   if (!context) {
@@ -11,18 +14,28 @@ export const useApp = () => {
   return context;
 };
 
+// App provider component that manages global state
 export const AppProvider = ({ children }) => {
+  // Screen navigation state
   const [currentScreen, setCurrentScreen] = useState('screensaver');
+  
+  // Language and content state
   const [language, setLanguage] = useState('de');
   const [content, setContent] = useState(null);
+  
+  // Quiz state
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
+  
+  // UI state
   const [showLanguageSelector, setShowLanguageSelector] = useState(false);
-  const [kioskId, setKioskId] = useState(() => detectKioskId());
   const [isTransitioning, setIsTransitioning] = useState(false);
+  
+  // Kiosk configuration
+  const [kioskId, setKioskId] = useState(() => detectKioskId());
 
-  // Load content based on kiosk ID
+  // Effect to load content when kiosk ID or language changes
   useEffect(() => {
     const loadContent = async () => {
       try {
@@ -37,7 +50,7 @@ export const AppProvider = ({ children }) => {
         console.log('Content loaded successfully:', data);
         setContent(data);
         
-        // Shuffle and select 5 random questions
+        // Shuffle and select 5 random questions for each quiz session
         if (data[language]?.questions) {
           const shuffled = [...data[language].questions].sort(() => Math.random() - 0.5);
           setQuestions(shuffled.slice(0, 5));
@@ -52,30 +65,33 @@ export const AppProvider = ({ children }) => {
     loadContent();
   }, [kioskId, language]);
 
-  // Inactivity timer
+  // Effect to handle inactivity timer (3 minutes)
   useEffect(() => {
     let timer;
     
+    // Reset the inactivity timer
     const resetTimer = () => {
       clearTimeout(timer);
       if (currentScreen !== 'screensaver') {
         timer = setTimeout(() => {
           goToScreensaver();
-        }, 3 * 60 * 1000);
+        }, 3 * 60 * 1000); // 3 minutes
       }
     };
 
+    // Handle any user activity to reset timer
     const handleActivity = () => {
       resetTimer();
     };
 
-    // Listen for user activity
+    // Listen for various user interactions
     document.addEventListener('touchstart', handleActivity);
     document.addEventListener('click', handleActivity);
     document.addEventListener('keydown', handleActivity);
 
     resetTimer();
 
+    // Cleanup event listeners on unmount
     return () => {
       clearTimeout(timer);
       document.removeEventListener('touchstart', handleActivity);
@@ -84,7 +100,7 @@ export const AppProvider = ({ children }) => {
     };
   }, [currentScreen]);
 
-  // Listen for Electron screensaver signal
+  // Effect to listen for Electron screensaver signals
   useEffect(() => {
     if (typeof window !== 'undefined' && window.electronAPI) {
       window.electronAPI.onShowScreensaver(() => {

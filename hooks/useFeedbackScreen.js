@@ -1,7 +1,10 @@
+// Import React hooks and app context
 import { useMemo, useCallback, useEffect, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 
+// Custom hook for feedback screen functionality
 export const useFeedbackScreen = () => {
+  // Get quiz data and functions from app context
   const { 
     getCurrentQuestion, 
     getCurrentAnswer,
@@ -13,8 +16,10 @@ export const useFeedbackScreen = () => {
     answers
   } = useApp();
 
+  // Ref to track active event listeners for cleanup
   const activeListenersRef = useRef(new Set());
 
+  // Cleanup effect when question changes
   useEffect(() => {
     return () => {
       activeListenersRef.current.forEach(({ type, listener }) => {
@@ -24,13 +29,15 @@ export const useFeedbackScreen = () => {
     };
   }, [currentQuestionIndex]);
 
+  // Handle touch gestures for swiping to next question
   const handleTouchStart = useCallback((e) => {
     if (!e.touches || e.touches.length === 0) return;
     
+    // Don't handle touch on buttons
     if (e.target.closest('button') || e.target.closest('[role="button"]')) return;
     
     const startX = e.touches[0].clientX;
-    let hasExecuted = false; 
+    let hasExecuted = false; // Prevent multiple executions
     
     const handleTouchMove = (e) => {
       if (hasExecuted) return; 
@@ -38,6 +45,7 @@ export const useFeedbackScreen = () => {
       const currentX = e.touches[0].clientX;
       const diffX = startX - currentX;
       
+      // If swipe left is detected (>100px), go to next question
       if (diffX > 100) {
         hasExecuted = true;
         nextQuestion();
