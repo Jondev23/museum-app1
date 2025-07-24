@@ -1,50 +1,50 @@
-// Animation configurations for LanguageSelector
+// Animation configurations for LanguageSelector overlay component
 export const ANIMATION_CONFIG = {
-  // Overlay animation
+  // Background overlay fade animation
   OVERLAY: {
-    INITIAL: { opacity: 0 },
-    ANIMATE: { opacity: 1 },
-    EXIT: { opacity: 0 },
-    TRANSITION: { duration: 0.3 }
+    INITIAL: { opacity: 0 },        // Start transparent
+    ANIMATE: { opacity: 1 },        // Fade to visible
+    EXIT: { opacity: 0 },           // Fade out on exit
+    TRANSITION: { duration: 0.3 }   // Animation duration
   },
 
-  // Container animation
+  // Main container scale and fade animation
   CONTAINER: {
-    INITIAL: { scale: 0.8, opacity: 0 },
-    ANIMATE: { scale: 1, opacity: 1 },
-    EXIT: { scale: 0.8, opacity: 0 },
-    TRANSITION: { duration: 0.3 }
+    INITIAL: { scale: 0.8, opacity: 0 },  // Start smaller and transparent
+    ANIMATE: { scale: 1, opacity: 1 },    // Scale to normal size and visible
+    EXIT: { scale: 0.8, opacity: 0 },     // Scale down and fade out
+    TRANSITION: { duration: 0.3 }          // Animation duration
   },
 
-  // Globe icon animation
+  // Globe icon pop-in animation
   GLOBE_ICON: {
-    INITIAL: { scale: 0 },
-    ANIMATE: { scale: 1 },
-    TRANSITION: { duration: 0.3, delay: 0.1 }
+    INITIAL: { scale: 0 },              // Start at zero scale
+    ANIMATE: { scale: 1 },              // Pop to normal size
+    TRANSITION: { duration: 0.3, delay: 0.1 }  // With slight delay
   },
 
-  // Title animation
+  // Title text slide-up animation
   TITLE: {
-    INITIAL: { opacity: 0, y: 20 },
-    ANIMATE: { opacity: 1, y: 0 },
-    TRANSITION: { duration: 0.3, delay: 0.2 }
+    INITIAL: { opacity: 0, y: 20 },     // Start below and transparent
+    ANIMATE: { opacity: 1, y: 0 },      // Move up and become visible
+    TRANSITION: { duration: 0.3, delay: 0.2 }  // With staggered delay
   },
 
-  // Buttons animation
+  // Language buttons slide-up animation
   BUTTONS: {
-    INITIAL: { opacity: 0, y: 20 },
-    ANIMATE: { opacity: 1, y: 0 },
-    TRANSITION: { duration: 0.3, delay: 0.3 }
+    INITIAL: { opacity: 0, y: 20 },     // Start below and transparent
+    ANIMATE: { opacity: 1, y: 0 },      // Move up and become visible
+    TRANSITION: { duration: 0.3, delay: 0.3 }  // With final delay
   },
 
-  // Button interactions
-  BUTTON_HOVER: { scale: 1.02 },
-  BUTTON_TAP: { scale: 0.98 }
+  // Interactive button animation states
+  BUTTON_HOVER: { scale: 1.02 },        // Slightly larger on hover
+  BUTTON_TAP: { scale: 0.98 }           // Slightly smaller when pressed
 };
 
-// Styling configurations - Simplified (most styles moved to CSS)
+// Styling configurations - Simplified with most styles moved to CSS
 export const STYLE_CONFIG = {
-  // Title container styles
+  // Title container layout styles
   TITLE_CONTAINER: {
     display: 'flex',
     flexDirection: 'column',

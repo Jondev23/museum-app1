@@ -1,30 +1,38 @@
+// Import React hooks for memoization
 import { useMemo } from 'react';
 
-
+// Configuration constants for feedback screen animations and styling
 export const FEEDBACK_CONFIG = {
+  // Animation duration timings in seconds
   ANIMATION_DURATIONS: {
-    SCREEN_TRANSITION: 0.4,
-    CONTAINER: 0.4,
-    TITLE: 0.1,
-    ANSWER: 0.2,
-    MESSAGE: 0.3,
-    BUTTON: 0.8,
-    BUTTON_DELAY: 0.7,
+    SCREEN_TRANSITION: 0.4, // Screen transition duration
+    CONTAINER: 0.4,         // Container animation duration
+    TITLE: 0.1,             // Title animation duration
+    ANSWER: 0.2,            // Answer reveal animation
+    MESSAGE: 0.3,           // Feedback message animation
+    BUTTON: 0.8,            // Continue button animation
+    BUTTON_DELAY: 0.7,      // Delay before button appears
   },
+  
+  // Color configuration using CSS custom properties
   COLORS: {
-    CORRECT_BG: 'var(--color-feedback-correct)',
-    INCORRECT_BG: 'var(--color-feedback-incorrect)',
-    ANSWER_BG: 'var(--color-feedback-answer-bg)',
-    ANSWER_TEXT: 'var(--color-feedback-answer-text)',
-    OVERLAY: 'bg-overlay', 
+    CORRECT_BG: 'var(--color-feedback-correct)',     // Green for correct answers
+    INCORRECT_BG: 'var(--color-feedback-incorrect)', // Red for incorrect answers
+    ANSWER_BG: 'var(--color-feedback-answer-bg)',    // Answer background color
+    ANSWER_TEXT: 'var(--color-feedback-answer-text)', // Answer text color
+    OVERLAY: 'bg-overlay',                            // Background overlay class
   },
+  
+  // Size and styling constants
   SIZES: {
-    BORDER_RADIUS: 'var(--border-radius-md)',
-    BUTTON_BORDER_RADIUS: 'rounded-full',
+    BORDER_RADIUS: 'var(--border-radius-md)',  // Medium border radius
+    BUTTON_BORDER_RADIUS: 'rounded-full',      // Full rounded button style
   },
 };
 
+// Custom hook for feedback screen styles with dynamic correct/incorrect theming
 export const useFeedbackScreenStyles = (startContent, isCorrect) => {
+  // Background image style with fallback
   const backgroundStyle = useMemo(() => ({
     backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
     backgroundSize: 'cover',
@@ -32,22 +40,24 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     backgroundRepeat: 'no-repeat'
   }), [startContent?.backgroundImage]);
 
+  // Main content container styles
   const mainContentStyle = useMemo(() => ({
     width: '100%',
-    maxWidth: 'min(127rem, 95vw)',
-    paddingTop: 'min(6rem, 8vh)',
-    paddingBottom: 'min(2rem, 3vh)', 
-    margin: '0 auto'
+    maxWidth: 'min(127rem, 95vw)',    // Responsive max width
+    paddingTop: 'min(6rem, 8vh)',     // Responsive top padding
+    paddingBottom: 'min(2rem, 3vh)',  // Responsive bottom padding
+    margin: '0 auto'                   // Center horizontally
   }), []);
 
+  // Feedback container styles with responsive spacing
   const feedbackContainerStyle = useMemo(() => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 'min(1.2rem, 2vw)', 
-    paddingTop: 'min(2rem, 3vw)', 
-    paddingBottom: 'min(2rem, 3vw)', 
-    paddingLeft: 'min(1.5rem, 2.5vw)',
+    gap: 'min(1.2rem, 2vw)',          // Responsive gap between elements
+    paddingTop: 'min(2rem, 3vw)',     // Responsive top padding
+    paddingBottom: 'min(2rem, 3vw)',  // Responsive bottom padding
+    paddingLeft: 'min(1.5rem, 2.5vw)', // Responsive left padding
     paddingRight: 'min(1.5rem, 2.5vw)',
     width: '100%',
     maxWidth: 'min(75.6rem, 83.05vw)',
