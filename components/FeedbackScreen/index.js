@@ -1,3 +1,4 @@
+// Feedback screen component exports
 export { default as FeedbackTitle } from './FeedbackTitle';
 export { default as FeedbackAnswer } from './FeedbackAnswer';
 export { default as FeedbackMessage } from './FeedbackMessage';

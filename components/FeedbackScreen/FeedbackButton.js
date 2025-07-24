@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 
+// Continue button component for feedback screen
 const FeedbackButton = ({ 
   buttonText, 
   nextQuestion, 
@@ -15,7 +16,7 @@ const FeedbackButton = ({
       <motion.button
         onClick={(e) => {
           e.stopPropagation();
-          nextQuestion();
+          nextQuestion(); // Navigate to next question or results
         }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}

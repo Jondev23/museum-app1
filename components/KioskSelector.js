@@ -2,22 +2,27 @@ import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
 import { KIOSK_CONFIGS } from '../utils/kioskConfig';
 
+// Kiosk selection screen for choosing between different kiosk configurations
 const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
   const { setKioskId, kioskId } = useApp();
 
  
+  // Get available kiosk configurations
   const kiosks = Object.values(KIOSK_CONFIGS);
 
+  // Handle kiosk selection
   const handleSelect = (id) => {
     setKioskId(id);
     if (onKioskSelected) onKioskSelected(id);
   };
 
+  // Touch event handler for selection
   const handleTouchSelect = (e, id) => {
     e.preventDefault();
     handleSelect(id);
   };
 
+  // Touch event handler for back button
   const handleTouchBack = (e) => {
     e.preventDefault();
     onBack();
@@ -41,6 +46,7 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
             marginBottom: 'min(2rem, 4vw)'
           }}
         >
+          {/* Render kiosk selection buttons */}
           {kiosks.map((kiosk) => (
             <button
               key={kiosk.id}

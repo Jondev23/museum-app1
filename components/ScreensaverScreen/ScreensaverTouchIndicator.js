@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { SCREENSAVER_CONFIG } from './ScreensaverScreenConfig';
 
+// Touch indicator component with bouncing animation for screensaver
 const ScreensaverTouchIndicator = ({ 
   touchIndicatorContainerStyle,
   touchIconBackgroundStyle,
@@ -30,6 +31,7 @@ const ScreensaverTouchIndicator = ({
       }}
       className="relative"
     >
+      {/* Touch indicator circle with animation */}
       <div 
         className={`relative z-10 flex items-center justify-center rounded-full ${SCREENSAVER_CONFIG.COLORS.TOUCH_BACKGROUND} backdrop-blur-sm border ${SCREENSAVER_CONFIG.COLORS.TOUCH_BORDER}`}
         style={touchIconBackgroundStyle}

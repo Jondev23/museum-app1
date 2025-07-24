@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { START_SCREEN_CONFIG } from './StartScreenConfig';
 import useResponsiveText from '../../hooks/useResponsiveText';
 
+// Description component for start screen with responsive text sizing
 const StartScreenDescription = ({ 
   startContent, 
   defaultTexts, 
@@ -11,12 +12,14 @@ const StartScreenDescription = ({
   introTextStyle 
 }) => {
   
+  // Responsive sizing for highlight text
   const { ref: highlightRef, adjustedStyle: adjustedHighlightStyle } = useResponsiveText(
     highlightTextStyle,
     startContent?.highlightText || defaultTexts.highlightText,
     { minScale: 0.4, step: 2, delay: 200 }
   );
 
+  // Responsive sizing for intro text
   const { ref: introRef, adjustedStyle: adjustedIntroStyle } = useResponsiveText(
     introTextStyle,
     startContent?.introText || defaultTexts.introText,
@@ -46,6 +49,7 @@ const StartScreenDescription = ({
           fontWeight: 'var(--typography-antwort-fliess-bold-font-weight) !important'
         }}
       >
+        {/* Highlight text section */}
         {startContent?.highlightText || defaultTexts.highlightText}
       </div>
 
@@ -58,6 +62,7 @@ const StartScreenDescription = ({
           color: 'var(--color-text-primary)'
         }}
       >
+        {/* Intro text section */}
         {startContent?.introText || defaultTexts.introText}
       </div>
     </motion.div>

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './ResultsScreenConfig';
 
+// Play again button component for restarting the quiz
 const ResultsPlayAgainButton = ({ 
   playAgainText, 
   showContent, 
@@ -20,7 +21,7 @@ const ResultsPlayAgainButton = ({
       style={{ bottom: 'var(--results-play-again-bottom)' }}
     >
       <motion.button
-        onClick={onPlayAgain}
+        onClick={onPlayAgain} // Restart the quiz
         whileHover={ANIMATION_CONFIG.BUTTON.HOVER}
         whileTap={ANIMATION_CONFIG.BUTTON.TAP}
         className="text-button flex items-center bg-transparent border-none"

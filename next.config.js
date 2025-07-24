@@ -1,17 +1,19 @@
 /** @type {import('next').NextConfig} */
+// Next.js configuration for Electron app deployment
 const nextConfig = {
-  output: 'export',
-  trailingSlash: true,
-  skipTrailingSlashRedirect: true,
-  distDir: 'out',
+  output: 'export',                    // Static export for Electron
+  trailingSlash: true,                 // Add trailing slashes to URLs
+  skipTrailingSlashRedirect: true,     // Skip redirect for trailing slashes
+  distDir: 'out',                      // Output directory for build
   images: {
-    unoptimized: true
+    unoptimized: true                  // Disable image optimization for Electron
   },
-  assetPrefix: process.env.NODE_ENV === 'production' ? './' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? './' : '', // Relative paths in production
   webpack: (config) => {
+    // Disable Node.js modules for browser compatibility
     config.resolve.fallback = {
       ...config.resolve.fallback,
-      fs: false,
+      fs: false,                       // Disable filesystem module
     };
     return config;
   },

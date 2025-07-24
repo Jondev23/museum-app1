@@ -1,6 +1,8 @@
+// Import animation library and question configuration
 import { motion } from 'framer-motion';
 import { QUESTION_CONFIG } from './QuestionScreenConfig';
 
+// Answer buttons component for multiple choice questions
 const AnswerButtons = ({ 
   question, 
   handleAnswerClick,
@@ -9,6 +11,7 @@ const AnswerButtons = ({
   getButtonClassName,
   getButtonStyle
 }) => {
+  // Handle touch events for mobile devices
   const handleTouchStart = (e, index) => {
     e.preventDefault();
     if (selectedAnswer === null && !isProcessing) {
@@ -17,6 +20,7 @@ const AnswerButtons = ({
   };
 
   return (
+    // Animated container for answer buttons
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}

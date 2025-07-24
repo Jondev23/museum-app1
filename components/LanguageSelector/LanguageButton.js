@@ -1,6 +1,8 @@
+// Import animation library and configuration
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './LanguageSelectorConfig';
 
+// Individual language button component for German/English selection
 const LanguageButton = ({ 
   language, 
   buttonText, 
@@ -9,16 +11,19 @@ const LanguageButton = ({
   backgroundColor, 
   onLanguageChange 
 }) => {
+  // Dynamic CSS classes based on active state
   const buttonClass = isActive 
     ? "language-button language-button-active transition-all"
     : "language-button language-button-inactive transition-all";
 
+  // Handle touch events for mobile devices
   const handleTouchStart = (e) => {
     e.preventDefault();
     onLanguageChange(language);
   };
 
   return (
+    // Animated button with hover and tap interactions
     <motion.button
       onClick={() => onLanguageChange(language)}
       onTouchStart={handleTouchStart}
@@ -32,6 +37,7 @@ const LanguageButton = ({
         WebkitUserSelect: 'none'
       }}
     >
+      {/* Button text content */}
       <span className="text-button language-button-text">
         {buttonText}
       </span>

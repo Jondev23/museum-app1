@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { SCREENSAVER_CONFIG } from './ScreensaverScreenConfig';
 
+// Loading screen component for screensaver state
 const ScreensaverLoading = ({ titleStyle }) => (
   <motion.div
     initial={{ opacity: 0 }}
@@ -20,6 +21,7 @@ const ScreensaverLoading = ({ titleStyle }) => (
       className="text-center leading-tight font-tisa-pro"
       style={titleStyle}
     >
+      {/* Loading text with pulsing animation */}
       Loading...
     </motion.h1>
   </motion.div>

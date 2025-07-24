@@ -1,5 +1,6 @@
 import { SCREENSAVER_CONFIG } from './ScreensaverScreenConfig';
 
+// Background video component for screensaver screen
 const ScreensaverBackground = ({ defaultContent, videoStyle }) => (
   <>
     {/* Background video */}
@@ -17,6 +18,7 @@ const ScreensaverBackground = ({ defaultContent, videoStyle }) => (
       />
     </video>
     
+    {/* Dark overlay */}
     <div className={`absolute inset-0 ${SCREENSAVER_CONFIG.COLORS.OVERLAY} z-10`} />
   </>
 );

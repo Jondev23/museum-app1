@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
 
+// Display component for showing the user's selected answer in feedback screen
 const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextStyle }) => {
   return (
     <motion.div
@@ -31,6 +32,7 @@ const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextSty
             transform: answerTextStyle.transform
           }}
         >
+          {/* Display the selected answer text */}
           {question.answers[userAnswer]}
         </span>
       </div>
