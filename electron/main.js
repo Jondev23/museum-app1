@@ -1,13 +1,15 @@
+// Electron main process for museum kiosk application
 const { app, BrowserWindow, globalShortcut, Menu } = require('electron');
 const path = require('path');
 const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV !== 'production';
 
 let mainWindow;
 let inactivityTimer;
-const INACTIVITY_TIMEOUT = 3 * 60 * 1000; 
+const INACTIVITY_TIMEOUT = 3 * 60 * 1000; // 3 minutes inactivity timeout
 
 console.log('Electron starting in', isDev ? 'DEVELOPMENT' : 'PRODUCTION', 'mode');
 
+// Create the main browser window
 function createWindow() {
   // Only disable menu bar in production
   if (!isDev) {

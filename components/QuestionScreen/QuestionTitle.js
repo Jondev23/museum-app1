@@ -3,9 +3,11 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { QUESTION_CONFIG } from './QuestionScreenConfig';
 
+// Question title component with responsive text sizing and line break processing
 const QuestionTitle = ({ question }) => {
   const titleRef = useRef(null);
 
+  // Process question text to handle line breaks
   const processQuestionText = (text) => {
     if (text.includes(' / ')) {
       const parts = text.split(' / ');
@@ -20,6 +22,7 @@ const QuestionTitle = ({ question }) => {
     return text;
   };
 
+  // Auto-adjust font size to fit container height
   useEffect(() => {
     if (titleRef.current) {
       const element = titleRef.current;

@@ -1,5 +1,3 @@
-// Import animation library
-import { motion } from 'framer-motion';
 
 // Progress dots component - shows quiz progress with different visual states
 const ProgressDots = ({ 

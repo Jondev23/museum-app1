@@ -2,7 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './ResultsScreenConfig';
 
+// Score text component for results screen with line break processing
 const ResultsScoreText = ({ scoreText, scoreTextColor, showContent }) => {
+  // Process text to handle line breaks
   const processText = (text) => {
     if (text && text.includes(' / ')) {
       const parts = text.split(' / ');

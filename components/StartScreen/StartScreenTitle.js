@@ -1,8 +1,7 @@
 // Import React, animation library, and responsive text hook
-import React from 'react';
 import { motion } from 'framer-motion';
 import { START_SCREEN_CONFIG } from './StartScreenConfig';
-import useResponsiveText from '../../hooks/useResponsiveText';
+
 
 // Start screen title component with responsive text and animations
 const StartScreenTitle = ({ 

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG, DEFAULT_CONTENT } from './LanguageSelectorConfig';
 
+// Language selection icon component with animation
 const LanguageIcon = () => {
   return (
     <motion.div

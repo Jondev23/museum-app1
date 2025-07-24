@@ -1,12 +1,11 @@
-import { motion } from 'framer-motion';
-import { START_SCREEN_CONFIG } from './StartScreenConfig';
-
+// Touch indicator component with swipe animation for start screen
 const StartScreenTouchIndicator = ({ 
   showContent, 
   handleSwipeLeft, 
   touchIndicatorContainerStyle,
   touchIndicatorStyle 
 }) => {
+  // Animation styles with fade-swipe effect
   const animationStyles = {
     ...touchIndicatorStyle,
     animation: 'fade-swipe 4.5s ease-in-out infinite',
@@ -24,12 +23,14 @@ const StartScreenTouchIndicator = ({
       onMouseUp={(e) => e.target.style.transform = 'scale(1.1)'}
       style={touchIndicatorContainerStyle}
     >
+      {/* Swipe indicator icon with animation */}
       <img
         src="/images/OE_Swipe_128.svg"
         alt="Swipe indicator"
         style={animationStyles}
       />
       
+      {/* CSS animation keyframes */}
       <style jsx>{`
         @keyframes fade-swipe {
           0% { 

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG, STYLE_CONFIG } from './LanguageSelectorConfig';
 
+// Title component for language selector with bilingual text
 const LanguageTitle = ({ englishTitle, germanTitle }) => {
   return (
     <motion.div

@@ -2,7 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
 
+// Feedback screen title component with line break processing
 const FeedbackTitle = ({ question, titleStyle }) => {
+  // Process question text to handle line breaks
   const processQuestionText = (text) => {
     if (text.includes(' / ')) {
       const parts = text.split(' / ');

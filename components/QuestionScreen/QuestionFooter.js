@@ -2,6 +2,7 @@ import ProgressDots from '../shared/ProgressDots';
 import StandardFooter from '../shared/StandardFooter';
 import { QUESTION_CONFIG } from './QuestionScreenConfig';
 
+// Footer component for question screen with progress dots and standard footer
 const QuestionFooter = ({ currentQuestionIndex, progressDotsStyle, answers, questions }) => (
   <div className="relative">
     <ProgressDots

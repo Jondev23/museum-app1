@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { SCREENSAVER_CONFIG } from './ScreensaverScreenConfig';
 
+// Animated title component for screensaver with pulsing effect
 const ScreensaverTitle = ({ screensaverContent, defaultContent, titleStyle }) => (
   <motion.div
     initial={{ opacity: 0, y: 50 }}

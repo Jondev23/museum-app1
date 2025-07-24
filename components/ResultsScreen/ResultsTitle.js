@@ -2,7 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './ResultsScreenConfig';
 
+// Results title component with line break processing and animation
 const ResultsTitle = ({ title, showContent }) => {
+  // Process text to handle line breaks
   const processText = (text) => {
     if (text && text.includes(' / ')) {
       const parts = text.split(' / ');

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './LanguageSelectorConfig';
 
+// Animated container wrapper for language selector content
 const LanguageContainer = ({ onContentClick, children }) => {
   return (
     <motion.div

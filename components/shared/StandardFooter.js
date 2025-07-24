@@ -1,5 +1,4 @@
 // Import animation library and shared components
-import { motion } from 'framer-motion';
 import LanguageSelectorIcon from './LanguageSelectorIcon';
 import ProgressDots from './ProgressDots';
 

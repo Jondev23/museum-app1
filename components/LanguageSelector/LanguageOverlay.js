@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './LanguageSelectorConfig';
 
+// Animated overlay component for language selector background
 const LanguageOverlay = ({ onOverlayClick, children }) => {
   return (
     <motion.div
