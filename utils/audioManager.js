@@ -1,4 +1,3 @@
-// Utilidades para manejo de audio en la aplicación del kiosco
 
 class AudioManager {
   constructor() {
@@ -9,10 +8,9 @@ class AudioManager {
 
   async init() {
     try {
-      // Solo inicializar si el usuario ha interactuado con la página
       this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
     } catch (error) {
-      console.warn('Audio context no disponible:', error);
+      console.warn('Audio context not available', error);
     }
   }
 
@@ -25,7 +23,7 @@ class AudioManager {
       const audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
       this.sounds.set(name, audioBuffer);
     } catch (error) {
-      console.warn(`Error cargando sonido ${name}:`, error);
+      console.warn(`Error loading sound ${name}:`, error);
     }
   }
 
@@ -45,7 +43,7 @@ class AudioManager {
 
       source.start();
     } catch (error) {
-      console.warn(`Error reproduciendo sonido ${name}:`, error);
+      console.warn(`Error playing sound ${name}:`, error);
     }
   }
 
@@ -62,7 +60,6 @@ class AudioManager {
   }
 }
 
-// Efectos de sonido para el kiosco
 export const SOUND_EFFECTS = {
   BUTTON_CLICK: 'button-click',
   CORRECT_ANSWER: 'correct-answer',
@@ -71,10 +68,8 @@ export const SOUND_EFFECTS = {
   SCREEN_TRANSITION: 'screen-transition'
 };
 
-// Instancia global del audio manager
 export const audioManager = new AudioManager();
 
-// Hook para usar audio en componentes React
 export const useAudio = () => {
   const playSound = (soundName, volume) => {
     audioManager.playSound(soundName, volume);

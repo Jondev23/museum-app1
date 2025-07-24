@@ -51,7 +51,6 @@ const FeedbackScreen = () => {
       className="fixed inset-0 flex flex-col z-50"
       onTouchStart={(e) => {
         e.stopPropagation();
-        // Solo manejar si no es un elemento interactivo
         if (!e.target.closest('button') && !e.target.closest('[role="button"]')) {
           handleTouchStart(e);
         }

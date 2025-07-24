@@ -53,7 +53,7 @@ const ProgressDots = ({
         const isCorrect = userAnswer === questions[index]?.correctAnswer;
         dotColor = isCorrect ? 'var(--color-blassgruen)' : 'var(--color-feedback-incorrect)';
         return {
-          width: 'min(3.5rem, 5.6vw, 7vh)', // Más grande para results
+          width: 'min(3.5rem, 5.6vw, 7vh)', 
           height: 'min(3.5rem, 5.6vw, 7vh)',
           borderRadius: '50%',
           backgroundColor: dotColor,

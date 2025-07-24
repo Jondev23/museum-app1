@@ -26,7 +26,6 @@ export const useResponsiveText = (initialStyle, content, options = {}) => {
       const element = textRef.current;
       
       const adjustTextSize = () => {
-        // Resetear al tamaño original
         element.style.fontSize = initialStyle.fontSize;
         element.style.lineHeight = initialStyle.lineHeight;
         

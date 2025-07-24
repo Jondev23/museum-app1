@@ -64,12 +64,10 @@ export const useFeedbackScreen = () => {
     activeListenersRef.current.add({ type: 'touchend', listener: handleTouchEnd });
   }, [nextQuestion]);
 
-  // Datos memoizados
   const question = useMemo(() => getCurrentQuestion(), [getCurrentQuestion]);
   const userAnswer = useMemo(() => getCurrentAnswer(), [getCurrentAnswer]);
   const totalQuestions = useMemo(() => questions.length, [questions.length]);
   
-  // Lógica de negocio memoizada
   const feedbackData = useMemo(() => {
     if (!question || userAnswer === undefined || !content?.[language]) {
       return { isValidData: false };

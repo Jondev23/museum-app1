@@ -15,17 +15,17 @@ function createWindow() {
   }
 
   mainWindow = new BrowserWindow({
-    width: 1920, // Cambiado de isDev ? 1200 : 1920
-    height: 1080, // Cambiado de isDev ? 800 : 1080
-    fullscreen: !isDev, // Fullscreen en producción, ventana en dev
-    kiosk: !isDev, // Kiosk en producción
-    frame: isDev, // Muestra el marco en desarrollo
+    width: 1920, 
+    height: 1080, 
+    fullscreen: !isDev, 
+    kiosk: !isDev, 
+    frame: isDev, 
     show: false,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
       enableRemoteModule: false,
-      webSecurity: isDev ? false : true, // Only disable in dev for easier development
+      webSecurity: isDev ? false : true, 
       allowRunningInsecureContent: isDev,
       experimentalFeatures: false,
       preload: path.join(__dirname, 'preload.js')

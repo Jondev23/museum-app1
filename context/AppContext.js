@@ -142,7 +142,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const nextQuestion = () => {
-    if (isTransitioning) return; // Prevenir múltiples llamadas simultáneas
+    if (isTransitioning) return; 
     
     setIsTransitioning(true);
     
@@ -153,7 +153,6 @@ export const AppProvider = ({ children }) => {
       setCurrentScreen('results');
     }
     
-    // Reset del flag después de un pequeño delay para permitir la transición
     setTimeout(() => setIsTransitioning(false), 300);
   };
 

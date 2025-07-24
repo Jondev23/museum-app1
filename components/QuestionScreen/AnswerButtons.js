@@ -53,7 +53,6 @@ const AnswerButtons = ({
             className={`typography-antworten-buttons relative w-full text-center break-words hyphens-auto max-w-full transition-colors duration-75 ${selectedAnswer === index ? '' : 'text-primary'}`}
             style={{
               color: selectedAnswer === index ? 'var(--color-feedback-answer-text)' : undefined,
-              // Exactamente los mismos estilos de texto que en FeedbackScreen cuando está seleccionado
               overflowWrap: selectedAnswer === index ? 'break-word' : undefined,
               wordBreak: selectedAnswer === index ? 'break-word' : undefined,
               hyphens: selectedAnswer === index ? 'auto' : undefined,
