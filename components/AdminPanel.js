@@ -1,8 +1,11 @@
+// Import React hooks, animation library, and kiosk selector
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import KioskSelectorScreen from './KioskSelector';
 
+// Admin panel component - hidden panel for kiosk management and configuration
 const AdminPanel = () => {
+  // State for panel visibility and authentication
   const [isVisible, setIsVisible] = useState(false);
   const [clickSequence, setClickSequence] = useState([]);
   const [password, setPassword] = useState('');
@@ -11,20 +14,20 @@ const AdminPanel = () => {
   const [successMsg, setSuccessMsg] = useState('');
   const passwordInputRef = useRef(null);
 
- 
-  const SECRET_SEQUENCE = ['tr', 'tr', 'br'];
+  // Security configuration
+  const SECRET_SEQUENCE = ['tr', 'tr', 'br']; // Top-right, top-right, bottom-right
   const ADMIN_PASSWORD = 'museum2025';
 
+  // Reset click sequence after timeout to prevent accidental access
   useEffect(() => {
-   
     const timer = setTimeout(() => {
       setClickSequence([]);
-    }, 10000);
+    }, 10000); // 10 second timeout
 
     return () => clearTimeout(timer);
   }, [clickSequence]);
 
-  
+  // Auto-focus password input when panel becomes visible
   useEffect(() => {
     if (isVisible && !isAuthenticated && passwordInputRef.current) {
       const timer = setTimeout(() => {
@@ -34,10 +37,12 @@ const AdminPanel = () => {
     }
   }, [isVisible, isAuthenticated, password]);
 
+  // Handle corner click sequence for panel activation
   const handleCornerClick = (corner) => {
     const newSequence = [...clickSequence, corner];
     setClickSequence(newSequence);
 
+    // Check if sequence matches the secret pattern
     if (newSequence.length === SECRET_SEQUENCE.length) {
       if (JSON.stringify(newSequence) === JSON.stringify(SECRET_SEQUENCE)) {
         setIsVisible(true);
@@ -46,6 +51,7 @@ const AdminPanel = () => {
     }
   };
 
+  // Handle touch events for mobile devices
   const handleCornerTouch = (e, corner) => {
     e.preventDefault();
     handleCornerClick(corner);

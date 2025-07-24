@@ -1,7 +1,10 @@
+// Import React hooks and app context
 import { useCallback, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
 
+// Custom hook for language selector functionality
 const useLanguageSelector = () => {
+  // Get language-related functions and state from app context
   const { 
     showLanguageSelector, 
     setShowLanguageSelector, 
@@ -10,10 +13,12 @@ const useLanguageSelector = () => {
     content 
   } = useApp();
 
+  // Get language selector content with fallback values
   const getSelectorContent = useCallback(() => {
     if (content?.[language]?.languageSelector) {
       return content[language].languageSelector;
     }
+    // Fallback to German content or default values
     return content?.de?.languageSelector || {
       title: "Sprache wählen / Change language",
       german: "DEUTSCH",
@@ -21,6 +26,7 @@ const useLanguageSelector = () => {
     };
   }, [content, language]);
 
+  // Parse bilingual title string into separate German/English parts
   const parseTitleParts = useCallback((title) => {
     const titleParts = title.split(' / ');
     let germanTitle, englishTitle;
@@ -29,6 +35,7 @@ const useLanguageSelector = () => {
       const firstPart = titleParts[0].trim();
       const secondPart = titleParts[1].trim();
       
+      // Detect German text by umlauts or specific words
       const isFirstPartGerman = /[äöüÄÖÜ]/.test(firstPart) || firstPart.toLowerCase().includes('sprache');
       
       if (isFirstPartGerman) {
@@ -47,6 +54,7 @@ const useLanguageSelector = () => {
     return { germanTitle, englishTitle };
   }, []);
 
+  // Memoized content data for the language selector
   const contentData = useMemo(() => {
     if (!content) return null;
 

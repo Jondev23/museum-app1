@@ -1,5 +1,7 @@
+// Import animation library
 import { motion } from 'framer-motion';
 
+// Progress dots component - shows quiz progress with different visual states
 const ProgressDots = ({ 
   totalQuestions, 
   currentQuestionIndex, 
@@ -9,7 +11,7 @@ const ProgressDots = ({
   className = '',
   style = {}
 }) => {
-  // Adjust gap based on variant
+  // Calculate gap between dots based on variant
   const getGap = () => {
     switch (variant) {
       case 'results':
@@ -19,11 +21,13 @@ const ProgressDots = ({
     }
   };
 
+  // Base styles for the dots container
   const baseStyles = {
     gap: getGap(),
     ...style
   };
 
+  // Calculate individual dot styles based on question state
   const getDotStyles = (index) => {
     const baseSize = 'min(1rem, 1.8vw, 2.25vh)';
     const baseBorder = 'min(0.1575rem, 0.252vw, 0.315vh)';
@@ -34,8 +38,8 @@ const ProgressDots = ({
     
     switch (variant) {
       case 'feedback':
+        // Show correct/incorrect colors for answered questions
         if (index < currentQuestionIndex || (index === currentQuestionIndex && answers[index] !== undefined)) {
-          // Question has been answered
           const questionAnswered = questions[index];
           const userAnswerForQuestion = answers[index];
           const wasCorrect = userAnswerForQuestion === questionAnswered?.correctAnswer;

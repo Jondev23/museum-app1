@@ -1,6 +1,8 @@
+// Import animation library and app context
 import { motion } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
 
+// Language selector icon component - trigger for language overlay
 const LanguageSelectorIcon = ({ 
   variant = 'standard',
   className = '',
@@ -8,9 +10,10 @@ const LanguageSelectorIcon = ({
   delay = 0.6,
   opacity = 0.8
 }) => {
+  // Get language selector toggle function from app context
   const { setShowLanguageSelector } = useApp();
 
-  
+  // Base styles for the icon
   const baseIconStyles = {
     width: 'min(2.7rem, 4.86vw, 6.075vh)', 
     height: 'min(2.7rem, 4.86vw, 6.075vh)',
@@ -18,7 +21,7 @@ const LanguageSelectorIcon = ({
     opacity: opacity
   };
 
- 
+  // Get container styles based on variant
   const getContainerStyles = () => {
     return {
       flexShrink: 0,
@@ -28,6 +31,7 @@ const LanguageSelectorIcon = ({
     };
   };
 
+  // Get button styles for touch target
   const getButtonStyles = () => {
     return {
       minWidth: 'min(3.5rem, 6vw)',
@@ -35,15 +39,18 @@ const LanguageSelectorIcon = ({
     };
   };
 
+  // Animation settings for entrance
   const getInitialAnimation = () => {
     return { y: '100%', opacity: 0 };
   };
 
+  // Handle click to open language selector
   const handleClick = () => {
     console.log('Globe icon clicked, opening language selector');
     setShowLanguageSelector(true);
   };
 
+  // Handle touch for mobile devices
   const handleTouchStart = (e) => {
     e.preventDefault();
     console.log('Globe icon touched, opening language selector');
