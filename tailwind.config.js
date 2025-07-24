@@ -1,3 +1,4 @@
+// Tailwind CSS configuration for museum kiosk application
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',

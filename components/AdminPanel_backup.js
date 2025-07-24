@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import KioskSelectorScreen from './KioskSelector';
 
+// Backup version of admin panel component (for reference)
 const AdminPanel = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [clickSequence, setClickSequence] = useState([]);
@@ -10,7 +11,7 @@ const AdminPanel = () => {
   const [showKioskSelector, setShowKioskSelector] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
 
-  
+  // Security configuration
   const SECRET_SEQUENCE = ['tl', 'tl', 'br'];
   const ADMIN_PASSWORD = 'museum2025';
 

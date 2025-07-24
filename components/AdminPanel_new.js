@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import KioskSelectorScreen from './KioskSelector';
 
+// Admin panel component with secret sequence access and kiosk configuration
 const AdminPanel = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [clickSequence, setClickSequence] = useState([]);
@@ -10,9 +11,11 @@ const AdminPanel = () => {
   const [showKioskSelector, setShowKioskSelector] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
 
+  // Secret sequence and password configuration
   const SECRET_SEQUENCE = ['tl', 'tl', 'br'];
   const ADMIN_PASSWORD = 'museum2025';
 
+  // Reset click sequence after timeout
   useEffect(() => {
     
     const timer = setTimeout(() => {
@@ -22,6 +25,7 @@ const AdminPanel = () => {
     return () => clearTimeout(timer);
   }, [clickSequence]);
 
+  // Handle corner click sequence detection
   const handleCornerClick = (corner) => {
     const newSequence = [...clickSequence, corner];
     setClickSequence(newSequence);
