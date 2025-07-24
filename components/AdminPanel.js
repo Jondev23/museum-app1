@@ -12,6 +12,7 @@ const AdminPanel = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showKioskSelector, setShowKioskSelector] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   const passwordInputRef = useRef(null);
 
   // Security configuration
@@ -27,7 +28,7 @@ const AdminPanel = () => {
     return () => clearTimeout(timer);
   }, [clickSequence]);
 
-  // Auto-focus password input when panel becomes visible
+  // Auto-focus password input when panel becomes visible or password is reset
   useEffect(() => {
     if (isVisible && !isAuthenticated && passwordInputRef.current) {
       const timer = setTimeout(() => {
@@ -61,15 +62,25 @@ const AdminPanel = () => {
     e.preventDefault();
     if (password === ADMIN_PASSWORD) {
       setIsAuthenticated(true);
+      setErrorMsg('');
     } else {
       setPassword('');
-      alert('Passwort inkorrekt');
-     
+      setErrorMsg('Passwort inkorrekt. Bitte versuchen Sie es erneut.');
+      
+      // Clear error message after 3 seconds
+      setTimeout(() => {
+        setErrorMsg('');
+      }, 3000);
+      
+      // Focus the input field immediately and again after a short delay
+      if (passwordInputRef.current) {
+        passwordInputRef.current.focus();
+      }
       setTimeout(() => {
         if (passwordInputRef.current) {
           passwordInputRef.current.focus();
         }
-      }, 100);
+      }, 50);
     }
   };
 
@@ -78,12 +89,26 @@ const AdminPanel = () => {
     handlePasswordSubmit(e);
   };
 
+  const handleInputClick = () => {
+    if (passwordInputRef.current) {
+      passwordInputRef.current.focus();
+    }
+  };
+
+  const handleInputTouch = (e) => {
+    e.preventDefault();
+    if (passwordInputRef.current) {
+      passwordInputRef.current.focus();
+    }
+  };
+
   const handleClose = () => {
     setIsVisible(false);
     setPassword('');
     setIsAuthenticated(false);
     setShowKioskSelector(false);
     setSuccessMsg('');
+    setErrorMsg('');
   };
 
   const handleExitKiosk = () => {
@@ -149,6 +174,11 @@ const AdminPanel = () => {
                   {successMsg}
                 </div>
               )}
+              {errorMsg && (
+                <div className="admin-error-message">
+                  {errorMsg}
+                </div>
+              )}
               {!isAuthenticated ? (
                 <form onSubmit={handlePasswordSubmit} className="admin-form">
                   <div>
@@ -160,8 +190,16 @@ const AdminPanel = () => {
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      onClick={handleInputClick}
+                      onTouchStart={handleInputTouch}
                       className="admin-input"
                       autoFocus
+                      style={{
+                        touchAction: 'manipulation',
+                        userSelect: 'none',
+                        WebkitTouchCallout: 'none',
+                        WebkitUserSelect: 'none'
+                      }}
                     />
                   </div>
                   <div className="admin-button-group-spaced">

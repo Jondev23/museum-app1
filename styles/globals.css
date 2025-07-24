@@ -572,6 +572,17 @@
     font-size: var(--admin-font-size-sm);
   }
 
+  .admin-error-message {
+    color: #dc2626;
+    text-align: center;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background-color: #fef2f2;
+    font-size: var(--admin-font-size-sm);
+    border: 1px solid #fecaca;
+  }
+
   .admin-separator {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--color-neutral-light), transparent);
