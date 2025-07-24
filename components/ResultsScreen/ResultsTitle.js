@@ -1,4 +1,4 @@
-import React from 'react';
+// Import React, animation library, and results configuration
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './ResultsScreenConfig';
 

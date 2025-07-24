@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
+
 
 // Display component for showing the user's selected answer in feedback screen
 const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextStyle }) => {

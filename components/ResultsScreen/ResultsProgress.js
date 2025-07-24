@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import ProgressDots from '../shared/ProgressDots';
 
 // Progress dots component for results screen showing quiz completion

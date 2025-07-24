@@ -1,4 +1,4 @@
-import React from 'react';
+// Import React, animation library, and feedback configuration
 import { motion } from 'framer-motion';
 import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
 
