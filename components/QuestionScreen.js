@@ -1,11 +1,18 @@
+// Import animation library and question screen components
 import { motion } from 'framer-motion';
+
+// Import custom hooks and configuration
 import { useQuestionScreen } from '../hooks/useQuestionScreen';
 import { useQuestionScreenStyles, QUESTION_CONFIG } from './QuestionScreen/QuestionScreenConfig';
+
+// Import subcomponents
 import QuestionTitle from './QuestionScreen/QuestionTitle';
 import AnswerButtons from './QuestionScreen/AnswerButtons';
 import QuestionFooter from './QuestionScreen/QuestionFooter';
 
+// Question screen component - displays quiz questions with multiple choice answers
 const QuestionScreen = () => {
+  // Get question data and handlers from custom hook
   const {
     question,
     startContent,
@@ -20,14 +27,17 @@ const QuestionScreen = () => {
     getButtonStyle
   } = useQuestionScreen();
 
+  // Get dynamic styles based on content
   const {
     backgroundStyle,
     progressDotsStyle
   } = useQuestionScreenStyles(startContent);
 
+  // Don't render if data is invalid
   if (!isValidData) return null;
 
   return (
+    // Animated container with slide-in animation from right
     <motion.div
       initial={{ x: '100%', opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
@@ -39,8 +49,10 @@ const QuestionScreen = () => {
       className="fixed inset-0 flex flex-col"
       style={backgroundStyle}
     >
+      {/* Background overlay for better contrast */}
       <div className="absolute inset-0" style={{ backgroundColor: 'var(--color-overlay)' }} />
 
+      {/* Content container */}
       <div className="relative z-10 flex flex-col h-full">
         {/* Main content */}
         <div className="flex flex-col items-center justify-start flex-1 w-full max-w-[min(120rem,95vw)] mx-auto px-[min(4rem,6vw)] pt-[min(4rem,6vh)] pb-[min(0.5rem,1vh)] gap-[min(1.5rem,3vw)]">

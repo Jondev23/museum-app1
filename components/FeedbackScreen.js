@@ -1,13 +1,20 @@
+// Import animation library and shared components
 import { motion } from 'framer-motion';
 import StandardFooter from './shared/StandardFooter';
+
+// Import custom hooks and configuration
 import { useFeedbackScreen } from '../hooks/useFeedbackScreen';
 import { useFeedbackScreenStyles, FEEDBACK_CONFIG } from './FeedbackScreen/FeedbackScreenConfig';
+
+// Import subcomponents
 import FeedbackTitle from './FeedbackScreen/FeedbackTitle';
 import FeedbackAnswer from './FeedbackScreen/FeedbackAnswer';
 import FeedbackMessage from './FeedbackScreen/FeedbackMessage';
 import FeedbackButton from './FeedbackScreen/FeedbackButton';
 
+// Feedback screen component - shows correct/incorrect feedback after each question
 const FeedbackScreen = () => {
+  // Get feedback data and handlers from custom hook
   const {
     question,
     userAnswer,
@@ -24,6 +31,7 @@ const FeedbackScreen = () => {
     handleTouchStart
   } = useFeedbackScreen();
 
+  // Get dynamic styles based on content and answer correctness
   const {
     backgroundStyle,
     mainContentStyle,

@@ -1,12 +1,19 @@
+// Import animation library and screen components
 import { motion } from 'framer-motion';
 import StandardFooter from './shared/StandardFooter';
+
+// Import custom hooks and configuration
 import { useStartScreen } from '../hooks/useStartScreen';
 import { useStartScreenStyles, START_SCREEN_CONFIG } from './StartScreen/StartScreenConfig';
+
+// Import subcomponents
 import StartScreenTitle from './StartScreen/StartScreenTitle';
 import StartScreenDescription from './StartScreen/StartScreenDescription';
 import StartScreenTouchIndicator from './StartScreen/StartScreenTouchIndicator';
 
+// Start screen component - first screen after screensaver
 const StartScreen = () => {
+  // Get screen data and handlers from custom hook
   const {
     showContent,
     startContent,
@@ -16,6 +23,7 @@ const StartScreen = () => {
     handleTouchStart,
   } = useStartScreen();
 
+  // Get dynamic styles based on content
   const {
     backgroundStyle,
     containerStyle,
@@ -31,9 +39,11 @@ const StartScreen = () => {
     touchIndicatorStyle
   } = useStartScreenStyles(startContent);
 
+  // Don't render if data is invalid
   if (!isValidData) return null;
 
   return (
+    // Animated container with background image
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
