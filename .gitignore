@@ -37,4 +37,16 @@ next-env.d.ts
 
 # electron
 /dist/
+/dist-simple/
 /release/
+
+# Custom build files
+build-portable.js
+package-simple.json
+server.js
+start-kiosk.bat
+*_CLIENTE.*
+
+# Distribution packages
+Museum-Kutschen-Kiosk*/
+*.zip
