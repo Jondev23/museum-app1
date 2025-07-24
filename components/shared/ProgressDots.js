@@ -5,7 +5,7 @@ const ProgressDots = ({
   currentQuestionIndex, 
   answers = [], 
   questions = [],
-  variant = 'default', // 'default', 'feedback', 'results'
+  variant = 'default', 
   className = '',
   style = {}
 }) => {
@@ -13,7 +13,7 @@ const ProgressDots = ({
   const getGap = () => {
     switch (variant) {
       case 'results':
-        return 'min(2.8rem, 4.5vw, 5.6vh)'; // Espacio más grande para results
+        return 'min(2.8rem, 4.5vw, 5.6vh)'; 
       default:
         return 'min(0.75rem, 1.2vw, 1.5vh)'; 
     }
@@ -61,20 +61,20 @@ const ProgressDots = ({
         };
         
       default:
-        // Default behavior for question screen
+        
         if (index < currentQuestionIndex && answers[index] !== undefined) {
-          // Past questions that have been answered - show correct/incorrect colors
+          
           const questionAnswered = questions[index];
           const userAnswerForQuestion = answers[index];
           const wasCorrect = userAnswerForQuestion === questionAnswered?.correctAnswer;
           dotColor = wasCorrect ? 'var(--color-feedback-correct)' : 'var(--color-feedback-incorrect)';
           showBorder = false;
         } else if (index === currentQuestionIndex) {
-          // Current question - filled with neutral color
+          
           dotColor = 'var(--color-neutral-light)';
           showBorder = false;
         } else {
-          // Future questions - transparent with border
+          
           dotColor = 'transparent';
           showBorder = true;
         }

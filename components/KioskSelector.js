@@ -5,7 +5,7 @@ import { KIOSK_CONFIGS } from '../utils/kioskConfig';
 const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
   const { setKioskId, kioskId } = useApp();
 
-  // Konvertiert das Kiosk-Objekt in ein Array
+ 
   const kiosks = Object.values(KIOSK_CONFIGS);
 
   const handleSelect = (id) => {

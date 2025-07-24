@@ -10,12 +10,12 @@ const AdminPanel = () => {
   const [showKioskSelector, setShowKioskSelector] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
 
-  // Geheime Sequenz: 2x Klick auf oben-links, dann 1x unten-rechts
+  
   const SECRET_SEQUENCE = ['tl', 'tl', 'br'];
   const ADMIN_PASSWORD = 'museum2025';
 
   useEffect(() => {
-    // Reset sequence after 10 seconds of inactivity
+    
     const timer = setTimeout(() => {
       setClickSequence([]);
     }, 10000);
@@ -63,11 +63,10 @@ const AdminPanel = () => {
 
   const handleExitKiosk = () => {
     if (window.confirm('Kiosk-Modus wirklich beenden?')) {
-      // In Electron app
+      
       if (window.electronAPI) {
         window.close();
       } else {
-        // In browser
         window.location.href = 'about:blank';
       }
     }
@@ -77,8 +76,6 @@ const AdminPanel = () => {
 
   return (
     <>
-      {/* Triggers invisibles solo para la secuencia requerida */}
-      {/* Esquina superior izquierda - para los 2 primeros toques */}
       <div 
         className="admin-corner-trigger top-0 left-0"
         onClick={() => handleCornerClick('tl')}
@@ -90,7 +87,6 @@ const AdminPanel = () => {
           WebkitUserSelect: 'none'
         }}
       />
-      {/* Esquina superior derecha - mantenida para compatibilidad futura */}
       <div 
         className="admin-corner-trigger top-0 right-0"
         onClick={() => handleCornerClick('tr')}
@@ -102,7 +98,6 @@ const AdminPanel = () => {
           WebkitUserSelect: 'none'
         }}
       />
-      {/* Esquina inferior derecha - para el toque final */}
       <div 
         className="admin-corner-trigger bottom-0 right-0"
         onClick={() => handleCornerClick('br')}
@@ -114,9 +109,7 @@ const AdminPanel = () => {
           WebkitUserSelect: 'none'
         }}
       />
-      {/* Esquina inferior izquierda ELIMINADA - libre para el selector de idioma */}
 
-      {/* Admin Panel */}
       <AnimatePresence>
         {isVisible && !showKioskSelector && (
           <motion.div
@@ -215,10 +208,8 @@ const AdminPanel = () => {
                     Panel schließen
                   </button>
 
-                  {/* Visueller Trenner im Apple-Stil */}
                   <div className="admin-separator" />
                   
-                  {/* Separater Exit-Button */}
                   <button
                     onClick={handleExitKiosk}
                     onTouchStart={(e) => { e.preventDefault(); handleExitKiosk(); }}
@@ -253,4 +244,3 @@ const AdminPanel = () => {
 };
 
 export default AdminPanel;
-// export default AdminPanel

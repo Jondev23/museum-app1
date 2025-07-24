@@ -38,7 +38,7 @@ const StandardFooter = ({
         style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', left: 'min(1.25rem, 2vw)' } : {}}
       />
 
-      {/* Pagination dots - conditional with alignment options */}
+      
       {showProgressDots ? (
         <ProgressDots
           totalQuestions={totalQuestions}
@@ -50,12 +50,12 @@ const StandardFooter = ({
           style={
             alignProgressDots === 'inline' 
             ? {
-                // Inline alignment for FeedbackScreen - perfectly centered
+                
                 flexShrink: 0,
                 marginBottom: 'min(6.70698984375rem, 10.73148375vh)'
               }
             : {
-                // Centered positioning for QuestionScreen
+                
                 left: '46%',
                 transform: 'translateX(calc(-50% - min(4rem, 8vw)))',
                 bottom: 'min(5.625rem, 9vh)',
@@ -67,7 +67,7 @@ const StandardFooter = ({
         <div style={{ flex: 1 }} />
       )}
 
-      {/* Custom content (buttons, etc.) - positioned absolutely when progress dots are centered */}
+      
       <div style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', right: 0 } : {}}>
         {children}
       </div>

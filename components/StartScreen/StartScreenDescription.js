@@ -10,7 +10,7 @@ const StartScreenDescription = ({
   highlightTextStyle,
   introTextStyle 
 }) => {
-  // Hooks para texto responsive
+  
   const { ref: highlightRef, adjustedStyle: adjustedHighlightStyle } = useResponsiveText(
     highlightTextStyle,
     startContent?.highlightText || defaultTexts.highlightText,

@@ -19,7 +19,7 @@ const ScreensaverScreen = () => {
     videoStyle,
   } = useScreensaverScreenStyles();
 
-  // Show loading state if content is not yet loaded
+
   if (isLoading) {
     return <ScreensaverLoading titleStyle={titleStyle} />;
   }

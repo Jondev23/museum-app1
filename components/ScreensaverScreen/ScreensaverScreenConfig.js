@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 
-// Constantes de configuración
 export const SCREENSAVER_CONFIG = {
   ANIMATION_DELAYS: {
     TITLE: 0.5,
@@ -37,7 +36,6 @@ export const SCREENSAVER_CONFIG = {
   },
 };
 
-// Hook para estilos memoizados
 export const useScreensaverScreenStyles = () => {
   const titleStyle = useMemo(() => ({
     color: 'var(--color-screensaver-title)',

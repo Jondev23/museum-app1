@@ -1,4 +1,4 @@
-// Configuración simple
+
 export const START_SCREEN_CONFIG = {
   ANIMATION_DELAYS: {
     CONTENT_TRIGGER: 300,
@@ -23,7 +23,7 @@ export const START_SCREEN_CONFIG = {
   },
 };
 
-// Estilos súper simples con porcentajes y responsivos
+
 export const useStartScreenStyles = (startContent) => ({
   backgroundStyle: {
     backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
@@ -34,7 +34,7 @@ export const useStartScreenStyles = (startContent) => ({
 
   containerStyle: {
     minHeight: '100vh',
-    minHeight: '100dvh' // Dynamic viewport height for mobile
+    minHeight: '100dvh'
   },
 
   mainCardStyle: { 
@@ -53,7 +53,7 @@ export const useStartScreenStyles = (startContent) => ({
     paddingRight: 'clamp(1rem, 3vw, 3rem)'
   },
 
-  // Título - responsivo 
+  
   titleStyle: {
     fontSize: 'var(--typography-head-font-size)',
     fontFamily: 'var(--typography-head-font-family)',
@@ -65,7 +65,7 @@ export const useStartScreenStyles = (startContent) => ({
     lineHeight: 'var(--typography-head-line-height)'
   },
 
-  // Subtítulo - responsivo
+  
   subtitleStyle: {
     fontSize: 'var(--typography-subline-font-size)',
     fontFamily: 'var(--typography-subline-font-family)',
@@ -78,7 +78,7 @@ export const useStartScreenStyles = (startContent) => ({
     marginTop: '-0.5rem'
   },
 
-  // Descripción - responsiva
+  
   descriptionSectionStyle: {
     height: '100%',
     display: 'flex',
@@ -113,7 +113,7 @@ export const useStartScreenStyles = (startContent) => ({
     letterSpacing: 'var(--typography-antwort-fliess-letter-spacing)'
   },
 
-  // TouchIndicator responsivo
+  
   touchIndicatorContainerStyle: {
     width: 'clamp(50px, 8vw, 80px)',
     height: 'clamp(50px, 8vw, 80px)',

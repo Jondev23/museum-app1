@@ -11,12 +11,12 @@ const AdminPanel = () => {
   const [successMsg, setSuccessMsg] = useState('');
   const passwordInputRef = useRef(null);
 
-  // Nueva secuencia SIN esquina superior izquierda: 2x superior derecha, luego 1x inferior derecha
+ 
   const SECRET_SEQUENCE = ['tr', 'tr', 'br'];
   const ADMIN_PASSWORD = 'museum2025';
 
   useEffect(() => {
-    // Reset sequence after 10 seconds of inactivity
+   
     const timer = setTimeout(() => {
       setClickSequence([]);
     }, 10000);
@@ -24,7 +24,7 @@ const AdminPanel = () => {
     return () => clearTimeout(timer);
   }, [clickSequence]);
 
-  // Efecto para mantener el foco en el input de contraseña cuando es visible
+  
   useEffect(() => {
     if (isVisible && !isAuthenticated && passwordInputRef.current) {
       const timer = setTimeout(() => {
@@ -58,7 +58,7 @@ const AdminPanel = () => {
     } else {
       setPassword('');
       alert('Passwort inkorrekt');
-      // Restaurar el foco al input después del alert
+     
       setTimeout(() => {
         if (passwordInputRef.current) {
           passwordInputRef.current.focus();
@@ -94,10 +94,7 @@ const AdminPanel = () => {
 
   return (
     <>
-      {/* Solo los triggers necesarios para la nueva secuencia */}
-      {/* ESQUINA SUPERIOR IZQUIERDA ELIMINADA - libre para el selector de idioma */}
       
-      {/* Esquina superior derecha - para los 2 primeros toques */}
       <div 
         className="admin-corner-trigger top-0 right-0"
         onClick={() => handleCornerClick('tr')}
@@ -110,7 +107,7 @@ const AdminPanel = () => {
         }}
       />
       
-      {/* Esquina inferior derecha - para el toque final */}
+      
       <div 
         className="admin-corner-trigger bottom-0 right-0"
         onClick={() => handleCornerClick('br')}
@@ -123,7 +120,7 @@ const AdminPanel = () => {
         }}
       />
 
-      {/* Admin Panel Modal */}
+      
       <AnimatePresence>
         {isVisible && !showKioskSelector && (
           <motion.div

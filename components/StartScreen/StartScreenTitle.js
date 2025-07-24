@@ -12,7 +12,7 @@ const StartScreenTitle = ({
   showOnlyTitle = false,
   showOnlySubtitle = false
 }) => {
-  // Función para procesar saltos de línea con "/"
+  
   const processText = (text) => {
     if (text && text.includes(' / ')) {
       const parts = text.split(' / ');
@@ -26,24 +26,10 @@ const StartScreenTitle = ({
     }
     return text;
   };
-  // Si no se especifica qué mostrar, mostrar ambos (comportamiento por defecto)
+  
   const showTitle = showOnlyTitle || (!showOnlyTitle && !showOnlySubtitle);
   const showSubtitle = showOnlySubtitle || (!showOnlyTitle && !showOnlySubtitle);
 
-  // Hooks para texto responsive - DESACTIVADOS TEMPORALMENTE para probar variables CSS
-  // const { ref: titleRef, adjustedStyle: adjustedTitleStyle } = useResponsiveText(
-  //   titleStyle,
-  //   startContent?.title || defaultTexts.title,
-  //   { minScale: 0.4, step: 2, delay: 200 }
-  // );
-
-  // const { ref: subtitleRef, adjustedStyle: adjustedSubtitleStyle } = useResponsiveText(
-  //   subtitleStyle,
-  //   startContent?.subtitle || defaultTexts.subtitle,
-  //   { minScale: 0.4, step: 2, delay: 200 }
-  // );
-
-  // Referencias simples sin hooks responsivos
   const titleRef = null;
   const subtitleRef = null;
   const adjustedTitleStyle = titleStyle;
@@ -51,7 +37,7 @@ const StartScreenTitle = ({
 
   return (
     <div className="flex flex-col items-center w-full h-full justify-center">
-      {/* Main title */}
+      
       {showTitle && (
         <motion.h1
           ref={titleRef}
@@ -71,7 +57,7 @@ const StartScreenTitle = ({
         </motion.h1>
       )}
 
-      {/* Subtitle - en su propio contenedor */}
+      
       {showSubtitle && (
         <div className="w-full flex justify-center">
           <motion.h2

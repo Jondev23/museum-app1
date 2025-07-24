@@ -1,4 +1,3 @@
-// Barrel export para componentes de ScreensaverScreen
 export { default as ScreensaverLoading } from './ScreensaverLoading';
 export { default as ScreensaverBackground } from './ScreensaverBackground';
 export { default as ScreensaverTitle } from './ScreensaverTitle';

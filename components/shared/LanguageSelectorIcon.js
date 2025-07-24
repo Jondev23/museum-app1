@@ -10,7 +10,7 @@ const LanguageSelectorIcon = ({
 }) => {
   const { setShowLanguageSelector } = useApp();
 
-  // Consistent base styles for all variants
+  
   const baseIconStyles = {
     width: 'min(2.7rem, 4.86vw, 6.075vh)', 
     height: 'min(2.7rem, 4.86vw, 6.075vh)',
@@ -18,7 +18,7 @@ const LanguageSelectorIcon = ({
     opacity: opacity
   };
 
-  // Standard position based on FeedbackScreen layout
+ 
   const getContainerStyles = () => {
     return {
       flexShrink: 0,
@@ -28,7 +28,6 @@ const LanguageSelectorIcon = ({
     };
   };
 
-  // Standard button styles based on FeedbackScreen
   const getButtonStyles = () => {
     return {
       minWidth: 'min(3.5rem, 6vw)',
@@ -36,7 +35,6 @@ const LanguageSelectorIcon = ({
     };
   };
 
-  // Standard animation - uses FeedbackScreen animation
   const getInitialAnimation = () => {
     return { y: '100%', opacity: 0 };
   };
@@ -69,7 +67,7 @@ const LanguageSelectorIcon = ({
           userSelect: 'none',
           WebkitTouchCallout: 'none',
           WebkitUserSelect: 'none',
-          zIndex: 50  // Alto para estar encima del overlay de FeedbackScreen
+          zIndex: 50  
         }}
       >
         <motion.img

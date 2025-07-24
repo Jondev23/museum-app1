@@ -10,12 +10,11 @@ const AdminPanel = () => {
   const [showKioskSelector, setShowKioskSelector] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
 
-  // Nueva secuencia: 2x toque en esquina superior izquierda, luego 1x en inferior derecha
   const SECRET_SEQUENCE = ['tl', 'tl', 'br'];
   const ADMIN_PASSWORD = 'museum2025';
 
   useEffect(() => {
-    // Reset sequence after 10 seconds of inactivity
+    
     const timer = setTimeout(() => {
       setClickSequence([]);
     }, 10000);
@@ -75,8 +74,7 @@ const AdminPanel = () => {
 
   return (
     <>
-      {/* Triggers para la nueva secuencia - solo esquinas necesarias */}
-      {/* Esquina superior izquierda - para los 2 primeros toques */}
+      
       <div 
         className="admin-corner-trigger top-0 left-0"
         onClick={() => handleCornerClick('tl')}
@@ -89,7 +87,7 @@ const AdminPanel = () => {
         }}
       />
       
-      {/* Esquina superior derecha - mantenida para posibles secuencias futuras */}
+      
       <div 
         className="admin-corner-trigger top-0 right-0"
         onClick={() => handleCornerClick('tr')}
@@ -102,7 +100,7 @@ const AdminPanel = () => {
         }}
       />
       
-      {/* Esquina inferior derecha - para el toque final */}
+      
       <div 
         className="admin-corner-trigger bottom-0 right-0"
         onClick={() => handleCornerClick('br')}
@@ -115,9 +113,7 @@ const AdminPanel = () => {
         }}
       />
       
-      {/* Esquina inferior izquierda ELIMINADA - libre para el selector de idioma */}
-
-      {/* Admin Panel Modal */}
+    
       <AnimatePresence>
         {isVisible && !showKioskSelector && (
           <motion.div
@@ -216,10 +212,10 @@ const AdminPanel = () => {
                     Panel schließen
                   </button>
 
-                  {/* Visueller Trenner im Apple-Stil */}
+                  
                   <div className="admin-separator" />
                   
-                  {/* Separater Exit-Button */}
+                  
                   <button
                     onClick={handleExitKiosk}
                     onTouchStart={(e) => { e.preventDefault(); handleExitKiosk(); }}

@@ -30,12 +30,10 @@ const ScreensaverTouchIndicator = ({
       }}
       className="relative"
     >
-      {/* Touch indicator without icon - just circular background */}
       <div 
         className={`relative z-10 flex items-center justify-center rounded-full ${SCREENSAVER_CONFIG.COLORS.TOUCH_BACKGROUND} backdrop-blur-sm border ${SCREENSAVER_CONFIG.COLORS.TOUCH_BORDER}`}
         style={touchIconBackgroundStyle}
       >
-        {/* Icon removed - just empty circular indicator */}
       </div>
     </motion.div>
   </motion.div>
