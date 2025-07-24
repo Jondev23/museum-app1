@@ -1,4 +1,3 @@
-// Barrel export para componentes de FeedbackScreen
 export { default as FeedbackTitle } from './FeedbackTitle';
 export { default as FeedbackAnswer } from './FeedbackAnswer';
 export { default as FeedbackMessage } from './FeedbackMessage';

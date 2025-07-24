@@ -4,7 +4,7 @@ const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV !==
 
 let mainWindow;
 let inactivityTimer;
-const INACTIVITY_TIMEOUT = 3 * 60 * 1000; // 3 minutes
+const INACTIVITY_TIMEOUT = 3 * 60 * 1000; 
 
 console.log('Electron starting in', isDev ? 'DEVELOPMENT' : 'PRODUCTION', 'mode');
 

@@ -66,7 +66,6 @@ const FeedbackScreen = () => {
           className="flex flex-col items-center justify-start flex-1"
           style={mainContentStyle}
         >
-          {/* Contenedor del feedback */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -96,7 +95,6 @@ const FeedbackScreen = () => {
           </motion.div>
         </div>
 
-        {/* Footer con z-index alto para estar encima del overlay */}
         <StandardFooter
           showProgressDots={true}
           totalQuestions={totalQuestions}

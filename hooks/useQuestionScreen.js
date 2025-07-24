@@ -94,7 +94,6 @@ export const useQuestionScreen = () => {
   }, [selectedAnswer]);
 
   return {
-    // Datos
     question,
     startContent,
     currentQuestionIndex,
@@ -104,7 +103,6 @@ export const useQuestionScreen = () => {
     questions,
     isProcessing,
     
-    // Funciones
     handleAnswerClick,
     getButtonClassName,
     getButtonStyle

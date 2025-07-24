@@ -9,7 +9,6 @@ export const useScreensaverScreen = () => {
   const isValidData = useMemo(() => Boolean(content?.[language]), [content, language]);
   const isLoading = useMemo(() => !isValidData, [isValidData]);
 
-  // Handler para touch/click
   const handleTouch = useCallback(() => {
     console.log('Screensaver touched, transitioning to start screen');
     startQuiz();

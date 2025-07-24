@@ -59,7 +59,6 @@ export const useFeedbackScreen = () => {
     document.addEventListener('touchmove', handleTouchMove);
     document.addEventListener('touchend', handleTouchEnd);
     
-    // Track listeners activos
     activeListenersRef.current.add({ type: 'touchmove', listener: handleTouchMove });
     activeListenersRef.current.add({ type: 'touchend', listener: handleTouchEnd });
   }, [nextQuestion]);
