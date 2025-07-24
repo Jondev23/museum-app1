@@ -1,9 +1,25 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { QUESTION_CONFIG } from './QuestionScreenConfig';
 
 const QuestionTitle = ({ question }) => {
   const titleRef = useRef(null);
+
+  // Función para procesar saltos de línea con "/"
+  const processQuestionText = (text) => {
+    if (text.includes(' / ')) {
+      const parts = text.split(' / ');
+      return (
+        <>
+          {parts[0].trim()}
+          <br />
+          {parts[1].trim()}
+        </>
+      );
+    }
+    return text;
+  };
 
   useEffect(() => {
     if (titleRef.current) {
@@ -39,7 +55,7 @@ const QuestionTitle = ({ question }) => {
       }}
       className="typography-fragen text-primary relative w-full max-h-[20vh] overflow-hidden flex items-center justify-center text-center mb-[min(3rem,4vh)] mx-[min(4rem,5vw,6vh)] box-border"
     >
-      {question.question}
+      {processQuestionText(question.question)}
     </motion.h1>
   );
 };
