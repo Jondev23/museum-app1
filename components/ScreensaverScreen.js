@@ -8,7 +8,6 @@ import { useScreensaverScreenStyles } from './ScreensaverScreen/ScreensaverScree
 // Import subcomponents
 import ScreensaverLoading from './ScreensaverScreen/ScreensaverLoading';
 import ScreensaverBackground from './ScreensaverScreen/ScreensaverBackground';
-import ScreensaverTitle from './ScreensaverScreen/ScreensaverTitle';
 
 // Screensaver component - idle state that activates after inactivity
 const ScreensaverScreen = () => {
@@ -49,12 +48,6 @@ const ScreensaverScreen = () => {
       <ScreensaverBackground 
         defaultContent={defaultContent}
         videoStyle={videoStyle}
-      />
-      
-      <ScreensaverTitle 
-        screensaverContent={screensaverContent}
-        defaultContent={defaultContent}
-        titleStyle={titleStyle}
       />
     </motion.div>
   );

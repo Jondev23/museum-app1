@@ -72,31 +72,53 @@ export const AppProvider = ({ children }) => {
     // Reset the inactivity timer
     const resetTimer = () => {
       clearTimeout(timer);
+      // Only set timer if not on screensaver
       if (currentScreen !== 'screensaver') {
         timer = setTimeout(() => {
-          goToScreensaver();
+          // Direct screen change to avoid hoisting issues
+          setCurrentScreen('screensaver');
+          setCurrentQuestionIndex(0);
+          setAnswers([]);
+          setShowLanguageSelector(false);
         }, 3 * 60 * 1000); // 3 minutes
       }
     };
 
     // Handle any user activity to reset timer
-    const handleActivity = () => {
-      resetTimer();
+    const handleActivity = (e) => {
+      // Only reset if we're not on the screensaver screen
+      if (currentScreen !== 'screensaver') {
+        console.log('User activity detected, resetting inactivity timer');
+        resetTimer();
+      }
     };
 
-    // Listen for various user interactions
-    document.addEventListener('touchstart', handleActivity);
-    document.addEventListener('click', handleActivity);
-    document.addEventListener('keydown', handleActivity);
+    // Add event listeners for user activity
+    const addEventListeners = () => {
+      document.addEventListener('touchstart', handleActivity, { passive: true });
+      document.addEventListener('click', handleActivity);
+      document.addEventListener('keydown', handleActivity);
+      document.addEventListener('mousemove', handleActivity, { passive: true });
+      document.addEventListener('scroll', handleActivity, { passive: true });
+    };
 
-    resetTimer();
-
-    // Cleanup event listeners on unmount
-    return () => {
-      clearTimeout(timer);
+    // Remove event listeners
+    const removeEventListeners = () => {
       document.removeEventListener('touchstart', handleActivity);
       document.removeEventListener('click', handleActivity);
       document.removeEventListener('keydown', handleActivity);
+      document.removeEventListener('mousemove', handleActivity);
+      document.removeEventListener('scroll', handleActivity);
+    };
+
+    // Initialize timer and listeners
+    addEventListeners();
+    resetTimer();
+
+    // Cleanup on unmount or when currentScreen changes
+    return () => {
+      clearTimeout(timer);
+      removeEventListeners();
     };
   }, [currentScreen]);
 
