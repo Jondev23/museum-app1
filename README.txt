@@ -7,8 +7,8 @@ INSTALLATION:
 3. Application will open automatically in kiosk mode
 
 ADMIN ACCESS:
-- Click corners: top-left → top-right → bottom-right → bottom-left
-- Password: museum2024
+- Click corners: top-left → top-right → bottom-right
+- Password: museum2025
 
 SYSTEM REQUIREMENTS:
 - Windows 10/11
