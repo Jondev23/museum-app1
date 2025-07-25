@@ -9,7 +9,6 @@
       "subtitleColor": "#85af8b",
       "highlightText": "Distanzen des Reisens im 19. Jahrhundert",
       "introText": "Teste dein Wissen! Fünf Fragen rund um das Reisen mit der Kutsche warten auf dich. Wie weit kam man an einem Tag? Wie lange dauerte eine Reise von Leipzig nach München? Stell dich der Herausforderung – vielleicht weißt du mehr, als du denkst. Und falls nicht: unterwegs lernst du garantiert etwas dazu!",
-      "swipeText": "Wischen Sie nach links oder berühren Sie hier",
       "backgroundImage": "/images/kutschen-background1.jpg"
     },
     "languageSelector": {
@@ -148,7 +147,6 @@
       "subtitleColor": "#85af8b",
       "highlightText": "Travel distances in the 19th century",
       "introText": "Test your knowledge! Five questions about traveling by carriage await you. How far could you travel in one day? How long did a journey from Leipzig to Munich take? Face the challenge - you might know more than you think. And if not: you'll definitely learn something along the way!",
-      "swipeText": "Swipe left or touch here",
       "backgroundImage": "/images/kutschen-background1.jpg"
     },
     "languageSelector": {
