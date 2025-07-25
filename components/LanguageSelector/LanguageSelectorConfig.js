@@ -61,7 +61,7 @@ export const DEFAULT_CONTENT = {
   english: "ENGLISH",
   germanTitle: "Sprache wählen",
   englishTitle: "Change language",
-  iconSrc: "/images/OE_Sprache_64 1.svg",
+  iconSrc: "/images/OE_Sprache_64.svg",
   iconAlt: "Language selector"
 };
 

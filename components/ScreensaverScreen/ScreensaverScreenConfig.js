@@ -44,8 +44,8 @@ export const SCREENSAVER_CONFIG = {
   
   // Video configuration
   VIDEO: {
-    DEFAULT_SOURCE: '/videos/Mi proyecto (7).mp4', // Default background video
-    TYPE: 'video/mp4',                             // Video MIME type
+    DEFAULT_SOURCE: '/videos/screensaver-video.mp4', // Default background video
+    TYPE: 'video/mp4',                               // Video MIME type
   },
 };
 

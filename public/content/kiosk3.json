@@ -1,7 +1,9 @@
 {
   "de": {
     "screensaver": {
-      "handIcon": "/images/OE_Touch_128 2.svg"
+      "handIcon": "/images/OE_Touch_128 2.svg",
+      "videoSource": "/videos/screensaver-video.mp4",
+      "title": "Willkommen im Museum"
     },
     "startScreen": {
       "title": "Reisen allgemein",
@@ -140,7 +142,9 @@
   },
   "en": {
     "screensaver": {
-      "handIcon": "/images/OE_Touch_128 2.svg"
+      "handIcon": "/images/OE_Touch_128 2.svg",
+      "videoSource": "/videos/screensaver-video.mp4",
+      "title": "Welcome to the Museum"
     },
     "startScreen": {
       "title": "General Travel",

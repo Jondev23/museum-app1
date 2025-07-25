@@ -23,8 +23,9 @@ export const useScreensaverScreen = () => {
   // Default fallback content for screensaver
   const defaultContent = useMemo(() => ({
     message: 'Touch the screen to begin',
-    videoSource: '/videos/Mi proyecto (7).mp4'
-  }), []);
+    videoSource: screensaverContent?.videoSource || '/videos/screensaver-video.mp4',
+    title: screensaverContent?.title || 'Welcome to the Museum'
+  }), [screensaverContent]);
 
   return {
     isLoading,

@@ -25,7 +25,7 @@ const ScreensaverTitle = ({ screensaverContent, defaultContent, titleStyle }) =>
       className="text-center leading-tight font-tisa-pro"
       style={titleStyle}
     >
-      
+      {screensaverContent?.title || defaultContent.title}
     </motion.h1>
   </motion.div>
 );
