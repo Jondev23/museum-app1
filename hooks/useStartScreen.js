@@ -49,6 +49,11 @@ export const useStartScreen = () => {
     document.addEventListener('touchend', handleTouchEnd);
   }, [startQuestions]);
 
+  // Handle click/tap to start quiz
+  const handleClick = useCallback(() => {
+    startQuestions();
+  }, [startQuestions]);
+
   // Default fallback texts in case content is not loaded
   const defaultTexts = useMemo(() => ({
     title: 'Wie weit? Wie lange?',
@@ -65,5 +70,6 @@ export const useStartScreen = () => {
     isValidData,
     
     handleTouchStart,
+    handleClick,
   };
 };

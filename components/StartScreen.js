@@ -19,8 +19,8 @@ const StartScreen = () => {
     startContent,
     defaultTexts,
     isValidData,
-    handleSwipeLeft,
     handleTouchStart,
+    handleClick,
   } = useStartScreen();
 
   // Get dynamic styles based on content
@@ -49,8 +49,9 @@ const StartScreen = () => {
       animate={{ opacity: 1 }}
       exit={{ x: '-100%' }}
       transition={{ duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
-      className="fixed inset-0 overflow-hidden"
+      className="fixed inset-0 overflow-hidden cursor-pointer"
       onTouchStart={handleTouchStart}
+      onClick={handleClick}
       style={backgroundStyle}
     >
       {/* Black overlay for better text contrast */}
@@ -108,7 +109,7 @@ const StartScreen = () => {
                }}>
             <StartScreenTouchIndicator
               showContent={showContent}
-              handleSwipeLeft={handleSwipeLeft}
+              handleSwipeLeft={handleClick}
               touchIndicatorContainerStyle={touchIndicatorContainerStyle}
               touchIndicatorStyle={touchIndicatorStyle}
             />
