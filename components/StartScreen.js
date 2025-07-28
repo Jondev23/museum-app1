@@ -43,65 +43,78 @@ const StartScreen = () => {
   if (!isValidData) return null;
 
   return (
-    // Animated container with background image
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ x: '-100%' }}
-      transition={{ duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
-      className="fixed inset-0 overflow-hidden cursor-pointer"
-      onTouchStart={handleTouchStart}
-      onClick={handleClick}
-      style={backgroundStyle}
-    >
-      {/* Black overlay for better text contrast */}
-      <div 
-        className="absolute inset-0" 
-        style={{ backgroundColor: 'var(--color-overlay)' }}
-      />
-
-      {/* Content */}
-      <div 
-        className="relative z-10 h-full flex flex-col items-center w-full px-4 sm:px-6 md:px-8"
-        style={containerStyle}
+    <>
+      {/* Animated container with background image */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ x: '-100%' }}
+        transition={{ duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
+        className="fixed inset-0 overflow-hidden cursor-pointer"
+        onTouchStart={handleTouchStart}
+        onClick={handleClick}
+        style={backgroundStyle}
       >
-        {/* Main Card Container */}
+        {/* Black overlay for better text contrast */}
         <div 
-          className="w-full max-w-7xl bg-transparent flex items-start justify-center flex-grow"
-          style={mainCardStyle}
-        >
-          <div className="w-full">
-            <div 
-              className="flex flex-col items-center h-full"
-              style={contentSectionStyle}
-            >
-              {/* Title and Subtitle Section */}
-              <div className="w-full flex flex-col items-center justify-center flex-shrink-0">
-                <StartScreenTitle
-                  startContent={startContent}
-                  defaultTexts={defaultTexts}
-                  showContent={showContent}
-                  titleStyle={titleStyle}
-                  subtitleStyle={subtitleStyle}
-                />
-              </div>
+          className="absolute inset-0" 
+          style={{ backgroundColor: 'var(--color-overlay)' }}
+        />
 
-              {/* Description Section */}
-              <div className="flex-grow flex items-center justify-center w-full" style={descriptionSectionStyle}>
-                <StartScreenDescription
-                  startContent={startContent}
-                  defaultTexts={defaultTexts}
-                  showContent={showContent}
-                  descriptionContainerStyle={descriptionContainerStyle}
-                  highlightTextStyle={highlightTextStyle}
-                  introTextStyle={introTextStyle}
-                />
+        {/* Content */}
+        <div 
+          className="relative z-10 h-full flex flex-col items-center w-full px-4 sm:px-6 md:px-8"
+          style={containerStyle}
+        >
+          {/* Main Card Container */}
+          <div 
+            className="w-full max-w-7xl bg-transparent flex items-start justify-center flex-grow"
+            style={mainCardStyle}
+          >
+            <div className="w-full">
+              <div 
+                className="flex flex-col items-center h-full"
+                style={contentSectionStyle}
+              >
+                {/* Title and Subtitle Section */}
+                <div className="w-full flex flex-col items-center justify-center flex-shrink-0">
+                  <StartScreenTitle
+                    startContent={startContent}
+                    defaultTexts={defaultTexts}
+                    showContent={showContent}
+                    titleStyle={titleStyle}
+                    subtitleStyle={subtitleStyle}
+                  />
+                </div>
+
+                {/* Description Section */}
+                <div className="flex-grow flex items-center justify-center w-full" style={descriptionSectionStyle}>
+                  <StartScreenDescription
+                    startContent={startContent}
+                    defaultTexts={defaultTexts}
+                    showContent={showContent}
+                    descriptionContainerStyle={descriptionContainerStyle}
+                    highlightTextStyle={highlightTextStyle}
+                    introTextStyle={introTextStyle}
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </motion.div>
 
-        {/* Standard Footer with Language Selector and Touch Indicator */}
+      {/* Footer section - separated with independent animation */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ 
+          duration: 0.4, // Entry duration
+          exit: { duration: 0.2, delay: 0.15 } // Delayed exit to overlap with next screen footer
+        }}
+        className="fixed bottom-0 left-0 right-0 z-50"
+      >
         <StandardFooter>
           <div className="absolute left-1/2 transform -translate-x-1/2 flex justify-center items-center" 
                style={{ 
@@ -115,8 +128,8 @@ const StartScreen = () => {
             />
           </div>
         </StandardFooter>
-      </div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 

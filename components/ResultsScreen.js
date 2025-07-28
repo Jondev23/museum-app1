@@ -30,53 +30,67 @@ const ResultsScreen = () => {
   if (!isValid) return null;
 
   return (
-    // Animated container with click handler for touch anywhere functionality
-    <motion.div
-      initial={ANIMATION_CONFIG.CONTAINER.INITIAL}
-      animate={ANIMATION_CONFIG.CONTAINER.ANIMATE}
-      exit={ANIMATION_CONFIG.CONTAINER.EXIT}
-      transition={ANIMATION_CONFIG.CONTAINER.TRANSITION}
-      className="fixed inset-0 flex flex-col cursor-pointer"
-      onClick={handleTouchAnywhere}
-    >
-      {/* Background image component */}
-      <ResultsBackground backgroundImage={contentData.backgroundImage} />
-      
-      {/* Content - Centered vertically and horizontally */}
-      <div 
-        className="relative z-10 flex flex-col items-center justify-center h-full"
-        style={{ 
-          paddingTop: 'var(--spacing-lg)',
-          paddingBottom: 'var(--spacing-lg)',
-          paddingLeft: 'var(--results-horizontal-padding)',
-          paddingRight: 'var(--results-horizontal-padding)'
-        }}
+    <>
+      {/* Animated container with click handler for touch anywhere functionality */}
+      <motion.div
+        initial={ANIMATION_CONFIG.CONTAINER.INITIAL}
+        animate={ANIMATION_CONFIG.CONTAINER.ANIMATE}
+        exit={ANIMATION_CONFIG.CONTAINER.EXIT}
+        transition={ANIMATION_CONFIG.CONTAINER.TRANSITION}
+        className="fixed inset-0 flex flex-col cursor-pointer"
+        onClick={handleTouchAnywhere}
       >
-        <ResultsTitle 
-          title={contentData.title} 
-          showContent={showContent} 
+        {/* Background image component */}
+        <ResultsBackground backgroundImage={contentData.backgroundImage} />
+        
+        {/* Content - Centered vertically and horizontally */}
+        <div 
+          className="relative z-10 flex flex-col items-center justify-center h-full"
+          style={{ 
+            paddingTop: 'var(--spacing-lg)',
+            paddingBottom: 'var(--spacing-lg)',
+            paddingLeft: 'var(--results-horizontal-padding)',
+            paddingRight: 'var(--results-horizontal-padding)'
+          }}
+        >
+          <ResultsTitle 
+            title={contentData.title} 
+            showContent={showContent} 
+          />
+
+          <ResultsScoreText 
+            scoreText={contentData.scoreText} 
+            scoreTextColor={contentData.scoreTextColor}
+            showContent={showContent} 
+          />
+
+          <ResultsProgress 
+            questions={questions} 
+            answers={answers} 
+          />
+        </div>
+
+        <ResultsPlayAgainButton 
+          playAgainText={contentData.playAgainText}
+          showContent={showContent}
+          onPlayAgain={handlePlayAgain}
         />
+      </motion.div>
 
-        <ResultsScoreText 
-          scoreText={contentData.scoreText} 
-          scoreTextColor={contentData.scoreTextColor}
-          showContent={showContent} 
-        />
-
-        <ResultsProgress 
-          questions={questions} 
-          answers={answers} 
-        />
-      </div>
-
-      <ResultsPlayAgainButton 
-        playAgainText={contentData.playAgainText}
-        showContent={showContent}
-        onPlayAgain={handlePlayAgain}
-      />
-
-      <StandardFooter />
-    </motion.div>
+      {/* Footer section - separated with independent animation */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ 
+          duration: 0.4, // Entry duration
+          exit: { duration: 0.2, delay: 0.15 } // Delayed exit to overlap with next screen footer
+        }}
+        className="fixed bottom-0 left-0 right-0 z-50"
+      >
+        <StandardFooter />
+      </motion.div>
+    </>
   );
 };
 

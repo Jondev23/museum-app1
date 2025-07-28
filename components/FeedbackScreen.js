@@ -75,6 +75,7 @@ const FeedbackScreen = () => {
           exit: { duration: 0.2 } // Faster exit to match QuestionScreen behavior
         }}
         className="fixed inset-0 flex flex-col z-40"
+        style={{ paddingBottom: 'min(4.375rem, 7vh)' }} // Leave space for footer
         onTouchStart={(e) => {
           e.stopPropagation();
           if (!e.target.closest('button') && !e.target.closest('[role="button"]')) {
@@ -116,28 +117,39 @@ const FeedbackScreen = () => {
               />
             </motion.div>
           </div>
-
-          <StandardFooter
-            showProgressDots={true}
-            totalQuestions={totalQuestions}
-            currentQuestionIndex={currentQuestionIndex}
-            answers={answers}
-            questions={questions}
-            progressDotsVariant="feedback"
-            alignProgressDots="inline"
-            className="relative"
-            style={{ zIndex: 30 }}
-          >
-            <FeedbackButton
-              buttonText={buttonText}
-              nextQuestion={nextQuestion}
-              buttonContainerStyle={buttonContainerStyle}
-              buttonStyle={buttonStyle}
-              buttonTextStyle={buttonTextStyle}
-              arrowStyle={arrowStyle}
-            />
-          </StandardFooter>
         </div>
+      </motion.div>
+
+      {/* Footer section - separated with independent animation */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ 
+          duration: 0.4, // Entry duration
+          exit: { duration: 0.2, delay: 0.15 } // Delayed exit to overlap with next screen footer
+        }}
+        className="fixed bottom-0 left-0 right-0 z-50"
+      >
+        <StandardFooter
+          showProgressDots={true}
+          totalQuestions={totalQuestions}
+          currentQuestionIndex={currentQuestionIndex}
+          answers={answers}
+          questions={questions}
+          progressDotsVariant="feedback"
+          alignProgressDots="inline"
+          className="relative"
+        >
+          <FeedbackButton
+            buttonText={buttonText}
+            nextQuestion={nextQuestion}
+            buttonContainerStyle={buttonContainerStyle}
+            buttonStyle={buttonStyle}
+            buttonTextStyle={buttonTextStyle}
+            arrowStyle={arrowStyle}
+          />
+        </StandardFooter>
       </motion.div>
     </>
   );

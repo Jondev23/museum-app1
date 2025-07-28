@@ -96,9 +96,9 @@ const QuestionScreen = () => {
         exit={{ opacity: 0 }}
         transition={{ 
           duration: 0.4, // Same as FeedbackScreen entry
-          exit: { duration: 0.2 } // Quick exit like other components
+          exit: { duration: 0.2, delay: 0.15 } // Delayed exit to overlap with next screen footer
         }}
-        className="fixed bottom-0 left-0 right-0 z-30"
+        className="fixed bottom-0 left-0 right-0 z-50"
       >
         <QuestionFooter
           currentQuestionIndex={currentQuestionIndex}
