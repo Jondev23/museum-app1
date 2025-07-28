@@ -71,7 +71,7 @@ const StandardFooter = ({
       )}
 
       
-      <div style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', right: 0 } : {}}>
+      <div style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', right: 'min(6.6rem, 11vw)' } : {}}>
         {children}
       </div>
     </div>
