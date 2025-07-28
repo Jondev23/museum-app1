@@ -44,15 +44,13 @@ const StartScreen = () => {
 
   return (
     <>
-      {/* Animated container with background image */}
+      {/* Fixed background layer - remains static */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ x: '-100%' }}
-        transition={{ duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
-        className="fixed inset-0 overflow-hidden cursor-pointer"
-        onTouchStart={handleTouchStart}
-        onClick={handleClick}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.01 }} // Quick fade to match other screens
+        className="fixed inset-0 z-10"
         style={backgroundStyle}
       >
         {/* Black overlay for better text contrast */}
@@ -60,7 +58,18 @@ const StartScreen = () => {
           className="absolute inset-0" 
           style={{ backgroundColor: 'var(--color-overlay)' }}
         />
+      </motion.div>
 
+      {/* Animated content container */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ x: '-100%' }}
+        transition={{ duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
+        className="fixed inset-0 overflow-hidden cursor-pointer z-20"
+        onTouchStart={handleTouchStart}
+        onClick={handleClick}
+      >
         {/* Content */}
         <div 
           className="relative z-10 h-full flex flex-col items-center w-full px-4 sm:px-6 md:px-8"

@@ -31,18 +31,27 @@ const ResultsScreen = () => {
 
   return (
     <>
-      {/* Animated container with click handler for touch anywhere functionality */}
+      {/* Fixed background layer - remains static */}
       <motion.div
-        initial={ANIMATION_CONFIG.CONTAINER.INITIAL}
-        animate={ANIMATION_CONFIG.CONTAINER.ANIMATE}
-        exit={ANIMATION_CONFIG.CONTAINER.EXIT}
-        transition={ANIMATION_CONFIG.CONTAINER.TRANSITION}
-        className="fixed inset-0 flex flex-col cursor-pointer"
-        onClick={handleTouchAnywhere}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.01 }} // Quick fade to match FeedbackScreen
+        className="fixed inset-0 z-10"
       >
         {/* Background image component */}
         <ResultsBackground backgroundImage={contentData.backgroundImage} />
-        
+      </motion.div>
+
+      {/* Animated content container - only content slides in */}
+      <motion.div
+        initial={{ x: '100%', opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.8 }} // Content animation duration
+        className="fixed inset-0 flex flex-col cursor-pointer z-20"
+        onClick={handleTouchAnywhere}
+      >
         {/* Content - Centered vertically and horizontally */}
         <div 
           className="relative z-10 flex flex-col items-center justify-center h-full"

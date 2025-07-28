@@ -43,7 +43,7 @@ const QuestionScreen = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.1 }} // Quick fade to create seamless background
+        transition={{ duration: 0.01 }} // Quick fade to create seamless background
         className="fixed inset-0 z-20"
         style={backgroundStyle}
       >
