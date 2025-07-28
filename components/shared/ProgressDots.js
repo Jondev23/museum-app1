@@ -27,7 +27,7 @@ const ProgressDots = ({
 
   // Calculate individual dot styles based on question state
   const getDotStyles = (index) => {
-    const baseSize = 'min(1rem, 1.8vw, 2.25vh)';
+    const baseSize = '1.5rem'; // Fixed size for both width and height
     const baseBorder = 'min(0.1575rem, 0.252vw, 0.315vh)';
     
     let dotColor = 'transparent';
@@ -55,9 +55,9 @@ const ProgressDots = ({
         const isCorrect = userAnswer === questions[index]?.correctAnswer;
         dotColor = isCorrect ? 'var(--color-blassgruen)' : 'var(--color-feedback-incorrect)';
         return {
-          width: 'min(3.5rem, 5.6vw, 7vh)', 
-          height: 'min(3.5rem, 5.6vw, 7vh)',
-          borderRadius: '50%',
+          width: baseSize, // Use same size for width and height to keep circular
+          height: baseSize, // Use same size for width and height to keep circular
+          borderRadius: '50%', // Perfect circle
           backgroundColor: dotColor,
           border: 'none'
         };
@@ -84,9 +84,9 @@ const ProgressDots = ({
     }
     
     return {
-      width: baseSize,
-      height: baseSize,
-      borderRadius: '50%',
+      width: baseSize, // Use same size for both dimensions
+      height: baseSize, // Use same size for both dimensions
+      borderRadius: '50%', // Perfect circle
       border: showBorder ? `${baseBorder} solid ${borderColor}` : 'none',
       backgroundColor: dotColor,
       flexShrink: 0
