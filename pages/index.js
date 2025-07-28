@@ -20,7 +20,9 @@ export default function Home() {
     currentScreen, 
     currentQuestionIndex, 
     answers, 
-    questions 
+    questions,
+    content,
+    language
   } = useApp();
 
   // Render different screens based on current state
@@ -106,7 +108,7 @@ export default function Home() {
           className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-40"
           style={{
             bottom: progressConfig.variant === 'results' 
-              ? 'min(20rem, 28vh)' // Subidos para ResultsScreen
+              ? 'min(20rem, 21vh)' // Subidos para ResultsScreen
               : 'min(4.5rem, 7.5vh)' // Mantienen posición baja para Question/Feedback
           }}
         >
