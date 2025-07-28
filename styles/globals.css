@@ -120,10 +120,10 @@
   --color-language-button-inactive: var(--color-neutral-light);
 
   /* Language Selector Sizing */
-  --language-icon-size: min(5.4rem, 13.5vw);
-  --language-title-size: min(2.5rem, 6.2vw);
-  --language-button-width: min(max(21rem, 53vw), 75rem);
-  --language-button-height: min(3.47rem, 8.31vw);
+  --language-icon-size: 8rem;
+  --language-title-size: 3.375rem;
+  --language-button-width: 62.5rem;
+  --language-button-height: 5rem;
   --language-button-radius: min(3.75rem, 8vw);
   --language-gap: min(3.24rem, 6.08vw);
 
@@ -134,8 +134,8 @@
   --language-selector-margin-left: min(5.125rem, 8vw);
 
   /* Language Selector Text Sizing */
-  --language-button-text-size: min(1.25rem, 2.5vw);
-  --language-button-text-line-height: min(5.5rem, 12vw);
+  --language-button-text-size: 2rem;
+  --language-button-text-line-height: 5.5rem;
   --language-buttons-gap: min(1.5rem, 3vw);
 
   /* Responsive spacing */
@@ -759,6 +759,10 @@
     font-size: var(--language-button-text-size);
     line-height: var(--language-button-text-line-height);
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0.6rem;
   }
 
   /* Language Selector Icon Component */
