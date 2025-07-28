@@ -124,8 +124,8 @@ export const useStartScreenStyles = (startContent) => ({
 
   
   touchIndicatorContainerStyle: {
-    width: 'clamp(50px, 8vw, 80px)',
-    height: 'clamp(50px, 8vw, 80px)',
+    width: 'var(--touch-indicator-size)',
+    height: 'var(--touch-indicator-size)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

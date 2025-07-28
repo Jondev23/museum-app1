@@ -56,16 +56,16 @@
   --color-schiefer-dark: #2a3334; 
 
   /* Typography Tokens - Responsive */
-  /* Main titles - 58px to 117px */
-  --typography-head-font-size: clamp(3.63rem, 5.808vw, 7.26rem);
-  --typography-head-line-height: clamp(4.356rem, 6.9696vw, 8.712rem);
+  /* Main titles - Fixed 6rem size */
+  --typography-head-font-size: 6rem; 
+  --typography-head-line-height: 7.2rem; 
   --typography-head-font-weight: 700;
   --typography-head-font-style: italic;
   --typography-head-font-family: 'Tisa Pro';
 
-  /* Subtitles - 31px to 64px */
-  --typography-subline-font-size: clamp(1.98rem, 3.564vw, 3.96rem);
-  --typography-subline-line-height: clamp(2.376rem, 4.2768vw, 4.752rem);
+  /* Subtitles - Fixed 4rem size */
+  --typography-subline-font-size: 4rem;
+  --typography-subline-line-height: 4.8rem;
   --typography-subline-font-weight: 400;
   --typography-subline-font-style: normal;
   --typography-subline-font-family: 'Tisa Sans Pro';
@@ -85,9 +85,9 @@
   --typography-antworten-buttons-font-family: 'Tisa Sans Pro';
   --typography-antworten-buttons-letter-spacing: 0.48px;
 
-  /* Flow text - 18px to 36px */
-  --typography-antwort-fliess-font-size: clamp(1.0125rem, 1.8vw, 2.025rem);
-  --typography-antwort-fliess-line-height: clamp(1.6rem, 2.8vw, 3.15rem);
+  /* Flow text - Fixed 2.25rem size */
+  --typography-antwort-fliess-font-size: 2.25rem;
+  --typography-antwort-fliess-line-height: 2.7rem;
   --typography-antwort-fliess-font-weight: 400;
   --typography-antwort-fliess-font-style: normal;
   --typography-antwort-fliess-font-family: 'Tisa Pro';
@@ -195,16 +195,19 @@
   
   /* Results Screen Play Again Button Positioning - Aligned with language selector icon */
   --results-play-again-bottom: min(3.15rem, 5.25vh); 
+
+  /* StartScreen Touch Indicator - Fixed 8rem size */
+  --touch-indicator-size: 7rem; 
 }
 
 /* Responsive breakpoints for better mobile support */
 @media (max-width: 480px) {
   :root {
-    /* Smaller typography for very small screens */
-    --typography-head-font-size: clamp(2rem, 8vw, 3rem);
-    --typography-subline-font-size: clamp(1.25rem, 6vw, 2rem);
+    /* Fixed typography for small screens */
+    --typography-head-font-size: 6rem; /* Fixed size - same as desktop */
+    --typography-subline-font-size: 4rem; /* Fixed size - same as desktop */
     --typography-antworten-buttons-font-size: clamp(0.9rem, 3.6vw, 1.35rem);
-    --typography-antwort-fliess-font-size: clamp(0.7875rem, 3.15vw, 1.125rem);
+    --typography-antwort-fliess-font-size: 2.25rem; /* Fixed size - same as desktop */
     
     --results-title-font-size: clamp(1.368rem, 5.472vw, 2.052rem); 
     
@@ -237,9 +240,9 @@
 
 @media (orientation: landscape) and (max-height: 600px) {
   :root {
-    /* Compact layout for landscape mobile */
-    --typography-head-font-size: clamp(1.5rem, 4vh, 2.5rem);
-    --typography-subline-font-size: clamp(1rem, 3vh, 1.75rem);
+    /* Fixed typography for landscape */
+    --typography-head-font-size: 6rem; /* Fixed size - same as desktop */
+    --typography-subline-font-size: 4rem; /* Fixed size - same as desktop */
     --spacing-lg: clamp(0.5rem, 2vh, 1rem);
     --spacing-xl: clamp(0.75rem, 3vh, 1.5rem);
     /* Results title 20% smaller than main title for landscape */

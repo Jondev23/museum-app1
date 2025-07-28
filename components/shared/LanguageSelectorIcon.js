@@ -15,8 +15,8 @@ const LanguageSelectorIcon = ({
 
   // Base styles for the icon
   const baseIconStyles = {
-    width: '4rem', // Fixed width to 4rem (64px)
-    height: '4rem', // Fixed height to 4rem (64px)
+    width: '4rem', 
+    height: '4rem', 
     display: 'block',
     opacity: opacity
   };
@@ -26,7 +26,7 @@ const LanguageSelectorIcon = ({
     return {
       flexShrink: 0,
       marginBottom: 'min(4.7rem, 8.2vh)',
-      marginLeft: 'min(10rem, 7.5vw)', // 10rem base with responsive fallback
+      marginLeft: 'min(10rem, 7.5vw)', 
       ...style
     };
   };
