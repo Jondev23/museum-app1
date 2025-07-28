@@ -52,11 +52,11 @@ const ResultsScreen = () => {
         className="fixed inset-0 flex flex-col cursor-pointer z-20"
         onClick={handleTouchAnywhere}
       >
-        {/* Content - Centered vertically and horizontally */}
+        {/* Content - Positioned towards top */}
         <div 
-          className="relative z-10 flex flex-col items-center justify-center h-full"
+          className="relative z-10 flex flex-col items-center justify-start h-full"
           style={{ 
-            paddingTop: 'var(--spacing-lg)',
+            paddingTop: 'min(21rem, 21vh)', 
             paddingBottom: 'var(--spacing-lg)',
             paddingLeft: 'var(--results-horizontal-padding)',
             paddingRight: 'var(--results-horizontal-padding)'

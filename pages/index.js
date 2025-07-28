@@ -106,8 +106,8 @@ export default function Home() {
           className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-40"
           style={{
             bottom: progressConfig.variant === 'results' 
-              ? 'min(6.5rem, 10.5vh)' // 5% lower (was 8rem, 12vh)
-              : 'min(4.5rem, 7.5vh)' // 5% lower (was 5.625rem, 9vh)
+              ? 'min(20rem, 28vh)' // Subidos para ResultsScreen
+              : 'min(4.5rem, 7.5vh)' // Mantienen posición baja para Question/Feedback
           }}
         >
           <ProgressDots
