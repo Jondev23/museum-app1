@@ -71,7 +71,7 @@ const FeedbackScreen = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
-        className="fixed inset-0 flex flex-col z-20"
+        className="fixed inset-0 flex flex-col z-40"
         onTouchStart={(e) => {
           e.stopPropagation();
           if (!e.target.closest('button') && !e.target.closest('[role="button"]')) {

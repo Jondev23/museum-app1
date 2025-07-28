@@ -58,6 +58,7 @@ const QuestionScreen = () => {
         exit={{ opacity: 0 }}
         transition={{ 
           duration: QUESTION_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION,
+          exit: { duration: 0.2 }, // Faster exit to prevent overlap with FeedbackScreen
           when: "afterChildren"
         }}
         className="fixed inset-0 flex flex-col z-30"
