@@ -1,6 +1,3 @@
-// Import animation library and shared components
-import ProgressDots from './ProgressDots';
-
 // Standard footer component used across multiple screens
 const StandardFooter = ({ 
   children,
@@ -40,8 +37,8 @@ const StandardFooter = ({
         style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', left: 'min(1.25rem, 2vw)' } : {}}
       /> */}
 
-      {/* Progress dots - shown during quiz questions */}
-      {showProgressDots ? (
+      {/* Progress dots - now global, removed from footer */}
+      {/* {showProgressDots ? (
         <ProgressDots
           totalQuestions={totalQuestions}
           currentQuestionIndex={currentQuestionIndex}
@@ -67,7 +64,10 @@ const StandardFooter = ({
         />
       ) : (
         <div style={{ flex: 1 }} />
-      )}
+      )} */}
+
+      {/* Simplified layout without progress dots */}
+      <div style={{ flex: 1 }} />
 
       
       <div style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', right: 'min(6.6rem, 11vw)' } : {}}>

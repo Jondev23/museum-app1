@@ -73,10 +73,11 @@ const ResultsScreen = () => {
             showContent={showContent} 
           />
 
-          <ResultsProgress 
+          {/* ResultsProgress now global */}
+          {/* <ResultsProgress 
             questions={questions} 
             answers={answers} 
-          />
+          /> */}
         </div>
 
         <ResultsPlayAgainButton 

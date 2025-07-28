@@ -100,12 +100,7 @@ const QuestionScreen = () => {
         }}
         className="fixed bottom-0 left-0 right-0 z-50"
       >
-        <QuestionFooter
-          currentQuestionIndex={currentQuestionIndex}
-          progressDotsStyle={progressDotsStyle}
-          answers={answers}
-          questions={questions}
-        />
+        <QuestionFooter />
       </motion.div>
     </>
   );

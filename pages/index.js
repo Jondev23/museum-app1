@@ -10,12 +10,18 @@ import FeedbackScreen from '../components/FeedbackScreen';
 import ResultsScreen from '../components/ResultsScreen';
 import LanguageSelector from '../components/LanguageSelector';
 import LanguageSelectorIcon from '../components/shared/LanguageSelectorIcon';
+import ProgressDots from '../components/shared/ProgressDots';
 import AdminPanel from '../components/AdminPanel';
 
 // Main application component
 export default function Home() {
   // Get current screen state from app context
-  const { currentScreen } = useApp();
+  const { 
+    currentScreen, 
+    currentQuestionIndex, 
+    answers, 
+    questions 
+  } = useApp();
 
   // Render different screens based on current state
   const renderScreen = () => {
@@ -34,6 +40,34 @@ export default function Home() {
         return <ScreensaverScreen key="screensaver" />;
     }
   };
+
+  // Determine if progress dots should be shown and what variant
+  const getProgressDotsConfig = () => {
+    switch (currentScreen) {
+      case 'question':
+        return {
+          show: true,
+          variant: 'default',
+          totalQuestions: 5
+        };
+      case 'feedback':
+        return {
+          show: true,
+          variant: 'feedback',
+          totalQuestions: 5
+        };
+      case 'results':
+        return {
+          show: true,
+          variant: 'results',
+          totalQuestions: 5
+        };
+      default:
+        return { show: false };
+    }
+  };
+
+  const progressConfig = getProgressDotsConfig();
 
   return (
     // Main container - fullscreen with black background
@@ -65,6 +99,26 @@ export default function Home() {
           }}
         />
       </div>
+
+      {/* Global Progress Dots - shown during quiz screens */}
+      {progressConfig.show && (
+        <div 
+          className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-40"
+          style={{
+            bottom: progressConfig.variant === 'results' 
+              ? 'min(6.5rem, 10.5vh)' // 5% lower (was 8rem, 12vh)
+              : 'min(4.5rem, 7.5vh)' // 5% lower (was 5.625rem, 9vh)
+          }}
+        >
+          <ProgressDots
+            totalQuestions={progressConfig.totalQuestions}
+            currentQuestionIndex={currentQuestionIndex}
+            answers={answers}
+            questions={questions}
+            variant={progressConfig.variant}
+          />
+        </div>
+      )}
     </div>
   );
 }

@@ -132,13 +132,8 @@ const FeedbackScreen = () => {
         className="fixed bottom-0 left-0 right-0 z-50"
       >
         <StandardFooter
-          showProgressDots={true}
-          totalQuestions={totalQuestions}
-          currentQuestionIndex={currentQuestionIndex}
-          answers={answers}
-          questions={questions}
-          progressDotsVariant="feedback"
-          alignProgressDots="inline"
+          showProgressDots={false}
+          alignProgressDots="center"
           className="relative"
         >
           <FeedbackButton
