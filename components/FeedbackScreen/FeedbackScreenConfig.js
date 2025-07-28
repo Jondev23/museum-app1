@@ -43,10 +43,10 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   // Main content container styles
   const mainContentStyle = useMemo(() => ({
     width: '100%',
-    maxWidth: 'min(127rem, 84vw)',    // Responsive max width - increased to 100vw to use full width
-    paddingTop: 'min(6rem, 8vh)',     // Responsive top padding
-    paddingBottom: 'min(2rem, 3vh)',  // Responsive bottom padding
-    margin: '0 auto'                   // Center horizontally
+    maxWidth: 'min(127rem, 84vw)',    
+    paddingTop: 'min(6rem, 8vh)',     
+    paddingBottom: 'min(2rem, 3vh)',  
+    margin: '0 auto'                  
   }), []);
 
   // Feedback container styles with responsive spacing
@@ -54,21 +54,21 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 'min(1.2rem, 2vw)',          // Responsive gap between elements
-    paddingTop: 'min(2rem, 3vw)',     // Responsive top padding
-    paddingBottom: 'min(2rem, 3vw)',  // Responsive bottom padding
-    paddingLeft: '0',                 // No left padding
-    paddingRight: '0',                // No right padding
+    gap: 'min(1.2rem, 2vw)',          
+    paddingTop: 'min(2rem, 3vw)',     
+    paddingBottom: 'min(2rem, 3vw)',  
+    paddingLeft: '0',                 
+    paddingRight: '0',                
     width: '100%',
-    maxWidth: '100%',                 // Use full width available
+    maxWidth: '100%',                
     height: '74vh',
     justifyContent: 'space-evenly', 
     overflow: 'hidden'
   }), []);
 
   const titleStyle = useMemo(() => ({
-    fontSize: '3.375rem', // Fixed size - 54px
-    lineHeight: 'clamp(1.2rem, 6.05vw, 3.9325rem)',
+    fontSize: '3.375rem', 
+    lineHeight: '4.05rem', 
     width: '95%',
     minHeight: 'auto', 
     maxHeight: '35vh', 
@@ -124,8 +124,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const messageStyle = useMemo(() => ({
-    fontSize: 'clamp(0.8rem, 3.2vw, 1.6rem)',
-    lineHeight: 'clamp(1rem, 4vw, 2rem)',
+    fontSize: '2.25rem', // Fixed size - 36px
+    lineHeight: '2.7rem', // Fixed proportional line height
     maxWidth: '100%',
     overflowWrap: 'break-word',
     margin: '0',
@@ -136,8 +136,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const explanationStyle = useMemo(() => ({
-    fontSize: 'clamp(0.8rem, 3.2vw, 1.6rem)',
-    lineHeight: 'clamp(1rem, 4vw, 2rem)',
+    fontSize: '2.25rem', // Fixed size - 36px
+    lineHeight: '2.7rem', // Fixed proportional line height
     maxWidth: '85%',
     overflowWrap: 'break-word',
     margin: '0',

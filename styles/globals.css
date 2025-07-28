@@ -77,9 +77,9 @@
   --typography-fragen-font-style: italic;
   --typography-fragen-font-family: 'Tisa Pro';
 
-  /* Answer buttons - 24px to 48px */
+  /* Answer buttons - Fixed 3rem size */
   --typography-antworten-buttons-font-size: 3rem; /* Fixed size - 48px */
-  --typography-antworten-buttons-line-height: clamp(1.8rem, 3.2vw, 3.6rem);
+  --typography-antworten-buttons-line-height: 3.6rem; /* Fixed proportional line height */
   --typography-antworten-buttons-font-weight: 400;
   --typography-antworten-buttons-font-style: normal;
   --typography-antworten-buttons-font-family: 'Tisa Sans Pro';
