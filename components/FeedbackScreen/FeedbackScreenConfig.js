@@ -43,7 +43,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   // Main content container styles
   const mainContentStyle = useMemo(() => ({
     width: '100%',
-    maxWidth: 'min(127rem, 95vw)',    // Responsive max width
+    maxWidth: 'min(127rem, 84vw)',    // Responsive max width - increased to 100vw to use full width
     paddingTop: 'min(6rem, 8vh)',     // Responsive top padding
     paddingBottom: 'min(2rem, 3vh)',  // Responsive bottom padding
     margin: '0 auto'                   // Center horizontally
@@ -57,10 +57,10 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     gap: 'min(1.2rem, 2vw)',          // Responsive gap between elements
     paddingTop: 'min(2rem, 3vw)',     // Responsive top padding
     paddingBottom: 'min(2rem, 3vw)',  // Responsive bottom padding
-    paddingLeft: 'min(1.5rem, 2.5vw)', // Responsive left padding
-    paddingRight: 'min(1.5rem, 2.5vw)',
+    paddingLeft: '0',                 // No left padding
+    paddingRight: '0',                // No right padding
     width: '100%',
-    maxWidth: 'min(75.6rem, 83.05vw)',
+    maxWidth: '100%',                 // Use full width available
     height: '74vh',
     justifyContent: 'space-evenly', 
     overflow: 'hidden'
