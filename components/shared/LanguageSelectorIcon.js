@@ -26,7 +26,7 @@ const LanguageSelectorIcon = ({
     return {
       flexShrink: 0,
       marginBottom: 'min(4.7rem, 8.2vh)',
-      marginLeft: 'min(5.125rem, 8vw)',
+      marginLeft: 'min(10rem, 7.5vw)', // 10rem base with responsive fallback
       ...style
     };
   };
