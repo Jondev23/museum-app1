@@ -176,6 +176,10 @@
   --results-score-text-font-size: 4rem; /* Fixed size - 64px */
   --results-score-text-line-height: 4.8rem; /* Fixed proportional line height */
 
+  /* Results Screen Play Again Button Text - Fixed 1.875rem size */
+  --results-play-again-button-text-font-size: 1.875rem; /* Fixed size - 30px */
+  --results-play-again-button-text-line-height: 2.25rem; /* Fixed proportional line height */
+
   /* Smaller Subtitles - 20% smaller than normal subtitles */
   --subtitle-small-font-size: clamp(1.4256rem, 2.5661vw, 2.8512rem); /* 20% smaller than --typography-subline-font-size */
   --subtitle-small-line-height: clamp(1.9008rem, 3.4214vw, 3.8016rem); /* 20% smaller than --typography-subline-line-height */
@@ -189,8 +193,8 @@
   /* Results Screen Lateral Spacing - Horizontal padding for the page */
   --results-horizontal-padding: clamp(2rem, 6vw, 5rem); /* Generous horizontal spacing */
   
-  /* Results Screen Play Again Button Positioning - Absolute bottom */
-  --results-play-again-bottom: clamp(0.015625rem, 0.046875vw, 0.03125rem); 
+  /* Results Screen Play Again Button Positioning - Aligned with language selector icon */
+  --results-play-again-bottom: min(3.15rem, 5.25vh); 
 }
 
 /* Responsive breakpoints for better mobile support */
@@ -210,7 +214,7 @@
 
     --results-progress-margin: clamp(1rem, 3.5vw, 2rem); 
     --results-horizontal-padding: clamp(1.5rem, 4vw, 3rem); 
-    --results-play-again-bottom: clamp(0.0125rem, 0.03125vw, 0.025rem); 
+    --results-play-again-bottom: min(3.15rem, 5.25vh); 
   }
 }
 
@@ -226,8 +230,8 @@
     --results-progress-margin: clamp(1.2rem, 3.5vw, 2.5rem); /* More space between subtitle and progress circles for tablets */
     /* Results Screen Lateral Spacing - Medium horizontal padding for tablets */
     --results-horizontal-padding: clamp(1.75rem, 5vw, 4rem); /* Medium horizontal spacing for tablets */
-    /* Results Screen Play Again Button Positioning - Absolute bottom for tablets */
-    --results-play-again-bottom: clamp(0.015625rem, 0.046875vw, 0.03125rem); /* Absolute bottom for tablets */
+    /* Results Screen Play Again Button Positioning - Aligned with language selector for tablets */
+    --results-play-again-bottom: min(3.15rem, 5.25vh);
   }
 }
 
@@ -248,8 +252,8 @@
     --results-progress-margin: clamp(0.75rem, 2.5vh, 1.5rem); /* More space between subtitle and progress circles for landscape */
     /* Results Screen Lateral Spacing - Compact horizontal padding for landscape */
     --results-horizontal-padding: clamp(1rem, 8vw, 3rem); /* Compact horizontal spacing for landscape */
-    /* Results Screen Play Again Button Positioning - Absolute bottom for landscape */
-    --results-play-again-bottom: clamp(0.007812rem, 0.0195vh, 0.015625rem); /* Absolute bottom for landscape */
+    /* Results Screen Play Again Button Positioning - Aligned with language selector for landscape */
+    --results-play-again-bottom: min(3.15rem, 5.25vh);
   }
 }
 
@@ -395,6 +399,25 @@
   .text-button {
     @apply typography-antworten-buttons;
     color: var(--color-text-primary);
+  }
+
+  .text-button-play-again {
+    font-family: var(--typography-antworten-buttons-font-family);
+    font-size: var(--results-play-again-button-text-font-size);
+    line-height: 7rem; /* Fixed line-height as specified */
+    font-weight: var(--typography-antworten-buttons-font-weight);
+    font-style: var(--typography-antworten-buttons-font-style);
+    letter-spacing: var(--typography-antworten-buttons-letter-spacing);
+    text-align: center;
+    color: #FFF; /* White color as specified */
+    text-transform: uppercase; /* Uppercase as specified */
+    display: flex;
+    width: auto; /* Auto width to accommodate text length */
+    min-width: 13.0625rem; /* Minimum width for consistency */
+    height: 2.625rem; /* Fixed height as specified */
+    flex-direction: column;
+    justify-content: center;
+    white-space: nowrap; /* Prevent text wrapping */
   }
 
   .text-answer {

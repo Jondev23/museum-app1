@@ -15,7 +15,7 @@ const ProgressDots = ({
       case 'results':
         return 'min(2.8rem, 4.5vw, 5.6vh)'; 
       default:
-        return '1.1875rem'; // 19px gap to match SVG spacing
+        return '1.1875rem'; 
     }
   };
 
@@ -27,8 +27,8 @@ const ProgressDots = ({
 
   // Calculate individual dot styles based on question state
   const getDotStyles = (index) => {
-    const baseSize = '1.5rem'; // 21px diameter to match SVG
-    const baseBorder = '0.1875rem'; // 3px border to match SVG stroke-width
+    const baseSize = '1.5rem'; 
+    const baseBorder = '0.1875rem'; 
     
     let dotColor = 'transparent';
     let borderColor = 'var(--color-neutral-light)';
@@ -84,9 +84,9 @@ const ProgressDots = ({
     }
     
     return {
-      width: baseSize, // Use same size for both dimensions
-      height: baseSize, // Use same size for both dimensions
-      borderRadius: '50%', // Perfect circle
+      width: baseSize, 
+      height: baseSize, 
+      borderRadius: '50%', 
       border: showBorder ? `${baseBorder} solid ${borderColor}` : 'none',
       backgroundColor: dotColor,
       flexShrink: 0
