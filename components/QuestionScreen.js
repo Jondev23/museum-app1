@@ -63,7 +63,7 @@ const QuestionScreen = () => {
         }}
         className="fixed inset-0 flex flex-col z-30"
       >
-        {/* Content container */}
+        {/* Content container - without footer */}
         <div className="relative z-10 flex flex-col h-full">
           {/* Main content */}
           <div className="flex flex-col items-center justify-start flex-1 w-full max-w-[min(120rem,95vw)] mx-auto px-[min(4rem,6vw)] pt-[min(4rem,6vh)] pb-[min(0.5rem,1vh)] gap-[min(1.5rem,3vw)]">
@@ -86,15 +86,26 @@ const QuestionScreen = () => {
               </div>
             </div>
           </div>
-
-          {/* Footer section */}
-          <QuestionFooter
-            currentQuestionIndex={currentQuestionIndex}
-            progressDotsStyle={progressDotsStyle}
-            answers={answers}
-            questions={questions}
-          />
         </div>
+      </motion.div>
+
+      {/* Footer section - separated with independent animation */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ 
+          duration: 0.4, // Same as FeedbackScreen entry
+          exit: { duration: 0.2 } // Quick exit like other components
+        }}
+        className="fixed bottom-0 left-0 right-0 z-30"
+      >
+        <QuestionFooter
+          currentQuestionIndex={currentQuestionIndex}
+          progressDotsStyle={progressDotsStyle}
+          answers={answers}
+          questions={questions}
+        />
       </motion.div>
     </>
   );

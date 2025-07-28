@@ -12,7 +12,7 @@ const QuestionFooter = ({ currentQuestionIndex, progressDotsStyle, answers, ques
       questions={questions}
       variant="default"
       className="absolute"
-      style={progressDotsStyle}
+      style={{ ...progressDotsStyle, zIndex: 5 }}
     />
     
     <StandardFooter
