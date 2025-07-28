@@ -15,8 +15,8 @@ const LanguageSelectorIcon = ({
 
   // Base styles for the icon
   const baseIconStyles = {
-    width: 'min(2.7rem, 4.86vw, 6.075vh)', 
-    height: 'min(2.7rem, 4.86vw, 6.075vh)',
+    width: '4rem', // Fixed width to 4rem (64px)
+    height: '4rem', // Fixed height to 4rem (64px)
     display: 'block',
     opacity: opacity
   };
