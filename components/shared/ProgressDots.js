@@ -55,8 +55,8 @@ const ProgressDots = ({
         const isCorrect = userAnswer === questions[index]?.correctAnswer;
         dotColor = isCorrect ? 'var(--color-blassgruen)' : 'var(--color-feedback-incorrect)';
         return {
-          width: baseSize, // Use same size for width and height to keep circular
-          height: baseSize, // Use same size for width and height to keep circular
+          width: '5.12638rem', // Fixed size - 82.02px
+          height: '5.12638rem', // Fixed size - 82.02px
           borderRadius: '50%', // Perfect circle
           backgroundColor: dotColor,
           border: 'none'
