@@ -40,6 +40,11 @@ const ScreensaverScreen = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ 
+        duration: 0.8, 
+        ease: "easeInOut",
+        delay: 0.2 // Small delay to let previous screen fade out completely
+      }}
       className="fixed inset-0 flex flex-col items-center justify-center cursor-pointer"
       onClick={handleTouch}
       onTouchStart={handleTouch}

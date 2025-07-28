@@ -32,6 +32,7 @@ export const AppProvider = ({ children }) => {
   // UI state
   const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isTransitioningToScreensaver, setIsTransitioningToScreensaver] = useState(false);
   
   // Kiosk configuration
   const [kioskId, setKioskId] = useState(() => detectKioskIdSync());
@@ -115,11 +116,8 @@ export const AppProvider = ({ children }) => {
       // Only set timer if not on screensaver
       if (currentScreen !== 'screensaver') {
         timer = setTimeout(() => {
-          // Direct screen change to avoid hoisting issues
-          setCurrentScreen('screensaver');
-          setCurrentQuestionIndex(0);
-          setAnswers([]);
-          setShowLanguageSelector(false);
+          // Smooth transition to screensaver instead of direct change
+          goToScreensaver();
         }, screensaverTimeout);
       }
     };
@@ -178,10 +176,26 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   const goToScreensaver = () => {
-    setCurrentScreen('screensaver');
-    setCurrentQuestionIndex(0);
-    setAnswers([]);
-    setShowLanguageSelector(false);
+    // Only start transition if not already transitioning and not on screensaver
+    if (!isTransitioningToScreensaver && currentScreen !== 'screensaver') {
+      console.log('Starting smooth transition to screensaver');
+      setIsTransitioningToScreensaver(true);
+      
+      // After fade out transition, change to screensaver
+      setTimeout(() => {
+        setCurrentScreen('screensaver');
+        setCurrentQuestionIndex(0);
+        setAnswers([]);
+        setShowLanguageSelector(false);
+        setIsTransitioningToScreensaver(false);
+      }, 500); // 500ms fade out duration
+    } else if (!isTransitioningToScreensaver) {
+      // Direct change if already on screensaver
+      setCurrentScreen('screensaver');
+      setCurrentQuestionIndex(0);
+      setAnswers([]);
+      setShowLanguageSelector(false);
+    }
   };
 
   const startQuiz = () => {
@@ -288,6 +302,7 @@ export const AppProvider = ({ children }) => {
     answers,
     showLanguageSelector,
     setShowLanguageSelector,
+    isTransitioningToScreensaver,
     kioskId,
     setKioskId: updateKioskId,
     screensaverTimeout,
