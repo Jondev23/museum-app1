@@ -11,7 +11,6 @@ import ResultsTitle from './ResultsScreen/ResultsTitle';
 import ResultsScoreText from './ResultsScreen/ResultsScoreText';
 import ResultsPlayAgainButton from './ResultsScreen/ResultsPlayAgainButton';
 import ResultsProgress from './ResultsScreen/ResultsProgress';
-import ResultsBackground from './ResultsScreen/ResultsBackground';
 
 // Results screen component - shows final quiz score and play again option
 const ResultsScreen = () => {
@@ -31,18 +30,6 @@ const ResultsScreen = () => {
 
   return (
     <>
-      {/* Fixed background layer - remains static */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.01 }}
-        className="fixed inset-0 z-10"
-      >
-        {/* Background image component */}
-        <ResultsBackground backgroundImage={contentData.backgroundImage} />
-      </motion.div>
-
       {/* Animated content container - only content slides in */}
       <motion.div
         initial={{ x: '100%', opacity: 0 }}

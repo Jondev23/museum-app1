@@ -25,7 +25,6 @@ const StartScreen = () => {
 
   // Get dynamic styles based on content
   const {
-    backgroundStyle,
     containerStyle,
     mainCardStyle,
     contentSectionStyle,
@@ -44,22 +43,6 @@ const StartScreen = () => {
 
   return (
     <>
-      {/* Fixed background layer - remains static */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.01 }} // Quick fade to match other screens
-        className="fixed inset-0 z-10"
-        style={backgroundStyle}
-      >
-        {/* Black overlay for better text contrast */}
-        <div 
-          className="absolute inset-0" 
-          style={{ backgroundColor: 'var(--color-overlay)' }}
-        />
-      </motion.div>
-
       {/* Animated content container */}
       <motion.div
         initial={{ opacity: 0 }}

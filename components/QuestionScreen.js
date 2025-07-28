@@ -29,7 +29,6 @@ const QuestionScreen = () => {
 
   // Get dynamic styles based on content
   const {
-    backgroundStyle,
     progressDotsStyle
   } = useQuestionScreenStyles(startContent);
 
@@ -38,19 +37,6 @@ const QuestionScreen = () => {
 
   return (
     <>
-      {/* Fixed background layer - positioned behind content but above FeedbackScreen */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.01 }} // Quick fade to create seamless background
-        className="fixed inset-0 z-20"
-        style={backgroundStyle}
-      >
-        {/* Background overlay for better contrast */}
-        <div className="absolute inset-0" style={{ backgroundColor: 'var(--color-overlay)' }} />
-      </motion.div>
-
       {/* Animated content container with slide-in animation from right */}
       <motion.div
         initial={{ x: '100%', opacity: 0 }}
@@ -61,7 +47,7 @@ const QuestionScreen = () => {
           exit: { duration: 0.2 }, // Faster exit to prevent overlap with FeedbackScreen
           when: "afterChildren"
         }}
-        className="fixed inset-0 flex flex-col z-30"
+        className="fixed inset-0 flex flex-col z-20"
       >
         {/* Content container - without footer */}
         <div className="relative z-10 flex flex-col h-full">

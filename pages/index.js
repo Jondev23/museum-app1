@@ -11,6 +11,7 @@ import ResultsScreen from '../components/ResultsScreen';
 import LanguageSelector from '../components/LanguageSelector';
 import LanguageSelectorIcon from '../components/shared/LanguageSelectorIcon';
 import ProgressDots from '../components/shared/ProgressDots';
+import GlobalBackground from '../components/shared/GlobalBackground';
 import AdminPanel from '../components/AdminPanel';
 
 // Main application component
@@ -71,9 +72,18 @@ export default function Home() {
 
   const progressConfig = getProgressDotsConfig();
 
+  // Get background image from current kiosk configuration
+  const startContent = content?.[language]?.startScreen;
+  const globalBackgroundImage = startContent?.backgroundImage;
+
   return (
     // Main container - fullscreen with black background
     <div className="w-screen h-screen overflow-hidden bg-black">
+      {/* Global Background - static across all screens */}
+      <div className="fixed inset-0 z-5">
+        <GlobalBackground backgroundImage={globalBackgroundImage} />
+      </div>
+
       {/* Animated transitions between screens */}
       <AnimatePresence>
         {renderScreen()}

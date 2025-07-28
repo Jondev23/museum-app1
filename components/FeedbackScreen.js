@@ -33,7 +33,6 @@ const FeedbackScreen = () => {
 
   // Get dynamic styles based on content and answer correctness
   const {
-    backgroundStyle,
     mainContentStyle,
     feedbackContainerStyle,
     titleStyle,
@@ -52,19 +51,6 @@ const FeedbackScreen = () => {
 
   return (
     <>
-      {/* Fixed background layer */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.01 }} // Quick fade to maintain background consistency
-        className="fixed inset-0 z-10"
-        style={backgroundStyle}
-      >
-        {/* Dark overlay */}
-        <div className={`absolute inset-0 ${FEEDBACK_CONFIG.COLORS.OVERLAY}`} />
-      </motion.div>
-
       {/* Animated content container */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -74,7 +60,7 @@ const FeedbackScreen = () => {
           duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION,
           exit: { duration: 0.2 } // Faster exit to match QuestionScreen behavior
         }}
-        className="fixed inset-0 flex flex-col z-40"
+        className="fixed inset-0 flex flex-col z-20"
         style={{ paddingBottom: 'min(4.375rem, 7vh)' }} // Leave space for footer
         onTouchStart={(e) => {
           e.stopPropagation();
