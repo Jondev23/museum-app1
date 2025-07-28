@@ -51,8 +51,8 @@ export default function Home() {
       <div 
         className="fixed bottom-0 left-0 z-50"
         style={{
-          marginBottom: 'min(4.7rem, 8.2vh)',
-          marginLeft: 'min(1.25rem, 2vw)', // Same as StandardFooter padding
+          marginBottom: 'min(3.7rem, 4.7vh)', 
+          marginLeft: 'min(9.5rem, 14.5vw)',
         }}
       >
         <LanguageSelectorIcon 
