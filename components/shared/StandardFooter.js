@@ -53,12 +53,12 @@ const StandardFooter = ({
           style={
             alignProgressDots === 'inline' 
             ? {
-                
+                // Inline alignment - reduced margin to move dots down 0.3%
                 flexShrink: 0,
-                marginBottom: 'min(6.70698984375rem, 10.73148375vh)'
+                marginBottom: 'min(6.82698984375rem, 11.03148375vh)'
               }
             : {
-                
+                // Absolute positioning - legacy configuration
                 left: '46%',
                 transform: 'translateX(calc(-50% - min(4rem, 8vw)))',
                 bottom: 'min(5.625rem, 9vh)',
