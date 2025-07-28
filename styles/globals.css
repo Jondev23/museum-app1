@@ -168,9 +168,13 @@
   --feedback-arrow-min-width: min(3.0914235rem, 4.96375vw);  
   --feedback-arrow-min-height: min(3.0914235rem, 4.96375vh);
 
-  /* Results Screen Title - 20% smaller than main title */
-  --results-title-font-size: clamp(2.48292rem, 3.9726vw, 4.96584rem); /* 20% smaller than main title */
-  --results-title-line-height: clamp(2.97952rem, 4.7672vw, 5.9590rem); /* 20% smaller than main title line height */
+  /* Results Screen Title - Fixed 6rem size */
+  --results-title-font-size: 6rem; /* Fixed size - 96px */
+  --results-title-line-height: 7.2rem; /* Fixed proportional line height */
+
+  /* Results Screen Score Text - Fixed 4rem size */
+  --results-score-text-font-size: 4rem; /* Fixed size - 64px */
+  --results-score-text-line-height: 4.8rem; /* Fixed proportional line height */
 
   /* Smaller Subtitles - 20% smaller than normal subtitles */
   --subtitle-small-font-size: clamp(1.4256rem, 2.5661vw, 2.8512rem); /* 20% smaller than --typography-subline-font-size */
@@ -370,8 +374,8 @@
 
   .subtitle-small {
     font-family: var(--typography-subline-font-family);
-    font-size: var(--subtitle-small-font-size);
-    line-height: var(--subtitle-small-line-height);
+    font-size: var(--results-score-text-font-size);
+    line-height: var(--results-score-text-line-height);
     font-weight: var(--typography-subline-font-weight);
     font-style: var(--typography-subline-font-style);
     text-align: center;
