@@ -181,8 +181,8 @@
   --results-play-again-button-text-line-height: 2.25rem; /* Fixed proportional line height */
 
   /* Smaller Subtitles - 20% smaller than normal subtitles */
-  --subtitle-small-font-size: clamp(1.4256rem, 2.5661vw, 2.8512rem); /* 20% smaller than --typography-subline-font-size */
-  --subtitle-small-line-height: clamp(1.9008rem, 3.4214vw, 3.8016rem); /* 20% smaller than --typography-subline-line-height */
+  --subtitle-small-font-size: clamp(1.4256rem, 2.5661vw, 2.8512rem);
+  --subtitle-small-line-height: clamp(1.9008rem, 3.4214vw, 3.8016rem); 
 
   /* Results Screen Spacing - No spacing between title and subtitle */
   --results-title-margin: 0; 
@@ -198,6 +198,12 @@
 
   /* StartScreen Touch Indicator - Fixed 8rem size */
   --touch-indicator-size: 7rem; 
+
+  /* StartScreen Top Spacing - More space from top */
+  --startscreen-top-spacing: clamp(9rem, 15vh, 12rem);
+
+  /* StartScreen Description Lateral Spacing - Reduced horizontal padding */
+  --startscreen-description-lateral-spacing: 0;
 }
 
 /* Responsive breakpoints for better mobile support */

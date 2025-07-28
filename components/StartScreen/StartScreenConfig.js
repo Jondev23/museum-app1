@@ -57,9 +57,20 @@ export const useStartScreenStyles = (startContent) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    paddingTop: 'clamp(4rem, 8vh, 6rem)',
+    paddingTop: 'var(--startscreen-top-spacing)',
     paddingLeft: 'clamp(1rem, 3vw, 3rem)',
     paddingRight: 'clamp(1rem, 3vw, 3rem)'
+  },
+
+  // Content section with minimal padding for description
+  contentSectionMinimalStyle: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    paddingTop: 'var(--startscreen-top-spacing)',
+    paddingLeft: '0.25rem',
+    paddingRight: '0.25rem'
   },
 
   
@@ -98,9 +109,14 @@ export const useStartScreenStyles = (startContent) => ({
   },
 
   descriptionContainerStyle: {
-    width: '90%',
-    maxWidth: '80rem',
-    textAlign: 'center'
+    width: '100vw',
+    maxWidth: '100vw',
+    textAlign: 'center',
+    paddingLeft: 'var(--startscreen-description-lateral-spacing)',
+    paddingRight: 'var(--startscreen-description-lateral-spacing)',
+    marginLeft: 'calc(-1 * clamp(1rem, 3vw, 3rem))',
+    marginRight: 'calc(-1 * clamp(1rem, 3vw, 3rem))',
+    position: 'relative'
   },
 
   highlightTextStyle: {
