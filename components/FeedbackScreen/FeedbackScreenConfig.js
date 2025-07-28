@@ -67,7 +67,7 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const titleStyle = useMemo(() => ({
-    fontSize: 'clamp(1rem, 4.84vw, 3.025rem)', 
+    fontSize: '3.375rem', // Fixed size - 54px
     lineHeight: 'clamp(1.2rem, 6.05vw, 3.9325rem)',
     width: '95%',
     minHeight: 'auto', 
