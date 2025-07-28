@@ -36,7 +36,7 @@ const ResultsScreen = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.01 }} // Quick fade to match FeedbackScreen
+        transition={{ duration: 0.01 }}
         className="fixed inset-0 z-10"
       >
         {/* Background image component */}

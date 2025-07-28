@@ -1,5 +1,4 @@
 // Import animation library and shared components
-import LanguageSelectorIcon from './LanguageSelectorIcon';
 import ProgressDots from './ProgressDots';
 
 // Standard footer component used across multiple screens
@@ -34,12 +33,12 @@ const StandardFooter = ({
       className={`relative flex ${alignProgressDots === 'inline' && showProgressDots ? 'justify-center' : 'justify-between'} items-center ${className}`}
       style={baseFooterStyles}
     >
-      {/* Language selector icon - always positioned consistently */}
-      <LanguageSelectorIcon 
+      {/* Language selector icon - now global, removed from footer */}
+      {/* <LanguageSelectorIcon 
         variant="standard" 
         delay={0.6}
         style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', left: 'min(1.25rem, 2vw)' } : {}}
-      />
+      /> */}
 
       {/* Progress dots - shown during quiz questions */}
       {showProgressDots ? (

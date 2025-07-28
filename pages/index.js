@@ -9,6 +9,7 @@ import QuestionScreen from '../components/QuestionScreen';
 import FeedbackScreen from '../components/FeedbackScreen';
 import ResultsScreen from '../components/ResultsScreen';
 import LanguageSelector from '../components/LanguageSelector';
+import LanguageSelectorIcon from '../components/shared/LanguageSelectorIcon';
 import AdminPanel from '../components/AdminPanel';
 
 // Main application component
@@ -45,6 +46,25 @@ export default function Home() {
       {/* Always visible components */}
       <LanguageSelector />
       <AdminPanel />
+      
+      {/* Global Language Selector Icon - always visible and fixed */}
+      <div 
+        className="fixed bottom-0 left-0 z-50"
+        style={{
+          marginBottom: 'min(4.7rem, 8.2vh)',
+          marginLeft: 'min(1.25rem, 2vw)', // Same as StandardFooter padding
+        }}
+      >
+        <LanguageSelectorIcon 
+          variant="standard" 
+          delay={0}
+          opacity={0.8}
+          style={{
+            marginBottom: 0,
+            marginLeft: 0,
+          }}
+        />
+      </div>
     </div>
   );
 }
