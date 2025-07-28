@@ -163,8 +163,8 @@
   --feedback-button-gap: min(1.25rem, 2.5vw);             
   --feedback-button-text-size: 1.875rem; 
   --feedback-button-text-line-height: min(6.25vh, 3.75rem);
-  --feedback-arrow-width: min(5.9565vw, 4.9409175rem, 7.942vh); 
-  --feedback-arrow-height: min(5.9565vh, 5.40552375rem, 7.942vh);  
+  --feedback-arrow-width: 5.01688rem; 
+  --feedback-arrow-height: 2.71563rem;  
   --feedback-arrow-min-width: min(3.0914235rem, 4.96375vw);  
   --feedback-arrow-min-height: min(3.0914235rem, 4.96375vh);
 
