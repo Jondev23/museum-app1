@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import KioskSelectorScreen from './KioskSelector';
+import SettingsScreen from './SettingsScreen';
 
 // Admin panel component with secret sequence access and kiosk configuration
 const AdminPanel = () => {
@@ -9,6 +10,7 @@ const AdminPanel = () => {
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showKioskSelector, setShowKioskSelector] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
 
   // Secret sequence and password configuration
@@ -62,6 +64,8 @@ const AdminPanel = () => {
     setIsVisible(false);
     setPassword('');
     setIsAuthenticated(false);
+    setShowKioskSelector(false);
+    setShowSettings(false);
   };
 
   const handleExitKiosk = () => {
@@ -119,7 +123,7 @@ const AdminPanel = () => {
       
     
       <AnimatePresence>
-        {isVisible && !showKioskSelector && (
+        {isVisible && !showKioskSelector && !showSettings && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -202,6 +206,20 @@ const AdminPanel = () => {
                   </button>
                   
                   <button
+                    onClick={() => setShowSettings(true)}
+                    onTouchStart={(e) => { e.preventDefault(); setShowSettings(true); }}
+                    className="w-full admin-button-primary"
+                    style={{
+                      touchAction: 'manipulation',
+                      userSelect: 'none',
+                      WebkitTouchCallout: 'none',
+                      WebkitUserSelect: 'none'
+                    }}
+                  >
+                    Einstellungen
+                  </button>
+                  
+                  <button
                     onClick={handleClose}
                     onTouchStart={(e) => { e.preventDefault(); handleClose(); }}
                     className="w-full admin-button-secondary"
@@ -242,10 +260,20 @@ const AdminPanel = () => {
           <KioskSelectorScreen
             onKioskSelected={(id) => {
               setShowKioskSelector(false);
-              setSuccessMsg('Kiosk erfolgreich ausgewählt.');
-              setTimeout(() => setSuccessMsg(''), 2000);
+              setSuccessMsg(`Kiosk ${id} erfolgreich ausgewählt und gespeichert.`);
+              setTimeout(() => setSuccessMsg(''), 3000);
             }}
             onBack={() => setShowKioskSelector(false)}
+          />
+        )}
+        {isVisible && showSettings && (
+          <SettingsScreen
+            onSettingsSaved={(newTimeout) => {
+              setShowSettings(false);
+              setSuccessMsg(`Screensaver-Timeout auf ${Math.round(newTimeout / 60000)} Minuten gesetzt.`);
+              setTimeout(() => setSuccessMsg(''), 3000);
+            }}
+            onBack={() => setShowSettings(false)}
           />
         )}
       </AnimatePresence>

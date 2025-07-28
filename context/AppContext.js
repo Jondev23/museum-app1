@@ -1,6 +1,7 @@
 // Import React hooks and utilities for kiosk configuration
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { detectKioskId, getCurrentKioskConfig } from '../utils/kioskConfig';
+import { detectKioskId, detectKioskIdSync, getCurrentKioskConfig } from '../utils/kioskConfig';
+import { loadConfig, setActiveKioskId, getScreensaverTimeout } from '../utils/configManager';
 
 // Create context for global app state
 const AppContext = createContext();
@@ -33,7 +34,46 @@ export const AppProvider = ({ children }) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   
   // Kiosk configuration
-  const [kioskId, setKioskId] = useState(() => detectKioskId());
+  const [kioskId, setKioskId] = useState(() => detectKioskIdSync());
+  const [screensaverTimeout, setScreensaverTimeoutState] = useState(3 * 60 * 1000); // Default 3 minutes
+
+  // Load configuration on component mount
+  useEffect(() => {
+    const initializeAppConfig = async () => {
+      try {
+        // Load the active kiosk ID from config
+        const configKioskId = await detectKioskId();
+        if (configKioskId !== kioskId) {
+          console.log('Updating kiosk ID from config:', configKioskId);
+          setKioskId(configKioskId);
+        }
+
+        // Load screensaver timeout from config
+        const configTimeout = await getScreensaverTimeout();
+        if (configTimeout !== screensaverTimeout) {
+          console.log('Updating screensaver timeout from config:', configTimeout);
+          setScreensaverTimeoutState(configTimeout);
+        }
+      } catch (error) {
+        console.error('Error initializing app config:', error);
+      }
+    };
+
+    initializeAppConfig();
+  }, []);
+
+  // Custom setKioskId that also saves to config
+  const updateKioskId = async (newKioskId) => {
+    console.log('Updating kiosk ID:', newKioskId);
+    setKioskId(newKioskId);
+    
+    try {
+      await setActiveKioskId(newKioskId);
+      console.log('Kiosk ID saved to config successfully');
+    } catch (error) {
+      console.error('Error saving kiosk ID to config:', error);
+    }
+  };
 
   // Effect to load content when kiosk ID or language changes
   useEffect(() => {
@@ -65,7 +105,7 @@ export const AppProvider = ({ children }) => {
     loadContent();
   }, [kioskId, language]);
 
-  // Effect to handle inactivity timer (3 minutes)
+  // Effect to handle inactivity timer (configurable timeout)
   useEffect(() => {
     let timer;
     
@@ -80,7 +120,7 @@ export const AppProvider = ({ children }) => {
           setCurrentQuestionIndex(0);
           setAnswers([]);
           setShowLanguageSelector(false);
-        }, 3 * 60 * 1000); // 3 minutes
+        }, screensaverTimeout);
       }
     };
 
@@ -115,12 +155,12 @@ export const AppProvider = ({ children }) => {
     addEventListeners();
     resetTimer();
 
-    // Cleanup on unmount or when currentScreen changes
+    // Cleanup on unmount or when currentScreen/timeout changes
     return () => {
       clearTimeout(timer);
       removeEventListeners();
     };
-  }, [currentScreen]);
+  }, [currentScreen, screensaverTimeout]);
 
   // Effect to listen for Electron screensaver signals
   useEffect(() => {
@@ -249,7 +289,9 @@ export const AppProvider = ({ children }) => {
     showLanguageSelector,
     setShowLanguageSelector,
     kioskId,
-    setKioskId,
+    setKioskId: updateKioskId,
+    screensaverTimeout,
+    setScreensaverTimeout: setScreensaverTimeoutState,
     goToScreensaver,
     startQuiz,
     beginQuiz,

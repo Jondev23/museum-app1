@@ -1,3 +1,5 @@
+import { getActiveKioskId } from './configManager';
+
 // Configuration for different kiosk installations in the museum
 export const KIOSK_CONFIGS = {
   kiosk1: {
@@ -21,8 +23,8 @@ export const KIOSK_CONFIGS = {
 };
 
 // Function to detect which kiosk configuration to use
-// Priority: 1) URL parameter, 2) localStorage, 3) default (kiosk1)
-export const detectKioskId = () => {
+// Priority: 1) URL parameter, 2) config file, 3) localStorage, 4) default (kiosk1)
+export const detectKioskId = async () => {
   // Return default if running on server-side
   if (typeof window === 'undefined') return 'kiosk1';
   
@@ -30,7 +32,38 @@ export const detectKioskId = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const urlKiosk = urlParams.get('kiosk');
   if (urlKiosk && KIOSK_CONFIGS[urlKiosk]) {
-    localStorage.setItem('kioskId', urlKiosk);
+    return urlKiosk;
+  }
+  
+  // Try to get from config file
+  try {
+    const configKiosk = await getActiveKioskId();
+    if (configKiosk && KIOSK_CONFIGS[configKiosk]) {
+      return configKiosk;
+    }
+  } catch (error) {
+    console.warn('Could not load kiosk ID from config:', error);
+  }
+  
+  // Check localStorage for previously set kiosk (fallback)
+  const storedKiosk = localStorage.getItem('kioskId');
+  if (storedKiosk && KIOSK_CONFIGS[storedKiosk]) {
+    return storedKiosk;
+  }
+  
+  // Default to kiosk1 if nothing else is found
+  return 'kiosk1';
+};
+
+// Synchronous version for initial load
+export const detectKioskIdSync = () => {
+  // Return default if running on server-side
+  if (typeof window === 'undefined') return 'kiosk1';
+  
+  // Check URL parameter first (?kiosk=kiosk2)
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlKiosk = urlParams.get('kiosk');
+  if (urlKiosk && KIOSK_CONFIGS[urlKiosk]) {
     return urlKiosk;
   }
   

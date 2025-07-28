@@ -6,5 +6,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // Listen for screensaver activation signals from main process
   onShowScreensaver: (callback) => ipcRenderer.on('show-screensaver', callback),
   // Clean up event listeners
-  removeAllListeners: (channel) => ipcRenderer.removeAllListeners(channel)
+  removeAllListeners: (channel) => ipcRenderer.removeAllListeners(channel),
+  // Save configuration to file
+  saveConfig: (config) => ipcRenderer.invoke('save-config', config),
+  // Load configuration from file
+  loadConfig: () => ipcRenderer.invoke('load-config')
 });

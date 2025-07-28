@@ -1,13 +1,61 @@
 // Electron main process for museum kiosk application
-const { app, BrowserWindow, globalShortcut, Menu } = require('electron');
+const { app, BrowserWindow, globalShortcut, Menu, ipcMain } = require('electron');
 const path = require('path');
+const fs = require('fs').promises;
 const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV !== 'production';
 
 let mainWindow;
 let inactivityTimer;
-const INACTIVITY_TIMEOUT = 3 * 60 * 1000; // 3 minutes inactivity timeout
+const INACTIVITY_TIMEOUT = 3 * 60 * 1000; // 3 minutes inactivity timeout (will be configurable)
+const CONFIG_FILE_PATH = path.join(__dirname, '../public/config.json');
 
 console.log('Electron starting in', isDev ? 'DEVELOPMENT' : 'PRODUCTION', 'mode');
+console.log('Config file path:', CONFIG_FILE_PATH);
+
+// Configuration management functions
+async function loadConfig() {
+  try {
+    const configData = await fs.readFile(CONFIG_FILE_PATH, 'utf8');
+    const config = JSON.parse(configData);
+    console.log('Config loaded from file:', config);
+    return config;
+  } catch (error) {
+    console.warn('Could not load config file, using defaults:', error.message);
+    const defaultConfig = {
+      activeKioskId: 'kiosk1',
+      screensaverTimeout: 180000,
+      lastUpdated: new Date().toISOString()
+    };
+    // Try to create default config file
+    try {
+      await saveConfig(defaultConfig);
+    } catch (saveError) {
+      console.error('Could not save default config:', saveError.message);
+    }
+    return defaultConfig;
+  }
+}
+
+async function saveConfig(config) {
+  try {
+    const configData = JSON.stringify(config, null, 2);
+    await fs.writeFile(CONFIG_FILE_PATH, configData, 'utf8');
+    console.log('Config saved to file:', config);
+    return true;
+  } catch (error) {
+    console.error('Error saving config file:', error);
+    throw error;
+  }
+}
+
+// IPC handlers for config management
+ipcMain.handle('load-config', async () => {
+  return await loadConfig();
+});
+
+ipcMain.handle('save-config', async (event, config) => {
+  return await saveConfig(config);
+});
 
 // Create the main browser window
 function createWindow() {
