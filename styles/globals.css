@@ -13,6 +13,14 @@
 
 @font-face {
   font-family: 'Tisa Pro';
+  src: url('/fonts/TisaPro-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tisa Pro';
   src: url('/fonts/TisaPro-BoldItalic.otf') format('opentype');
   font-weight: 700;
   font-style: italic;
