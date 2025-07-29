@@ -89,7 +89,7 @@ export const AppProvider = ({ children }) => {
           [language]: {
             screensaver: {
               title: 'Welcome to the Museum',
-              videoSource: '/videos/screensaver-video.mp4'
+              videoSource: './videos/screensaver-video.mp4'
             },
             start: {
               title: 'Museum Quiz',
@@ -157,7 +157,7 @@ export const AppProvider = ({ children }) => {
           [language]: {
             screensaver: {
               title: 'Welcome to the Museum',
-              videoSource: '/videos/screensaver-video.mp4'
+              videoSource: './videos/screensaver-video.mp4'
             },
             start: {
               title: 'Museum Quiz',

@@ -7,7 +7,7 @@ const ResultsPlayAgainButton = ({
   playAgainText, 
   showContent, 
   onPlayAgain,
-  iconSrc = '/images/GUI.svg',
+  iconSrc = './images/GUI.svg',
   iconAlt = 'Restart icon'
 }) => {
   return (
