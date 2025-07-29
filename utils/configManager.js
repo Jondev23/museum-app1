@@ -4,7 +4,7 @@ const CONFIG_FILE_PATH = '/config.json';
 // Default configuration values
 const DEFAULT_CONFIG = {
   activeKioskId: 'kiosk1',
-  screensaverTimeout: 180000, // 3 minutes in milliseconds
+  screensaverTimeout: 180000, // 3 minutes in milliseconds - fallback if config.json not available
   lastUpdated: new Date().toISOString()
 };
 

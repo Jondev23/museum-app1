@@ -110,8 +110,9 @@ export default function Home() {
           }}
           exit={{ opacity: 0 }}
           transition={{ 
-            duration: isTransitioningToScreensaver ? 0.5 : 0.3,
-            ease: "easeInOut" 
+            // Give screensaver longer exit time for smooth video fade
+            duration: currentScreen === 'screensaver' ? 2.5 : (isTransitioningToScreensaver ? 0.5 : 0.3),
+            ease: currentScreen === 'screensaver' ? "easeOut" : "easeInOut"
           }}
           className="relative z-10"
         >

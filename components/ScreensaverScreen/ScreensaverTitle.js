@@ -7,16 +7,26 @@ const ScreensaverTitle = ({ screensaverContent, defaultContent, titleStyle }) =>
   <motion.div
     initial={{ opacity: 0, y: 50 }}
     animate={{ opacity: 1, y: 0 }}
+    exit={{ 
+      opacity: 0 // Simple fade out
+    }}
     transition={{ 
-      duration: SCREENSAVER_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION, 
-      delay: SCREENSAVER_CONFIG.ANIMATION_DELAYS.TITLE 
+      duration: 1.8, // Gradual title fade
+      ease: "easeOut", // Simple smooth easing
+      delay: 0
     }}
     className="flex-1 flex items-center justify-center relative z-20"
+    style={{
+      willChange: 'opacity' // Only optimize for opacity changes
+    }}
   >
     <motion.h1
       animate={{ 
         scale: SCREENSAVER_CONFIG.TITLE_ANIMATION.SCALE,
         opacity: SCREENSAVER_CONFIG.TITLE_ANIMATION.OPACITY
+      }}
+      exit={{
+        opacity: 0 // Simple fade out
       }}
       transition={{ 
         duration: SCREENSAVER_CONFIG.ANIMATION_DURATIONS.TITLE_PULSE,
@@ -24,7 +34,10 @@ const ScreensaverTitle = ({ screensaverContent, defaultContent, titleStyle }) =>
         ease: SCREENSAVER_CONFIG.TITLE_ANIMATION.EASE
       }}
       className="text-center leading-tight font-tisa-pro"
-      style={titleStyle}
+      style={{
+        ...titleStyle,
+        willChange: 'opacity' // Only optimize for opacity changes
+      }}
     >
       {processTextWithHTML(screensaverContent?.title || defaultContent.title)}
     </motion.h1>

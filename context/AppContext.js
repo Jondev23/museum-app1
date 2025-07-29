@@ -36,7 +36,7 @@ export const AppProvider = ({ children }) => {
   
   // Kiosk configuration
   const [kioskId, setKioskId] = useState(() => detectKioskIdSync());
-  const [screensaverTimeout, setScreensaverTimeoutState] = useState(3 * 60 * 1000); // Default 3 minutes
+  const [screensaverTimeout, setScreensaverTimeoutState] = useState(180000); // Fallback - will be overridden by config.json
 
   // Load configuration on component mount
   useEffect(() => {

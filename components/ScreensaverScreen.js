@@ -39,15 +39,20 @@ const ScreensaverScreen = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      exit={{ 
+        opacity: 0 // Simple fade out without other effects
+      }}
       transition={{ 
-        duration: 0.8, 
-        ease: "easeInOut",
-        delay: 0.2 // Small delay to let previous screen fade out completely
+        duration: 2.0, // Much longer duration for very gradual fade
+        ease: "easeOut", // Simple easing for smooth fade
+        delay: 0 // No delay for immediate start of exit
       }}
       className="fixed inset-0 flex flex-col items-center justify-center cursor-pointer"
       onClick={handleTouch}
       onTouchStart={handleTouch}
+      style={{
+        willChange: 'opacity' // Only optimize for opacity changes
+      }}
     >
       {/* Background video or image */}
       <ScreensaverBackground 

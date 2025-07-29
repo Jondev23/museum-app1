@@ -31,7 +31,7 @@ async function loadConfig() {
     console.warn('Could not load config file, using defaults:', error.message);
     const defaultConfig = {
       activeKioskId: 'kiosk1',
-      screensaverTimeout: 180000,
+      screensaverTimeout: 180000, // 3 minutes fallback
       lastUpdated: new Date().toISOString()
     };
     // Try to create default config file

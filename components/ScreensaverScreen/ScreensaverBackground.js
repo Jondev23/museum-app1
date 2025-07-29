@@ -8,17 +8,23 @@ const ScreensaverBackground = ({ defaultContent, videoStyle }) => (
     <motion.video
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      exit={{ 
+        opacity: 0 // Simple fade out
+      }}
       transition={{ 
-        duration: 1,
-        ease: "easeInOut",
-        delay: 0.3 // Delay to create a smooth appearance
+        duration: 2.5, // Even longer duration for very gradual video fade
+        ease: "easeOut", // Simple smooth easing
+        delay: 0 // Start fading immediately
       }}
       autoPlay
       loop
       muted
       playsInline
       className="absolute inset-0 w-full h-full object-cover z-0"
-      style={videoStyle}
+      style={{
+        ...videoStyle,
+        willChange: 'opacity' // Only optimize for opacity changes
+      }}
     >
       <source 
         src={defaultContent.videoSource} 
@@ -30,12 +36,18 @@ const ScreensaverBackground = ({ defaultContent, videoStyle }) => (
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ 
-        duration: 0.8,
-        ease: "easeInOut",
-        delay: 0.4
+      exit={{ 
+        opacity: 0 // Simple fade out
       }}
-      className={`absolute inset-0 ${SCREENSAVER_CONFIG.COLORS.OVERLAY} z-10`} 
+      transition={{ 
+        duration: 2.0, // Gradual overlay fade
+        ease: "easeOut", // Simple smooth easing
+        delay: 0
+      }}
+      className={`absolute inset-0 ${SCREENSAVER_CONFIG.COLORS.OVERLAY} z-10`}
+      style={{
+        willChange: 'opacity' // Only optimize for opacity changes
+      }}
     />
   </>
 );
