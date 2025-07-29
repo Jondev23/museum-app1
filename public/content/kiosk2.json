@@ -4,8 +4,8 @@
       "videoSource": "/videos/screensaver-video.mp4"
     },
     "startScreen": {
-      "title": "Geschwindigkeiten",
-      "subtitle": "Wie schnell war das eigentlich?",
+      "title": "Geschwindigkeiten im 19. Jahrhundert",
+      "subtitle": "Wie schnell war das <b>eigentlich</b>?",
       "subtitleColor": "#a94930",
       "highlightText": "Reisegeschwindigkeiten im 19. Jahrhundert",
       "introText": "Teste dein Wissen! Fünf Fragen rund um Tempo und Technik im Zeitalter der Pferdestärken warten auf dich. Fußgänger, Reiter, Kutsche oder Eisenbahn – wer war am flottesten unterwegs? Stell dich der Herausforderung – vielleicht weißt du mehr, als du denkst. Und falls nicht: unterwegs lernst du garantiert etwas dazu!",
@@ -49,7 +49,7 @@
     "questions": [
       {
         "id": "q1",
-        "question": "Wie schnell fuhren Kutschen typischerweise auf Landstraßen?",
+        "question": "Wie schnell</b> fuhren Kutschen typischerweise auf Landstraßen?",
         "answers": [
           "ca. 8 km/h",
           "ca. 12 km/h",

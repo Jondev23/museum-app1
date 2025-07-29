@@ -1,6 +1,7 @@
 // Import React, animation library, and responsive text hook
 import { motion } from 'framer-motion';
 import { START_SCREEN_CONFIG } from './StartScreenConfig';
+import { processTextWithHTML } from '../../utils/textProcessor';
 
 
 // Start screen title component with responsive text and animations
@@ -13,21 +14,6 @@ const StartScreenTitle = ({
   showOnlyTitle = false,
   showOnlySubtitle = false
 }) => {
-  
-  // Process text that contains line breaks marked with " / "
-  const processText = (text) => {
-    if (text && text.includes(' / ')) {
-      const parts = text.split(' / ');
-      return (
-        <>
-          {parts[0].trim()}
-          <br />
-          {parts[1].trim()}
-        </>
-      );
-    }
-    return text;
-  };
   
   const showTitle = showOnlyTitle || (!showOnlyTitle && !showOnlySubtitle);
   const showSubtitle = showOnlySubtitle || (!showOnlyTitle && !showOnlySubtitle);
@@ -55,7 +41,7 @@ const StartScreenTitle = ({
             color: 'var(--color-text-primary)'
           }}
         >
-          {processText(startContent?.title || defaultTexts.title)}
+          {processTextWithHTML(startContent?.title || defaultTexts.title)}
         </motion.h1>
       )}
 
@@ -77,7 +63,7 @@ const StartScreenTitle = ({
               color: startContent?.subtitleColor || 'var(--color-blassgruen)'
             }}
           >
-            {processText(startContent?.subtitle || defaultTexts.subtitle)}
+            {processTextWithHTML(startContent?.subtitle || defaultTexts.subtitle)}
           </motion.h2>
         </div>
       )}

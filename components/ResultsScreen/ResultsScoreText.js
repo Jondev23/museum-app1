@@ -1,23 +1,10 @@
 
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './ResultsScreenConfig';
+import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Score text component for results screen with line break processing
 const ResultsScoreText = ({ scoreText, scoreTextColor, showContent }) => {
-  // Process text to handle line breaks
-  const processText = (text) => {
-    if (text && text.includes(' / ')) {
-      const parts = text.split(' / ');
-      return (
-        <>
-          {parts[0].trim()}
-          <br />
-          {parts[1].trim()}
-        </>
-      );
-    }
-    return text;
-  };
   return (
     <motion.p
       initial={ANIMATION_CONFIG.CONTENT_REVEAL.INITIAL}
@@ -32,7 +19,7 @@ const ResultsScoreText = ({ scoreText, scoreTextColor, showContent }) => {
         color: scoreTextColor || 'var(--color-blassgruen)' 
       }}
     >
-      {processText(scoreText)}
+      {processTextWithHTML(scoreText)}
     </motion.p>
   );
 };

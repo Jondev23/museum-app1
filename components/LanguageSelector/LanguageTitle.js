@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG, STYLE_CONFIG } from './LanguageSelectorConfig';
+import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Title component for language selector with bilingual text
 const LanguageTitle = ({ englishTitle, germanTitle }) => {
@@ -11,10 +12,10 @@ const LanguageTitle = ({ englishTitle, germanTitle }) => {
       style={STYLE_CONFIG.TITLE_CONTAINER}
     >
       <h1 className="title-question language-title">
-        {englishTitle}
+        {processTextWithHTML(englishTitle)}
       </h1>
       <h2 className="title-question language-subtitle">
-        {germanTitle}
+        {processTextWithHTML(germanTitle)}
       </h2>
     </motion.div>
   );

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { SCREENSAVER_CONFIG } from './ScreensaverScreenConfig';
+import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Animated title component for screensaver with pulsing effect
 const ScreensaverTitle = ({ screensaverContent, defaultContent, titleStyle }) => (
@@ -25,7 +26,7 @@ const ScreensaverTitle = ({ screensaverContent, defaultContent, titleStyle }) =>
       className="text-center leading-tight font-tisa-pro"
       style={titleStyle}
     >
-      {screensaverContent?.title || defaultContent.title}
+      {processTextWithHTML(screensaverContent?.title || defaultContent.title)}
     </motion.h1>
   </motion.div>
 );

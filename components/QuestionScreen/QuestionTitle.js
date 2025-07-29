@@ -1,25 +1,11 @@
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { QUESTION_CONFIG } from './QuestionScreenConfig';
+import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Question title component with responsive text sizing and line break processing
 const QuestionTitle = ({ question }) => {
   const titleRef = useRef(null);
-
-  // Process question text to handle line breaks
-  const processQuestionText = (text) => {
-    if (text.includes(' / ')) {
-      const parts = text.split(' / ');
-      return (
-        <>
-          {parts[0].trim()}
-          <br />
-          {parts[1].trim()}
-        </>
-      );
-    }
-    return text;
-  };
 
   // Auto-adjust font size to fit container height
   useEffect(() => {
@@ -53,7 +39,7 @@ const QuestionTitle = ({ question }) => {
       }}
       className="typography-fragen text-primary relative w-full max-h-[20vh] overflow-hidden flex items-center justify-center text-center mb-[min(3rem,4vh)] mx-[min(4rem,5vw,6vh)] box-border"
     >
-      {processQuestionText(question.question)}
+      {processTextWithHTML(question.question)}
     </motion.h1>
   );
 };

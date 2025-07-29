@@ -4,7 +4,7 @@
       "videoSource": "/videos/screensaver-video.mp4"
     },
     "startScreen": {
-      "title": "Distanzen",
+      "title": "Distanzen des Reisens",
       "subtitle": "Wie weit? Wie lange?",
       "subtitleColor": "#85af8b",
       "highlightText": "Distanzen des Reisens im 19. Jahrhundert",
@@ -142,7 +142,7 @@
       "videoSource": "/videos/screensaver-video.mp4"
     },
     "startScreen": {
-      "title": "Distances ",
+      "title": "Distances of Travel",
       "subtitle": "How far? How long?",
       "subtitleColor": "#85af8b",
       "highlightText": "Travel distances in the 19th century",

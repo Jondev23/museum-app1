@@ -1,23 +1,10 @@
 // Import React, animation library, and results configuration
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './ResultsScreenConfig';
+import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Results title component with line break processing and animation
 const ResultsTitle = ({ title, showContent }) => {
-  // Process text to handle line breaks
-  const processText = (text) => {
-    if (text && text.includes(' / ')) {
-      const parts = text.split(' / ');
-      return (
-        <>
-          {parts[0].trim()}
-          <br />
-          {parts[1].trim()}
-        </>
-      );
-    }
-    return text;
-  };
   return (
     <motion.h1
       initial={ANIMATION_CONFIG.CONTENT_REVEAL.INITIAL}
@@ -29,7 +16,7 @@ const ResultsTitle = ({ title, showContent }) => {
       className="title-results"
       style={{ marginBottom: 'var(--results-title-margin)' }}
     >
-      {processText(title)}
+      {processTextWithHTML(title)}
     </motion.h1>
   );
 };
