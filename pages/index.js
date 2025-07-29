@@ -62,7 +62,7 @@ export default function Home() {
         };
       case 'results':
         return {
-          show: true,
+          show: false, // Results screen handles its own progress dots locally
           variant: 'results',
           totalQuestions: 5
         };

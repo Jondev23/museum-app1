@@ -39,14 +39,16 @@ const ResultsScreen = () => {
         className="fixed inset-0 flex flex-col cursor-pointer z-20"
         onClick={handleTouchAnywhere}
       >
-        {/* Content - Positioned towards top */}
+        {/* Content - Fully responsive layout */}
         <div 
-          className="relative z-10 flex flex-col items-center justify-start h-full"
+          className="relative z-10 flex flex-col items-center justify-center h-full w-full"
           style={{ 
-            paddingTop: 'min(21rem, 21vh)', 
-            paddingBottom: 'var(--spacing-lg)',
+            paddingTop: 'clamp(15rem, 18vh, 21rem)', // Responsive top padding
+            paddingBottom: 'clamp(8rem, 12vh, 15rem)', // Responsive bottom padding
             paddingLeft: 'var(--results-horizontal-padding)',
-            paddingRight: 'var(--results-horizontal-padding)'
+            paddingRight: 'var(--results-horizontal-padding)',
+            minHeight: '100vh', // Ensure full height
+            gap: 'clamp(1rem, 3vh, 2rem)' // Responsive gap between elements
           }}
         >
           <ResultsTitle 
@@ -60,18 +62,22 @@ const ResultsScreen = () => {
             showContent={showContent} 
           />
 
-          {/* ResultsProgress now global */}
-          {/* <ResultsProgress 
+          {/* Local Progress Dots - fully responsive */}
+          <ResultsProgress 
             questions={questions} 
-            answers={answers} 
-          /> */}
-        </div>
+            answers={answers}
+            showContent={showContent}
+          />
 
-        <ResultsPlayAgainButton 
-          playAgainText={contentData.playAgainText}
-          showContent={showContent}
-          onPlayAgain={handlePlayAgain}
-        />
+          {/* Play Again Button - integrated in responsive layout */}
+          <div className="mt-auto mb-8"> {/* Push to bottom with margin */}
+            <ResultsPlayAgainButton 
+              playAgainText={contentData.playAgainText}
+              showContent={showContent}
+              onPlayAgain={handlePlayAgain}
+            />
+          </div>
+        </div>
       </motion.div>
 
       {/* Footer section - separated with independent animation */}
