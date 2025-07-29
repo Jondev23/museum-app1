@@ -1,6 +1,6 @@
 // Global background component that remains static across all screens
 const GlobalBackground = ({ backgroundImage }) => {
-  const bgImage = backgroundImage || '/images/Bild_Kutsche.webp';
+  const bgImage = backgroundImage || './images/Bild_Kutsche.webp';
   
   return (
     <>

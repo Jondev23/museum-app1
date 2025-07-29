@@ -25,7 +25,7 @@ const StartScreenTouchIndicator = ({
     >
       {/* Swipe indicator icon with animation */}
       <img
-        src="/images/OE_Swipe_128.svg"
+        src="./images/OE_Swipe_128.svg"
         alt="Swipe indicator"
         style={animationStyles}
       />

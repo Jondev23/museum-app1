@@ -80,26 +80,100 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     const loadContent = async () => {
       try {
-        console.log(`Loading content for kiosk: ${kioskId}, language: ${language}`);
-        const response = await fetch(`/content/${kioskId}.json`);
+        console.log('=== APPCONTEXT: Starting content load');
+        console.log(`=== APPCONTEXT: Loading content for kiosk: ${kioskId}, language: ${language}`);
+        console.log('=== APPCONTEXT: Window electronAPI available:', typeof window !== 'undefined' && !!window.electronAPI);
         
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        // Add a fallback content immediately to prevent infinite loading
+        const fallbackContent = {
+          [language]: {
+            screensaver: {
+              title: 'Welcome to the Museum',
+              videoSource: '/videos/screensaver-video.mp4'
+            },
+            start: {
+              title: 'Museum Quiz',
+              description: 'Test your knowledge about our exhibits'
+            },
+            questions: [
+              {
+                id: 1,
+                question: 'Sample question?',
+                answers: ['Answer 1', 'Answer 2', 'Answer 3', 'Answer 4'],
+                correctAnswer: 0
+              }
+            ]
+          }
+        };
+        
+        // Set fallback content first to prevent loading screen
+        console.log('=== APPCONTEXT: Setting fallback content first to prevent loading...');
+        setContent(fallbackContent);
+        
+        let data;
+        // Check if we're in Electron environment
+        if (typeof window !== 'undefined' && window.electronAPI) {
+          // In Electron, load content via IPC
+          try {
+            console.log('=== APPCONTEXT: Attempting to load content via Electron IPC...');
+            data = await window.electronAPI.loadKioskContent(kioskId);
+            console.log('=== APPCONTEXT: ✅ Content loaded via Electron IPC:', data);
+          } catch (electronError) {
+            console.warn('=== APPCONTEXT: ❌ Failed to load via Electron IPC, using fallback:', electronError);
+            data = fallbackContent;
+          }
+        } else {
+          // In web environment, use fetch
+          try {
+            console.log('=== APPCONTEXT: Loading content via fetch...');
+            const response = await fetch(`/content/${kioskId}.json`);
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            data = await response.json();
+            console.log('=== APPCONTEXT: ✅ Content loaded via fetch:', data);
+          } catch (fetchError) {
+            console.warn('=== APPCONTEXT: ❌ Failed to load via fetch, using fallback:', fetchError);
+            data = fallbackContent;
+          }
         }
         
-        const data = await response.json();
-        console.log('Content loaded successfully:', data);
+        console.log('=== APPCONTEXT: ✅ Final content loaded successfully:', data);
         setContent(data);
         
         // Shuffle and select 5 random questions for each quiz session
         if (data[language]?.questions) {
           const shuffled = [...data[language].questions].sort(() => Math.random() - 0.5);
           setQuestions(shuffled.slice(0, 5));
-          console.log('Questions shuffled:', shuffled.slice(0, 5));
+          console.log('=== APPCONTEXT: Questions shuffled:', shuffled.slice(0, 5));
         }
       } catch (error) {
-        console.error('Error loading content:', error);
-        console.error('Failed URL:', `/content/${kioskId}.json`);
+        console.error('=== APPCONTEXT: ❌ Unexpected error loading content:', error);
+        console.error('=== APPCONTEXT: Failed kiosk ID:', kioskId);
+        
+        // Set fallback content to prevent infinite loading
+        console.log('=== APPCONTEXT: Setting emergency fallback content...');
+        const emergencyFallback = {
+          [language]: {
+            screensaver: {
+              title: 'Welcome to the Museum',
+              videoSource: '/videos/screensaver-video.mp4'
+            },
+            start: {
+              title: 'Museum Quiz',
+              description: 'Test your knowledge about our exhibits'
+            },
+            questions: [
+              {
+                id: 1,
+                question: 'Emergency sample question?',
+                answers: ['Answer 1', 'Answer 2', 'Answer 3', 'Answer 4'],
+                correctAnswer: 0
+              }
+            ]
+          }
+        };
+        setContent(emergencyFallback);
       }
     };
 

@@ -78,7 +78,7 @@ const LanguageSelectorIcon = ({
         }}
       >
         <motion.img
-          src="/images/OE_Sprache_64.svg"
+          src="./images/OE_Sprache_64.svg"
           alt="Language selector"
           style={{
             ...baseIconStyles,

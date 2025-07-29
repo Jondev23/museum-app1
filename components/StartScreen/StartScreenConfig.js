@@ -32,7 +32,7 @@ export const START_SCREEN_CONFIG = {
 export const useStartScreenStyles = (startContent) => ({
   // Background image configuration with fallback
   backgroundStyle: {
-    backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
+    backgroundImage: `url(${startContent?.backgroundImage || './images/Bild_Kutsche.webp'})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'

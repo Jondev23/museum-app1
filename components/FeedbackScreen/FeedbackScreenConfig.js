@@ -34,7 +34,7 @@ export const FEEDBACK_CONFIG = {
 export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   // Background image style with fallback
   const backgroundStyle = useMemo(() => ({
-    backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
+    backgroundImage: `url(${startContent?.backgroundImage || './images/Bild_Kutsche.webp'})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'

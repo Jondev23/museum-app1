@@ -1,6 +1,6 @@
 // Background component for results screen with overlay
 const ResultsBackground = ({ backgroundImage }) => {
-  const bgImage = backgroundImage || '/images/Bild_Kutsche.webp';
+  const bgImage = backgroundImage || './images/Bild_Kutsche.webp';
   
   return (
     <>

@@ -10,5 +10,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // Save configuration to file
   saveConfig: (config) => ipcRenderer.invoke('save-config', config),
   // Load configuration from file
-  loadConfig: () => ipcRenderer.invoke('load-config')
+  loadConfig: () => ipcRenderer.invoke('load-config'),
+  // Load kiosk content from file system
+  loadKioskContent: (kioskId) => ipcRenderer.invoke('load-kiosk-content', kioskId)
 });

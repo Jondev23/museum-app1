@@ -42,7 +42,7 @@ const FeedbackButton = ({
           {processTextWithHTML(buttonText)}
         </span>
         <img
-          src="/images/GUI-2.svg"
+          src="./images/GUI-2.svg"
           alt="Zur Auswertung"
           style={{
             ...arrowStyle,

@@ -27,7 +27,7 @@ export const QUESTION_CONFIG = {
 export const useQuestionScreenStyles = (startContent) => {
   // Background style with fallback image
   const backgroundStyle = useMemo(() => ({
-    backgroundImage: `url(${startContent?.backgroundImage || '/images/Bild_Kutsche.webp'})`,
+    backgroundImage: `url(${startContent?.backgroundImage || './images/Bild_Kutsche.webp'})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'

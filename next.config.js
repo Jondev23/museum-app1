@@ -8,7 +8,10 @@ const nextConfig = {
   images: {
     unoptimized: true                  // Disable image optimization for Electron
   },
-  assetPrefix: process.env.NODE_ENV === 'production' ? './' : '', // Relative paths in production
+  assetPrefix: './', // Always use relative paths for Electron
+  publicRuntimeConfig: {
+    staticFolder: './public'
+  },
   webpack: (config) => {
     // Disable Node.js modules for browser compatibility
     config.resolve.fallback = {
