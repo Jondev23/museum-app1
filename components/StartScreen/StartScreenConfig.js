@@ -3,7 +3,7 @@
 export const START_SCREEN_CONFIG = {
   // Animation delay timings in seconds
   ANIMATION_DELAYS: {
-    CONTENT_TRIGGER: 300, // Initial content display delay (ms)
+    CONTENT_TRIGGER: 150, // Initial content display delay (ms)
     TITLE: 0.2,           // Title animation delay
     SUBTITLE: 0.4,        // Subtitle animation delay
     DESCRIPTION: 0.6,     // Description animation delay

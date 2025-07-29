@@ -102,8 +102,8 @@ const StartScreen = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ 
-          duration: 0.4, // Entry duration
-          exit: { duration: 0.2, delay: 0.15 } // Delayed exit to overlap with next screen footer
+          duration: 0.4, 
+          exit: { duration: 0.2, delay: 0.15 }
         }}
         className="fixed bottom-0 left-0 right-0 z-50"
       >
