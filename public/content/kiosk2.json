@@ -5,10 +5,10 @@
     },
     "startScreen": {
       "title": "Geschwindigkeiten im 19. Jahrhundert",
-      "subtitle": "Wie schnell war das <b>eigentlich</b>?",
+      "subtitle": "Wie schnell war das eigentlich?",
       "subtitleColor": "#a94930",
-      "highlightText": "<b>Reisegeschwindigkeiten</b><br>im 19. Jahrhundert",
-      "introText": "Teste dein Wissen! Fünf Fragen rund um <b>Tempo und Technik</b> im Zeitalter der Pferdestärken warten auf dich.<br><br>Fußgänger, Reiter, Kutsche oder Eisenbahn – wer war am <b>flottesten</b> unterwegs? Stell dich der Herausforderung – vielleicht weißt du mehr, als du denkst. Und falls nicht: unterwegs lernst du garantiert etwas dazu!",
+      "highlightText": "Reisegeschwindigkeiten im 19. Jahrhundert",
+      "introText": "Teste dein Wissen! Fünf Fragen rund um Tempo und Technik im Zeitalter der Pferdestärken warten auf dich. Fußgänger, Reiter, Kutsche oder Eisenbahn  wer war am flottesten unterwegs? Stell dich der Herausforderung vielleicht weißt du mehr, als du denkst. Und falls nicht: unterwegs lernst du garantiert etwas dazu!",
       "backgroundImage": "/images/kutschen-background2.png"
     },
     "languageSelector": {
@@ -49,14 +49,14 @@
     "questions": [
       {
         "id": "q1",
-        "question": "<b>Wie schnell</b> fuhren Kutschen<br>typischerweise auf Landstraßen?",
+        "question": "Wie schnell fuhren Kutschen typischerweise auf Landstraßen?",
         "answers": [
           "ca. 8 km/h",
           "ca. 12 km/h",
           "ca. 20 km/h"
         ],
         "correctAnswer": 1,
-        "explanation": "Die Reisegeschwindigkeit von Postkutschen hing stark von Faktoren wie <b>Streckenbeschaffenheit, Wetter, Straßenqualität, Beladung</b> und Häufigkeit der Pferdewechsel ab.<br><br>Unter günstigen Bedingungen erreichten sie typischerweise eine Geschwindigkeit von <b>10 bis 15 Kilometern pro Stunde</b>."
+        "explanation": "Die Reisegeschwindigkeit von Postkutschen hing stark von Faktoren wieStreckenbeschaffenheit, Wetter, Straßenqualität, Beladung und Häufigkeit der Pferdewechsel ab. Unter günstigen Bedingungen erreichten sie typischerweise eine Geschwindigkeit von 10 bis 15 Kilometern pro Stunde."
       },
       {
         "id": "q2",
@@ -67,7 +67,7 @@
           "Gleich schnell"
         ],
         "correctAnswer": 0,
-        "explanation": "Ein erfahrener Reiter konnte im Galopp Geschwindigkeiten von <b>30 bis 50 km/h</b> erreichen – allerdings nur über kurze Distanzen.<br><br>Auch auf längeren Strecken war ein <b>Reiter im Schnitt schneller</b> unterwegs als eine Kutsche. Dafür bot die Kutsche deutlich mehr <b>Komfort und Platz</b>, etwa für Gepäck oder mehrere Personen, und war ausdauernder bei regelmäßigem Pferdewechsel."
+        "explanation": "Ein erfahrener Reiter konnte im Galopp Geschwindigkeiten von 30 bis 50 km/h erreichen allerdings nur über kurze Distanzen. Auch auf längeren Strecken war ein Reiter im Schnitt schneller unterwegs als eine Kutsche. Dafür bot die Kutsche deutlich mehr Komfort und Platz, etwa für Gepäck oder mehrere Personen, und war ausdauernder bei regelmäßigem Pferdewechsel."
       },
       {
         "id": "q3",
