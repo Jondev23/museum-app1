@@ -12,9 +12,9 @@ const ScreensaverBackground = ({ defaultContent, videoStyle }) => (
         opacity: 0 // Simple fade out
       }}
       transition={{ 
-        duration: 2.5, // Even longer duration for very gradual video fade
-        ease: "easeOut", // Simple smooth easing
-        delay: 0 // Start fading immediately
+        duration: 1.0, // Faster symmetric duration
+        ease: "easeInOut", // Symmetric easing for consistent feel
+        delay: 0 // Start immediately
       }}
       autoPlay
       loop
@@ -40,8 +40,8 @@ const ScreensaverBackground = ({ defaultContent, videoStyle }) => (
         opacity: 0 // Simple fade out
       }}
       transition={{ 
-        duration: 2.0, // Gradual overlay fade
-        ease: "easeOut", // Simple smooth easing
+        duration: 1.0, // Same faster duration for consistency
+        ease: "easeInOut", // Symmetric easing
         delay: 0
       }}
       className={`absolute inset-0 ${SCREENSAVER_CONFIG.COLORS.OVERLAY} z-10`}

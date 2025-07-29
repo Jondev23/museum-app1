@@ -11,8 +11,8 @@ const ScreensaverTitle = ({ screensaverContent, defaultContent, titleStyle }) =>
       opacity: 0 // Simple fade out
     }}
     transition={{ 
-      duration: 1.8, // Gradual title fade
-      ease: "easeOut", // Simple smooth easing
+      duration: 1.0, // Faster symmetric duration
+      ease: "easeInOut", // Symmetric easing for consistent feel
       delay: 0
     }}
     className="flex-1 flex items-center justify-center relative z-20"

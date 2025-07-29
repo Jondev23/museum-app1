@@ -43,9 +43,9 @@ const ScreensaverScreen = () => {
         opacity: 0 // Simple fade out without other effects
       }}
       transition={{ 
-        duration: 2.0, // Much longer duration for very gradual fade
-        ease: "easeOut", // Simple easing for smooth fade
-        delay: 0 // No delay for immediate start of exit
+        duration: 1.0, // Faster but still smooth - same for entry and exit
+        ease: "easeInOut", // Symmetric easing for consistent feel
+        delay: 0 // No delay for immediate start
       }}
       className="fixed inset-0 flex flex-col items-center justify-center cursor-pointer"
       onClick={handleTouch}
