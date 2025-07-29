@@ -19,6 +19,7 @@ The HTML tag support has been extended to cover all text content in the kiosk sy
 ### Descriptive Text:
 - Start screen highlight text and intro text
 - Feedback messages and explanations
+- User selected answer display
 - Score text
 
 ### Interactive Elements:
@@ -58,6 +59,7 @@ The system maintains backward compatibility with:
 - `AnswerButtons.js` - Answer button text
 - `FeedbackTitle.js` - Feedback screen titles
 - `FeedbackMessage.js` - Feedback messages and explanations  
+- `FeedbackAnswer.js` - User selected answer display
 - `FeedbackButton.js` - Continue button text
 - `ResultsTitle.js` - Results screen titles
 - `ResultsScoreText.js` - Score text
