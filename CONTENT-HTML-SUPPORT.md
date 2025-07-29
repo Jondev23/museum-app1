@@ -1,56 +1,56 @@
-# Gestión de Contenidos - Etiquetas HTML
+# Content Management - HTML Tags Support
 
-## Resumen de cambios implementados
+## Summary of implemented changes
 
-Se ha añadido soporte para etiquetas HTML en los títulos del sistema de kiosco, permitiendo un mayor control sobre el formato y presentación del texto.
+HTML tag support has been added to the kiosk system titles, allowing greater control over text formatting and presentation.
 
-## Etiquetas HTML soportadas
+## Supported HTML tags
 
-### 1. Etiquetas `<br>` - Saltos de línea
-- **Propósito**: Crear saltos de línea en los títulos
-- **Uso**: `<br>` o `<br/>`
-- **Ejemplo**: `"title": "Primera línea<br>Segunda línea"`
+### 1. `<br>` tags - Line breaks
+- **Purpose**: Create line breaks in titles
+- **Usage**: `<br>` or `<br/>`
+- **Example**: `"title": "First line<br>Second line"`
 
-### 2. Etiquetas `<b>` - Texto en negrita  
-- **Propósito**: Destacar partes específicas del texto en negrita
-- **Uso**: `<b>texto</b>`
-- **Ejemplo**: `"title": "<b>Texto importante</b> texto normal"`
+### 2. `<b>` tags - Bold text  
+- **Purpose**: Highlight specific parts of text in bold
+- **Usage**: `<b>text</b>`
+- **Example**: `"title": "<b>Important text</b> normal text"`
 
-### 3. Combinación de etiquetas
-- **Uso**: Se pueden combinar ambas etiquetas
-- **Ejemplo**: `"title": "<b>Título Principal</b><br>Subtítulo normal"`
+### 3. Tag combinations
+- **Usage**: Both tags can be combined
+- **Example**: `"title": "<b>Main Title</b><br>Normal subtitle"`
 
-## Retrocompatibilidad
+## Backward compatibility
 
-El sistema mantiene retrocompatibilidad con:
-- **Patrón anterior**: Textos que usan ` / ` para saltos de línea siguen funcionando
-- **Texto simple**: Textos sin etiquetas HTML funcionan normalmente
+The system maintains backward compatibility with:
+- **Previous pattern**: Text using ` / ` for line breaks still works
+- **Plain text**: Text without HTML tags works normally
 
-## Archivos afectados
+## Affected files
 
-### Componentes actualizados:
-- `StartScreenTitle.js` - Títulos de pantalla de inicio
-- `QuestionTitle.js` - Títulos de preguntas
-- `FeedbackTitle.js` - Títulos de pantalla de retroalimentación
-- `ResultsTitle.js` - Títulos de pantalla de resultados
-- `ResultsScoreText.js` - Texto de puntuación
-- `ScreensaverTitle.js` - Títulos de screensaver
-- `LanguageTitle.js` - Títulos del selector de idioma
+### Updated components:
+- `StartScreenTitle.js` - Start screen titles
+- `QuestionTitle.js` - Question titles
+- `FeedbackTitle.js` - Feedback screen titles
+- `ResultsTitle.js` - Results screen titles
+- `ResultsScoreText.js` - Score text
+- `ScreensaverTitle.js` - Screensaver titles
+- `LanguageTitle.js` - Language selector titles
 
-### Archivo utilitario:
-- `utils/textProcessor.js` - Función de procesamiento centralizada
+### Utility file:
+- `utils/textProcessor.js` - Centralized processing function
 
-## Ejemplos de uso en JSON
+## JSON usage examples
 
-### Antes (método anterior aún soportado):
+### Before (previous method still supported):
 ```json
 {
   "title": "Distanzen / des Reisens",
-  "question": "Pregunta larga / con salto de línea"
+  "question": "Long question / with line break"
 }
 ```
 
-### Ahora (nuevos métodos):
+### Now (new methods):
 ```json
 {
   "title": "<b>Distanzen</b><br>des Reisens",
@@ -59,9 +59,9 @@ El sistema mantiene retrocompatibilidad con:
 }
 ```
 
-### Ejemplos implementados en el proyecto:
+### Examples implemented in the project:
 
-#### Kiosk 1 (Alemán):
+#### Kiosk 1 (German):
 ```json
 {
   "title": "<b>Distanzen</b><br>des Reisens",
@@ -69,7 +69,7 @@ El sistema mantiene retrocompatibilidad con:
 }
 ```
 
-#### Kiosk 1 (Inglés):
+#### Kiosk 1 (English):
 ```json
 {
   "title": "<b>Distances</b><br>of Travel", 
@@ -77,7 +77,7 @@ El sistema mantiene retrocompatibilidad con:
 }
 ```
 
-#### Kiosk 2 (Alemán):
+#### Kiosk 2 (German):
 ```json
 {
   "title": "<b>Geschwindigkeiten</b><br>im 19. Jahrhundert",
@@ -86,42 +86,42 @@ El sistema mantiene retrocompatibilidad con:
 }
 ```
 
-### Combinaciones complejas:
+### Complex combinations:
 ```json
 {
-  "title": "<b>Texto en negrita</b><br>Línea normal<br><b>Otra línea en negrita</b>",
-  "subtitle": "Texto con <b>palabras destacadas</b> en el medio"
+  "title": "<b>Bold text</b><br>Normal line<br><b>Another bold line</b>",
+  "subtitle": "Text with <b>highlighted words</b> in the middle"
 }
 ```
 
-## Implementación técnica
+## Technical implementation
 
-### Función principal: `processTextWithHTML()`
-- Procesa retrocompatibilidad con patrón ` / `
-- Convierte etiquetas `<br>` en elementos React `<br />`
-- Convierte etiquetas `<b>` en elementos `<span>` con `fontWeight: 'bold'`
-- Retorna elementos React JSX válidos
+### Main function: `processTextWithHTML()`
+- Processes backward compatibility with ` / ` pattern
+- Converts `<br>` tags to React `<br />` elements
+- Converts `<b>` tags to `<span>` elements with `fontWeight: 'bold'`
+- Returns valid React JSX elements
 
-### Integración:
-Todos los componentes de título ahora importan y usan:
+### Integration:
+All title components now import and use:
 ```javascript
 import { processTextWithHTML } from '../../utils/textProcessor';
 
-// En el render:
+// In render:
 {processTextWithHTML(titleText)}
 ```
 
-## Próximos pasos
+## Next steps
 
-El sistema está preparado para expandir a otras etiquetas HTML como:
-- `<i>` para texto en cursiva
-- `<u>` para texto subrayado
-- `<span>` con estilos personalizados
+The system is prepared to expand to other HTML tags such as:
+- `<i>` for italic text
+- `<u>` for underlined text
+- `<span>` with custom styles
 
-## Pruebas recomendadas
+## Recommended tests
 
-1. Verificar que los títulos con `<br>` se muestren en múltiples líneas
-2. Confirmar que el texto con `<b>` aparezca en negrita
-3. Comprobar que el patrón anterior ` / ` siga funcionando
-4. Probar combinaciones de ambas etiquetas
-5. Verificar que el texto sin etiquetas se muestre normalmente
+1. Verify that titles with `<br>` display on multiple lines
+2. Confirm that text with `<b>` appears in bold
+3. Check that the previous ` / ` pattern still works
+4. Test combinations of both tags
+5. Verify that text without tags displays normally
