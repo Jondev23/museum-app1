@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './ResultsScreenConfig';
+import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Play again button component for restarting the quiz
 const ResultsPlayAgainButton = ({ 
@@ -35,7 +36,7 @@ const ResultsPlayAgainButton = ({
         }}
       >
         <span className="text-button-play-again">
-          {playAgainText}
+          {processTextWithHTML(playAgainText)}
         </span>
         <img
           src={iconSrc}

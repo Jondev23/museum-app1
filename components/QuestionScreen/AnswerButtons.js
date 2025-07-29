@@ -1,15 +1,15 @@
-// Import animation library and question configuration
 import { motion } from 'framer-motion';
 import { QUESTION_CONFIG } from './QuestionScreenConfig';
+import { processTextWithHTML } from '../../utils/textProcessor';
 
-// Answer buttons component for multiple choice questions
+// Answer buttons component with multiple choice answers
 const AnswerButtons = ({ 
   question, 
-  handleAnswerClick,
-  selectedAnswer,
-  isProcessing,
-  getButtonClassName,
-  getButtonStyle
+  handleAnswerClick, 
+  selectedAnswer, 
+  isProcessing, 
+  getButtonClassName, 
+  getButtonStyle 
 }) => {
   // Handle touch events for mobile devices
   const handleTouchStart = (e, index) => {
@@ -64,7 +64,7 @@ const AnswerButtons = ({
               transform: 'translateY(7%)'
             }}
           >
-            {answer}
+            {processTextWithHTML(answer)}
           </span>
         </motion.button>
       ))}

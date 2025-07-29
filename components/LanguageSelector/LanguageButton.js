@@ -1,6 +1,7 @@
 // Import animation library and configuration
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './LanguageSelectorConfig';
+import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Individual language button component for German/English selection
 const LanguageButton = ({ 
@@ -39,7 +40,7 @@ const LanguageButton = ({
     >
       {/* Button text content */}
       <span className="text-button language-button-text">
-        {buttonText}
+        {processTextWithHTML(buttonText)}
       </span>
     </motion.button>
   );

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
 import useResponsiveText from '../../hooks/useResponsiveText';
+import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Feedback message component displaying result and explanation
 const FeedbackMessage = ({ 
@@ -51,7 +52,7 @@ const FeedbackMessage = ({
         title={isMessageAdjusted ? 'Text adjusted automatically' : ''}
       >
         {/* Display feedback message */}
-        {randomMessage}
+        {processTextWithHTML(randomMessage)}
       </motion.p>
 
       {/* Show explanation if available */}
@@ -67,7 +68,7 @@ const FeedbackMessage = ({
           }}
           title={isExplanationAdjusted ? 'Text adjusted automatically' : ''}
         >
-          {question.explanation}
+          {processTextWithHTML(question.explanation)}
         </motion.p>
       )}
     </motion.div>

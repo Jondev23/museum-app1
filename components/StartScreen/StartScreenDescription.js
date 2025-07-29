@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { START_SCREEN_CONFIG } from './StartScreenConfig';
 import useResponsiveText from '../../hooks/useResponsiveText';
+import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Description component for start screen with responsive text sizing
 const StartScreenDescription = ({ 
@@ -50,7 +51,7 @@ const StartScreenDescription = ({
         }}
       >
         {/* Highlight text section */}
-        {startContent?.highlightText || defaultTexts.highlightText}
+        {processTextWithHTML(startContent?.highlightText || defaultTexts.highlightText)}
       </div>
 
       <div 
@@ -63,7 +64,7 @@ const StartScreenDescription = ({
         }}
       >
         {/* Intro text section */}
-        {startContent?.introText || defaultTexts.introText}
+        {processTextWithHTML(startContent?.introText || defaultTexts.introText)}
       </div>
     </motion.div>
   );

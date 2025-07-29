@@ -4,6 +4,29 @@
 
 HTML tag support has been added to the kiosk system titles, allowing greater control over text formatting and presentation.
 
+## Supported content types
+
+The HTML tag support has been extended to cover all text content in the kiosk system:
+
+### Titles and Subtitles:
+- Start screen titles and subtitles
+- Question titles  
+- Feedback screen titles
+- Results screen titles
+- Screensaver titles
+- Language selector titles
+
+### Descriptive Text:
+- Start screen highlight text and intro text
+- Feedback messages and explanations
+- Score text
+
+### Interactive Elements:
+- Answer button text
+- Continue button text
+- Play again button text  
+- Language selection button text
+
 ## Supported HTML tags
 
 ### 1. `<br>` tags - Line breaks
@@ -29,13 +52,19 @@ The system maintains backward compatibility with:
 ## Affected files
 
 ### Updated components:
-- `StartScreenTitle.js` - Start screen titles
+- `StartScreenTitle.js` - Start screen titles and subtitles
+- `StartScreenDescription.js` - Highlight text and intro text
 - `QuestionTitle.js` - Question titles
+- `AnswerButtons.js` - Answer button text
 - `FeedbackTitle.js` - Feedback screen titles
+- `FeedbackMessage.js` - Feedback messages and explanations  
+- `FeedbackButton.js` - Continue button text
 - `ResultsTitle.js` - Results screen titles
 - `ResultsScoreText.js` - Score text
+- `ResultsPlayAgainButton.js` - Play again button text
 - `ScreensaverTitle.js` - Screensaver titles
 - `LanguageTitle.js` - Language selector titles
+- `LanguageButton.js` - Language button text
 
 ### Utility file:
 - `utils/textProcessor.js` - Centralized processing function
@@ -61,6 +90,18 @@ The system maintains backward compatibility with:
 
 ### Examples implemented in the project:
 
+#### Kiosk 2 - Comprehensive example (German):
+```json
+{
+  "title": "<b>Geschwindigkeiten</b><br>im 19. Jahrhundert",
+  "subtitle": "Wie schnell war das <b>eigentlich</b>?",
+  "highlightText": "<b>Reisegeschwindigkeiten</b><br>im 19. Jahrhundert",
+  "introText": "Teste dein Wissen! Fünf Fragen rund um <b>Tempo und Technik</b> im Zeitalter der Pferdestärken warten auf dich.<br><br>Fußgänger, Reiter, Kutsche oder Eisenbahn – wer war am <b>flottesten</b> unterwegs?",
+  "question": "<b>Wie schnell</b> fuhren Kutschen<br>typischerweise auf Landstraßen?",
+  "explanation": "Die Reisegeschwindigkeit hing stark von Faktoren wie <b>Streckenbeschaffenheit, Wetter, Straßenqualität</b> ab.<br><br>Unter günstigen Bedingungen erreichten sie typischerweise <b>10 bis 15 Kilometern pro Stunde</b>."
+}
+```
+
 #### Kiosk 1 (German):
 ```json
 {
@@ -74,15 +115,6 @@ The system maintains backward compatibility with:
 {
   "title": "<b>Distances</b><br>of Travel", 
   "question": "<b>How many kilometers</b><br>could a mail coach travel on average per day?"
-}
-```
-
-#### Kiosk 2 (German):
-```json
-{
-  "title": "<b>Geschwindigkeiten</b><br>im 19. Jahrhundert",
-  "subtitle": "Wie schnell war das <b>eigentlich</b>?",
-  "question": "<b>Wie schnell</b> fuhren Kutschen<br>typischerweise auf Landstraßen?"
 }
 ```
 

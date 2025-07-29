@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Continue button component for feedback screen
 const FeedbackButton = ({ 
@@ -38,7 +39,7 @@ const FeedbackButton = ({
             textTransform: buttonTextStyle.textTransform
           }}
         >
-          {buttonText}
+          {processTextWithHTML(buttonText)}
         </span>
         <img
           src="/images/GUI-2.svg"
