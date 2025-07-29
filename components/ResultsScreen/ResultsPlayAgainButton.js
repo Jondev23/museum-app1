@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './ResultsScreenConfig';
 import { processTextWithHTML } from '../../utils/textProcessor';
 
-// Play again button component for restarting the quiz
+// Play again button component - inherits parent animation (slides from right)
 const ResultsPlayAgainButton = ({ 
   playAgainText, 
   showContent, 
@@ -11,15 +11,12 @@ const ResultsPlayAgainButton = ({
   iconAlt = 'Restart icon'
 }) => {
   return (
-    <motion.div
-      initial={ANIMATION_CONFIG.CONTENT_REVEAL.INITIAL}
-      animate={showContent ? ANIMATION_CONFIG.CONTENT_REVEAL.ANIMATE : {}}
-      transition={{ 
-        ...ANIMATION_CONFIG.CONTENT_REVEAL.TRANSITION, 
-        delay: ANIMATION_CONFIG.DELAYS.BUTTON 
+    <div
+      className="flex justify-center w-full"
+      style={{
+        opacity: showContent ? 1 : 0, // Simple opacity control, no competing animation
+        transition: `opacity 0.3s ease ${ANIMATION_CONFIG.DELAYS.BUTTON}s` // Delayed opacity transition
       }}
-      className="fixed left-0 right-0 flex justify-center z-50"
-      style={{ bottom: 'var(--results-play-again-bottom)' }}
     >
       <motion.button
         onClick={onPlayAgain} // Restart the quiz
@@ -49,7 +46,7 @@ const ResultsPlayAgainButton = ({
           }}
         />
       </motion.button>
-    </motion.div>
+    </div>
   );
 };
 

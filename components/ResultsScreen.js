@@ -43,12 +43,12 @@ const ResultsScreen = () => {
         <div 
           className="relative z-10 flex flex-col items-center justify-center h-full w-full"
           style={{ 
-            paddingTop: 'clamp(15rem, 18vh, 21rem)', // Responsive top padding
-            paddingBottom: 'clamp(8rem, 12vh, 15rem)', // Responsive bottom padding
+            paddingTop: 'clamp(13rem, 15vh, 18rem)', 
+            paddingBottom: 'clamp(3.5rem, 4.5vh, 5.5rem)', 
             paddingLeft: 'var(--results-horizontal-padding)',
             paddingRight: 'var(--results-horizontal-padding)',
-            minHeight: '100vh', // Ensure full height
-            gap: 'clamp(1rem, 3vh, 2rem)' // Responsive gap between elements
+            minHeight: '100vh', 
+            gap: '0' 
           }}
         >
           <ResultsTitle 
@@ -69,8 +69,8 @@ const ResultsScreen = () => {
             showContent={showContent}
           />
 
-          {/* Play Again Button - integrated in responsive layout */}
-          <div className="mt-auto mb-8"> {/* Push to bottom with margin */}
+          {/* Play Again Button - positioned at the very bottom */}
+          <div className="mt-auto mb-2"> {/* Push to bottom with minimal margin */}
             <ResultsPlayAgainButton 
               playAgainText={contentData.playAgainText}
               showContent={showContent}

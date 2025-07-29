@@ -1,21 +1,16 @@
-import { motion } from 'framer-motion';
 import ProgressDots from '../shared/ProgressDots';
+import { ANIMATION_CONFIG } from './ResultsScreenConfig';
 
-// Progress dots component for results screen showing quiz completion - fully responsive
+// Progress dots component for results screen - inherits parent animation (slides from right)
 const ResultsProgress = ({ questions, answers, showContent }) => {
   return (
-    <motion.div 
+    <div 
       className="w-full flex justify-center"
       style={{ 
         marginTop: 'clamp(2rem, 5vh, 4rem)', // Responsive top margin
-        marginBottom: 'clamp(1rem, 3vh, 2rem)' // Responsive bottom margin
-      }}
-      initial={{ opacity: 0, y: 30 }}
-      animate={showContent ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ 
-        duration: 0.6, 
-        ease: "easeOut",
-        delay: showContent ? 1.2 : 0 // Delay after content appears
+        marginBottom: 'clamp(1rem, 3vh, 2rem)', // Responsive bottom margin
+        opacity: showContent ? 1 : 0, // Simple opacity control, no competing animation
+        transition: `opacity 0.3s ease ${ANIMATION_CONFIG.DELAYS.PROGRESS}s` // Delayed opacity transition
       }}
     >
       <ProgressDots
@@ -24,7 +19,7 @@ const ResultsProgress = ({ questions, answers, showContent }) => {
         questions={questions}
         variant="results"
       />
-    </motion.div>
+    </div>
   );
 };
 

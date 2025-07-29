@@ -18,7 +18,8 @@ export const ANIMATION_CONFIG = {
   // Staggered animation delays for different content elements
   DELAYS: {
     TITLE: 0.2,     // Results title appears first
-    SUBTITLE: 0.4,  // Score text appears second
+    SUBTITLE: 0.4,  // Score text appears second  
+    PROGRESS: 0.6,  // Progress dots appear third
     BUTTON: 1.0     // Play again button appears last
   },
 
