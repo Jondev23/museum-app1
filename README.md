@@ -1,8 +1,8 @@
-# Museum Kutschen Interactive Kiosk App
+# Museum Kutschen Interactive Desktop App
 
 ## 📋 Description
 
-Interactive kiosk application designed for a museum exhibition about **Kutschen** (historical horse-drawn carriages). The application allows visitors to participate in an interactive quiz about transportation history and travel distances in the 19th century.
+Interactive desktop application designed for a museum exhibition about **Kutschen** (historical horse-drawn carriages). The application allows visitors to participate in an interactive quiz about transportation history and travel distances in the 19th century. Runs as a standalone Windows desktop application with no browser dependencies.
 
 ## ✨ Key Features
 
@@ -10,7 +10,8 @@ Interactive kiosk application designed for a museum exhibition about **Kutschen*
 - **Interactive Quiz**: 5 random questions about horse-drawn carriages and historical transportation
 - **Multi-language Support**: German and English language options
 - **Screensaver Mode**: Automatically activates after 3 minutes of inactivity
-- **Touch Interface**: Optimized for touchscreen devices and kiosks
+- **Desktop Interface**: Optimized for desktop and touch devices
+- **Standalone Application**: No browser or internet connection required
 
 ### 🏛️ Multi-Kiosk Configuration
 - **Kiosk 1**: Kutschen Geschichte (General History)
@@ -59,12 +60,25 @@ museum-kutschen-app/
 
 ## 🚀 Installation and Setup
 
-### Prerequisites
-- Node.js (version 16 or higher)
-- npm or yarn
+### System Requirements
+- Windows 10/11 (64-bit)
+- 4GB RAM minimum
+- No additional software required
 
-### Installation
+### Quick Start (End Users)
 ```bash
+# Download and extract the ZIP file
+# Navigate to "Museum Kutschen App-win32-x64" folder
+# Double-click "Museum Kutschen App.exe"
+# Application starts automatically in desktop mode
+```
+
+### Development Setup
+```bash
+# Prerequisites for developers
+# Node.js (version 16 or higher)
+# npm or yarn
+
 # Clone the repository
 git clone <repository-url>
 cd museum-kutschen-app
@@ -73,7 +87,7 @@ cd museum-kutschen-app
 npm install
 ```
 
-### Available Scripts
+### Available Scripts (Development)
 
 ```bash
 # Development
@@ -81,16 +95,10 @@ npm run dev                 # Start application in development mode
 npm run next-dev           # Next.js server only
 npm run electron-dev       # Electron application only
 
-# Development per Kiosk
-npm run dev:kiosk1         # Development for Kiosk 1
-npm run dev:kiosk2         # Development for Kiosk 2
-npm run dev:kiosk3         # Development for Kiosk 3
-
-# Production
-npm run build              # Build Next.js application
-npm run build-electron     # Build complete Electron application
-npm run dist               # Create distributable
-npm run pack               # Package without distributing
+# Production Build
+npm run build              # Build Next.js static export
+npm run package            # Create complete Electron application
+npm run build-simple       # Alternative simple build
 
 # Utilities
 npm run lint               # Run linter
@@ -99,22 +107,23 @@ npm run type-check         # Check TypeScript types
 
 ## ⚙️ Configuration
 
-### Kiosk Configuration
-The application automatically detects the kiosk based on:
-1. URL parameter: `?kiosk=kiosk1`
-2. Browser localStorage
-3. Default configuration (kiosk1)
+### Desktop Application
+The application runs as a standalone desktop app with:
+1. Admin panel access via corner clicks (top-left → top-right → bottom-right)
+2. Password: museum2025
+3. Automatic kiosk detection and content loading
 
-### Content
-Content is dynamically loaded from JSON files in `/public/content/`:
+### Content Management
+Content is dynamically loaded from JSON files in `out/content/`:
 - `kiosk1.json` - General Kutschen History
-- `kiosk2.json` - Luxury Carriages
+- `kiosk2.json` - Luxury Carriages  
 - `kiosk3.json` - Carriage Construction
 
 ### Electron Configuration
-- **Development**: Normal window with DevTools
-- **Production**: Full kiosk mode, fullscreen
-- **Inactivity**: Automatic 3-minute timer
+- **Development**: Windowed mode with DevTools
+- **Production**: Fullscreen desktop application
+- **Security**: Disabled web features, local file access enabled
+- **Performance**: Optimized for 1920x1080 displays
 
 ## 🎯 Special Features
 
@@ -129,11 +138,13 @@ Content is dynamically loaded from JSON files in `/public/content/`:
 - Fully localized content
 - Progress preservation when changing language
 
-### Kiosk Mode
+### Desktop Mode Features
 - Disabled dangerous keyboard shortcuts
 - Prevention of external navigation
-- Automatic inactivity timer
-- Forced fullscreen mode
+- Automatic inactivity screensaver
+- Native desktop application performance
+- Local file system access for content
+- No internet connection required
 
 ## 🔧 Development
 
@@ -167,4 +178,4 @@ Museum Team
 
 ---
 
-*Application developed to enhance interactive experience in museum exhibitions about 19th century transportation history.*
+*Desktop application developed to enhance interactive experience in museum exhibitions about 19th century transportation history. Version 2.0 - Desktop Edition.*

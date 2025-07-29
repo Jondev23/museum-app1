@@ -1,25 +1,30 @@
-MUSEUM KUTSCHEN KIOSK APP - QUICK START
-=======================================
+MUSEUM KUTSCHEN DESKTOP APP - QUICK START
+==========================================
 
 INSTALLATION:
 1. Extract all files from ZIP
-2. Double-click "start-kiosk.bat"
-3. Application will open automatically in kiosk mode
+2. Navigate to "Museum Kutschen App-win32-x64" folder
+3. Double-click "Museum Kutschen App.exe"
+4. Application will open automatically in desktop mode
 
 ADMIN ACCESS:
 - Click corners: top-left → top-right → bottom-right
 - Password: museum2025
 
 SYSTEM REQUIREMENTS:
-- Windows 10/11
-- Chrome or Edge browser
+- Windows 10/11 (64-bit)
 - 4GB RAM minimum
+- No browser installation required
 
 TROUBLESHOOTING:
-- If browser doesn't open: Install Chrome or Edge
-- If server fails: Check port 3000 is available
-- Manual start: Run "node server.js" then open http://localhost:3000
+- If app doesn't start: Run as Administrator
+- If content doesn't load: Check that all files were extracted
+- For kiosk content: Files are located in resources/app/out/content/
 
-For detailed instructions, see INSTALLATION.md
+FEATURES:
+- Runs as standalone desktop application
+- No internet connection required
+- Touch-optimized interface
+- Multi-language support (German/English)
 
-Version 1.1 - July 2025
+Version 2.0 - Desktop Edition - July 2025
