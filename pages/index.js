@@ -134,24 +134,26 @@ export default function Home() {
         <LanguageSelector />
         <AdminPanel />
         
-        {/* Global Language Selector Icon - always visible and fixed */}
-        <div 
-          className="fixed bottom-0 left-0 z-50"
-          style={{
-            marginBottom: 'min(3.7rem, 4.7vh)', 
-            marginLeft: 'min(9.5rem, 14.5vw)',
-          }}
-        >
-          <LanguageSelectorIcon 
-            variant="standard" 
-            delay={0}
-            opacity={0.8}
+        {/* Global Language Selector Icon - hidden during screensaver */}
+        {currentScreen !== 'screensaver' && (
+          <div 
+            className="fixed bottom-0 left-0 z-50"
             style={{
-              marginBottom: 0,
-              marginLeft: 0,
+              marginBottom: 'min(3.7rem, 4.7vh)', 
+              marginLeft: 'min(9.5rem, 14.5vw)',
             }}
-          />
-        </div>
+          >
+            <LanguageSelectorIcon 
+              variant="standard" 
+              delay={0}
+              opacity={0.8}
+              style={{
+                marginBottom: 0,
+                marginLeft: 0,
+              }}
+            />
+          </div>
+        )}
 
         {/* Global Progress Dots - shown during quiz screens */}
         {progressConfig.show && (
