@@ -29,7 +29,7 @@ const AnswerButtons = ({
         duration: QUESTION_CONFIG.ANIMATION_DURATIONS.BUTTONS, 
         delay: QUESTION_CONFIG.ANIMATION_DELAYS.BUTTONS 
       }}
-      className="flex flex-col gap-[min(2.52rem,3.6vh)] w-full items-center"
+      className="flex flex-col gap-[min(2.52rem,3.6vh)] w-full items-center max-h-[40vh] overflow-hidden"
     >
       {question.answers.map((answer, index) => (
         <motion.button
@@ -61,7 +61,8 @@ const AnswerButtons = ({
               wordBreak: selectedAnswer === index ? 'break-word' : undefined,
               hyphens: selectedAnswer === index ? 'auto' : undefined,
               whiteSpace: selectedAnswer === index ? 'normal' : undefined,
-              transform: 'translateY(7%)'
+              transform: 'translateY(4%)',
+              fontVariantNumeric: 'tabular-nums lining-nums'
             }}
           >
             {processTextWithHTML(answer)}
