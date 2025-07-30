@@ -24,8 +24,21 @@ export default function Home() {
     questions,
     content,
     language,
-    isTransitioningToScreensaver
+    isTransitioningToScreensaver,
+    kioskId
   } = useApp();
+
+  // Show loading screen if kioskId is not yet determined
+  if (!kioskId) {
+    return (
+      <div className="w-screen h-screen overflow-hidden bg-black flex items-center justify-center">
+        <div className="text-white text-center">
+          <div className="text-2xl mb-4">Initialisiere Kiosk...</div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
+        </div>
+      </div>
+    );
+  }
 
   // Render different screens based on current state
   const renderScreen = () => {

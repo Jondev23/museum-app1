@@ -1,5 +1,5 @@
 // Configuration manager for persistent app settings
-const CONFIG_FILE_PATH = '/config.json';
+const CONFIG_FILE_PATH = './config.json';
 
 // Default configuration values
 const DEFAULT_CONFIG = {

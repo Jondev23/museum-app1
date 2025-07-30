@@ -21,7 +21,7 @@ export const AppProvider = ({ children }) => {
   const [currentScreen, setCurrentScreen] = useState('screensaver');
   
   // Language and content state
-  const [language, setLanguage] = useState('de');
+  const [language, setLanguage] = useState('de'); // German as default language
   const [content, setContent] = useState(null);
   
   // Quiz state
@@ -34,29 +34,33 @@ export const AppProvider = ({ children }) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isTransitioningToScreensaver, setIsTransitioningToScreensaver] = useState(false);
   
-  // Kiosk configuration
-  const [kioskId, setKioskId] = useState(() => detectKioskIdSync());
+  // Kiosk configuration - Start with null to force loading from config
+  const [kioskId, setKioskId] = useState(null);
   const [screensaverTimeout, setScreensaverTimeoutState] = useState(180000); // Fallback - will be overridden by config.json
 
   // Load configuration on component mount
   useEffect(() => {
     const initializeAppConfig = async () => {
       try {
-        // Load the active kiosk ID from config
+        console.log('=== INITIALIZING APP CONFIG ===');
+        
+        // Load the active kiosk ID from config first
         const configKioskId = await detectKioskId();
-        if (configKioskId !== kioskId) {
-          console.log('Updating kiosk ID from config:', configKioskId);
-          setKioskId(configKioskId);
-        }
+        console.log('Config kiosk ID loaded:', configKioskId);
+        setKioskId(configKioskId);
 
         // Load screensaver timeout from config
         const configTimeout = await getScreensaverTimeout();
-        if (configTimeout !== screensaverTimeout) {
-          console.log('Updating screensaver timeout from config:', configTimeout);
-          setScreensaverTimeoutState(configTimeout);
-        }
+        console.log('Config timeout loaded:', configTimeout);
+        setScreensaverTimeoutState(configTimeout);
+        
+        console.log('=== APP CONFIG INITIALIZED ===');
       } catch (error) {
         console.error('Error initializing app config:', error);
+        // Fallback to detectKioskIdSync if async loading fails
+        const fallbackKiosk = detectKioskIdSync();
+        console.log('Using fallback kiosk ID:', fallbackKiosk);
+        setKioskId(fallbackKiosk);
       }
     };
 
@@ -78,6 +82,12 @@ export const AppProvider = ({ children }) => {
 
   // Effect to load content when kiosk ID or language changes
   useEffect(() => {
+    // Don't load content if kioskId is not yet determined
+    if (!kioskId) {
+      console.log('=== APPCONTEXT: Waiting for kioskId to be determined...');
+      return;
+    }
+    
     const loadContent = async () => {
       try {
         console.log('=== APPCONTEXT: Starting content load');

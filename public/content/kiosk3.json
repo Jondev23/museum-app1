@@ -1,7 +1,7 @@
 {
   "de": {
     "screensaver": {
-      "videoSource": "/videos/screensaver-video.mp4"
+      "videoSource": "./videos/screensaver-video.mp4"
     },
     "startScreen": {
       "title": "Reisen allgemein",
@@ -9,7 +9,7 @@
       "subtitleColor": "#598364",
       "highlightText": "Alltag, Komfort und Herausforderungen im 19. Jahrhundert",
       "introText": "Testen Sie Ihr Wissen! Fünf Fragen führen Sie durch den Reisealltag vergangener Zeiten. War Kutschenfahren ein bequemes Vergnügen oder eher ein Abenteuer auf Rädern? Stellen Sie sich der Herausforderung – vielleicht wissen Sie mehr, als Sie denken. Und falls nicht: unterwegs lernen Sie garantiert etwas dazu!",
-      "backgroundImage": "/images/kutschen-background3.png"
+      "backgroundImage": "./images/kutschen-background3.png"
     },
     "languageSelector": {
       "title": "Sprache wählen / Change language",
@@ -139,7 +139,7 @@
   },
   "en": {
     "screensaver": {
-      "videoSource": "/videos/screensaver-video.mp4"
+      "videoSource": "./videos/screensaver-video.mp4"
     },
     "startScreen": {
       "title": "General Travel",
@@ -147,7 +147,7 @@
       "subtitleColor": "#598364",
       "highlightText": "Daily life, comfort and challenges in the 19th century",
       "introText": "Test your knowledge! Eight questions guide you through the travel reality of bygone times. Was carriage travel a comfortable pleasure or rather an adventure on wheels? Face the challenge – you might know more than you think. And if not: you'll definitely learn something along the way!",
-      "backgroundImage": "/images/kutschen-background3.png"
+      "backgroundImage": "./images/kutschen-background3.png"
     },
     "languageSelector": {
       "title": "Choose language / Sprache wählen",
