@@ -11,11 +11,11 @@ const QuestionTitle = ({ question }) => {
   useEffect(() => {
     if (titleRef.current) {
       const element = titleRef.current;
-      const maxHeight = window.innerHeight * 0.2; // 20vh
+      const maxHeight = window.innerHeight * 0.33; 
       
       const adjustFontSize = () => {
         let currentSize = parseFloat(window.getComputedStyle(element).fontSize);
-        const minSize = parseFloat(window.getComputedStyle(element).fontSize) * 0.6;
+        const minSize = parseFloat(window.getComputedStyle(element).fontSize) * 0.8;
         
         while (element.scrollHeight > maxHeight && currentSize > minSize) {
           currentSize -= 1;
@@ -37,7 +37,7 @@ const QuestionTitle = ({ question }) => {
         duration: QUESTION_CONFIG.ANIMATION_DURATIONS.TITLE, 
         delay: QUESTION_CONFIG.ANIMATION_DELAYS.TITLE 
       }}
-      className="typography-fragen text-primary relative w-full max-h-[20vh] overflow-hidden flex items-center justify-center text-center mb-[min(3rem,4vh)] mx-[min(4rem,5vw,6vh)] box-border"
+      className="typography-fragen text-primary relative w-full max-h-[20vh] overflow-hidden flex items-center justify-center text-center mb-[min(3rem,4vh)] box-border"
     >
       {processTextWithHTML(question.question)}
     </motion.h1>
