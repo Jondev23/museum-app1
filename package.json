@@ -17,6 +17,8 @@
     "dist": "npm run build && electron-builder --publish=never",
     "dist-win": "npm run build && electron-builder --win",
     "dist-win-portable": "npm run build && electron-builder --win portable",
+    "build-exe": "npm run build && electron-builder --win --x64",
+    "build-exe-portable": "npm run build && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --win portable --x64",
     "pack": "npm run build && electron-builder --dir",
     "pack-win": "npm run build && electron-builder --dir --win",
     "package": "npm run build && electron-packager . \"Museum Kutschen App\" --platform=win32 --arch=x64 --out=dist --overwrite --ignore=\"node_modules/((?!electron).)*\" --ignore=\"\\.git\" --ignore=\"src\" --ignore=\"\\.env\"",
@@ -64,7 +66,7 @@
     "appId": "com.museum.kutschen",
     "productName": "Museum Kutschen App",
     "directories": {
-      "output": "dist"
+      "output": "/Users/jonathanaguilera/Downloads"
     },
     "files": [
       "out/**/*",
@@ -72,6 +74,12 @@
       "public/**/*",
       "node_modules/**/*"
     ],
+    "electronCompile": false,
+    "compression": "store",
+    "beforeBuild": null,
+    "afterSign": null,
+    "afterPack": null,
+    "afterAllArtifactBuild": null,
     "mac": {
       "category": "public.app-category.education",
       "icon": "public/images/icon.icns"
@@ -86,9 +94,10 @@
         }
       ],
       "artifactName": "${productName}-${version}-portable.${ext}",
-      "sign": false,
+      "sign": null,
       "verifyUpdateCodeSignature": false,
-      "requestedExecutionLevel": "asInvoker"
+      "requestedExecutionLevel": "asInvoker",
+      "forceCodeSigning": false
     },
     "linux": {
       "target": "AppImage",
