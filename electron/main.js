@@ -117,50 +117,97 @@ function createWindow() {
       `));
     });
   } else {
-    // Production mode - load static files
-    const fs = require('fs');
-    console.log('Production mode - Loading static files');
+    // Production mode - start local server and load from it
+    console.log('Production mode - Starting local server for static files');
     
-    // Try multiple possible paths for the index.html file
-    const possiblePaths = [
-      path.join(process.resourcesPath, 'app', 'out', 'index.html'),  // Standard packaged path
-      path.join(__dirname, '../out/index.html'),                    // Development build path
-      path.join(process.cwd(), 'out', 'index.html'),               // Current working directory
-      path.join(app.getAppPath(), 'out', 'index.html')             // App path
-    ];
+    const startLocalServer = () => {
+      return new Promise((resolve, reject) => {
+        const http = require('http');
+        const fs = require('fs');
+        
+        // MIME types for different files
+        const mimeTypes = {
+          '.html': 'text/html',
+          '.css': 'text/css',
+          '.js': 'application/javascript',
+          '.json': 'application/json',
+          '.png': 'image/png',
+          '.jpg': 'image/jpeg',
+          '.jpeg': 'image/jpeg',
+          '.gif': 'image/gif',
+          '.svg': 'image/svg+xml',
+          '.webp': 'image/webp',
+          '.mp4': 'video/mp4',
+          '.otf': 'font/otf',
+          '.woff': 'font/woff',
+          '.woff2': 'font/woff2'
+        };
+        
+        const server = http.createServer((req, res) => {
+          // Add CORS headers
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+          res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+          
+          if (req.method === 'OPTIONS') {
+            res.writeHead(204);
+            res.end();
+            return;
+          }
+          
+          let filePath = path.join(__dirname, '../out', req.url);
+          
+          // If root, serve index.html
+          if (req.url === '/') {
+            filePath = path.join(__dirname, '../out', 'index.html');
+          }
+          
+          // If file doesn't exist, serve index.html (SPA routing)
+          if (!fs.existsSync(filePath)) {
+            filePath = path.join(__dirname, '../out', 'index.html');
+          }
+          
+          const ext = path.extname(filePath);
+          const contentType = mimeTypes[ext] || 'application/octet-stream';
+          
+          fs.readFile(filePath, (err, data) => {
+            if (err) {
+              console.error('File read error:', err, 'for path:', filePath);
+              res.writeHead(404);
+              res.end('404 - File not found');
+              return;
+            }
+            
+            res.writeHead(200, { 'Content-Type': contentType });
+            res.end(data);
+          });
+        });
+        
+        server.listen(3001, (err) => {
+          if (err) {
+            reject(err);
+          } else {
+            console.log('Local server started on http://localhost:3001');
+            resolve('http://localhost:3001');
+          }
+        });
+      });
+    };
     
-    let filePath = null;
-    for (const testPath of possiblePaths) {
-      console.log('Checking path:', testPath);
-      if (fs.existsSync(testPath)) {
-        filePath = testPath;
-        console.log('Found index.html at:', filePath);
-        break;
-      }
-    }
-    
-    if (filePath) {
-      mainWindow.loadFile(filePath);
-    } else {
-      console.error('Could not find index.html in any of the expected locations');
-      console.error('Tried paths:', possiblePaths);
-      // Show error page with proper DOCTYPE
-      mainWindow.loadURL('data:text/html;charset=utf-8,' + encodeURI(`
-        <!DOCTYPE html>
-        <html>
-          <head><title>File Not Found</title></head>
-          <body style="font-family: Arial; padding: 40px; background: #f0f0f0; text-align: center;">
-            <h1>❌ Application Files Not Found</h1>
-            <p>The application could not locate the required files.</p>
-            <p>Please ensure the application was built properly with: <code>npm run package</code></p>
-            <h3>Searched in:</h3>
-            <ul style="text-align: left; display: inline-block;">
-              ${possiblePaths.map(p => `<li>${p}</li>`).join('')}
-            </ul>
-          </body>
-        </html>
-      `));
-    }
+    startLocalServer()
+      .then((serverUrl) => {
+        mainWindow.loadURL(serverUrl);
+      })
+      .catch((err) => {
+        console.error('Failed to start local server:', err);
+        // Fallback to file loading
+        const fallbackPath = path.join(__dirname, '../out/index.html');
+        if (fs.existsSync(fallbackPath)) {
+          mainWindow.loadFile(fallbackPath);
+        } else {
+          console.error('Could not find index.html at:', fallbackPath);
+        }
+      });
   }
 
   // Show window when ready
