@@ -1,17 +1,24 @@
 /** @type {import('next').NextConfig} */
 // Next.js configuration for Electron app deployment
+const isDev = process.env.NODE_ENV === 'development';
+
 const nextConfig = {
-  output: 'export',                    // Static export for Electron
-  trailingSlash: true,                 // Add trailing slashes to URLs
-  skipTrailingSlashRedirect: true,     // Skip redirect for trailing slashes
-  distDir: 'out',                      // Output directory for build
+  // Only use export for production builds
+  ...(isDev ? {} : {
+    output: 'export',                    // Static export for Electron (production only)
+    trailingSlash: true,                 // Add trailing slashes to URLs (production only)
+    skipTrailingSlashRedirect: true,     // Skip redirect for trailing slashes (production only)
+    distDir: 'out',                      // Output directory for build (production only)
+  }),
   images: {
     unoptimized: true                  // Disable image optimization for Electron
   },
-  assetPrefix: './', // Always use relative paths for Electron
+  assetPrefix: isDev ? '' : './', // Use relative paths only in production
   publicRuntimeConfig: {
     staticFolder: './public'
   },
+  // Enable React Strict Mode for better development experience
+  reactStrictMode: isDev,
   webpack: (config) => {
     // Disable Node.js modules for browser compatibility
     config.resolve.fallback = {

@@ -44,7 +44,7 @@ const ResultsScreen = () => {
           className="relative z-10 flex flex-col items-center justify-center h-full w-full"
           style={{ 
             paddingTop: 'clamp(13rem, 15vh, 18rem)', 
-            paddingBottom: 'clamp(3.5rem, 4.5vh, 5.5rem)', 
+            paddingBottom: 'clamp(3.4rem, 4.4vh, 5.4rem)', 
             paddingLeft: 'var(--results-horizontal-padding)',
             paddingRight: 'var(--results-horizontal-padding)',
             minHeight: '100vh', 
