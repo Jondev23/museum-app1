@@ -1,207 +1,181 @@
-# Museum Kutschen Kiosk App
+# Museum Kutschen Interactive Desktop App
 
-Eine interaktive Kiosk-Anwendung für die Kutschen-Ausstellung im Museum. Die App bietet ein unterhaltsames Quiz mit fünf Fragen zu historischen Kutschen in deutscher und englischer Sprache.
+## 📋 Description
 
-## Features
+Interactive desktop application designed for a museum exhibition about **Kutschen** (historical horse-drawn carriages). The application allows visitors to participate in an interactive quiz about transportation history and travel distances in the 19th century. Runs as a standalone Windows desktop application with no browser dependencies.
 
-- **Vollscreen Kiosk-Modus** - Läuft ohne Browser-Chrome im Vollbildmodus
-- **Offline-Funktionalität** - Benötigt keine Internetverbindung
-- **Mehrsprachig** - Deutsch und Englisch mit dynamischem Sprachwechsel
-- **Interaktive Animationen** - Smooth Transitions und Touch-Feedback
-- **Inaktivitäts-Timer** - Kehrt nach 3 Minuten automatisch zum Screensaver zurück
-- **Anpassbarer Inhalt** - Verschiedene Quiz-Inhalte für verschiedene Kiosk-Stationen
-- **Touch-optimiert** - Perfekt für Touchscreen-Displays
+## ✨ Key Features
 
-## Bildschirme
+### 🎮 User Experience
+- **Interactive Quiz**: 5 random questions about horse-drawn carriages and historical transportation
+- **Multi-language Support**: German and English language options
+- **Screensaver Mode**: Automatically activates after 3 minutes of inactivity
+- **Desktop Interface**: Optimized for desktop and touch devices
+- **Standalone Application**: No browser or internet connection required
 
-1. **Screensaver** - Animierte Startbildschirm mit Touch-Aufforderung
-2. **Startbildschirm** - Willkommen mit Swipe-Navigation
-3. **Quiz** - 5 zufällige Fragen mit Multiple-Choice-Antworten
-4. **Feedback** - Sofortige Rückmeldung nach jeder Antwort
-5. **Ergebnisse** - Zusammenfassung mit Score und Neustart-Option
-6. **Sprachauswahl** - Overlay für Sprachwechsel
+### 🏛️ Multi-Kiosk Configuration
+- **Kiosk 1**: Kutschen Geschichte (General History)
+- **Kiosk 2**: Luxuskutschen (Luxury Carriages)
+- **Kiosk 3**: Kutschenbau (Carriage Construction)
 
-## Installation
+### 📱 Application Screens
+1. **Screensaver**: Idle screen with touch indication
+2. **Start Screen**: Welcome screen with theme information
+3. **Question Screen**: Multiple-choice question display
+4. **Feedback Screen**: Immediate feedback for each answer
+5. **Results Screen**: Final score and personalized message
 
-### Voraussetzungen
-- Node.js 16 oder höher
-- npm oder yarn
+## 🛠️ Technologies
 
-## Desarrollo
+- **Frontend**: Next.js 15.3.5, React 19.1.0
+- **Animations**: Framer Motion 11.3.0
+- **Styling**: Tailwind CSS 3.4.0
+- **Desktop**: Electron 37.2.1
+- **Languages**: TypeScript, JavaScript
+- **Effects**: React Confetti, Lottie React
 
-### ⚠️ IMPORTANTE: Evitar bloqueo de pantalla
+## 📁 Project Structure
 
-**Para evitar que la app se bloquee en modo kiosco durante el desarrollo:**
-
-#### Opción 1: Script automatizado (RECOMENDADO)
-```bash
-./start-dev.sh
-```
-
-#### Opción 2: Pasos manuales
-```bash
-# Terminal 1: Iniciar Next.js primero
-npm run next-dev
-
-# Esperar el mensaje "Ready - started server"
-
-# Terminal 2: Iniciar Electron
-npm run electron-dev-manual
-```
-
-### Atajos de desarrollo
-- **Ctrl+Q**: Salir de la aplicación
-- **Ctrl+R**: Recargar
-- **F12**: DevTools
-- **Escape**: Salir de pantalla completa
-
-Ver [DEVELOPMENT.md](DEVELOPMENT.md) para instrucciones detalladas.
-
-### Setup
-```bash
-# Repository klonen oder entpacken
-cd museum-kutschen-app
-
-# Abhängigkeiten installieren
-npm install
-
-# Entwicklungsserver starten
-npm run dev
-```
-
-### Production Build
-```bash
-# Next.js App bauen
-npm run build
-
-# Electron App erstellen
-npm run build-electron
-
-# Distributionspaket erstellen
-npm run dist
-```
-
-## Konfiguration
-
-### Kiosk-spezifische Inhalte
-
-Die App unterstützt verschiedene Kiosk-Konfigurationen durch JSON-Dateien im `content/` Ordner:
-
-- `kiosk1.json` - Allgemeine Kutschen-Geschichte
-- `kiosk2.json` - Luxuskutschen und Adel
-- `kiosk3.json` - Kutschenbau und Handwerk
-
-### Inhalt anpassen
-
-Um den Inhalt zu ändern, bearbeiten Sie die entsprechende JSON-Datei:
-
-```json
-{
-  "de": {
-    "startScreen": {
-      "title": "Ihr Titel",
-      "subtitle": "Ihr Untertitel",
-      "introText": "Ihr Einführungstext"
-    },
-    "questions": [
-      {
-        "id": "q1",
-        "question": "Ihre Frage?",
-        "answers": ["Antwort 1", "Antwort 2", "Antwort 3"],
-        "correctAnswer": 0,
-        "explanation": "Ihre Erklärung"
-      }
-    ]
-  }
-}
-```
-
-### Neuen Kiosk hinzufügen
-
-1. Erstellen Sie eine neue JSON-Datei: `content/kiosk4.json`
-2. Kopieren Sie die Struktur von einer bestehenden Datei
-3. Passen Sie Inhalte und Fragen an
-4. Die App erkennt automatisch neue Kiosk-Dateien
-
-## Deployment
-
-### Lokaler Kiosk-Computer
-1. App bauen: `npm run build-electron`
-2. Installationsdatei auf Kiosk-Computer kopieren
-3. App installieren und im Autostart einrichten
-
-### Kiosk-Modus aktivieren
-Die App startet automatisch im Kiosk-Modus (Vollbild, keine Navigation).
-
-Im Entwicklungsmodus können Sie mit `Ctrl+Q` die App beenden.
-
-## Technische Details
-
-### Verwendete Technologien
-- **Electron** - Desktop-App Framework
-- **Next.js** - React Framework
-- **Framer Motion** - Animationen
-- **Tailwind CSS** - Styling
-- **React Context** - State Management
-
-### Projektstruktur
 ```
 museum-kutschen-app/
-├── content/           # Kiosk-spezifische JSON Inhalte
-├── components/        # React Komponenten
-├── context/          # React Context für State Management
-├── electron/         # Electron Hauptprozess
-├── pages/           # Next.js Seiten
-├── styles/          # CSS Styles
-└── public/          # Statische Assets
+├── components/              # React components organized by screen
+│   ├── StartScreen/        # Start screen components
+│   ├── QuestionScreen/     # Question screen components
+│   ├── FeedbackScreen/     # Feedback screen components
+│   ├── ResultsScreen/      # Results screen components
+│   ├── ScreensaverScreen/  # Screensaver components
+│   ├── LanguageSelector/   # Language selector components
+│   └── shared/             # Shared components
+├── context/                # Context API for state management
+├── hooks/                  # Custom hooks for component logic
+├── pages/                  # Next.js pages
+├── public/
+│   ├── content/           # JSON files with content per kiosk
+│   ├── images/            # Images and assets
+│   └── videos/            # Application videos
+├── electron/              # Electron configuration
+├── styles/                # Global styles
+└── utils/                 # Utilities and configuration
 ```
 
-### Anpassung der Inaktivitätszeit
-Standard: 3 Minuten. Ändern in `context/AppContext.js`:
-```javascript
-timer = setTimeout(() => {
-  goToScreensaver();
-}, 3 * 60 * 1000); // 3 Minuten in Millisekunden
+## 🚀 Installation and Setup
+
+### System Requirements
+- Windows 10/11 (64-bit)
+- 4GB RAM minimum
+- No additional software required
+
+### Quick Start (End Users)
+```bash
+# Download and extract the ZIP file
+# Navigate to "Museum Kutschen App-win32-x64" folder
+# Double-click "Museum Kutschen App.exe"
+# Application starts automatically in desktop mode
 ```
 
-## Wartung
+### Development Setup
+```bash
+# Prerequisites for developers
+# Node.js (version 16 or higher)
+# npm or yarn
 
-### Fragen hinzufügen/ändern
-1. Bearbeiten Sie die entsprechende JSON-Datei im `content/` Ordner
-2. App neu starten (im Kiosk-Modus)
+# Clone the repository
+git clone <repository-url>
+cd museum-kutschen-app
 
-### Sprachen hinzufügen
-1. Erweitern Sie die JSON-Struktur um neue Sprachcodes
-2. Fügen Sie Sprachoptionen in `LanguageSelector.js` hinzu
+# Install dependencies
+npm install
+```
 
-### Styling anpassen
-- Farben: `tailwind.config.js`
-- Komponenten-Styles: Jeweilige Component-Dateien
-- Globale Styles: `styles/globals.css`
+### Available Scripts (Development)
 
-## Troubleshooting
+```bash
+# Development
+npm run dev                 # Start application in development mode
+npm run next-dev           # Next.js server only
+npm run electron-dev       # Electron application only
 
-### App startet nicht
-- Node.js Version prüfen (min. 16)
-- `npm install` erneut ausführen
-- Konsole auf Fehler prüfen
+# Production Build
+npm run build              # Build Next.js static export
+npm run package            # Create complete Electron application
+npm run build-simple       # Alternative simple build
 
-### Inhalt wird nicht geladen
-- JSON-Syntax prüfen (online validator verwenden)
-- Pfade in JSON überprüfen
-- Browser-Konsole auf Fehler prüfen
+# Utilities
+npm run lint               # Run linter
+npm run type-check         # Check TypeScript types
+```
 
-### Touch funktioniert nicht
-- Touchscreen-Treiber prüfen
-- Mouse-Events als Fallback sind implementiert
+## ⚙️ Configuration
 
-## Support
+### Desktop Application
+The application runs as a standalone desktop app with:
+1. Admin panel access via corner clicks (top-left → top-right → bottom-right)
+2. Password: museum2025
+3. Automatic kiosk detection and content loading
 
-Bei Problemen oder Fragen:
-1. Dokumentation prüfen
-2. Log-Dateien kontrollieren
-3. Support-Team kontaktieren
+### Content Management
+Content is dynamically loaded from JSON files in `out/content/`:
+- `kiosk1.json` - General Kutschen History
+- `kiosk2.json` - Luxury Carriages  
+- `kiosk3.json` - Carriage Construction
 
-## Lizenz
+### Electron Configuration
+- **Development**: Windowed mode with DevTools
+- **Production**: Fullscreen desktop application
+- **Security**: Disabled web features, local file access enabled
+- **Performance**: Optimized for 1920x1080 displays
 
-MIT License - Siehe LICENSE Datei für Details.
+## 🎯 Special Features
+
+### Scoring System
+- 5 random questions per session
+- Immediate feedback per question
+- Personalized messages based on score (0-5)
+- Visual progress indicators
+
+### Language Management
+- Dynamic switching between German and English
+- Fully localized content
+- Progress preservation when changing language
+
+### Desktop Mode Features
+- Disabled dangerous keyboard shortcuts
+- Prevention of external navigation
+- Automatic inactivity screensaver
+- Native desktop application performance
+- Local file system access for content
+- No internet connection required
+
+## 🔧 Development
+
+### Component Structure
+Each screen is organized in its own folder with:
+- `index.js` - Main component
+- `ComponentConfig.js` - Configuration and styles
+- Specific subcomponents
+
+### Context API
+Global state is managed through `AppContext`:
+- Screen state
+- Current language
+- Quiz progress
+- Kiosk configuration
+
+### Custom Hooks
+Specialized hooks for each screen:
+- `useStartScreen` - Start screen logic
+- `useQuestionScreen` - Question management
+- `useResultsScreen` - Results calculation
+- `useResponsiveText` - Responsive text
+
+## 📄 License
+
+MIT License
+
+## 👥 Author
+
+Museum Team
+
+---
+
+*Desktop application developed to enhance interactive experience in museum exhibitions about 19th century transportation history. Version 2.0 - Desktop Edition.*

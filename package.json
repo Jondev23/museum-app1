@@ -6,15 +6,22 @@
   "homepage": "./",
   "scripts": {
     "dev": "concurrently \"npm run next-dev\" \"npm run electron-dev\"",
+    "dev-hot": "concurrently \"npm run next-dev-hot\" \"npm run electron-dev\"",
     "dev-safe": "NODE_ENV=development concurrently \"npm run next-dev\" \"npm run electron-dev\"",
     "next-dev": "next dev",
-    "electron-dev": "wait-on http://localhost:3000 && NODE_ENV=development electron .",
-    "electron-dev-manual": "NODE_ENV=development electron .",
+    "electron-dev": "wait-on http://localhost:3000 && cross-env NODE_ENV=development electron .",
+    "electron-dev-manual": "cross-env NODE_ENV=development electron .",
     "dev-step": "echo 'Step 1: Run npm run next-dev' && echo 'Step 2: In another terminal run npm run electron-dev-manual'",
     "build": "next build",
     "build-electron": "npm run build && electron-builder",
     "dist": "npm run build && electron-builder --publish=never",
+    "dist-win": "npm run build && electron-builder --win",
+    "dist-win-portable": "npm run build && electron-builder --win portable",
+    "build-exe": "npm run build && electron-builder --win --x64",
+    "build-exe-portable": "npm run build && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --win portable --x64",
     "pack": "npm run build && electron-builder --dir",
+    "pack-win": "npm run build && electron-builder --dir --win",
+    "package": "npm run build && electron-packager . \"Museum Kutschen App\" --platform=win32 --arch=x64 --out=dist --overwrite --ignore=\"node_modules/((?!electron).)*\" --ignore=\"\\.git\" --ignore=\"src\" --ignore=\"\\.env\"",
     "start": "next start",
     "export": "next export",
     "dev:kiosk1": "KIOSK_ID=kiosk1 npm run dev-safe",
@@ -23,50 +30,84 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit"
   },
-  "keywords": ["kiosk", "museum", "exhibition", "kutschen"],
+  "keywords": [
+    "kiosk",
+    "museum",
+    "exhibition",
+    "kutschen"
+  ],
   "author": "Museum Team",
   "license": "MIT",
   "dependencies": {
+    "express": "^5.1.0",
+    "framer-motion": "^11.3.0",
+    "lottie-react": "^2.4.0",
     "next": "^15.3.5",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "framer-motion": "^11.3.0",
     "react-confetti": "^6.1.0",
-    "lottie-react": "^2.4.0"
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "electron": "^37.2.1",
-    "electron-builder": "^24.13.3",
-    "concurrently": "^8.2.2",
-    "wait-on": "^7.2.0",
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
-    "typescript": "^5.3.0",
-    "tailwindcss": "^3.4.0",
     "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.0"
+    "concurrently": "^8.2.2",
+    "cross-env": "^10.0.0",
+    "electron": "^37.2.1",
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.0",
+    "wait-on": "^7.2.0"
   },
   "build": {
     "appId": "com.museum.kutschen",
-    "productName": "Museum Kutschen Kiosk",
+    "productName": "Museum Kutschen App",
     "directories": {
-      "output": "dist"
+      "output": "/Users/jonathanaguilera/Downloads"
     },
     "files": [
       "out/**/*",
       "electron/**/*",
-      "content/**/*",
+      "public/**/*",
       "node_modules/**/*"
     ],
+    "electronCompile": false,
+    "compression": "store",
+    "beforeBuild": null,
+    "afterSign": null,
+    "afterPack": null,
+    "afterAllArtifactBuild": null,
     "mac": {
-      "category": "public.app-category.education"
+      "category": "public.app-category.education",
+      "icon": "public/images/icon.icns"
     },
     "win": {
-      "target": "nsis"
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}-${version}-portable.${ext}",
+      "sign": null,
+      "verifyUpdateCodeSignature": false,
+      "requestedExecutionLevel": "asInvoker",
+      "forceCodeSigning": false
     },
     "linux": {
-      "target": "AppImage"
+      "target": "AppImage",
+      "category": "Education"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
     }
   }
 }

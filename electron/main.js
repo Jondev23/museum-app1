@@ -1,48 +1,108 @@
-const { app, BrowserWindow, globalShortcut, Menu } = require('electron');
+// Electron main process for museum kiosk application
+const { app, BrowserWindow, globalShortcut, Menu, ipcMain } = require('electron');
 const path = require('path');
-const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV !== 'production';
+const fs = require('fs').promises;
+
+// Better production detection for packaged apps
+const isDev = process.env.NODE_ENV === 'development' || 
+              (process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) || /[\\/]electron[\\/]/.test(process.execPath));
+
+console.log('Electron starting in', isDev ? 'DEVELOPMENT' : 'PRODUCTION', 'mode');
+console.log('process.execPath:', process.execPath);
+console.log('process.resourcesPath:', process.resourcesPath);
+console.log('__dirname:', __dirname);
 
 let mainWindow;
 let inactivityTimer;
-const INACTIVITY_TIMEOUT = 3 * 60 * 1000; // 3 minutes
+const INACTIVITY_TIMEOUT = 3 * 60 * 1000; // 3 minutes inactivity timeout (will be configurable)
+const CONFIG_FILE_PATH = path.join(__dirname, '../public/config.json');
 
 console.log('Electron starting in', isDev ? 'DEVELOPMENT' : 'PRODUCTION', 'mode');
+console.log('Config file path:', CONFIG_FILE_PATH);
 
-function createWindow() {
-  // Only disable menu bar in production
-  if (!isDev) {
-    Menu.setApplicationMenu(null);
+// Configuration management functions
+async function loadConfig() {
+  try {
+    const configData = await fs.readFile(CONFIG_FILE_PATH, 'utf8');
+    const config = JSON.parse(configData);
+    console.log('Config loaded from file:', config);
+    return config;
+  } catch (error) {
+    console.warn('Could not load config file, using defaults:', error.message);
+    const defaultConfig = {
+      activeKioskId: 'kiosk1',
+      screensaverTimeout: 180000, // 3 minutes fallback
+      lastUpdated: new Date().toISOString()
+    };
+    // Try to create default config file
+    try {
+      await saveConfig(defaultConfig);
+    } catch (saveError) {
+      console.error('Could not save default config:', saveError.message);
+    }
+    return defaultConfig;
   }
+}
+
+async function saveConfig(config) {
+  try {
+    const configData = JSON.stringify(config, null, 2);
+    await fs.writeFile(CONFIG_FILE_PATH, configData, 'utf8');
+    console.log('Config saved to file:', config);
+    return true;
+  } catch (error) {
+    console.error('Error saving config file:', error);
+    throw error;
+  }
+}
+
+// IPC handlers for config management
+ipcMain.handle('load-config', async () => {
+  return await loadConfig();
+});
+
+ipcMain.handle('save-config', async (event, config) => {
+  return await saveConfig(config);
+});
+
+// Create the main browser window
+function createWindow() {
+  // Keep standard menu bar for desktop application
+  // Menu.setApplicationMenu(null); // Commented out to keep standard menu
 
   mainWindow = new BrowserWindow({
-    width: isDev ? 1200 : 1920,
-    height: isDev ? 800 : 1080,
-    fullscreen: !isDev, // Fullscreen in production, windowed in dev
-    kiosk: !isDev, // Kiosk mode in production
-    frame: isDev, // Show frame in development
+    width: 1920, 
+    height: 1080, 
+    fullscreen: false, 
+    kiosk: false, 
+    frame: true, 
     show: false,
+    resizable: true,
+    minimizable: true,
+    maximizable: true,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
       enableRemoteModule: false,
-      webSecurity: isDev ? false : true, // Only disable in dev for easier development
-      allowRunningInsecureContent: isDev,
+      webSecurity: false, // Disable webSecurity to allow local file loading in production
+      allowRunningInsecureContent: true,
       experimentalFeatures: false,
       preload: path.join(__dirname, 'preload.js')
     }
   });
 
+  // Always enable DevTools for debugging (commented out for production)
+  // mainWindow.webContents.openDevTools();
+
   // Load the Next.js app
-  const startUrl = isDev 
-    ? 'http://localhost:3000' 
-    : `file://${path.join(__dirname, '../out/index.html')}`;
-  
   if (isDev) {
-    console.log('Loading development server:', startUrl);
+    console.log('Development mode - Loading from localhost:3000');
+    const startUrl = 'http://localhost:3000';
     mainWindow.loadURL(startUrl).catch(err => {
       console.error('Failed to load URL:', err);
       // Show a helpful error page
       mainWindow.loadURL('data:text/html;charset=utf-8,' + encodeURI(`
+        <!DOCTYPE html>
         <html>
           <head><title>Development Server</title></head>
           <body style="font-family: Arial; padding: 40px; background: #f0f0f0; text-align: center;">
@@ -57,16 +117,97 @@ function createWindow() {
       `));
     });
   } else {
-    // In production, check if the file exists
-    const fs = require('fs');
-    const filePath = path.join(__dirname, '../out/index.html');
-    if (fs.existsSync(filePath)) {
-      mainWindow.loadFile(filePath);
-    } else {
-      console.error('Production build not found. Run "npm run build" first.');
-      // Fallback to a simple HTML page
-      mainWindow.loadURL(`data:text/html,<h1>Build not found. Run "npm run build" first.</h1>`);
-    }
+    // Production mode - start local server and load from it
+    console.log('Production mode - Starting local server for static files');
+    
+    const startLocalServer = () => {
+      return new Promise((resolve, reject) => {
+        const http = require('http');
+        const fs = require('fs');
+        
+        // MIME types for different files
+        const mimeTypes = {
+          '.html': 'text/html',
+          '.css': 'text/css',
+          '.js': 'application/javascript',
+          '.json': 'application/json',
+          '.png': 'image/png',
+          '.jpg': 'image/jpeg',
+          '.jpeg': 'image/jpeg',
+          '.gif': 'image/gif',
+          '.svg': 'image/svg+xml',
+          '.webp': 'image/webp',
+          '.mp4': 'video/mp4',
+          '.otf': 'font/otf',
+          '.woff': 'font/woff',
+          '.woff2': 'font/woff2'
+        };
+        
+        const server = http.createServer((req, res) => {
+          // Add CORS headers
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+          res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+          
+          if (req.method === 'OPTIONS') {
+            res.writeHead(204);
+            res.end();
+            return;
+          }
+          
+          let filePath = path.join(__dirname, '../out', req.url);
+          
+          // If root, serve index.html
+          if (req.url === '/') {
+            filePath = path.join(__dirname, '../out', 'index.html');
+          }
+          
+          // If file doesn't exist, serve index.html (SPA routing)
+          if (!fs.existsSync(filePath)) {
+            filePath = path.join(__dirname, '../out', 'index.html');
+          }
+          
+          const ext = path.extname(filePath);
+          const contentType = mimeTypes[ext] || 'application/octet-stream';
+          
+          fs.readFile(filePath, (err, data) => {
+            if (err) {
+              console.error('File read error:', err, 'for path:', filePath);
+              res.writeHead(404);
+              res.end('404 - File not found');
+              return;
+            }
+            
+            res.writeHead(200, { 'Content-Type': contentType });
+            res.end(data);
+          });
+        });
+        
+        server.listen(3001, (err) => {
+          if (err) {
+            reject(err);
+          } else {
+            console.log('Local server started on http://localhost:3001');
+            resolve('http://localhost:3001');
+          }
+        });
+      });
+    };
+    
+    startLocalServer()
+      .then((serverUrl) => {
+        mainWindow.loadURL(serverUrl);
+      })
+      .catch((err) => {
+        console.error('Failed to start local server:', err);
+        // Fallback to file loading
+        const fallbackPath = path.join(__dirname, '../out/index.html');
+        if (fs.existsSync(fallbackPath)) {
+          mainWindow.loadFile(fallbackPath);
+        } else {
+          console.error('Could not find index.html at:', fallbackPath);
+        }
+      });
   }
 
   // Show window when ready
@@ -84,18 +225,20 @@ function createWindow() {
     mainWindow = null;
   });
 
-  // Reset inactivity timer on any user interaction
-  mainWindow.webContents.on('before-input-event', (event, input) => {
-    resetInactivityTimer();
-  });
+  // Optional: Reset inactivity timer on any user interaction (disabled for desktop app)
+  // mainWindow.webContents.on('before-input-event', (event, input) => {
+  //   resetInactivityTimer();
+  // });
 
-  // Prevent navigation away from the app
-  mainWindow.webContents.on('will-navigate', (event, navigationUrl) => {
-    const parsedUrl = new URL(navigationUrl);
-    if (parsedUrl.origin !== startUrl) {
-      event.preventDefault();
-    }
-  });
+  // Allow navigation within the same domain (only for development)
+  if (isDev) {
+    mainWindow.webContents.on('will-navigate', (event, navigationUrl) => {
+      const parsedUrl = new URL(navigationUrl);
+      if (parsedUrl.origin !== 'http://localhost:3000') {
+        event.preventDefault();
+      }
+    });
+  }
 
   // Open dev tools in development
   if (isDev) {
@@ -103,65 +246,94 @@ function createWindow() {
   }
 }
 
+// Optional function for desktop app - screensaver disabled by default
 function resetInactivityTimer() {
-  if (inactivityTimer) {
-    clearTimeout(inactivityTimer);
-  }
+  // Disabled for desktop application
+  // if (inactivityTimer) {
+  //   clearTimeout(inactivityTimer);
+  // }
   
-  inactivityTimer = setTimeout(() => {
-    if (mainWindow) {
-      mainWindow.webContents.send('show-screensaver');
-    }
-  }, INACTIVITY_TIMEOUT);
+  // inactivityTimer = setTimeout(() => {
+  //   if (mainWindow) {
+  //     mainWindow.webContents.send('show-screensaver');
+  //   }
+  // }, INACTIVITY_TIMEOUT);
 }
 
 app.whenReady().then(() => {
   createWindow();
-  resetInactivityTimer();
+  // Optional: resetInactivityTimer(); // Disabled for desktop app
 
-  // Register global shortcuts for kiosk management
-  if (!isDev) {
-    // Disable common shortcuts that could break kiosk mode
-    try {
-      globalShortcut.register('Alt+F4', () => {});
-      globalShortcut.register('Ctrl+Shift+I', () => {});
-      globalShortcut.register('F11', () => {});
-      globalShortcut.register('F12', () => {});
-      // Note: Ctrl+Alt+Del cannot be disabled on most systems
-    } catch (error) {
-      console.warn('Could not register some global shortcuts:', error);
-    }
-  }
-
-  // Allow admin exit in development
-  if (isDev) {
-    try {
-      globalShortcut.register('Ctrl+Q', () => {
-        console.log('Quitting app via Ctrl+Q');
-        app.quit();
-      });
-      globalShortcut.register('Ctrl+R', () => {
-        console.log('Reloading app via Ctrl+R');
-        if (mainWindow) {
-          mainWindow.reload();
-        }
-      });
+  // Register useful shortcuts for desktop application
+  try {
+    globalShortcut.register('Ctrl+Q', () => {
+      console.log('Quitting app via Ctrl+Q');
+      app.quit();
+    });
+    globalShortcut.register('Ctrl+R', () => {
+      console.log('Reloading app via Ctrl+R');
+      if (mainWindow) {
+        mainWindow.reload();
+      }
+    });
+    if (isDev) {
       globalShortcut.register('F12', () => {
         console.log('Opening DevTools via F12');
         if (mainWindow) {
           mainWindow.webContents.openDevTools();
         }
       });
-      globalShortcut.register('Escape', () => {
-        console.log('Exiting fullscreen via Escape');
-        if (mainWindow && mainWindow.isFullScreen()) {
-          mainWindow.setFullScreen(false);
-        }
-      });
-      console.log('Development shortcuts registered: Ctrl+Q (quit), Ctrl+R (reload), F12 (devtools), Escape (exit fullscreen)');
-    } catch (error) {
-      console.warn('Could not register development shortcuts:', error);
     }
+    console.log('Desktop application shortcuts registered: Ctrl+Q (quit), Ctrl+R (reload)' + (isDev ? ', F12 (devtools)' : ''));
+  } catch (error) {
+    console.warn('Could not register application shortcuts:', error);
+  }
+});
+
+// IPC handlers for loading content
+ipcMain.handle('load-kiosk-content', async (event, kioskId) => {
+  try {
+    console.log('Loading kiosk content for:', kioskId);
+    
+    // Try multiple possible paths for content files
+    const possibleContentPaths = [
+      path.join(process.resourcesPath, 'app', 'out', 'content', `${kioskId}.json`),  // Standard packaged path
+      path.join(__dirname, '../out/content', `${kioskId}.json`),                     // Development build path
+      path.join(__dirname, '../public/content', `${kioskId}.json`),                  // Source path
+      path.join(process.cwd(), 'out', 'content', `${kioskId}.json`),               // Current working directory
+      path.join(app.getAppPath(), 'out', 'content', `${kioskId}.json`)             // App path
+    ];
+    
+    console.log('Checking content paths:', possibleContentPaths);
+    
+    let contentPath = null;
+    for (const testPath of possibleContentPaths) {
+      console.log('Checking content path:', testPath);
+      try {
+        await fs.access(testPath);
+        contentPath = testPath;
+        console.log('Found content file at:', contentPath);
+        break;
+      } catch (error) {
+        console.log('Path not found:', testPath);
+        // File doesn't exist, continue to next path
+      }
+    }
+    
+    if (contentPath) {
+      const contentData = await fs.readFile(contentPath, 'utf8');
+      const content = JSON.parse(contentData);
+      console.log('Content loaded successfully from:', contentPath);
+      console.log('Content preview:', Object.keys(content));
+      return content;
+    } else {
+      console.error(`Content file not found for kiosk: ${kioskId}`);
+      console.error('Checked paths:', possibleContentPaths);
+      throw new Error(`Content file not found for kiosk: ${kioskId}`);
+    }
+  } catch (error) {
+    console.error('Error loading kiosk content:', error);
+    throw error;
   }
 });
 

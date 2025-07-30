@@ -1,0 +1,53 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                            MUSEUM KUTSCHEN APP                              ║
+║                           Desktop Application                               ║
+║                              VERSION 2.0                                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+ZIP FILE CONTENTS:
+═══════════════════
+• Museum-Kutschen-App-PARA-CLIENTE-v2-CON-FUENTES.zip (677.59 MB)
+• This file contains the complete application ready to use
+
+INSTALLATION INSTRUCTIONS:
+═══════════════════════════
+1. Extract the ZIP file to any folder on your computer
+2. Navigate to the extracted folder
+3. Run the file: "Museum Kutschen App.exe"
+
+FEATURES:
+═════════
+✓ Desktop application (NOT a web browser kiosk)
+✓ Optimized for 1920 x 1080 screens
+✓ Works completely offline
+✓ Includes all resources: images, videos, fonts
+✓ Custom typography with Tisa Pro and Tisa Sans Pro fonts
+✓ Multi-language system
+✓ Touch interface optimized for kiosks
+
+SYSTEM REQUIREMENTS:
+════════════════════
+• Windows 10/11 (64-bit)
+• 2 GB free disk space
+• Recommended screen: 1920x1080
+
+TECHNICAL NOTES:
+════════════════
+• The application does NOT require internet connection
+• All content is included in the package
+• Main executable file is "Museum Kutschen App.exe"
+• Application runs in fullscreen window mode
+• Custom fonts are properly loaded and displayed
+
+WHAT'S NEW IN VERSION 2.0:
+═══════════════════════════
+• FIXED: Font loading issues - all custom fonts now display correctly
+• IMPROVED: Typography rendering with Tisa Pro and Tisa Sans Pro families
+• ENHANCED: Better visual consistency across all interface elements
+
+SUPPORT:
+════════
+For any technical inquiries, contact the developer.
+
+Creation date: July 29, 2025
+Version: Desktop 2.0 (with fonts fixed)

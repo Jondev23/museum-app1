@@ -1,109 +1,94 @@
-import { useApp } from '../context/AppContext';
+// Import animation library and question screen components
 import { motion } from 'framer-motion';
-import ProgressBar from './ProgressBar';
-import { useState } from 'react';
 
+// Import custom hooks and configuration
+import { useQuestionScreen } from '../hooks/useQuestionScreen';
+import { useQuestionScreenStyles, QUESTION_CONFIG } from './QuestionScreen/QuestionScreenConfig';
+
+// Import subcomponents
+import QuestionTitle from './QuestionScreen/QuestionTitle';
+import AnswerButtons from './QuestionScreen/AnswerButtons';
+import QuestionFooter from './QuestionScreen/QuestionFooter';
+
+// Question screen component - displays quiz questions with multiple choice answers
 const QuestionScreen = () => {
-  const { 
-    getCurrentQuestion, 
-    answerQuestion,
-    content,
-    language,
-    currentQuestionIndex 
-  } = useApp();
+  // Get question data and handlers from custom hook
+  const {
+    question,
+    startContent,
+    currentQuestionIndex,
+    selectedAnswer,
+    isValidData,
+    answers,
+    questions,
+    isProcessing,
+    handleAnswerClick,
+    getButtonClassName,
+    getButtonStyle
+  } = useQuestionScreen();
 
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const question = getCurrentQuestion();
+  // Get dynamic styles based on content
+  const {
+    progressDotsStyle
+  } = useQuestionScreenStyles(startContent);
 
-  if (!question || !content?.[language]) return null;
-
-  const handleAnswerClick = (answerIndex) => {
-    if (selectedAnswer !== null) return; // Prevent multiple selections
-    
-    setSelectedAnswer(answerIndex);
-    
-    // Delay before showing feedback
-    setTimeout(() => {
-      answerQuestion(answerIndex);
-    }, 500);
-  };
+  // Don't render if data is invalid
+  if (!isValidData) return null;
 
   return (
-    <motion.div
-      initial={{ x: '100%' }}
-      animate={{ x: 0 }}
-      exit={{ x: '-100%' }}
-      transition={{ duration: 0.5 }}
-      className="fixed inset-0 bg-gradient-to-br from-museum-cream to-white flex flex-col"
-    >
-      {/* Header with progress */}
-      <div className="p-8">
-        <ProgressBar />
-      </div>
+    <>
+      {/* Animated content container with slide-in animation from right */}
+      <motion.div
+        initial={{ x: '100%', opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ 
+          duration: QUESTION_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION,
+          exit: { duration: 0.2 }, 
+          when: "afterChildren"
+        }}
+        className="fixed inset-0 flex flex-col z-20"
+      >
+        {/* Content container - without footer */}
+        <div className="relative z-10 flex flex-col h-full">
+          {/* Main content */}
+          <div className="flex flex-col items-center justify-start flex-1 w-full max-w-7xl mx-auto px-8 pt-16 pb-2 gap-6">
+            {/* Card container */}
+            <div className="flex flex-col items-center w-full mt-[min(3.08rem,4.62vh)] p-[min(2rem,4vw)] gap-[min(1.5rem,3vw)] rounded-[min(1.875rem,4vw)] overflow-hidden border-0 bg-transparent">
+              {/* Content */}
+              <div className="flex flex-col items-center w-full p-0 gap-[min(3rem,4.5vw)]">
+                <QuestionTitle 
+                  question={question} 
+                />
 
-      {/* Question content */}
-      <div className="flex-1 flex flex-col justify-center items-center px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl w-full text-center"
-        >
-          {/* Question number */}
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.3, delay: 0.2 }}
-            className="inline-block bg-museum-brown text-white px-6 py-2 rounded-full text-lg font-semibold mb-8"
-          >
-            Frage {currentQuestionIndex + 1} von 5
-          </motion.div>
+                <AnswerButtons
+                  question={question}
+                  handleAnswerClick={handleAnswerClick}
+                  selectedAnswer={selectedAnswer}
+                  isProcessing={isProcessing}
+                  getButtonClassName={getButtonClassName}
+                  getButtonStyle={getButtonStyle}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
 
-          {/* Question text */}
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-4xl font-bold text-museum-brown mb-12 leading-tight max-w-3xl mx-auto"
-          >
-            {question.question}
-          </motion.h2>
-
-          {/* Answer options */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="space-y-6"
-          >
-            {question.answers.map((answer, index) => (
-              <motion.button
-                key={index}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                onClick={() => handleAnswerClick(index)}
-                disabled={selectedAnswer !== null}
-                className={`
-                  w-full max-w-2xl mx-auto block px-8 py-6 rounded-xl text-xl font-medium
-                  transition-all duration-300 transform
-                  ${selectedAnswer === null 
-                    ? 'bg-white border-2 border-museum-brown text-museum-brown hover:bg-museum-brown hover:text-white hover:scale-105 active:scale-95' 
-                    : selectedAnswer === index 
-                      ? 'bg-museum-brown text-white scale-105'
-                      : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  }
-                `}
-                whileHover={selectedAnswer === null ? { scale: 1.02 } : {}}
-                whileTap={selectedAnswer === null ? { scale: 0.98 } : {}}
-              >
-                {answer}
-              </motion.button>
-            ))}
-          </motion.div>
-        </motion.div>
-      </div>
-    </motion.div>
+      {/* Footer section - separated with independent animation */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ 
+          duration: 0.4, // Same as FeedbackScreen entry
+          exit: { duration: 0.2, delay: 0.15 } // Delayed exit to overlap with next screen footer
+        }}
+        className="fixed bottom-0 left-0 right-0 z-50"
+      >
+        <QuestionFooter />
+      </motion.div>
+    </>
   );
 };
 
