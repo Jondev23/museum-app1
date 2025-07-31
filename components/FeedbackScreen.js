@@ -37,9 +37,10 @@ const FeedbackScreen = () => {
   // Custom exit animation handler
   const handleExit = () => {
     setIsExiting(true);
+    // Mismo timing que ScreensaverScreen (1 segundo)
     setTimeout(() => {
       originalNextQuestion();
-    }, 800); // Reducido a 800ms para una transición más rápida
+    }, 1000);
   };
 
   // Get dynamic styles based on content and answer correctness
@@ -64,7 +65,7 @@ const FeedbackScreen = () => {
     <>
       {/* Animated content container with CSS */}
       <div
-        className={`fixed inset-0 flex flex-col z-20 transition-all duration-[800ms] ease-in-out ${
+        className={`fixed inset-0 flex flex-col z-20 transition-all duration-[1000ms] ease-in-out ${
           isExiting ? 'opacity-0 transform -translate-x-full' : 'opacity-100 transform translate-x-0'
         }`}
         style={{ paddingBottom: 'min(4.375rem, 7vh)' }} 

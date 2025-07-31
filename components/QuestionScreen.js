@@ -82,7 +82,7 @@ const QuestionScreen = () => {
         exit={{ opacity: 0 }}
         transition={{ 
           duration: 0.4, // Same as FeedbackScreen entry
-          exit: { duration: 0.2, delay: 0.15 } // Delayed exit to overlap with next screen footer
+          exit: { duration: 0.2 } // Sin delay para entrada inmediata
         }}
         className="fixed bottom-0 left-0 right-0 z-50"
       >
