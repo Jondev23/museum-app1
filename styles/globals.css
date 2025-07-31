@@ -118,7 +118,6 @@
   --color-feedback-correct: var(--color-blassgruen-dark);
   --color-feedback-incorrect: var(--color-kupfer);
   --color-feedback-answer-text: var(--color-neutral-dark);
-  --color-screensaver-title: var(--color-white);
   --color-overlay: rgba(0, 0, 0, 0);
   --color-white-overlay: rgba(255, 255, 255, 0.95);
 

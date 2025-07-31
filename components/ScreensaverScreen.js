@@ -21,13 +21,12 @@ const ScreensaverScreen = () => {
 
   // Get dynamic styles
   const {
-    titleStyle,
     videoStyle,
   } = useScreensaverScreenStyles();
 
   // Show loading state while content is being fetched
   if (isLoading) {
-    return <ScreensaverLoading titleStyle={titleStyle} />;
+    return <ScreensaverLoading />;
   }
 
   // Don't render if data is invalid
