@@ -705,8 +705,8 @@
     position: fixed;
     z-index: 50;
     opacity: 0;
-    width: max(var(--spacing-xl), 60px); /* Minimum 60px for better touch targets */
-    height: max(var(--spacing-xl), 60px); /* Minimum 60px for better touch targets */
+    width: max(var(--spacing-xl), 60px); 
+    height: max(var(--spacing-xl), 60px); 
     cursor: pointer;
     touch-action: manipulation;
     -webkit-touch-callout: none;

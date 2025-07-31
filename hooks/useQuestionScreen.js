@@ -1,6 +1,7 @@
 // Import React hooks and app context
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
+import { INTERACTIVE_TRANSITIONS } from '../utils/screenTransitions';
 
 // Custom hook for question screen functionality
 export const useQuestionScreen = () => {
@@ -55,12 +56,12 @@ export const useQuestionScreen = () => {
     return question && content?.[language];
   }, [question, content, language]);
 
-  // Generate CSS classes for answer buttons based on selection state
+  // Generate CSS classes for answer buttons based on selection state (no hardcoded animations)
   const getButtonClassName = useCallback((index) => {
     const baseClasses = 'transition-all duration-75 transform bg-transparent';
     
     if (selectedAnswer === null && !isProcessing) {
-      return `${baseClasses} hover:bg-white/10 hover:shadow-lg hover:scale-102 active:scale-98 cursor-pointer`;
+      return `${baseClasses} cursor-pointer`;
     }
     
     if (selectedAnswer === index) {
@@ -68,6 +69,18 @@ export const useQuestionScreen = () => {
     }
     
     return `${baseClasses} opacity-60 cursor-not-allowed`;
+  }, [selectedAnswer, isProcessing]);
+
+  // Get motion properties for answer buttons
+  const getButtonMotionProps = useCallback((index) => {
+    if (selectedAnswer === null && !isProcessing) {
+      return {
+        whileHover: INTERACTIVE_TRANSITIONS.answerButton.hover,
+        whileTap: INTERACTIVE_TRANSITIONS.answerButton.tap
+      };
+    }
+    
+    return {}; // No interactions when disabled
   }, [selectedAnswer, isProcessing]);
 
   const getButtonStyle = useCallback((index) => {
@@ -116,6 +129,7 @@ export const useQuestionScreen = () => {
     
     handleAnswerClick,
     getButtonClassName,
-    getButtonStyle
+    getButtonStyle,
+    getButtonMotionProps
   };
 };

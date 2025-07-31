@@ -23,7 +23,8 @@ const QuestionScreen = () => {
     isProcessing,
     handleAnswerClick,
     getButtonClassName,
-    getButtonStyle
+    getButtonStyle,
+    getButtonMotionProps
   } = useQuestionScreen();
 
   // Get dynamic styles based on content
@@ -57,6 +58,7 @@ const QuestionScreen = () => {
                   isProcessing={isProcessing}
                   getButtonClassName={getButtonClassName}
                   getButtonStyle={getButtonStyle}
+                  getButtonMotionProps={getButtonMotionProps}
                 />
               </div>
             </div>

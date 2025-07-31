@@ -332,6 +332,12 @@ export const INTERACTIVE_TRANSITIONS = {
   feedbackButton: {
     hover: { scale: 1.05 },
     tap: { scale: 0.95 }
+  },
+
+  // Answer button hover/tap with subtle scale effects
+  answerButton: {
+    hover: { scale: 1.02 },
+    tap: { scale: 0.98 }
   }
 };
 

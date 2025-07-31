@@ -1,5 +1,6 @@
 import { QUESTION_CONFIG } from './QuestionScreenConfig';
 import { processTextWithHTML } from '../../utils/textProcessor';
+import { motion } from 'framer-motion';
 
 // Answer buttons component with multiple choice answers
 const AnswerButtons = ({ 
@@ -8,7 +9,8 @@ const AnswerButtons = ({
   selectedAnswer, 
   isProcessing, 
   getButtonClassName, 
-  getButtonStyle 
+  getButtonStyle,
+  getButtonMotionProps 
 }) => {
   // Handle touch events for mobile devices
   const handleTouchStart = (e, index) => {
@@ -22,13 +24,14 @@ const AnswerButtons = ({
     // Container for answer buttons - animations now handled by index.js
     <div className="flex flex-col gap-[min(2.52rem,3.6vh)] w-full items-center max-h-[40vh] overflow-hidden">
       {question.answers.map((answer, index) => (
-        <button
+        <motion.button
           key={index}
           onClick={() => handleAnswerClick(index, QUESTION_CONFIG.ANSWER_DELAY)}
           onTouchStart={(e) => handleTouchStart(e, index)}
           disabled={selectedAnswer !== null || isProcessing}
           className={`btn-answer inline-flex min-w-[min(42.3rem,63vw,80vh)] min-h-[min(4.62rem,6.93vh,8vw)] items-center justify-center gap-[min(0.5rem,1vw)] px-[min(4rem,5vw,6vh)] py-[min(1rem,1.5vh,2vw)] rounded-[min(4.62rem,6.93vh,8vw)] border-[min(0.1125rem,0.225vw,0.3vh)] border-solid relative ${getButtonClassName(index)}`}
           style={getButtonStyle(index)}
+          {...getButtonMotionProps(index)}
         >
           <span 
             className={`typography-antworten-buttons relative w-full text-center break-words hyphens-auto max-w-full transition-colors duration-75 ${selectedAnswer === index ? '' : 'text-primary'}`}
@@ -44,7 +47,7 @@ const AnswerButtons = ({
           >
             {processTextWithHTML(answer)}
           </span>
-        </button>
+        </motion.button>
       ))}
     </div>
   );
