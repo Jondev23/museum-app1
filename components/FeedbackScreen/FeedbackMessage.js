@@ -16,7 +16,7 @@ const FeedbackMessage = ({
     messageStyle,
     randomMessage,
     {
-      minScale: 0.6, 
+      minScale: 0.99, 
       step: 0.5,    
       delay: 150    
     }

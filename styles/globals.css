@@ -220,7 +220,7 @@
     /* Fixed typography for small screens */
     --typography-head-font-size: 6rem; /* Fixed size - same as desktop */
     --typography-subline-font-size: 4rem; /* Fixed size - same as desktop */
-    --typography-antworten-buttons-font-size: clamp(0.9rem, 3.6vw, 1.35rem);
+    --typography-antworten-buttons-font-size: 3rem; /* Fixed size - same as desktop */
     --typography-antwort-fliess-font-size: 2.25rem; /* Fixed size - same as desktop */
     
     --results-title-font-size: clamp(1.368rem, 5.472vw, 2.052rem); 
