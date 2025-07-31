@@ -1,6 +1,9 @@
 // Unified screen transition animations configuration
 // This file centralizes all screen transition animations for consistency
 
+// Re-export framer-motion components for centralized access
+export { AnimatePresence, motion } from 'framer-motion';
+
 // Animation configuration constants
 export const TRANSITION_CONFIG = {
   // Standard durations - more consistent
@@ -9,6 +12,14 @@ export const TRANSITION_CONFIG = {
     STANDARD: 0.6,  // Reduced from 0.8 for better consistency
     SLOW: 0.6,      // Same as standard for consistency
     SCREENSAVER: 0.6 // Same as standard for consistency
+  },
+  
+  // Standard delays
+  DELAYS: {
+    NONE: 0,
+    SHORT: 0.1,
+    MEDIUM: 0.2,
+    LONG: 0.3
   },
   
   // Easing functions - simplified to one main easing
@@ -116,7 +127,7 @@ export const FOOTER_TRANSITIONS = {
     transition: {
       duration: TRANSITION_CONFIG.DURATIONS.FAST,
       ease: TRANSITION_CONFIG.EASING.SMOOTH,
-      delay: 0.1 // Reduced delay for consistency
+      delay: TRANSITION_CONFIG.DELAYS.SHORT // Reduced delay for consistency
     }
   },
 
@@ -181,7 +192,7 @@ export const LANGUAGE_SELECTOR_TRANSITIONS = {
     animate: { scale: 1 },
     transition: { 
       duration: TRANSITION_CONFIG.DURATIONS.FAST, 
-      delay: 0.1,
+      delay: TRANSITION_CONFIG.DELAYS.SHORT,
       ease: TRANSITION_CONFIG.EASING.BOUNCE
     }
   },
@@ -192,7 +203,7 @@ export const LANGUAGE_SELECTOR_TRANSITIONS = {
     animate: { opacity: 1, y: 0 },
     transition: { 
       duration: TRANSITION_CONFIG.DURATIONS.FAST, 
-      delay: 0.2,
+      delay: TRANSITION_CONFIG.DELAYS.MEDIUM,
       ease: TRANSITION_CONFIG.EASING.SMOOTH
     }
   },
@@ -203,7 +214,7 @@ export const LANGUAGE_SELECTOR_TRANSITIONS = {
     animate: { opacity: 1, y: 0 },
     transition: { 
       duration: TRANSITION_CONFIG.DURATIONS.FAST, 
-      delay: 0.3,
+      delay: TRANSITION_CONFIG.DELAYS.LONG,
       ease: TRANSITION_CONFIG.EASING.SMOOTH
     }
   },

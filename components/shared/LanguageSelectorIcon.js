@@ -1,6 +1,8 @@
 // Import animation library and app context
-import { motion } from 'framer-motion';
-import { getPageTransition, getInteractiveTransition } from '../../utils/screenTransitions';
+import React from 'react';
+import { motion } from '../../utils/screenTransitions';
+
+import { INTERACTIVE_TRANSITIONS } from '../../utils/screenTransitions';
 import { useApp } from '../../context/AppContext';
 
 // Language selector icon component - trigger for language overlay
@@ -66,8 +68,8 @@ const LanguageSelectorIcon = ({
       <motion.button
         onClick={handleClick}
         onTouchStart={handleTouchStart}
-        whileHover={getInteractiveTransition('button').hover}
-        whileTap={getInteractiveTransition('button').tap}
+        whileHover={INTERACTIVE_TRANSITIONS.button.hover}
+        whileTap={INTERACTIVE_TRANSITIONS.button.tap}
         className="transition-all cursor-pointer relative"
         style={{
           ...getButtonStyles(),

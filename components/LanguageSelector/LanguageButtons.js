@@ -1,5 +1,5 @@
 // Import animation library and button component
-import { motion } from 'framer-motion';
+import { motion } from '../../utils/screenTransitions';
 import LanguageButton from './LanguageButton';
 import { ANIMATION_CONFIG } from './LanguageSelectorConfig';
 

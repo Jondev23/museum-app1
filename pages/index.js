@@ -1,6 +1,6 @@
 // Import app context and animation library
 import { useApp } from '../context/AppContext';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from '../utils/screenTransitions';
 
 // Import unified transition system
 import { 

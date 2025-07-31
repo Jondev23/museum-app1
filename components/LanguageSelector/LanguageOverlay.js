@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from '../../utils/screenTransitions';
 import { ANIMATION_CONFIG } from './LanguageSelectorConfig';
 
 // Animated overlay component for language selector background

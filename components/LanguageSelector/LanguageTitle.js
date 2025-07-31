@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from '../../utils/screenTransitions';
 import { ANIMATION_CONFIG, STYLE_CONFIG } from './LanguageSelectorConfig';
 import { processTextWithHTML } from '../../utils/textProcessor';
 

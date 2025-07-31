@@ -10,7 +10,7 @@ const ResultsProgress = ({ questions, answers, showContent }) => {
         marginTop: '4.6rem',
         marginBottom: 'clamp(1rem, 3vh, 2rem)', 
         opacity: showContent ? 1 : 0, // Simple opacity control, no competing animation
-        transition: `opacity ${TRANSITION_CONFIG.DURATIONS.FAST}s ease 0.2s` // Delayed opacity transition
+        transition: `opacity ${TRANSITION_CONFIG.DURATIONS.FAST}s ease ${TRANSITION_CONFIG.DELAYS.MEDIUM}s` // Delayed opacity transition
       }}
     >
       <ProgressDots

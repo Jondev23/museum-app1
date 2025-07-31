@@ -1,5 +1,5 @@
 import { useApp } from '../context/AppContext';
-import { motion } from 'framer-motion';
+import { motion } from '../utils/screenTransitions';
 import { getKioskSelectorTransition } from '../utils/screenTransitions';
 import { KIOSK_CONFIGS } from '../utils/kioskConfig';
 

@@ -1,5 +1,5 @@
 // Import animation library and language selector components
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from '../utils/screenTransitions';
 import useLanguageSelector from '../hooks/useLanguageSelector';
 
 // Import subcomponents

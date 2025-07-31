@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from '../../utils/screenTransitions';
 import { ANIMATION_CONFIG, DEFAULT_CONTENT } from './LanguageSelectorConfig';
 
 // Language selection icon component with animation
