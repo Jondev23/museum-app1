@@ -1,14 +1,12 @@
-import { motion } from '../../utils/screenTransitions';
-import { ANIMATION_CONFIG, STYLE_CONFIG } from './LanguageSelectorConfig';
+import { motion, getLanguageSelectorTransition } from '../../utils/screenTransitions';
+import { STYLE_CONFIG } from './LanguageSelectorConfig';
 import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Title component for language selector with bilingual text
 const LanguageTitle = ({ englishTitle, germanTitle }) => {
   return (
     <motion.div
-      initial={ANIMATION_CONFIG.TITLE.INITIAL}
-      animate={ANIMATION_CONFIG.TITLE.ANIMATE}
-      transition={ANIMATION_CONFIG.TITLE.TRANSITION}
+      {...getLanguageSelectorTransition('title')}
       style={STYLE_CONFIG.TITLE_CONTAINER}
     >
       <h1 className="title-question language-title">
