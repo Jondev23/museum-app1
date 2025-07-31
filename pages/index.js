@@ -7,6 +7,7 @@ import {
   getScreenTransition, 
   getOverlayTransition, 
   getUITransition,
+  getPageTransition,
   SCREENSAVER_TRANSITION,
   TRANSITION_CONFIG
 } from '../utils/screenTransitions';

@@ -1,5 +1,6 @@
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
+import { getKioskSelectorTransition } from '../utils/screenTransitions';
 import { KIOSK_CONFIGS } from '../utils/kioskConfig';
 
 // Kiosk selection screen for choosing between different kiosk configurations
@@ -31,9 +32,7 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
   return (
     <div className="admin-overlay" style={{ padding: 'min(2rem, 4vw)' }}>
       <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.8, opacity: 0 }}
+        {...getKioskSelectorTransition('modal')}
         className="admin-panel-wide"
       >
         <h2 className="admin-title">

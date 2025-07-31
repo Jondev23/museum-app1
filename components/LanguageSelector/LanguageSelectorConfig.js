@@ -1,45 +1,49 @@
-// Animation configurations for LanguageSelector overlay component
+// Import centralized animations
+import { LANGUAGE_SELECTOR_TRANSITIONS } from '../../utils/screenTransitions';
+
+// Animation configurations for LanguageSelector overlay component - MOVED TO screenTransitions.js
+// Compatibility mapping to maintain existing component structure
 export const ANIMATION_CONFIG = {
   // Background overlay fade animation
   OVERLAY: {
-    INITIAL: { opacity: 0 },        // Start transparent
-    ANIMATE: { opacity: 1 },        // Fade to visible
-    EXIT: { opacity: 0 },           // Fade out on exit
-    TRANSITION: { duration: 0.3 }   // Animation duration
+    INITIAL: LANGUAGE_SELECTOR_TRANSITIONS.overlay.initial,
+    ANIMATE: LANGUAGE_SELECTOR_TRANSITIONS.overlay.animate,
+    EXIT: LANGUAGE_SELECTOR_TRANSITIONS.overlay.exit,
+    TRANSITION: LANGUAGE_SELECTOR_TRANSITIONS.overlay.transition
   },
 
   // Main container scale and fade animation
   CONTAINER: {
-    INITIAL: { scale: 0.8, opacity: 0 },  // Start smaller and transparent
-    ANIMATE: { scale: 1, opacity: 1 },    // Scale to normal size and visible
-    EXIT: { scale: 0.8, opacity: 0 },     // Scale down and fade out
-    TRANSITION: { duration: 0.3 }          // Animation duration
+    INITIAL: LANGUAGE_SELECTOR_TRANSITIONS.container.initial,
+    ANIMATE: LANGUAGE_SELECTOR_TRANSITIONS.container.animate,
+    EXIT: LANGUAGE_SELECTOR_TRANSITIONS.container.exit,
+    TRANSITION: LANGUAGE_SELECTOR_TRANSITIONS.container.transition
   },
 
   // Globe icon pop-in animation
   GLOBE_ICON: {
-    INITIAL: { scale: 0 },              // Start at zero scale
-    ANIMATE: { scale: 1 },              // Pop to normal size
-    TRANSITION: { duration: 0.3, delay: 0.1 }  // With slight delay
+    INITIAL: LANGUAGE_SELECTOR_TRANSITIONS.globeIcon.initial,
+    ANIMATE: LANGUAGE_SELECTOR_TRANSITIONS.globeIcon.animate,
+    TRANSITION: LANGUAGE_SELECTOR_TRANSITIONS.globeIcon.transition
   },
 
   // Title text slide-up animation
   TITLE: {
-    INITIAL: { opacity: 0, y: 20 },     // Start below and transparent
-    ANIMATE: { opacity: 1, y: 0 },      // Move up and become visible
-    TRANSITION: { duration: 0.3, delay: 0.2 }  // With staggered delay
+    INITIAL: LANGUAGE_SELECTOR_TRANSITIONS.title.initial,
+    ANIMATE: LANGUAGE_SELECTOR_TRANSITIONS.title.animate,
+    TRANSITION: LANGUAGE_SELECTOR_TRANSITIONS.title.transition
   },
 
   // Language buttons slide-up animation
   BUTTONS: {
-    INITIAL: { opacity: 0, y: 20 },     // Start below and transparent
-    ANIMATE: { opacity: 1, y: 0 },      // Move up and become visible
-    TRANSITION: { duration: 0.3, delay: 0.3 }  // With final delay
+    INITIAL: LANGUAGE_SELECTOR_TRANSITIONS.buttons.initial,
+    ANIMATE: LANGUAGE_SELECTOR_TRANSITIONS.buttons.animate,
+    TRANSITION: LANGUAGE_SELECTOR_TRANSITIONS.buttons.transition
   },
 
   // Interactive button animation states
-  BUTTON_HOVER: { scale: 1.02 },        // Slightly larger on hover
-  BUTTON_TAP: { scale: 0.98 }           // Slightly smaller when pressed
+  BUTTON_HOVER: LANGUAGE_SELECTOR_TRANSITIONS.buttonHover,
+  BUTTON_TAP: LANGUAGE_SELECTOR_TRANSITIONS.buttonTap
 };
 
 // Styling configurations - Simplified with most styles moved to CSS

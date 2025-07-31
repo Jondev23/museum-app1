@@ -1,6 +1,7 @@
 // Import animation library and configuration
 import { motion } from 'framer-motion';
 import { ANIMATION_CONFIG } from './LanguageSelectorConfig';
+import { getInteractiveTransition } from '../../utils/screenTransitions';
 import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Individual language button component for German/English selection
@@ -28,8 +29,8 @@ const LanguageButton = ({
     <motion.button
       onClick={() => onLanguageChange(language)}
       onTouchStart={handleTouchStart}
-      whileHover={ANIMATION_CONFIG.BUTTON_HOVER}
-      whileTap={ANIMATION_CONFIG.BUTTON_TAP}
+      whileHover={getInteractiveTransition('languageButton').hover}
+      whileTap={getInteractiveTransition('languageButton').tap}
       className={buttonClass}
       style={{
         touchAction: 'manipulation',
