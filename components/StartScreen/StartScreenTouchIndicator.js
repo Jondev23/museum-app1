@@ -32,30 +32,7 @@ const StartScreenTouchIndicator = ({
       />
       
       {/* CSS animation keyframes from centralized system */}
-      <style jsx>{`
-        @keyframes fade-swipe {
-          0% { 
-            transform: translateX(56px);
-            opacity: 0;
-          }
-          22% { 
-            transform: translateX(0px);
-            opacity: 1;
-          }
-          33% { 
-            transform: translateX(0px);
-            opacity: 1;
-          }
-          78% { 
-            transform: translateX(0px);
-            opacity: 1;
-          }
-          100% { 
-            transform: translateX(-56px);
-            opacity: 0;
-          }
-        }
-      `}</style>
+      <style jsx>{`${CSS_ANIMATIONS.fadeSwipe}`}</style>
     </div>
   );
 };
