@@ -339,6 +339,34 @@ export const UI_TRANSITIONS = {
       duration: TRANSITION_CONFIG.DURATIONS.FAST,
       ease: TRANSITION_CONFIG.EASING.SMOOTH
     }
+  },
+
+  // Touch indicator swipe animation
+  touchIndicator: {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition: {
+      duration: 0.5,
+      ease: TRANSITION_CONFIG.EASING.SMOOTH
+    },
+    // CSS animation properties
+    css: {
+      animation: 'fade-swipe 4.5s ease-in-out infinite',
+      transition: 'transform 0.2s ease, opacity 0.5s ease'
+    },
+    // Interactive states
+    hover: { scale: 1.1 },
+    tap: { scale: 0.9 }
+  },
+
+  // Content fade in/out based on visibility
+  contentFade: {
+    getOpacity: (showContent) => ({ opacity: showContent ? 1 : 0 }),
+    transition: {
+      duration: TRANSITION_CONFIG.DURATIONS.FAST,
+      ease: TRANSITION_CONFIG.EASING.SMOOTH
+    }
   }
 };
 
@@ -352,6 +380,53 @@ export const SCREENSAVER_TRANSITION = {
       duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
       ease: TRANSITION_CONFIG.EASING.SMOOTH
     }
+  }
+};
+
+// CSS Keyframes animations - centralized CSS animations
+export const CSS_ANIMATIONS = {
+  // Swipe animation keyframes for touch indicator
+  fadeSwipe: `
+    @keyframes fade-swipe {
+      0% { 
+        transform: translateX(56px);
+        opacity: 0;
+      }
+      22% { 
+        transform: translateX(0px);
+        opacity: 1;
+      }
+      33% { 
+        transform: translateX(0px);
+        opacity: 1;
+      }
+      78% { 
+        transform: translateX(0px);
+        opacity: 1;
+      }
+      100% { 
+        transform: translateX(-56px);
+        opacity: 0;
+      }
+    }
+  `
+};
+
+// CSS Variables for consistent transitions
+export const CSS_VARIABLES = {
+  // Transition durations as CSS custom properties
+  transitions: {
+    fast: `${TRANSITION_CONFIG.DURATIONS.FAST}s`,
+    standard: `${TRANSITION_CONFIG.DURATIONS.STANDARD}s`,
+    slow: `${TRANSITION_CONFIG.DURATIONS.SLOW}s`
+  },
+  
+  // Common CSS transition values
+  values: {
+    allFast: `all ${TRANSITION_CONFIG.DURATIONS.FAST}s ${TRANSITION_CONFIG.EASING.SMOOTH}`,
+    allStandard: `all ${TRANSITION_CONFIG.DURATIONS.STANDARD}s ${TRANSITION_CONFIG.EASING.SMOOTH}`,
+    transformFast: `transform ${TRANSITION_CONFIG.DURATIONS.FAST}s ${TRANSITION_CONFIG.EASING.SMOOTH}`,
+    opacityFast: `opacity ${TRANSITION_CONFIG.DURATIONS.FAST}s ${TRANSITION_CONFIG.EASING.SMOOTH}`
   }
 };
 

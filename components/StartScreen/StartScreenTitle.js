@@ -1,6 +1,8 @@
 // Import React and responsive text hook
 import { START_SCREEN_CONFIG } from './StartScreenConfig';
+import React, { useRef, useEffect } from 'react';
 import { processTextWithHTML } from '../../utils/textProcessor';
+import { UI_TRANSITIONS } from '../../utils/screenTransitions';
 
 
 // Start screen title component with responsive text and animations
@@ -32,7 +34,7 @@ const StartScreenTitle = ({
           style={{
             ...adjustedTitleStyle,
             color: 'var(--color-text-primary)',
-            opacity: showContent ? 1 : 0
+            ...UI_TRANSITIONS.contentFade.getOpacity(showContent)
           }}
         >
           {processTextWithHTML(startContent?.title || defaultTexts.title)}
@@ -49,7 +51,7 @@ const StartScreenTitle = ({
               ...adjustedSubtitleStyle,
               width: '98%',
               color: startContent?.subtitleColor || 'var(--color-blassgruen)',
-              opacity: showContent ? 1 : 0
+              ...UI_TRANSITIONS.contentFade.getOpacity(showContent)
             }}
           >
             {processTextWithHTML(startContent?.subtitle || defaultTexts.subtitle)}

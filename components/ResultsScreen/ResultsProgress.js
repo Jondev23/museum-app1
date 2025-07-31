@@ -1,5 +1,5 @@
 import ProgressDots from '../shared/ProgressDots';
-import { TRANSITION_CONFIG } from '../../utils/screenTransitions';
+import { TRANSITION_CONFIG, UI_TRANSITIONS } from '../../utils/screenTransitions';
 
 // Progress dots component for results screen - inherits parent animation (slides from right)
 const ResultsProgress = ({ questions, answers, showContent }) => {
@@ -9,8 +9,8 @@ const ResultsProgress = ({ questions, answers, showContent }) => {
       style={{ 
         marginTop: '4.6rem',
         marginBottom: 'clamp(1rem, 3vh, 2rem)', 
-        opacity: showContent ? 1 : 0, // Simple opacity control, no competing animation
-        transition: `opacity ${TRANSITION_CONFIG.DURATIONS.FAST}s ease ${TRANSITION_CONFIG.DELAYS.MEDIUM}s` // Delayed opacity transition
+        ...UI_TRANSITIONS.contentFade.getOpacity(showContent),
+        transition: `opacity ${TRANSITION_CONFIG.DURATIONS.FAST}s ease ${TRANSITION_CONFIG.DELAYS.MEDIUM}s`
       }}
     >
       <ProgressDots

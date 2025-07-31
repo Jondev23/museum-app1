@@ -1,6 +1,8 @@
 
 import useResponsiveText from '../../hooks/useResponsiveText';
+import React, { useRef, useEffect } from 'react';
 import { processTextWithHTML } from '../../utils/textProcessor';
+import { UI_TRANSITIONS } from '../../utils/screenTransitions';
 
 // Description component for start screen with responsive text sizing
 const StartScreenDescription = ({ 
@@ -31,7 +33,7 @@ const StartScreenDescription = ({
       style={{
         ...descriptionContainerStyle,
         color: 'var(--color-text-primary)',
-        opacity: showContent ? 1 : 0
+        ...UI_TRANSITIONS.contentFade.getOpacity(showContent)
       }}
     >
       <div 
