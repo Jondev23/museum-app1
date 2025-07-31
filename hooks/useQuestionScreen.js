@@ -71,11 +71,10 @@ export const useQuestionScreen = () => {
     return `${baseClasses} opacity-60 cursor-not-allowed`;
   }, [selectedAnswer, isProcessing]);
 
-  // Get motion properties for answer buttons
+  // Get motion properties for answer buttons - Touch optimized
   const getButtonMotionProps = useCallback((index) => {
     if (selectedAnswer === null && !isProcessing) {
       return {
-        whileHover: INTERACTIVE_TRANSITIONS.answerButton.hover,
         whileTap: INTERACTIVE_TRANSITIONS.answerButton.tap
       };
     }

@@ -17,7 +17,6 @@ const FeedbackButton = ({
           e.stopPropagation();
           nextQuestion(); // Navigate to next question or results
         }}
-        whileHover={INTERACTIVE_TRANSITIONS.feedbackButton.hover}
         whileTap={INTERACTIVE_TRANSITIONS.feedbackButton.tap}
         className="flex items-center transition-all cursor-pointer"
         style={{

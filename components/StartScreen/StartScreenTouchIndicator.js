@@ -18,7 +18,6 @@ const StartScreenTouchIndicator = ({
   return (
     <motion.div
       onClick={handleSwipeLeft}
-      whileHover={UI_TRANSITIONS.touchIndicator.hover}
       whileTap={UI_TRANSITIONS.touchIndicator.tap}
       style={touchIndicatorContainerStyle}
     >

@@ -68,7 +68,6 @@ const LanguageSelectorIcon = ({
       <motion.button
         onClick={handleClick}
         onTouchStart={handleTouchStart}
-        whileHover={INTERACTIVE_TRANSITIONS.button.hover}
         whileTap={INTERACTIVE_TRANSITIONS.button.tap}
         className="transition-all cursor-pointer relative"
         style={{

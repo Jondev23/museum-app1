@@ -219,8 +219,7 @@ export const LANGUAGE_SELECTOR_TRANSITIONS = {
     }
   },
 
-  // Interactive button animation states
-  buttonHover: { scale: 1.02 },
+  // Interactive button animation states - Touch optimized
   buttonTap: { scale: 0.98 }
 };
 
@@ -248,12 +247,9 @@ export const ADMIN_PANEL_TRANSITIONS = {
     }
   },
 
-  // Timeout option hover effect
+  // Timeout option touch feedback only
   timeoutOption: {
-    hover: { 
-      y: -1,
-      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
-    },
+    tap: { scale: 0.98 },
     transition: {
       duration: TRANSITION_CONFIG.DURATIONS.FAST,
       ease: TRANSITION_CONFIG.EASING.SMOOTH
@@ -314,29 +310,25 @@ export const PAGE_TRANSITIONS = {
   }
 };
 
-// Interactive elements animations
+// Interactive elements animations - Touch optimized (no hover effects)
 export const INTERACTIVE_TRANSITIONS = {
-  // Standard button hover/tap
+  // Standard button tap only
   button: {
-    hover: { scale: 1.1 },
     tap: { scale: 0.95 }
   },
 
-  // Language selector button hover/tap
+  // Language selector button tap only
   languageButton: {
-    hover: { scale: 1.02 },
     tap: { scale: 0.98 }
   },
 
-  // Feedback button hover/tap (slightly more pronounced than language button)
+  // Feedback button tap (slightly more pronounced than language button)
   feedbackButton: {
-    hover: { scale: 1.05 },
     tap: { scale: 0.95 }
   },
 
-  // Answer button hover/tap with subtle scale effects
+  // Answer button tap with subtle scale effects
   answerButton: {
-    hover: { scale: 1.02 },
     tap: { scale: 0.98 }
   }
 };
@@ -379,8 +371,7 @@ export const UI_TRANSITIONS = {
       animation: 'fade-swipe 4.5s ease-in-out infinite',
       transition: 'transform 0.2s ease, opacity 0.5s ease'
     },
-    // Interactive states
-    hover: { scale: 1.1 },
+    // Touch feedback only
     tap: { scale: 0.9 }
   },
 

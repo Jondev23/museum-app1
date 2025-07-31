@@ -25,11 +25,10 @@ const LanguageButton = ({
   };
 
   return (
-    // Animated button with hover and tap interactions
+    // Animated button with tap interaction only (touch optimized)
     <motion.button
       onClick={() => onLanguageChange(language)}
       onTouchStart={handleTouchStart}
-      whileHover={INTERACTIVE_TRANSITIONS.languageButton.hover}
       whileTap={INTERACTIVE_TRANSITIONS.languageButton.tap}
       className={buttonClass}
       style={{
