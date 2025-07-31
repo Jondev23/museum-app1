@@ -43,9 +43,11 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   // Main content container styles
   const mainContentStyle = useMemo(() => ({
     width: '100%',
-    maxWidth: 'min(127rem, 84vw)',    
-    paddingTop: 'min(6rem, 8vh)',     
+    
+    paddingTop: '5rem',     
     paddingBottom: 'min(2rem, 3vh)',  
+    paddingLeft: '10rem',             
+    paddingRight: '10rem',            
     margin: '0 auto'                  
   }), []);
 
