@@ -56,8 +56,8 @@ export default function Home() {
     const screens = {
       'screensaver': { Component: ScreensaverScreen, key: "screensaver" },
       'start': { Component: StartScreen, key: "start" },
-      'question': { Component: QuestionScreen, key: `question-${currentQuestionIndex}` },
-      'feedback': { Component: FeedbackScreen, key: `feedback-${currentQuestionIndex}` },
+      'question': { Component: QuestionScreen, key: "question" },
+      'feedback': { Component: FeedbackScreen, key: "feedback" },
       'results': { Component: ResultsScreen, key: "results" }
     };
 

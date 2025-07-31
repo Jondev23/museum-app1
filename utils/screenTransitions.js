@@ -102,16 +102,24 @@ const MODAL_TRANSITION = {
   ease: TRANSITION_CONFIG.EASING.BOUNCE
 };
 
+// No animation configuration - for screens that should appear instantly
+const NO_ANIMATION = {
+  initial: { opacity: 1 },
+  animate: { opacity: 1 },
+  exit: { opacity: 1 },
+  transition: { duration: 0 }
+};
+
 // Screen transition variants - unified using generator
 export const SCREEN_TRANSITIONS = {
   screensaver: createTransition('fade', 'standard'),
-  default: createTransition('slideHorizontal', 'standard')
+  default: createTransition('slideHorizontal', 'standard'),
+  feedback: NO_ANIMATION // FeedbackScreen sin animaciones
 };
 
 // Create aliases for all screen types using the same transition
 SCREEN_TRANSITIONS.start = SCREEN_TRANSITIONS.default;
 SCREEN_TRANSITIONS.question = SCREEN_TRANSITIONS.default;
-SCREEN_TRANSITIONS.feedback = SCREEN_TRANSITIONS.default;
 SCREEN_TRANSITIONS.results = SCREEN_TRANSITIONS.default;
 
 // Footer animations - unified using generator
