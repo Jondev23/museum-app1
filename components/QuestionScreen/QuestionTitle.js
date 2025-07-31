@@ -37,7 +37,7 @@ const QuestionTitle = ({ question }) => {
         duration: QUESTION_CONFIG.ANIMATION_DURATIONS.TITLE, 
         delay: QUESTION_CONFIG.ANIMATION_DELAYS.TITLE 
       }}
-      className="typography-fragen text-primary relative w-full max-h-[20vh] overflow-hidden flex items-center justify-center text-center mb-[min(3rem,4vh)] box-border"
+      className="typography-fragen text-primary relative w-full max-h-[20vh] overflow-hidden flex items-center justify-center text-center mb-[min(3rem,4vh)] box-border !px-0"
     >
       {processTextWithHTML(question.question)}
     </motion.h1>

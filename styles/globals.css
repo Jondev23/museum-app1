@@ -332,8 +332,8 @@
     font-weight: var(--typography-fragen-font-weight);
     font-style: var(--typography-fragen-font-style);
     text-align: center;
-    padding-left: min(12rem, 12vw, 15vh);
-    padding-right: min(12rem, 12vw, 15vh);
+    padding-left: min(1.8rem, 1.8vw, 3vh);
+    padding-right: min(1.8rem, 1.8vw, 3vh);
     box-sizing: border-box;
   }
 
