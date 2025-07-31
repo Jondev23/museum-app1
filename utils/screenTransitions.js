@@ -70,6 +70,22 @@ const BASE_ANIMATIONS = {
   }
 };
 
+// Unified transition generator - creates consistent transitions
+const createTransition = (animation, timing = 'standard', delay = 0) => {
+  const timingMap = {
+    fast: FAST_TRANSITION,
+    standard: STANDARD_TRANSITION,
+    modal: MODAL_TRANSITION
+  };
+  
+  const baseTransition = timingMap[timing] || STANDARD_TRANSITION;
+  
+  return {
+    ...BASE_ANIMATIONS[animation],
+    transition: delay > 0 ? { ...baseTransition, delay } : baseTransition
+  };
+};
+
 // Standard transition configurations
 const STANDARD_TRANSITION = {
   duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
@@ -86,19 +102,10 @@ const MODAL_TRANSITION = {
   ease: TRANSITION_CONFIG.EASING.BOUNCE
 };
 
-// Screen transition variants - all screens use the same patterns
+// Screen transition variants - unified using generator
 export const SCREEN_TRANSITIONS = {
-  // Screensaver - simple fade
-  screensaver: {
-    ...BASE_ANIMATIONS.fade,
-    transition: STANDARD_TRANSITION
-  },
-
-  // All other screens use the same horizontal slide pattern
-  default: {
-    ...BASE_ANIMATIONS.slideHorizontal,
-    transition: STANDARD_TRANSITION
-  }
+  screensaver: createTransition('fade', 'standard'),
+  default: createTransition('slideHorizontal', 'standard')
 };
 
 // Create aliases for all screen types using the same transition
@@ -107,46 +114,25 @@ SCREEN_TRANSITIONS.question = SCREEN_TRANSITIONS.default;
 SCREEN_TRANSITIONS.feedback = SCREEN_TRANSITIONS.default;
 SCREEN_TRANSITIONS.results = SCREEN_TRANSITIONS.default;
 
-// Footer animations - unified using base animations
+// Footer animations - unified using generator
 export const FOOTER_TRANSITIONS = {
-  // Standard footer with slide up
-  standard: {
-    ...BASE_ANIMATIONS.slideUp,
-    transition: {
-      ...FAST_TRANSITION,
-      delay: TRANSITION_CONFIG.DELAYS.SHORT
-    }
-  },
-
-  // Footer that slides with main content
-  slide: {
-    ...BASE_ANIMATIONS.slideHorizontal,
-    transition: STANDARD_TRANSITION
-  }
+  standard: createTransition('slideUp', 'fast', TRANSITION_CONFIG.DELAYS.SHORT),
+  slide: createTransition('slideHorizontal', 'standard')
 };
 
-// Overlay animations - simplified since most are the same
+// Overlay animations - unified using generator
 export const OVERLAY_TRANSITIONS = {
-  // Standard fade for general overlays
-  fade: {
-    ...BASE_ANIMATIONS.fade,
-    transition: FAST_TRANSITION
-  },
-
-  // Scale and fade for modals - used by language selector, admin panel, kiosk selector
-  modal: {
-    ...BASE_ANIMATIONS.scaleModal,
-    transition: MODAL_TRANSITION
-  }
+  fade: createTransition('fade', 'fast'),
+  modal: createTransition('scaleModal', 'modal')
 };
 
-// Language Selector animations - reuse overlay patterns
+// Language Selector animations - unified with sequential timing
 export const LANGUAGE_SELECTOR_TRANSITIONS = {
-  // Background overlay and container reuse existing patterns
+  // Reuse overlay patterns
   overlay: OVERLAY_TRANSITIONS.fade,
   container: OVERLAY_TRANSITIONS.modal,
 
-  // Sequential animations for content elements
+  // Sequential content elements with unified timing
   globeIcon: {
     initial: { scale: 0 },
     animate: { scale: 1 },
@@ -157,23 +143,8 @@ export const LANGUAGE_SELECTOR_TRANSITIONS = {
     }
   },
 
-  title: {
-    ...BASE_ANIMATIONS.slideUp,
-    transition: { 
-      duration: TRANSITION_CONFIG.DURATIONS.FAST, 
-      delay: TRANSITION_CONFIG.DELAYS.MEDIUM,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
-  },
-
-  buttons: {
-    ...BASE_ANIMATIONS.slideUp,
-    transition: { 
-      duration: TRANSITION_CONFIG.DURATIONS.FAST, 
-      delay: TRANSITION_CONFIG.DELAYS.LONG,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
-  },
+  title: createTransition('slideUp', 'fast', TRANSITION_CONFIG.DELAYS.MEDIUM),
+  buttons: createTransition('slideUp', 'fast', TRANSITION_CONFIG.DELAYS.LONG),
 
   // Interactive button tap
   buttonTap: { scale: 0.98 }
@@ -192,15 +163,14 @@ INTERACTIVE_TRANSITIONS.feedbackButton = INTERACTIVE_TRANSITIONS.standard;
 INTERACTIVE_TRANSITIONS.languageButton = INTERACTIVE_TRANSITIONS.subtle;
 INTERACTIVE_TRANSITIONS.answerButton = INTERACTIVE_TRANSITIONS.subtle;
 
-// Unified UI element animations
+// Unified UI element animations using generator
 export const UI_TRANSITIONS = {
-  // Core patterns
+  // Core patterns using generator
   content: {
-    ...BASE_ANIMATIONS.slideUp,
+    ...createTransition('slideUp', 'fast'),
     initial: { opacity: 0, y: 10 },
     animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 10 },
-    transition: FAST_TRANSITION
+    exit: { opacity: 0, y: 10 }
   },
 
   icon: {
@@ -222,7 +192,7 @@ export const UI_TRANSITIONS = {
 
   // Special case - touch indicator
   touchIndicator: {
-    ...BASE_ANIMATIONS.fade,
+    ...createTransition('fade', 'standard'),
     transition: {
       duration: 0.5,
       ease: TRANSITION_CONFIG.EASING.SMOOTH
@@ -241,18 +211,10 @@ UI_TRANSITIONS.contentFadeDelayed = UI_TRANSITIONS.delayedContent;
 UI_TRANSITIONS.progressDots = UI_TRANSITIONS.content;
 UI_TRANSITIONS.languageIcon = UI_TRANSITIONS.icon;
 
-// Unified page transition - single configuration for all page elements
-export const PAGE_TRANSITION = {
-  ...BASE_ANIMATIONS.fade,
-  transition: STANDARD_TRANSITION
-};
-
-// Special transition for screensaver timeout - uses base fade
+// Unified page and screensaver transitions using generator
+export const PAGE_TRANSITION = createTransition('fade', 'standard');
 export const SCREENSAVER_TRANSITION = {
-  overlay: {
-    ...BASE_ANIMATIONS.fade,
-    transition: STANDARD_TRANSITION
-  }
+  overlay: createTransition('fade', 'standard')
 };
 
 // CSS Keyframes animations - centralized CSS animations
@@ -302,51 +264,46 @@ export const CSS_VARIABLES = {
   }
 };
 
-// Helper function to get transition config for a screen
-export const getScreenTransition = (screenName) => {
-  return SCREEN_TRANSITIONS[screenName] || SCREEN_TRANSITIONS.screensaver;
-};
+// Unified transition helper - one function for all transition types
+export const getTransition = (category, element = 'default', ...args) => {
+  const categories = {
+    screen: SCREEN_TRANSITIONS,
+    footer: FOOTER_TRANSITIONS,
+    overlay: OVERLAY_TRANSITIONS,
+    ui: UI_TRANSITIONS,
+    interactive: INTERACTIVE_TRANSITIONS,
+    languageSelector: LANGUAGE_SELECTOR_TRANSITIONS
+  };
 
-// Helper function to get footer transition config
-export const getFooterTransition = (type = 'standard') => {
-  return FOOTER_TRANSITIONS[type] || FOOTER_TRANSITIONS.standard;
-};
-
-// Helper function to get overlay transition config
-export const getOverlayTransition = (type = 'fade') => {
-  return OVERLAY_TRANSITIONS[type] || OVERLAY_TRANSITIONS.fade;
-};
-
-// Helper function to get UI transition config
-export const getUITransition = (element) => {
-  return UI_TRANSITIONS[element] || UI_TRANSITIONS.content;
-};
-
-// Helper function to get unified page transition config
-export const getPageTransition = (type = 'default', isTransitioningToScreensaver = false, isCriticalTransition = false) => {
-  // Handle special case for dynamic UI overlay
-  if (type === 'dynamicUIOverlay') {
-    return {
-      animate: { 
-        opacity: (isTransitioningToScreensaver || isCriticalTransition) ? 0 : 1 
-      },
-      transition: { 
-        duration: isCriticalTransition ? 0.05 : (isTransitioningToScreensaver ? 0.3 : 0.2),
-        ease: TRANSITION_CONFIG.EASING.SMOOTH
+  const categoryObj = categories[category];
+  if (!categoryObj) {
+    // Fallback for specific cases
+    if (category === 'page') {
+      if (element === 'dynamicUIOverlay') {
+        const [isTransitioningToScreensaver, isCriticalTransition] = args;
+        return {
+          animate: { 
+            opacity: (isTransitioningToScreensaver || isCriticalTransition) ? 0 : 1 
+          },
+          transition: { 
+            duration: isCriticalTransition ? 0.05 : (isTransitioningToScreensaver ? 0.3 : 0.2),
+            ease: TRANSITION_CONFIG.EASING.SMOOTH
+          }
+        };
       }
-    };
+      return PAGE_TRANSITION;
+    }
+    return null;
   }
-  
-  // Default unified page transition for all other cases
-  return PAGE_TRANSITION;
+
+  return categoryObj[element] || categoryObj.default || categoryObj.standard || categoryObj.container;
 };
 
-// Helper function to get language selector transition config
-export const getLanguageSelectorTransition = (element) => {
-  return LANGUAGE_SELECTOR_TRANSITIONS[element] || LANGUAGE_SELECTOR_TRANSITIONS.container;
-};
-
-// Helper function to get interactive transition config
-export const getInteractiveTransition = (type = 'standard') => {
-  return INTERACTIVE_TRANSITIONS[type] || INTERACTIVE_TRANSITIONS.standard;
-};
+// Backward compatibility - individual helper functions
+export const getScreenTransition = (screenName) => getTransition('screen', screenName);
+export const getFooterTransition = (type = 'standard') => getTransition('footer', type);
+export const getOverlayTransition = (type = 'fade') => getTransition('overlay', type);
+export const getUITransition = (element) => getTransition('ui', element);
+export const getInteractiveTransition = (type = 'standard') => getTransition('interactive', type);
+export const getLanguageSelectorTransition = (element) => getTransition('languageSelector', element);
+export const getPageTransition = (type = 'default', ...args) => getTransition('page', type, ...args);
