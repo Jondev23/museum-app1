@@ -1,30 +1,9 @@
 
-// Configuration constants for start screen animations and behavior
+// Configuration constants for start screen behavior
 export const START_SCREEN_CONFIG = {
-  // Animation delay timings in seconds
-  ANIMATION_DELAYS: {
-    CONTENT_TRIGGER: 150, // Initial content display delay (ms)
-    TITLE: 0.2,           // Title animation delay
-    SUBTITLE: 0.4,        // Subtitle animation delay
-    DESCRIPTION: 0.6,     // Description animation delay
-    TOUCH_INDICATOR: 1.0, // Touch indicator animation delay
-  },
-  // Animation duration timings in seconds
-  ANIMATION_DURATIONS: {
-    SCREEN_TRANSITION: 0.8, // Screen change transition
-    CONTENT_FADE: 0.8,      // Content fade in/out
-    TOUCH_INDICATOR: 2,     // Touch indicator animation cycle
-  },
   // Swipe gesture configuration
   SWIPE: {
     MIN_DISTANCE: 100, // Minimum pixels for swipe detection
-  },
-  // Touch indicator animation settings
-  TOUCH_INDICATOR: {
-    ANIMATION_TYPE: "easeInOut",
-    REPEAT: Infinity,
-    X_MOVEMENT: [0, -30, 0],    // Horizontal movement animation
-    SCALE_MOVEMENT: [1, 1.1, 1], // Scale animation
   },
 };
 

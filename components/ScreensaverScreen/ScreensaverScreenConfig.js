@@ -1,22 +1,8 @@
 // Import React hooks for memoization
 import { useMemo } from 'react';
 
-// Configuration constants for screensaver screen behavior and animations
+// Configuration constants for screensaver screen behavior
 export const SCREENSAVER_CONFIG = {
-  // Animation delay timings in seconds
-  ANIMATION_DELAYS: {
-    TITLE: 0.5,            // Title fade-in delay
-    TOUCH_INDICATOR: 1.0,  // Touch indicator appearance delay
-    TOUCH_ANIMATION: 0.5,  // Touch animation start delay
-  },
-  
-  // Animation duration timings in seconds
-  ANIMATION_DURATIONS: {
-    SCREEN_TRANSITION: 1.0, // Screen transition duration
-    TITLE_PULSE: 3.0,       // Title pulsing animation cycle
-    TOUCH_BOUNCE: 2.5,      // Touch indicator bounce cycle
-  },
-  
   // Color configuration using CSS custom properties and classes
   COLORS: {
     TITLE: 'var(--color-screensaver-title)',  // Title text color
@@ -24,22 +10,6 @@ export const SCREENSAVER_CONFIG = {
     TOUCH_BACKGROUND: 'bg-white/20',          // Touch indicator background
     TOUCH_BORDER: 'border-white/30',          // Touch indicator border
     LOADING_BG: 'bg-black',                   // Loading screen background
-  },
-  
-  // Title pulsing animation configuration
-  TITLE_ANIMATION: {
-    SCALE: [1, 1.02, 1],       // Scale animation keyframes
-    OPACITY: [0.9, 1, 0.9],    // Opacity animation keyframes
-    EASE: "easeInOut",         // Animation easing
-    REPEAT: Infinity,          // Infinite repeat
-  },
-  
-  // Touch indicator bounce animation configuration
-  TOUCH_ANIMATION: {
-    Y_MOVEMENT: [0, -15, 0],    // Vertical movement keyframes
-    SCALE_MOVEMENT: [1, 1.1, 1], // Scale animation keyframes
-    EASE: "easeInOut",          // Animation easing
-    REPEAT: Infinity,           // Infinite repeat
   },
   
   // Video configuration

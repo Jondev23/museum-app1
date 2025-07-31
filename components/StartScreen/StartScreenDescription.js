@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { START_SCREEN_CONFIG } from './StartScreenConfig';
 import useResponsiveText from '../../hooks/useResponsiveText';
 import { processTextWithHTML } from '../../utils/textProcessor';
@@ -27,17 +26,12 @@ const StartScreenDescription = ({
     { minScale: 0.4, step: 1, delay: 200 }
   );
   return (
-    <motion.div
-      initial={{ y: 50, opacity: 0 }}
-      animate={showContent ? { y: 0, opacity: 1 } : {}}
-      transition={{ 
-        duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.CONTENT_FADE, 
-        delay: START_SCREEN_CONFIG.ANIMATION_DELAYS.DESCRIPTION 
-      }}
+    <div
       className="typography-antwort-fliess text-primary"
       style={{
         ...descriptionContainerStyle,
-        color: 'var(--color-text-primary)'
+        color: 'var(--color-text-primary)',
+        opacity: showContent ? 1 : 0
       }}
     >
       <div 
@@ -66,7 +60,7 @@ const StartScreenDescription = ({
         {/* Intro text section */}
         {processTextWithHTML(startContent?.introText || defaultTexts.introText)}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

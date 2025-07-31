@@ -1,19 +1,8 @@
 // Import React hooks for memoization
 import { useMemo } from 'react';
 
-// Configuration constants for feedback screen animations and styling
+// Configuration constants for feedback screen styling
 export const FEEDBACK_CONFIG = {
-  // Animation duration timings in seconds
-  ANIMATION_DURATIONS: {
-    SCREEN_TRANSITION: 0.4, // Screen transition duration
-    CONTAINER: 0.4,         // Container animation duration
-    TITLE: 0.1,             // Title animation duration
-    ANSWER: 0.2,            // Answer reveal animation
-    MESSAGE: 0.3,           // Feedback message animation
-    BUTTON: 0.8,            // Continue button animation
-    BUTTON_DELAY: 0.7,      // Delay before button appears
-  },
-  
   // Color configuration using CSS custom properties
   COLORS: {
     CORRECT_BG: 'var(--color-feedback-correct)',     // Green for correct answers

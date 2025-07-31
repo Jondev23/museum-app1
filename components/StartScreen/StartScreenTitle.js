@@ -1,5 +1,4 @@
-// Import React, animation library, and responsive text hook
-import { motion } from 'framer-motion';
+// Import React and responsive text hook
 import { START_SCREEN_CONFIG } from './StartScreenConfig';
 import { processTextWithHTML } from '../../utils/textProcessor';
 
@@ -27,44 +26,34 @@ const StartScreenTitle = ({
     <div className="flex flex-col items-center w-full h-full justify-center">
       
       {showTitle && (
-        <motion.h1
+        <h1
           ref={titleRef}
-          initial={{ y: 50, opacity: 0 }}
-          animate={showContent ? { y: 0, opacity: 1 } : {}}
-          transition={{ 
-            duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.CONTENT_FADE, 
-            delay: START_SCREEN_CONFIG.ANIMATION_DELAYS.TITLE 
-          }}
           className="typography-head text-primary"
           style={{
             ...adjustedTitleStyle,
-            color: 'var(--color-text-primary)'
+            color: 'var(--color-text-primary)',
+            opacity: showContent ? 1 : 0
           }}
         >
           {processTextWithHTML(startContent?.title || defaultTexts.title)}
-        </motion.h1>
+        </h1>
       )}
 
       
       {showSubtitle && (
         <div className="w-full flex justify-center">
-          <motion.h2
+          <h2
             ref={subtitleRef}
-            initial={{ y: 50, opacity: 0 }}
-            animate={showContent ? { y: 0, opacity: 1 } : {}}
-            transition={{ 
-              duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.CONTENT_FADE, 
-              delay: START_SCREEN_CONFIG.ANIMATION_DELAYS.SUBTITLE 
-            }}
             className="typography-subline"
             style={{
               ...adjustedSubtitleStyle,
               width: '98%',
-              color: startContent?.subtitleColor || 'var(--color-blassgruen)'
+              color: startContent?.subtitleColor || 'var(--color-blassgruen)',
+              opacity: showContent ? 1 : 0
             }}
           >
             {processTextWithHTML(startContent?.subtitle || defaultTexts.subtitle)}
-          </motion.h2>
+          </h2>
         </div>
       )}
     </div>

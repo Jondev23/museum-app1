@@ -24,19 +24,6 @@ const AnswerButtons = ({
       {question.answers.map((answer, index) => (
         <button
           key={index}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ 
-            opacity: selectedAnswer === index ? 1 : 0,
-            transition: { 
-              duration: selectedAnswer === index ? 0.2 : 0.1,
-              delay: selectedAnswer === index ? 0.2 : 0
-            }
-          }}
-          transition={{ 
-            duration: QUESTION_CONFIG.ANIMATION_DURATIONS.BUTTON_INDIVIDUAL, 
-            delay: QUESTION_CONFIG.ANIMATION_DELAYS.BUTTON_BASE + index * QUESTION_CONFIG.ANIMATION_DELAYS.BUTTON_STAGGER 
-          }}
           onClick={() => handleAnswerClick(index, QUESTION_CONFIG.ANSWER_DELAY)}
           onTouchStart={(e) => handleTouchStart(e, index)}
           disabled={selectedAnswer !== null || isProcessing}
@@ -57,9 +44,9 @@ const AnswerButtons = ({
           >
             {processTextWithHTML(answer)}
           </span>
-        </motion.button>
+        </button>
       ))}
-    </motion.div>
+    </div>
   );
 };
 

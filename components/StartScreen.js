@@ -44,7 +44,6 @@ const StartScreen = () => {
     <>
       {/* Content container - animations now handled by index.js */}
       <div
-        transition={{ duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
         className="fixed inset-0 overflow-hidden cursor-pointer z-20"
         onTouchStart={handleTouchStart}
         onClick={handleClick}
