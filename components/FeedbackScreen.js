@@ -37,10 +37,10 @@ const FeedbackScreen = () => {
   // Custom exit animation handler
   const handleExit = () => {
     setIsExiting(true);
-    // Mismo timing que ScreensaverScreen (1 segundo)
+    // Cambiar más temprano para permitir superposición con efecto "empuje"
     setTimeout(() => {
       originalNextQuestion();
-    }, 1000);
+    }, 200); // Cambio temprano para superposición
   };
 
   // Get dynamic styles based on content and answer correctness

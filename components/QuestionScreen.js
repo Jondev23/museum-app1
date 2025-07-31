@@ -43,7 +43,7 @@ const QuestionScreen = () => {
         animate={{ x: 0, opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ 
-          duration: QUESTION_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION,
+          duration: 1.2, // Duración más lenta para efecto "empuje"
           exit: { duration: 0.2 }, 
           when: "afterChildren"
         }}
