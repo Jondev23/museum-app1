@@ -5,7 +5,6 @@ import { useMemo } from 'react';
 export const SCREENSAVER_CONFIG = {
   // Color configuration using CSS custom properties and classes
   COLORS: {
-    TITLE: 'var(--color-screensaver-title)',  // Title text color
     OVERLAY: 'bg-black/30',                   // Background overlay
     TOUCH_BACKGROUND: 'bg-white/20',          // Touch indicator background
     TOUCH_BORDER: 'border-white/30',          // Touch indicator border
@@ -21,15 +20,6 @@ export const SCREENSAVER_CONFIG = {
 
 // Custom hook for screensaver screen styles
 export const useScreensaverScreenStyles = () => {
-  // Title text styling with responsive sizing
-  const titleStyle = useMemo(() => ({
-    color: 'var(--color-screensaver-title)',
-    fontSize: 'min(12vw, 6rem)',     // Responsive font size with max limit
-    fontStyle: 'normal',
-    fontWeight: 500,
-    lineHeight: 'min(14vw, 7rem)'    // Responsive line height
-  }), []);
-
   // Touch indicator container spacing
   const touchIndicatorContainerStyle = useMemo(() => ({
     marginBottom: 'min(4rem, 8vw)'    // Responsive bottom margin
@@ -55,7 +45,6 @@ export const useScreensaverScreenStyles = () => {
   }), []);
 
   return {
-    titleStyle,
     touchIndicatorContainerStyle,
     touchIconBackgroundStyle,
     touchIconStyle,

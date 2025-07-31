@@ -1,5 +1,5 @@
 // Import React and feedback configuration
-import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
+
 import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Feedback screen title component with line break processing

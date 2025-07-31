@@ -1,4 +1,4 @@
-import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
+
 import useResponsiveText from '../../hooks/useResponsiveText';
 import { processTextWithHTML } from '../../utils/textProcessor';
 
