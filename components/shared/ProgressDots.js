@@ -13,7 +13,7 @@ const ProgressDots = ({
   const getGap = () => {
     switch (variant) {
       case 'results':
-        return 'min(2.8rem, 4.5vw, 5.6vh)'; 
+        return '3.42rem'; 
       default:
         return '1.1875rem'; 
     }

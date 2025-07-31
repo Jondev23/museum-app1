@@ -7,8 +7,8 @@ const ResultsProgress = ({ questions, answers, showContent }) => {
     <div 
       className="w-full flex justify-center"
       style={{ 
-        marginTop: 'clamp(2rem, 5vh, 4rem)', // Responsive top margin
-        marginBottom: 'clamp(1rem, 3vh, 2rem)', // Responsive bottom margin
+        marginTop: '4.6rem',
+        marginBottom: 'clamp(1rem, 3vh, 2rem)', 
         opacity: showContent ? 1 : 0, // Simple opacity control, no competing animation
         transition: `opacity 0.3s ease ${ANIMATION_CONFIG.DELAYS.PROGRESS}s` // Delayed opacity transition
       }}

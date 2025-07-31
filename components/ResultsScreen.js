@@ -43,7 +43,7 @@ const ResultsScreen = () => {
         <div 
           className="relative z-10 flex flex-col items-center justify-center h-full w-full"
           style={{ 
-            paddingTop: 'clamp(13rem, 15vh, 18rem)', 
+            paddingTop: '22.6rem', 
             paddingBottom: 'clamp(3.4rem, 4.4vh, 5.4rem)', 
             paddingLeft: 'var(--results-horizontal-padding)',
             paddingRight: 'var(--results-horizontal-padding)',
@@ -87,7 +87,7 @@ const ResultsScreen = () => {
         exit={{ opacity: 0 }}
         transition={{ 
           duration: 0.4, // Entry duration
-          exit: { duration: 0.2, delay: 0.15 } // Delayed exit to overlap with next screen footer
+          exit: { duration: 0.2, delay: 0.15 } 
         }}
         className="fixed bottom-0 left-0 right-0 z-50"
       >
