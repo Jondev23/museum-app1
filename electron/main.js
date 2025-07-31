@@ -15,7 +15,11 @@ console.log('__dirname:', __dirname);
 let mainWindow;
 let inactivityTimer;
 const INACTIVITY_TIMEOUT = 3 * 60 * 1000; // 3 minutes inactivity timeout (will be configurable)
-const CONFIG_FILE_PATH = path.join(__dirname, '../public/config.json');
+
+// Use userData directory for config file - this is writable in packaged apps
+const CONFIG_FILE_PATH = isDev 
+  ? path.join(__dirname, '../public/config.json')
+  : path.join(app.getPath('userData'), 'config.json');
 
 console.log('Electron starting in', isDev ? 'DEVELOPMENT' : 'PRODUCTION', 'mode');
 console.log('Config file path:', CONFIG_FILE_PATH);
@@ -28,27 +32,49 @@ async function loadConfig() {
     console.log('Config loaded from file:', config);
     return config;
   } catch (error) {
-    console.warn('Could not load config file, using defaults:', error.message);
+    console.warn('Could not load config file, trying to migrate or create default:', error.message);
+    
+    // Try to migrate from old location in development
+    if (isDev) {
+      try {
+        const oldConfigPath = path.join(__dirname, '../public/config.json');
+        const oldConfigData = await fs.readFile(oldConfigPath, 'utf8');
+        const oldConfig = JSON.parse(oldConfigData);
+        console.log('Migrating config from old location:', oldConfig);
+        await saveConfig(oldConfig);
+        return oldConfig;
+      } catch (migrationError) {
+        console.log('No old config to migrate');
+      }
+    }
+    
     const defaultConfig = {
       activeKioskId: 'kiosk1',
       screensaverTimeout: 180000, // 3 minutes fallback
       lastUpdated: new Date().toISOString()
     };
+    
     // Try to create default config file
     try {
       await saveConfig(defaultConfig);
+      console.log('Created default config file');
     } catch (saveError) {
       console.error('Could not save default config:', saveError.message);
     }
+    
     return defaultConfig;
   }
 }
 
 async function saveConfig(config) {
   try {
+    // Ensure the directory exists (important for userData directory)
+    const configDir = path.dirname(CONFIG_FILE_PATH);
+    await fs.mkdir(configDir, { recursive: true });
+    
     const configData = JSON.stringify(config, null, 2);
     await fs.writeFile(CONFIG_FILE_PATH, configData, 'utf8');
-    console.log('Config saved to file:', config);
+    console.log('Config saved to file:', CONFIG_FILE_PATH, config);
     return true;
   } catch (error) {
     console.error('Error saving config file:', error);
