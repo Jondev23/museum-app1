@@ -1,7 +1,7 @@
 // Import React hooks and app context
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
-import { INTERACTIVE_TRANSITIONS } from '../utils/screenTransitions';
+import { getInteractiveTransition } from '../utils/screenTransitions';
 
 // Custom hook for question screen functionality
 export const useQuestionScreen = () => {
@@ -75,7 +75,7 @@ export const useQuestionScreen = () => {
   const getButtonMotionProps = useCallback((index) => {
     if (selectedAnswer === null && !isProcessing) {
       return {
-        whileTap: INTERACTIVE_TRANSITIONS.answerButton.tap
+        whileTap: getInteractiveTransition('subtle').tap
       };
     }
     

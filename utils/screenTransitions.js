@@ -140,12 +140,10 @@ export const OVERLAY_TRANSITIONS = {
   }
 };
 
-// Language Selector animations - reuse base patterns
+// Language Selector animations - reuse overlay patterns
 export const LANGUAGE_SELECTOR_TRANSITIONS = {
-  // Background overlay
+  // Background overlay and container reuse existing patterns
   overlay: OVERLAY_TRANSITIONS.fade,
-
-  // Main container 
   container: OVERLAY_TRANSITIONS.modal,
 
   // Sequential animations for content elements
@@ -181,69 +179,46 @@ export const LANGUAGE_SELECTOR_TRANSITIONS = {
   buttonTap: { scale: 0.98 }
 };
 
-// Modal transitions - unified for admin panel, kiosk selector, etc.
-export const MODAL_TRANSITIONS = {
-  // Background overlay
-  overlay: OVERLAY_TRANSITIONS.fade,
-
-  // Modal container
-  container: OVERLAY_TRANSITIONS.modal,
-
-  // Touch feedback for interactive elements
-  touchFeedback: {
-    tap: { scale: 0.98 },
-    transition: FAST_TRANSITION
-  }
-};
-
-// Interactive elements animations - create base patterns then reuse
-const STANDARD_TAP = { tap: { scale: 0.95 } };
-const SUBTLE_TAP = { tap: { scale: 0.98 } };
-
+// Unified interactive elements animations
 export const INTERACTIVE_TRANSITIONS = {
-  // Main patterns
-  standard: STANDARD_TAP,
-  subtle: SUBTLE_TAP,
-
-  // Legacy aliases for backward compatibility - reuse patterns
-  button: STANDARD_TAP,
-  feedbackButton: STANDARD_TAP,
-  languageButton: SUBTLE_TAP,
-  answerButton: SUBTLE_TAP
+  // Base tap patterns
+  standard: { tap: { scale: 0.95 } },
+  subtle: { tap: { scale: 0.98 } }
 };
 
-// UI element animations - create base patterns then reuse
-const SLIDE_UP_CONTENT = {
-  ...BASE_ANIMATIONS.slideUp,
-  initial: { opacity: 0, y: 10 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: 10 },
-  transition: FAST_TRANSITION
-};
+// Add backward compatibility aliases
+INTERACTIVE_TRANSITIONS.button = INTERACTIVE_TRANSITIONS.standard;
+INTERACTIVE_TRANSITIONS.feedbackButton = INTERACTIVE_TRANSITIONS.standard;
+INTERACTIVE_TRANSITIONS.languageButton = INTERACTIVE_TRANSITIONS.subtle;
+INTERACTIVE_TRANSITIONS.answerButton = INTERACTIVE_TRANSITIONS.subtle;
 
-const ICON_FADE = {
-  initial: { opacity: 0, scale: 0.9 },
-  animate: { opacity: 0.8, scale: 1 },
-  exit: { opacity: 0, scale: 0.9 },
-  transition: FAST_TRANSITION
-};
-
-const DYNAMIC_OPACITY = {
-  getOpacity: (showContent) => ({ opacity: showContent ? 1 : 0 }),
-  transition: FAST_TRANSITION
-};
-
-const DELAYED_OPACITY = {
-  getOpacity: (showContent) => ({ opacity: showContent ? 1 : 0 }),
-  getTransition: () => `opacity ${TRANSITION_CONFIG.DURATIONS.FAST}s ease ${TRANSITION_CONFIG.DELAYS.MEDIUM}s`
-};
-
+// Unified UI element animations
 export const UI_TRANSITIONS = {
-  // Main patterns
-  content: SLIDE_UP_CONTENT,
-  icon: ICON_FADE,
-  dynamicContent: DYNAMIC_OPACITY,
-  delayedContent: DELAYED_OPACITY,
+  // Core patterns
+  content: {
+    ...BASE_ANIMATIONS.slideUp,
+    initial: { opacity: 0, y: 10 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: 10 },
+    transition: FAST_TRANSITION
+  },
+
+  icon: {
+    initial: { opacity: 0, scale: 0.9 },
+    animate: { opacity: 0.8, scale: 1 },
+    exit: { opacity: 0, scale: 0.9 },
+    transition: FAST_TRANSITION
+  },
+
+  dynamicContent: {
+    getOpacity: (showContent) => ({ opacity: showContent ? 1 : 0 }),
+    transition: FAST_TRANSITION
+  },
+
+  delayedContent: {
+    getOpacity: (showContent) => ({ opacity: showContent ? 1 : 0 }),
+    getTransition: () => `opacity ${TRANSITION_CONFIG.DURATIONS.FAST}s ease ${TRANSITION_CONFIG.DELAYS.MEDIUM}s`
+  },
 
   // Special case - touch indicator
   touchIndicator: {
@@ -257,14 +232,14 @@ export const UI_TRANSITIONS = {
       transition: 'transform 0.2s ease, opacity 0.5s ease'
     },
     tap: { scale: 0.9 }
-  },
-
-  // Legacy aliases - reuse patterns
-  contentFade: DYNAMIC_OPACITY,
-  contentFadeDelayed: DELAYED_OPACITY,
-  progressDots: SLIDE_UP_CONTENT,
-  languageIcon: ICON_FADE
+  }
 };
+
+// Add backward compatibility aliases
+UI_TRANSITIONS.contentFade = UI_TRANSITIONS.dynamicContent;
+UI_TRANSITIONS.contentFadeDelayed = UI_TRANSITIONS.delayedContent;
+UI_TRANSITIONS.progressDots = UI_TRANSITIONS.content;
+UI_TRANSITIONS.languageIcon = UI_TRANSITIONS.icon;
 
 // Unified page transition - single configuration for all page elements
 export const PAGE_TRANSITION = {
@@ -374,9 +349,4 @@ export const getLanguageSelectorTransition = (element) => {
 // Helper function to get interactive transition config
 export const getInteractiveTransition = (type = 'standard') => {
   return INTERACTIVE_TRANSITIONS[type] || INTERACTIVE_TRANSITIONS.standard;
-};
-
-// Helper function to get modal transition config  
-export const getModalTransition = (element) => {
-  return MODAL_TRANSITIONS[element] || MODAL_TRANSITIONS.container;
 };

@@ -1,5 +1,5 @@
 import { processTextWithHTML } from '../../utils/textProcessor';
-import { motion, INTERACTIVE_TRANSITIONS } from '../../utils/screenTransitions';
+import { motion, getInteractiveTransition } from '../../utils/screenTransitions';
 
 // Continue button component for feedback screen
 const FeedbackButton = ({ 
@@ -17,7 +17,7 @@ const FeedbackButton = ({
           e.stopPropagation();
           nextQuestion(); // Navigate to next question or results
         }}
-        whileTap={INTERACTIVE_TRANSITIONS.feedbackButton.tap}
+        whileTap={getInteractiveTransition('standard').tap}
         className="flex items-center transition-all cursor-pointer"
         style={{
           ...buttonStyle,
