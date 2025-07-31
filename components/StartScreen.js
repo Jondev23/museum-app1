@@ -1,5 +1,4 @@
-// Import animation library and screen components
-import { motion } from 'framer-motion';
+// Import screen components
 import StandardFooter from './shared/StandardFooter';
 
 // Import custom hooks and configuration

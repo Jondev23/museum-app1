@@ -52,30 +52,45 @@ export const SCREEN_TRANSITIONS = {
     }
   },
 
-  // Question screen - slides in from right with push effect
+  // Question screen - slides in from right with push effect and coordinated timing
   question: {
     initial: { x: '100%', opacity: 0 },
-    animate: { x: 0, opacity: 1 },
-    exit: { opacity: 0, x: '-100%' },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.SLOW, // Slower for push effect
-      ease: TRANSITION_CONFIG.EASING.SMOOTH,
-      // Different exit timing for smooth handoff
-      exit: { 
+    animate: { 
+      x: 0, 
+      opacity: 1,
+      transition: {
+        duration: TRANSITION_CONFIG.DURATIONS.SLOW, // Slower for push effect
+        ease: TRANSITION_CONFIG.EASING.SMOOTH
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      x: '-100%',
+      transition: {
         duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
         ease: TRANSITION_CONFIG.EASING.SMOOTH
       }
     }
   },
 
-  // Feedback screen - slides in from right, exits to left
+  // Feedback screen - slides in from right, exits to left with coordinated timing
   feedback: {
     initial: { opacity: 0, x: '100%' },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: '-100%' },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
+    animate: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
+        ease: TRANSITION_CONFIG.EASING.SMOOTH
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      x: '-100%',
+      transition: {
+        duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
+        ease: TRANSITION_CONFIG.EASING.SMOOTH
+      }
     }
   },
 

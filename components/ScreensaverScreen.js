@@ -1,5 +1,4 @@
-// Import animation library and screensaver components
-import { motion } from 'framer-motion';
+// Import screensaver components
 
 // Import custom hooks and configuration
 import { useScreensaverScreen } from '../hooks/useScreensaverScreen';

@@ -1,5 +1,4 @@
-// Import animation library and question screen components
-import { motion } from 'framer-motion';
+// Import question screen components
 
 // Import custom hooks and configuration
 import { useQuestionScreen } from '../hooks/useQuestionScreen';

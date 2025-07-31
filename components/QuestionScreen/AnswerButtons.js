@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { QUESTION_CONFIG } from './QuestionScreenConfig';
 import { processTextWithHTML } from '../../utils/textProcessor';
 
@@ -20,19 +19,10 @@ const AnswerButtons = ({
   };
 
   return (
-    // Animated container for answer buttons
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 1 }}
-      transition={{ 
-        duration: QUESTION_CONFIG.ANIMATION_DURATIONS.BUTTONS, 
-        delay: QUESTION_CONFIG.ANIMATION_DELAYS.BUTTONS 
-      }}
-      className="flex flex-col gap-[min(2.52rem,3.6vh)] w-full items-center max-h-[40vh] overflow-hidden"
-    >
+    // Container for answer buttons - animations now handled by index.js
+    <div className="flex flex-col gap-[min(2.52rem,3.6vh)] w-full items-center max-h-[40vh] overflow-hidden">
       {question.answers.map((answer, index) => (
-        <motion.button
+        <button
           key={index}
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}

@@ -1,5 +1,4 @@
-// Import animation library and shared components
-import { motion } from 'framer-motion';
+// Import shared components
 import StandardFooter from './shared/StandardFooter';
 
 // Import custom hook and configuration

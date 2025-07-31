@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
 import useResponsiveText from '../../hooks/useResponsiveText';
 import { processTextWithHTML } from '../../utils/textProcessor';
@@ -34,17 +33,9 @@ const FeedbackMessage = ({
   );
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.6, duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE }}
-      style={messageContainerStyle}
-    >
-      <motion.p
+    <div style={messageContainerStyle}>
+      <p
         ref={messageRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE }}
         style={{
           ...adjustedMessageStyle,
           color: 'var(--color-white)' 
@@ -53,15 +44,12 @@ const FeedbackMessage = ({
       >
         {/* Display feedback message */}
         {processTextWithHTML(randomMessage)}
-      </motion.p>
+      </p>
 
       {/* Show explanation if available */}
       {question?.explanation && (
-        <motion.p
+        <p
           ref={explanationRef}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.MESSAGE }}
           style={{
             ...adjustedExplanationStyle,
             color: 'var(--color-white)' 
@@ -69,9 +57,9 @@ const FeedbackMessage = ({
           title={isExplanationAdjusted ? 'Text adjusted automatically' : ''}
         >
           {processTextWithHTML(question.explanation)}
-        </motion.p>
+        </p>
       )}
-    </motion.div>
+    </div>
   );
 };
 

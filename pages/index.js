@@ -125,7 +125,7 @@ export default function Home() {
       </div>
 
       {/* Current screen content with unified transitions */}
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence mode="popLayout" initial={false}>
         {!isTransitioningToScreensaver && renderScreen()}
         {isTransitioningToScreensaver && (
           <motion.div

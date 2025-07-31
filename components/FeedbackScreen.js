@@ -1,5 +1,4 @@
-// Import animation library and shared components
-import { motion } from 'framer-motion';
+// Import shared components
 import StandardFooter from './shared/StandardFooter';
 
 // Import custom hooks and configuration
@@ -74,11 +73,7 @@ const FeedbackScreen = () => {
             className="flex flex-col items-center justify-start flex-1"
             style={mainContentStyle}
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.CONTAINER }}
+            <div
               style={feedbackContainerStyle}
             >
               <FeedbackTitle 
@@ -100,7 +95,7 @@ const FeedbackScreen = () => {
                 messageStyle={messageStyle}
                 explanationStyle={explanationStyle}
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
