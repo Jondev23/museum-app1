@@ -140,13 +140,7 @@ export default function Home() {
       
       {/* Always visible components with unified animations */}
       <motion.div
-        animate={{ 
-          opacity: (isTransitioningToScreensaver || isCriticalTransition) ? 0 : 1 
-        }}
-        transition={{ 
-          duration: isCriticalTransition ? 0.05 : (isTransitioningToScreensaver ? 0.3 : 0.2),
-          ease: "easeInOut" 
-        }}
+        {...getPageTransition('dynamicUIOverlay', isTransitioningToScreensaver, isCriticalTransition)}
         className="relative"
         style={{ zIndex: TRANSITION_CONFIG.Z_INDEX.UI }}
       >

@@ -285,6 +285,20 @@ export const PAGE_TRANSITIONS = {
       duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
       ease: TRANSITION_CONFIG.EASING.SMOOTH
     }
+  },
+
+  // Dynamic UI overlay with conditional opacity and timing
+  dynamicUIOverlay: {
+    // Function to get dynamic transition based on state
+    getDynamicTransition: (isTransitioningToScreensaver, isCriticalTransition) => ({
+      animate: { 
+        opacity: (isTransitioningToScreensaver || isCriticalTransition) ? 0 : 1 
+      },
+      transition: { 
+        duration: isCriticalTransition ? 0.05 : (isTransitioningToScreensaver ? 0.3 : 0.2),
+        ease: TRANSITION_CONFIG.EASING.SMOOTH
+      }
+    })
   }
 };
 
@@ -377,8 +391,16 @@ export const getKioskSelectorTransition = (element) => {
 };
 
 // Helper function to get page transition config
-export const getPageTransition = (element) => {
-  return PAGE_TRANSITIONS[element] || PAGE_TRANSITIONS.screenContainer;
+export const getPageTransition = (element, ...args) => {
+  const transition = PAGE_TRANSITIONS[element];
+  if (!transition) return PAGE_TRANSITIONS.screenContainer;
+  
+  // Handle dynamic transitions that need runtime parameters
+  if (element === 'dynamicUIOverlay' && transition.getDynamicTransition) {
+    return transition.getDynamicTransition(...args);
+  }
+  
+  return transition;
 };
 
 // Helper function to get interactive transition config
