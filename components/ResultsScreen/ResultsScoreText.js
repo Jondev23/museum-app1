@@ -16,7 +16,9 @@ const ResultsScoreText = ({ scoreText, scoreTextColor, showContent }) => {
       className="subtitle-small"
       style={{ 
         marginBottom: 'var(--results-title-margin)',
-        color: scoreTextColor || 'var(--color-blassgruen)' 
+        color: scoreTextColor || 'var(--color-blassgruen)',
+        paddingLeft: '33.56rem',
+        paddingRight: '6rem'
       }}
     >
       {processTextWithHTML(scoreText)}
