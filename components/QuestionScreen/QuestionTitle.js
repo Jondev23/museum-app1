@@ -15,7 +15,7 @@ const QuestionTitle = ({ question }) => {
       
       const adjustFontSize = () => {
         let currentSize = parseFloat(window.getComputedStyle(element).fontSize);
-        const minSize = parseFloat(window.getComputedStyle(element).fontSize) * 0.9;
+        const minSize = parseFloat(window.getComputedStyle(element).fontSize) * 0.8;
         
         while (element.scrollHeight > maxHeight && currentSize > minSize) {
           currentSize -= 1;
