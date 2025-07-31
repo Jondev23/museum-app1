@@ -49,9 +49,9 @@ export default function Home() {
       case 'start':
         return <StartScreen key="start" />;
       case 'question':
-        return <QuestionScreen key="question" />;
+        return <QuestionScreen key={`question-${currentQuestionIndex}`} />;
       case 'feedback':
-        return <FeedbackScreen key="feedback" />;
+        return <FeedbackScreen key={`feedback-${currentQuestionIndex}`} />;
       case 'results':
         return <ResultsScreen key="results" />;
       default:
@@ -104,9 +104,9 @@ export default function Home() {
         <GlobalBackground backgroundImage={globalBackgroundImage} />
       </div>
 
-      {/* Animated transitions between screens */}
-      <AnimatePresence mode="wait">
-        {/* Fade overlay for smooth transition to screensaver */}
+      {/* Current screen content with overlapping transitions */}
+      <AnimatePresence>
+        {!isTransitioningToScreensaver && renderScreen()}
         {isTransitioningToScreensaver && (
           <motion.div
             key="screensaver-transition"
@@ -117,26 +117,6 @@ export default function Home() {
             className="fixed inset-0 bg-black z-30"
           />
         )}
-      </AnimatePresence>
-
-      {/* Current screen content with fade effect during screensaver transition */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={`${currentScreen}-${isTransitioningToScreensaver ? 'fading' : 'active'}`}
-          initial={{ opacity: currentScreen === 'screensaver' ? 0 : 1 }}
-          animate={{ 
-            opacity: isTransitioningToScreensaver ? 0 : 1 
-          }}
-          exit={{ opacity: 0 }}
-          transition={{ 
-            // Give screensaver consistent timing for smooth video fade - faster but symmetric
-            duration: currentScreen === 'screensaver' ? 1.0 : (isTransitioningToScreensaver ? 0.5 : 0.3),
-            ease: currentScreen === 'screensaver' ? "easeInOut" : "easeInOut"
-          }}
-          className="relative z-10"
-        >
-          {renderScreen()}
-        </motion.div>
       </AnimatePresence>
       
       {/* Always visible components - hidden during screensaver transition */}

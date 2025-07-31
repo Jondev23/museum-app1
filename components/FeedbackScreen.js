@@ -1,5 +1,6 @@
 // Import animation library and shared components
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import StandardFooter from './shared/StandardFooter';
 
 // Import custom hooks and configuration
@@ -14,6 +15,8 @@ import FeedbackButton from './FeedbackScreen/FeedbackButton';
 
 // Feedback screen component - shows correct/incorrect feedback after each question
 const FeedbackScreen = () => {
+  const [isExiting, setIsExiting] = useState(false);
+
   // Get feedback data and handlers from custom hook
   const {
     question,
@@ -27,9 +30,17 @@ const FeedbackScreen = () => {
     isValidData,
     isCorrect,
     randomMessage,
-    nextQuestion,
+    nextQuestion: originalNextQuestion,
     handleTouchStart
   } = useFeedbackScreen();
+
+  // Custom exit animation handler
+  const handleExit = () => {
+    setIsExiting(true);
+    setTimeout(() => {
+      originalNextQuestion();
+    }, 800); // Reducido a 800ms para una transición más rápida
+  };
 
   // Get dynamic styles based on content and answer correctness
   const {
@@ -51,16 +62,11 @@ const FeedbackScreen = () => {
 
   return (
     <>
-      {/* Animated content container */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ 
-          duration: FEEDBACK_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION,
-          exit: { duration: 0.2 } // Faster exit to match QuestionScreen behavior
-        }}
-        className="fixed inset-0 flex flex-col z-20"
+      {/* Animated content container with CSS */}
+      <div
+        className={`fixed inset-0 flex flex-col z-20 transition-all duration-[800ms] ease-in-out ${
+          isExiting ? 'opacity-0 transform -translate-x-full' : 'opacity-100 transform translate-x-0'
+        }`}
         style={{ paddingBottom: 'min(4.375rem, 7vh)' }} 
         onTouchStart={(e) => {
           e.stopPropagation();
@@ -104,18 +110,13 @@ const FeedbackScreen = () => {
             </motion.div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Footer section - separated with independent animation */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ 
-          duration: 0.4, // Entry duration
-          exit: { duration: 0.2, delay: 0.15 } // Delayed exit to overlap with next screen footer
-        }}
-        className="fixed bottom-0 left-0 right-0 z-50"
+      {/* Footer section - disappears instantly without animation */}
+      <div
+        className={`fixed bottom-0 left-0 right-0 z-50 ${
+          isExiting ? 'opacity-0' : 'opacity-100'
+        }`}
       >
         <StandardFooter
           showProgressDots={false}
@@ -124,14 +125,14 @@ const FeedbackScreen = () => {
         >
           <FeedbackButton
             buttonText={buttonText}
-            nextQuestion={nextQuestion}
+            nextQuestion={handleExit}
             buttonContainerStyle={buttonContainerStyle}
             buttonStyle={buttonStyle}
             buttonTextStyle={buttonTextStyle}
             arrowStyle={arrowStyle}
           />
         </StandardFooter>
-      </motion.div>
+      </div>
     </>
   );
 };
