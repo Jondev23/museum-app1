@@ -119,19 +119,7 @@
   --color-feedback-incorrect: var(--color-kupfer);
   --color-feedback-answer-text: var(--color-neutral-dark);
 
-  /* Centralized Animation Variables - From screenTransitions.js */
-  --transition-duration-fast: 0.3s;
-  --transition-duration-standard: 0.6s;
-  --transition-duration-slow: 0.6s;
-  --transition-easing-smooth: ease-in-out;
-  --transition-easing-bounce: ease-out;
-  --transition-easing-sharp: ease-in;
-  
-  /* Common transition combinations */
-  --transition-all-fast: all var(--transition-duration-fast) var(--transition-easing-smooth);
-  --transition-all-standard: all var(--transition-duration-standard) var(--transition-easing-smooth);
-  --transition-transform-fast: transform var(--transition-duration-fast) var(--transition-easing-smooth);
-  --transition-opacity-fast: opacity var(--transition-duration-fast) var(--transition-easing-smooth);
+  /* Touch-optimized app - CSS transitions removed for better performance */
   --color-overlay: rgba(0, 0, 0, 0);
   --color-white-overlay: rgba(255, 255, 255, 0.95);
 
@@ -682,7 +670,6 @@
     text-align: center;
     border: none;
     cursor: pointer;
-    transition: var(--transition-all-fast);
   }
 
   .admin-timeout-selected {
@@ -776,7 +763,6 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: var(--transition-all-fast);
   }
 
   .language-button-active {
@@ -823,7 +809,6 @@
   .language-selector-icon-button {
     min-width: var(--language-selector-button-size);
     min-height: var(--language-selector-button-size);
-    transition: var(--transition-all-fast);
     cursor: pointer;
   }
 
