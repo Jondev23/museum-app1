@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { QUESTION_CONFIG } from './QuestionScreenConfig';
+
 import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Question title component with responsive text sizing and line break processing

@@ -9,9 +9,9 @@ export const TRANSITION_CONFIG = {
   // Standard durations - more consistent
   DURATIONS: {
     FAST: 0.3,
-    STANDARD: 0.6,  // Reduced from 0.8 for better consistency
-    SLOW: 0.6,      // Same as standard for consistency
-    SCREENSAVER: 0.6 // Same as standard for consistency
+    STANDARD: 0.6,  
+    SLOW: 0.6,      
+    SCREENSAVER: 0.6 
   },
   
   // Standard delays
@@ -24,9 +24,9 @@ export const TRANSITION_CONFIG = {
   
   // Easing functions - simplified to one main easing
   EASING: {
-    SMOOTH: "easeInOut",  // Main easing for all transitions
-    BOUNCE: "easeOut",    // For language selector and admin panel
-    SHARP: "easeIn"       // For language selector and admin panel
+    SMOOTH: "easeInOut",  
+    BOUNCE: "easeOut",    
+    SHARP: "easeIn"       
   },
 
   // Z-index layers

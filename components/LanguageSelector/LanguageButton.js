@@ -1,6 +1,6 @@
 // Import animation library and configuration
 import { motion } from '../../utils/screenTransitions';
-import { ANIMATION_CONFIG } from './LanguageSelectorConfig';
+
 import { INTERACTIVE_TRANSITIONS } from '../../utils/screenTransitions';
 import { processTextWithHTML } from '../../utils/textProcessor';
 

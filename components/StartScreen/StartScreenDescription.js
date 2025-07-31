@@ -1,4 +1,4 @@
-import { START_SCREEN_CONFIG } from './StartScreenConfig';
+
 import useResponsiveText from '../../hooks/useResponsiveText';
 import { processTextWithHTML } from '../../utils/textProcessor';
 
