@@ -39,154 +39,131 @@ export const TRANSITION_CONFIG = {
   }
 };
 
-// Screen transition variants - defines how each screen enters and exits
-export const SCREEN_TRANSITIONS = {
-  // Screensaver - simple fade with standard timing
-  screensaver: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
-  },
-
-  // Start screen - slides in from right, exits to left with standard timing
-  start: {
-    initial: { opacity: 0, x: '100%' },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: '-100%' },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
-  },
-
-  // Question screen - slides in from right with standard timing
-  question: {
-    initial: { x: '100%', opacity: 0 },
-    animate: { 
-      x: 0, 
-      opacity: 1,
-      transition: {
-        duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
-        ease: TRANSITION_CONFIG.EASING.SMOOTH
-      }
-    },
-    exit: { 
-      opacity: 0, 
-      x: '-100%',
-      transition: {
-        duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
-        ease: TRANSITION_CONFIG.EASING.SMOOTH
-      }
-    }
-  },
-
-  // Feedback screen - slides in from right, exits to left with standard timing
-  feedback: {
-    initial: { opacity: 0, x: '100%' },
-    animate: { 
-      opacity: 1, 
-      x: 0,
-      transition: {
-        duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
-        ease: TRANSITION_CONFIG.EASING.SMOOTH
-      }
-    },
-    exit: { 
-      opacity: 0, 
-      x: '-100%',
-      transition: {
-        duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
-        ease: TRANSITION_CONFIG.EASING.SMOOTH
-      }
-    }
-  },
-
-  // Results screen - consistent slide pattern with standard timing
-  results: {
-    initial: { opacity: 0, x: '100%' },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: '-100%' },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
-  }
-};
-
-// Footer animations - consistent with main transitions
-export const FOOTER_TRANSITIONS = {
-  // Standard footer animation - simplified
-  standard: {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 20 },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.FAST,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH,
-      delay: TRANSITION_CONFIG.DELAYS.SHORT // Reduced delay for consistency
-    }
-  },
-
-  // Footer that slides with main content - consistent timing
-  slide: {
-    initial: { opacity: 0, x: '100%' },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: '-100%' },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
-  }
-};
-
-// Overlay animations (language selector and admin panel keep their special effects)
-export const OVERLAY_TRANSITIONS = {
-  // Standard fade for general overlays
+// Base animation patterns - reusable animation objects
+const BASE_ANIMATIONS = {
+  // Simple fade in/out
   fade: {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
-    exit: { opacity: 0 },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.FAST,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
+    exit: { opacity: 0 }
   },
 
-  // Scale and fade for language selector and admin panel (keeps special effect)
-  modal: {
-    initial: { opacity: 0, scale: 0.9 },
+  // Slide from right to left
+  slideHorizontal: {
+    initial: { opacity: 0, x: '100%' },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: '-100%' }
+  },
+
+  // Scale and fade (for modals)
+  scaleModal: {
+    initial: { opacity: 0, scale: 0.8 },
     animate: { opacity: 1, scale: 1 },
-    exit: { opacity: 0, scale: 0.9 },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.FAST,
-      ease: TRANSITION_CONFIG.EASING.BOUNCE
-    }
+    exit: { opacity: 0, scale: 0.8 }
+  },
+
+  // Slide up from bottom
+  slideUp: {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: 20 }
   }
 };
 
-// Language Selector specific animations - moved from LanguageSelectorConfig
+// Standard transition configurations
+const STANDARD_TRANSITION = {
+  duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
+  ease: TRANSITION_CONFIG.EASING.SMOOTH
+};
+
+const FAST_TRANSITION = {
+  duration: TRANSITION_CONFIG.DURATIONS.FAST,
+  ease: TRANSITION_CONFIG.EASING.SMOOTH
+};
+
+const MODAL_TRANSITION = {
+  duration: TRANSITION_CONFIG.DURATIONS.FAST,
+  ease: TRANSITION_CONFIG.EASING.BOUNCE
+};
+
+// Screen transition variants - unified using base animations
+export const SCREEN_TRANSITIONS = {
+  // Screensaver - simple fade
+  screensaver: {
+    ...BASE_ANIMATIONS.fade,
+    transition: STANDARD_TRANSITION
+  },
+
+  // All other screens use the same horizontal slide pattern
+  start: {
+    ...BASE_ANIMATIONS.slideHorizontal,
+    transition: STANDARD_TRANSITION
+  },
+
+  question: {
+    ...BASE_ANIMATIONS.slideHorizontal,
+    transition: STANDARD_TRANSITION
+  },
+
+  feedback: {
+    ...BASE_ANIMATIONS.slideHorizontal,
+    transition: STANDARD_TRANSITION
+  },
+
+  results: {
+    ...BASE_ANIMATIONS.slideHorizontal,
+    transition: STANDARD_TRANSITION
+  }
+};
+
+// Footer animations - unified using base animations
+export const FOOTER_TRANSITIONS = {
+  // Standard footer with slide up
+  standard: {
+    ...BASE_ANIMATIONS.slideUp,
+    transition: {
+      ...FAST_TRANSITION,
+      delay: TRANSITION_CONFIG.DELAYS.SHORT
+    }
+  },
+
+  // Footer that slides with main content
+  slide: {
+    ...BASE_ANIMATIONS.slideHorizontal,
+    transition: STANDARD_TRANSITION
+  }
+};
+
+// Overlay animations - unified using base animations
+export const OVERLAY_TRANSITIONS = {
+  // Standard fade for general overlays
+  fade: {
+    ...BASE_ANIMATIONS.fade,
+    transition: FAST_TRANSITION
+  },
+
+  // Scale and fade for modals (language selector, admin panel, etc.)
+  modal: {
+    ...BASE_ANIMATIONS.scaleModal,
+    transition: MODAL_TRANSITION
+  }
+};
+
+// Language Selector specific animations - unified using base animations and common patterns
 export const LANGUAGE_SELECTOR_TRANSITIONS = {
-  // Background overlay fade animation
+  // Background overlay
   overlay: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
+    ...BASE_ANIMATIONS.fade,
     transition: { duration: TRANSITION_CONFIG.DURATIONS.FAST }
   },
 
-  // Main container scale and fade animation
+  // Main container 
   container: {
-    initial: { scale: 0.8, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
-    exit: { scale: 0.8, opacity: 0 },
+    ...BASE_ANIMATIONS.scaleModal,
     transition: { duration: TRANSITION_CONFIG.DURATIONS.FAST }
   },
 
-  // Globe icon pop-in animation
+  // Sequential animations for content elements
   globeIcon: {
     initial: { scale: 0 },
     animate: { scale: 1 },
@@ -197,10 +174,8 @@ export const LANGUAGE_SELECTOR_TRANSITIONS = {
     }
   },
 
-  // Title text slide-up animation
   title: {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
+    ...BASE_ANIMATIONS.slideUp,
     transition: { 
       duration: TRANSITION_CONFIG.DURATIONS.FAST, 
       delay: TRANSITION_CONFIG.DELAYS.MEDIUM,
@@ -208,10 +183,8 @@ export const LANGUAGE_SELECTOR_TRANSITIONS = {
     }
   },
 
-  // Language buttons slide-up animation
   buttons: {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
+    ...BASE_ANIMATIONS.slideUp,
     transition: { 
       duration: TRANSITION_CONFIG.DURATIONS.FAST, 
       delay: TRANSITION_CONFIG.DELAYS.LONG,
@@ -219,85 +192,49 @@ export const LANGUAGE_SELECTOR_TRANSITIONS = {
     }
   },
 
-  // Interactive button animation states - Touch optimized
+  // Interactive button tap
   buttonTap: { scale: 0.98 }
 };
 
-// Admin Panel specific animations
-export const ADMIN_PANEL_TRANSITIONS = {
-  // Background overlay
+// Admin Panel and Kiosk Selector animations - unified since they're identical
+export const MODAL_TRANSITIONS = {
+  // Background overlay for any modal
   overlay: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.FAST,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
+    ...BASE_ANIMATIONS.fade,
+    transition: FAST_TRANSITION
   },
 
-  // Admin panel modal
-  modal: {
-    initial: { scale: 0.8, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
-    exit: { scale: 0.8, opacity: 0 },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.FAST,
-      ease: TRANSITION_CONFIG.EASING.BOUNCE
-    }
+  // Modal container for admin panel, kiosk selector, etc.
+  container: {
+    ...BASE_ANIMATIONS.scaleModal,
+    transition: MODAL_TRANSITION
   },
 
-  // Timeout option touch feedback only
-  timeoutOption: {
+  // Touch feedback for interactive elements
+  touchFeedback: {
     tap: { scale: 0.98 },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.FAST,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
+    transition: FAST_TRANSITION
   }
 };
 
-// Kiosk Selector specific animations
-export const KIOSK_SELECTOR_TRANSITIONS = {
-  // Kiosk selector modal
-  modal: {
-    initial: { scale: 0.8, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
-    exit: { scale: 0.8, opacity: 0 },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.FAST,
-      ease: TRANSITION_CONFIG.EASING.BOUNCE
-    }
-  }
-};
-
-// Main page transitions (from pages/index.js)
+// Page transitions - unified using existing patterns
 export const PAGE_TRANSITIONS = {
   // Language selector icon
   languageSelectorIcon: {
     initial: { opacity: 0, scale: 0.9 },
     animate: { opacity: 0.8, scale: 1 },
     exit: { opacity: 0, scale: 0.9 },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.FAST,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
+    transition: FAST_TRANSITION
   },
 
   // Screen container
   screenContainer: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
+    ...BASE_ANIMATIONS.fade,
+    transition: STANDARD_TRANSITION
   },
 
   // Dynamic UI overlay with conditional opacity and timing
   dynamicUIOverlay: {
-    // Function to get dynamic transition based on state
     getDynamicTransition: (isTransitioningToScreensaver, isCriticalTransition) => ({
       animate: { 
         opacity: (isTransitioningToScreensaver || isCriticalTransition) ? 0 : 1 
@@ -310,58 +247,43 @@ export const PAGE_TRANSITIONS = {
   }
 };
 
-// Interactive elements animations - Touch optimized (no hover effects)
+// Interactive elements animations - unified tap effects
 export const INTERACTIVE_TRANSITIONS = {
-  // Standard button tap only
-  button: {
-    tap: { scale: 0.95 }
-  },
+  // Standard button tap (most common)
+  standard: { tap: { scale: 0.95 } },
+  
+  // Subtle tap for delicate elements
+  subtle: { tap: { scale: 0.98 } },
 
-  // Language selector button tap only
-  languageButton: {
-    tap: { scale: 0.98 }
-  },
-
-  // Feedback button tap (slightly more pronounced than language button)
-  feedbackButton: {
-    tap: { scale: 0.95 }
-  },
-
-  // Answer button tap with subtle scale effects
-  answerButton: {
-    tap: { scale: 0.98 }
-  }
+  // Legacy aliases for backward compatibility
+  button: { tap: { scale: 0.95 } },
+  languageButton: { tap: { scale: 0.98 } },
+  feedbackButton: { tap: { scale: 0.95 } },
+  answerButton: { tap: { scale: 0.98 } }
 };
 
-// Global UI element animations - standardized
+// Global UI element animations - unified using base animations
 export const UI_TRANSITIONS = {
-  // Progress dots - consistent with other elements
-  progressDots: {
-    initial: { opacity: 0, y: 10 },
+  // Standard content elements (progress dots, etc.)
+  content: {
+    ...BASE_ANIMATIONS.slideUp,
+    initial: { opacity: 0, y: 10 }, // Smaller y offset
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: 10 },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.FAST,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
+    transition: FAST_TRANSITION
   },
 
-  // Language selector icon - consistent timing
-  languageIcon: {
+  // Language selector icon
+  icon: {
     initial: { opacity: 0, scale: 0.9 },
     animate: { opacity: 0.8, scale: 1 },
     exit: { opacity: 0, scale: 0.9 },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.FAST,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
+    transition: FAST_TRANSITION
   },
 
-  // Touch indicator swipe animation
+  // Touch indicator with custom animation
   touchIndicator: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
+    ...BASE_ANIMATIONS.fade,
     transition: {
       duration: 0.5,
       ease: TRANSITION_CONFIG.EASING.SMOOTH
@@ -371,36 +293,55 @@ export const UI_TRANSITIONS = {
       animation: 'fade-swipe 4.5s ease-in-out infinite',
       transition: 'transform 0.2s ease, opacity 0.5s ease'
     },
-    // Touch feedback only
     tap: { scale: 0.9 }
   },
 
-  // Content fade in/out based on visibility
-  contentFade: {
+  // Dynamic content visibility (legacy: contentFade)
+  dynamicContent: {
     getOpacity: (showContent) => ({ opacity: showContent ? 1 : 0 }),
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.FAST,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
+    transition: FAST_TRANSITION
   },
 
-  // Content fade with medium delay for results screen elements
+  // Legacy alias for backward compatibility
+  contentFade: {
+    getOpacity: (showContent) => ({ opacity: showContent ? 1 : 0 }),
+    transition: FAST_TRANSITION
+  },
+
+  // Delayed content (for results screen, legacy: contentFadeDelayed)
+  delayedContent: {
+    getOpacity: (showContent) => ({ opacity: showContent ? 1 : 0 }),
+    getTransition: () => `opacity ${TRANSITION_CONFIG.DURATIONS.FAST}s ease ${TRANSITION_CONFIG.DELAYS.MEDIUM}s`
+  },
+
+  // Legacy alias for backward compatibility
   contentFadeDelayed: {
     getOpacity: (showContent) => ({ opacity: showContent ? 1 : 0 }),
     getTransition: () => `opacity ${TRANSITION_CONFIG.DURATIONS.FAST}s ease ${TRANSITION_CONFIG.DELAYS.MEDIUM}s`
+  },
+
+  // Legacy aliases for specific UI elements
+  progressDots: {
+    ...BASE_ANIMATIONS.slideUp,
+    initial: { opacity: 0, y: 10 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: 10 },
+    transition: FAST_TRANSITION
+  },
+
+  languageIcon: {
+    initial: { opacity: 0, scale: 0.9 },
+    animate: { opacity: 0.8, scale: 1 },
+    exit: { opacity: 0, scale: 0.9 },
+    transition: FAST_TRANSITION
   }
 };
 
-// Special transition for screensaver timeout - consistent with other transitions
+// Special transition for screensaver timeout - uses base fade
 export const SCREENSAVER_TRANSITION = {
   overlay: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-    transition: {
-      duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
-    }
+    ...BASE_ANIMATIONS.fade,
+    transition: STANDARD_TRANSITION
   }
 };
 
@@ -468,22 +409,7 @@ export const getOverlayTransition = (type = 'fade') => {
 
 // Helper function to get UI transition config
 export const getUITransition = (element) => {
-  return UI_TRANSITIONS[element] || UI_TRANSITIONS.progressDots;
-};
-
-// Helper function to get language selector transition config
-export const getLanguageSelectorTransition = (element) => {
-  return LANGUAGE_SELECTOR_TRANSITIONS[element] || LANGUAGE_SELECTOR_TRANSITIONS.container;
-};
-
-// Helper function to get admin panel transition config
-export const getAdminPanelTransition = (element) => {
-  return ADMIN_PANEL_TRANSITIONS[element] || ADMIN_PANEL_TRANSITIONS.modal;
-};
-
-// Helper function to get kiosk selector transition config
-export const getKioskSelectorTransition = (element) => {
-  return KIOSK_SELECTOR_TRANSITIONS[element] || KIOSK_SELECTOR_TRANSITIONS.modal;
+  return UI_TRANSITIONS[element] || UI_TRANSITIONS.content;
 };
 
 // Helper function to get page transition config
@@ -499,7 +425,17 @@ export const getPageTransition = (element, ...args) => {
   return transition;
 };
 
+// Helper function to get language selector transition config
+export const getLanguageSelectorTransition = (element) => {
+  return LANGUAGE_SELECTOR_TRANSITIONS[element] || LANGUAGE_SELECTOR_TRANSITIONS.container;
+};
+
 // Helper function to get interactive transition config
-export const getInteractiveTransition = (element) => {
-  return INTERACTIVE_TRANSITIONS[element] || INTERACTIVE_TRANSITIONS.button;
+export const getInteractiveTransition = (type = 'standard') => {
+  return INTERACTIVE_TRANSITIONS[type] || INTERACTIVE_TRANSITIONS.standard;
+};
+
+// Helper function to get modal transition config  
+export const getModalTransition = (element) => {
+  return MODAL_TRANSITIONS[element] || MODAL_TRANSITIONS.container;
 };
