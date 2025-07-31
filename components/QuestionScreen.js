@@ -37,18 +37,8 @@ const QuestionScreen = () => {
 
   return (
     <>
-      {/* Animated content container with slide-in animation from right */}
-      <motion.div
-        initial={{ x: '100%', opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ 
-          duration: 1.2, // Duración más lenta para efecto "empuje"
-          exit: { duration: 0.2 }, 
-          when: "afterChildren"
-        }}
-        className="fixed inset-0 flex flex-col z-20"
-      >
+      {/* Content container - animations now handled by index.js */}
+      <div className="fixed inset-0 flex flex-col">
         {/* Content container - without footer */}
         <div className="relative z-10 flex flex-col h-full">
           {/* Main content */}
@@ -73,21 +63,12 @@ const QuestionScreen = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Footer section - separated with independent animation */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ 
-          duration: 0.4, // Same as FeedbackScreen entry
-          exit: { duration: 0.2 } // Sin delay para entrada inmediata
-        }}
-        className="fixed bottom-0 left-0 right-0 z-50"
-      >
+      {/* Footer section - animations now handled by index.js */}
+      <div className="fixed bottom-0 left-0 right-0" style={{ zIndex: 50 }}>
         <QuestionFooter />
-      </motion.div>
+      </div>
     </>
   );
 };

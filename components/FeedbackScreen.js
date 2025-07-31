@@ -1,6 +1,5 @@
 // Import animation library and shared components
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import StandardFooter from './shared/StandardFooter';
 
 // Import custom hooks and configuration
@@ -15,8 +14,6 @@ import FeedbackButton from './FeedbackScreen/FeedbackButton';
 
 // Feedback screen component - shows correct/incorrect feedback after each question
 const FeedbackScreen = () => {
-  const [isExiting, setIsExiting] = useState(false);
-
   // Get feedback data and handlers from custom hook
   const {
     question,
@@ -34,13 +31,10 @@ const FeedbackScreen = () => {
     handleTouchStart
   } = useFeedbackScreen();
 
-  // Custom exit animation handler
+  // Custom exit animation handler - now simplified to just call the original function
   const handleExit = () => {
-    setIsExiting(true);
-    // Cambiar más temprano para permitir superposición con efecto "empuje"
-    setTimeout(() => {
-      originalNextQuestion();
-    }, 200); // Cambio temprano para superposición
+    // Dejar que AnimatePresence maneje la animación de salida
+    originalNextQuestion();
   };
 
   // Get dynamic styles based on content and answer correctness
@@ -63,11 +57,9 @@ const FeedbackScreen = () => {
 
   return (
     <>
-      {/* Animated content container with CSS */}
+      {/* Content container - animations now handled by index.js */}
       <div
-        className={`fixed inset-0 flex flex-col z-20 transition-all duration-[1000ms] ease-in-out ${
-          isExiting ? 'opacity-0 transform -translate-x-full' : 'opacity-100 transform translate-x-0'
-        }`}
+        className="fixed inset-0 flex flex-col"
         style={{ paddingBottom: 'min(4.375rem, 7vh)' }} 
         onTouchStart={(e) => {
           e.stopPropagation();
@@ -113,12 +105,8 @@ const FeedbackScreen = () => {
         </div>
       </div>
 
-      {/* Footer section - disappears instantly without animation */}
-      <div
-        className={`fixed bottom-0 left-0 right-0 z-50 ${
-          isExiting ? 'opacity-0' : 'opacity-100'
-        }`}
-      >
+      {/* Footer section - animations now handled by index.js */}
+      <div className="fixed bottom-0 left-0 right-0" style={{ zIndex: 50 }}>
         <StandardFooter
           showProgressDots={false}
           alignProgressDots="center"

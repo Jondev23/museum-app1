@@ -35,31 +35,18 @@ const ScreensaverScreen = () => {
   if (!isValidData) return null;
 
   return (
-    // Animated fullscreen container with touch handlers
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ 
-        opacity: 0 // Simple fade out without other effects
-      }}
-      transition={{ 
-        duration: 1.0, // Faster but still smooth - same for entry and exit
-        ease: "easeInOut", // Symmetric easing for consistent feel
-        delay: 0 // No delay for immediate start
-      }}
+    // Container - animations now handled by index.js
+    <div
       className="fixed inset-0 flex flex-col items-center justify-center cursor-pointer"
       onClick={handleTouch}
       onTouchStart={handleTouch}
-      style={{
-        willChange: 'opacity' // Only optimize for opacity changes
-      }}
     >
       {/* Background video or image */}
       <ScreensaverBackground 
         defaultContent={defaultContent}
         videoStyle={videoStyle}
       />
-    </motion.div>
+    </div>
   );
 };
 

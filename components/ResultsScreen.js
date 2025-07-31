@@ -30,13 +30,9 @@ const ResultsScreen = () => {
 
   return (
     <>
-      {/* Animated content container - only content slides in */}
-      <motion.div
-        initial={{ x: '100%', opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.8 }} // Content animation duration
-        className="fixed inset-0 flex flex-col cursor-pointer z-20"
+      {/* Content container - animations now handled by index.js */}
+      <div
+        className="fixed inset-0 flex flex-col cursor-pointer"
         onClick={handleTouchAnywhere}
       >
         {/* Content - Fully responsive layout */}
@@ -78,21 +74,12 @@ const ResultsScreen = () => {
             />
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Footer section - separated with independent animation */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ 
-          duration: 0.4, // Entry duration
-          exit: { duration: 0.2, delay: 0.15 } 
-        }}
-        className="fixed bottom-0 left-0 right-0 z-50"
-      >
+      {/* Footer section - animations now handled by index.js */}
+      <div className="fixed bottom-0 left-0 right-0" style={{ zIndex: 50 }}>
         <StandardFooter />
-      </motion.div>
+      </div>
     </>
   );
 };

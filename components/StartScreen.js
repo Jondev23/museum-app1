@@ -43,11 +43,8 @@ const StartScreen = () => {
 
   return (
     <>
-      {/* Animated content container */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ x: '-100%' }}
+      {/* Content container - animations now handled by index.js */}
+      <div
         transition={{ duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
         className="fixed inset-0 overflow-hidden cursor-pointer z-20"
         onTouchStart={handleTouchStart}
@@ -94,19 +91,10 @@ const StartScreen = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Footer section - separated with independent animation */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ 
-          duration: 0.4, 
-          exit: { duration: 0.2, delay: 0.15 }
-        }}
-        className="fixed bottom-0 left-0 right-0 z-50"
-      >
+      {/* Footer section - animations now handled by index.js */}
+      <div className="fixed bottom-0 left-0 right-0" style={{ zIndex: 50 }}>
         <StandardFooter>
           <div className="absolute left-1/2 transform -translate-x-1/2 flex justify-center items-center" 
                style={{ 
@@ -120,7 +108,7 @@ const StartScreen = () => {
             />
           </div>
         </StandardFooter>
-      </motion.div>
+      </div>
     </>
   );
 };
