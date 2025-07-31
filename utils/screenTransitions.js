@@ -266,26 +266,10 @@ export const UI_TRANSITIONS = {
   languageIcon: ICON_FADE
 };
 
-// Page transitions - reuse existing patterns
-export const PAGE_TRANSITIONS = {
-  languageSelectorIcon: UI_TRANSITIONS.icon,
-  screenContainer: {
-    ...BASE_ANIMATIONS.fade,
-    transition: STANDARD_TRANSITION
-  },
-
-  // Dynamic UI overlay with conditional opacity and timing
-  dynamicUIOverlay: {
-    getDynamicTransition: (isTransitioningToScreensaver, isCriticalTransition) => ({
-      animate: { 
-        opacity: (isTransitioningToScreensaver || isCriticalTransition) ? 0 : 1 
-      },
-      transition: { 
-        duration: isCriticalTransition ? 0.05 : (isTransitioningToScreensaver ? 0.3 : 0.2),
-        ease: TRANSITION_CONFIG.EASING.SMOOTH
-      }
-    })
-  }
+// Unified page transition - single configuration for all page elements
+export const PAGE_TRANSITION = {
+  ...BASE_ANIMATIONS.fade,
+  transition: STANDARD_TRANSITION
 };
 
 // Special transition for screensaver timeout - uses base fade
@@ -363,17 +347,23 @@ export const getUITransition = (element) => {
   return UI_TRANSITIONS[element] || UI_TRANSITIONS.content;
 };
 
-// Helper function to get page transition config
-export const getPageTransition = (element, ...args) => {
-  const transition = PAGE_TRANSITIONS[element];
-  if (!transition) return PAGE_TRANSITIONS.screenContainer;
-  
-  // Handle dynamic transitions that need runtime parameters
-  if (element === 'dynamicUIOverlay' && transition.getDynamicTransition) {
-    return transition.getDynamicTransition(...args);
+// Helper function to get unified page transition config
+export const getPageTransition = (type = 'default', isTransitioningToScreensaver = false, isCriticalTransition = false) => {
+  // Handle special case for dynamic UI overlay
+  if (type === 'dynamicUIOverlay') {
+    return {
+      animate: { 
+        opacity: (isTransitioningToScreensaver || isCriticalTransition) ? 0 : 1 
+      },
+      transition: { 
+        duration: isCriticalTransition ? 0.05 : (isTransitioningToScreensaver ? 0.3 : 0.2),
+        ease: TRANSITION_CONFIG.EASING.SMOOTH
+      }
+    };
   }
   
-  return transition;
+  // Default unified page transition for all other cases
+  return PAGE_TRANSITION;
 };
 
 // Helper function to get language selector transition config
