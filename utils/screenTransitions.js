@@ -379,6 +379,12 @@ export const UI_TRANSITIONS = {
       duration: TRANSITION_CONFIG.DURATIONS.FAST,
       ease: TRANSITION_CONFIG.EASING.SMOOTH
     }
+  },
+
+  // Content fade with medium delay for results screen elements
+  contentFadeDelayed: {
+    getOpacity: (showContent) => ({ opacity: showContent ? 1 : 0 }),
+    getTransition: () => `opacity ${TRANSITION_CONFIG.DURATIONS.FAST}s ease ${TRANSITION_CONFIG.DELAYS.MEDIUM}s`
   }
 };
 

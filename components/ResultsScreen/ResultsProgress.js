@@ -9,8 +9,8 @@ const ResultsProgress = ({ questions, answers, showContent }) => {
       style={{ 
         marginTop: '4.6rem',
         marginBottom: 'clamp(1rem, 3vh, 2rem)', 
-        ...UI_TRANSITIONS.contentFade.getOpacity(showContent),
-        transition: `opacity ${TRANSITION_CONFIG.DURATIONS.FAST}s ease ${TRANSITION_CONFIG.DELAYS.MEDIUM}s`
+        ...UI_TRANSITIONS.contentFadeDelayed.getOpacity(showContent),
+        transition: UI_TRANSITIONS.contentFadeDelayed.getTransition()
       }}
     >
       <ProgressDots
