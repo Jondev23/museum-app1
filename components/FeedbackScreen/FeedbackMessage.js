@@ -27,7 +27,7 @@ const FeedbackMessage = ({
     explanationStyle,
     question?.explanation,
     {
-      minScale: 0.6, 
+      minScale: 0.99, 
       step: 0.33,    
       delay: 200    
     }

@@ -61,7 +61,7 @@ const FeedbackScreen = () => {
           exit: { duration: 0.2 } // Faster exit to match QuestionScreen behavior
         }}
         className="fixed inset-0 flex flex-col z-20"
-        style={{ paddingBottom: 'min(4.375rem, 7vh)' }} // Leave space for footer
+        style={{ paddingBottom: 'min(4.375rem, 7vh)' }} 
         onTouchStart={(e) => {
           e.stopPropagation();
           if (!e.target.closest('button') && !e.target.closest('[role="button"]')) {
