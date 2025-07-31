@@ -26,7 +26,8 @@ const useResultsScreen = () => {
   
   // Store stable references when quiz is completed
   useEffect(() => {
-    if (answers.length > 0 && questions.length > 0) {
+    // Only store stable references if we have complete and valid data
+    if (answers.length > 0 && questions.length > 0 && answers.length <= questions.length) {
       stableScoreRef.current = currentScore;
       stableQuestionsRef.current = questions;
     }
@@ -45,14 +46,23 @@ const useResultsScreen = () => {
 
     const results = content[language]?.results || {};
     
+    // Validate we have stable data before building content
+    const validScore = stableScoreRef.current !== null ? stableScoreRef.current : currentScore;
+    const validQuestions = stableQuestionsRef.current || questions;
+    
+    // Additional validation - don't show results if data is inconsistent
+    if (validQuestions.length === 0 || (stableScoreRef.current === null && answers.length === 0)) {
+      return null;
+    }
+    
     return {
-      title: results.messages?.[score], // Get message based on score
-      scoreText: results.scoreText?.replace('{score}', score).replace('{total}', stableQuestions.length),
+      title: results.messages?.[validScore], // Get message based on score
+      scoreText: results.scoreText?.replace('{score}', validScore).replace('{total}', validQuestions.length),
       scoreTextColor: results.scoreTextColor,
       playAgainText: results.playAgain,
       backgroundImage: startContent?.backgroundImage
     };
-  }, [content, language, score, stableQuestions.length, startContent]);
+  }, [content, language, score, stableQuestions.length, startContent, answers.length]);
 
   // Effect to show content with delay for animation
   useEffect(() => {
@@ -82,8 +92,13 @@ const useResultsScreen = () => {
   }, [handlePlayAgain]);
 
   const isValid = useMemo(() => {
-    return Boolean(content?.[language] && stableQuestions.length > 0);
-  }, [content, language, stableQuestions.length]);
+    return Boolean(
+      content?.[language] && 
+      stableQuestions.length > 0 && 
+      contentData &&
+      (stableScoreRef.current !== null || answers.length > 0)
+    );
+  }, [content, language, stableQuestions.length, contentData, answers.length]);
 
   return {
     showContent,

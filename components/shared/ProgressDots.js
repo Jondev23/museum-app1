@@ -9,6 +9,20 @@ const ProgressDots = ({
   className = '',
   style = {}
 }) => {
+  // Validate that we have consistent data before rendering
+  const hasValidData = () => {
+    if (variant === 'results') {
+      // For results variant, we need answers and questions to match
+      return answers.length > 0 && questions.length > 0 && answers.length <= questions.length;
+    }
+    return questions.length > 0;
+  };
+
+  // Don't render if data is invalid or inconsistent
+  if (!hasValidData()) {
+    return null;
+  }
+
   // Calculate gap between dots based on variant
   const getGap = () => {
     switch (variant) {
@@ -50,9 +64,32 @@ const ProgressDots = ({
         break;
         
       case 'results':
+        // Additional validation for results variant
+        if (index >= answers.length || index >= questions.length) {
+          return {
+            width: '5.12638rem',
+            height: '5.12638rem', 
+            borderRadius: '50%',
+            backgroundColor: 'transparent',
+            border: '0.1875rem solid var(--color-neutral-light)'
+          };
+        }
         
         const userAnswer = answers[index];
-        const isCorrect = userAnswer === questions[index]?.correctAnswer;
+        const question = questions[index];
+        
+        // Only show result if we have valid data
+        if (userAnswer === undefined || !question) {
+          return {
+            width: '5.12638rem',
+            height: '5.12638rem', 
+            borderRadius: '50%',
+            backgroundColor: 'transparent',
+            border: '0.1875rem solid var(--color-neutral-light)'
+          };
+        }
+        
+        const isCorrect = userAnswer === question.correctAnswer;
         dotColor = isCorrect ? 'var(--color-blassgruen)' : 'var(--color-feedback-incorrect)';
         return {
           width: '5.12638rem', // Fixed size - 82.02px

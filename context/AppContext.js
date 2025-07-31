@@ -33,6 +33,7 @@ export const AppProvider = ({ children }) => {
   const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isTransitioningToScreensaver, setIsTransitioningToScreensaver] = useState(false);
+  const [isCriticalTransition, setIsCriticalTransition] = useState(false);
   
   // Kiosk configuration - Start with null to force loading from config
   const [kioskId, setKioskId] = useState(null);
@@ -287,15 +288,26 @@ export const AppProvider = ({ children }) => {
   };
 
   const beginQuiz = () => {
-    setCurrentScreen('start');
-    setCurrentQuestionIndex(0);
+    // Clear answers and questions immediately to prevent inconsistent state
     setAnswers([]);
+    setQuestions([]);
+    setCurrentQuestionIndex(0);
+    
+    // Brief critical transition to hide global components
+    setIsCriticalTransition(true);
+    
+    setCurrentScreen('start');
     
     // Reshuffle questions when starting new quiz
     if (content?.[language]?.questions) {
       const shuffled = [...content[language].questions].sort(() => Math.random() - 0.5);
       setQuestions(shuffled.slice(0, 5));
     }
+    
+    // Clear critical transition state after one frame
+    setTimeout(() => {
+      setIsCriticalTransition(false);
+    }, 16); // One frame at 60fps
   };
 
   const startQuestions = () => {
@@ -341,13 +353,22 @@ export const AppProvider = ({ children }) => {
       return;
     }
     
+    // Clear answers and questions immediately to prevent inconsistent state
+    setAnswers([]);
+    setQuestions([]);
+    setCurrentQuestionIndex(0);
+    
+    // Brief critical transition to hide global components
+    setIsCriticalTransition(true);
+    
     setLanguage(newLanguage);
     setShowLanguageSelector(false);
     setCurrentScreen('start');
     
-    // Reset quiz state when changing language
-    setCurrentQuestionIndex(0);
-    setAnswers([]);
+    // Clear critical transition state after one frame
+    setTimeout(() => {
+      setIsCriticalTransition(false);
+    }, 16); // One frame at 60fps
     
     console.log('Language changed successfully to:', newLanguage);
   };
@@ -387,6 +408,7 @@ export const AppProvider = ({ children }) => {
     showLanguageSelector,
     setShowLanguageSelector,
     isTransitioningToScreensaver,
+    isCriticalTransition,
     kioskId,
     setKioskId: updateKioskId,
     screensaverTimeout,

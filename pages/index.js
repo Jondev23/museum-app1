@@ -25,6 +25,7 @@ export default function Home() {
     content,
     language,
     isTransitioningToScreensaver,
+    isCriticalTransition,
     kioskId
   } = useApp();
 
@@ -60,6 +61,11 @@ export default function Home() {
 
   // Determine if progress dots should be shown and what variant
   const getProgressDotsConfig = () => {
+    // Hide progress dots during critical transitions to prevent showing incorrect state
+    if (isCriticalTransition) {
+      return { show: false };
+    }
+    
     switch (currentScreen) {
       case 'question':
         return {
@@ -136,10 +142,10 @@ export default function Home() {
       {/* Always visible components - hidden during screensaver transition */}
       <motion.div
         animate={{ 
-          opacity: isTransitioningToScreensaver ? 0 : 1 
+          opacity: (isTransitioningToScreensaver || isCriticalTransition) ? 0 : 1 
         }}
         transition={{ 
-          duration: isTransitioningToScreensaver ? 0.3 : 0.2,
+          duration: isCriticalTransition ? 0.05 : (isTransitioningToScreensaver ? 0.3 : 0.2),
           ease: "easeInOut" 
         }}
         className="relative z-40"
@@ -147,8 +153,8 @@ export default function Home() {
         <LanguageSelector />
         <AdminPanel />
         
-        {/* Global Language Selector Icon - hidden during screensaver */}
-        {currentScreen !== 'screensaver' && (
+        {/* Global Language Selector Icon - hidden during screensaver and critical transitions */}
+        {currentScreen !== 'screensaver' && !isCriticalTransition && (
           <div 
             className="fixed bottom-0 left-0 z-50"
             style={{
@@ -169,8 +175,12 @@ export default function Home() {
         )}
 
         {/* Global Progress Dots - shown during quiz screens */}
-        {progressConfig.show && (
-          <div 
+        {progressConfig.show && !isCriticalTransition && (
+          <motion.div 
+            key="progress-dots"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: isCriticalTransition ? 0 : 1 }}
+            transition={{ duration: 0.05 }}
             className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-40"
             style={{
               bottom: progressConfig.variant === 'results' 
@@ -185,7 +195,7 @@ export default function Home() {
               questions={questions}
               variant={progressConfig.variant}
             />
-          </div>
+          </motion.div>
         )}
       </motion.div>
     </div>
