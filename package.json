@@ -66,12 +66,13 @@
     "appId": "com.museum.kutschen",
     "productName": "Museum Kutschen App",
     "directories": {
-      "output": "C:\\Users\\mailj\\Downloads\\museum-build"
+      "output": "C:\\Users\\mailj\\Downloads\\museum"
     },
     "files": [
       "out/**/*",
       "electron/**/*",
-      "public/**/*",
+      "public/content/**/*",
+      "public/config.json",
       "node_modules/**/*"
     ],
     "electronCompile": false,
