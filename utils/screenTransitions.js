@@ -102,7 +102,7 @@ const MODAL_TRANSITION = {
   ease: TRANSITION_CONFIG.EASING.BOUNCE
 };
 
-// No animation configuration - for screens that should appear instantly
+
 const NO_ANIMATION = {
   initial: { opacity: 1 },
   animate: { opacity: 1 },
@@ -110,7 +110,7 @@ const NO_ANIMATION = {
   transition: { duration: 0 }
 };
 
-// Screen transition variants - unified using generator
+
 export const SCREEN_TRANSITIONS = {
   screensaver: createTransition('fade', 'standard'),
   default: createTransition('slideHorizontal', 'standard'),
