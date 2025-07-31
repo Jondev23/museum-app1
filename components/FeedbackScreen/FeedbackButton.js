@@ -1,4 +1,5 @@
 import { processTextWithHTML } from '../../utils/textProcessor';
+import { motion, INTERACTIVE_TRANSITIONS } from '../../utils/screenTransitions';
 
 // Continue button component for feedback screen
 const FeedbackButton = ({ 
@@ -11,12 +12,14 @@ const FeedbackButton = ({
 }) => {
   return (
     <div style={buttonContainerStyle}>
-      <button
+      <motion.button
         onClick={(e) => {
           e.stopPropagation();
           nextQuestion(); // Navigate to next question or results
         }}
-        className="flex items-center transition-all cursor-pointer hover:scale-105 active:scale-95"
+        whileHover={INTERACTIVE_TRANSITIONS.feedbackButton.hover}
+        whileTap={INTERACTIVE_TRANSITIONS.feedbackButton.tap}
+        className="flex items-center transition-all cursor-pointer"
         style={{
           ...buttonStyle,
           gap: 'calc(var(--feedback-button-gap) * 0.7)',
@@ -46,7 +49,7 @@ const FeedbackButton = ({
             transform: 'translateY(-10%)'
           }}
         />
-      </button>
+      </motion.button>
     </div>
   );
 };

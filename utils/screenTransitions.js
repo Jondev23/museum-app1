@@ -326,6 +326,12 @@ export const INTERACTIVE_TRANSITIONS = {
   languageButton: {
     hover: { scale: 1.02 },
     tap: { scale: 0.98 }
+  },
+
+  // Feedback button hover/tap (slightly more pronounced than language button)
+  feedbackButton: {
+    hover: { scale: 1.05 },
+    tap: { scale: 0.95 }
   }
 };
 
