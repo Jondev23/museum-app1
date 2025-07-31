@@ -1,5 +1,5 @@
 // Touch indicator component with swipe animation for start screen
-import { UI_TRANSITIONS, CSS_ANIMATIONS } from '../../utils/screenTransitions';
+import { UI_TRANSITIONS, CSS_ANIMATIONS, motion } from '../../utils/screenTransitions';
 
 const StartScreenTouchIndicator = ({ 
   showContent, 
@@ -16,12 +16,10 @@ const StartScreenTouchIndicator = ({
   };
 
   return (
-    <div
+    <motion.div
       onClick={handleSwipeLeft}
-      onMouseEnter={(e) => e.target.style.transform = `scale(${UI_TRANSITIONS.touchIndicator.hover.scale})`}
-      onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-      onMouseDown={(e) => e.target.style.transform = `scale(${UI_TRANSITIONS.touchIndicator.tap.scale})`}
-      onMouseUp={(e) => e.target.style.transform = `scale(${UI_TRANSITIONS.touchIndicator.hover.scale})`}
+      whileHover={UI_TRANSITIONS.touchIndicator.hover}
+      whileTap={UI_TRANSITIONS.touchIndicator.tap}
       style={touchIndicatorContainerStyle}
     >
       {/* Swipe indicator icon with centralized animation */}
@@ -33,7 +31,7 @@ const StartScreenTouchIndicator = ({
       
       {/* CSS animation keyframes from centralized system */}
       <style jsx>{`${CSS_ANIMATIONS.fadeSwipe}`}</style>
-    </div>
+    </motion.div>
   );
 };
 

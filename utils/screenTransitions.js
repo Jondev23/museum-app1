@@ -246,6 +246,18 @@ export const ADMIN_PANEL_TRANSITIONS = {
       duration: TRANSITION_CONFIG.DURATIONS.FAST,
       ease: TRANSITION_CONFIG.EASING.BOUNCE
     }
+  },
+
+  // Timeout option hover effect
+  timeoutOption: {
+    hover: { 
+      y: -1,
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
+    },
+    transition: {
+      duration: TRANSITION_CONFIG.DURATIONS.FAST,
+      ease: TRANSITION_CONFIG.EASING.SMOOTH
+    }
   }
 };
 
