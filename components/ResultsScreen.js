@@ -3,7 +3,7 @@ import StandardFooter from './shared/StandardFooter';
 
 // Import custom hook and configuration
 import useResultsScreen from '../hooks/useResultsScreen';
-import { ANIMATION_CONFIG } from './ResultsScreen/ResultsScreenConfig';
+import { TRANSITION_CONFIG, SCREEN_TRANSITIONS } from '../utils/screenTransitions';
 
 // Import subcomponents
 import ResultsTitle from './ResultsScreen/ResultsTitle';
