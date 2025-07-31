@@ -45,8 +45,8 @@ const ResultsScreen = () => {
           style={{ 
             paddingTop: '22.6rem', 
             paddingBottom: 'clamp(3.4rem, 4.4vh, 5.4rem)', 
-            paddingLeft: 'var(--results-horizontal-padding)',
-            paddingRight: 'var(--results-horizontal-padding)',
+            paddingLeft: '6rem',
+            paddingRight: '6rem',
             minHeight: '100vh', 
             gap: '0' 
           }}
