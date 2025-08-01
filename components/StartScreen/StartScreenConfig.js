@@ -59,7 +59,7 @@ export const useStartScreenStyles = (startContent) => ({
     alignItems: 'center',
     justifyContent: 'center',
     lineHeight: 'var(--typography-subline-line-height)',
-    marginTop: '-0.5rem'
+    marginTop: '-1.0rem'
   },
 
   descriptionSectionStyle: {

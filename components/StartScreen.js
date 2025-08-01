@@ -13,12 +13,12 @@ import StartScreenTouchIndicator from './StartScreen/StartScreenTouchIndicator';
 
 // Start screen component - first screen after screensaver
 const StartScreen = () => {
-  const [titleMarginTop, setTitleMarginTop] = useState('12rem');
+  const [screenPaddingTop, setScreenPaddingTop] = useState('12rem');
 
   useEffect(() => {
     const handleResize = () => {
       if (typeof window !== 'undefined') {
-        setTitleMarginTop(window.innerHeight < 900 ? '10rem' : '12rem');
+        setScreenPaddingTop(window.innerHeight < 900 ? '10rem' : '12rem');
       }
     };
 
@@ -67,7 +67,10 @@ const StartScreen = () => {
       >
         <div 
           className="relative z-10 h-full flex flex-col items-center w-full px-4 sm:px-6 md:px-8 start-screen-container"
-          style={containerStyle}
+          style={{
+            ...containerStyle,
+            paddingTop: screenPaddingTop
+          }}
         >
           <div 
             className="w-full max-w-7xl bg-transparent flex items-start justify-center flex-grow"
@@ -79,12 +82,7 @@ const StartScreen = () => {
                 style={contentSectionStyle}
               >
                 {/* Título */}
-                <div 
-                  className="w-full flex flex-col items-center justify-center flex-shrink-0"
-                  style={{
-                    marginTop: titleMarginTop
-                  }}
-                >
+                <div className="w-full flex flex-col items-center justify-center flex-shrink-0">
                   <StartScreenTitle
                     startContent={startContent}
                     defaultTexts={defaultTexts}
