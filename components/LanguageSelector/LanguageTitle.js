@@ -1,4 +1,4 @@
-import { motion, getLanguageSelectorTransition } from '../../utils/screenTransitions';
+import { motion } from '../../utils/screenTransitions';
 import { STYLE_CONFIG } from './LanguageSelectorConfig';
 import { processTextWithHTML } from '../../utils/textProcessor';
 
@@ -6,7 +6,7 @@ import { processTextWithHTML } from '../../utils/textProcessor';
 const LanguageTitle = ({ englishTitle, germanTitle }) => {
   return (
     <motion.div
-      {...getLanguageSelectorTransition('title')}
+      className="slide-up-animation standard-timing"
       style={STYLE_CONFIG.TITLE_CONTAINER}
     >
       <h1 className="title-question language-title">

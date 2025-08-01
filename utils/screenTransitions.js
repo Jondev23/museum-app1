@@ -1,8 +1,20 @@
 // Unified screen transition animations configuration
 // This file centralizes all screen transition animations for consistency
 
-// Re-export framer-motion components for centralized access
-export { AnimatePresence, motion } from 'framer-motion';
+// Define replacement components for framer-motion
+import React from 'react';
+
+// AnimatePresence replacement
+export const AnimatePresence = ({ children, mode, initial }) => {
+  return <>{children}</>;
+};
+
+// motion replacement
+export const motion = {
+  div: React.forwardRef((props, ref) => <div ref={ref} {...props} />),
+  button: React.forwardRef((props, ref) => <button ref={ref} {...props} />),
+  img: React.forwardRef((props, ref) => <img ref={ref} {...props} />)
+};
 
 // Animation configuration constants
 export const TRANSITION_CONFIG = {
@@ -39,10 +51,11 @@ export const TRANSITION_CONFIG = {
   }
 };
 
-// Base animation patterns - reusable animation objects
+// Base animation patterns - reusable animation objects (CSS class versions)
 const BASE_ANIMATIONS = {
   // Simple fade in/out
   fade: {
+    className: 'fade-animation',
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 }
@@ -50,6 +63,7 @@ const BASE_ANIMATIONS = {
 
   // Slide from right to left
   slideHorizontal: {
+    className: 'slide-horizontal-animation',
     initial: { opacity: 0, x: '100%' },
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: '-100%' }
@@ -57,6 +71,7 @@ const BASE_ANIMATIONS = {
 
   // Scale and fade (for modals)
   scaleModal: {
+    className: 'scale-modal-animation',
     initial: { opacity: 0, scale: 0.8 },
     animate: { opacity: 1, scale: 1 },
     exit: { opacity: 0, scale: 0.8 }
@@ -64,6 +79,7 @@ const BASE_ANIMATIONS = {
 
   // Slide up from bottom
   slideUp: {
+    className: 'slide-up-animation',
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: 20 }
@@ -72,17 +88,10 @@ const BASE_ANIMATIONS = {
 
 // Unified transition generator - creates consistent transitions
 const createTransition = (animation, timing = 'standard', delay = 0) => {
-  const timingMap = {
-    fast: FAST_TRANSITION,
-    standard: STANDARD_TRANSITION,
-    modal: MODAL_TRANSITION
-  };
-  
-  const baseTransition = timingMap[timing] || STANDARD_TRANSITION;
-  
+  // Return CSS class based on animation type and timing
   return {
-    ...BASE_ANIMATIONS[animation],
-    transition: delay > 0 ? { ...baseTransition, delay } : baseTransition
+    className: `${BASE_ANIMATIONS[animation].className} ${timing}-timing`,
+    ...BASE_ANIMATIONS[animation]
   };
 };
 

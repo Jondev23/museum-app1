@@ -817,3 +817,98 @@
     height: var(--language-selector-icon-size);
     display: block;
   }
+
+  /* Animation classes to replace framer-motion */
+  .fade-animation {
+    opacity: 1;
+    transition: opacity 0.6s ease-in-out;
+  }
+
+  .slide-horizontal-animation {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+  }
+
+  .scale-modal-animation {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  }
+
+  .slide-up-animation {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+  }
+
+  .fast-timing {
+    transition-duration: 0.3s;
+  }
+
+  .standard-timing {
+    transition-duration: 0.6s;
+  }
+
+  .modal-timing {
+    transition-duration: 0.3s;
+  }
+
+  /* Enter animation states */
+  .fade-animation.enter {
+    opacity: 0;
+  }
+
+  .slide-horizontal-animation.enter {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  .scale-modal-animation.enter {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  .slide-up-animation.enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  /* Exit animation states */
+  .fade-animation.exit {
+    opacity: 0;
+  }
+
+  .slide-horizontal-animation.exit {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  .scale-modal-animation.exit {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  .slide-up-animation.exit {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  /* Feedback screen specific animations */
+  .feedback-screen-enter {
+    animation: feedbackEnter 0.6s ease-in-out forwards;
+  }
+
+  .feedback-screen-exit {
+    animation: feedbackExit 0.6s ease-in-out forwards;
+  }
+
+  @keyframes feedbackEnter {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes feedbackExit {
+    from { opacity: 1; }
+    to { opacity: 0; transform: translateX(-100%); }
+  }

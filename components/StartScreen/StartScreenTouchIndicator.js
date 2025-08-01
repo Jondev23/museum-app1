@@ -18,8 +18,11 @@ const StartScreenTouchIndicator = ({
   return (
     <motion.div
       onClick={handleSwipeLeft}
-      whileTap={UI_TRANSITIONS.touchIndicator.tap}
-      style={touchIndicatorContainerStyle}
+      className="touch-indicator-container"
+      style={{
+        ...touchIndicatorContainerStyle,
+        transition: 'all 0.3s ease-in-out'
+      }}
     >
       {/* Swipe indicator icon with centralized animation */}
       <img

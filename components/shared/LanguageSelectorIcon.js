@@ -1,6 +1,6 @@
 // Import animation library and app context
 import React from 'react';
-import { motion, getInteractiveTransition } from '../../utils/screenTransitions';
+import { motion } from '../../utils/screenTransitions';
 import { useApp } from '../../context/AppContext';
 
 // Language selector icon component - trigger for language overlay
@@ -66,7 +66,6 @@ const LanguageSelectorIcon = ({
       <motion.button
         onClick={handleClick}
         onTouchStart={handleTouchStart}
-        whileTap={getInteractiveTransition('standard').tap}
         className="transition-all cursor-pointer relative"
         style={{
           ...getButtonStyles(),

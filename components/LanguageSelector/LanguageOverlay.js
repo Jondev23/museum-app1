@@ -1,11 +1,10 @@
-import { motion, getLanguageSelectorTransition } from '../../utils/screenTransitions';
+import { motion } from '../../utils/screenTransitions';
 
 // Animated overlay component for language selector background
 const LanguageOverlay = ({ onOverlayClick, children }) => {
   return (
     <motion.div
-      {...getLanguageSelectorTransition('overlay')}
-      className="language-overlay"
+      className="language-overlay fade-animation standard-timing"
       onClick={onOverlayClick}
     >
       {children}

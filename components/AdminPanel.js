@@ -1,7 +1,6 @@
 // Import React hooks, animation library, and kiosk selector
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from '../utils/screenTransitions';
-import { getAdminPanelTransition } from '../utils/screenTransitions';
 import KioskSelectorScreen from './KioskSelector';
 
 // Admin panel component - hidden panel for kiosk management and configuration
@@ -155,13 +154,11 @@ const AdminPanel = () => {
       
       <AnimatePresence>
         {isVisible && !showKioskSelector && (
-          <motion.div
-            {...getAdminPanelTransition('overlay')}
-            className="admin-overlay"
+          <div
+            className="admin-overlay fade-animation standard-timing"
           >
-            <motion.div
-              {...getAdminPanelTransition('modal')}
-              className="admin-panel"
+            <div
+              className="admin-panel scale-modal-animation standard-timing"
             >
               <h2 className="admin-title">
                 Admin Panel
@@ -277,8 +274,8 @@ const AdminPanel = () => {
                   </button>
                 </div>
               )}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         )}
         {isVisible && showKioskSelector && (
           <KioskSelectorScreen

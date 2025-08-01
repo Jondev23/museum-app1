@@ -1,6 +1,7 @@
 // Import app context and animation library
 import { useApp } from '../context/AppContext';
 import { AnimatePresence, motion } from '../utils/screenTransitions';
+import { useEffect, useState } from 'react';
 
 // Import unified transition system
 import { 
@@ -64,19 +65,28 @@ export default function Home() {
     const screenConfig = screens[currentScreen] || screens['screensaver'];
     const { Component, key } = screenConfig;
     const transitionConfig = getScreenTransition(currentScreen);
+    const [animationState, setAnimationState] = useState('enter');
+    
+    useEffect(() => {
+      // Set initial animation state to 'enter'
+      setAnimationState('enter');
+      
+      // After a small delay, change to normal state
+      const timer = setTimeout(() => {
+        setAnimationState('');
+      }, 50);
+      
+      return () => clearTimeout(timer);
+    }, [currentScreen]);
 
     return (
-      <motion.div
+      <div
         key={key}
-        initial={transitionConfig.initial}
-        animate={transitionConfig.animate}
-        exit={transitionConfig.exit}
-        transition={transitionConfig.transition}
-        className="fixed inset-0"
+        className={`fixed inset-0 ${transitionConfig.className} ${animationState}`}
         style={{ zIndex: TRANSITION_CONFIG.Z_INDEX.CONTENT }}
       >
         <Component />
-      </motion.div>
+      </div>
     );
   };
 
@@ -126,22 +136,21 @@ export default function Home() {
       </div>
 
       {/* Current screen content with unified transitions */}
-      <AnimatePresence mode="popLayout" initial={false}>
+      <div>
         {!isTransitioningToScreensaver && renderScreen()}
-        {isTransitioningToScreensaver && (
-          <motion.div
-            key="screensaver-transition"
-            {...SCREENSAVER_TRANSITION.overlay}
-            className="fixed inset-0 bg-black"
-            style={{ zIndex: TRANSITION_CONFIG.Z_INDEX.OVERLAY }}
-          />
-        )}
-      </AnimatePresence>
+      </div>
       
+      {isTransitioningToScreensaver && (
+        <div
+          key="screensaver-transition"
+          className="fixed inset-0 bg-black fade-animation standard-timing"
+          style={{ zIndex: TRANSITION_CONFIG.Z_INDEX.OVERLAY }}
+        />
+      )}
+
       {/* Always visible components with unified animations */}
-      <motion.div
-        {...getPageTransition('dynamicUIOverlay', isTransitioningToScreensaver, isCriticalTransition)}
-        className="relative"
+      <div
+        className={`relative ${isTransitioningToScreensaver ? 'fade-animation exit' : ''}`}
         style={{ zIndex: TRANSITION_CONFIG.Z_INDEX.UI }}
       >
         <LanguageSelector />
@@ -149,9 +158,8 @@ export default function Home() {
         
         {/* Global Language Selector Icon with unified animation */}
         {currentScreen !== 'screensaver' && !isCriticalTransition && (
-          <motion.div 
-            {...getUITransition('languageIcon')}
-            className="fixed bottom-0 left-0"
+          <div 
+            className="fixed bottom-0 left-0 slide-up-animation"
             style={{
               marginBottom: 'min(3.7rem, 4.7vh)', 
               marginLeft: 'min(9.5rem, 14.5vw)',
@@ -167,15 +175,14 @@ export default function Home() {
                 marginLeft: 0,
               }}
             />
-          </motion.div>
+          </div>
         )}
 
         {/* Global Progress Dots with unified animation */}
         {progressConfig.show && !isCriticalTransition && (
-          <motion.div 
+          <div 
             key="progress-dots"
-            {...getUITransition('progressDots')}
-            className="fixed bottom-0 left-1/2 transform -translate-x-1/2"
+            className="fixed bottom-0 left-1/2 transform -translate-x-1/2 slide-up-animation"
             style={{
               bottom: progressConfig.variant === 'results' 
                 ? 'min(20rem, 21vh)' 
@@ -190,9 +197,9 @@ export default function Home() {
               questions={questions}
               variant={progressConfig.variant}
             />
-          </motion.div>
+          </div>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 }
