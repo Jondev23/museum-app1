@@ -93,47 +93,12 @@
   --color-overlay: rgba(0, 0, 0, 0.5);
   --color-white-overlay: rgba(255, 255, 255, 0.95);
 
-  /* ========== LANGUAGE SELECTOR COLORS ========== */
-  --color-language-overlay: var(--color-schiefer);
-  --color-language-button-active: var(--color-kupfer);
-  --color-language-button-inactive: var(--color-neutral-light);
-
-  /* ========== LANGUAGE SELECTOR SIZING ========== */
-  --language-icon-size: 8rem;
-  --language-title-size: 3.375rem;
-  --language-button-width: 62.5rem;
-  --language-button-height: 5rem;
-  --language-button-radius: min(3.75rem, 8vw);
-  --language-gap: min(3.24rem, 6.08vw);
-
-  /* Language Selector Icon Specific */
-  --language-selector-icon-size: min(2.7rem, 4.86vw, 6.075vh);
-  --language-selector-button-size: min(3.5rem, 6vw);
-  --language-selector-margin-bottom: min(6rem, 9.5vh);
-  --language-selector-margin-left: min(5.125rem, 8vw);
-
-  /* Language Selector Text Sizing */
-  --language-button-text-size: 2rem;
-  --language-button-text-line-height: 5.5rem;
-  --language-buttons-gap: min(1.5rem, 3vw);
-
   /* ========== ADMIN SYSTEM ========== */
   --admin-font-size: min(1rem, 2vw);
   --admin-font-size-sm: min(0.875rem, 1.75vw);
   --admin-font-size-title: min(1.375rem, 2.75vw);
   --color-admin-input-bg: #f8f9fa;
   --color-admin-success-bg: rgba(34, 197, 94, 0.1);
-
-  /* ========== FEEDBACK BUTTON SIZING ========== */
-  --feedback-button-width: min(14.0625rem, 22.5vw);
-  --feedback-button-height: min(3.75rem, 6.25vh);      
-  --feedback-button-gap: min(1.25rem, 2.5vw);             
-  --feedback-button-text-size: 1.875rem; 
-  --feedback-button-text-line-height: min(6.25vh, 3.75rem);
-  --feedback-arrow-width: 5.01688rem; 
-  --feedback-arrow-height: 2.71563rem;  
-  --feedback-arrow-min-width: min(3.0914235rem, 4.96375vw);  
-  --feedback-arrow-min-height: min(3.0914235rem, 4.96375vh);
 
   /* ========== RESULTS SCREEN SIZING ========== */
   --results-title-font-size: 6rem; /* Fixed size - 96px */

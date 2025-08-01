@@ -15,11 +15,6 @@
   --language-button-radius: min(3.75rem, 8vw);
   --language-gap: min(3.24rem, 6.08vw);
   
-  --language-selector-icon-size: min(2.7rem, 4.86vw, 6.075vh);
-  --language-selector-button-size: min(3.5rem, 6vw);
-  --language-selector-margin-bottom: min(6rem, 9.5vh);
-  --language-selector-margin-left: min(5.125rem, 8vw);
-  
   --language-button-text-size: 2rem;
   --language-button-text-line-height: 5.5rem;
   --language-buttons-gap: min(1.5rem, 3vw);
@@ -121,22 +116,4 @@
   padding-top: 0.6rem;
 }
 
-/* Language Selector Icon Component */
-.language-selector-icon-container {
-  flex-shrink: 0;
-  margin-bottom: var(--language-selector-margin-bottom);
-  margin-left: var(--language-selector-margin-left);
-}
-
-.language-selector-icon-button {
-  min-width: var(--language-selector-button-size);
-  min-height: var(--language-selector-button-size);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.language-selector-icon-image {
-  width: var(--language-selector-icon-size);
-  height: var(--language-selector-icon-size);
-  display: block;
-}
+/* Note: .text-button and .title-question are defined in common-components.css */

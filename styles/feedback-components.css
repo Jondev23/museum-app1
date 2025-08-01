@@ -1,5 +1,5 @@
 /* ============================================
-   FEEDBACK SCREEN COMPONENT STYLES
+   FEEDBACK SCREEN COMPONENT STYLES - MINIMAL
    ============================================ */
 
 /* Feedback Screen Variables */
@@ -13,10 +13,9 @@
   --feedback-arrow-height: 2.71563rem;  
   --feedback-arrow-min-width: min(3.0914235rem, 4.96375vw);  
   --feedback-arrow-min-height: min(3.0914235rem, 4.96375vh);
-  --color-feedback-answer-text: var(--color-neutral-dark);
 }
 
-/* Feedback Screen Typography */
+/* Feedback Screen Typography - Used in FeedbackTitle.js */
 .feedback-title {
   @apply typography-fragen;
   color: var(--color-white);
@@ -32,12 +31,4 @@
   padding: 0.5rem;
 }
 
-.text-answer {
-  @apply typography-antworten-buttons;
-  color: var(--color-schiefer);
-  overflow-wrap: break-word;
-  word-break: break-word;
-  hyphens: auto;
-  line-height: 1.2;
-  padding: 0.25rem 0.5rem;
-}
+/* Note: .text-answer and .text-button are defined in common-components.css */
