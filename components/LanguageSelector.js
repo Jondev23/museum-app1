@@ -1,5 +1,4 @@
-// Import animation library and language selector components
-import { AnimatePresence } from '../utils/screenTransitions';
+// Import language selector components
 import useLanguageSelector from '../hooks/useLanguageSelector';
 
 // Import subcomponents
@@ -26,7 +25,7 @@ const LanguageSelector = () => {
 
   return (
     // Animated overlay that appears when language selector is triggered
-    <AnimatePresence>
+    <>
       {isVisible && (
         <LanguageOverlay onOverlayClick={handleOverlayClick}>
           <LanguageContainer onContentClick={handleContentClick}>
@@ -49,7 +48,7 @@ const LanguageSelector = () => {
           </LanguageContainer>
         </LanguageOverlay>
       )}
-    </AnimatePresence>
+    </>
   );
 };
 

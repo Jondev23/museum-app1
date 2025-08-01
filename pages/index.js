@@ -1,6 +1,5 @@
 // Import app context and animation library
 import { useApp } from '../context/AppContext';
-import { AnimatePresence } from '../utils/screenTransitions';
 import { useEffect, useState } from 'react';
 
 // Import unified transition system

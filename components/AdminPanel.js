@@ -1,6 +1,5 @@
-// Import React hooks, animation library, and kiosk selector
+// Import React hooks and kiosk selector
 import { useState, useEffect, useRef } from 'react';
-import { AnimatePresence } from '../utils/screenTransitions';
 import KioskSelectorScreen from './KioskSelector';
 
 // Admin panel component - hidden panel for kiosk management and configuration
@@ -152,7 +151,7 @@ const AdminPanel = () => {
       />
 
       
-      <AnimatePresence>
+      {/* Modal overlay with fade animation */}
         {isVisible && !showKioskSelector && (
           <div
             className="admin-overlay fade-animation standard-timing"
@@ -287,7 +286,6 @@ const AdminPanel = () => {
             onBack={() => setShowKioskSelector(false)}
           />
         )}
-      </AnimatePresence>
     </>
   );
 };
