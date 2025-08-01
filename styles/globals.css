@@ -94,9 +94,6 @@
   --color-white-overlay: rgba(255, 255, 255, 0.95);
 
   /* ========== ADMIN SYSTEM ========== */
-  --admin-font-size: min(1rem, 2vw);
-  --admin-font-size-sm: min(0.875rem, 1.75vw);
-  --admin-font-size-title: min(1.375rem, 2.75vw);
   --color-admin-input-bg: #f8f9fa;
   --color-admin-success-bg: rgba(34, 197, 94, 0.1);
 
@@ -108,13 +105,8 @@
   --results-play-again-button-text-font-size: 1.875rem; /* Fixed size - 30px */
   --results-play-again-button-text-line-height: 2.25rem; /* Fixed proportional line height */
 
-  /* Smaller Subtitles - 20% smaller than normal subtitles */
-  --subtitle-small-font-size: clamp(1.4256rem, 2.5661vw, 2.8512rem);
-  --subtitle-small-line-height: clamp(1.9008rem, 3.4214vw, 3.8016rem); 
-
   /* Results Screen Spacing */
   --results-title-margin: 0; 
-  --results-progress-margin: clamp(1.5rem, 4vw, 3rem); 
   --results-horizontal-padding: clamp(2rem, 6vw, 5rem);
   --results-play-again-bottom: min(3.15rem, 5.25vh); 
 
