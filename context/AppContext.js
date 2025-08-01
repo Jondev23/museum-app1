@@ -33,7 +33,6 @@ export const AppProvider = ({ children }) => {
   const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isTransitioningToScreensaver, setIsTransitioningToScreensaver] = useState(false);
-  const [isCriticalTransition, setIsCriticalTransition] = useState(false);
   
   // Kiosk configuration - Start with null to force loading from config
   const [kioskId, setKioskId] = useState(null);
@@ -293,9 +292,6 @@ export const AppProvider = ({ children }) => {
     setQuestions([]);
     setCurrentQuestionIndex(0);
     
-    // Brief critical transition to hide global components
-    setIsCriticalTransition(true);
-    
     setCurrentScreen('start');
     
     // Reshuffle questions when starting new quiz
@@ -303,11 +299,6 @@ export const AppProvider = ({ children }) => {
       const shuffled = [...content[language].questions].sort(() => Math.random() - 0.5);
       setQuestions(shuffled.slice(0, 5));
     }
-    
-    // Clear critical transition state after one frame
-    setTimeout(() => {
-      setIsCriticalTransition(false);
-    }, 16); // One frame at 60fps
   };
 
   const startQuestions = () => {
@@ -330,18 +321,24 @@ export const AppProvider = ({ children }) => {
   };
 
   const nextQuestion = () => {
-    if (isTransitioning) return; 
+    console.log('nextQuestion called', { isTransitioning, currentQuestionIndex, questionsLength: questions.length });
+    if (isTransitioning) {
+      console.log('nextQuestion blocked by isTransitioning');
+      return; 
+    }
     
     setIsTransitioning(true);
     
     if (currentQuestionIndex < questions.length - 1) {
+      console.log('Moving to next question:', currentQuestionIndex + 1);
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setCurrentScreen('question');
     } else {
+      console.log('Quiz completed, moving to results');
       setCurrentScreen('results');
     }
     
-    setTimeout(() => setIsTransitioning(false), 300);
+    setTimeout(() => setIsTransitioning(false), 700); // Increased to accommodate slower feedback exit
   };
 
   const changeLanguage = (newLanguage) => {
@@ -358,17 +355,9 @@ export const AppProvider = ({ children }) => {
     setQuestions([]);
     setCurrentQuestionIndex(0);
     
-    // Brief critical transition to hide global components
-    setIsCriticalTransition(true);
-    
     setLanguage(newLanguage);
     setShowLanguageSelector(false);
     setCurrentScreen('start');
-    
-    // Clear critical transition state after one frame
-    setTimeout(() => {
-      setIsCriticalTransition(false);
-    }, 16); // One frame at 60fps
     
     console.log('Language changed successfully to:', newLanguage);
   };
@@ -408,7 +397,6 @@ export const AppProvider = ({ children }) => {
     showLanguageSelector,
     setShowLanguageSelector,
     isTransitioningToScreensaver,
-    isCriticalTransition,
     kioskId,
     setKioskId: updateKioskId,
     screensaverTimeout,

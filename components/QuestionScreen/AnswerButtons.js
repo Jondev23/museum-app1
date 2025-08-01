@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-import { QUESTION_CONFIG } from './QuestionScreenConfig';
 import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Answer buttons component with multiple choice answers
@@ -20,34 +18,12 @@ const AnswerButtons = ({
   };
 
   return (
-    // Animated container for answer buttons
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 1 }}
-      transition={{ 
-        duration: QUESTION_CONFIG.ANIMATION_DURATIONS.BUTTONS, 
-        delay: QUESTION_CONFIG.ANIMATION_DELAYS.BUTTONS 
-      }}
-      className="flex flex-col gap-[min(2.52rem,3.6vh)] w-full items-center max-h-[40vh] overflow-hidden"
-    >
+    // Container for answer buttons
+    <div className="flex flex-col gap-[min(2.52rem,3.6vh)] w-full items-center max-h-[40vh] overflow-hidden">
       {question.answers.map((answer, index) => (
-        <motion.button
+        <button
           key={index}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ 
-            opacity: selectedAnswer === index ? 1 : 0,
-            transition: { 
-              duration: selectedAnswer === index ? 0.2 : 0.1,
-              delay: selectedAnswer === index ? 0.2 : 0
-            }
-          }}
-          transition={{ 
-            duration: QUESTION_CONFIG.ANIMATION_DURATIONS.BUTTON_INDIVIDUAL, 
-            delay: QUESTION_CONFIG.ANIMATION_DELAYS.BUTTON_BASE + index * QUESTION_CONFIG.ANIMATION_DELAYS.BUTTON_STAGGER 
-          }}
-          onClick={() => handleAnswerClick(index, QUESTION_CONFIG.ANSWER_DELAY)}
+          onClick={() => handleAnswerClick(index, 800)}
           onTouchStart={(e) => handleTouchStart(e, index)}
           disabled={selectedAnswer !== null || isProcessing}
           className={`btn-answer inline-flex min-w-[min(42.3rem,63vw,80vh)] min-h-[min(4.62rem,6.93vh,8vw)] items-center justify-center gap-[min(0.5rem,1vw)] px-[min(4rem,5vw,6vh)] py-[min(1rem,1.5vh,2vw)] rounded-[min(4.62rem,6.93vh,8vw)] border-[min(0.1125rem,0.225vw,0.3vh)] border-solid relative ${getButtonClassName(index)}`}
@@ -67,9 +43,9 @@ const AnswerButtons = ({
           >
             {processTextWithHTML(answer)}
           </span>
-        </motion.button>
+        </button>
       ))}
-    </motion.div>
+    </div>
   );
 };
 

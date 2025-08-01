@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Continue button component for feedback screen
@@ -14,14 +13,13 @@ const FeedbackButton = ({
     <div
       style={buttonContainerStyle}
     >
-      <motion.button
+      <button
         onClick={(e) => {
+          console.log('FeedbackButton clicked');
           e.stopPropagation();
-          nextQuestion(); // Navigate to next question or results
+          nextQuestion(); 
         }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="flex items-center transition-all cursor-pointer"
+        className="flex items-center cursor-pointer"
         style={{
           ...buttonStyle,
           gap: 'calc(var(--feedback-button-gap) * 0.7)',
@@ -51,7 +49,7 @@ const FeedbackButton = ({
             transform: 'translateY(-10%)'
           }}
         />
-      </motion.button>
+      </button>
     </div>
   );
 };

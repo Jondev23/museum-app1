@@ -1,6 +1,6 @@
-// Import app context and animation library
+// Import app context and animation for screen transitions
 import { useApp } from '../context/AppContext';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 // Import all screen components
 import ScreensaverScreen from '../components/ScreensaverScreen';
@@ -25,7 +25,6 @@ export default function Home() {
     content,
     language,
     isTransitioningToScreensaver,
-    isCriticalTransition,
     kioskId
   } = useApp();
 
@@ -35,7 +34,7 @@ export default function Home() {
       <div className="w-screen h-screen overflow-hidden bg-black flex items-center justify-center">
         <div className="text-white text-center">
           <div className="text-2xl mb-4">Initialisiere Kiosk...</div>
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
+          <div className="rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
         </div>
       </div>
     );
@@ -49,9 +48,9 @@ export default function Home() {
       case 'start':
         return <StartScreen key="start" />;
       case 'question':
-        return <QuestionScreen key={`question-${currentQuestionIndex}`} />;
+        return <QuestionScreen key={`quiz-${currentQuestionIndex}-question`} />;
       case 'feedback':
-        return <FeedbackScreen key={`feedback-${currentQuestionIndex}`} />;
+        return <FeedbackScreen key={`quiz-${currentQuestionIndex}-feedback`} />;
       case 'results':
         return <ResultsScreen key="results" />;
       default:
@@ -59,39 +58,7 @@ export default function Home() {
     }
   };
 
-  // Determine if progress dots should be shown and what variant
-  const getProgressDotsConfig = () => {
-    // Hide progress dots during critical transitions to prevent showing incorrect state
-    if (isCriticalTransition) {
-      return { show: false };
-    }
-    
-    switch (currentScreen) {
-      case 'question':
-        return {
-          show: true,
-          variant: 'default',
-          totalQuestions: 5
-        };
-      case 'feedback':
-        return {
-          show: true,
-          variant: 'feedback',
-          totalQuestions: 5
-        };
-      case 'results':
-        return {
-          show: false, // Results screen handles its own progress dots locally
-          variant: 'results',
-          totalQuestions: 5
-        };
-      default:
-        return { show: false };
-    }
-  };
-
-  const progressConfig = getProgressDotsConfig();
-
+  
   // Get background image from current kiosk configuration
   const startContent = content?.[language]?.startScreen;
   const globalBackgroundImage = startContent?.backgroundImage;
@@ -104,40 +71,25 @@ export default function Home() {
         <GlobalBackground backgroundImage={globalBackgroundImage} />
       </div>
 
-      {/* Current screen content with overlapping transitions */}
-      <AnimatePresence>
+      {/* Current screen content - controlled transitions to prevent overlap */}
+      <AnimatePresence mode="wait" initial={false}>
         {!isTransitioningToScreensaver && renderScreen()}
-        {isTransitioningToScreensaver && (
-          <motion.div
-            key="screensaver-transition"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 bg-black z-30"
-          />
-        )}
       </AnimatePresence>
+      {isTransitioningToScreensaver && (
+        <div className="fixed inset-0 bg-black z-30" />
+      )}
       
-      {/* Always visible components - hidden during screensaver transition */}
-      <motion.div
-        animate={{ 
-          opacity: (isTransitioningToScreensaver || isCriticalTransition) ? 0 : 1 
-        }}
-        transition={{ 
-          duration: isCriticalTransition ? 0.05 : (isTransitioningToScreensaver ? 0.3 : 0.2),
-          ease: "easeInOut" 
-        }}
-        className="relative z-40"
-      >
+      {/* Always visible components */}
+      <div className="relative z-40">
         <LanguageSelector />
         <AdminPanel />
         
-        {/* Global Language Selector Icon - hidden during screensaver and critical transitions */}
-        {currentScreen !== 'screensaver' && !isCriticalTransition && (
+        {/* Global Language Selector Icon - always visible except screensaver */}
+        {currentScreen !== 'screensaver' && (
           <div 
-            className="fixed bottom-0 left-0 z-50"
+            className="fixed bottom-0 left-0"
             style={{
+              zIndex: 60,
               marginBottom: 'min(3.7rem, 4.7vh)', 
               marginLeft: 'min(9.5rem, 14.5vw)',
             }}
@@ -154,30 +106,24 @@ export default function Home() {
           </div>
         )}
 
-        {/* Global Progress Dots - shown during quiz screens */}
-        {progressConfig.show && !isCriticalTransition && (
-          <motion.div 
-            key="progress-dots"
-            initial={{ opacity: 1 }}
-            animate={{ opacity: isCriticalTransition ? 0 : 1 }}
-            transition={{ duration: 0.05 }}
+        {/* Global Progress Dots - always visible during quiz screens */}
+        {(currentScreen === 'question' || currentScreen === 'feedback') && (
+          <div 
             className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-40"
             style={{
-              bottom: progressConfig.variant === 'results' 
-                ? 'min(20rem, 21vh)' 
-                : 'min(4.5rem, 7.5vh)' 
+              bottom: 'min(4.5rem, 7.5vh)'
             }}
           >
             <ProgressDots
-              totalQuestions={progressConfig.totalQuestions}
+              totalQuestions={5}
               currentQuestionIndex={currentQuestionIndex}
               answers={answers}
               questions={questions}
-              variant={progressConfig.variant}
+              variant="default"
             />
-          </motion.div>
+          </div>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 }
