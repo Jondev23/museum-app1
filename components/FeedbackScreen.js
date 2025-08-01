@@ -37,10 +37,10 @@ const FeedbackScreen = () => {
   // Custom exit animation handler
   const handleExit = () => {
     setIsExiting(true);
-    // Cambiar más temprano para permitir superposición con efecto "empuje"
+    // Esperar a que la animación de salida termine antes de navegar a la siguiente pregunta
     setTimeout(() => {
       originalNextQuestion();
-    }, 200); // Cambio temprano para superposición
+    }, 1000); // Duración igual a la clase duration-[1000ms] de la animación
   };
 
   // Get dynamic styles based on content and answer correctness
@@ -113,9 +113,9 @@ const FeedbackScreen = () => {
         </div>
       </div>
 
-      {/* Footer section - disappears instantly without animation */}
+      {/* Footer section - now with animation */}
       <div
-        className={`fixed bottom-0 left-0 right-0 z-50 ${
+        className={`fixed bottom-0 left-0 right-0 z-50 transition-opacity duration-[1000ms] ease-in-out ${
           isExiting ? 'opacity-0' : 'opacity-100'
         }`}
       >
