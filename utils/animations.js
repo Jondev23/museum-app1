@@ -222,16 +222,25 @@ export const injectCSSAnimations = () => {
   
   const styleId = 'custom-animations';
   
-  // Verificar si los estilos ya están inyectados
-  if (document.getElementById(styleId)) return;
+  // Eliminar animaciones existentes para forzar actualización
+  const existingStyle = document.getElementById(styleId);
+  if (existingStyle) {
+    existingStyle.remove();
+  }
   
-  // Crear elemento de estilo
+  // Crear elemento de estilo con alta prioridad
   const style = document.createElement('style');
   style.id = styleId;
   
   // Combinar todas las animaciones keyframes
+  // QuestionScreen ya no se gestiona aquí, tiene sus propias animaciones
   style.textContent = CSS_KEYFRAMES.fadeSwipe + CSS_KEYFRAMES.feedbackScreen;
   
-  // Inyectar en el head del documento
+  // Inyectar en el head del documento - asegurarse que sea el último estilo
   document.head.appendChild(style);
+  
+  // Forzar un reflow para aplicar inmediatamente los cambios
+  if (document.body) {
+    document.body.offsetHeight;
+  }
 };

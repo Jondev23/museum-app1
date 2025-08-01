@@ -1,16 +1,9 @@
-// Import app context and animation library
+// Import app context
 import { useApp } from '../context/AppContext';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-// Import unified transition system
-import { 
-  getScreenTransition, 
-  getOverlayTransition, 
-  getUITransition,
-  getPageTransition,
-  SCREENSAVER_TRANSITION,
-  TRANSITION_CONFIG
-} from '../utils/screenTransitions';
+// Import z-index configuration only
+import { TRANSITION_CONFIG } from '../utils/screenTransitions';
 
 // Import all screen components
 import ScreensaverScreen from '../components/ScreensaverScreen';
@@ -51,7 +44,7 @@ export default function Home() {
     );
   }
 
-  // Render different screens based on current state with unified animations
+  // Render different screens based on current state without animations
   const renderScreen = () => {
     const screens = {
       'screensaver': { Component: ScreensaverScreen, key: "screensaver" },
@@ -63,25 +56,11 @@ export default function Home() {
 
     const screenConfig = screens[currentScreen] || screens['screensaver'];
     const { Component, key } = screenConfig;
-    const transitionConfig = getScreenTransition(currentScreen);
-    const [animationState, setAnimationState] = useState('enter');
-    
-    useEffect(() => {
-      // Set initial animation state to 'enter'
-      setAnimationState('enter');
-      
-      // After a small delay, change to normal state
-      const timer = setTimeout(() => {
-        setAnimationState('');
-      }, 50);
-      
-      return () => clearTimeout(timer);
-    }, [currentScreen]);
 
     return (
       <div
         key={key}
-        className={`fixed inset-0 ${transitionConfig.className} ${animationState}`}
+        className="fixed inset-0"
         style={{ zIndex: TRANSITION_CONFIG.Z_INDEX.CONTENT }}
       >
         <Component />
@@ -134,7 +113,7 @@ export default function Home() {
         <GlobalBackground backgroundImage={globalBackgroundImage} />
       </div>
 
-      {/* Current screen content with unified transitions */}
+      {/* Current screen content without transitions */}
       <div>
         {!isTransitioningToScreensaver && renderScreen()}
       </div>
@@ -142,23 +121,23 @@ export default function Home() {
       {isTransitioningToScreensaver && (
         <div
           key="screensaver-transition"
-          className="fixed inset-0 bg-black fade-animation standard-timing"
+          className="fixed inset-0 bg-black"
           style={{ zIndex: TRANSITION_CONFIG.Z_INDEX.OVERLAY }}
         />
       )}
 
-      {/* Always visible components with unified animations */}
+      {/* Always visible components without animations */}
       <div
-        className={`relative ${isTransitioningToScreensaver ? 'fade-animation exit' : ''}`}
+        className="relative"
         style={{ zIndex: TRANSITION_CONFIG.Z_INDEX.UI }}
       >
         <LanguageSelector />
         <AdminPanel />
         
-        {/* Global Language Selector Icon with unified animation */}
+        {/* Global Language Selector Icon */}
         {currentScreen !== 'screensaver' && !isCriticalTransition && (
           <div 
-            className="fixed bottom-0 left-0 slide-up-animation"
+            className="fixed bottom-0 left-0"
             style={{
               marginBottom: 'min(3.7rem, 4.7vh)', 
               marginLeft: 'min(9.5rem, 14.5vw)',
@@ -177,11 +156,11 @@ export default function Home() {
           </div>
         )}
 
-        {/* Global Progress Dots with unified animation */}
+        {/* Global Progress Dots */}
         {progressConfig.show && !isCriticalTransition && (
           <div 
             key="progress-dots"
-            className="fixed bottom-0 left-1/2 transform -translate-x-1/2 slide-up-animation"
+            className="fixed bottom-0 left-1/2 transform -translate-x-1/2"
             style={{
               bottom: progressConfig.variant === 'results' 
                 ? 'min(20rem, 21vh)' 

@@ -1,17 +1,36 @@
-// Import question screen components
+// Componente QuestionScreen - Implementación limpia desde cero
+import React, { useEffect, useState } from 'react';
 
-// Import custom hooks and configuration
+// Importar hooks y componentes necesarios
 import { useQuestionScreen } from '../hooks/useQuestionScreen';
 import { useQuestionScreenStyles, QUESTION_CONFIG } from './QuestionScreen/QuestionScreenConfig';
-
-// Import subcomponents
 import QuestionTitle from './QuestionScreen/QuestionTitle';
 import AnswerButtons from './QuestionScreen/AnswerButtons';
 import QuestionFooter from './QuestionScreen/QuestionFooter';
 
-// Question screen component - displays quiz questions with multiple choice answers
 const QuestionScreen = () => {
-  // Get question data and handlers from custom hook
+  // Estado para controlar la animación
+  const [animationPhase, setAnimationPhase] = useState('initial');
+
+  // Iniciar animación de entrada cuando el componente se monte
+  useEffect(() => {
+    // Primero establecer el estado inicial
+    setAnimationPhase('initial');
+    
+    // Forzar un reflow para asegurarse de que la animación funcione correctamente
+    if (typeof document !== 'undefined' && document.body) {
+      document.body.offsetHeight;
+    }
+    
+    // Iniciar la animación de entrada después de un pequeño delay
+    const timer = setTimeout(() => {
+      setAnimationPhase('enter');
+    }, 50);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Obtener datos y funciones del hook de QuestionScreen
   const {
     question,
     startContent,
@@ -27,25 +46,74 @@ const QuestionScreen = () => {
     getButtonMotionProps
   } = useQuestionScreen();
 
-  // Get dynamic styles based on content
+  // Obtener estilos dinámicos basados en el contenido
   const {
     progressDotsStyle
   } = useQuestionScreenStyles(startContent);
 
-  // Don't render if data is invalid
+  // No renderizar si los datos no son válidos
   if (!isValidData) return null;
+
+  // Definir estilos para la animación de entrada
+  const containerStyle = {
+    position: 'fixed',
+    inset: 0, 
+    display: 'flex',
+    flexDirection: 'column',
+    opacity: animationPhase === 'initial' ? 0 : 1,
+    transform: animationPhase === 'initial' ? 'translateX(100%)' : 'translateX(0)',
+    transition: 'transform 0.6s ease-in-out, opacity 0.6s ease-in-out'
+  };
 
   return (
     <>
-      {/* Content container - animations now handled by index.js */}
-      <div className="fixed inset-0 flex flex-col">
-        {/* Content container - without footer */}
+      {/* Definir estilos de animación global para el componente */}
+      <style>
+        {`
+          @keyframes slideFromRight {
+            from {
+              transform: translateX(100%);
+              opacity: 0;
+            }
+            to {
+              transform: translateX(0);
+              opacity: 1;
+            }
+          }
+          
+          @keyframes slideToLeft {
+            from {
+              transform: translateX(0);
+              opacity: 1;
+            }
+            to {
+              transform: translateX(-100%);
+              opacity: 0;
+            }
+          }
+          
+          .question-screen-container {
+            animation: slideFromRight 0.6s ease-in-out forwards;
+          }
+          
+          .question-screen-exit {
+            animation: slideToLeft 0.6s ease-in-out forwards;
+          }
+        `}
+      </style>
+
+      {/* Contenedor principal con animación de derecha a izquierda */}
+      <div 
+        className="question-screen-container"
+        style={containerStyle}
+      >
+        {/* Contenedor de contenido sin footer */}
         <div className="relative z-10 flex flex-col h-full">
-          {/* Main content */}
+          {/* Contenido principal */}
           <div className="flex flex-col items-center justify-start flex-1 w-full max-w-7xl mx-auto pt-[6.42rem] pb-2 gap-6">
-            {/* Card container */}
+            {/* Contenedor de tarjeta */}
             <div className="flex flex-col items-center w-full mt-[min(3.08rem,4.62vh)] py-[min(0.25rem,0.5vw)] gap-[min(1.5rem,3vw)] rounded-[min(1.875rem,4vw)] overflow-hidden border-0 bg-transparent">
-              {/* Content */}
+              {/* Contenido */}
               <div className="flex flex-col items-center w-full p-0 gap-[min(3rem,4.5vw)]">
                 <QuestionTitle 
                   question={question} 
@@ -66,7 +134,7 @@ const QuestionScreen = () => {
         </div>
       </div>
 
-      {/* Footer section - animations now handled by index.js */}
+      {/* Sección de footer - gestionado separadamente */}
       <div className="fixed bottom-0 left-0 right-0" style={{ zIndex: 50 }}>
         <QuestionFooter />
       </div>

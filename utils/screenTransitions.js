@@ -67,7 +67,7 @@ const FEEDBACK_CSS_ANIMATION = {
 export const SCREEN_TRANSITIONS = {
   screensaver: createTransition('fade', 'standard'),
   default: createTransition('slideHorizontal', 'standard'),
-  question: { className: '' }, // Sin animación para QuestionScreen
+  // QuestionScreen maneja sus propias animaciones internamente
   feedback: FEEDBACK_CSS_ANIMATION // FeedbackScreen con animaciones CSS personalizadas
 };
 
