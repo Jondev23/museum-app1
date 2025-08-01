@@ -29,6 +29,7 @@ export default function Home() {
 
   // State for managing screen transitions
   const [displayedScreen, setDisplayedScreen] = useState(currentScreen);
+  const [displayedQuestionIndex, setDisplayedQuestionIndex] = useState(currentQuestionIndex);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [animationClass, setAnimationClass] = useState('');
 
@@ -56,6 +57,7 @@ export default function Home() {
       // After exit animation completes, change screen and apply enter animation
       setTimeout(() => {
         setDisplayedScreen(currentScreen);
+        setDisplayedQuestionIndex(currentQuestionIndex); // También actualizar el índice aquí
         const enterClass = getEnterAnimationClass(currentScreen);
         setAnimationClass(`screen-transition ${enterClass}`);
         
@@ -66,7 +68,7 @@ export default function Home() {
         }, 500);
       }, 500);
     }
-  }, [currentScreen, displayedScreen, isTransitioning]);
+  }, [currentScreen, displayedScreen, isTransitioning, currentQuestionIndex]);
 
   // Get enter animation class for each screen type
   const getEnterAnimationClass = (screenType) => {
@@ -124,9 +126,9 @@ export default function Home() {
       case 'start':
         return <StartScreen key="start" />;
       case 'question':
-        return <QuestionScreen key={`question-${currentQuestionIndex}`} />;
+        return <QuestionScreen key={`question-${displayedQuestionIndex}`} />;
       case 'feedback':
-        return <FeedbackScreen key={`feedback-${currentQuestionIndex}`} />;
+        return <FeedbackScreen key={`feedback-${displayedQuestionIndex}`} />;
       case 'results':
         return <ResultsScreen key="results" />;
       default:

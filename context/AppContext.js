@@ -216,8 +216,11 @@ export const AppProvider = ({ children }) => {
 
   const nextQuestion = useCallback(() => {
     if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      // Cambiar pantalla primero, luego el índice después de la animación
       setCurrentScreen('question');
+      setTimeout(() => {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      }, 500); // Esperar a que termine la animación de salida
     } else {
       setCurrentScreen('results');
     }
