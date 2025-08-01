@@ -318,3 +318,36 @@
   justify-content: center;
   padding-top: 0.6rem;
 }
+
+/* Results title typography - Head & Auswertung */
+.title-results {
+  color: var(--Neutral_Light, #D9D9D9) !important;
+  font-family: "Tisa Pro" !important;
+  font-size: 6rem !important;
+  font-style: italic !important;
+  font-weight: 700 !important;
+  line-height: 120% !important; /* 7.2rem */
+}
+
+/* Results subtitle typography - Subline */
+.subtitle-small {
+  color: var(--Blassgruen, #85AF8B) !important;
+  font-family: "Tisa Sans Pro" !important;
+  font-size: 4rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 120% !important; /* 4.8rem */
+}
+
+/* Play again button text typography */
+.text-button-play-again {
+  color: var(--Neutral_Light, #D9D9D9) !important;
+  text-align: center !important;
+  font-family: "Tisa Sans Pro" !important;
+  font-size: 1.875rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 7rem !important; /* 373.333% */
+  text-transform: uppercase !important;
+  margin-right: 1.5rem !important;
+}
