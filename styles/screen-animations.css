@@ -1,136 +1,238 @@
-/* ============================================
+ /* ============================================
    SCREEN TRANSITION ANIMATIONS
-   Transiciones básicas CSS + Sistema JavaScript avanzado
+   Custom animations for museum kiosk app screens
    ============================================ */
 
-:root {
-  /* Variables de respaldo para transiciones CSS básicas */
-  --anim-duration: 0.3s;
-  --ease-basic: ease-out;
-}
-
-/* ============================================
-   BASE - Clases de utilidad básicas
-   ============================================ */
-/* Preparación para animaciones JavaScript */
-.js-animate {
-  will-change: transform, opacity;
-}
-
-.js-animate-complete {
-  will-change: auto;
-}
-
-/* Si el usuario prefiere movimientos reducidos, desactivar animaciones */
-@media (prefers-reduced-motion: reduce) {
-  .js-animate {
-    will-change: auto !important;
-  }
-  
-  /* Transiciones instantáneas como fallback */
-  .screen-transition {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-/* ============================================
-   FALLBACK CSS ANIMATIONS (solo para casos de emergencia)
-   ============================================ */
+/* Base animation properties */
 .screen-transition {
-  animation-duration: var(--anim-duration);
-  animation-timing-function: var(--ease-basic);
+  animation-duration: 900ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   animation-fill-mode: both;
 }
 
-/* Fallbacks básicos muy rápidos */
-.fallback-fade-in {
-  animation: fallbackFadeIn var(--anim-duration) var(--ease-basic);
+/* ============================================
+   SCREENSAVER SCREEN ANIMATIONS
+   ============================================ */
+
+/* ScreensaverScreen - Enter with fade-in */
+.enter-screensaver {
+  animation-name: fadeIn;
+  animation-duration: 900ms;
+  animation-timing-function: ease-out;
 }
 
-.fallback-fade-out {
-  animation: fallbackFadeOut var(--anim-duration) var(--ease-basic);
+/* ScreensaverScreen - Exit with fade-out */
+.exit-screensaver {
+  animation-name: fadeOut;
+  animation-duration: 900ms;
+  animation-timing-function: ease-in;
 }
 
-@keyframes fallbackFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* ============================================
+   START SCREEN ANIMATIONS
+   ============================================ */
+
+/* StartScreen - Enter from right */
+.enter-start {
+  animation-name: slideInFromRight;
+  animation-duration: 900ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes fallbackFadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+/* StartScreen - Exit to left */
+.exit-start {
+  animation-name: slideOutToLeft;
+  animation-duration: 900ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   QUESTION SCREEN ANIMATIONS
+   ============================================ */
+
+/* QuestionScreen - Enter from right */
+.enter-question {
+  animation-name: slideInFromRight;
+  animation-duration: 900ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* QuestionScreen - Exit with fade-out */
+.exit-question {
+  animation-name: fadeOut;
+  animation-duration: 900ms;
+  animation-timing-function: ease-in;
+}
+
+/* ============================================
+   FEEDBACK SCREEN ANIMATIONS
+   ============================================ */
+
+/* FeedbackScreen - Enter with fade-in */
+.enter-feedback {
+  animation-name: fadeIn;
+  animation-duration: 900ms;
+  animation-timing-function: ease-out;
+}
+
+/* FeedbackScreen - Exit to left - Targeting fixed positioned elements directly */
+.screen-container.screen-transition.exit-feedback > div[class*="fixed"],
+.screen-container.exit-feedback > div[class*="fixed"] {
+  animation-name: slideOutToLeftFeedback !important;
+  animation-duration: 900ms !important;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  animation-fill-mode: both !important;
+}
+
+/* Alternative targeting for nested fixed elements */
+.screen-transition.exit-feedback .fixed,
+.exit-feedback .fixed {
+  animation-name: slideOutToLeftFeedback !important;
+  animation-duration: 900ms !important;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  animation-fill-mode: both !important;
+}
+
+/* ============================================
+   RESULTS SCREEN ANIMATIONS
+   ============================================ */
+
+/* ResultsScreen - Enter from right */
+.enter-results {
+  animation-name: slideInFromRight;
+  animation-duration: 900ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ResultsScreen - Exit to left */
+.exit-results {
+  animation-name: slideOutToLeft;
+  animation-duration: 900ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   KEYFRAME DEFINITIONS
+   ============================================ */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade Out Animation */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Slide In From Right Animation */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Slide Out To Left Animation - Enhanced for reliability */
+@keyframes slideOutToLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* Additional keyframe for feedback screen specifically */
+@keyframes slideOutToLeftFeedback {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* Specific rule for when index.js applies the animation class to screen-container */
+.screen-container.screen-transition.exit-feedback {
+  animation-name: slideOutToLeftFeedback !important;
+  animation-duration: 900ms !important;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  animation-fill-mode: both !important;
+  transform: translateX(0) !important;
+  opacity: 1 !important;
 }
 
 /* ============================================
    UTILITY CLASSES
    ============================================ */
-/* Estados de visibilidad para JavaScript */
+
+/* Admin panel animations */
+.admin-panel-wide {
+  animation-duration: 800ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: both;
+}
+
+/* Hide element during transition */
 .screen-hidden {
   opacity: 0;
   pointer-events: none;
-  display: none;
 }
 
+/* Show element during transition */
 .screen-visible {
   opacity: 1;
   pointer-events: auto;
-  display: block;
 }
 
-.screen-transitioning {
-  pointer-events: none;
-}
-
-/* Contenedor optimizado para animaciones JavaScript */
+/* Ensure proper positioning for slide animations */
 .screen-container {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  /* Optimizaciones para rendimiento */
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  perspective: 1000px;
 }
 
-/* Activar aceleración por hardware */
-.hw-accelerated {
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  perspective: 1000px;
+/* Special handling for feedback screen animations - target fixed elements directly */
+.screen-container.screen-transition.exit-feedback > *,
+.screen-container.exit-feedback > * {
+  animation-name: slideOutToLeftFeedback !important;
+  animation-duration: 900ms !important;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  animation-fill-mode: both !important;
 }
 
-/* Para evitar scroll durante transiciones */
+/* Ensure all child elements of fixed positioned feedback screen animate */
+.screen-container.screen-transition.exit-feedback [class*="fixed"] *,
+.screen-container.exit-feedback [class*="fixed"] * {
+  animation: inherit;
+  transform: inherit;
+}
+
+/* Prevent scroll during transitions */
 .transition-active {
   overflow: hidden;
-}
-
-/* Clase para elementos que se van a animar */
-.will-animate {
-  will-change: transform, opacity;
-}
-
-/* Optimizaciones para móviles y tablets */
-@media (max-width: 768px) {
-  .screen-container {
-    /* Reducir efectos costosos en dispositivos móviles */
-    perspective: none;
-  }
-}
-
-/* ============================================
-   CLASES DE ESTADO PARA JAVASCRIPT
-   ============================================ */
-.entering {
-  /* Elemento está entrando */
-}
-
-.exiting {
-  /* Elemento está saliendo */
-}
-
-.animation-complete {
-  /* Animación completada, limpieza */
-  will-change: auto;
 }
