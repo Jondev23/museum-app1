@@ -60,11 +60,11 @@ export const useQuestionScreen = () => {
     const baseClasses = 'transition-all duration-75 transform bg-transparent';
     
     if (selectedAnswer === null && !isProcessing) {
-      return `${baseClasses} hover:bg-white/10 hover:shadow-lg hover:scale-102 active:scale-98 cursor-pointer`;
+      return `${baseClasses} hover:bg-white/10 hover:shadow-lg cursor-pointer`;
     }
     
     if (selectedAnswer === index) {
-      return `${baseClasses} scale-102 shadow-xl cursor-not-allowed`;
+      return `${baseClasses} cursor-not-allowed`;
     }
     
     return `${baseClasses} opacity-60 cursor-not-allowed`;

@@ -31,14 +31,6 @@ const AnswerButtons = ({
         >
           <span 
             className={`typography-antworten-buttons ${selectedAnswer === index ? 'selected' : ''} relative w-full text-center break-words hyphens-auto max-w-full transition-colors duration-75`}
-            style={{
-              overflowWrap: 'break-word',
-              wordBreak: 'break-word',
-              hyphens: 'auto',
-              whiteSpace: 'normal',
-              transform: 'translateY(4%)',
-              fontVariantNumeric: 'tabular-nums lining-nums'
-            }}
           >
             {processTextWithHTML(answer)}
           </span>
