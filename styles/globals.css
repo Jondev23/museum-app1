@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 /* Import screen transition animations */
+@import './screen-animations.css';
 
 /* ============================================
    CUSTOM FONTS FOR MUSEUM APP
