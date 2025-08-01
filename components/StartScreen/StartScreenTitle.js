@@ -16,11 +16,7 @@ const StartScreenTitle = ({
     <div className="flex flex-col items-center w-full h-full justify-center">
       {showTitle && (
         <h1
-          className="typography-head text-primary"
-          style={{
-            ...titleStyle,
-            color: 'var(--color-text-primary)'
-          }}
+          className="typography-head"
         >
           {processTextWithHTML(startContent?.title || defaultTexts.title)}
         </h1>
