@@ -166,7 +166,9 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   const feedbackContainerStyleWithBg = useMemo(() => ({
     ...feedbackContainerStyle,
     backgroundColor: isCorrect ? 'var(--color-feedback-correct)' : 'var(--color-feedback-incorrect)',
-    borderRadius: FEEDBACK_CONFIG.SIZES.BORDER_RADIUS,
+    borderRadius: '1.875rem',
+    paddingLeft: '6rem',
+    paddingRight: '6rem',
   }), [feedbackContainerStyle, isCorrect]);
 
   return {
