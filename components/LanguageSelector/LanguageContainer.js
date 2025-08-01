@@ -1,14 +1,12 @@
-import { motion } from '../../utils/screenTransitions';
-
-// Animated container wrapper for language selector content
+// Container wrapper for language selector content with CSS animations
 const LanguageContainer = ({ onContentClick, children }) => {
   return (
-    <motion.div
+    <div
       className="language-container scale-modal-animation standard-timing"
       onClick={onContentClick}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 

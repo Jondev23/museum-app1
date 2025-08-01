@@ -1,10 +1,9 @@
-import { motion } from '../../utils/screenTransitions';
 import { DEFAULT_CONTENT } from './LanguageSelectorConfig';
 
-// Language selection icon component with animation
+// Language selection icon component with CSS animation
 const LanguageIcon = () => {
   return (
-    <motion.div
+    <div
       className="flex items-center justify-center slide-up-animation standard-timing"
     >
       <img 
@@ -12,7 +11,7 @@ const LanguageIcon = () => {
         alt={DEFAULT_CONTENT.iconAlt}
         className="language-icon"
       />
-    </motion.div>
+    </div>
   );
 };
 

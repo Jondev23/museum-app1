@@ -1,11 +1,10 @@
-import { motion } from '../../utils/screenTransitions';
 import { STYLE_CONFIG } from './LanguageSelectorConfig';
 import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Title component for language selector with bilingual text
 const LanguageTitle = ({ englishTitle, germanTitle }) => {
   return (
-    <motion.div
+    <div
       className="slide-up-animation standard-timing"
       style={STYLE_CONFIG.TITLE_CONTAINER}
     >
@@ -15,7 +14,7 @@ const LanguageTitle = ({ englishTitle, germanTitle }) => {
       <h2 className="title-question language-subtitle">
         {processTextWithHTML(germanTitle)}
       </h2>
-    </motion.div>
+    </div>
   );
 };
 

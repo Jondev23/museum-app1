@@ -1,6 +1,4 @@
 import { useApp } from '../context/AppContext';
-import { motion } from '../utils/screenTransitions';
-import { getKioskSelectorTransition } from '../utils/screenTransitions';
 import { KIOSK_CONFIGS } from '../utils/kioskConfig';
 
 // Kiosk selection screen for choosing between different kiosk configurations
@@ -31,9 +29,8 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
 
   return (
     <div className="admin-overlay" style={{ padding: 'min(2rem, 4vw)' }}>
-      <motion.div
-        {...getKioskSelectorTransition('modal')}
-        className="admin-panel-wide"
+      <div
+        className="admin-panel-wide scale-modal-animation standard-timing"
       >
         <h2 className="admin-title">
           Kiosk auswählen
@@ -79,7 +76,7 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
         >
           Zurück
         </button>
-      </motion.div>
+      </div>
     </div>
   );
 };

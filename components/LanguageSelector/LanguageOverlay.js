@@ -1,14 +1,12 @@
-import { motion } from '../../utils/screenTransitions';
-
-// Animated overlay component for language selector background
+// Overlay component for language selector background with CSS animations
 const LanguageOverlay = ({ onOverlayClick, children }) => {
   return (
-    <motion.div
+    <div
       className="language-overlay fade-animation standard-timing"
       onClick={onOverlayClick}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 

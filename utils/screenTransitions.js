@@ -68,6 +68,14 @@ const BASE_ANIMATIONS = {
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: '-100%' }
   },
+  
+  // Slide from left to right (for QuestionScreen)
+  slideLeftToRight: {
+    className: 'slide-left-to-right-animation',
+    initial: { opacity: 0, x: '-100%' },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: '100%' }
+  },
 
   // Scale and fade (for modals)
   scaleModal: {
@@ -136,12 +144,12 @@ const FEEDBACK_CSS_ANIMATION = {
 export const SCREEN_TRANSITIONS = {
   screensaver: createTransition('fade', 'standard'),
   default: createTransition('slideHorizontal', 'standard'),
+  question: createTransition('slideLeftToRight', 'standard'), // Pantalla de preguntas ahora entra de izquierda a derecha
   feedback: FEEDBACK_CSS_ANIMATION // FeedbackScreen con animaciones CSS personalizadas
 };
 
 // Create aliases for all screen types using the same transition
 SCREEN_TRANSITIONS.start = SCREEN_TRANSITIONS.default;
-SCREEN_TRANSITIONS.question = SCREEN_TRANSITIONS.default;
 SCREEN_TRANSITIONS.results = SCREEN_TRANSITIONS.default;
 
 // Footer animations - unified using generator

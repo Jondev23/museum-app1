@@ -1,6 +1,6 @@
 // Import React hooks, animation library, and kiosk selector
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from '../utils/screenTransitions';
+import { AnimatePresence } from '../utils/screenTransitions';
 import KioskSelectorScreen from './KioskSelector';
 
 // Admin panel component - hidden panel for kiosk management and configuration

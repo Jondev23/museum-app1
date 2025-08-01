@@ -1,7 +1,6 @@
 // Import React hooks and app context
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
-import { getInteractiveTransition } from '../utils/screenTransitions';
 
 // Custom hook for question screen functionality
 export const useQuestionScreen = () => {
@@ -71,11 +70,11 @@ export const useQuestionScreen = () => {
     return `${baseClasses} opacity-60 cursor-not-allowed`;
   }, [selectedAnswer, isProcessing]);
 
-  // Get motion properties for answer buttons - Touch optimized
+  // Get motion properties for answer buttons - CSS based interactions now
   const getButtonMotionProps = useCallback((index) => {
     if (selectedAnswer === null && !isProcessing) {
       return {
-        whileTap: getInteractiveTransition('subtle').tap
+        className: 'hover:scale-[0.98] active:scale-[0.95] transition-transform duration-100'
       };
     }
     

@@ -1,5 +1,4 @@
-// Import animation library and button component
-import { motion, getLanguageSelectorTransition } from '../../utils/screenTransitions';
+// Import button component
 import LanguageButton from './LanguageButton';
 
 // Container for both German and English language buttons
@@ -14,10 +13,9 @@ const LanguageButtons = ({
   const englishState = getButtonState('en');
 
   return (
-    // Animated container for language buttons
-    <motion.div
-      {...getLanguageSelectorTransition('buttons')}
-      className="language-buttons-container"
+    // Container for language buttons with CSS animations
+    <div
+      className="language-buttons-container fade-animation"
     >
       {/* German language button */}
       <LanguageButton
@@ -33,7 +31,7 @@ const LanguageButtons = ({
         isActive={englishState.isActive}
         onLanguageChange={handleLanguageChange}
       />
-    </motion.div>
+    </div>
   );
 };
 

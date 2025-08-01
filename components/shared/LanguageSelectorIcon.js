@@ -1,6 +1,5 @@
-// Import animation library and app context
+// Import app context
 import React from 'react';
-import { motion } from '../../utils/screenTransitions';
 import { useApp } from '../../context/AppContext';
 
 // Language selector icon component - trigger for language overlay
@@ -63,10 +62,10 @@ const LanguageSelectorIcon = ({
       className={className}
       style={getContainerStyles()}
     >
-      <motion.button
+      <button
         onClick={handleClick}
         onTouchStart={handleTouchStart}
-        className="transition-all cursor-pointer relative"
+        className="transition-all cursor-pointer relative hover:scale-[0.98] active:scale-[0.95]"
         style={{
           ...getButtonStyles(),
           touchAction: 'manipulation',
@@ -76,7 +75,7 @@ const LanguageSelectorIcon = ({
           zIndex: 50  
         }}
       >
-        <motion.img
+        <img
           src="./images/OE_Sprache_64.svg"
           alt="Language selector"
           style={{
@@ -85,7 +84,7 @@ const LanguageSelectorIcon = ({
             pointerEvents: 'none'
           }}
         />
-      </motion.button>
+      </button>
     </div>
   );
 };

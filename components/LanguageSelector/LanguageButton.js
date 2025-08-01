@@ -1,5 +1,4 @@
-// Import animation library and configuration
-import { motion, getInteractiveTransition } from '../../utils/screenTransitions';
+// Import text processing utility
 import { processTextWithHTML } from '../../utils/textProcessor';
 
 // Individual language button component for German/English selection
@@ -23,12 +22,11 @@ const LanguageButton = ({
   };
 
   return (
-    // Animated button with tap interaction only (touch optimized)
-    <motion.button
+    // Button with CSS-based animations for interactions
+    <button
       onClick={() => onLanguageChange(language)}
       onTouchStart={handleTouchStart}
-      whileTap={getInteractiveTransition('subtle').tap}
-      className={buttonClass}
+      className={`${buttonClass} hover:scale-[0.98] active:scale-[0.95] transition-transform duration-100`}
       style={{
         touchAction: 'manipulation',
         userSelect: 'none',
@@ -40,7 +38,7 @@ const LanguageButton = ({
       <span className="text-button language-button-text">
         {processTextWithHTML(buttonText)}
       </span>
-    </motion.button>
+    </button>
   );
 };
 

@@ -28,7 +28,7 @@ const AnswerButtons = ({
           onClick={() => handleAnswerClick(index, QUESTION_CONFIG.ANSWER_DELAY)}
           onTouchStart={(e) => handleTouchStart(e, index)}
           disabled={selectedAnswer !== null || isProcessing}
-          className={`btn-answer inline-flex min-w-[min(42.3rem,63vw,80vh)] min-h-[min(4.62rem,6.93vh,8vw)] items-center justify-center gap-[min(0.5rem,1vw)] px-[min(4rem,5vw,6vh)] py-[min(1rem,1.5vh,2vw)] rounded-[min(4.62rem,6.93vh,8vw)] border-[min(0.1125rem,0.225vw,0.3vh)] border-solid relative ${getButtonClassName(index)}`}
+          className={`btn-answer inline-flex min-w-[min(42.3rem,63vw,80vh)] min-h-[min(4.62rem,6.93vh,8vw)] items-center justify-center gap-[min(0.5rem,1vw)] px-[min(4rem,5vw,6vh)] py-[min(1rem,1.5vh,2vw)] rounded-[min(4.62rem,6.93vh,8vw)] border-[min(0.1125rem,0.225vw,0.3vh)] border-solid relative ${getButtonClassName(index)} ${getButtonMotionProps(index).className || ''}`}
           style={{
             ...getButtonStyle(index),
             transition: 'all 0.3s ease-in-out'
