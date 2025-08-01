@@ -30,13 +30,12 @@ const AnswerButtons = ({
           style={getButtonStyle(index)}
         >
           <span 
-            className={`typography-antworten-buttons relative w-full text-center break-words hyphens-auto max-w-full transition-colors duration-75 ${selectedAnswer === index ? '' : 'text-primary'}`}
+            className={`typography-antworten-buttons ${selectedAnswer === index ? 'selected' : ''} relative w-full text-center break-words hyphens-auto max-w-full transition-colors duration-75`}
             style={{
-              color: selectedAnswer === index ? 'var(--color-feedback-answer-text)' : undefined,
-              overflowWrap: selectedAnswer === index ? 'break-word' : undefined,
-              wordBreak: selectedAnswer === index ? 'break-word' : undefined,
-              hyphens: selectedAnswer === index ? 'auto' : undefined,
-              whiteSpace: selectedAnswer === index ? 'normal' : undefined,
+              overflowWrap: 'break-word',
+              wordBreak: 'break-word',
+              hyphens: 'auto',
+              whiteSpace: 'normal',
               transform: 'translateY(4%)',
               fontVariantNumeric: 'tabular-nums lining-nums'
             }}

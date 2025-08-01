@@ -92,3 +92,23 @@
   font-style: italic !important;
   line-height: 1.2 !important;
 }
+
+/* Answer buttons typography */
+.typography-antworten-buttons {
+  color: var(--color-neutral-light, #D9D9D9) !important;
+  font-family: "Tisa Sans Pro" !important;
+  font-size: 3rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+}
+
+/* Answer buttons selected state typography */
+.typography-antworten-buttons.selected {
+  color: var(--color-schiefer, #344243) !important;
+  font-family: "Tisa Sans Pro" !important;
+  font-size: 3rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+}
