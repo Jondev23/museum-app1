@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { setScreensaverTimeout as saveScreensaverTimeout } from '../utils/configManager';
 
@@ -9,7 +8,6 @@ const SettingsScreen = ({ onBack, onSettingsSaved }) => {
   const [timeoutMinutes, setTimeoutMinutes] = useState(Math.round(screensaverTimeout / 60000));
   const [isSaving, setIsSaving] = useState(false);
 
-  // Predefined timeout options (in minutes)
   const timeoutOptions = [
     { value: 1, label: '1 Minute' },
     { value: 2, label: '2 Minuten' },
@@ -19,29 +17,22 @@ const SettingsScreen = ({ onBack, onSettingsSaved }) => {
     { value: 15, label: '15 Minuten' }
   ];
 
-  // Handle timeout selection
   const handleTimeoutSelect = (minutes) => {
     setTimeoutMinutes(minutes);
   };
 
-  // Handle touch event for timeout selection
   const handleTouchSelect = (e, minutes) => {
     e.preventDefault();
     handleTimeoutSelect(minutes);
   };
 
-  // Save settings
   const handleSave = async () => {
     if (isSaving) return;
-    
     setIsSaving(true);
     try {
       const timeoutMs = timeoutMinutes * 60 * 1000;
       await saveScreensaverTimeout(timeoutMs);
-      
-      // Update the context state immediately
       setScreensaverTimeout(timeoutMs);
-      
       if (onSettingsSaved) {
         onSettingsSaved(timeoutMs);
       }
@@ -53,13 +44,11 @@ const SettingsScreen = ({ onBack, onSettingsSaved }) => {
     }
   };
 
-  // Handle touch event for save
   const handleTouchSave = (e) => {
     e.preventDefault();
     handleSave();
   };
 
-  // Handle touch event for back button
   const handleTouchBack = (e) => {
     e.preventDefault();
     onBack();
@@ -67,25 +56,20 @@ const SettingsScreen = ({ onBack, onSettingsSaved }) => {
 
   return (
     <div className="admin-overlay" style={{ padding: 'min(2rem, 4vw)' }}>
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.8, opacity: 0 }}
-        className="admin-panel-wide"
-      >
+      <div className="admin-panel-wide">
         <h2 className="admin-title">
           Screensaver-Einstellungen
         </h2>
-        
+
         <div className="admin-form-group">
           <label className="admin-label" style={{ marginBottom: 'min(1rem, 2vw)' }}>
             Timeout bis Screensaver (aktuell: {Math.round(screensaverTimeout / 60000)} Min.)
           </label>
-          
-          <div 
+
+          <div
             className="w-full flex flex-col"
-            style={{ 
-              gap: 'min(0.5rem, 1vw)', 
+            style={{
+              gap: 'min(0.5rem, 1vw)',
               marginBottom: 'min(2rem, 4vw)'
             }}
           >
@@ -123,7 +107,7 @@ const SettingsScreen = ({ onBack, onSettingsSaved }) => {
             >
               {isSaving ? 'Speichern...' : 'Speichern'}
             </button>
-            
+
             <button
               onClick={onBack}
               onTouchStart={handleTouchBack}
@@ -141,7 +125,7 @@ const SettingsScreen = ({ onBack, onSettingsSaved }) => {
             </button>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

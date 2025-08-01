@@ -2,16 +2,10 @@
 const StandardFooter = ({ 
   children,
   showProgressDots = false,
-  totalQuestions = 5,
-  currentQuestionIndex = 0,
-  answers = [],
-  questions = [],
-  progressDotsVariant = 'default',
   className = '',
   style = {},
   alignProgressDots = 'center'
 }) => {
-  // Base styles for consistent footer positioning
   const baseFooterStyles = {
     position: 'fixed',
     bottom: '0',
@@ -25,51 +19,11 @@ const StandardFooter = ({
   };
 
   return (
-    // Footer container with flexible layout
     <div 
       className={`relative flex ${alignProgressDots === 'inline' && showProgressDots ? 'justify-center' : 'justify-between'} items-center ${className}`}
       style={baseFooterStyles}
     >
-      {/* Language selector icon - now global, removed from footer */}
-      {/* <LanguageSelectorIcon 
-        variant="standard" 
-        delay={0.6}
-        style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', left: 'min(1.25rem, 2vw)' } : {}}
-      /> */}
-
-      {/* Progress dots - now global, removed from footer */}
-      {/* {showProgressDots ? (
-        <ProgressDots
-          totalQuestions={totalQuestions}
-          currentQuestionIndex={currentQuestionIndex}
-          answers={answers}
-          questions={questions}
-          variant={progressDotsVariant}
-          className={alignProgressDots === 'inline' ? '' : 'absolute'}
-          style={
-            alignProgressDots === 'inline' 
-            ? {
-                // Inline alignment - reduced margin to move dots down 0.1%
-                flexShrink: 0,
-                marginBottom: 'min(6.83698984375rem, 11.13148375vh)'
-              }
-            : {
-                // Absolute positioning - legacy configuration
-                left: '46%',
-                transform: 'translateX(calc(-50% - min(4rem, 8vw)))',
-                bottom: 'min(5.625rem, 9vh)',
-                zIndex: 25
-              }
-          }
-        />
-      ) : (
-        <div style={{ flex: 1 }} />
-      )} */}
-
-      {/* Simplified layout without progress dots */}
       <div style={{ flex: 1 }} />
-
-      
       <div style={alignProgressDots === 'inline' && showProgressDots ? { position: 'absolute', right: 'min(6.6rem, 11vw)' } : {}}>
         {children}
       </div>

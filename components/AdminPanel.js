@@ -1,11 +1,7 @@
-// Import React hooks, animation library, and kiosk selector
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import KioskSelectorScreen from './KioskSelector';
 
-// Admin panel component - hidden panel for kiosk management and configuration
 const AdminPanel = () => {
-  // State for panel visibility and authentication
   const [isVisible, setIsVisible] = useState(false);
   const [clickSequence, setClickSequence] = useState([]);
   const [password, setPassword] = useState('');
@@ -15,20 +11,16 @@ const AdminPanel = () => {
   const [errorMsg, setErrorMsg] = useState('');
   const passwordInputRef = useRef(null);
 
-  // Security configuration
-  const SECRET_SEQUENCE = ['tr', 'tr', 'br']; // Top-right, top-right, bottom-right
+  const SECRET_SEQUENCE = ['tr', 'tr', 'br'];
   const ADMIN_PASSWORD = 'museum2025';
 
-  // Reset click sequence after timeout to prevent accidental access
   useEffect(() => {
     const timer = setTimeout(() => {
       setClickSequence([]);
-    }, 10000); // 10 second timeout
-
+    }, 10000);
     return () => clearTimeout(timer);
   }, [clickSequence]);
 
-  // Auto-focus password input when panel becomes visible or password is reset
   useEffect(() => {
     if (isVisible && !isAuthenticated && passwordInputRef.current) {
       const timer = setTimeout(() => {
@@ -38,12 +30,10 @@ const AdminPanel = () => {
     }
   }, [isVisible, isAuthenticated, password]);
 
-  // Handle corner click sequence for panel activation
   const handleCornerClick = (corner) => {
     const newSequence = [...clickSequence, corner];
     setClickSequence(newSequence);
 
-    // Check if sequence matches the secret pattern
     if (newSequence.length === SECRET_SEQUENCE.length) {
       if (JSON.stringify(newSequence) === JSON.stringify(SECRET_SEQUENCE)) {
         setIsVisible(true);
@@ -52,7 +42,6 @@ const AdminPanel = () => {
     }
   };
 
-  // Handle touch events for mobile devices
   const handleCornerTouch = (e, corner) => {
     e.preventDefault();
     handleCornerClick(corner);
@@ -66,21 +55,9 @@ const AdminPanel = () => {
     } else {
       setPassword('');
       setErrorMsg('Passwort inkorrekt. Bitte versuchen Sie es erneut.');
-      
-      // Clear error message after 3 seconds
-      setTimeout(() => {
-        setErrorMsg('');
-      }, 3000);
-      
-      // Focus the input field immediately and again after a short delay
-      if (passwordInputRef.current) {
-        passwordInputRef.current.focus();
-      }
-      setTimeout(() => {
-        if (passwordInputRef.current) {
-          passwordInputRef.current.focus();
-        }
-      }, 50);
+      setTimeout(() => setErrorMsg(''), 3000);
+      passwordInputRef.current?.focus();
+      setTimeout(() => passwordInputRef.current?.focus(), 50);
     }
   };
 
@@ -89,17 +66,10 @@ const AdminPanel = () => {
     handlePasswordSubmit(e);
   };
 
-  const handleInputClick = () => {
-    if (passwordInputRef.current) {
-      passwordInputRef.current.focus();
-    }
-  };
-
+  const handleInputClick = () => passwordInputRef.current?.focus();
   const handleInputTouch = (e) => {
     e.preventDefault();
-    if (passwordInputRef.current) {
-      passwordInputRef.current.focus();
-    }
+    passwordInputRef.current?.focus();
   };
 
   const handleClose = () => {
@@ -113,11 +83,9 @@ const AdminPanel = () => {
 
   const handleExitKiosk = () => {
     if (window.confirm('Kiosk-Modus wirklich beenden?')) {
-      // In Electron app
       if (window.electronAPI) {
         window.close();
       } else {
-        // In browser
         window.location.href = 'about:blank';
       }
     }
@@ -125,175 +93,108 @@ const AdminPanel = () => {
 
   return (
     <>
-      
-      <div 
+      <div
         className="admin-corner-trigger top-0 right-0"
         onClick={() => handleCornerClick('tr')}
         onTouchStart={(e) => handleCornerTouch(e, 'tr')}
-        style={{
-          touchAction: 'manipulation',
-          userSelect: 'none',
-          WebkitTouchCallout: 'none',
-          WebkitUserSelect: 'none'
-        }}
+        style={{ touchAction: 'manipulation', userSelect: 'none' }}
       />
-      
-      
-      <div 
+      <div
         className="admin-corner-trigger bottom-0 right-0"
         onClick={() => handleCornerClick('br')}
         onTouchStart={(e) => handleCornerTouch(e, 'br')}
-        style={{
-          touchAction: 'manipulation',
-          userSelect: 'none',
-          WebkitTouchCallout: 'none',
-          WebkitUserSelect: 'none'
-        }}
+        style={{ touchAction: 'manipulation', userSelect: 'none' }}
       />
 
-      
-      <AnimatePresence>
-        {isVisible && !showKioskSelector && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="admin-overlay"
-          >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              className="admin-panel"
-            >
-              <h2 className="admin-title">
-                Admin Panel
-              </h2>
-              {successMsg && (
-                <div className="admin-success-message">
-                  {successMsg}
+      {isVisible && !showKioskSelector && (
+        <div className="admin-overlay">
+          <div className="admin-panel">
+            <h2 className="admin-title">Admin Panel</h2>
+            {successMsg && <div className="admin-success-message">{successMsg}</div>}
+            {errorMsg && <div className="admin-error-message">{errorMsg}</div>}
+
+            {!isAuthenticated ? (
+              <form onSubmit={handlePasswordSubmit} className="admin-form">
+                <div>
+                  <label className="admin-label">Passwort</label>
+                  <input
+                    ref={passwordInputRef}
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    onClick={handleInputClick}
+                    onTouchStart={handleInputTouch}
+                    className="admin-input"
+                    autoFocus
+                    style={{ touchAction: 'manipulation', userSelect: 'none' }}
+                  />
                 </div>
-              )}
-              {errorMsg && (
-                <div className="admin-error-message">
-                  {errorMsg}
-                </div>
-              )}
-              {!isAuthenticated ? (
-                <form onSubmit={handlePasswordSubmit} className="admin-form">
-                  <div>
-                    <label className="admin-label">
-                      Passwort
-                    </label>
-                    <input
-                      ref={passwordInputRef}
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      onClick={handleInputClick}
-                      onTouchStart={handleInputTouch}
-                      className="admin-input"
-                      autoFocus
-                      style={{
-                        touchAction: 'manipulation',
-                        userSelect: 'none',
-                        WebkitTouchCallout: 'none',
-                        WebkitUserSelect: 'none'
-                      }}
-                    />
-                  </div>
-                  <div className="admin-button-group-spaced">
-                    <button
-                      type="submit"
-                      className="flex-1 admin-button-primary"
-                      onTouchStart={handlePasswordTouchSubmit}
-                      style={{
-                        touchAction: 'manipulation',
-                        userSelect: 'none',
-                        WebkitTouchCallout: 'none',
-                        WebkitUserSelect: 'none'
-                      }}
-                    >
-                      Anmelden
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleClose}
-                      onTouchStart={(e) => { e.preventDefault(); handleClose(); }}
-                      className="flex-1 admin-button-secondary"
-                      style={{
-                        touchAction: 'manipulation',
-                        userSelect: 'none',
-                        WebkitTouchCallout: 'none',
-                        WebkitUserSelect: 'none'
-                      }}
-                    >
-                      Abbrechen
-                    </button>
-                  </div>
-                </form>
-              ) : (
-                <div className="admin-form-group">
+                <div className="admin-button-group-spaced">
                   <button
-                    onClick={() => setShowKioskSelector(true)}
-                    onTouchStart={(e) => { e.preventDefault(); setShowKioskSelector(true); }}
-                    className="w-full admin-button-primary"
-                    style={{
-                      touchAction: 'manipulation',
-                      userSelect: 'none',
-                      WebkitTouchCallout: 'none',
-                      WebkitUserSelect: 'none'
-                    }}
+                    type="submit"
+                    className="flex-1 admin-button-primary"
+                    onTouchStart={handlePasswordTouchSubmit}
+                    style={{ touchAction: 'manipulation', userSelect: 'none' }}
                   >
-                    Kiosk auswählen
+                    Anmelden
                   </button>
-                  
                   <button
+                    type="button"
                     onClick={handleClose}
                     onTouchStart={(e) => { e.preventDefault(); handleClose(); }}
-                    className="w-full admin-button-secondary"
-                    style={{ 
-                      marginBottom: 'min(1.5rem, 3vw)',
-                      touchAction: 'manipulation',
-                      userSelect: 'none',
-                      WebkitTouchCallout: 'none',
-                      WebkitUserSelect: 'none'
-                    }}
+                    className="flex-1 admin-button-secondary"
+                    style={{ touchAction: 'manipulation', userSelect: 'none' }}
                   >
-                    Panel schließen
-                  </button>
-
-                  <div className="admin-separator" />
-                  
-                  <button
-                    onClick={handleExitKiosk}
-                    onTouchStart={(e) => { e.preventDefault(); handleExitKiosk(); }}
-                    className="w-full admin-button-danger"
-                    style={{
-                      touchAction: 'manipulation',
-                      userSelect: 'none',
-                      WebkitTouchCallout: 'none',
-                      WebkitUserSelect: 'none'
-                    }}
-                  >
-                    Kiosk-Modus beenden
+                    Abbrechen
                   </button>
                 </div>
-              )}
-            </motion.div>
-          </motion.div>
-        )}
-        {isVisible && showKioskSelector && (
-          <KioskSelectorScreen
-            onKioskSelected={(id) => {
-              setShowKioskSelector(false);
-              setSuccessMsg('Kiosk erfolgreich ausgewählt.');
-              setTimeout(() => setSuccessMsg(''), 2000);
-            }}
-            onBack={() => setShowKioskSelector(false)}
-          />
-        )}
-      </AnimatePresence>
+              </form>
+            ) : (
+              <div className="admin-form-group">
+                <button
+                  onClick={() => setShowKioskSelector(true)}
+                  onTouchStart={(e) => { e.preventDefault(); setShowKioskSelector(true); }}
+                  className="w-full admin-button-primary"
+                  style={{ touchAction: 'manipulation', userSelect: 'none' }}
+                >
+                  Kiosk auswählen
+                </button>
+
+                <button
+                  onClick={handleClose}
+                  onTouchStart={(e) => { e.preventDefault(); handleClose(); }}
+                  className="w-full admin-button-secondary"
+                  style={{ marginBottom: 'min(1.5rem, 3vw)', touchAction: 'manipulation', userSelect: 'none' }}
+                >
+                  Panel schließen
+                </button>
+
+                <div className="admin-separator" />
+
+                <button
+                  onClick={handleExitKiosk}
+                  onTouchStart={(e) => { e.preventDefault(); handleExitKiosk(); }}
+                  className="w-full admin-button-danger"
+                  style={{ touchAction: 'manipulation', userSelect: 'none' }}
+                >
+                  Kiosk-Modus beenden
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {isVisible && showKioskSelector && (
+        <KioskSelectorScreen
+          onKioskSelected={(id) => {
+            setShowKioskSelector(false);
+            setSuccessMsg('Kiosk erfolgreich ausgewählt.');
+            setTimeout(() => setSuccessMsg(''), 2000);
+          }}
+          onBack={() => setShowKioskSelector(false)}
+        />
+      )}
     </>
   );
 };

@@ -1,5 +1,4 @@
-// Import animation library and language selector components
-import { AnimatePresence } from 'framer-motion';
+// Import language selector logic and components
 import useLanguageSelector from '../hooks/useLanguageSelector';
 
 // Import subcomponents
@@ -11,7 +10,6 @@ import LanguageContainer from './LanguageSelector/LanguageContainer';
 
 // Language selector overlay component - allows users to switch between German and English
 const LanguageSelector = () => {
-  // Get language selector state and handlers from custom hook
   const {
     isVisible,
     contentData,
@@ -21,35 +19,26 @@ const LanguageSelector = () => {
     getButtonState
   } = useLanguageSelector();
 
-  // Don't render if not visible
   if (!isVisible) return null;
 
   return (
-    // Animated overlay that appears when language selector is triggered
-    <AnimatePresence>
-      {isVisible && (
-        <LanguageOverlay onOverlayClick={handleOverlayClick}>
-          <LanguageContainer onContentClick={handleContentClick}>
-            {/* Globe icon */}
-            <LanguageIcon />
-            
-            {/* Title text in both languages */}
-            <LanguageTitle
-              englishTitle={contentData.englishTitle}
-              germanTitle={contentData.germanTitle}
-            />
+    <LanguageOverlay onOverlayClick={handleOverlayClick}>
+      <LanguageContainer onContentClick={handleContentClick}>
+        <LanguageIcon />
 
-            {/* Language selection buttons */}
-            <LanguageButtons
-              germanButtonText={contentData.germanButtonText}
-              englishButtonText={contentData.englishButtonText}
-              getButtonState={getButtonState}
-              handleLanguageChange={handleLanguageChange}
-            />
-          </LanguageContainer>
-        </LanguageOverlay>
-      )}
-    </AnimatePresence>
+        <LanguageTitle
+          englishTitle={contentData.englishTitle}
+          germanTitle={contentData.germanTitle}
+        />
+
+        <LanguageButtons
+          germanButtonText={contentData.germanButtonText}
+          englishButtonText={contentData.englishButtonText}
+          getButtonState={getButtonState}
+          handleLanguageChange={handleLanguageChange}
+        />
+      </LanguageContainer>
+    </LanguageOverlay>
   );
 };
 

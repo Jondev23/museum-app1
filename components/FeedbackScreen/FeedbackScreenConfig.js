@@ -1,32 +1,22 @@
 // Import React hooks for memoization
 import { useMemo } from 'react';
 
-// Configuration constants for feedback screen animations and styling
+// Configuration constants for feedback screen styling
 export const FEEDBACK_CONFIG = {
-  // Animation duration timings in seconds
-  ANIMATION_DURATIONS: {
-    SCREEN_TRANSITION: 0.4, // Screen transition duration
-    CONTAINER: 0.4,         // Container animation duration
-    TITLE: 0.1,             // Title animation duration
-    ANSWER: 0.2,            // Answer reveal animation
-    MESSAGE: 0.3,           // Feedback message animation
-    BUTTON: 0.8,            // Continue button animation
-    BUTTON_DELAY: 0.7,      // Delay before button appears
-  },
-  
+ 
   // Color configuration using CSS custom properties
   COLORS: {
-    CORRECT_BG: 'var(--color-feedback-correct)',     // Green for correct answers
-    INCORRECT_BG: 'var(--color-feedback-incorrect)', // Red for incorrect answers
-    ANSWER_BG: 'var(--color-feedback-answer-bg)',    // Answer background color
-    ANSWER_TEXT: 'var(--color-feedback-answer-text)', // Answer text color
-    OVERLAY: 'bg-overlay',                            // Background overlay class
+    CORRECT_BG: 'var(--color-feedback-correct)',    
+    INCORRECT_BG: 'var(--color-feedback-incorrect)', 
+    ANSWER_BG: 'var(--color-feedback-answer-bg)',    
+    ANSWER_TEXT: 'var(--color-feedback-answer-text)', 
+    OVERLAY: 'bg-overlay',                            
   },
   
   // Size and styling constants
   SIZES: {
-    BORDER_RADIUS: 'var(--border-radius-md)',  // Medium border radius
-    BUTTON_BORDER_RADIUS: 'rounded-full',      // Full rounded button style
+    BORDER_RADIUS: 'var(--border-radius-md)',  
+    BUTTON_BORDER_RADIUS: 'rounded-full',      
   },
 };
 

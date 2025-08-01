@@ -1,5 +1,4 @@
-// Import animation library and shared components
-import { motion } from 'framer-motion';
+// Import shared components
 import StandardFooter from './shared/StandardFooter';
 
 // Import custom hooks and configuration
@@ -14,14 +13,9 @@ import FeedbackButton from './FeedbackScreen/FeedbackButton';
 
 // Feedback screen component - shows correct/incorrect feedback after each question
 const FeedbackScreen = () => {
-  // Get feedback data and handlers from custom hook
   const {
     question,
     userAnswer,
-    totalQuestions,
-    currentQuestionIndex,
-    questions,
-    answers,
     startContent,
     buttonText,
     isValidData,
@@ -31,7 +25,6 @@ const FeedbackScreen = () => {
     handleTouchStart
   } = useFeedbackScreen();
 
-  // Get dynamic styles based on content and answer correctness
   const {
     mainContentStyle,
     feedbackContainerStyle,
@@ -50,15 +43,7 @@ const FeedbackScreen = () => {
   if (!isValidData) return null;
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ 
-        duration: 0.3,
-        exit: { duration: 0.6 }, // Slower exit animation
-        ease: "easeInOut" 
-      }}
+    <div
       className="fixed inset-0 flex flex-col z-20"
       onTouchStart={(e) => {
         e.stopPropagation();
@@ -67,12 +52,11 @@ const FeedbackScreen = () => {
         }
       }}
     >
-      {/* Main content */}
-      <div 
+      <div
         className="relative z-10 flex flex-col h-full"
         style={{ paddingBottom: 'min(4.375rem, 7vh)' }}
       >
-        <div 
+        <div
           className="flex flex-col items-center justify-start flex-1"
           style={mainContentStyle}
         >
@@ -100,7 +84,6 @@ const FeedbackScreen = () => {
         </div>
       </div>
 
-      {/* Footer section */}
       <div className="fixed bottom-0 left-0 right-0" style={{ zIndex: 55 }}>
         <StandardFooter
           showProgressDots={false}
@@ -117,7 +100,7 @@ const FeedbackScreen = () => {
           />
         </StandardFooter>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -1,19 +1,17 @@
-// Import animation library and screen components
-import { motion } from 'framer-motion';
+// Import componentes
 import StandardFooter from './shared/StandardFooter';
 
-// Import custom hooks and configuration
+// Import hooks y configuración
 import { useStartScreen } from '../hooks/useStartScreen';
-import { useStartScreenStyles, START_SCREEN_CONFIG } from './StartScreen/StartScreenConfig';
+import { useStartScreenStyles } from './StartScreen/StartScreenConfig';
 
-// Import subcomponents
+// Subcomponentes
 import StartScreenTitle from './StartScreen/StartScreenTitle';
 import StartScreenDescription from './StartScreen/StartScreenDescription';
 import StartScreenTouchIndicator from './StartScreen/StartScreenTouchIndicator';
 
 // Start screen component - first screen after screensaver
 const StartScreen = () => {
-  // Get screen data and handlers from custom hook
   const {
     showContent,
     startContent,
@@ -23,7 +21,6 @@ const StartScreen = () => {
     handleClick,
   } = useStartScreen();
 
-  // Get dynamic styles based on content
   const {
     containerStyle,
     mainCardStyle,
@@ -38,27 +35,20 @@ const StartScreen = () => {
     touchIndicatorStyle
   } = useStartScreenStyles(startContent);
 
-  // Don't render if data is invalid
   if (!isValidData) return null;
 
   return (
     <>
-      {/* Animated content container */}
-      <motion.div
-        initial={{ x: '100%', opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ x: '-100%', opacity: 0 }}
-        transition={{ duration: START_SCREEN_CONFIG.ANIMATION_DURATIONS.SCREEN_TRANSITION }}
+      {/* Contenedor principal sin animación */}
+      <div
         className="fixed inset-0 overflow-hidden cursor-pointer z-20"
         onTouchStart={handleTouchStart}
         onClick={handleClick}
       >
-        {/* Content */}
         <div 
           className="relative z-10 h-full flex flex-col items-center w-full px-4 sm:px-6 md:px-8"
           style={containerStyle}
         >
-          {/* Main Card Container */}
           <div 
             className="w-full max-w-7xl bg-transparent flex items-start justify-center flex-grow"
             style={mainCardStyle}
@@ -68,7 +58,7 @@ const StartScreen = () => {
                 className="flex flex-col items-center h-full"
                 style={contentSectionStyle}
               >
-                {/* Title and Subtitle Section */}
+                {/* Título */}
                 <div className="w-full flex flex-col items-center justify-center flex-shrink-0">
                   <StartScreenTitle
                     startContent={startContent}
@@ -79,7 +69,7 @@ const StartScreen = () => {
                   />
                 </div>
 
-                {/* Description Section */}
+                {/* Descripción */}
                 <div className="flex-grow flex items-center justify-center w-full" style={descriptionSectionStyle}>
                   <StartScreenDescription
                     startContent={startContent}
@@ -94,19 +84,10 @@ const StartScreen = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Footer section - separated with independent animation */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ 
-          duration: 0.4, 
-          exit: { duration: 0.2, delay: 0.15 }
-        }}
-        className="fixed bottom-0 left-0 right-0 z-50"
-      >
+      {/* Footer sin animación */}
+      <div className="fixed bottom-0 left-0 right-0 z-50">
         <StandardFooter>
           <div className="absolute left-1/2 transform -translate-x-1/2 flex justify-center items-center" 
                style={{ 
@@ -120,7 +101,7 @@ const StartScreen = () => {
             />
           </div>
         </StandardFooter>
-      </motion.div>
+      </div>
     </>
   );
 };

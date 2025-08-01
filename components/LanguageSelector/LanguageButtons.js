@@ -1,7 +1,4 @@
-// Import animation library and button component
-import { motion } from 'framer-motion';
 import LanguageButton from './LanguageButton';
-import { ANIMATION_CONFIG } from './LanguageSelectorConfig';
 
 // Container for both German and English language buttons
 const LanguageButtons = ({ 
@@ -10,18 +7,11 @@ const LanguageButtons = ({
   getButtonState, 
   handleLanguageChange 
 }) => {
-  // Get button states for each language
   const germanState = getButtonState('de');
   const englishState = getButtonState('en');
 
   return (
-    // Animated container for language buttons
-    <motion.div
-      initial={ANIMATION_CONFIG.BUTTONS.INITIAL}
-      animate={ANIMATION_CONFIG.BUTTONS.ANIMATE}
-      transition={ANIMATION_CONFIG.BUTTONS.TRANSITION}
-      className="language-buttons-container"
-    >
+    <div className="language-buttons-container">
       {/* German language button */}
       <LanguageButton
         language="de"
@@ -30,13 +20,14 @@ const LanguageButtons = ({
         onLanguageChange={handleLanguageChange}
       />
 
+      {/* English language button */}
       <LanguageButton
         language="en"
         buttonText={englishButtonText}
         isActive={englishState.isActive}
         onLanguageChange={handleLanguageChange}
       />
-    </motion.div>
+    </div>
   );
 };
 

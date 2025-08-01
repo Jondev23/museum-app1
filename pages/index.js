@@ -1,6 +1,5 @@
-// Import app context and animation for screen transitions
+// Import app context
 import { useApp } from '../context/AppContext';
-import { AnimatePresence } from 'framer-motion';
 
 // Import all screen components
 import ScreensaverScreen from '../components/ScreensaverScreen';
@@ -24,7 +23,6 @@ export default function Home() {
     questions,
     content,
     language,
-    isTransitioningToScreensaver,
     kioskId
   } = useApp();
 
@@ -48,9 +46,9 @@ export default function Home() {
       case 'start':
         return <StartScreen key="start" />;
       case 'question':
-        return <QuestionScreen key={`quiz-${currentQuestionIndex}-question`} />;
+        return <QuestionScreen key={`question-${currentQuestionIndex}`} />;
       case 'feedback':
-        return <FeedbackScreen key={`quiz-${currentQuestionIndex}-feedback`} />;
+        return <FeedbackScreen key={`feedback-${currentQuestionIndex}`} />;
       case 'results':
         return <ResultsScreen key="results" />;
       default:
@@ -71,13 +69,8 @@ export default function Home() {
         <GlobalBackground backgroundImage={globalBackgroundImage} />
       </div>
 
-      {/* Current screen content - controlled transitions to prevent overlap */}
-      <AnimatePresence mode="wait" initial={false}>
-        {!isTransitioningToScreensaver && renderScreen()}
-      </AnimatePresence>
-      {isTransitioningToScreensaver && (
-        <div className="fixed inset-0 bg-black z-30" />
-      )}
+      {/* Current screen content - direct rendering without transitions */}
+      {renderScreen()}
       
       {/* Always visible components */}
       <div className="relative z-40">

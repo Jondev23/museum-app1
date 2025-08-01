@@ -92,9 +92,9 @@ const ProgressDots = ({
         const isCorrect = userAnswer === question.correctAnswer;
         dotColor = isCorrect ? 'var(--color-blassgruen)' : 'var(--color-feedback-incorrect)';
         return {
-          width: '5.12638rem', // Fixed size - 82.02px
-          height: '5.12638rem', // Fixed size - 82.02px
-          borderRadius: '50%', // Perfect circle
+          width: '5.12638rem', 
+          height: '5.12638rem', 
+          borderRadius: '50%', 
           backgroundColor: dotColor,
           border: 'none'
         };

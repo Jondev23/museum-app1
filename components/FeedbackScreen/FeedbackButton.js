@@ -15,7 +15,6 @@ const FeedbackButton = ({
     >
       <button
         onClick={(e) => {
-          console.log('FeedbackButton clicked');
           e.stopPropagation();
           nextQuestion(); 
         }}

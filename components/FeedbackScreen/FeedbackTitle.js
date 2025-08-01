@@ -1,25 +1,11 @@
-// Import React and feedback configuration
-import { FEEDBACK_CONFIG } from './FeedbackScreenConfig';
 import { processTextWithHTML } from '../../utils/textProcessor';
 
-// Feedback screen title component with line break processing
+// Feedback screen title component
 const FeedbackTitle = ({ question, titleStyle }) => {
   return (
     <h1
       className="feedback-title"
-      style={{
-        width: titleStyle.width,
-        height: titleStyle.height,
-        maxWidth: titleStyle.maxWidth,
-        overflowWrap: titleStyle.overflowWrap,
-        overflow: titleStyle.overflow,
-        display: titleStyle.display,
-        alignItems: titleStyle.alignItems,
-        justifyContent: titleStyle.justifyContent,
-        textAlign: titleStyle.textAlign,
-        wordBreak: titleStyle.wordBreak,
-        hyphens: titleStyle.hyphens
-      }}
+      style={{ ...titleStyle }}
     >
       {processTextWithHTML(question.question)}
     </h1>

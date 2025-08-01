@@ -1,27 +1,16 @@
-import { motion } from 'framer-motion';
-import { ANIMATION_CONFIG } from './ResultsScreenConfig';
 import { processTextWithHTML } from '../../utils/textProcessor';
 
-// Play again button component - inherits parent animation (slides from right)
+// Play again button component
 const ResultsPlayAgainButton = ({ 
   playAgainText, 
-  showContent, 
   onPlayAgain,
   iconSrc = './images/GUI.svg',
   iconAlt = 'Restart icon'
 }) => {
   return (
-    <div
-      className="flex justify-center w-full"
-      style={{
-        opacity: showContent ? 1 : 0, // Simple opacity control, no competing animation
-        transition: `opacity 0.3s ease ${ANIMATION_CONFIG.DELAYS.BUTTON}s` // Delayed opacity transition
-      }}
-    >
-      <motion.button
-        onClick={onPlayAgain} // Restart the quiz
-        whileHover={ANIMATION_CONFIG.BUTTON.HOVER}
-        whileTap={ANIMATION_CONFIG.BUTTON.TAP}
+    <div className="flex justify-center w-full">
+      <button
+        onClick={onPlayAgain}
         className="flex items-center bg-transparent border-none"
         style={{ 
           gap: 'var(--spacing-sm)',
@@ -40,12 +29,12 @@ const ResultsPlayAgainButton = ({
           alt={iconAlt}
           style={{
             width: '4.91625rem', 
-            height: '2.71563rem', 
+            height: '2.71563rem',
             touchAction: 'manipulation',
             pointerEvents: 'none'
           }}
         />
-      </motion.button>
+      </button>
     </div>
   );
 };

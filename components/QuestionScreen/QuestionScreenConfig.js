@@ -3,25 +3,10 @@ import { useMemo, useCallback } from 'react';
 
 // Configuration constants for question screen behavior and animations
 export const QUESTION_CONFIG = {
-  TOTAL_QUESTIONS: 5,      // Total number of questions in quiz
-  ANSWER_DELAY: 800,       // Delay before processing answer (ms)
+  TOTAL_QUESTIONS: 5,      
+  ANSWER_DELAY: 800,
+  };       
   
-  // Animation delay timings in seconds
-  ANIMATION_DELAYS: {
-    TITLE: 0.2,           // Question title animation delay
-    BUTTONS: 0.4,         // Answer buttons group delay
-    BUTTON_STAGGER: 0.1,  // Stagger delay between individual buttons
-    BUTTON_BASE: 0.6,     // Base delay for button animations
-  },
-  
-  // Animation duration timings in seconds
-  ANIMATION_DURATIONS: {
-    SCREEN_TRANSITION: 0.8,    // Screen transition duration
-    TITLE: 0.6,               // Title animation duration
-    BUTTONS: 0.6,             // Button group animation duration
-    BUTTON_INDIVIDUAL: 0.4,   // Individual button animation duration
-  },
-};
 
 // Custom hook for question screen styles with memoization
 export const useQuestionScreenStyles = (startContent) => {
