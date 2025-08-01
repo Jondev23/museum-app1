@@ -67,12 +67,8 @@
   --color-blassgruen-dark: #598364;
   --color-blassgruen: #85af8b; 
   --color-schiefer: #344243; 
-  --color-schiefer-dark: #2a3334; 
 
   /* ========== SEMANTIC COLORS ========== */
-  --color-primary: var(--color-kupfer);
-  --color-text-primary: var(--color-neutral-light);
-  --color-background-primary: var(--color-neutral-dark);
   --color-feedback-correct: var(--color-blassgruen-dark);
   --color-feedback-incorrect: var(--color-kupfer);
   
@@ -201,7 +197,7 @@
 
 /* Start screen highlight text typography */
 .start-screen-highlight {
-  color: var(--Neutral_Light, #D9D9D9) !important;
+  color: var(--color-neutral-light) !important;
   text-align: center !important;
   font-family: "Tisa Pro" !important;
   font-size: 2.25rem !important;
@@ -213,7 +209,7 @@
 
 /* Start screen description typography */
 .start-screen-description {
-  color: var(--Neutral_Light, #D9D9D9) !important;
+  color: var(--color-neutral-light) !important;
   text-align: center !important;
   font-family: "Tisa Pro" !important;
   font-size: 2.25rem !important;
@@ -229,7 +225,8 @@
 .language-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(52, 66, 67, 0.95);
+  background-color: var(--color-language-overlay);
+  opacity: 0.95;
   display: flex;
   align-items: center;
   justify-content: center;
