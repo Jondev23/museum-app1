@@ -322,7 +322,7 @@ export const CSS_ANIMATIONS = {
     .feedback-button-enter {
       animation: feedback-button-fade-in 0.4s ease-out forwards;
       animation-delay: 0.2s;
-      opacity: 0;
+      opacity: 0; /* Start invisible, animation will make it visible */
     }
 
     .feedback-button-exit {

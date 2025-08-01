@@ -1,5 +1,5 @@
 import { processTextWithHTML } from '../../utils/textProcessor';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Continue button component for feedback screen
 const FeedbackButton = ({ 
@@ -10,21 +10,12 @@ const FeedbackButton = ({
   buttonTextStyle, 
   arrowStyle 
 }) => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Trigger fade-in animation when component mounts
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 200); // Delay to allow screen animation to start first
-    
-    return () => clearTimeout(timer);
-  }, []);
+  const [isExiting, setIsExiting] = useState(false);
 
   const handleClick = (e) => {
     e.stopPropagation();
     // Add exit animation class and delay the action
-    setIsVisible(false);
+    setIsExiting(true);
     setTimeout(() => {
       nextQuestion();
     }, 300); // Match the CSS animation duration
@@ -35,7 +26,7 @@ const FeedbackButton = ({
       <button
         onClick={handleClick}
         className={`flex items-center cursor-pointer ${
-          isVisible ? 'feedback-button-enter' : 'feedback-button-exit'
+          isExiting ? 'feedback-button-exit' : 'feedback-button-enter'
         }`}
         style={{
           ...buttonStyle,
