@@ -4,6 +4,17 @@
 // Define replacement components for framer-motion
 import React from 'react';
 
+// Import animations from separate file
+import { 
+  ANIMATION_CONFIG, 
+  BASE_ANIMATIONS,
+  TRANSITION_PRESETS,
+  createTransition, 
+  CSS_KEYFRAMES, 
+  CSS_VARIABLES,
+  injectCSSAnimations
+} from './animations';
+
 // AnimatePresence replacement
 export const AnimatePresence = ({ children, mode, initial }) => {
   return <>{children}</>;
@@ -16,32 +27,11 @@ export const motion = {
   img: React.forwardRef((props, ref) => <img ref={ref} {...props} />)
 };
 
-// Animation configuration constants
+// Re-export for backward compatibility
 export const TRANSITION_CONFIG = {
-  // Standard durations - more consistent
-  DURATIONS: {
-    FAST: 0.3,
-    STANDARD: 0.6,  
-    SLOW: 0.6,      
-    SCREENSAVER: 0.6 
-  },
-  
-  // Standard delays
-  DELAYS: {
-    NONE: 0,
-    SHORT: 0.1,
-    MEDIUM: 0.2,
-    LONG: 0.3
-  },
-  
-  // Easing functions - simplified to one main easing
-  EASING: {
-    SMOOTH: "easeInOut",  
-    BOUNCE: "easeOut",    
-    SHARP: "easeIn"       
-  },
-
-  // Z-index layers
+  DURATIONS: ANIMATION_CONFIG.DURATIONS,
+  DELAYS: ANIMATION_CONFIG.DELAYS,
+  EASING: ANIMATION_CONFIG.EASING,
   Z_INDEX: {
     BACKGROUND: 5,
     CONTENT: 20,
@@ -51,81 +41,14 @@ export const TRANSITION_CONFIG = {
   }
 };
 
-// Base animation patterns - reusable animation objects (CSS class versions)
-const BASE_ANIMATIONS = {
-  // Simple fade in/out
-  fade: {
-    className: 'fade-animation',
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 }
-  },
-
-  // Slide from right to left
-  slideHorizontal: {
-    className: 'slide-horizontal-animation',
-    initial: { opacity: 0, x: '100%' },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: '-100%' }
-  },
-  
-  // Slide from left to right (for QuestionScreen)
-  slideLeftToRight: {
-    className: 'slide-left-to-right-animation',
-    initial: { opacity: 0, x: '-100%' },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: '100%' }
-  },
-
-  // Scale and fade (for modals)
-  scaleModal: {
-    className: 'scale-modal-animation',
-    initial: { opacity: 0, scale: 0.8 },
-    animate: { opacity: 1, scale: 1 },
-    exit: { opacity: 0, scale: 0.8 }
-  },
-
-  // Slide up from bottom
-  slideUp: {
-    className: 'slide-up-animation',
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 20 }
-  }
-};
-
-// Unified transition generator - creates consistent transitions
-const createTransition = (animation, timing = 'standard', delay = 0) => {
-  // Return CSS class based on animation type and timing
-  return {
-    className: `${BASE_ANIMATIONS[animation].className} ${timing}-timing`,
-    ...BASE_ANIMATIONS[animation]
-  };
-};
+// Re-export CSS animations and variables for backward compatibility
+export { CSS_KEYFRAMES as CSS_ANIMATIONS, CSS_VARIABLES };
 
 // Standard transition configurations
-const STANDARD_TRANSITION = {
-  duration: TRANSITION_CONFIG.DURATIONS.STANDARD,
-  ease: TRANSITION_CONFIG.EASING.SMOOTH
-};
-
-const FAST_TRANSITION = {
-  duration: TRANSITION_CONFIG.DURATIONS.FAST,
-  ease: TRANSITION_CONFIG.EASING.SMOOTH
-};
-
-const MODAL_TRANSITION = {
-  duration: TRANSITION_CONFIG.DURATIONS.FAST,
-  ease: TRANSITION_CONFIG.EASING.BOUNCE
-};
-
-// No animation configuration - for screens that should appear instantly
-const NO_ANIMATION = {
-  initial: { opacity: 1 },
-  animate: { opacity: 1 },
-  exit: { opacity: 1 },
-  transition: { duration: 0 }
-};
+const STANDARD_TRANSITION = TRANSITION_PRESETS.standard;
+const FAST_TRANSITION = TRANSITION_PRESETS.fast;
+const MODAL_TRANSITION = TRANSITION_PRESETS.modal;
+const NO_ANIMATION = TRANSITION_PRESETS.none;
 
 // FeedbackScreen custom CSS animation configuration
 const FEEDBACK_CSS_ANIMATION = {
@@ -225,7 +148,7 @@ export const UI_TRANSITIONS = {
 
   delayedContent: {
     getOpacity: (showContent) => ({ opacity: showContent ? 1 : 0 }),
-    getTransition: () => `opacity ${TRANSITION_CONFIG.DURATIONS.FAST}s ease ${TRANSITION_CONFIG.DELAYS.MEDIUM}s`
+    getTransition: () => `opacity ${ANIMATION_CONFIG.DURATIONS.FAST}s ease ${ANIMATION_CONFIG.DELAYS.MEDIUM}s`
   },
 
   // Special case - touch indicator
@@ -233,7 +156,7 @@ export const UI_TRANSITIONS = {
     ...createTransition('fade', 'standard'),
     transition: {
       duration: 0.5,
-      ease: TRANSITION_CONFIG.EASING.SMOOTH
+      ease: ANIMATION_CONFIG.EASING.SMOOTH
     },
     css: {
       animation: 'fade-swipe 4.5s ease-in-out infinite',
@@ -253,117 +176,6 @@ UI_TRANSITIONS.languageIcon = UI_TRANSITIONS.icon;
 export const PAGE_TRANSITION = createTransition('fade', 'standard');
 export const SCREENSAVER_TRANSITION = {
   overlay: createTransition('fade', 'standard')
-};
-
-// CSS Keyframes animations - centralized CSS animations
-export const CSS_ANIMATIONS = {
-  // Swipe animation keyframes for touch indicator
-  fadeSwipe: `
-    @keyframes fade-swipe {
-      0% { 
-        transform: translateX(56px);
-        opacity: 0;
-      }
-      22% { 
-        transform: translateX(0px);
-        opacity: 1;
-      }
-      33% { 
-        transform: translateX(0px);
-        opacity: 1;
-      }
-      78% { 
-        transform: translateX(0px);
-        opacity: 1;
-      }
-      100% { 
-        transform: translateX(-56px);
-        opacity: 0;
-      }
-    }
-  `,
-
-  // FeedbackScreen custom animations
-  feedbackScreen: `
-    @keyframes feedback-fade-in {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes feedback-slide-out-left {
-      from {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      to {
-        opacity: 0;
-        transform: translateX(-100%);
-      }
-    }
-
-    @keyframes feedback-button-fade-in {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes feedback-button-fade-out {
-      from {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      to {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-    }
-
-    /* FeedbackScreen CSS classes */
-    .feedback-screen-enter {
-      animation: feedback-fade-in 0.6s ease-in-out forwards;
-    }
-
-    .feedback-screen-exit {
-      animation: feedback-slide-out-left 0.6s ease-in-out forwards;
-    }
-
-    .feedback-button-enter {
-      animation: feedback-button-fade-in 0.4s ease-out forwards;
-      animation-delay: 0.2s;
-      opacity: 0; /* Start invisible, animation will make it visible */
-    }
-
-    .feedback-button-exit {
-      animation: feedback-button-fade-out 0.3s ease-in forwards;
-    }
-  `
-};
-
-// CSS Variables for consistent transitions
-export const CSS_VARIABLES = {
-  // Transition durations as CSS custom properties
-  transitions: {
-    fast: `${TRANSITION_CONFIG.DURATIONS.FAST}s`,
-    standard: `${TRANSITION_CONFIG.DURATIONS.STANDARD}s`,
-    slow: `${TRANSITION_CONFIG.DURATIONS.SLOW}s`
-  },
-  
-  // Common CSS transition values
-  values: {
-    allFast: `all ${TRANSITION_CONFIG.DURATIONS.FAST}s ${TRANSITION_CONFIG.EASING.SMOOTH}`,
-    allStandard: `all ${TRANSITION_CONFIG.DURATIONS.STANDARD}s ${TRANSITION_CONFIG.EASING.SMOOTH}`,
-    transformFast: `transform ${TRANSITION_CONFIG.DURATIONS.FAST}s ${TRANSITION_CONFIG.EASING.SMOOTH}`,
-    opacityFast: `opacity ${TRANSITION_CONFIG.DURATIONS.FAST}s ${TRANSITION_CONFIG.EASING.SMOOTH}`
-  }
 };
 
 // Unified transition helper - one function for all transition types
@@ -409,21 +221,3 @@ export const getUITransition = (element) => getTransition('ui', element);
 export const getInteractiveTransition = (type = 'standard') => getTransition('interactive', type);
 export const getLanguageSelectorTransition = (element) => getTransition('languageSelector', element);
 export const getPageTransition = (type = 'default', ...args) => getTransition('page', type, ...args);
-
-// Utility function to inject CSS animations into the DOM
-export const injectCSSAnimations = () => {
-  if (typeof document === 'undefined') return; // Skip on server-side
-  
-  const styleId = 'feedback-screen-animations';
-  
-  // Check if styles are already injected
-  if (document.getElementById(styleId)) return;
-  
-  // Create style element
-  const style = document.createElement('style');
-  style.id = styleId;
-  style.textContent = CSS_ANIMATIONS.feedbackScreen;
-  
-  // Inject into document head
-  document.head.appendChild(style);
-};

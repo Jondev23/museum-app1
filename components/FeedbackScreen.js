@@ -1,7 +1,7 @@
 // Import shared components
 import StandardFooter from './shared/StandardFooter';
 import { useState, useEffect } from 'react';
-import { injectCSSAnimations } from '../utils/screenTransitions';
+import { injectCSSAnimations } from '../utils/animations';
 
 // Import custom hooks and configuration
 import { useFeedbackScreen } from '../hooks/useFeedbackScreen';
