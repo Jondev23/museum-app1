@@ -1,13 +1,307 @@
 /* ============================================
-   START SCREEN COMPONENT STYLES
+   START SCREEN STYLES
    ============================================ */
 
-/* Start Screen Variables */
-:root {
-  --touch-indicator-size: 7rem;
-  --startscreen-top-spacing: clamp(9rem, 15vh, 12rem);
-  --startscreen-description-lateral-spacing: 0;
+/* Start Screen Container */
+.start-screen-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 20;
 }
 
-/* Start Screen Typography and Layout would go here */
-/* These can be added as the StartScreen component is developed */
+.start-screen-content {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.start-screen-main {
+  padding-top: var(--startscreen-top-spacing);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 80rem; /* max-w-7xl equivalent */
+  margin: 0 auto;
+  flex: 1;
+}
+
+.start-screen-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: min(2rem, 4vw);
+  gap: min(3rem, 5vh);
+  border-radius: min(1.875rem, 4vw);
+  overflow: hidden;
+  border: 0;
+  background-color: transparent;
+}
+
+/* Start Screen Sections */
+.start-screen-content-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  gap: min(2rem, 3vh);
+}
+
+.start-screen-title-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.start-screen-description-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: min(1.5rem, 2.5vh);
+  padding: 0 var(--startscreen-description-lateral-spacing);
+}
+
+/* Start Screen Typography */
+.start-screen-title {
+  @apply typography-head;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin: 0;
+  width: 100%;
+}
+
+.start-screen-subtitle {
+  @apply typography-subline;
+  color: var(--color-blassgruen);
+  text-align: center;
+  margin: 0;
+  width: 98%;
+}
+
+.start-screen-highlight-text {
+  @apply typography-antwort-fliess-bold;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin: 0;
+  padding: min(0.5rem, 1vh) min(1rem, 2vw);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-md);
+  backdrop-filter: blur(10px);
+}
+
+.start-screen-intro-text {
+  @apply typography-antwort-fliess;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin: 0;
+  opacity: 0.9;
+  line-height: 1.4;
+  max-width: 60rem;
+}
+
+/* Touch Indicator Styles */
+.start-screen-touch-indicator-container {
+  position: fixed;
+  bottom: min(5rem, 8vh);
+  right: min(5rem, 8vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.start-screen-touch-indicator-container:hover {
+  transform: scale(1.1);
+}
+
+.start-screen-touch-indicator-container:active {
+  transform: scale(0.9);
+}
+
+.start-screen-touch-indicator {
+  width: var(--touch-indicator-size);
+  height: var(--touch-indicator-size);
+  display: block;
+  opacity: 0;
+  animation: fade-swipe 4.5s ease-in-out infinite;
+  transition: transform 0.2s ease, opacity 0.5s ease;
+}
+
+.start-screen-touch-indicator-visible {
+  opacity: 1;
+}
+
+/* Touch Indicator Animation */
+@keyframes fade-swipe {
+  0% { 
+    transform: translateX(56px);
+    opacity: 0;
+  }
+  22% { 
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  33% { 
+    transform: translateX(-28px);
+    opacity: 1;
+  }
+  44% { 
+    transform: translateX(-56px);
+    opacity: 0;
+  }
+  100% { 
+    transform: translateX(-56px);
+    opacity: 0;
+  }
+}
+
+/* Content Animation Styles */
+.start-screen-content-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.start-screen-content-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Background Image Support */
+.start-screen-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Responsive Design for Start Screen */
+@media (max-width: 768px) {
+  .start-screen-content {
+    padding: 0 0.75rem;
+  }
+  
+  .start-screen-main {
+    padding-top: clamp(6rem, 12vh, 9rem);
+  }
+  
+  .start-screen-card {
+    padding: min(1.5rem, 3vw);
+    gap: min(2rem, 4vh);
+  }
+  
+  .start-screen-content-section {
+    gap: min(1.5rem, 2.5vh);
+  }
+  
+  .start-screen-description-section {
+    gap: min(1rem, 2vh);
+  }
+  
+  .start-screen-touch-indicator-container {
+    bottom: min(3rem, 6vh);
+    right: min(3rem, 6vw);
+  }
+}
+
+@media (max-width: 480px) {
+  .start-screen-content {
+    padding: 0 0.5rem;
+  }
+  
+  .start-screen-main {
+    padding-top: clamp(4rem, 10vh, 7rem);
+  }
+  
+  .start-screen-card {
+    padding: min(1rem, 2vw);
+    gap: min(1.5rem, 3vh);
+  }
+  
+  .start-screen-subtitle {
+    width: 95%;
+  }
+  
+  .start-screen-intro-text {
+    max-width: 90vw;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .start-screen-touch-indicator-container {
+    bottom: min(2rem, 4vh);
+    right: min(2rem, 4vw);
+  }
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+  .start-screen-main {
+    padding-top: clamp(2rem, 6vh, 4rem);
+  }
+  
+  .start-screen-card {
+    gap: min(1rem, 2vh);
+  }
+  
+  .start-screen-content-section {
+    gap: min(0.75rem, 1.5vh);
+  }
+  
+  .start-screen-description-section {
+    gap: min(0.5rem, 1vh);
+  }
+  
+  .start-screen-touch-indicator-container {
+    bottom: min(2rem, 4vh);
+    right: min(2rem, 4vw);
+  }
+}
+
+/* Accessibility and Touch Optimization */
+.start-screen-container,
+.start-screen-touch-indicator-container {
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Smooth transitions for better UX */
+.start-screen-title,
+.start-screen-subtitle,
+.start-screen-highlight-text,
+.start-screen-intro-text {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Focus states for accessibility */
+.start-screen-container:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.start-screen-touch-indicator-container:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 50%;
+}
