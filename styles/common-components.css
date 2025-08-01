@@ -2,9 +2,19 @@
    COMMON UI COMPONENT STYLES
    ============================================ */
 
-/* Common Typography Classes */
+/* Legacy compatibility classes - CRITICAL FOR EXISTING COMPONENTS */
 .title-main {
   @apply typography-head;
+  color: var(--color-text-primary);
+}
+
+.title-results {
+  font-family: var(--typography-head-font-family);
+  font-size: var(--results-title-font-size);
+  line-height: var(--results-title-line-height);
+  font-weight: var(--typography-head-font-weight);
+  font-style: var(--typography-head-font-style);
+  text-align: center;
   color: var(--color-text-primary);
 }
 
@@ -21,8 +31,23 @@
   color: var(--color-blassgruen);
 }
 
+.subtitle-small {
+  font-family: var(--typography-subline-font-family);
+  font-size: var(--results-score-text-font-size);
+  line-height: var(--results-score-text-line-height);
+  font-weight: var(--typography-subline-font-weight);
+  font-style: var(--typography-subline-font-style);
+  text-align: center;
+  color: var(--color-blassgruen);
+}
+
 .text-body-primary {
   @apply typography-antwort-fliess;
+  color: var(--color-text-primary);
+}
+
+.text-body-bold {
+  @apply typography-antwort-fliess-bold;
   color: var(--color-text-primary);
 }
 
@@ -31,9 +56,38 @@
   color: var(--color-text-primary);
 }
 
+.text-button-play-again {
+  font-family: var(--typography-antworten-buttons-font-family);
+  font-size: var(--results-play-again-button-text-font-size);
+  line-height: 7rem; /* Fixed line-height as specified */
+  font-weight: var(--typography-antworten-buttons-font-weight);
+  font-style: var(--typography-antworten-buttons-font-style);
+  letter-spacing: var(--typography-antworten-buttons-letter-spacing);
+  text-align: center;
+  color: #FFF; /* White color as specified */
+  text-transform: uppercase; /* Uppercase as specified */
+  display: flex;
+  width: auto; /* Auto width to accommodate text length */
+  min-width: 13.0625rem; /* Minimum width for consistency */
+  height: 2.625rem; /* Fixed height as specified */
+  flex-direction: column;
+  justify-content: center;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.text-answer {
+  @apply typography-antworten-buttons;
+  color: var(--color-schiefer);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  line-height: 1.2;
+  padding: 0.25rem 0.5rem;
+}
+
 /* Common Color Utilities */
 .bg-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--color-overlay);
 }
 
 .text-primary {
@@ -50,4 +104,52 @@
   border-radius: var(--border-radius-md);
   cursor: pointer;
   min-width: 12rem;
+}
+
+/* Global Background Component */
+.global-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-color: var(--color-background-primary);
+}
+
+/* Progress Dots Component */
+.progress-dots-container {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.progress-dot-active {
+  background-color: var(--color-primary);
+}
+
+.progress-dot-inactive {
+  background-color: var(--color-neutral-light);
+  opacity: 0.5;
+}
+
+/* Standard Footer Component */
+.standard-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
 }
