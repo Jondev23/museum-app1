@@ -6,7 +6,7 @@ const ResultsProgress = ({ questions, answers }) => {
     <div 
       className="w-full flex justify-center"
       style={{ 
-        marginTop: '4.6rem',
+        marginTop: '4.56rem',
         marginBottom: 'clamp(1rem, 3vh, 2rem)'
       }}
     >

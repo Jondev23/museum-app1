@@ -33,10 +33,10 @@ const ResultsScreen = () => {
         <div 
           className="relative z-10 flex flex-col items-center justify-center h-full w-full"
           style={{ 
-            paddingTop: '22.6rem', 
-            paddingBottom: 'clamp(3.4rem, 4.4vh, 5.4rem)', 
+            paddingTop: 'min(22.6rem, max(12.6rem, 18vh))', 
             paddingLeft: '0',
             paddingRight: '0',
+            paddingBottom: '1.5rem',
             minHeight: '100vh', 
             gap: '0' 
           }}
