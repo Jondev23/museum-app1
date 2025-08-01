@@ -102,7 +102,7 @@ const MODAL_TRANSITION = {
   ease: TRANSITION_CONFIG.EASING.BOUNCE
 };
 
-
+// No animation configuration - for screens that should appear instantly
 const NO_ANIMATION = {
   initial: { opacity: 1 },
   animate: { opacity: 1 },
@@ -110,11 +110,24 @@ const NO_ANIMATION = {
   transition: { duration: 0 }
 };
 
+// FeedbackScreen custom CSS animation configuration
+const FEEDBACK_CSS_ANIMATION = {
+  // Using CSS classes instead of Framer Motion
+  cssClasses: {
+    enter: 'feedback-screen-enter',
+    exit: 'feedback-screen-exit'
+  },
+  // For compatibility with the existing system
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0, x: '-100%' },
+  transition: { duration: 0.6, ease: 'easeInOut' }
+};
 
 export const SCREEN_TRANSITIONS = {
   screensaver: createTransition('fade', 'standard'),
   default: createTransition('slideHorizontal', 'standard'),
-  feedback: NO_ANIMATION // FeedbackScreen sin animaciones
+  feedback: FEEDBACK_CSS_ANIMATION // FeedbackScreen con animaciones CSS personalizadas
 };
 
 // Create aliases for all screen types using the same transition
@@ -251,6 +264,70 @@ export const CSS_ANIMATIONS = {
         opacity: 0;
       }
     }
+  `,
+
+  // FeedbackScreen custom animations
+  feedbackScreen: `
+    @keyframes feedback-fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes feedback-slide-out-left {
+      from {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+    }
+
+    @keyframes feedback-button-fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes feedback-button-fade-out {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+    }
+
+    /* FeedbackScreen CSS classes */
+    .feedback-screen-enter {
+      animation: feedback-fade-in 0.6s ease-in-out forwards;
+    }
+
+    .feedback-screen-exit {
+      animation: feedback-slide-out-left 0.6s ease-in-out forwards;
+    }
+
+    .feedback-button-enter {
+      animation: feedback-button-fade-in 0.4s ease-out forwards;
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    .feedback-button-exit {
+      animation: feedback-button-fade-out 0.3s ease-in forwards;
+    }
   `
 };
 
@@ -315,3 +392,21 @@ export const getUITransition = (element) => getTransition('ui', element);
 export const getInteractiveTransition = (type = 'standard') => getTransition('interactive', type);
 export const getLanguageSelectorTransition = (element) => getTransition('languageSelector', element);
 export const getPageTransition = (type = 'default', ...args) => getTransition('page', type, ...args);
+
+// Utility function to inject CSS animations into the DOM
+export const injectCSSAnimations = () => {
+  if (typeof document === 'undefined') return; // Skip on server-side
+  
+  const styleId = 'feedback-screen-animations';
+  
+  // Check if styles are already injected
+  if (document.getElementById(styleId)) return;
+  
+  // Create style element
+  const style = document.createElement('style');
+  style.id = styleId;
+  style.textContent = CSS_ANIMATIONS.feedbackScreen;
+  
+  // Inject into document head
+  document.head.appendChild(style);
+};

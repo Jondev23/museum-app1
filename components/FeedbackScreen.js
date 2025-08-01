@@ -1,5 +1,7 @@
 // Import shared components
 import StandardFooter from './shared/StandardFooter';
+import { useState, useEffect } from 'react';
+import { injectCSSAnimations } from '../utils/screenTransitions';
 
 // Import custom hooks and configuration
 import { useFeedbackScreen } from '../hooks/useFeedbackScreen';
@@ -13,6 +15,10 @@ import FeedbackButton from './FeedbackScreen/FeedbackButton';
 
 // Feedback screen component - shows correct/incorrect feedback after each question
 const FeedbackScreen = () => {
+  // State for CSS animations
+  const [isEntering, setIsEntering] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
+
   // Get feedback data and handlers from custom hook
   const {
     question,
@@ -30,10 +36,22 @@ const FeedbackScreen = () => {
     handleTouchStart
   } = useFeedbackScreen();
 
-  // Custom exit animation handler - now simplified to just call the original function
+  // Handle entry animation on mount
+  useEffect(() => {
+    // Inject CSS animations into DOM
+    injectCSSAnimations();
+    
+    setIsEntering(true);
+    setIsExiting(false);
+  }, [currentQuestionIndex]); // Reset animations when question changes
+
+  // Custom exit animation handler with CSS
   const handleExit = () => {
-    // Dejar que AnimatePresence maneje la animación de salida
-    originalNextQuestion();
+    setIsExiting(true);
+    // Wait for exit animation to complete before calling nextQuestion
+    setTimeout(() => {
+      originalNextQuestion();
+    }, 600); // Match the CSS animation duration
   };
 
   // Get dynamic styles based on content and answer correctness
@@ -56,9 +74,11 @@ const FeedbackScreen = () => {
 
   return (
     <>
-      {/* Content container - animations now handled by index.js */}
+      {/* Content container with CSS animations */}
       <div
-        className="fixed inset-0 flex flex-col"
+        className={`fixed inset-0 flex flex-col ${
+          isExiting ? 'feedback-screen-exit' : 'feedback-screen-enter'
+        }`}
         style={{ paddingBottom: 'min(4.375rem, 7vh)' }} 
         onTouchStart={(e) => {
           e.stopPropagation();
