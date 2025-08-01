@@ -153,7 +153,7 @@ export default function Home() {
       </div>
       
       {/* Always visible components */}
-      <div className="relative z-40">
+      <div className="relative">
         <LanguageSelector />
         <AdminPanel />
         

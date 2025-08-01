@@ -226,11 +226,11 @@
   position: fixed;
   inset: 0;
   background-color: var(--color-schiefer);
-  opacity: 0.95;
+  opacity: 98%;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 50;
+  z-index: 100;
 }
 
 .language-container {
