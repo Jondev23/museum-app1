@@ -144,7 +144,7 @@ const FEEDBACK_CSS_ANIMATION = {
 export const SCREEN_TRANSITIONS = {
   screensaver: createTransition('fade', 'standard'),
   default: createTransition('slideHorizontal', 'standard'),
-  question: createTransition('slideLeftToRight', 'standard'), // Pantalla de preguntas ahora entra de izquierda a derecha
+  question: { className: '' }, // Sin animación para QuestionScreen
   feedback: FEEDBACK_CSS_ANIMATION // FeedbackScreen con animaciones CSS personalizadas
 };
 

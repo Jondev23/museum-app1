@@ -70,15 +70,9 @@ export const useQuestionScreen = () => {
     return `${baseClasses} opacity-60 cursor-not-allowed`;
   }, [selectedAnswer, isProcessing]);
 
-  // Get motion properties for answer buttons - CSS based interactions now
+  // Get motion properties for answer buttons - Sin animaciones
   const getButtonMotionProps = useCallback((index) => {
-    if (selectedAnswer === null && !isProcessing) {
-      return {
-        className: 'hover:scale-[0.98] active:scale-[0.95] transition-transform duration-100'
-      };
-    }
-    
-    return {}; // No interactions when disabled
+    return {}; // Sin interacciones animadas
   }, [selectedAnswer, isProcessing]);
 
   const getButtonStyle = useCallback((index) => {
