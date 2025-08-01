@@ -1,0 +1,43 @@
+/* ============================================
+   FEEDBACK SCREEN COMPONENT STYLES
+   ============================================ */
+
+/* Feedback Screen Variables */
+:root {
+  --feedback-button-width: min(14.0625rem, 22.5vw);
+  --feedback-button-height: min(3.75rem, 6.25vh);      
+  --feedback-button-gap: min(1.25rem, 2.5vw);             
+  --feedback-button-text-size: 1.875rem; 
+  --feedback-button-text-line-height: min(6.25vh, 3.75rem);
+  --feedback-arrow-width: 5.01688rem; 
+  --feedback-arrow-height: 2.71563rem;  
+  --feedback-arrow-min-width: min(3.0914235rem, 4.96375vw);  
+  --feedback-arrow-min-height: min(3.0914235rem, 4.96375vh);
+  --color-feedback-answer-text: var(--color-neutral-dark);
+}
+
+/* Feedback Screen Typography */
+.feedback-title {
+  @apply typography-fragen;
+  color: var(--color-white);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.1;
+  padding: 0.5rem;
+}
+
+.text-answer {
+  @apply typography-antworten-buttons;
+  color: var(--color-schiefer);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  line-height: 1.2;
+  padding: 0.25rem 0.5rem;
+}

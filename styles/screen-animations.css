@@ -1,0 +1,299 @@
+/* ============================================
+   SCREEN TRANSITION ANIMATIONS
+   Custom animations for museum kiosk app screens
+   ============================================ */
+
+/* Base animation properties */
+.screen-transition {
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: both;
+}
+
+/* ============================================
+   SCREENSAVER SCREEN ANIMATIONS
+   ============================================ */
+
+/* ScreensaverScreen - Enter with fade-in */
+.enter-screensaver {
+  animation-name: fadeIn;
+  animation-duration: 500ms;
+  animation-timing-function: ease-out;
+}
+
+/* ScreensaverScreen - Exit with fade-out */
+.exit-screensaver {
+  animation-name: fadeOut;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in;
+}
+
+/* ============================================
+   START SCREEN ANIMATIONS
+   ============================================ */
+
+/* StartScreen - Enter from right */
+.enter-start {
+  animation-name: slideInFromRight;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* StartScreen - Exit to left */
+.exit-start {
+  animation-name: slideOutToLeft;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   QUESTION SCREEN ANIMATIONS
+   ============================================ */
+
+/* QuestionScreen - Enter from right */
+.enter-question {
+  animation-name: slideInFromRight;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* QuestionScreen - Exit with fade-out */
+.exit-question {
+  animation-name: fadeOut;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in;
+}
+
+/* ============================================
+   FEEDBACK SCREEN ANIMATIONS
+   ============================================ */
+
+/* FeedbackScreen - Enter with fade-in */
+.enter-feedback {
+  animation-name: fadeIn;
+  animation-duration: 500ms;
+  animation-timing-function: ease-out;
+}
+
+/* FeedbackScreen - Exit to left - Higher specificity and forced application */
+.screen-transition.exit-feedback,
+.exit-feedback {
+  animation-name: slideOutToLeftFeedback !important;
+  animation-duration: 500ms !important;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  animation-fill-mode: both !important;
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}
+
+/* Backup animation class for feedback screen exit - use this if the above fails */
+.screen-container .exit-feedback {
+  animation-name: slideOutToLeftFeedback !important;
+  animation-duration: 500ms !important;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  animation-fill-mode: both !important;
+}
+
+/* ============================================
+   RESULTS SCREEN ANIMATIONS
+   ============================================ */
+
+/* ResultsScreen - Enter from right */
+.enter-results {
+  animation-name: slideInFromRight;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ResultsScreen - Exit to left */
+.exit-results {
+  animation-name: slideOutToLeft;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   KEYFRAME DEFINITIONS
+   ============================================ */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade Out Animation */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Slide In From Right Animation */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Slide Out To Left Animation - Enhanced for reliability */
+@keyframes slideOutToLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* Additional keyframe for feedback screen specifically */
+@keyframes slideOutToLeftFeedback {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Admin panel animations */
+.admin-panel-wide {
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: both;
+}
+
+/* Hide element during transition */
+.screen-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Show element during transition */
+.screen-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Ensure proper positioning for slide animations */
+.screen-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Special handling for feedback screen animations */
+.screen-container.screen-transition.exit-feedback > * {
+  animation-name: inherit;
+  animation-duration: inherit;
+  animation-timing-function: inherit;
+  animation-fill-mode: inherit;
+}
+
+/* Ensure fixed positioned elements animate properly */
+.exit-feedback .fixed {
+  transform: inherit;
+  animation: inherit;
+}
+
+/* Prevent scroll during transitions */
+.transition-active {
+  overflow: hidden;
+}
+
+/* ============================================
+   RESPONSIVE CONSIDERATIONS
+   ============================================ */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .screen-transition,
+  .enter-screensaver,
+  .exit-screensaver,
+  .enter-start,
+  .exit-start,
+  .enter-question,
+  .exit-question,
+  .enter-feedback,
+  .exit-feedback,
+  .enter-results,
+  .exit-results {
+    animation-duration: 0.1s;
+    animation-timing-function: linear;
+  }
+}
+
+/* Ensure animations work on mobile devices */
+@media (max-width: 768px) {
+  .screen-transition,
+  .enter-screensaver,
+  .exit-screensaver,
+  .enter-start,
+  .exit-start,
+  .enter-question,
+  .exit-question,
+  .enter-feedback,
+  .exit-feedback,
+  .enter-results,
+  .exit-results {
+    animation-duration: 400ms;
+  }
+}
+
+/* ============================================
+   FEEDBACK SCREEN RELIABILITY FIXES
+   ============================================ */
+
+/* Force CSS loading and ensure exit-feedback animation is always available */
+.screen-animations-loaded .exit-feedback,
+.screen-animations-loaded.exit-feedback {
+  animation-name: slideOutToLeftFeedback !important;
+}
+
+/* Ensure the animation starts from a known state */
+.exit-feedback * {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+}
+
+/* CSS Animation Preloader - Forces browser to prepare animations */
+@media (prefers-reduced-motion: no-preference) {
+  .exit-feedback::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    animation: slideOutToLeftFeedback 0.001s;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,53 @@
+/* ============================================
+   COMMON UI COMPONENT STYLES
+   ============================================ */
+
+/* Common Typography Classes */
+.title-main {
+  @apply typography-head;
+  color: var(--color-text-primary);
+}
+
+.title-question {
+  @apply typography-fragen;
+  color: var(--color-text-primary);
+  padding-left: min(1.8rem, 1.8vw, 3vh);
+  padding-right: min(1.8rem, 1.8vw, 3vh);
+  box-sizing: border-box;
+}
+
+.subtitle-main {
+  @apply typography-subline;
+  color: var(--color-blassgruen);
+}
+
+.text-body-primary {
+  @apply typography-antwort-fliess;
+  color: var(--color-text-primary);
+}
+
+.text-button {
+  @apply typography-antworten-buttons;
+  color: var(--color-text-primary);
+}
+
+/* Common Color Utilities */
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+/* Common Button Styles */
+.btn-answer {
+  @apply typography-antworten-buttons;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border: 2px solid var(--color-neutral-light);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  min-width: 12rem;
+}

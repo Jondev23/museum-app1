@@ -5,14 +5,6 @@
 /* Import screen transition animations */
 @import './screen-animations.css';
 
-/* Import component-specific styles */
-@import './admin-components.css';
-@import './language-selector.css';
-@import './feedback-components.css';
-@import './results-components.css';
-@import './start-screen.css';
-@import './common-components.css';
-
 /* ============================================
    CUSTOM FONTS FOR MUSEUM APP
    ============================================ */

@@ -1,0 +1,13 @@
+/* ============================================
+   START SCREEN COMPONENT STYLES
+   ============================================ */
+
+/* Start Screen Variables */
+:root {
+  --touch-indicator-size: 7rem;
+  --startscreen-top-spacing: clamp(9rem, 15vh, 12rem);
+  --startscreen-description-lateral-spacing: 0;
+}
+
+/* Start Screen Typography and Layout would go here */
+/* These can be added as the StartScreen component is developed */
