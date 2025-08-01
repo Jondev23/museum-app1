@@ -1,26 +1,8 @@
 /* ============================================
-   RESULTS SCREEN COMPONENT STYLES
+   RESULTS SCREEN COMPONENT STYLES - MINIMAL
    ============================================ */
 
-/* Results Screen Variables */
-:root {
-  --results-title-font-size: 6rem;
-  --results-title-line-height: 7.2rem;
-  --results-score-text-font-size: 4rem;
-  --results-score-text-line-height: 4.8rem;
-  --results-play-again-button-text-font-size: 1.875rem;
-  --results-play-again-button-text-line-height: 2.25rem;
-  
-  --subtitle-small-font-size: clamp(1.4256rem, 2.5661vw, 2.8512rem);
-  --subtitle-small-line-height: clamp(1.9008rem, 3.4214vw, 3.8016rem);
-  
-  --results-title-margin: 0;
-  --results-progress-margin: clamp(1.5rem, 4vw, 3rem);
-  --results-horizontal-padding: clamp(2rem, 6vw, 5rem);
-  --results-play-again-bottom: min(3.15rem, 5.25vh);
-}
-
-/* Results Screen Typography */
+/* Results Screen Typography - Used in ResultsTitle.js */
 .title-results {
   font-family: var(--typography-head-font-family);
   font-size: var(--results-title-font-size);
@@ -31,57 +13,4 @@
   color: var(--color-text-primary);
 }
 
-.subtitle-small {
-  font-family: var(--typography-subline-font-family);
-  font-size: var(--results-score-text-font-size);
-  line-height: var(--results-score-text-line-height);
-  font-weight: var(--typography-subline-font-weight);
-  font-style: var(--typography-subline-font-style);
-  text-align: center;
-  color: var(--color-blassgruen);
-}
-
-.text-button-play-again {
-  font-family: var(--typography-antworten-buttons-font-family);
-  font-size: var(--results-play-again-button-text-font-size);
-  line-height: 7rem;
-  font-weight: var(--typography-antworten-buttons-font-weight);
-  font-style: var(--typography-antworten-buttons-font-style);
-  letter-spacing: var(--typography-antworten-buttons-letter-spacing);
-  text-align: center;
-  color: #FFF;
-  text-transform: uppercase;
-  display: flex;
-  width: auto;
-  min-width: 13.0625rem;
-  height: 2.625rem;
-  flex-direction: column;
-  justify-content: center;
-  white-space: nowrap;
-}
-
-/* Responsive Adjustments for Results Screen */
-@media (max-width: 480px) {
-  :root {
-    --results-title-font-size: clamp(1.368rem, 5.472vw, 2.052rem);
-    --subtitle-small-font-size: clamp(0.9rem, 4.32vw, 1.44rem);
-    --results-progress-margin: clamp(1rem, 3.5vw, 2rem);
-    --results-horizontal-padding: clamp(1.5rem, 4vw, 3rem);
-  }
-}
-
-@media (max-width: 768px) {
-  :root {
-    --results-progress-margin: clamp(1.2rem, 3.5vw, 2.5rem);
-    --results-horizontal-padding: clamp(1.75rem, 5vw, 4rem);
-  }
-}
-
-@media (orientation: landscape) and (max-height: 600px) {
-  :root {
-    --results-title-font-size: clamp(1.026rem, 2.736vh, 1.71rem);
-    --subtitle-small-font-size: clamp(0.72rem, 2.16vh, 1.26rem);
-    --results-progress-margin: clamp(0.75rem, 2.5vh, 1.5rem);
-    --results-horizontal-padding: clamp(1rem, 8vw, 3rem);
-  }
-}
+/* Note: .subtitle-small and .text-button-play-again are defined in common-components.css */
