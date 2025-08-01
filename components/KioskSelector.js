@@ -5,7 +5,6 @@ import { KIOSK_CONFIGS } from '../utils/kioskConfig';
 const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
   const { setKioskId, kioskId } = useApp();
 
- 
   // Get available kiosk configurations
   const kiosks = Object.values(KIOSK_CONFIGS);
 
@@ -18,13 +17,35 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
   // Touch event handler for selection
   const handleTouchSelect = (e, id) => {
     e.preventDefault();
+    e.stopPropagation();
     handleSelect(id);
+  };
+
+  // Mouse event handler for selection
+  const handleMouseSelect = (e, id) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Only handle mouse events if no touch events are supported
+    if (!('ontouchstart' in window)) {
+      handleSelect(id);
+    }
   };
 
   // Touch event handler for back button
   const handleTouchBack = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     onBack();
+  };
+
+  // Mouse event handler for back button
+  const handleMouseBack = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Only handle mouse events if no touch events are supported
+    if (!('ontouchstart' in window)) {
+      onBack();
+    }
   };
 
   return (
@@ -44,8 +65,8 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
           {kiosks.map((kiosk) => (
             <button
               key={kiosk.id}
-              onClick={() => handleSelect(kiosk.id)}
               onTouchStart={(e) => handleTouchSelect(e, kiosk.id)}
+              onMouseDown={(e) => handleMouseSelect(e, kiosk.id)}
               className={`kiosk-item ${kioskId === kiosk.id ? 'kiosk-item-selected' : 'kiosk-item-unselected'}`}
               style={{
                 touchAction: 'manipulation',
@@ -54,7 +75,7 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
                 WebkitUserSelect: 'none'
               }}
             >
-              <div>{kiosk.name}</div>
+              <div className="kiosk-item-name">{kiosk.name}</div>
               <div className="kiosk-item-subtitle">
                 {kiosk.theme}
               </div>
@@ -62,8 +83,8 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
           ))}
         </div>
         <button
-          onClick={onBack}
           onTouchStart={handleTouchBack}
+          onMouseDown={handleMouseBack}
           className="w-full admin-button-secondary"
           style={{
             touchAction: 'manipulation',

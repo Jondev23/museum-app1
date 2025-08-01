@@ -9,9 +9,11 @@ const AdminPanel = () => {
   const [showKioskSelector, setShowKioskSelector] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const [lastClickTime, setLastClickTime] = useState(0);
   const passwordInputRef = useRef(null);
 
-  const SECRET_SEQUENCE = ['tr', 'tr', 'br'];
+  // Secret sequence: Top-Left → Top-Right → Bottom-Right → Bottom-Left
+  const SECRET_SEQUENCE = ['tl', 'tr', 'br', 'bl'];
   const ADMIN_PASSWORD = 'museum2025';
 
   useEffect(() => {
@@ -30,13 +32,26 @@ const AdminPanel = () => {
     }
   }, [isVisible, isAuthenticated, password]);
 
-  const handleCornerClick = (corner) => {
+  const handleCornerClick = (corner, eventType = 'click') => {
+    const now = Date.now();
+    
+    // Prevent rapid duplicate clicks (within 200ms)
+    if (now - lastClickTime < 200) {
+      console.log(`Ignoring rapid ${eventType} on ${corner}`);
+      return;
+    }
+    
+    setLastClickTime(now);
     const newSequence = [...clickSequence, corner];
     setClickSequence(newSequence);
+
+    // Debug log for development (remove in production if needed)
+    console.log(`Admin ${eventType}:`, corner, 'Sequence:', newSequence, 'Target:', SECRET_SEQUENCE);
 
     if (newSequence.length === SECRET_SEQUENCE.length) {
       if (JSON.stringify(newSequence) === JSON.stringify(SECRET_SEQUENCE)) {
         setIsVisible(true);
+        console.log('Admin panel activated!');
       }
       setClickSequence([]);
     }
@@ -44,7 +59,17 @@ const AdminPanel = () => {
 
   const handleCornerTouch = (e, corner) => {
     e.preventDefault();
-    handleCornerClick(corner);
+    e.stopPropagation();
+    handleCornerClick(corner, 'touch');
+  };
+
+  const handleCornerMouse = (e, corner) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Only handle mouse events if no touch events are supported
+    if (!('ontouchstart' in window)) {
+      handleCornerClick(corner, 'mouse');
+    }
   };
 
   const handlePasswordSubmit = (e) => {
@@ -79,6 +104,8 @@ const AdminPanel = () => {
     setShowKioskSelector(false);
     setSuccessMsg('');
     setErrorMsg('');
+    setClickSequence([]);
+    setLastClickTime(0);
   };
 
   const handleExitKiosk = () => {
@@ -93,17 +120,53 @@ const AdminPanel = () => {
 
   return (
     <>
+      {/* Top Left Corner - First click */}
+      <div
+        className="admin-corner-trigger top-0 left-0"
+        onTouchStart={(e) => handleCornerTouch(e, 'tl')}
+        onMouseDown={(e) => handleCornerMouse(e, 'tl')}
+        style={{ 
+          touchAction: 'manipulation', 
+          userSelect: 'none',
+          WebkitTouchCallout: 'none'
+        }}
+        title="Admin Corner 1/4"
+      />
+      {/* Top Right Corner - Second click */}
       <div
         className="admin-corner-trigger top-0 right-0"
-        onClick={() => handleCornerClick('tr')}
         onTouchStart={(e) => handleCornerTouch(e, 'tr')}
-        style={{ touchAction: 'manipulation', userSelect: 'none' }}
+        onMouseDown={(e) => handleCornerMouse(e, 'tr')}
+        style={{ 
+          touchAction: 'manipulation', 
+          userSelect: 'none',
+          WebkitTouchCallout: 'none'
+        }}
+        title="Admin Corner 2/4"
       />
+      {/* Bottom Left Corner - Fourth click */}
+      <div
+        className="admin-corner-trigger bottom-0 left-0"
+        onTouchStart={(e) => handleCornerTouch(e, 'bl')}
+        onMouseDown={(e) => handleCornerMouse(e, 'bl')}
+        style={{ 
+          touchAction: 'manipulation', 
+          userSelect: 'none',
+          WebkitTouchCallout: 'none'
+        }}
+        title="Admin Corner 4/4"
+      />
+      {/* Bottom Right Corner - Third click */}
       <div
         className="admin-corner-trigger bottom-0 right-0"
-        onClick={() => handleCornerClick('br')}
         onTouchStart={(e) => handleCornerTouch(e, 'br')}
-        style={{ touchAction: 'manipulation', userSelect: 'none' }}
+        onMouseDown={(e) => handleCornerMouse(e, 'br')}
+        style={{ 
+          touchAction: 'manipulation', 
+          userSelect: 'none',
+          WebkitTouchCallout: 'none'
+        }}
+        title="Admin Corner 3/4"
       />
 
       {isVisible && !showKioskSelector && (
