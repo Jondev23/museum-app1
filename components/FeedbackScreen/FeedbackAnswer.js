@@ -4,9 +4,9 @@ import { processTextWithHTML } from '../../utils/textProcessor';
 // Display component for showing the user's selected answer in feedback screen
 const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextStyle }) => {
   return (
-    <div className="flex justify-center w-full">
+    <div className="flex justify-center items-center w-full">
       <div
-        className="inline-flex items-center justify-center gap-[min(0.5rem,1vw)] relative"
+        className="inline-flex items-center justify-center relative"
         style={{
           ...answerButtonStyle,
           backgroundColor: 'var(--color-neutral-light)',
@@ -17,10 +17,7 @@ const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextSty
         }}
       >
         <span
-          className="feedback-answer-text relative w-full text-center break-words hyphens-auto max-w-full"
-          style={{
-            transform: answerTextStyle.transform
-          }}
+          className="feedback-answer-text w-full"
         >
           {/* Display the selected answer text */}
           {processTextWithHTML(question.answers[userAnswer])}
