@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 /* Import screen transition animations */
-@import './screen-animations.css';
 
 /* ============================================
    CUSTOM FONTS FOR MUSEUM APP
@@ -111,4 +110,36 @@
   font-style: normal !important;
   font-weight: 400 !important;
   text-align: center !important;
+}
+
+/* Feedback title typography */
+.feedback-title {
+  color: var(--color-neutral-light, #D9D9D9) !important;
+  font-family: "Tisa Pro" !important;
+  font-size: 3.375rem !important;
+  font-style: italic !important;
+  font-weight: 750 !important;
+  line-height: 1.2 !important;
+}
+
+/* Feedback button text typography */
+.text-button {
+  color: var(--color-neutral-light, #D9D9D9) !important;
+  font-family: "Tisa Sans Pro" !important;
+  font-size: 1.875rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
+
+/* Feedback answer typography */
+.feedback-answer-text {
+  color: var(--color-schiefer, #344243) !important;
+  font-family: "Tisa Sans Pro" !important;
+  font-size: 3rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }

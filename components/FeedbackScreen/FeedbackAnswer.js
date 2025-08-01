@@ -17,13 +17,8 @@ const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextSty
         }}
       >
         <span
-          className="typography-antworten-buttons relative w-full text-center break-words hyphens-auto max-w-full"
+          className="feedback-answer-text relative w-full text-center break-words hyphens-auto max-w-full"
           style={{
-            color: answerTextStyle.color,
-            overflowWrap: answerTextStyle.overflowWrap,
-            wordBreak: answerTextStyle.wordBreak,
-            hyphens: answerTextStyle.hyphens,
-            whiteSpace: answerTextStyle.whiteSpace,
             transform: answerTextStyle.transform
           }}
         >

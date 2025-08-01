@@ -21,7 +21,7 @@ const FeedbackButton = ({
         className="flex items-center cursor-pointer"
         style={{
           ...buttonStyle,
-          gap: 'calc(var(--feedback-button-gap) * 0.7)',
+          gap: '0.7rem',
           touchAction: 'manipulation',
           userSelect: 'none',
           WebkitTouchCallout: 'none',
@@ -31,8 +31,6 @@ const FeedbackButton = ({
         <span
           className="text-button"
           style={{
-            fontSize: buttonTextStyle.fontSize,
-            lineHeight: buttonTextStyle.lineHeight,
             textTransform: buttonTextStyle.textTransform
           }}
         >

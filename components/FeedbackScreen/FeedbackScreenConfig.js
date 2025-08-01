@@ -59,8 +59,6 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const titleStyle = useMemo(() => ({
-    fontSize: '3.375rem', 
-    lineHeight: '4.05rem', 
     width: '95%',
     minHeight: 'auto', 
     maxHeight: '35vh', 
@@ -146,30 +144,22 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const buttonStyle = useMemo(() => ({
-    minWidth: 'var(--feedback-button-width)',
-    minHeight: 'var(--feedback-button-height)',
     background: 'transparent',
     border: 'none',
     justifyContent: 'flex-start',
-    gap: 'var(--feedback-button-gap)'
+    gap: '1rem'
   }), []);
 
   const buttonTextStyle = useMemo(() => ({
-    fontSize: 'var(--feedback-button-text-size)',
-    lineHeight: 'var(--feedback-button-text-line-height)',
     textTransform: 'uppercase'
   }), []);
 
   const arrowStyle = useMemo(() => ({
-    
-    width: 'var(--feedback-arrow-width)',
-    height: 'var(--feedback-arrow-height)',
+    width: '5.01688rem',
+    height: '2.71563rem',
     flexShrink: 0,
-    
-    minWidth: 'var(--feedback-arrow-min-width)',
-    minHeight: 'var(--feedback-arrow-min-height)',
-    
-    aspectRatio: '1/1',
+    minWidth: '5.01688rem',
+    minHeight: '2.71563rem',
     objectFit: 'contain'
   }), []);
 
