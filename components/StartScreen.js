@@ -1,5 +1,6 @@
 // Import componentes
 import StandardFooter from './shared/StandardFooter';
+import { useState, useEffect } from 'react';
 
 // Import hooks y configuración
 import { useStartScreen } from '../hooks/useStartScreen';
@@ -12,6 +13,25 @@ import StartScreenTouchIndicator from './StartScreen/StartScreenTouchIndicator';
 
 // Start screen component - first screen after screensaver
 const StartScreen = () => {
+  const [titleMarginTop, setTitleMarginTop] = useState('12rem');
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (typeof window !== 'undefined') {
+        setTitleMarginTop(window.innerHeight < 900 ? '10rem' : '12rem');
+      }
+    };
+
+    // Ejecutar al montar el componente
+    handleResize();
+    
+    // Escuchar cambios de tamaño de ventana
+    window.addEventListener('resize', handleResize);
+    
+    // Limpiar el event listener
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const {
     showContent,
     startContent,
@@ -46,7 +66,7 @@ const StartScreen = () => {
         onClick={handleClick}
       >
         <div 
-          className="relative z-10 h-full flex flex-col items-center w-full px-4 sm:px-6 md:px-8"
+          className="relative z-10 h-full flex flex-col items-center w-full px-4 sm:px-6 md:px-8 start-screen-container"
           style={containerStyle}
         >
           <div 
@@ -59,7 +79,12 @@ const StartScreen = () => {
                 style={contentSectionStyle}
               >
                 {/* Título */}
-                <div className="w-full flex flex-col items-center justify-center flex-shrink-0">
+                <div 
+                  className="w-full flex flex-col items-center justify-center flex-shrink-0"
+                  style={{
+                    marginTop: titleMarginTop
+                  }}
+                >
                   <StartScreenTitle
                     startContent={startContent}
                     defaultTexts={defaultTexts}

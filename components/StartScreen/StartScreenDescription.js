@@ -25,20 +25,17 @@ const StartScreenDescription = ({
 
   return (
     <div
-      className="typography-antwort-fliess text-primary"
+      className="start-screen-description"
       style={{
-        ...descriptionContainerStyle,
-        color: 'var(--color-text-primary)'
+        ...descriptionContainerStyle
       }}
     >
       <div 
         ref={highlightRef}
-        className="typography-antwort-fliess text-primary"
+        className="start-screen-highlight"
         style={{
           ...adjustedHighlightStyle,
-          display: 'block',
-          color: 'var(--color-text-primary)',
-          fontWeight: 'var(--typography-antwort-fliess-bold-font-weight) !important'
+          display: 'block'
         }}
       >
         {processTextWithHTML(startContent?.highlightText || defaultTexts.highlightText)}
@@ -46,11 +43,10 @@ const StartScreenDescription = ({
 
       <div 
         ref={introRef}
-        className="typography-antwort-fliess text-primary"
+        className="start-screen-description"
         style={{
           ...adjustedIntroStyle,
-          display: 'block',
-          color: 'var(--color-text-primary)'
+          display: 'block'
         }}
       >
         {processTextWithHTML(startContent?.introText || defaultTexts.introText)}
