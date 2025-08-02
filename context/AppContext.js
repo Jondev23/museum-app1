@@ -176,6 +176,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const goToScreensaver = () => {
+    console.log('🖥️ goToScreensaver called - setting currentScreen to screensaver');
     setCurrentScreen('screensaver');
     resetQuizState();
     setShowLanguageSelector(false);

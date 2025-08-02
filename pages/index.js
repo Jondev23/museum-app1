@@ -51,8 +51,10 @@ export default function Home() {
 
   // Render different screens based on displayed state (for smooth transitions)
   const renderScreen = () => {
+    console.log('🎬 renderScreen called - displayedScreen:', displayedScreen);
     switch (displayedScreen) {
       case 'screensaver':
+        console.log('🖥️ Rendering ScreensaverScreen');
         return <ScreensaverScreen key="screensaver" />;
       case 'start':
         return <StartScreen key="start" />;
@@ -63,6 +65,7 @@ export default function Home() {
       case 'results':
         return <ResultsScreen key="results" />;
       default:
+        console.log('🖥️ Default case - Rendering ScreensaverScreen');
         return <ScreensaverScreen key="screensaver" />;
     }
   };

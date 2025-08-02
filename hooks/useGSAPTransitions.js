@@ -13,8 +13,9 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
   const getAnimationConfig = (screenType, animationType) => {
     const configs = {
       screensaver: {
-        enter: { opacity: 1, duration: 0.9, ease: "power2.out" },
-        exit: { opacity: 0, duration: 0.9, ease: "power2.in" }
+        enter: { opacity: 1, duration: 0, ease: "none" },
+        exit: { opacity: 1, duration: 0, ease: "none" },
+        initial: { opacity: 1 }
       },
       start: {
         enter: { x: 0, opacity: 1, duration: 0.9, ease: "power2.out" },
