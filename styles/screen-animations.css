@@ -65,6 +65,24 @@
 }
 
 /* ============================================
+   LANGUAGE SELECTOR ANIMATIONS
+   ============================================ */
+
+/* LanguageSelector - Enter with fade-in */
+.enter-language {
+  animation-name: fadeInLanguage;
+  animation-duration: 900ms;
+  animation-timing-function: ease-out;
+}
+
+/* LanguageSelector - Exit with fade-out */
+.exit-language {
+  animation-name: fadeOutLanguage;
+  animation-duration: 900ms;
+  animation-timing-function: ease-in;
+}
+
+/* ============================================
    FEEDBACK SCREEN ANIMATIONS
    ============================================ */
 
@@ -172,6 +190,29 @@
   100% {
     transform: translateX(-100%);
     opacity: 0;
+  }
+}
+
+/* Language Selector specific animations to handle overlay opacity */
+@keyframes fadeInLanguage {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOutLanguage {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
   }
 }
 
