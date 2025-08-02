@@ -30,7 +30,7 @@ const LanguageSelector = () => {
   // Handle visibility changes with GSAP animations
   useEffect(() => {
     if (isVisible && !shouldRender) {
-      // Show with entrance animation
+      // Show with simple fade-in animation
       setShouldRender(true);
       
       // Wait for next frame to ensure element is in DOM
@@ -38,27 +38,23 @@ const LanguageSelector = () => {
         if (containerRef.current) {
           // Set initial state
           gsap.set(containerRef.current, {
-            opacity: 0,
-            scale: 0.95,
-            transformOrigin: "center center"
+            opacity: 0
           });
           
-          // Animate in
+          // Simple fade in
           gsap.to(containerRef.current, {
             opacity: 1,
-            scale: 1,
-            duration: 0.9,
+            duration: 0.5,
             ease: "power2.out"
           });
         }
       });
     } else if (!isVisible && shouldRender) {
-      // Hide with exit animation
+      // Hide with simple fade-out animation
       if (containerRef.current) {
         gsap.to(containerRef.current, {
           opacity: 0,
-          scale: 0.95,
-          duration: 0.9,
+          duration: 0.5,
           ease: "power2.in",
           onComplete: () => {
             setShouldRender(false);
