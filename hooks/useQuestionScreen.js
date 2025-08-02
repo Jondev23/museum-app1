@@ -27,7 +27,13 @@ export const useQuestionScreen = () => {
   }, [currentQuestionIndex]);
   
   // Get current question data
-  const question = useMemo(() => getCurrentQuestion(), [getCurrentQuestion]);
+  const question = useMemo(() => {
+    const currentQuestion = getCurrentQuestion();
+    console.log('🎯 useQuestionScreen - current question:', currentQuestion);
+    console.log('🎯 useQuestionScreen - questions array:', questions);
+    console.log('🎯 useQuestionScreen - currentQuestionIndex:', currentQuestionIndex);
+    return currentQuestion;
+  }, [getCurrentQuestion, questions, currentQuestionIndex]);
   const startContent = useMemo(() => content?.[language]?.startScreen, [content, language]);
 
   // Handle answer selection with processing delay

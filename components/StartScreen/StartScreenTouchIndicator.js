@@ -5,10 +5,10 @@ const StartScreenTouchIndicator = ({
   touchIndicatorContainerStyle,
   touchIndicatorStyle 
 }) => {
-  // Animation styles with fade-swipe effect
+  // Animation styles - DISABLED INFINITE ANIMATION FOR SCREENSAVER TESTING
   const animationStyles = {
     ...touchIndicatorStyle,
-    animation: 'fade-swipe 4.5s ease-in-out infinite',
+    // animation: 'fade-swipe 4.5s ease-in-out infinite', // DISABLED
     cursor: 'pointer',
     transition: 'transform 0.2s ease, opacity 0.5s ease',
     opacity: showContent ? 1 : 0,
@@ -17,10 +17,11 @@ const StartScreenTouchIndicator = ({
   return (
     <div
       onClick={handleSwipeLeft}
-      onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
-      onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-      onMouseDown={(e) => e.target.style.transform = 'scale(0.9)'}
-      onMouseUp={(e) => e.target.style.transform = 'scale(1.1)'}
+      // DISABLED MOUSE EVENTS FOR SCREENSAVER TESTING
+      // onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
+      // onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+      // onMouseDown={(e) => e.target.style.transform = 'scale(0.9)'}
+      // onMouseUp={(e) => e.target.style.transform = 'scale(1.1)'}
       style={touchIndicatorContainerStyle}
     >
       {/* Swipe indicator icon with animation */}

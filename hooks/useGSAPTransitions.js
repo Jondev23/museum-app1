@@ -43,7 +43,26 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
 
   // Handle screen transitions with GSAP animations
   useEffect(() => {
-    if (currentScreen !== displayedScreen && !isTransitioning) {
+    console.log('🎬 useGSAPTransitions - currentScreen:', currentScreen, 'displayedScreen:', displayedScreen, 'isTransitioning:', isTransitioning);
+    
+    // If transitioning TO screensaver, update immediately (no animation needed)
+    if (currentScreen === 'screensaver' && displayedScreen !== 'screensaver') {
+      console.log('🎬 Transitioning TO screensaver - immediate update');
+      setDisplayedScreen('screensaver');
+      setDisplayedQuestionIndex(currentQuestionIndex);
+      return;
+    }
+    
+    // If transitioning FROM screensaver, update immediately (no animation needed)
+    if (displayedScreen === 'screensaver' && currentScreen !== 'screensaver') {
+      console.log('🎬 Transitioning FROM screensaver - immediate update');
+      setDisplayedScreen(currentScreen);
+      setDisplayedQuestionIndex(currentQuestionIndex);
+      return;
+    }
+    
+    if (currentScreen !== displayedScreen && !isTransitioning && currentScreen !== 'screensaver' && displayedScreen !== 'screensaver') {
+      console.log('🎬 Starting transition from', displayedScreen, 'to', currentScreen);
       setIsTransitioning(true);
       
       if (containerRef.current) {

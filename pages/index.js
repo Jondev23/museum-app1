@@ -37,6 +37,8 @@ export default function Home() {
     containerRef
   } = useGSAPTransitions(currentScreen, currentQuestionIndex);
 
+  console.log('🏠 Main component - currentScreen:', currentScreen, 'displayedScreen:', displayedScreen);
+
   // Show loading screen if kioskId is not yet determined
   if (!kioskId) {
     return (
@@ -54,8 +56,8 @@ export default function Home() {
     console.log('🎬 renderScreen called - displayedScreen:', displayedScreen);
     switch (displayedScreen) {
       case 'screensaver':
-        console.log('🖥️ Rendering ScreensaverScreen');
-        return <ScreensaverScreen key="screensaver" />;
+        console.log('🖥️ Screensaver handled outside container');
+        return null; // Screensaver is rendered outside
       case 'start':
         return <StartScreen key="start" />;
       case 'question':
@@ -65,8 +67,8 @@ export default function Home() {
       case 'results':
         return <ResultsScreen key="results" />;
       default:
-        console.log('🖥️ Default case - Rendering ScreensaverScreen');
-        return <ScreensaverScreen key="screensaver" />;
+        console.log('🖥️ Default case - Screensaver handled outside container');
+        return null; // Default to screensaver outside
     }
   };
 
@@ -83,10 +85,18 @@ export default function Home() {
         <GlobalBackground backgroundImage={globalBackgroundImage} />
       </div>
 
-      {/* Current screen content with GSAP animations */}
-      <div ref={containerRef} className="screen-container">
-        {renderScreen()}
-      </div>
+      {/* Screensaver - OUTSIDE of GSAP container */}
+      {currentScreen === 'screensaver' && (
+        <ScreensaverScreen key="screensaver" />
+      )}
+
+      {/* Current screen content with GSAP animations - ONLY non-screensaver screens */}
+      {currentScreen !== 'screensaver' && (
+        <div ref={containerRef} className="screen-container">
+          {renderScreen()}
+        </div>
+      )}
+      
       
       {/* Always visible components */}
       <div className="relative">
@@ -94,7 +104,7 @@ export default function Home() {
         <AdminPanel />
         
         {/* Global Language Selector Icon - always visible except screensaver */}
-        {displayedScreen !== 'screensaver' && (
+        {currentScreen !== 'screensaver' && (
           <div 
             className="fixed bottom-0 left-0"
             style={{
@@ -116,7 +126,7 @@ export default function Home() {
         )}
 
         {/* Global Progress Dots - always visible during quiz screens */}
-        {(displayedScreen === 'question' || displayedScreen === 'feedback') && (
+        {(currentScreen === 'question' || currentScreen === 'feedback') && (
           <div 
             className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-40"
             style={{

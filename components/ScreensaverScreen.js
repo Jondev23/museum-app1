@@ -52,7 +52,7 @@ const ScreensaverScreen = () => {
       onTouchStart={handleTouch}
       style={{
         opacity: 1,
-        zIndex: 1000,
+        zIndex: 9999, // MUCH HIGHER Z-INDEX
         backgroundColor: 'rgba(0,0,0,0.8)'
       }}
     >
@@ -62,7 +62,7 @@ const ScreensaverScreen = () => {
       />
       
       {/* Fallback content visible for debugging */}
-      <div className="absolute inset-0 flex items-center justify-center z-30">
+      <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 10000 }}>
         <div className="text-white text-center">
           <h1 className="text-4xl font-bold mb-4">SCREENSAVER ACTIVE</h1>
           <p className="text-xl">Touch anywhere to continue</p>

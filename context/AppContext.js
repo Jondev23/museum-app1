@@ -131,8 +131,9 @@ export const AppProvider = ({ children }) => {
       }
     };
 
-    const handleActivity = () => {
+    const handleActivity = (event) => {
       if (currentScreen !== 'screensaver') {
+        console.log('🔄 Activity detected, resetting timer. Event:', event.type, 'Screen:', currentScreen);
         resetTimer();
       }
     };
@@ -183,6 +184,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const startQuiz = () => {
+    console.log('🚀 startQuiz called - setting currentScreen to start');
     setCurrentScreen('start');
   };
 
@@ -198,6 +200,11 @@ export const AppProvider = ({ children }) => {
   };
 
   const startQuestions = () => {
+    console.log('🎯 startQuestions called');
+    console.log('🎯 Current content:', content);
+    console.log('🎯 Current language:', language);
+    console.log('🎯 Questions available:', content?.[language]?.questions?.length);
+    
     setCurrentScreen('question');
     resetQuizState();
     
@@ -205,6 +212,9 @@ export const AppProvider = ({ children }) => {
     if (content?.[language]?.questions) {
       const shuffled = [...content[language].questions].sort(() => Math.random() - 0.5);
       setQuestions(shuffled.slice(0, 5));
+      console.log('🎯 Questions set:', shuffled.slice(0, 5).length);
+    } else {
+      console.error('❌ No questions found in content!');
     }
   };
 

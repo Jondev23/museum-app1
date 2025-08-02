@@ -19,7 +19,8 @@ export const useScreensaverScreen = () => {
 
   // Handle touch interaction to exit screensaver
   const handleTouch = useCallback(() => {
-    console.log('Screensaver touched, transitioning to start screen');
+    console.log('🖱️ Screensaver touched, transitioning to start screen');
+    console.log('🖱️ Calling startQuiz()...');
     startQuiz();
   }, [startQuiz]);
 
