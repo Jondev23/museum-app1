@@ -1,8 +1,9 @@
-// Import componentes
+// Import componentes y GSAP
 import StandardFooter from './shared/StandardFooter';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
-// Import hooks y configuración
+// Import hooks y configuración  
 import { useStartScreen } from '../hooks/useStartScreen';
 import { useStartScreenStyles } from './StartScreen/StartScreenConfig';
 
@@ -14,6 +15,12 @@ import StartScreenTouchIndicator from './StartScreen/StartScreenTouchIndicator';
 // Start screen component - first screen after screensaver
 const StartScreen = () => {
   const [screenPaddingTop, setScreenPaddingTop] = useState('12rem');
+  
+  // Referencias para animaciones GSAP
+  const titleRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const touchIndicatorRef = useRef(null);
+  const mainCardRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,6 +37,59 @@ const StartScreen = () => {
     
     // Limpiar el event listener
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Animaciones de entrada cuando el componente se monta
+  useEffect(() => {
+    const tl = gsap.timeline();
+    
+    // Establecer estados iniciales
+    gsap.set([titleRef.current, descriptionRef.current, touchIndicatorRef.current], {
+      opacity: 0,
+      y: 50
+    });
+    
+    gsap.set(mainCardRef.current, {
+      opacity: 0,
+      scale: 0.95
+    });
+
+    // Animar entrada secuencial
+    tl.to(mainCardRef.current, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.8,
+      ease: "power2.out"
+    })
+    .to(titleRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.4")
+    .to(descriptionRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.3")
+    .to(touchIndicatorRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.2");
+
+    // Animación pulsante para el indicador de toque
+    gsap.to(touchIndicatorRef.current, {
+      scale: 1.05,
+      duration: 1.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "power2.inOut",
+      delay: 1
+    });
+
   }, []);
 
   const {
@@ -73,6 +133,7 @@ const StartScreen = () => {
           }}
         >
           <div 
+            ref={mainCardRef}
             className="w-full max-w-7xl bg-transparent flex items-start justify-center flex-grow"
             style={mainCardStyle}
           >
@@ -82,7 +143,7 @@ const StartScreen = () => {
                 style={contentSectionStyle}
               >
                 {/* Título */}
-                <div className="w-full flex flex-col items-center justify-center flex-shrink-0">
+                <div ref={titleRef} className="w-full flex flex-col items-center justify-center flex-shrink-0">
                   <StartScreenTitle
                     startContent={startContent}
                     defaultTexts={defaultTexts}
@@ -93,7 +154,7 @@ const StartScreen = () => {
                 </div>
 
                 {/* Descripción */}
-                <div className="flex-grow flex items-center justify-center w-full" style={descriptionSectionStyle}>
+                <div ref={descriptionRef} className="flex-grow flex items-center justify-center w-full" style={descriptionSectionStyle}>
                   <StartScreenDescription
                     startContent={startContent}
                     defaultTexts={defaultTexts}
@@ -112,7 +173,7 @@ const StartScreen = () => {
       {/* Footer sin animación */}
       <div className="fixed bottom-0 left-0 right-0 z-50">
         <StandardFooter>
-          <div className="absolute left-1/2 transform -translate-x-1/2 flex justify-center items-center" 
+          <div ref={touchIndicatorRef} className="absolute left-1/2 transform -translate-x-1/2 flex justify-center items-center" 
                style={{ 
                  top: 'clamp(-120px, -15vh, -100px)'
                }}>

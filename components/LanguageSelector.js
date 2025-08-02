@@ -1,5 +1,6 @@
 // Import React hooks for animation control
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 // Import language selector logic and components
 import useLanguageSelector from '../hooks/useLanguageSelector';
@@ -24,23 +25,46 @@ const LanguageSelector = () => {
 
   // State for managing animations
   const [shouldRender, setShouldRender] = useState(false);
-  const [animationClass, setAnimationClass] = useState('');
+  const containerRef = useRef(null);
 
-  // Handle visibility changes with animations
+  // Handle visibility changes with GSAP animations
   useEffect(() => {
     if (isVisible && !shouldRender) {
       // Show with entrance animation
       setShouldRender(true);
-      setAnimationClass('screen-transition enter-language');
+      
+      // Wait for next frame to ensure element is in DOM
+      requestAnimationFrame(() => {
+        if (containerRef.current) {
+          // Set initial state
+          gsap.set(containerRef.current, {
+            opacity: 0,
+            scale: 0.95,
+            transformOrigin: "center center"
+          });
+          
+          // Animate in
+          gsap.to(containerRef.current, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.9,
+            ease: "power2.out"
+          });
+        }
+      });
     } else if (!isVisible && shouldRender) {
       // Hide with exit animation
-      setAnimationClass('screen-transition exit-language');
-      
-      // Remove from DOM after animation completes
-      setTimeout(() => {
-        setShouldRender(false);
-        setAnimationClass('');
-      }, 900); // Match animation duration
+      if (containerRef.current) {
+        gsap.to(containerRef.current, {
+          opacity: 0,
+          scale: 0.95,
+          duration: 0.9,
+          ease: "power2.in",
+          onComplete: () => {
+            setShouldRender(false);
+          }
+        });
+      }
     }
   }, [isVisible, shouldRender]);
 
@@ -48,7 +72,7 @@ const LanguageSelector = () => {
   if (!shouldRender || !contentData) return null;
 
   return (
-    <div className={animationClass}>
+    <div ref={containerRef}>
       <LanguageOverlay onOverlayClick={handleOverlayClick}>
         <LanguageContainer onContentClick={handleContentClick}>
           <LanguageIcon />
