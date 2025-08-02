@@ -34,7 +34,7 @@ export const AppProvider = ({ children }) => {
   
   // Kiosk configuration - Start with null to force loading from config
   const [kioskId, setKioskId] = useState(null);
-  const [screensaverTimeout, setScreensaverTimeoutState] = useState(180000); 
+  const [screensaverTimeout, setScreensaverTimeoutState] = useState(10000); // 10 seconds unified default 
 
   // Load configuration on component mount
   useEffect(() => {

@@ -4,7 +4,7 @@ const CONFIG_FILE_PATH = './config.json';
 // Default configuration values
 const DEFAULT_CONFIG = {
   activeKioskId: 'kiosk1',
-  screensaverTimeout: 180000, 
+  screensaverTimeout: 10000, // 10 seconds unified default
   lastUpdated: new Date().toISOString()
 };
 

@@ -47,7 +47,7 @@ async function loadConfig() {
     
     const defaultConfig = {
       activeKioskId: 'kiosk1',
-      screensaverTimeout: 30000, // 30 seconds fallback
+      screensaverTimeout: 10000, // 10 seconds unified default
       lastUpdated: new Date().toISOString()
     };
     
