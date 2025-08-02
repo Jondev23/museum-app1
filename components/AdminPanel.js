@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import KioskSelectorScreen from './KioskSelector';
 
 const AdminPanel = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
   const [clickSequence, setClickSequence] = useState([]);
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -11,6 +13,7 @@ const AdminPanel = () => {
   const [errorMsg, setErrorMsg] = useState('');
   const [lastClickTime, setLastClickTime] = useState(0);
   const passwordInputRef = useRef(null);
+  const adminPanelRef = useRef(null);
 
   // Secret sequence: Top-Left → Top-Right → Bottom-Right → Bottom-Left
   const SECRET_SEQUENCE = ['tl', 'tr', 'br', 'bl'];
@@ -22,6 +25,43 @@ const AdminPanel = () => {
     }, 10000);
     return () => clearTimeout(timer);
   }, [clickSequence]);
+
+  // Handle visibility changes with GSAP animations
+  useEffect(() => {
+    if (isVisible && !shouldRender) {
+      // Show with simple fade-in animation
+      setShouldRender(true);
+      
+      // Wait for next frame to ensure element is in DOM
+      requestAnimationFrame(() => {
+        if (adminPanelRef.current) {
+          // Set initial state
+          gsap.set(adminPanelRef.current, {
+            opacity: 0
+          });
+          
+          // Simple fade in
+          gsap.to(adminPanelRef.current, {
+            opacity: 1,
+            duration: 0.5,
+            ease: "power2.out"
+          });
+        }
+      });
+    } else if (!isVisible && shouldRender) {
+      // Hide with simple fade-out animation
+      if (adminPanelRef.current) {
+        gsap.to(adminPanelRef.current, {
+          opacity: 0,
+          duration: 0.5,
+          ease: "power2.in",
+          onComplete: () => {
+            setShouldRender(false);
+          }
+        });
+      }
+    }
+  }, [isVisible, shouldRender]);
 
   useEffect(() => {
     if (isVisible && !isAuthenticated && passwordInputRef.current) {
@@ -169,8 +209,8 @@ const AdminPanel = () => {
         title="Admin Corner 3/4"
       />
 
-      {isVisible && !showKioskSelector && (
-        <div className="admin-overlay">
+      {shouldRender && !showKioskSelector && (
+        <div ref={adminPanelRef} className="admin-overlay">
           <div className="admin-panel">
             <h2 className="admin-title">Admin Panel</h2>
             {successMsg && <div className="admin-success-message">{successMsg}</div>}
@@ -248,7 +288,7 @@ const AdminPanel = () => {
         </div>
       )}
 
-      {isVisible && showKioskSelector && (
+      {shouldRender && showKioskSelector && (
         <KioskSelectorScreen
           onKioskSelected={(id) => {
             setShowKioskSelector(false);
