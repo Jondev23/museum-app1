@@ -13,12 +13,32 @@ console.log('process.resourcesPath:', process.resourcesPath);
 console.log('__dirname:', __dirname);
 
 let mainWindow;
+// Timer is now managed by React app, not ElectronainWindow;
+let inactivityTimer;
+// Timer is now managed by React app, not Electronprocess for museum kiosk application
+const { app, BrowserWindow, globalShortcut, Menu, ipcMain } = require('electron');
+const path = require('path');
+const fs = require('fs').promises;
+
+// Better production detection for packaged apps
+const isDev = process.env.NODE_ENV === 'development' || 
+              (process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) || /[\\/]electron[\\/]/.test(process.execPath));
+
+console.log('Electron starting in', isDev ? 'DEVELOPMENT' : 'PRODUCTION', 'mode');
+console.log('process.execPath:', process.execPath);
+console.log('process.resourcesPath:', process.resourcesPath);
+console.log('__dirname:', __dirname);
+
+let mainWindow;
+let inactivityTimer;
+const INACTIVITY_TIMEOUT = 30 * 1000; // 30 seconds inactivity timeout
 
 // Use userData directory for config file - this is writable in packaged apps
 const CONFIG_FILE_PATH = isDev 
   ? path.join(__dirname, '../public/config.json')
   : path.join(app.getPath('userData'), 'config.json');
 
+console.log('Electron starting in', isDev ? 'DEVELOPMENT' : 'PRODUCTION', 'mode');
 console.log('Config file path:', CONFIG_FILE_PATH);
 
 // Configuration management functions
@@ -47,7 +67,7 @@ async function loadConfig() {
     
     const defaultConfig = {
       activeKioskId: 'kiosk1',
-      screensaverTimeout: 30000, // 30 seconds fallback
+      screensaverTimeout: 180000, // 3 minutes fallback
       lastUpdated: new Date().toISOString()
     };
     
@@ -88,6 +108,12 @@ ipcMain.handle('save-config', async (event, config) => {
   return await saveConfig(config);
 });
 
+// IPC handler for resetting inactivity timer
+ipcMain.handle('reset-inactivity-timer', async () => {
+  resetInactivityTimer();
+  return true;
+});
+
 // Create the main browser window
 function createWindow() {
   // Keep standard menu bar for desktop application
@@ -113,6 +139,9 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js')
     }
   });
+
+  // Always enable DevTools for debugging (commented out for production)
+  // mainWindow.webContents.openDevTools();
 
   // Load the Next.js app
   if (isDev) {
@@ -245,6 +274,29 @@ function createWindow() {
     mainWindow = null;
   });
 
+  // Reset inactivity timer on any user interaction
+  mainWindow.webContents.on('before-input-event', (event, input) => {
+    resetInactivityTimer();
+  });
+
+  // Also reset timer on mouse movement and clicks
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.webContents.executeJavaScript(`
+      document.addEventListener('mousemove', () => {
+        window.electronAPI?.resetInactivityTimer?.();
+      });
+      document.addEventListener('click', () => {
+        window.electronAPI?.resetInactivityTimer?.();
+      });
+      document.addEventListener('touchstart', () => {
+        window.electronAPI?.resetInactivityTimer?.();
+      });
+      document.addEventListener('keydown', () => {
+        window.electronAPI?.resetInactivityTimer?.();
+      });
+    `);
+  });
+
   // Allow navigation within the same domain (only for development)
   if (isDev) {
     mainWindow.webContents.on('will-navigate', (event, navigationUrl) => {
@@ -261,8 +313,23 @@ function createWindow() {
   }
 }
 
+// Function to reset and start inactivity timer
+function resetInactivityTimer() {
+  if (inactivityTimer) {
+    clearTimeout(inactivityTimer);
+  }
+  
+  inactivityTimer = setTimeout(() => {
+    if (mainWindow) {
+      console.log('Inactivity timeout reached, showing screensaver');
+      mainWindow.webContents.send('show-screensaver');
+    }
+  }, INACTIVITY_TIMEOUT);
+}
+
 app.whenReady().then(() => {
   createWindow();
+  resetInactivityTimer(); // Start the inactivity timer
 
   // Register useful shortcuts for desktop application
   try {
@@ -352,6 +419,11 @@ app.on('activate', () => {
 app.on('will-quit', () => {
   // Unregister all shortcuts
   globalShortcut.unregisterAll();
+  
+  // Clear inactivity timer
+  if (inactivityTimer) {
+    clearTimeout(inactivityTimer);
+  }
 });
 
 // Prevent new window creation
