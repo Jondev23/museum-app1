@@ -25,13 +25,6 @@ const ScreensaverBackground = ({ defaultContent, videoStyle }) => {
       <div 
         className={`absolute inset-0 ${SCREENSAVER_CONFIG.COLORS.OVERLAY} z-10`}
       />
-      
-      {/* Title overlay */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center">
-        <h1 className="text-white text-6xl font-bold text-center">
-          {defaultContent.title}
-        </h1>
-      </div>
     </>
   );
 };

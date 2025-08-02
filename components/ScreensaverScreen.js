@@ -60,14 +60,6 @@ const ScreensaverScreen = () => {
         defaultContent={defaultContent}
         videoStyle={videoStyle}
       />
-      
-      {/* Fallback content visible for debugging */}
-      <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 10000 }}>
-        <div className="text-white text-center">
-          <h1 className="text-4xl font-bold mb-4">SCREENSAVER ACTIVE</h1>
-          <p className="text-xl">Touch anywhere to continue</p>
-        </div>
-      </div>
     </div>
   );
 };
