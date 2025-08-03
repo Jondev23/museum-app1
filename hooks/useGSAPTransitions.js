@@ -24,7 +24,50 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
       },
       question: {
         enter: { x: 0, opacity: 1, duration: 0.9, ease: "power2.out" },
-        exit: { opacity: 0, duration: 0.9, ease: "power2.in" },
+        exit: { 
+          opacity: 0, 
+          duration: 0.9, 
+          ease: "power2.in",
+          onStart: () => {
+            // Identificar el botón seleccionado y crear animación secuencial
+            const selectedButton = document.querySelector('.btn-answer:has(.selected)');
+            if (selectedButton) {
+              // Obtener todos los botones excepto el seleccionado
+              const allButtons = document.querySelectorAll('.btn-answer');
+              const otherButtons = Array.from(allButtons).filter(btn => btn !== selectedButton);
+              
+              // Animar primero el título de la pregunta
+              const questionTitle = document.querySelector('[class*="QuestionTitle"], .question-title');
+              if (questionTitle) {
+                gsap.to(questionTitle, {
+                  opacity: 0,
+                  y: -20,
+                  duration: 0.4,
+                  ease: "power2.in"
+                });
+              }
+              
+              // Animar los botones no seleccionados con stagger
+              gsap.to(otherButtons, {
+                opacity: 0,
+                y: -15,
+                duration: 0.4,
+                delay: 0.1,
+                stagger: 0.08,
+                ease: "power2.in"
+              });
+              
+              // Finalmente animar el botón seleccionado
+              gsap.to(selectedButton, {
+                opacity: 0,
+                scale: 0.95,
+                duration: 0.35,
+                delay: 0.6,
+                ease: "power2.in"
+              });
+            }
+          }
+        },
         initial: { x: "100%", opacity: 0 }
       },
       feedback: {
