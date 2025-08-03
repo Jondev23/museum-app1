@@ -2,6 +2,7 @@
 import { useScreensaverScreen } from '../hooks/useScreensaverScreen';
 import { useScreensaverScreenStyles } from './ScreensaverScreen/ScreensaverScreenConfig';
 import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 // Import subcomponents
 import ScreensaverLoading from './ScreensaverScreen/ScreensaverLoading';
@@ -28,13 +29,45 @@ const ScreensaverScreen = () => {
 
   console.log('🖥️ ScreensaverScreen state - isLoading:', isLoading, 'isValidData:', isValidData, 'shouldShowScreensaver:', shouldShowScreensaver);
 
-  // No animations - direct visibility
+  // Fade in animation when screensaver becomes visible
   useEffect(() => {
     if (containerRef.current && !isLoading && shouldShowScreensaver) {
-      // Set directly visible without animations
-      containerRef.current.style.opacity = '1';
+      // Set initial state
+      gsap.set(containerRef.current, { opacity: 0 });
+      
+      // Fade in animation
+      gsap.to(containerRef.current, {
+        opacity: 1,
+        duration: 0.5,
+        ease: "power2.out"
+      });
     }
   }, [isLoading, shouldShowScreensaver]);
+
+  // Fade out animation when exiting screensaver
+  const handleExitAnimation = () => {
+    if (containerRef.current) {
+      gsap.to(containerRef.current, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.out",
+        onComplete: () => {
+          handleTouch();
+        }
+      });
+    }
+  };
+
+  // Modified handlers to include fade out animation
+  const handleTouchWithAnimation = (e) => {
+    e.preventDefault();
+    handleExitAnimation();
+  };
+
+  const handleClickWithAnimation = (e) => {
+    e.preventDefault();
+    handleExitAnimation();
+  };
 
   if (isLoading) {
     console.log('🔄 ScreensaverScreen showing loading screen');
@@ -48,10 +81,10 @@ const ScreensaverScreen = () => {
     <div
       ref={containerRef}
       className="fixed inset-0 flex flex-col items-center justify-center cursor-pointer"
-      onClick={handleTouch}
-      onTouchStart={handleTouch}
+      onClick={handleClickWithAnimation}
+      onTouchStart={handleTouchWithAnimation}
       style={{
-        opacity: 1,
+        opacity: 0, // Initial opacity set to 0 for fade in animation
         zIndex: 9999, // MUCH HIGHER Z-INDEX
         backgroundColor: 'rgba(0,0,0,0.8)'
       }}
