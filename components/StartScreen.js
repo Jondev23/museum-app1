@@ -101,6 +101,30 @@ const StartScreen = () => {
     handleClick,
   } = useStartScreen();
 
+  // Función para manejar la animación de salida
+  const handleExitAnimation = () => {
+    // Detener la animación pulsante
+    gsap.killTweensOf(touchIndicatorRef.current);
+    
+    // Fade out del indicador de toque
+    gsap.to(touchIndicatorRef.current, {
+      opacity: 0,
+      duration: 0.3,
+      ease: "power2.out"
+    });
+  };
+
+  // Handlers modificados para incluir animación de salida
+  const handleTouchStartWithAnimation = (e) => {
+    handleExitAnimation();
+    setTimeout(() => handleTouchStart(e), 300);
+  };
+
+  const handleClickWithAnimation = (e) => {
+    handleExitAnimation();
+    setTimeout(() => handleClick(e), 300);
+  };
+
   const {
     containerStyle,
     mainCardStyle,
@@ -122,8 +146,8 @@ const StartScreen = () => {
       {/* Contenedor principal sin animación */}
       <div
         className="fixed inset-0 overflow-hidden cursor-pointer z-20"
-        onTouchStart={handleTouchStart}
-        onClick={handleClick}
+        onTouchStart={handleTouchStartWithAnimation}
+        onClick={handleClickWithAnimation}
       >
         <div 
           className="relative z-10 h-full flex flex-col items-center w-full px-4 sm:px-6 md:px-8 start-screen-container"
@@ -175,11 +199,11 @@ const StartScreen = () => {
         <StandardFooter>
           <div ref={touchIndicatorRef} className="absolute left-1/2 transform -translate-x-1/2 flex justify-center items-center" 
                style={{ 
-                 top: 'clamp(-120px, -15vh, -100px)'
+                 bottom: '1.95rem'
                }}>
             <StartScreenTouchIndicator
               showContent={showContent}
-              handleSwipeLeft={handleClick}
+              handleSwipeLeft={handleClickWithAnimation}
               touchIndicatorContainerStyle={touchIndicatorContainerStyle}
               touchIndicatorStyle={touchIndicatorStyle}
             />
