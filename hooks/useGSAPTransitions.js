@@ -91,8 +91,7 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
             const otherElements = [
               '.feedback-title',
               '.feedback-message-text',
-              '.feedback-explanation-text',
-              '.text-button'
+              '.feedback-explanation-text'
             ];
             
             otherElements.forEach((selector, index) => {
@@ -107,6 +106,30 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
                 });
               }
             });
+
+            // Animar texto del botón e icono juntos al final
+            const buttonText = document.querySelector('.text-button');
+            const buttonIcon = document.querySelector('.text-button')?.parentElement?.querySelector('img');
+            
+            if (buttonText) {
+              gsap.set(buttonText, { opacity: 0 });
+              gsap.to(buttonText, {
+                opacity: 1,
+                duration: 0.4,
+                delay: 0.6,
+                ease: "power2.out"
+              });
+            }
+            
+            if (buttonIcon) {
+              gsap.set(buttonIcon, { opacity: 0 });
+              gsap.to(buttonIcon, {
+                opacity: 1,
+                duration: 0.4,
+                delay: 0.6,
+                ease: "power2.out"
+              });
+            }
           }
         },
         exit: { 
