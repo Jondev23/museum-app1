@@ -14,7 +14,7 @@ const ResultsPlayAgainButton = ({
         className="flex items-center bg-transparent border-none"
         style={{ 
           gap: 'var(--spacing-sm)',
-          padding: '0', 
+          padding: '0.6rem', 
           touchAction: 'manipulation',
           userSelect: 'none',
           WebkitTouchCallout: 'none',
