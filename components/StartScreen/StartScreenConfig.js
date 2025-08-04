@@ -113,7 +113,7 @@ export const useStartScreenStyles = (startContent) => ({
   touchIndicatorStyle: {
     width: '100%',
     height: '100%',
-    cursor: 'pointer',
-    transition: 'transform 0.2s ease'
+    cursor: 'pointer'
+    // Removed CSS transition - now using GSAP
   }
 });
