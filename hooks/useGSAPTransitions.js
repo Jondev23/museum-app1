@@ -109,7 +109,23 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
             });
           }
         },
-        exit: { x: "-100%", opacity: 0, duration: 0.9, ease: "power2.in" },
+        exit: { 
+          x: "-100%", 
+          opacity: 0, 
+          duration: 0.9, 
+          ease: "power2.in",
+          onStart: () => {
+            // Animar primero el button text para que desaparezca antes
+            const buttonText = document.querySelector('.text-button');
+            if (buttonText) {
+              gsap.to(buttonText, {
+                opacity: 0,
+                duration: 0.3,
+                ease: "power2.in"
+              });
+            }
+          }
+        },
         initial: { opacity: 0 }
       },
       results: {
