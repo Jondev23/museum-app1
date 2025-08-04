@@ -237,11 +237,14 @@ export const AppProvider = ({ children }) => {
 
   const nextQuestion = useCallback(() => {
     if (currentQuestionIndex < questions.length - 1) {
-      // Cambiar pantalla primero, luego el índice después de la animación
+      // Mantener el patrón original pero sincronizar ambos casos
       setCurrentScreen('question');
-      setTimeout(() => {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-      }, 500); // Esperar a que termine la animación de salida
+      // Usar requestAnimationFrame para asegurar que la animación se inicie antes del cambio de índice
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          setCurrentQuestionIndex(currentQuestionIndex + 1);
+        }, 900); // Duración completa de la animación de salida
+      });
     } else {
       setCurrentScreen('results');
     }

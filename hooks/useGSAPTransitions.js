@@ -151,7 +151,10 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
           onComplete: () => {
             // Change screen after exit animation
             setDisplayedScreen(currentScreen);
-            setDisplayedQuestionIndex(currentQuestionIndex);
+            // Solo actualizar displayedQuestionIndex si realmente cambió
+            if (currentQuestionIndex !== displayedQuestionIndex) {
+              setDisplayedQuestionIndex(currentQuestionIndex);
+            }
             
             // Apply initial state for enter animation
             const initialConfig = getAnimationConfig(currentScreen, 'initial');
@@ -172,6 +175,14 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
       }
     }
   }, [currentScreen, displayedScreen, isTransitioning, currentQuestionIndex]);
+
+  // Handle question index changes separately to avoid interfering with animations
+  useEffect(() => {
+    // Only update displayedQuestionIndex if we're not transitioning and screens match
+    if (!isTransitioning && currentScreen === displayedScreen && currentQuestionIndex !== displayedQuestionIndex) {
+      setDisplayedQuestionIndex(currentQuestionIndex);
+    }
+  }, [currentQuestionIndex, displayedQuestionIndex, isTransitioning, currentScreen, displayedScreen]);
 
   return {
     displayedScreen,
