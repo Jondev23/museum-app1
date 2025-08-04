@@ -71,7 +71,44 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
         initial: { x: "100%", opacity: 0 }
       },
       feedback: {
-        enter: { opacity: 1, duration: 0.6, ease: "power2.out" },
+        enter: { 
+          opacity: 1, 
+          duration: 0.6, 
+          ease: "power2.out",
+          onStart: () => {
+            // Animar primero FeedbackAnswer
+            const feedbackAnswer = document.querySelector('.feedback-answer-text')?.parentElement;
+            if (feedbackAnswer) {
+              gsap.set(feedbackAnswer, { opacity: 0 });
+              gsap.to(feedbackAnswer, {
+                opacity: 1,
+                duration: 0.4,
+                ease: "power2.out"
+              });
+            }
+            
+            // Después animar el resto de elementos con delay
+            const otherElements = [
+              '.feedback-title',
+              '.feedback-message-text',
+              '.feedback-explanation-text',
+              '.text-button'
+            ];
+            
+            otherElements.forEach((selector, index) => {
+              const element = document.querySelector(selector);
+              if (element) {
+                gsap.set(element, { opacity: 0 });
+                gsap.to(element, {
+                  opacity: 1,
+                  duration: 0.4,
+                  delay: 0.3 + (index * 0.1),
+                  ease: "power2.out"
+                });
+              }
+            });
+          }
+        },
         exit: { x: "-100%", opacity: 0, duration: 0.9, ease: "power2.in" },
         initial: { opacity: 0 }
       },
