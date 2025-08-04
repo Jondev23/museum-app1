@@ -43,7 +43,7 @@ const FeedbackButton = ({
             ...arrowStyle,
             touchAction: 'manipulation',
             pointerEvents: 'none',
-            transform: 'translateY(-10%)'
+            transform: 'translateY(-0.5%)'
           }}
         />
       </button>
