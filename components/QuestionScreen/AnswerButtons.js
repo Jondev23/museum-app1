@@ -19,14 +19,14 @@ const AnswerButtons = ({
 
   return (
     // Container for answer buttons
-    <div className="flex flex-col gap-[min(2.52rem,3.6vh)] w-full items-center max-h-[40vh] overflow-hidden px-[10rem]">
+    <div className="flex flex-col gap-[min(2.52rem,3.6vh)] w-full items-center max-h-[40vh] overflow-hidden px-[min(0.5rem,1vw)]">
       {question.answers.map((answer, index) => (
         <button
           key={index}
           onClick={() => handleAnswerClick(index, 800)}
           onTouchStart={(e) => handleTouchStart(e, index)}
           disabled={selectedAnswer !== null || isProcessing}
-          className={`btn-answer inline-flex min-h-[min(4.62rem,6.93vh,8vw)] items-center justify-center gap-[min(0.5rem,1vw)] px-[min(2rem,3vw,3.5vh)] py-[min(1rem,1.5vh,2vw)] rounded-[min(4.62rem,6.93vh,8vw)] border-[min(0.1125rem,0.225vw,0.3vh)] border-solid relative ${getButtonClassName(index)}`}
+          className={`btn-answer inline-flex min-w-[min(40rem,58vw,75vh)] min-h-[min(4.62rem,6.93vh,8vw)] items-center justify-center gap-[min(0.5rem,1vw)] px-[min(2.5rem,3vw,3.5vh)] py-[min(1rem,1.5vh,2vw)] rounded-[min(4.62rem,6.93vh,8vw)] border-[min(0.1125rem,0.225vw,0.3vh)] border-solid relative ${getButtonClassName(index)}`}
           style={getButtonStyle(index)}
         >
           <span 
