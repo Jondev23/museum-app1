@@ -218,8 +218,8 @@ const AdminPanel = () => {
 
             {!isAuthenticated ? (
               <form onSubmit={handlePasswordSubmit} className="admin-form">
-                <div>
-                  <label className="admin-label">Passwort</label>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  <label className="admin-label" style={{ minWidth: '80px' }}>Passwort</label>
                   <input
                     ref={passwordInputRef}
                     type="password"
@@ -229,7 +229,7 @@ const AdminPanel = () => {
                     onTouchStart={handleInputTouch}
                     className="admin-input"
                     autoFocus
-                    style={{ touchAction: 'manipulation', userSelect: 'none' }}
+                    style={{ touchAction: 'manipulation', userSelect: 'none', flex: 1 }}
                   />
                 </div>
                 <div className="admin-button-group-spaced">
