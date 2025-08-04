@@ -26,7 +26,7 @@ const AnswerButtons = ({
           onClick={() => handleAnswerClick(index, 800)}
           onTouchStart={(e) => handleTouchStart(e, index)}
           disabled={selectedAnswer !== null || isProcessing}
-          className={`btn-answer inline-flex min-w-[min(40rem,58vw,75vh)] min-h-[min(4.62rem,6.93vh,8vw)] items-center justify-center gap-[min(0.5rem,1vw)] px-[min(2.5rem,3vw,3.5vh)] py-[min(1rem,1.5vh,2vw)] rounded-[min(4.62rem,6.93vh,8vw)] border-[min(0.1125rem,0.225vw,0.3vh)] border-solid relative ${getButtonClassName(index)}`}
+          className={`btn-answer inline-flex min-w-[min(63.36rem,58vw,75vh)] min-h-[min(7.3152rem,6.93vh,8vw)] items-center justify-center gap-[min(0.5rem,1vw)] px-[min(2.5rem,3vw,3.5vh)] py-[min(1rem,1.5vh,2vw)] rounded-[min(7.3152rem,6.93vh,8vw)] border-[min(0.1125rem,0.225vw,0.3vh)] border-solid relative ${getButtonClassName(index)}`}
           style={getButtonStyle(index)}
         >
           <span 
