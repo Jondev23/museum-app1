@@ -1,6 +1,6 @@
 // Import componentes y GSAP
 import StandardFooter from './shared/StandardFooter';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 import { gsap } from 'gsap';
 
 // Import hooks y configuración  
@@ -217,4 +217,4 @@ const StartScreen = () => {
   );
 };
 
-export default StartScreen;
+export default memo(StartScreen);

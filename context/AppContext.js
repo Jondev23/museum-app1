@@ -123,6 +123,8 @@ export const AppProvider = ({ children }) => {
   // Effect to handle inactivity timer
   useEffect(() => {
     let timer;
+    let lastActivity = 0;
+    const throttleDelay = 1000; // Throttle activity detection to once per second
     
     const resetTimer = () => {
       clearTimeout(timer);
@@ -133,12 +135,20 @@ export const AppProvider = ({ children }) => {
 
     const handleActivity = (event) => {
       if (currentScreen !== 'screensaver') {
+        const now = Date.now();
+        
+        // Throttle mousemove events to prevent excessive re-renders
+        if (event.type === 'mousemove' && now - lastActivity < throttleDelay) {
+          return;
+        }
+        
+        lastActivity = now;
         console.log('🔄 Activity detected, resetting timer. Event:', event.type, 'Screen:', currentScreen);
         resetTimer();
       }
     };
 
-    // Event listeners
+    // Event listeners - prioritize touch and click over mousemove
     const events = ['touchstart', 'click', 'keydown', 'mousemove', 'scroll'];
     events.forEach(event => {
       document.addEventListener(event, handleActivity, { passive: true });

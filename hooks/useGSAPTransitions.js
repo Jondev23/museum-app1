@@ -87,11 +87,13 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
 
   // Handle screen transitions with GSAP animations
   useEffect(() => {
-    console.log('🎬 useGSAPTransitions - currentScreen:', currentScreen, 'displayedScreen:', displayedScreen, 'isTransitioning:', isTransitioning);
+    // Only log when there's actually a transition happening
+    if (currentScreen !== displayedScreen || isTransitioning) {
+      console.log('🎬 useGSAPTransitions - currentScreen:', currentScreen, 'displayedScreen:', displayedScreen, 'isTransitioning:', isTransitioning);
+    }
     
     // Skip if screens are already the same and not transitioning
     if (currentScreen === displayedScreen && !isTransitioning) {
-      console.log('🎬 Screens already match, skipping transition');
       return;
     }
     

@@ -1,5 +1,6 @@
 // Import app context
 import { useApp } from '../context/AppContext';
+import { useMemo, useCallback } from 'react';
 
 // Import GSAP transitions hook
 import useGSAPTransitions from '../hooks/useGSAPTransitions';
@@ -37,6 +38,34 @@ export default function Home() {
     containerRef
   } = useGSAPTransitions(currentScreen, currentQuestionIndex);
 
+  // Memoize the render screen function to prevent unnecessary re-renders
+  const renderScreen = useCallback(() => {
+    // Only log when displayedScreen actually changes, not on every render
+    if (process.env.NODE_ENV === 'development') {
+      console.log('🎬 renderScreen called - displayedScreen:', displayedScreen);
+    }
+    switch (displayedScreen) {
+      case 'screensaver':
+        return null; // Screensaver is rendered outside
+      case 'start':
+        return <StartScreen key="start" />;
+      case 'question':
+        return <QuestionScreen key={`question-${displayedQuestionIndex}`} />;
+      case 'feedback':
+        // Use stable key to prevent unnecessary unmounting/mounting
+        return <FeedbackScreen key="feedback" />;
+      case 'results':
+        return <ResultsScreen key="results" />;
+      default:
+        return null; // Default to screensaver outside
+    }
+  }, [displayedScreen, displayedQuestionIndex]);
+
+  // Memoize background image to prevent re-calculations
+  const globalBackgroundImage = useMemo(() => {
+    return content?.[language]?.startScreen?.backgroundImage;
+  }, [content, language]);
+
   console.log('🏠 Main component - currentScreen:', currentScreen, 'displayedScreen:', displayedScreen);
 
   // Show loading screen if kioskId is not yet determined
@@ -50,33 +79,6 @@ export default function Home() {
       </div>
     );
   }
-
-  // Render different screens based on displayed state (for smooth transitions)
-  const renderScreen = () => {
-    console.log('🎬 renderScreen called - displayedScreen:', displayedScreen);
-    switch (displayedScreen) {
-      case 'screensaver':
-        console.log('🖥️ Screensaver handled outside container');
-        return null; // Screensaver is rendered outside
-      case 'start':
-        return <StartScreen key="start" />;
-      case 'question':
-        return <QuestionScreen key={`question-${displayedQuestionIndex}`} />;
-      case 'feedback':
-        // Use stable key to prevent unnecessary unmounting/mounting
-        return <FeedbackScreen key="feedback" />;
-      case 'results':
-        return <ResultsScreen key="results" />;
-      default:
-        console.log('🖥️ Default case - Screensaver handled outside container');
-        return null; // Default to screensaver outside
-    }
-  };
-
-  
-  // Get background image from current kiosk configuration
-  const startContent = content?.[language]?.startScreen;
-  const globalBackgroundImage = startContent?.backgroundImage;
 
   return (
     // Main container - fullscreen with black background
