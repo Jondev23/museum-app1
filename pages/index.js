@@ -112,7 +112,7 @@ export default function Home() {
             className="fixed bottom-0 left-0"
             style={{
               zIndex: 60,
-              marginBottom: 'min(3.7rem, 4.7vh)', 
+              marginBottom: '2.40rem', 
               marginLeft: 'min(9.5rem, 14.5vw)',
             }}
           >
@@ -133,7 +133,7 @@ export default function Home() {
           <div 
             className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-40"
             style={{
-              bottom: 'min(4.5rem, 7.5vh)'
+              bottom: '3.94rem'
             }}
           >
             <ProgressDots
