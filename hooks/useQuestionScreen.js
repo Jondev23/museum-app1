@@ -97,7 +97,7 @@ export const useQuestionScreen = () => {
         maxWidth: '90vw',
         width: 'auto',
         height: 'auto',
-        padding: 'min(1rem, 1.5vh, 2vw) min(2.5rem, 3vw, 3.5vh)',
+        padding: 'min(1rem, 1.5vh, 2vw) min(4rem, 5vw, 6vh)',
         borderRadius: 'min(7.3152rem, 6.93vh, 8vw)',
         display: 'flex',
         alignItems: 'center',
