@@ -63,7 +63,8 @@ export default function Home() {
       case 'question':
         return <QuestionScreen key={`question-${displayedQuestionIndex}`} />;
       case 'feedback':
-        return <FeedbackScreen key={`feedback-${displayedQuestionIndex}`} />;
+        // Use stable key to prevent unnecessary unmounting/mounting
+        return <FeedbackScreen key="feedback" />;
       case 'results':
         return <ResultsScreen key="results" />;
       default:

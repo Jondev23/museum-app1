@@ -1,5 +1,5 @@
 // Import React hooks and utilities for kiosk configuration
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { detectKioskId, detectKioskIdSync, getCurrentKioskConfig } from '../utils/kioskConfig';
 import { loadConfig, setActiveKioskId, getScreensaverTimeout } from '../utils/configManager';
 
@@ -169,26 +169,26 @@ export const AppProvider = ({ children }) => {
     };
   }, []);
 
-  // Helper function to reset quiz state
-  const resetQuizState = () => {
+  // Helper function to reset quiz state - now memoized
+  const resetQuizState = useCallback(() => {
     setAnswers([]);
     setQuestions([]);
     setCurrentQuestionIndex(0);
-  };
+  }, []);
 
-  const goToScreensaver = () => {
+  const goToScreensaver = useCallback(() => {
     console.log('🖥️ goToScreensaver called - setting currentScreen to screensaver');
     setCurrentScreen('screensaver');
     resetQuizState();
     setShowLanguageSelector(false);
-  };
+  }, [resetQuizState]);
 
-  const startQuiz = () => {
+  const startQuiz = useCallback(() => {
     console.log('🚀 startQuiz called - setting currentScreen to start');
     setCurrentScreen('start');
-  };
+  }, []);
 
-  const beginQuiz = () => {
+  const beginQuiz = useCallback(() => {
     resetQuizState();
     setCurrentScreen('start');
     
@@ -197,9 +197,9 @@ export const AppProvider = ({ children }) => {
       const shuffled = [...content[language].questions].sort(() => Math.random() - 0.5);
       setQuestions(shuffled.slice(0, 5));
     }
-  };
+  }, [resetQuizState, content, language]);
 
-  const startQuestions = () => {
+  const startQuestions = useCallback(() => {
     console.log('🎯 startQuestions called');
     console.log('🎯 Current content:', content);
     console.log('🎯 Current language:', language);
@@ -216,14 +216,14 @@ export const AppProvider = ({ children }) => {
     } else {
       console.error('❌ No questions found in content!');
     }
-  };
+  }, [resetQuizState, content, language]);
 
-  const answerQuestion = (answerIndex) => {
+  const answerQuestion = useCallback((answerIndex) => {
     const newAnswers = [...answers];
     newAnswers[currentQuestionIndex] = answerIndex;
     setAnswers(newAnswers);
     setCurrentScreen('feedback');
-  };
+  }, [answers, currentQuestionIndex]);
 
   const nextQuestion = useCallback(() => {
     if (currentQuestionIndex < questions.length - 1) {
@@ -237,7 +237,7 @@ export const AppProvider = ({ children }) => {
     }
   }, [currentQuestionIndex, questions.length]);
 
-  const changeLanguage = (newLanguage) => {
+  const changeLanguage = useCallback((newLanguage) => {
     if (newLanguage === language) {
       setShowLanguageSelector(false);
       return;
@@ -247,23 +247,23 @@ export const AppProvider = ({ children }) => {
     setLanguage(newLanguage);
     setShowLanguageSelector(false);
     setCurrentScreen('start');
-  };
+  }, [language, resetQuizState]);
 
-  const getScore = () => {
+  const getScore = useCallback(() => {
     return answers.reduce((score, answer, index) => {
       return score + (answer === questions[index]?.correctAnswer ? 1 : 0);
     }, 0);
-  };
+  }, [answers, questions]);
 
-  const getCurrentQuestion = () => {
+  const getCurrentQuestion = useCallback(() => {
     return questions[currentQuestionIndex];
-  };
+  }, [questions, currentQuestionIndex]);
 
-  const getCurrentAnswer = () => {
+  const getCurrentAnswer = useCallback(() => {
     return answers[currentQuestionIndex];
-  };
+  }, [answers, currentQuestionIndex]);
 
-  const getProgressStatus = (index) => {
+  const getProgressStatus = useCallback((index) => {
     if (index === currentQuestionIndex && currentScreen === 'question') {
       return 'current';
     }
@@ -271,9 +271,10 @@ export const AppProvider = ({ children }) => {
       return answers[index] === questions[index]?.correctAnswer ? 'correct' : 'incorrect';
     }
     return 'unanswered';
-  };
+  }, [currentQuestionIndex, currentScreen, answers, questions]);
 
-  const value = {
+  // Memoize the context value to prevent unnecessary re-renders
+  const value = useMemo(() => ({
     currentScreen,
     setCurrentScreen,
     language,
@@ -298,7 +299,28 @@ export const AppProvider = ({ children }) => {
     getCurrentQuestion,
     getCurrentAnswer,
     getProgressStatus,
-  };
+  }), [
+    currentScreen,
+    language,
+    content,
+    questions,
+    currentQuestionIndex,
+    answers,
+    showLanguageSelector,
+    kioskId,
+    screensaverTimeout,
+    goToScreensaver,
+    startQuiz,
+    beginQuiz,
+    startQuestions,
+    answerQuestion,
+    nextQuestion,
+    changeLanguage,
+    getScore,
+    getCurrentQuestion,
+    getCurrentAnswer,
+    getProgressStatus,
+  ]);
 
   return (
     <AppContext.Provider value={value}>

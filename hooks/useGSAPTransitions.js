@@ -71,8 +71,9 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
         initial: { x: "100%", opacity: 0 }
       },
       feedback: {
-        enter: { opacity: 1, duration: 0.9, ease: "power2.out" },
-        exit: { x: "-100%", opacity: 0, duration: 0.9, ease: "power2.in" }
+        enter: { x: 0, opacity: 1, duration: 0.9, ease: "power2.out" },
+        exit: { x: "-100%", opacity: 0, duration: 0.9, ease: "power2.in" },
+        initial: { x: "100%", opacity: 0 }
       },
       results: {
         enter: { x: 0, opacity: 1, duration: 0.9, ease: "power2.out" },
@@ -87,6 +88,12 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
   // Handle screen transitions with GSAP animations
   useEffect(() => {
     console.log('🎬 useGSAPTransitions - currentScreen:', currentScreen, 'displayedScreen:', displayedScreen, 'isTransitioning:', isTransitioning);
+    
+    // Skip if screens are already the same and not transitioning
+    if (currentScreen === displayedScreen && !isTransitioning) {
+      console.log('🎬 Screens already match, skipping transition');
+      return;
+    }
     
     // If transitioning TO screensaver, update immediately (no animation needed)
     if (currentScreen === 'screensaver' && displayedScreen !== 'screensaver') {

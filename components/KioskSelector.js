@@ -50,7 +50,7 @@ const KioskSelectorScreen = ({ onKioskSelected, onBack }) => {
 
   return (
     <div className="admin-overlay" style={{ padding: 'min(2rem, 4vw)' }}>
-      <div className="admin-panel-wide enter-feedback">
+      <div className="admin-panel-wide">
         <h2 className="admin-title">
           Kiosk auswählen
         </h2>

@@ -44,7 +44,7 @@ const FeedbackScreen = () => {
 
   return (
     <div
-      className="fixed inset-0 flex flex-col z-20"
+      className="absolute inset-0 flex flex-col z-20"
       onTouchStart={(e) => {
         e.stopPropagation();
         if (!e.target.closest('button') && !e.target.closest('[role="button"]')) {
@@ -84,7 +84,7 @@ const FeedbackScreen = () => {
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0" style={{ zIndex: 55 }}>
+            <div className="absolute bottom-0 left-0 right-0" style={{ zIndex: 55 }}>
         <StandardFooter
           showProgressDots={false}
           alignProgressDots="center"
