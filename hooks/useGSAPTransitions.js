@@ -115,10 +115,20 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
           duration: 0.9, 
           ease: "power2.in",
           onStart: () => {
-            // Animar primero el button text para que desaparezca antes
+            // Animar primero el button text y su icono para que desaparezcan antes
             const buttonText = document.querySelector('.text-button');
+            const buttonIcon = document.querySelector('.text-button')?.parentElement?.querySelector('img');
+            
             if (buttonText) {
               gsap.to(buttonText, {
+                opacity: 0,
+                duration: 0.3,
+                ease: "power2.in"
+              });
+            }
+            
+            if (buttonIcon) {
+              gsap.to(buttonIcon, {
                 opacity: 0,
                 duration: 0.3,
                 ease: "power2.in"
