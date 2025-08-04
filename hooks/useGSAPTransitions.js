@@ -71,9 +71,9 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
         initial: { x: "100%", opacity: 0 }
       },
       feedback: {
-        enter: { x: 0, opacity: 1, duration: 0.9, ease: "power2.out" },
+        enter: { opacity: 1, duration: 0.6, ease: "power2.out" },
         exit: { x: "-100%", opacity: 0, duration: 0.9, ease: "power2.in" },
-        initial: { x: "100%", opacity: 0 }
+        initial: { opacity: 0 }
       },
       results: {
         enter: { x: 0, opacity: 1, duration: 0.9, ease: "power2.out" },
