@@ -200,10 +200,15 @@ const StartScreen = () => {
       {/* Footer sin animación */}
       <div className="fixed bottom-0 left-0 right-0 z-50">
         <StandardFooter>
-          <div ref={touchIndicatorRef} className="absolute left-1/2 transform -translate-x-1/2 flex justify-center items-center" 
-               style={{ 
-                 bottom: '1.95rem'
-               }}>
+          <div 
+            ref={touchIndicatorRef} 
+            className="absolute left-1/2 transform -translate-x-1/2 flex justify-center items-center" 
+            style={{ 
+              bottom: '1.95rem',
+              width: 'var(--touch-indicator-size)',
+              height: 'var(--touch-indicator-size)'
+            }}
+          >
             <StartScreenTouchIndicator
               showContent={showContent}
               handleSwipeLeft={handleClickWithAnimation}

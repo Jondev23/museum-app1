@@ -90,6 +90,9 @@
   --language-button-text-size: 2rem;
   --language-button-text-line-height: 5.5rem;
   --language-buttons-gap: min(1.5rem, 3vw);
+
+  /* Touch Indicator Sizing */
+  --touch-indicator-size: 8rem;
 }
 
 /* ============================================

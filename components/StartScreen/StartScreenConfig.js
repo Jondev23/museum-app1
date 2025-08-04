@@ -102,12 +102,11 @@ export const useStartScreenStyles = (startContent) => ({
   },
 
   touchIndicatorContainerStyle: {
-    width: 'var(--touch-indicator-size)',
-    height: 'var(--touch-indicator-size)',
+    width: '100%',
+    height: '100%',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 'clamp(1rem, 4vh, 3rem)'
+    alignItems: 'center'
   },
 
   touchIndicatorStyle: {
