@@ -18,9 +18,9 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
         initial: { opacity: 1 }
       },
       start: {
-        enter: { x: 0, opacity: 1, duration: 0.9, ease: "power2.out" },
+        enter: { x: 0, opacity: 1, duration: 0.7, ease: "power2.out" },
         exit: { x: "-100%", opacity: 0, duration: 0.9, ease: "power2.in" },
-        initial: { x: "100%", opacity: 0 }
+        initial: { x: 0, opacity: 0 } // Cambio: sin desplazamiento inicial para evitar parpadeos
       },
       question: {
         enter: { x: 0, opacity: 1, duration: 0.9, ease: "power2.out" },
@@ -103,11 +103,35 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
       return;
     }
     
-    // If transitioning FROM screensaver, update immediately (no animation needed)
+    // If transitioning FROM screensaver, coordinate with target screen animations
     if (displayedScreen === 'screensaver' && currentScreen !== 'screensaver') {
-      console.log('🎬 Transitioning FROM screensaver - immediate update');
-      setDisplayedScreen(currentScreen);
-      setDisplayedQuestionIndex(currentQuestionIndex);
+      console.log('🎬 Transitioning FROM screensaver - coordinated update');
+      setIsTransitioning(true);
+      
+      // Small delay to ensure ScreensaverScreen fade out completes
+      setTimeout(() => {
+        setDisplayedScreen(currentScreen);
+        setDisplayedQuestionIndex(currentQuestionIndex);
+        
+        // Set container to initial state for smooth enter animation
+        if (containerRef.current && currentScreen !== 'screensaver') {
+          const initialConfig = getAnimationConfig(currentScreen, 'initial');
+          if (initialConfig) {
+            gsap.set(containerRef.current, initialConfig);
+          }
+          
+          // Apply enter animation after setting initial state
+          const enterConfig = getAnimationConfig(currentScreen, 'enter');
+          gsap.to(containerRef.current, {
+            ...enterConfig,
+            onComplete: () => {
+              setIsTransitioning(false);
+            }
+          });
+        } else {
+          setIsTransitioning(false);
+        }
+      }, 300); // Match ScreensaverScreen fade out duration
       return;
     }
     

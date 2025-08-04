@@ -41,7 +41,10 @@ const StartScreen = () => {
 
   // Animaciones de entrada cuando el componente se monta
   useEffect(() => {
-    const tl = gsap.timeline();
+    // Delay para coordinar con la transición del contenedor padre
+    const animationDelay = 100; // Pequeño delay para sincronizar
+    
+    const tl = gsap.timeline({ delay: animationDelay / 1000 });
     
     // Establecer estados iniciales
     gsap.set([titleRef.current, descriptionRef.current, touchIndicatorRef.current], {
@@ -58,27 +61,27 @@ const StartScreen = () => {
     tl.to(mainCardRef.current, {
       opacity: 1,
       scale: 1,
-      duration: 0.8,
+      duration: 0.6, // Reducido ligeramente para mejor sincronización
       ease: "power2.out"
     })
     .to(titleRef.current, {
       opacity: 1,
       y: 0,
-      duration: 0.6,
+      duration: 0.5,
       ease: "power2.out"
-    }, "-=0.4")
+    }, "-=0.3")
     .to(descriptionRef.current, {
       opacity: 1,
       y: 0,
-      duration: 0.6,
+      duration: 0.5,
       ease: "power2.out"
-    }, "-=0.3")
+    }, "-=0.25")
     .to(touchIndicatorRef.current, {
       opacity: 1,
       y: 0,
-      duration: 0.6,
+      duration: 0.5,
       ease: "power2.out"
-    }, "-=0.2");
+    }, "-=0.15");
 
     // Animación pulsante para el indicador de toque
     gsap.to(touchIndicatorRef.current, {
@@ -87,7 +90,7 @@ const StartScreen = () => {
       repeat: -1,
       yoyo: true,
       ease: "power2.inOut",
-      delay: 1
+      delay: 0.8 // Aumentado para mejor sincronización
     });
 
   }, []);

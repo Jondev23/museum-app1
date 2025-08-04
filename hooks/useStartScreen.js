@@ -12,7 +12,7 @@ export const useStartScreen = () => {
 
   // Effect to show content with delay for animation
   useEffect(() => {
-    const timer = setTimeout(() => setShowContent(true), 300);
+    const timer = setTimeout(() => setShowContent(true), 100); // Reducido para mejor sincronización
     return () => clearTimeout(timer);
   }, []);
 
