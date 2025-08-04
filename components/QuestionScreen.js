@@ -30,8 +30,8 @@ const QuestionScreen = () => {
   return (
     <div className="fixed inset-0 flex flex-col z-25">
       <div className="relative z-10 flex flex-col h-full">
-        <div className="flex flex-col items-center justify-start flex-1 w-full pt-[6.42rem] pb-2 gap-6">
-          <div className="flex flex-col items-center w-full mt-[min(3.08rem,4.62vh)] py-[min(0.25rem,0.5vw)] gap-[min(1.5rem,3vw)] rounded-[min(1.875rem,4vw)] overflow-hidden border-0 bg-transparent">
+        <div className="flex flex-col items-center justify-start flex-1 w-full pt-[5rem] pb-2 gap-6">
+          <div className="flex flex-col items-center w-full mt-[4.5rem] py-[min(0.25rem,0.5vw)] gap-[min(1.5rem,3vw)] rounded-[min(1.875rem,4vw)] overflow-hidden border-0 bg-transparent">
             <div className="flex flex-col items-center w-full p-0 gap-[min(3rem,4.5vw)]">
               <QuestionTitle question={question} />
               <AnswerButtons
