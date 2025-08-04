@@ -3,8 +3,7 @@ import { processTextWithHTML } from '../../utils/textProcessor';
 
 const StartScreenDescription = ({ 
   startContent, 
-  defaultTexts, 
-  showContent, 
+  defaultTexts,
   descriptionContainerStyle,
   highlightTextStyle,
   introTextStyle 

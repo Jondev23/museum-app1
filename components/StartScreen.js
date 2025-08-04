@@ -96,7 +96,6 @@ const StartScreen = () => {
   }, []);
 
   const {
-    showContent,
     startContent,
     defaultTexts,
     isValidData,
@@ -133,7 +132,6 @@ const StartScreen = () => {
     mainCardStyle,
     contentSectionStyle,
     descriptionSectionStyle,
-    titleStyle,
     subtitleStyle,
     descriptionContainerStyle,
     highlightTextStyle,
@@ -174,8 +172,6 @@ const StartScreen = () => {
                   <StartScreenTitle
                     startContent={startContent}
                     defaultTexts={defaultTexts}
-                    showContent={showContent}
-                    titleStyle={titleStyle}
                     subtitleStyle={subtitleStyle}
                   />
                 </div>
@@ -185,7 +181,6 @@ const StartScreen = () => {
                   <StartScreenDescription
                     startContent={startContent}
                     defaultTexts={defaultTexts}
-                    showContent={showContent}
                     descriptionContainerStyle={descriptionContainerStyle}
                     highlightTextStyle={highlightTextStyle}
                     introTextStyle={introTextStyle}
@@ -210,7 +205,6 @@ const StartScreen = () => {
             }}
           >
             <StartScreenTouchIndicator
-              showContent={showContent}
               handleSwipeLeft={handleClickWithAnimation}
               touchIndicatorContainerStyle={touchIndicatorContainerStyle}
               touchIndicatorStyle={touchIndicatorStyle}

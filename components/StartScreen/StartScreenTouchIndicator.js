@@ -3,7 +3,6 @@ import { gsap } from 'gsap';
 
 // Touch indicator component with swipe animation for start screen using GSAP
 const StartScreenTouchIndicator = ({ 
-  showContent, 
   handleSwipeLeft, 
   touchIndicatorContainerStyle,
   touchIndicatorStyle 
@@ -54,18 +53,6 @@ const StartScreenTouchIndicator = ({
       }
     };
   }, []);
-
-  // Handle visibility changes
-  useEffect(() => {
-    if (!iconRef.current || !animationRef.current) return;
-
-    if (showContent) {
-      animationRef.current.play();
-    } else {
-      animationRef.current.pause();
-      gsap.to(iconRef.current, { opacity: 0, duration: 0.5 });
-    }
-  }, [showContent]);
 
   // Clean animation styles - no more CSS animations
   const animationStyles = {

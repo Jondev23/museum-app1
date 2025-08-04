@@ -1,13 +1,6 @@
 
 // Configuration constants for start screen
 export const useStartScreenStyles = (startContent) => ({
-  backgroundStyle: {
-    backgroundImage: `url(${startContent?.backgroundImage || './images/Bild_Kutsche.webp'})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
-  },
-
   containerStyle: {
     minHeight: '100vh',
     minHeight: '100dvh'
@@ -27,27 +20,6 @@ export const useStartScreenStyles = (startContent) => ({
     paddingTop: 'var(--startscreen-top-spacing)',
     paddingLeft: 'clamp(1rem, 3vw, 3rem)',
     paddingRight: 'clamp(1rem, 3vw, 3rem)'
-  },
-
-  contentSectionMinimalStyle: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    paddingTop: 'var(--startscreen-top-spacing)',
-    paddingLeft: '0.25rem',
-    paddingRight: '0.25rem'
-  },
-
-  titleStyle: {
-    fontSize: 'var(--typography-head-font-size)',
-    fontFamily: 'var(--typography-head-font-family)',
-    fontWeight: 'var(--typography-head-font-weight)',
-    textAlign: 'center',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    lineHeight: 'var(--typography-head-line-height)'
   },
 
   subtitleStyle: {
