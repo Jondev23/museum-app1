@@ -16,7 +16,7 @@ export const QUESTION_CONFIG = {
   
   // Animation duration timings in seconds
   ANIMATION_DURATIONS: {
-    SCREEN_TRANSITION: 0.8,    // Screen transition duration
+    SCREEN_TRANSITION: 3.8,    // Screen transition duration
     TITLE: 0.6,               // Title animation duration
     BUTTONS: 0.6,             // Button group animation duration
     BUTTON_INDIVIDUAL: 0.4,   // Individual button animation duration
