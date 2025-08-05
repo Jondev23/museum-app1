@@ -18,6 +18,8 @@ export const useStartScreenStyles = (startContent) => ({
     display: 'flex',
     flexDirection: 'column',
     paddingTop: 'var(--startscreen-top-spacing)',
+    paddingLeft: '8rem',
+    paddingRight: '8rem',
     paddingBottom: '10rem',
     boxSizing: 'border-box'
   },
