@@ -21,7 +21,7 @@ const FeedbackButton = ({
         className="flex items-center cursor-pointer"
         style={{
           ...buttonStyle,
-          gap: '0.7rem',
+          gap: '1.5rem',
           touchAction: 'manipulation',
           userSelect: 'none',
           WebkitTouchCallout: 'none',
@@ -43,7 +43,7 @@ const FeedbackButton = ({
             ...arrowStyle,
             touchAction: 'manipulation',
             pointerEvents: 'none',
-            transform: 'translateY(-2.0%)'
+            transform: 'translateY(-0.2rem)'
           }}
         />
       </button>
