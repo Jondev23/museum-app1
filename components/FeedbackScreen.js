@@ -84,21 +84,22 @@ const FeedbackScreen = () => {
         </div>
       </div>
 
-            <div className="absolute bottom-0 left-0 right-0" style={{ zIndex: 55 }}>
+      {/* Feedback Button with global positioning */}
+      <FeedbackButton
+        buttonText={buttonText}
+        nextQuestion={originalNextQuestion}
+        buttonStyle={buttonStyle}
+        buttonTextStyle={buttonTextStyle}
+        arrowStyle={arrowStyle}
+      />
+
+      {/* Standard Footer (if needed for other elements) */}
+      <div className="absolute bottom-0 left-0 right-0" style={{ zIndex: 45 }}>
         <StandardFooter
           showProgressDots={false}
           alignProgressDots="center"
           className="relative"
-        >
-          <FeedbackButton
-            buttonText={buttonText}
-            nextQuestion={originalNextQuestion}
-            buttonContainerStyle={buttonContainerStyle}
-            buttonStyle={buttonStyle}
-            buttonTextStyle={buttonTextStyle}
-            arrowStyle={arrowStyle}
-          />
-        </StandardFooter>
+        />
       </div>
     </div>
   );

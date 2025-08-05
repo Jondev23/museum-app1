@@ -1,4 +1,4 @@
-import { processTextWithHTML } from '../../utils/textProcessor';
+import { ArrowButton } from '../shared';
 
 // Continue button component for feedback screen
 const FeedbackButton = ({ 
@@ -10,44 +10,18 @@ const FeedbackButton = ({
   arrowStyle 
 }) => {
   return (
-    <div
-      style={buttonContainerStyle}
-    >
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          nextQuestion(); 
-        }}
-        className="flex items-center cursor-pointer"
-        style={{
-          ...buttonStyle,
-          gap: '1.5rem',
-          touchAction: 'manipulation',
-          userSelect: 'none',
-          WebkitTouchCallout: 'none',
-          WebkitUserSelect: 'none'
-        }}
-      >
-        <span
-          className="text-button"
-          style={{
-            textTransform: buttonTextStyle.textTransform
-          }}
-        >
-          {processTextWithHTML(buttonText)}
-        </span>
-        <img
-          src="./images/GUI-2.svg"
-          alt="Zur Auswertung"
-          style={{
-            ...arrowStyle,
-            touchAction: 'manipulation',
-            pointerEvents: 'none',
-            transform: 'translateY(-0.2rem)'
-          }}
-        />
-      </button>
-    </div>
+    <ArrowButton
+      buttonText={buttonText}
+      onClick={nextQuestion}
+      position="bottom-right" // Posición global predeterminada
+      buttonStyle={buttonStyle}
+      buttonTextStyle={buttonTextStyle}
+      arrowStyle={arrowStyle}
+      arrowAlt="Zur Auswertung"
+      className="cursor-pointer"
+      // Si necesitas override del container style, usa position="custom"
+      buttonContainerStyle={buttonContainerStyle}
+    />
   );
 };
 
