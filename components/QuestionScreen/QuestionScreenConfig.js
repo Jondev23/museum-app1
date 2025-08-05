@@ -21,9 +21,9 @@ export const useQuestionScreenStyles = (startContent) => {
   // Progress dots positioning styles
   const progressDotsStyle = useMemo(() => ({
     left: '50%',
-    bottom: 'min(4.8rem, 7.8vh)', // Responsive bottom spacing
-    transform: 'translateX(-50%)', // Center horizontally
-    zIndex: 30                     // Ensure above other elements
+    bottom: 'min(4.8rem, 7.8vh)', 
+    transform: 'translateX(-50%)', 
+    zIndex: 30                    
   }), []);
 
   return {

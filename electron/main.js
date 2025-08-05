@@ -90,9 +90,7 @@ ipcMain.handle('save-config', async (event, config) => {
 
 // Create the main browser window
 function createWindow() {
-  // Keep standard menu bar for desktop application
-  // Menu.setApplicationMenu(null); // Commented out to keep standard menu
-
+  
   mainWindow = new BrowserWindow({
     width: 1920, 
     height: 1080, 
@@ -107,7 +105,7 @@ function createWindow() {
       nodeIntegration: false,
       contextIsolation: true,
       enableRemoteModule: false,
-      webSecurity: false, // Disable webSecurity to allow local file loading in production
+      webSecurity: false, 
       allowRunningInsecureContent: true,
       experimentalFeatures: false,
       preload: path.join(__dirname, 'preload.js')
@@ -126,12 +124,12 @@ function createWindow() {
         <html>
           <head><title>Development Server</title></head>
           <body style="font-family: Arial; padding: 40px; background: #f0f0f0; text-align: center;">
-            <h1>🚀 Waiting for Next.js Development Server</h1>
+            <h1> Waiting for Next.js Development Server</h1>
             <p>Please make sure the development server is running on port 3000</p>
             <p>Run: <code style="background: #eee; padding: 5px;">npm run next-dev</code> in another terminal</p>
             <br>
-            <button onclick="location.reload()" style="padding: 10px 20px; font-size: 16px; margin: 10px;">🔄 Retry</button>
-            <button onclick="window.close()" style="padding: 10px 20px; font-size: 16px; margin: 10px;">❌ Close</button>
+            <button onclick="location.reload()" style="padding: 10px 20px; font-size: 16px; margin: 10px;"> Retry</button>
+            <button onclick="window.close()" style="padding: 10px 20px; font-size: 16px; margin: 10px;"> Close</button>
           </body>
         </html>
       `));

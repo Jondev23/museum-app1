@@ -17,7 +17,6 @@ const ScreensaverScreen = () => {
     isLoading,
     isValidData,
     shouldShowScreensaver,
-    screensaverContent,
     defaultContent,
     handleTouch,
   } = useScreensaverScreen();

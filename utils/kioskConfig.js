@@ -4,26 +4,25 @@ import { getActiveKioskId } from './configManager';
 export const KIOSK_CONFIGS = {
   kiosk1: {
     id: 'kiosk1',
-    name: 'Kutschen Geschichte', // General carriage history
+    name: 'Kutschen Geschichte', 
     theme: 'general',
     contentFile: 'kiosk1.json'
   },
   kiosk2: {
     id: 'kiosk2', 
-    name: 'Luxuskutschen', // Luxury carriages
+    name: 'Luxuskutschen', 
     theme: 'luxury',
     contentFile: 'kiosk2.json'
   },
   kiosk3: {
     id: 'kiosk3',
-    name: 'Kutschenbau', // Carriage construction
+    name: 'Kutschenbau', 
     theme: 'craftsmanship', 
     contentFile: 'kiosk3.json'
   }
 };
 
 // Function to detect which kiosk configuration to use
-// Priority: 1) URL parameter, 2) config file, 3) localStorage, 4) default (kiosk1)
 export const detectKioskId = async () => {
   // Return default if running on server-side
   if (typeof window === 'undefined') return 'kiosk1';

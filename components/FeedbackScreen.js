@@ -17,7 +17,6 @@ const FeedbackScreen = () => {
     question,
     userAnswer,
     startContent,
-    buttonText,
     isValidData,
     isCorrect,
     randomMessage,
@@ -34,10 +33,6 @@ const FeedbackScreen = () => {
     messageContainerStyle,
     messageStyle,
     explanationStyle,
-    buttonContainerStyle,
-    buttonStyle,
-    buttonTextStyle,
-    arrowStyle
   } = useFeedbackScreenStyles(startContent, isCorrect);
 
   if (!isValidData) return null;

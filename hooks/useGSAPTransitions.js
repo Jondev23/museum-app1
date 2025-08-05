@@ -148,7 +148,7 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
   useEffect(() => {
     // Only log when there's actually a transition happening
     if (currentScreen !== displayedScreen || isTransitioning) {
-      console.log('🎬 useGSAPTransitions - currentScreen:', currentScreen, 'displayedScreen:', displayedScreen, 'isTransitioning:', isTransitioning);
+      console.log('useGSAPTransitions - currentScreen:', currentScreen, 'displayedScreen:', displayedScreen, 'isTransitioning:', isTransitioning);
     }
     
     // Skip if screens are already the same and not transitioning
@@ -158,7 +158,7 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
     
     // If transitioning TO screensaver, update immediately (no animation needed)
     if (currentScreen === 'screensaver' && displayedScreen !== 'screensaver') {
-      console.log('🎬 Transitioning TO screensaver - immediate update');
+      console.log('Transitioning TO screensaver - immediate update');
       setDisplayedScreen('screensaver');
       setDisplayedQuestionIndex(currentQuestionIndex);
       return;
@@ -166,7 +166,7 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
     
     // If transitioning FROM screensaver, coordinate with target screen animations
     if (displayedScreen === 'screensaver' && currentScreen !== 'screensaver') {
-      console.log('🎬 Transitioning FROM screensaver - coordinated update');
+      console.log('Transitioning FROM screensaver - coordinated update');
       setIsTransitioning(true);
       
       // Wait for ScreensaverScreen fade out to complete
@@ -201,23 +201,23 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
     }
     
     if (currentScreen !== displayedScreen && !isTransitioning && currentScreen !== 'screensaver' && displayedScreen !== 'screensaver') {
-      console.log('🎬 Starting transition from', displayedScreen, 'to', currentScreen);
-      console.log('🎬 containerRef.current exists:', !!containerRef.current);
+      console.log('Starting transition from', displayedScreen, 'to', currentScreen);
+      console.log('containerRef.current exists:', !!containerRef.current);
       setIsTransitioning(true);
       
       if (containerRef.current) {
         // Get exit animation config
         const exitConfig = getAnimationConfig(displayedScreen, 'exit');
-        console.log('🎬 Exit config for', displayedScreen, ':', exitConfig);
+        console.log('Exit config for', displayedScreen, ':', exitConfig);
         
         // Apply exit animation
         gsap.to(containerRef.current, {
           ...exitConfig,
           onStart: () => {
-            console.log('🎬 Exit animation STARTED for', displayedScreen);
+            console.log('Exit animation STARTED for', displayedScreen);
           },
           onComplete: () => {
-            console.log('🎬 Exit animation COMPLETED for', displayedScreen);
+            console.log('Exit animation COMPLETED for', displayedScreen);
             setDisplayedScreen(currentScreen);
             if (currentQuestionIndex !== displayedQuestionIndex) {
               setDisplayedQuestionIndex(currentQuestionIndex);

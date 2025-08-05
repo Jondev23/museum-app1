@@ -143,7 +143,7 @@ export const AppProvider = ({ children }) => {
         }
         
         lastActivity = now;
-        console.log('🔄 Activity detected, resetting timer. Event:', event.type, 'Screen:', currentScreen);
+        console.log('Activity detected, resetting timer. Event:', event.type, 'Screen:', currentScreen);
         resetTimer();
       }
     };
@@ -187,14 +187,14 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   const goToScreensaver = useCallback(() => {
-    console.log('🖥️ goToScreensaver called - setting currentScreen to screensaver');
+    console.log('goToScreensaver called - setting currentScreen to screensaver');
     setCurrentScreen('screensaver');
     resetQuizState();
     setShowLanguageSelector(false);
   }, [resetQuizState]);
 
   const startQuiz = useCallback(() => {
-    console.log('🚀 startQuiz called - setting currentScreen to start');
+    console.log('startQuiz called - setting currentScreen to start');
     setCurrentScreen('start');
   }, []);
 
@@ -222,10 +222,10 @@ export const AppProvider = ({ children }) => {
   }, [resetQuizState, content, language]);
 
   const startQuestions = useCallback(() => {
-    console.log('🎯 startQuestions called');
-    console.log('🎯 Current content:', content);
-    console.log('🎯 Current language:', language);
-    console.log('🎯 Questions available:', content?.[language]?.questions?.length);
+    console.log('startQuestions called');
+    console.log('Current content:', content);
+    console.log('Current language:', language);
+    console.log('Questions available:', content?.[language]?.questions?.length);
     
     setCurrentScreen('question');
     resetQuizState();
@@ -234,9 +234,9 @@ export const AppProvider = ({ children }) => {
     if (content?.[language]?.questions) {
       const shuffled = [...content[language].questions].sort(() => Math.random() - 0.5);
       setQuestions(shuffled.slice(0, 5));
-      console.log('🎯 Questions set:', shuffled.slice(0, 5).length);
+      console.log('Questions set:', shuffled.slice(0, 5).length);
     } else {
-      console.error('❌ No questions found in content!');
+      console.error('No questions found in content!');
     }
   }, [resetQuizState, content, language]);
 

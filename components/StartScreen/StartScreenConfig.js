@@ -87,6 +87,6 @@ export const useStartScreenStyles = (startContent) => ({
     height: '100%',
     cursor: 'pointer',
     pointerEvents: 'auto'
-    // Removed CSS transition - now using GSAP
+    
   }
 });
