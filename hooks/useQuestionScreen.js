@@ -91,19 +91,7 @@ export const useQuestionScreen = () => {
       return {
         ...baseStyle,
         backgroundColor: 'var(--color-neutral-light)',
-        borderColor: 'var(--color-neutral-light)',
-        minWidth: 'min(63.36rem, 58vw, 75vh)',
-        minHeight: 'min(7.3152rem, 6.93vh, 8vw)',
-        maxWidth: '90vw',
-        width: 'auto',
-        height: 'auto',
-        padding: 'min(1rem, 1.5vh, 2vw) min(4rem, 5vw, 6vh)',
-        borderRadius: 'min(7.3152rem, 6.93vh, 8vw)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'visible',
-        flex: '0 0 auto'
+        borderColor: 'var(--color-neutral-light)'
       };
     }
     
