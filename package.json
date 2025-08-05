@@ -67,7 +67,7 @@
     "appId": "com.museum.kutschen",
     "productName": "Museum Kutschen App",
     "directories": {
-      "output": "C:\\Users\\mailj\\Downloads\\museum"
+      "output": "C:\\Users\\mailj\\Downloads\\museum1.1"
     },
     "files": [
       "out/**/*",
