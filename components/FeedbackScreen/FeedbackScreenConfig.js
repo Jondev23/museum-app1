@@ -76,17 +76,17 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const answerButtonStyle = useMemo(() => ({
-    minWidth: 'min(63.36rem, 63vw, 80vh)',
-    minHeight: 'min(7.3152rem, 6.93vh, 8vw)',
+    minWidth: 'min(63.36rem, 58vw, 75vh)',
+    height: '5rem',
     maxWidth: '90vw',
     width: 'auto', 
-    height: 'auto', 
-    padding: 'min(1rem, 1.5vh, 2vw) min(4rem, 5vw, 6vh)',
+    paddingTop: '1.4rem',
+    paddingBottom: '0.7rem',
+    paddingLeft: 'min(4rem, 5vw, 6vh)',
+    paddingRight: 'min(4rem, 5vw, 6vh)',
     borderRadius: 'min(7.3152rem, 6.93vh, 8vw)',
     border: 'min(0.1125rem, 0.225vw, 0.3vh) solid var(--color-neutral-light)',
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
     overflow: 'visible',
     flex: '0 0 auto'
   }), []);

@@ -17,7 +17,7 @@ const FeedbackAnswer = ({ question, userAnswer, answerButtonStyle, answerTextSty
         }}
       >
         <span
-          className="feedback-answer-text w-full"
+          className="typography-antworten-buttons selected w-full text-center break-words hyphens-auto max-w-full"
         >
           {/* Display the selected answer text */}
           {processTextWithHTML(question.answers[userAnswer])}
