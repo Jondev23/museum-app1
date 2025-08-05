@@ -17,20 +17,20 @@ export const useStartScreenStyles = (startContent) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    paddingTop: 'var(--startscreen-top-spacing)',
+    paddingTop: 'clamp(3rem, 6vh, 5rem)',
     paddingLeft: 'clamp(1rem, 3vw, 3rem)',
     paddingRight: 'clamp(1rem, 3vw, 3rem)'
   },
 
   subtitleStyle: {
-    fontSize: 'var(--typography-subline-font-size)',
-    fontFamily: 'var(--typography-subline-font-family)',
-    fontWeight: 'var(--typography-subline-font-weight)',
+    fontSize: '4rem',
+    fontFamily: '"Tisa Sans Pro"',
+    fontWeight: '400',
     textAlign: 'center',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    lineHeight: 'var(--typography-subline-line-height)',
+    lineHeight: '120%',
     marginTop: '-1.0rem'
   },
 
@@ -47,30 +47,28 @@ export const useStartScreenStyles = (startContent) => ({
     width: '100vw',
     maxWidth: '100vw',
     textAlign: 'center',
-    paddingLeft: 'var(--startscreen-description-lateral-spacing)',
-    paddingRight: 'var(--startscreen-description-lateral-spacing)',
-    marginLeft: 'calc(-1 * clamp(1rem, 3vw, 3rem))',
-    marginRight: 'calc(-1 * clamp(1rem, 3vw, 3rem))',
+    marginLeft: 'calc(-4 * clamp(1rem, 3vw, 3rem))',
+    marginRight: 'calc(-4 * clamp(1rem, 3vw, 3rem))',
     position: 'relative'
   },
 
   highlightTextStyle: {
-    fontSize: 'var(--typography-antwort-fliess-font-size)',
-    fontFamily: 'var(--typography-antwort-fliess-font-family)',
-    fontWeight: 'var(--typography-antwort-fliess-bold-font-weight)',
+    fontSize: '2.25rem',
+    fontFamily: '"Tisa Pro"',
+    fontWeight: '700',
     textAlign: 'center',
-    lineHeight: 'var(--typography-antwort-fliess-line-height)',
-    letterSpacing: 'var(--typography-antwort-fliess-letter-spacing)',
+    lineHeight: '140%',
+    letterSpacing: '0.0225rem',
     marginBottom: '0'
   },
 
   introTextStyle: {
-    fontSize: 'var(--typography-antwort-fliess-font-size)',
-    fontFamily: 'var(--typography-antwort-fliess-font-family)',
-    fontWeight: 'var(--typography-antwort-fliess-font-weight)',
+    fontSize: '2.25rem',
+    fontFamily: '"Tisa Pro"',
+    fontWeight: '400',
     textAlign: 'center',
-    lineHeight: 'var(--typography-antwort-fliess-line-height)',
-    letterSpacing: 'var(--typography-antwort-fliess-letter-spacing)'
+    lineHeight: '140%',
+    letterSpacing: '0.0225rem'
   },
 
   touchIndicatorContainerStyle: {
