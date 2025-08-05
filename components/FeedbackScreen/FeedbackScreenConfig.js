@@ -59,10 +59,10 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const titleStyle = useMemo(() => ({
-    width: '95%',
+    width: '100%',
     minHeight: 'auto', 
     maxHeight: '35vh', 
-    maxWidth: '80%',
+    maxWidth: '100%',
     overflowWrap: 'break-word',
     overflow: 'visible', 
     display: 'flex',
@@ -104,7 +104,6 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '0.5rem',
     width: '100%', 
     minHeight: 'auto',
     maxHeight: '30vh', 
@@ -167,8 +166,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     ...feedbackContainerStyle,
     backgroundColor: isCorrect ? 'var(--color-feedback-correct)' : 'var(--color-feedback-incorrect)',
     borderRadius: '1.875rem',
-    paddingLeft: '6rem',
-    paddingRight: '6rem',
+    paddingLeft: '4rem',
+    paddingRight: '4rem',
   }), [feedbackContainerStyle, isCorrect]);
 
   return {
