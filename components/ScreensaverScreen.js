@@ -1,9 +1,8 @@
-// Import animation library and screensaver components
-import { motion } from 'framer-motion';
-
 // Import custom hooks and configuration
 import { useScreensaverScreen } from '../hooks/useScreensaverScreen';
 import { useScreensaverScreenStyles } from './ScreensaverScreen/ScreensaverScreenConfig';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 // Import subcomponents
 import ScreensaverLoading from './ScreensaverScreen/ScreensaverLoading';
@@ -11,55 +10,90 @@ import ScreensaverBackground from './ScreensaverScreen/ScreensaverBackground';
 
 // Screensaver component - idle state that activates after inactivity
 const ScreensaverScreen = () => {
-  // Get screensaver data and handlers from custom hook
+  const containerRef = useRef(null);
+  console.log('🖥️ ScreensaverScreen component rendered');
+
   const {
     isLoading,
     isValidData,
+    shouldShowScreensaver,
     screensaverContent,
     defaultContent,
     handleTouch,
   } = useScreensaverScreen();
 
-  // Get dynamic styles
   const {
     titleStyle,
     videoStyle,
   } = useScreensaverScreenStyles();
 
-  // Show loading state while content is being fetched
+  console.log('🖥️ ScreensaverScreen state - isLoading:', isLoading, 'isValidData:', isValidData, 'shouldShowScreensaver:', shouldShowScreensaver);
+
+  // Fade in animation when screensaver becomes visible
+  useEffect(() => {
+    if (containerRef.current && !isLoading && shouldShowScreensaver) {
+      // Set initial state
+      gsap.set(containerRef.current, { opacity: 0 });
+      
+      // Fade in animation
+      gsap.to(containerRef.current, {
+        opacity: 1,
+        duration: 0.5,
+        ease: "power2.out"
+      });
+    }
+  }, [isLoading, shouldShowScreensaver]);
+
+  // Fade out animation when exiting screensaver
+  const handleExitAnimation = () => {
+    if (containerRef.current) {
+      gsap.to(containerRef.current, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.out",
+        onComplete: () => {
+          handleTouch();
+        }
+      });
+    }
+  };
+
+  // Modified handlers to include fade out animation
+  const handleTouchWithAnimation = (e) => {
+    e.preventDefault();
+    handleExitAnimation();
+  };
+
+  const handleClickWithAnimation = (e) => {
+    e.preventDefault();
+    handleExitAnimation();
+  };
+
   if (isLoading) {
+    console.log('🔄 ScreensaverScreen showing loading screen');
     return <ScreensaverLoading titleStyle={titleStyle} />;
   }
 
-  // Don't render if data is invalid
-  if (!isValidData) return null;
+  // Always show screensaver, even with fallback content
+  console.log('✅ ScreensaverScreen rendering main content');
 
   return (
-    // Animated fullscreen container with touch handlers
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ 
-        opacity: 0 // Simple fade out without other effects
-      }}
-      transition={{ 
-        duration: 1.0, // Faster but still smooth - same for entry and exit
-        ease: "easeInOut", // Symmetric easing for consistent feel
-        delay: 0 // No delay for immediate start
-      }}
+    <div
+      ref={containerRef}
       className="fixed inset-0 flex flex-col items-center justify-center cursor-pointer"
-      onClick={handleTouch}
-      onTouchStart={handleTouch}
+      onClick={handleClickWithAnimation}
+      onTouchStart={handleTouchWithAnimation}
       style={{
-        willChange: 'opacity' // Only optimize for opacity changes
+        opacity: 0, // Initial opacity set to 0 for fade in animation
+        zIndex: 9999, // MUCH HIGHER Z-INDEX
+        backgroundColor: 'rgba(0,0,0,0.8)'
       }}
     >
-      {/* Background video or image */}
       <ScreensaverBackground 
         defaultContent={defaultContent}
         videoStyle={videoStyle}
       />
-    </motion.div>
+    </div>
   );
 };
 

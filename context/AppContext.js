@@ -1,5 +1,5 @@
 // Import React hooks and utilities for kiosk configuration
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { detectKioskId, detectKioskIdSync, getCurrentKioskConfig } from '../utils/kioskConfig';
 import { loadConfig, setActiveKioskId, getScreensaverTimeout } from '../utils/configManager';
 
@@ -31,36 +31,23 @@ export const AppProvider = ({ children }) => {
   
   // UI state
   const [showLanguageSelector, setShowLanguageSelector] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isTransitioningToScreensaver, setIsTransitioningToScreensaver] = useState(false);
-  const [isCriticalTransition, setIsCriticalTransition] = useState(false);
   
   // Kiosk configuration - Start with null to force loading from config
   const [kioskId, setKioskId] = useState(null);
-  const [screensaverTimeout, setScreensaverTimeoutState] = useState(180000); // Fallback - will be overridden by config.json
+  const [screensaverTimeout, setScreensaverTimeoutState] = useState(10000); // 10 seconds unified default 
 
   // Load configuration on component mount
   useEffect(() => {
     const initializeAppConfig = async () => {
       try {
-        console.log('=== INITIALIZING APP CONFIG ===');
-        
-        // Load the active kiosk ID from config first
         const configKioskId = await detectKioskId();
-        console.log('Config kiosk ID loaded:', configKioskId);
         setKioskId(configKioskId);
 
-        // Load screensaver timeout from config
         const configTimeout = await getScreensaverTimeout();
-        console.log('Config timeout loaded:', configTimeout);
         setScreensaverTimeoutState(configTimeout);
-        
-        console.log('=== APP CONFIG INITIALIZED ===');
       } catch (error) {
-        console.error('Error initializing app config:', error);
-        // Fallback to detectKioskIdSync if async loading fails
+        console.error('Config initialization error:', error);
         const fallbackKiosk = detectKioskIdSync();
-        console.log('Using fallback kiosk ID:', fallbackKiosk);
         setKioskId(fallbackKiosk);
       }
     };
@@ -83,165 +70,97 @@ export const AppProvider = ({ children }) => {
 
   // Effect to load content when kiosk ID or language changes
   useEffect(() => {
-    // Don't load content if kioskId is not yet determined
-    if (!kioskId) {
-      console.log('=== APPCONTEXT: Waiting for kioskId to be determined...');
-      return;
-    }
+    if (!kioskId) return;
     
     const loadContent = async () => {
       try {
-        console.log('=== APPCONTEXT: Starting content load');
-        console.log(`=== APPCONTEXT: Loading content for kiosk: ${kioskId}, language: ${language}`);
-        console.log('=== APPCONTEXT: Window electronAPI available:', typeof window !== 'undefined' && !!window.electronAPI);
+        console.log(`Loading content for kiosk: ${kioskId}, language: ${language}`);
         
-        // Add a fallback content immediately to prevent infinite loading
+        // Simple fallback content
         const fallbackContent = {
           [language]: {
-            screensaver: {
-              title: 'Welcome to the Museum',
-              videoSource: './videos/screensaver-video.mp4'
-            },
-            start: {
-              title: 'Museum Quiz',
-              description: 'Test your knowledge about our exhibits'
-            },
-            questions: [
-              {
-                id: 1,
-                question: 'Sample question?',
-                answers: ['Answer 1', 'Answer 2', 'Answer 3', 'Answer 4'],
-                correctAnswer: 0
-              }
-            ]
+            screensaver: { title: 'Welcome', videoSource: './videos/screensaver-video.mp4' },
+            start: { title: 'Museum Quiz', description: 'Test your knowledge' },
+            questions: [{ id: 1, question: 'Sample question?', answers: ['A1', 'A2', 'A3', 'A4'], correctAnswer: 0 }]
           }
         };
         
-        // Set fallback content first to prevent loading screen
-        console.log('=== APPCONTEXT: Setting fallback content first to prevent loading...');
-        setContent(fallbackContent);
+        let data = fallbackContent;
         
-        let data;
-        // Check if we're in Electron environment
+        // Try to load real content
         if (typeof window !== 'undefined' && window.electronAPI) {
-          // In Electron, load content via IPC
           try {
-            console.log('=== APPCONTEXT: Attempting to load content via Electron IPC...');
             data = await window.electronAPI.loadKioskContent(kioskId);
-            console.log('=== APPCONTEXT: ✅ Content loaded via Electron IPC:', data);
-          } catch (electronError) {
-            console.warn('=== APPCONTEXT: ❌ Failed to load via Electron IPC, using fallback:', electronError);
-            data = fallbackContent;
+          } catch (error) {
+            console.warn('Electron load failed, using fallback:', error);
           }
         } else {
-          // In web environment, use fetch
           try {
-            console.log('=== APPCONTEXT: Loading content via fetch...');
             const response = await fetch(`/content/${kioskId}.json`);
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
+            if (response.ok) {
+              data = await response.json();
             }
-            data = await response.json();
-            console.log('=== APPCONTEXT: ✅ Content loaded via fetch:', data);
-          } catch (fetchError) {
-            console.warn('=== APPCONTEXT: ❌ Failed to load via fetch, using fallback:', fetchError);
-            data = fallbackContent;
+          } catch (error) {
+            console.warn('Fetch failed, using fallback:', error);
           }
         }
         
-        console.log('=== APPCONTEXT: ✅ Final content loaded successfully:', data);
         setContent(data);
         
-        // Shuffle and select 5 random questions for each quiz session
+        // Shuffle questions
         if (data[language]?.questions) {
           const shuffled = [...data[language].questions].sort(() => Math.random() - 0.5);
           setQuestions(shuffled.slice(0, 5));
-          console.log('=== APPCONTEXT: Questions shuffled:', shuffled.slice(0, 5));
         }
       } catch (error) {
-        console.error('=== APPCONTEXT: ❌ Unexpected error loading content:', error);
-        console.error('=== APPCONTEXT: Failed kiosk ID:', kioskId);
-        
-        // Set fallback content to prevent infinite loading
-        console.log('=== APPCONTEXT: Setting emergency fallback content...');
-        const emergencyFallback = {
-          [language]: {
-            screensaver: {
-              title: 'Welcome to the Museum',
-              videoSource: './videos/screensaver-video.mp4'
-            },
-            start: {
-              title: 'Museum Quiz',
-              description: 'Test your knowledge about our exhibits'
-            },
-            questions: [
-              {
-                id: 1,
-                question: 'Emergency sample question?',
-                answers: ['Answer 1', 'Answer 2', 'Answer 3', 'Answer 4'],
-                correctAnswer: 0
-              }
-            ]
-          }
-        };
-        setContent(emergencyFallback);
+        console.error('Content loading error:', error);
       }
     };
 
     loadContent();
   }, [kioskId, language]);
 
-  // Effect to handle inactivity timer (configurable timeout)
+  // Effect to handle inactivity timer
   useEffect(() => {
     let timer;
+    let lastActivity = 0;
+    const throttleDelay = 1000; // Throttle activity detection to once per second
     
-    // Reset the inactivity timer
     const resetTimer = () => {
       clearTimeout(timer);
-      // Only set timer if not on screensaver
       if (currentScreen !== 'screensaver') {
-        timer = setTimeout(() => {
-          // Smooth transition to screensaver instead of direct change
-          goToScreensaver();
-        }, screensaverTimeout);
+        timer = setTimeout(goToScreensaver, screensaverTimeout);
       }
     };
 
-    // Handle any user activity to reset timer
-    const handleActivity = (e) => {
-      // Only reset if we're not on the screensaver screen
+    const handleActivity = (event) => {
       if (currentScreen !== 'screensaver') {
-        console.log('User activity detected, resetting inactivity timer');
+        const now = Date.now();
+        
+        // Throttle mousemove events to prevent excessive re-renders
+        if (event.type === 'mousemove' && now - lastActivity < throttleDelay) {
+          return;
+        }
+        
+        lastActivity = now;
+        console.log('🔄 Activity detected, resetting timer. Event:', event.type, 'Screen:', currentScreen);
         resetTimer();
       }
     };
 
-    // Add event listeners for user activity
-    const addEventListeners = () => {
-      document.addEventListener('touchstart', handleActivity, { passive: true });
-      document.addEventListener('click', handleActivity);
-      document.addEventListener('keydown', handleActivity);
-      document.addEventListener('mousemove', handleActivity, { passive: true });
-      document.addEventListener('scroll', handleActivity, { passive: true });
-    };
+    // Event listeners - prioritize touch and click over mousemove
+    const events = ['touchstart', 'click', 'keydown', 'mousemove', 'scroll'];
+    events.forEach(event => {
+      document.addEventListener(event, handleActivity, { passive: true });
+    });
 
-    // Remove event listeners
-    const removeEventListeners = () => {
-      document.removeEventListener('touchstart', handleActivity);
-      document.removeEventListener('click', handleActivity);
-      document.removeEventListener('keydown', handleActivity);
-      document.removeEventListener('mousemove', handleActivity);
-      document.removeEventListener('scroll', handleActivity);
-    };
-
-    // Initialize timer and listeners
-    addEventListeners();
     resetTimer();
 
-    // Cleanup on unmount or when currentScreen/timeout changes
     return () => {
       clearTimeout(timer);
-      removeEventListeners();
+      events.forEach(event => {
+        document.removeEventListener(event, handleActivity);
+      });
     };
   }, [currentScreen, screensaverTimeout]);
 
@@ -260,134 +179,104 @@ export const AppProvider = ({ children }) => {
     };
   }, []);
 
-  const goToScreensaver = () => {
-    // Only start transition if not already transitioning and not on screensaver
-    if (!isTransitioningToScreensaver && currentScreen !== 'screensaver') {
-      console.log('Starting smooth transition to screensaver');
-      setIsTransitioningToScreensaver(true);
-      
-      // After fade out transition, change to screensaver
-      setTimeout(() => {
-        setCurrentScreen('screensaver');
-        setCurrentQuestionIndex(0);
-        setAnswers([]);
-        setShowLanguageSelector(false);
-        setIsTransitioningToScreensaver(false);
-      }, 500); // 500ms fade out duration
-    } else if (!isTransitioningToScreensaver) {
-      // Direct change if already on screensaver
-      setCurrentScreen('screensaver');
-      setCurrentQuestionIndex(0);
-      setAnswers([]);
-      setShowLanguageSelector(false);
-    }
-  };
-
-  const startQuiz = () => {
-    setCurrentScreen('start');
-  };
-
-  const beginQuiz = () => {
-    // Clear answers and questions immediately to prevent inconsistent state
+  // Helper function to reset quiz state - now memoized
+  const resetQuizState = useCallback(() => {
     setAnswers([]);
     setQuestions([]);
     setCurrentQuestionIndex(0);
-    
-    // Brief critical transition to hide global components
-    setIsCriticalTransition(true);
-    
+  }, []);
+
+  const goToScreensaver = useCallback(() => {
+    console.log('🖥️ goToScreensaver called - setting currentScreen to screensaver');
+    setCurrentScreen('screensaver');
+    resetQuizState();
+    setShowLanguageSelector(false);
+  }, [resetQuizState]);
+
+  const startQuiz = useCallback(() => {
+    console.log('🚀 startQuiz called - setting currentScreen to start');
+    setCurrentScreen('start');
+  }, []);
+
+  const beginQuiz = useCallback(() => {
+    resetQuizState();
     setCurrentScreen('start');
     
-    // Reshuffle questions when starting new quiz
+    // Reshuffle questions
     if (content?.[language]?.questions) {
       const shuffled = [...content[language].questions].sort(() => Math.random() - 0.5);
       setQuestions(shuffled.slice(0, 5));
     }
-    
-    // Clear critical transition state after one frame
-    setTimeout(() => {
-      setIsCriticalTransition(false);
-    }, 16); // One frame at 60fps
-  };
+  }, [resetQuizState, content, language]);
 
-  const startQuestions = () => {
+  const startQuestions = useCallback(() => {
+    console.log('🎯 startQuestions called');
+    console.log('🎯 Current content:', content);
+    console.log('🎯 Current language:', language);
+    console.log('🎯 Questions available:', content?.[language]?.questions?.length);
+    
     setCurrentScreen('question');
-    setCurrentQuestionIndex(0);
-    setAnswers([]);
+    resetQuizState();
     
-    // Reshuffle questions when starting new quiz
+    // Reshuffle questions
     if (content?.[language]?.questions) {
       const shuffled = [...content[language].questions].sort(() => Math.random() - 0.5);
       setQuestions(shuffled.slice(0, 5));
+      console.log('🎯 Questions set:', shuffled.slice(0, 5).length);
+    } else {
+      console.error('❌ No questions found in content!');
     }
-  };
+  }, [resetQuizState, content, language]);
 
-  const answerQuestion = (answerIndex) => {
+  const answerQuestion = useCallback((answerIndex) => {
     const newAnswers = [...answers];
     newAnswers[currentQuestionIndex] = answerIndex;
     setAnswers(newAnswers);
     setCurrentScreen('feedback');
-  };
+  }, [answers, currentQuestionIndex]);
 
-  const nextQuestion = () => {
-    if (isTransitioning) return; 
-    
-    setIsTransitioning(true);
-    
+  const nextQuestion = useCallback(() => {
     if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      // Mantener el patrón original pero sincronizar ambos casos
       setCurrentScreen('question');
+      // Usar requestAnimationFrame para asegurar que la animación se inicie antes del cambio de índice
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          setCurrentQuestionIndex(currentQuestionIndex + 1);
+        }, 900); // Duración completa de la animación de salida
+      });
     } else {
       setCurrentScreen('results');
     }
-    
-    setTimeout(() => setIsTransitioning(false), 300);
-  };
+  }, [currentQuestionIndex, questions.length]);
 
-  const changeLanguage = (newLanguage) => {
-    console.log('changeLanguage called:', { from: language, to: newLanguage });
-    
+  const changeLanguage = useCallback((newLanguage) => {
     if (newLanguage === language) {
-      console.log('Same language selected, just closing selector');
       setShowLanguageSelector(false);
       return;
     }
     
-    // Clear answers and questions immediately to prevent inconsistent state
-    setAnswers([]);
-    setQuestions([]);
-    setCurrentQuestionIndex(0);
-    
-    // Brief critical transition to hide global components
-    setIsCriticalTransition(true);
-    
+    resetQuizState();
     setLanguage(newLanguage);
     setShowLanguageSelector(false);
     setCurrentScreen('start');
-    
-    // Clear critical transition state after one frame
-    setTimeout(() => {
-      setIsCriticalTransition(false);
-    }, 16); // One frame at 60fps
-    
-    console.log('Language changed successfully to:', newLanguage);
-  };
+  }, [language, resetQuizState]);
 
-  const getScore = () => {
+  const getScore = useCallback(() => {
     return answers.reduce((score, answer, index) => {
       return score + (answer === questions[index]?.correctAnswer ? 1 : 0);
     }, 0);
-  };
+  }, [answers, questions]);
 
-  const getCurrentQuestion = () => {
+  const getCurrentQuestion = useCallback(() => {
     return questions[currentQuestionIndex];
-  };
+  }, [questions, currentQuestionIndex]);
 
-  const getCurrentAnswer = () => {
+  const getCurrentAnswer = useCallback(() => {
     return answers[currentQuestionIndex];
-  };
+  }, [answers, currentQuestionIndex]);
 
-  const getProgressStatus = (index) => {
+  const getProgressStatus = useCallback((index) => {
     if (index === currentQuestionIndex && currentScreen === 'question') {
       return 'current';
     }
@@ -395,9 +284,10 @@ export const AppProvider = ({ children }) => {
       return answers[index] === questions[index]?.correctAnswer ? 'correct' : 'incorrect';
     }
     return 'unanswered';
-  };
+  }, [currentQuestionIndex, currentScreen, answers, questions]);
 
-  const value = {
+  // Memoize the context value to prevent unnecessary re-renders
+  const value = useMemo(() => ({
     currentScreen,
     setCurrentScreen,
     language,
@@ -407,8 +297,6 @@ export const AppProvider = ({ children }) => {
     answers,
     showLanguageSelector,
     setShowLanguageSelector,
-    isTransitioningToScreensaver,
-    isCriticalTransition,
     kioskId,
     setKioskId: updateKioskId,
     screensaverTimeout,
@@ -424,7 +312,28 @@ export const AppProvider = ({ children }) => {
     getCurrentQuestion,
     getCurrentAnswer,
     getProgressStatus,
-  };
+  }), [
+    currentScreen,
+    language,
+    content,
+    questions,
+    currentQuestionIndex,
+    answers,
+    showLanguageSelector,
+    kioskId,
+    screensaverTimeout,
+    goToScreensaver,
+    startQuiz,
+    beginQuiz,
+    startQuestions,
+    answerQuestion,
+    nextQuestion,
+    changeLanguage,
+    getScore,
+    getCurrentQuestion,
+    getCurrentAnswer,
+    getProgressStatus,
+  ]);
 
   return (
     <AppContext.Provider value={value}>

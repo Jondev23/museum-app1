@@ -1,0 +1,35 @@
+ /* ============================================
+   SCREEN TRANSITION ANIMATIONS
+   Custom animations for museum kiosk app screens
+   - All animations are now handled by GSAP
+   - CSS animations removed to prevent conflicts
+   ============================================ */
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Hide element during transition */
+.screen-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Show element during transition */
+.screen-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Ensure proper positioning for slide animations */
+.screen-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Prevent scroll during transitions */
+.transition-active {
+  overflow: hidden;
+}

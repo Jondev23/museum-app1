@@ -1,20 +1,11 @@
 // Import React hooks and app context
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
 
 // Custom hook for start screen functionality
 export const useStartScreen = () => {
   // Get app context functions and data
   const { startQuestions, content, language } = useApp();
-  
-  // Local state for content animation
-  const [showContent, setShowContent] = useState(false);
-
-  // Effect to show content with delay for animation
-  useEffect(() => {
-    const timer = setTimeout(() => setShowContent(true), 300);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Memoized start screen content based on current language
   const startContent = useMemo(() => content?.[language]?.startScreen, [content, language]);
@@ -63,8 +54,6 @@ export const useStartScreen = () => {
   }), []);
 
   return {
-    showContent,
-    
     startContent,
     defaultTexts,
     isValidData,

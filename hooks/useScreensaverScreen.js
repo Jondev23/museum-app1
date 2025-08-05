@@ -12,11 +12,15 @@ export const useScreensaverScreen = () => {
   
   // Check if we have valid data and determine loading state
   const isValidData = useMemo(() => Boolean(content?.[language]), [content, language]);
-  const isLoading = useMemo(() => !isValidData, [isValidData]);
+  const isLoading = useMemo(() => !content || !content[language], [content, language]);
+
+  // Always show screensaver content, even with fallback data
+  const shouldShowScreensaver = useMemo(() => true, []);
 
   // Handle touch interaction to exit screensaver
   const handleTouch = useCallback(() => {
-    console.log('Screensaver touched, transitioning to start screen');
+    console.log('🖱️ Screensaver touched, transitioning to start screen');
+    console.log('🖱️ Calling startQuiz()...');
     startQuiz();
   }, [startQuiz]);
 
@@ -30,6 +34,7 @@ export const useScreensaverScreen = () => {
   return {
     isLoading,
     isValidData,
+    shouldShowScreensaver,
     
     screensaverContent,
     defaultContent,

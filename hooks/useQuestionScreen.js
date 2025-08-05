@@ -27,7 +27,13 @@ export const useQuestionScreen = () => {
   }, [currentQuestionIndex]);
   
   // Get current question data
-  const question = useMemo(() => getCurrentQuestion(), [getCurrentQuestion]);
+  const question = useMemo(() => {
+    const currentQuestion = getCurrentQuestion();
+    console.log('🎯 useQuestionScreen - current question:', currentQuestion);
+    console.log('🎯 useQuestionScreen - questions array:', questions);
+    console.log('🎯 useQuestionScreen - currentQuestionIndex:', currentQuestionIndex);
+    return currentQuestion;
+  }, [getCurrentQuestion, questions, currentQuestionIndex]);
   const startContent = useMemo(() => content?.[language]?.startScreen, [content, language]);
 
   // Handle answer selection with processing delay
@@ -60,11 +66,11 @@ export const useQuestionScreen = () => {
     const baseClasses = 'transition-all duration-75 transform bg-transparent';
     
     if (selectedAnswer === null && !isProcessing) {
-      return `${baseClasses} hover:bg-white/10 hover:shadow-lg hover:scale-102 active:scale-98 cursor-pointer`;
+      return `${baseClasses} hover:bg-white/10 hover:shadow-lg cursor-pointer`;
     }
     
     if (selectedAnswer === index) {
-      return `${baseClasses} scale-102 shadow-xl cursor-not-allowed`;
+      return `${baseClasses} cursor-not-allowed`;
     }
     
     return `${baseClasses} opacity-60 cursor-not-allowed`;
@@ -86,13 +92,13 @@ export const useQuestionScreen = () => {
         ...baseStyle,
         backgroundColor: 'var(--color-neutral-light)',
         borderColor: 'var(--color-neutral-light)',
-        minWidth: 'min(42.3rem, 63vw, 80vh)',
-        minHeight: 'min(4.62rem, 6.93vh, 8vw)',
+        minWidth: 'min(63.36rem, 58vw, 75vh)',
+        minHeight: 'min(7.3152rem, 6.93vh, 8vw)',
         maxWidth: '90vw',
         width: 'auto',
         height: 'auto',
         padding: 'min(1rem, 1.5vh, 2vw) min(4rem, 5vw, 6vh)',
-        borderRadius: 'min(4.62rem, 6.93vh, 8vw)',
+        borderRadius: 'min(7.3152rem, 6.93vh, 8vw)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

@@ -1,6 +1,5 @@
-import { motion } from 'framer-motion';
-import { QUESTION_CONFIG } from './QuestionScreenConfig';
 import { processTextWithHTML } from '../../utils/textProcessor';
+import { QUESTION_CONFIG } from './QuestionScreenConfig';
 
 // Answer buttons component with multiple choice answers
 const AnswerButtons = ({ 
@@ -20,56 +19,25 @@ const AnswerButtons = ({
   };
 
   return (
-    // Animated container for answer buttons
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 1 }}
-      transition={{ 
-        duration: QUESTION_CONFIG.ANIMATION_DURATIONS.BUTTONS, 
-        delay: QUESTION_CONFIG.ANIMATION_DELAYS.BUTTONS 
-      }}
-      className="flex flex-col gap-[min(2.52rem,3.6vh)] w-full items-center max-h-[40vh] overflow-hidden"
-    >
+    // Container for answer buttons
+    <div className="flex flex-col gap-[min(2.52rem,3.6vh)] w-full items-center max-h-[40vh] overflow-hidden px-[min(0.5rem,1vw)]">
       {question.answers.map((answer, index) => (
-        <motion.button
+        <button
           key={index}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ 
-            opacity: selectedAnswer === index ? 1 : 0,
-            transition: { 
-              duration: selectedAnswer === index ? 0.2 : 0.1,
-              delay: selectedAnswer === index ? 0.2 : 0
-            }
-          }}
-          transition={{ 
-            duration: QUESTION_CONFIG.ANIMATION_DURATIONS.BUTTON_INDIVIDUAL, 
-            delay: QUESTION_CONFIG.ANIMATION_DELAYS.BUTTON_BASE + index * QUESTION_CONFIG.ANIMATION_DELAYS.BUTTON_STAGGER 
-          }}
-          onClick={() => handleAnswerClick(index, QUESTION_CONFIG.ANSWER_DELAY)}
+          onClick={() => handleAnswerClick(index, 800)}
           onTouchStart={(e) => handleTouchStart(e, index)}
           disabled={selectedAnswer !== null || isProcessing}
-          className={`btn-answer inline-flex min-w-[min(42.3rem,63vw,80vh)] min-h-[min(4.62rem,6.93vh,8vw)] items-center justify-center gap-[min(0.5rem,1vw)] px-[min(4rem,5vw,6vh)] py-[min(1rem,1.5vh,2vw)] rounded-[min(4.62rem,6.93vh,8vw)] border-[min(0.1125rem,0.225vw,0.3vh)] border-solid relative ${getButtonClassName(index)}`}
+          className={`btn-answer inline-flex min-w-[min(63.36rem,58vw,75vh)] min-h-[min(7.3152rem,6.93vh,8vw)] items-center justify-center gap-[min(0.5rem,1vw)] px-[min(4rem,5vw,6vh)] py-[min(1rem,1.5vh,2vw)] rounded-[min(7.3152rem,6.93vh,8vw)] border-[min(0.1125rem,0.225vw,0.3vh)] border-solid relative ${getButtonClassName(index)}`}
           style={getButtonStyle(index)}
         >
           <span 
-            className={`typography-antworten-buttons relative w-full text-center break-words hyphens-auto max-w-full transition-colors duration-75 ${selectedAnswer === index ? '' : 'text-primary'}`}
-            style={{
-              color: selectedAnswer === index ? 'var(--color-feedback-answer-text)' : undefined,
-              overflowWrap: selectedAnswer === index ? 'break-word' : undefined,
-              wordBreak: selectedAnswer === index ? 'break-word' : undefined,
-              hyphens: selectedAnswer === index ? 'auto' : undefined,
-              whiteSpace: selectedAnswer === index ? 'normal' : undefined,
-              transform: 'translateY(4%)',
-              fontVariantNumeric: 'tabular-nums lining-nums'
-            }}
+            className={`typography-antworten-buttons ${selectedAnswer === index ? 'selected' : ''} relative w-full text-center break-words hyphens-auto max-w-full transition-colors duration-75`}
           >
             {processTextWithHTML(answer)}
           </span>
-        </motion.button>
+        </button>
       ))}
-    </motion.div>
+    </div>
   );
 };
 

@@ -1,32 +1,22 @@
 // Import React hooks for memoization
 import { useMemo } from 'react';
 
-// Configuration constants for feedback screen animations and styling
+// Configuration constants for feedback screen styling
 export const FEEDBACK_CONFIG = {
-  // Animation duration timings in seconds
-  ANIMATION_DURATIONS: {
-    SCREEN_TRANSITION: 0.4, // Screen transition duration
-    CONTAINER: 1.0,         // Container animation duration
-    TITLE: 0.1,             // Title animation duration
-    ANSWER: 0.2,            // Answer reveal animation
-    MESSAGE: 0.3,           // Feedback message animation
-    BUTTON: 0.8,            // Continue button animation
-    BUTTON_DELAY: 0.7,      // Delay before button appears
-  },
-  
+ 
   // Color configuration using CSS custom properties
   COLORS: {
-    CORRECT_BG: 'var(--color-feedback-correct)',     // Green for correct answers
-    INCORRECT_BG: 'var(--color-feedback-incorrect)', // Red for incorrect answers
-    ANSWER_BG: 'var(--color-feedback-answer-bg)',    // Answer background color
-    ANSWER_TEXT: 'var(--color-feedback-answer-text)', // Answer text color
-    OVERLAY: 'bg-overlay',                            // Background overlay class
+    CORRECT_BG: 'var(--color-feedback-correct)',    
+    INCORRECT_BG: 'var(--color-feedback-incorrect)', 
+    ANSWER_BG: 'var(--color-feedback-answer-bg)',    
+    ANSWER_TEXT: 'var(--color-feedback-answer-text)', 
+    OVERLAY: 'bg-overlay',                            
   },
   
   // Size and styling constants
   SIZES: {
-    BORDER_RADIUS: 'var(--border-radius-md)',  // Medium border radius
-    BUTTON_BORDER_RADIUS: 'rounded-full',      // Full rounded button style
+    BORDER_RADIUS: 'var(--border-radius-md)',  
+    BUTTON_BORDER_RADIUS: 'rounded-full',      
   },
 };
 
@@ -69,8 +59,6 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const titleStyle = useMemo(() => ({
-    fontSize: '3.375rem', 
-    lineHeight: '4.05rem', 
     width: '95%',
     minHeight: 'auto', 
     maxHeight: '35vh', 
@@ -88,13 +76,13 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   }), []);
 
   const answerButtonStyle = useMemo(() => ({
-    minWidth: 'min(42.3rem, 63vw, 80vh)',
-    minHeight: 'min(4.62rem, 6.93vh, 8vw)',
+    minWidth: 'min(63.36rem, 63vw, 80vh)',
+    minHeight: 'min(7.3152rem, 6.93vh, 8vw)',
     maxWidth: '90vw',
     width: 'auto', 
     height: 'auto', 
     padding: 'min(1rem, 1.5vh, 2vw) min(4rem, 5vw, 6vh)',
-    borderRadius: 'min(4.62rem, 6.93vh, 8vw)',
+    borderRadius: 'min(7.3152rem, 6.93vh, 8vw)',
     border: 'min(0.1125rem, 0.225vw, 0.3vh) solid var(--color-neutral-light)',
     display: 'flex',
     alignItems: 'center',
@@ -152,41 +140,35 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
   const buttonContainerStyle = useMemo(() => ({
     flexShrink: 0,
     marginRight: 'min(8.8rem, 11.3vw)', 
-    marginBottom: 'min(6.3rem, 10vh)'
+    marginBottom: '7.9rem'
   }), []);
 
   const buttonStyle = useMemo(() => ({
-    minWidth: 'var(--feedback-button-width)',
-    minHeight: 'var(--feedback-button-height)',
     background: 'transparent',
     border: 'none',
     justifyContent: 'flex-start',
-    gap: 'var(--feedback-button-gap)'
+    gap: '1rem'
   }), []);
 
   const buttonTextStyle = useMemo(() => ({
-    fontSize: 'var(--feedback-button-text-size)',
-    lineHeight: 'var(--feedback-button-text-line-height)',
     textTransform: 'uppercase'
   }), []);
 
   const arrowStyle = useMemo(() => ({
-    
-    width: 'var(--feedback-arrow-width)',
-    height: 'var(--feedback-arrow-height)',
+    width: '5.01688rem',
+    height: '2.71563rem',
     flexShrink: 0,
-    
-    minWidth: 'var(--feedback-arrow-min-width)',
-    minHeight: 'var(--feedback-arrow-min-height)',
-    
-    aspectRatio: '1/1',
+    minWidth: '5.01688rem',
+    minHeight: '2.71563rem',
     objectFit: 'contain'
   }), []);
 
   const feedbackContainerStyleWithBg = useMemo(() => ({
     ...feedbackContainerStyle,
     backgroundColor: isCorrect ? 'var(--color-feedback-correct)' : 'var(--color-feedback-incorrect)',
-    borderRadius: FEEDBACK_CONFIG.SIZES.BORDER_RADIUS,
+    borderRadius: '1.875rem',
+    paddingLeft: '6rem',
+    paddingRight: '6rem',
   }), [feedbackContainerStyle, isCorrect]);
 
   return {

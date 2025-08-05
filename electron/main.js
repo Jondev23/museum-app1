@@ -13,15 +13,12 @@ console.log('process.resourcesPath:', process.resourcesPath);
 console.log('__dirname:', __dirname);
 
 let mainWindow;
-let inactivityTimer;
-const INACTIVITY_TIMEOUT = 3 * 60 * 1000; // 3 minutes inactivity timeout (will be configurable)
 
 // Use userData directory for config file - this is writable in packaged apps
 const CONFIG_FILE_PATH = isDev 
   ? path.join(__dirname, '../public/config.json')
   : path.join(app.getPath('userData'), 'config.json');
 
-console.log('Electron starting in', isDev ? 'DEVELOPMENT' : 'PRODUCTION', 'mode');
 console.log('Config file path:', CONFIG_FILE_PATH);
 
 // Configuration management functions
@@ -50,7 +47,7 @@ async function loadConfig() {
     
     const defaultConfig = {
       activeKioskId: 'kiosk1',
-      screensaverTimeout: 180000, // 3 minutes fallback
+      screensaverTimeout: 10000, // 10 seconds unified default
       lastUpdated: new Date().toISOString()
     };
     
@@ -116,9 +113,6 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js')
     }
   });
-
-  // Always enable DevTools for debugging (commented out for production)
-  // mainWindow.webContents.openDevTools();
 
   // Load the Next.js app
   if (isDev) {
@@ -251,11 +245,6 @@ function createWindow() {
     mainWindow = null;
   });
 
-  // Optional: Reset inactivity timer on any user interaction (disabled for desktop app)
-  // mainWindow.webContents.on('before-input-event', (event, input) => {
-  //   resetInactivityTimer();
-  // });
-
   // Allow navigation within the same domain (only for development)
   if (isDev) {
     mainWindow.webContents.on('will-navigate', (event, navigationUrl) => {
@@ -272,23 +261,8 @@ function createWindow() {
   }
 }
 
-// Optional function for desktop app - screensaver disabled by default
-function resetInactivityTimer() {
-  // Disabled for desktop application
-  // if (inactivityTimer) {
-  //   clearTimeout(inactivityTimer);
-  // }
-  
-  // inactivityTimer = setTimeout(() => {
-  //   if (mainWindow) {
-  //     mainWindow.webContents.send('show-screensaver');
-  //   }
-  // }, INACTIVITY_TIMEOUT);
-}
-
 app.whenReady().then(() => {
   createWindow();
-  // Optional: resetInactivityTimer(); // Disabled for desktop app
 
   // Register useful shortcuts for desktop application
   try {
@@ -323,11 +297,11 @@ ipcMain.handle('load-kiosk-content', async (event, kioskId) => {
     
     // Try multiple possible paths for content files
     const possibleContentPaths = [
-      path.join(process.resourcesPath, 'app', 'out', 'content', `${kioskId}.json`),  // Standard packaged path
-      path.join(__dirname, '../out/content', `${kioskId}.json`),                     // Development build path
-      path.join(__dirname, '../public/content', `${kioskId}.json`),                  // Source path
-      path.join(process.cwd(), 'out', 'content', `${kioskId}.json`),               // Current working directory
-      path.join(app.getAppPath(), 'out', 'content', `${kioskId}.json`)             // App path
+      path.join(process.resourcesPath, 'app', 'out', 'content', `${kioskId}.json`),  
+      path.join(__dirname, '../out/content', `${kioskId}.json`),                     
+      path.join(__dirname, '../public/content', `${kioskId}.json`),                 
+      path.join(process.cwd(), 'out', 'content', `${kioskId}.json`),               
+      path.join(app.getAppPath(), 'out', 'content', `${kioskId}.json`)    
     ];
     
     console.log('Checking content paths:', possibleContentPaths);

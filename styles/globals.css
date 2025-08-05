@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom fonts for museum app */
+/* Import screen transition animations */
+@import './screen-animations.css';
+
+/* ============================================
+   CUSTOM FONTS FOR MUSEUM APP
+   ============================================ */
 @font-face {
   font-family: 'Tisa Pro';
   src: url('/fonts/TisaPro-Regular.otf') format('opentype');
@@ -24,6 +29,14 @@
   src: url('/fonts/TisaPro-BoldItalic.otf') format('opentype');
   font-weight: 700;
   font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tisa Pro';
+  src: url('/fonts/Tisa-Pro-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -51,9 +64,11 @@
   font-display: swap;
 }
 
-/* CSS Variables - Design Tokens */
+/* ============================================
+   CSS VARIABLES - DESIGN TOKENS
+   ============================================ */
 :root {
-  /* Color Tokens */
+  /* ========== COLOR PALETTE ========== */
   --color-neutral-light: #d9d9d9;
   --color-neutral-dark: #1a1a1a; 
   --color-white: #ffffff; 
@@ -61,67 +76,11 @@
   --color-blassgruen-dark: #598364;
   --color-blassgruen: #85af8b; 
   --color-schiefer: #344243; 
-  --color-schiefer-dark: #2a3334; 
 
-  /* Typography Tokens - Responsive */
-  /* Main titles - Fixed 6rem size */
-  --typography-head-font-size: 6rem; 
-  --typography-head-line-height: 7.2rem; 
-  --typography-head-font-weight: 700;
-  --typography-head-font-style: italic;
-  --typography-head-font-family: 'Tisa Pro';
-
-  /* Subtitles - Fixed 4rem size */
-  --typography-subline-font-size: 4rem;
-  --typography-subline-line-height: 4.8rem;
-  --typography-subline-font-weight: 400;
-  --typography-subline-font-style: normal;
-  --typography-subline-font-family: 'Tisa Sans Pro';
-
-  /* Questions - Fixed 3.375rem size */
-  --typography-fragen-font-size: 3.375rem; 
-  --typography-fragen-line-height: 4.05rem; 
-  --typography-fragen-font-weight: 800;
-  --typography-fragen-font-style: italic;
-  --typography-fragen-font-family: 'Tisa Pro';
-
-  /* Answer buttons - Fixed 3rem size */
-  --typography-antworten-buttons-font-size: 3rem; 
-  --typography-antworten-buttons-line-height: 3.6rem; 
-  --typography-antworten-buttons-font-weight: 400;
-  --typography-antworten-buttons-font-style: normal;
-  --typography-antworten-buttons-font-family: 'Tisa Sans Pro';
-  --typography-antworten-buttons-letter-spacing: 0.48px;
-
-  /* Flow text - Fixed 2.25rem size */
-  --typography-antwort-fliess-font-size: 2.25rem;
-  --typography-antwort-fliess-line-height: 2.7rem;
-  --typography-antwort-fliess-font-weight: 400;
-  --typography-antwort-fliess-font-style: normal;
-  --typography-antwort-fliess-font-family: 'Tisa Pro';
-  --typography-antwort-fliess-letter-spacing: 0.36px;
-
-  /* Flow text bold - 18px to 36px */
-  --typography-antwort-fliess-bold-font-size: clamp(1.125rem, 2vw, 2.25rem);
-  --typography-antwort-fliess-bold-line-height: clamp(1.6rem, 2.8vw, 3.15rem);
-  --typography-antwort-fliess-bold-font-weight: 700;
-  --typography-antwort-fliess-bold-font-style: normal;
-  --typography-antwort-fliess-bold-font-family: 'Tisa Pro';
-  --typography-antwort-fliess-bold-letter-spacing: 0.36px;
-
-  /* Semantic Color Mapping */
-  --color-primary: var(--color-kupfer);
-  --color-text-primary: var(--color-neutral-light);
-  --color-background-primary: var(--color-neutral-dark);
-
-  /* UI Colors */
+  /* ========== SEMANTIC COLORS ========== */
   --color-feedback-correct: var(--color-blassgruen-dark);
   --color-feedback-incorrect: var(--color-kupfer);
-  --color-feedback-answer-text: var(--color-neutral-dark);
-  --color-screensaver-title: var(--color-white);
-  --color-overlay: rgba(0, 0, 0, 0);
-  --color-white-overlay: rgba(255, 255, 255, 0.95);
-
+  
   /* Language Selector Colors */
   --color-language-overlay: var(--color-schiefer);
   --color-language-button-active: var(--color-kupfer);
@@ -135,690 +94,519 @@
   --language-button-radius: min(3.75rem, 8vw);
   --language-gap: min(3.24rem, 6.08vw);
 
-  /* Language Selector Icon Specific */
-  --language-selector-icon-size: min(2.7rem, 4.86vw, 6.075vh);
-  --language-selector-button-size: min(3.5rem, 6vw);
-  --language-selector-margin-bottom: min(6rem, 9.5vh);
-  --language-selector-margin-left: min(5.125rem, 8vw);
-
   /* Language Selector Text Sizing */
   --language-button-text-size: 2rem;
   --language-button-text-line-height: 5.5rem;
   --language-buttons-gap: min(1.5rem, 3vw);
 
-  /* Responsive spacing */
-  --spacing-xs: clamp(0.25rem, 1vw, 0.75rem);
-  --spacing-sm: clamp(0.5rem, 1.5vw, 1rem);
-  --spacing-md: clamp(0.75rem, 2vw, 1.5rem);
-  --spacing-lg: clamp(1rem, 3vw, 2.5rem);
-  --spacing-xl: clamp(1.5rem, 4vw, 3.5rem);
-  --spacing-2xl: clamp(2rem, 5vw, 4.5rem);
-
-  /* Border radius */
-  --border-radius-sm: clamp(0.25rem, 1vw, 0.75rem);
-  --border-radius-md: clamp(0.5rem, 2vw, 1.5rem);
-
-  /* Admin specific */
-  --admin-font-size: min(1rem, 2vw);
-  --admin-font-size-sm: min(0.875rem, 1.75vw);
-  --admin-font-size-title: min(1.375rem, 2.75vw);
-  --color-admin-input-bg: #f8f9fa;
-  --color-admin-success-bg: rgba(34, 197, 94, 0.1);
-
-  /* Feedback Button Sizing */
-  --feedback-button-width: min(14.0625rem, 22.5vw);
-  --feedback-button-height: min(3.75rem, 6.25vh);      
-  --feedback-button-gap: min(1.25rem, 2.5vw);             
-  --feedback-button-text-size: 1.875rem; 
-  --feedback-button-text-line-height: min(6.25vh, 3.75rem);
-  --feedback-arrow-width: 5.01688rem; 
-  --feedback-arrow-height: 2.71563rem;  
-  --feedback-arrow-min-width: min(3.0914235rem, 4.96375vw);  
-  --feedback-arrow-min-height: min(3.0914235rem, 4.96375vh);
-
-  /* Results Screen Title - Fixed 6rem size */
-  --results-title-font-size: 6rem; /* Fixed size - 96px */
-  --results-title-line-height: 7.2rem; /* Fixed proportional line height */
-
-  /* Results Screen Score Text - Fixed 4rem size */
-  --results-score-text-font-size: 4rem; /* Fixed size - 64px */
-  --results-score-text-line-height: 4.8rem; /* Fixed proportional line height */
-
-  /* Results Screen Play Again Button Text - Fixed 1.875rem size */
-  --results-play-again-button-text-font-size: 1.875rem; /* Fixed size - 30px */
-  --results-play-again-button-text-line-height: 2.25rem; /* Fixed proportional line height */
-
-  /* Smaller Subtitles - 20% smaller than normal subtitles */
-  --subtitle-small-font-size: clamp(1.4256rem, 2.5661vw, 2.8512rem);
-  --subtitle-small-line-height: clamp(1.9008rem, 3.4214vw, 3.8016rem); 
-
-  /* Results Screen Spacing - No spacing between title and subtitle */
-  --results-title-margin: 0; 
-  
-  /* Results Screen Progress Spacing - More space between subtitle and progress dots */
-  --results-progress-margin: clamp(1.5rem, 4vw, 3rem); 
-  
-  /* Results Screen Lateral Spacing - Horizontal padding for the page */
-  --results-horizontal-padding: clamp(2rem, 6vw, 5rem); /* Generous horizontal spacing */
-  
-  /* Results Screen Play Again Button Positioning - Aligned with language selector icon */
-  --results-play-again-bottom: min(3.15rem, 5.25vh); 
-
-  /* StartScreen Touch Indicator - Fixed 8rem size */
-  --touch-indicator-size: 7rem; 
-
-  /* StartScreen Top Spacing - More space from top */
-  --startscreen-top-spacing: clamp(9rem, 15vh, 12rem);
-
-  /* StartScreen Description Lateral Spacing - Reduced horizontal padding */
-  --startscreen-description-lateral-spacing: 0;
+  /* Touch Indicator Sizing */
+  --touch-indicator-size: 8rem;
 }
 
-/* Responsive breakpoints for better mobile support */
-@media (max-width: 480px) {
-  :root {
-    /* Fixed typography for small screens */
-    --typography-head-font-size: 6rem; /* Fixed size - same as desktop */
-    --typography-subline-font-size: 4rem; /* Fixed size - same as desktop */
-    --typography-antworten-buttons-font-size: 3rem; /* Fixed size - same as desktop */
-    --typography-antwort-fliess-font-size: 2.25rem; /* Fixed size - same as desktop */
-    
-    --results-title-font-size: clamp(1.368rem, 5.472vw, 2.052rem); 
-    
-    --subtitle-small-font-size: clamp(0.9rem, 4.32vw, 1.44rem); 
-    
-    --results-title-margin: 0; 
+/* ============================================
+   TYPOGRAPHY CLASSES
+   ============================================ */
 
-    --results-progress-margin: clamp(1rem, 3.5vw, 2rem); 
-    --results-horizontal-padding: clamp(1.5rem, 4vw, 3rem); 
-    --results-play-again-bottom: min(3.15rem, 5.25vh); 
-  }
+/* Question title typography */
+.typography-fragen {
+  color: var(--color-neutral-light, #D9D9D9) !important;
+  font-family: "Tisa Pro" !important;
+  font-size: 3.375rem !important;
+  font-style: italic !important;
+  line-height: 1.2 !important;
 }
 
-@media (max-width: 768px) {
-  :root {
-    /* Adjust spacing for tablets */
-    --spacing-lg: clamp(0.75rem, 2.5vw, 1.5rem);
-    --spacing-xl: clamp(1rem, 3vw, 2rem);
-    --spacing-2xl: clamp(1.5rem, 4vw, 2.5rem);
-    /* Results Screen Spacing - No spacing for tablets */
-    --results-title-margin: 0; /* No space between title and subtitle for tablets */
-    /* Results Screen Progress Spacing - More space between subtitle and progress dots for tablets */
-    --results-progress-margin: clamp(1.2rem, 3.5vw, 2.5rem); /* More space between subtitle and progress circles for tablets */
-    /* Results Screen Lateral Spacing - Medium horizontal padding for tablets */
-    --results-horizontal-padding: clamp(1.75rem, 5vw, 4rem); /* Medium horizontal spacing for tablets */
-    /* Results Screen Play Again Button Positioning - Aligned with language selector for tablets */
-    --results-play-again-bottom: min(3.15rem, 5.25vh);
-  }
+/* Answer buttons typography */
+.typography-antworten-buttons {
+  color: var(--color-neutral-light, #D9D9D9) !important;
+  font-family: "Tisa Sans Pro" !important;
+  font-size: 3rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  text-align: center !important;
 }
 
-@media (orientation: landscape) and (max-height: 600px) {
-  :root {
-    /* Fixed typography for landscape */
-    --typography-head-font-size: 6rem; /* Fixed size - same as desktop */
-    --typography-subline-font-size: 4rem; /* Fixed size - same as desktop */
-    --spacing-lg: clamp(0.5rem, 2vh, 1rem);
-    --spacing-xl: clamp(0.75rem, 3vh, 1.5rem);
-    /* Results title 20% smaller than main title for landscape */
-    --results-title-font-size: clamp(1.026rem, 2.736vh, 1.71rem); /* 20% smaller than landscape main title */
-    /* Smaller subtitles - 20% smaller for landscape */
-    --subtitle-small-font-size: clamp(0.72rem, 2.16vh, 1.26rem); /* 20% smaller than landscape subtitle */
-    /* Results Screen Spacing - No spacing for landscape */
-    --results-title-margin: 0; /* No space between title and subtitle for landscape */
-    /* Results Screen Progress Spacing - More space between subtitle and progress dots for landscape */
-    --results-progress-margin: clamp(0.75rem, 2.5vh, 1.5rem); /* More space between subtitle and progress circles for landscape */
-    /* Results Screen Lateral Spacing - Compact horizontal padding for landscape */
-    --results-horizontal-padding: clamp(1rem, 8vw, 3rem); /* Compact horizontal spacing for landscape */
-    /* Results Screen Play Again Button Positioning - Aligned with language selector for landscape */
-    --results-play-again-bottom: min(3.15rem, 5.25vh);
-  }
+/* Answer buttons selected state typography */
+.typography-antworten-buttons.selected {
+  color: var(--color-schiefer, #344243) !important;
+  font-family: "Tisa Sans Pro" !important;
+  font-size: 3rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  text-align: center !important;
 }
 
-@layer base {
-  html {
-    font-family: 'Tisa Pro';
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    user-select: none;
-    background-color: var(--color-background-primary);
-    color: var(--color-text-primary);
-  }
-
-  /* Touch optimization for Windows touch devices */
-  button, [role="button"], input[type="submit"], input[type="button"] {
-    touch-action: manipulation;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  /* Prevent text selection on touch devices */
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
+/* Feedback title typography */
+.feedback-title {
+  color: var(--color-neutral-light, #D9D9D9) !important;
+  font-family: "Tisa Pro" !important;
+  font-size: 3.375rem !important;
+  font-style: italic !important;
+  font-weight: 750 !important;
+  line-height: 1.2 !important;
 }
 
-@layer components {
-  /* Typography Classes */
-  .typography-head {
-    font-family: var(--typography-head-font-family);
-    font-size: var(--typography-head-font-size);
-    line-height: var(--typography-head-line-height);
-    font-weight: var(--typography-head-font-weight);
-    font-style: var(--typography-head-font-style);
-    text-align: center;
-  }
+/* Feedback button text typography */
+.text-button {
+  color: var(--color-neutral-light, #D9D9D9) !important;
+  font-family: "Tisa Sans Pro" !important;
+  font-size: 1.875rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
 
-  .typography-subline {
-    font-family: var(--typography-subline-font-family);
-    font-size: var(--typography-subline-font-size);
-    line-height: var(--typography-subline-line-height);
-    font-weight: var(--typography-subline-font-weight);
-    font-style: var(--typography-subline-font-style);
-    text-align: center;
-  }
+/* Feedback answer typography */
+.feedback-answer-text {
+  color: var(--color-schiefer, #344243) !important;
+  font-family: "Tisa Sans Pro" !important;
+  font-size: 3rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
 
-  .typography-fragen {
-    font-family: var(--typography-fragen-font-family);
-    font-size: var(--typography-fragen-font-size);
-    line-height: var(--typography-fragen-line-height);
-    font-weight: var(--typography-fragen-font-weight);
-    font-style: var(--typography-fragen-font-style);
-    text-align: center;
-    padding-left: min(1.8rem, 1.8vw, 3vh);
-    padding-right: min(1.8rem, 1.8vw, 3vh);
-    box-sizing: border-box;
-  }
+/* Feedback message typography */
+.feedback-message-text {
+  color: var(--color-neutral-light, #D9D9D9) !important;
+  text-align: center !important;
+  font-family: "Tisa Pro" !important;
+  font-size: 2.25rem !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+}
 
-  .typography-antworten-buttons {
-    font-family: var(--typography-antworten-buttons-font-family);
-    font-size: var(--typography-antworten-buttons-font-size);
-    line-height: var(--typography-antworten-buttons-line-height);
-    font-weight: var(--typography-antworten-buttons-font-weight);
-    font-style: var(--typography-antworten-buttons-font-style);
-    letter-spacing: var(--typography-antworten-buttons-letter-spacing);
-    text-align: center;
-  }
+/* Feedback explanation typography */
+.feedback-explanation-text {
+  color: var(--color-neutral-light, #D9D9D9) !important;
+  text-align: center !important;
+  font-family: "Tisa Pro" !important;
+  font-size: 2.25rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
 
-  .typography-antwort-fliess {
-    font-family: var(--typography-antwort-fliess-font-family);
-    font-size: var(--typography-antwort-fliess-font-size);
-    line-height: var(--typography-antwort-fliess-line-height);
-    font-weight: var(--typography-antwort-fliess-font-weight);
-    font-style: var(--typography-antwort-fliess-font-style);
-    letter-spacing: var(--typography-antwort-fliess-letter-spacing);
-    text-align: center;
-  }
+/* Start screen title typography */
+.typography-head {
+  color: var(--color-neutral-light, #D9D9D9) !important;
+  text-align: center !important;
+  font-family: "Tisa Pro" !important;
+  font-size: 6rem !important;
+  font-style: italic !important;
+  font-weight: 700 !important;
+}
 
-  .typography-antwort-fliess-bold {
-    font-family: var(--typography-antwort-fliess-bold-font-family);
-    font-size: var(--typography-antwort-fliess-bold-font-size);
-    line-height: var(--typography-antwort-fliess-bold-line-height);
-    font-weight: var(--typography-antwort-fliess-bold-font-weight);
-    font-style: var(--typography-antwort-fliess-bold-font-style);
-    letter-spacing: var(--typography-antwort-fliess-bold-letter-spacing);
-    text-align: center;
-  }
+/* Start screen subtitle typography */
+.typography-subline {
+  text-align: center !important;
+  font-family: "Tisa Sans Pro" !important;
+  font-size: 4rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
 
-  /* Legacy compatibility classes */
-  .title-main {
-    @apply typography-head;
-    color: var(--color-text-primary);
-  }
+/* Start screen highlight text typography */
+.start-screen-highlight {
+  color: var(--color-neutral-light) !important;
+  text-align: center !important;
+  font-family: "Tisa Pro" !important;
+  font-size: 2.25rem !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 140% !important;
+  letter-spacing: 0.0225rem !important;
+}
 
-  .title-results {
-    font-family: var(--typography-head-font-family);
-    font-size: var(--results-title-font-size);
-    line-height: var(--results-title-line-height);
-    font-weight: var(--typography-head-font-weight);
-    font-style: var(--typography-head-font-style);
-    text-align: center;
-    color: var(--color-text-primary);
-  }
+/* Start screen description typography */
+.start-screen-description {
+  color: var(--color-neutral-light) !important;
+  text-align: center !important;
+  font-family: "Tisa Pro" !important;
+  font-size: 2.25rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 140% !important;
+  letter-spacing: 0.0225rem !important;
+}
 
-  .title-question {
-    @apply typography-fragen;
-    color: var(--color-text-primary);
-  }
+/* language styles */
 
-  .subtitle-main {
-    @apply typography-subline;
-    color: var(--color-blassgruen);
-  }
+/* Language Selector Styles */
+.language-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-schiefer);
+  opacity: 98%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
 
-  .subtitle-small {
-    font-family: var(--typography-subline-font-family);
-    font-size: var(--results-score-text-font-size);
-    line-height: var(--results-score-text-line-height);
-    font-weight: var(--typography-subline-font-weight);
-    font-style: var(--typography-subline-font-style);
-    text-align: center;
-    color: var(--color-blassgruen);
-  }
+.language-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--language-gap);
+  width: auto;
+  max-width: 100vw;
+  padding: 0 min(2rem, 4vw);
+  min-height: 100vh;
+  padding-top: min(4rem, 6vw);
+  padding-bottom: min(5rem, 10vw);
+}
 
-  .text-body-primary {
-    @apply typography-antwort-fliess;
-    color: var(--color-text-primary);
-  }
+.language-icon {
+  width: var(--language-icon-size);
+  height: var(--language-icon-size);
+  display: block;
+  opacity: 0.8;
+}
 
-  .text-body-bold {
-    @apply typography-antwort-fliess-bold;
-    color: var(--color-text-primary);
-  }
+.language-title,
+.language-subtitle {
+  color: var(--color-neutral-light);
+  text-align: center;
+  font-family: "Tisa Pro";
+  font-size: 3.375rem;
+  font-style: italic;
+  font-weight: 750;
+  line-height: 130%;
+  margin: 0;
+  white-space: nowrap;
+}
 
-  .text-button {
-    @apply typography-antworten-buttons;
-    color: var(--color-text-primary);
-  }
+.language-subtitle {
+  opacity: 0.6;
+}
 
-  .text-button-play-again {
-    font-family: var(--typography-antworten-buttons-font-family);
-    font-size: var(--results-play-again-button-text-font-size);
-    line-height: 7rem; /* Fixed line-height as specified */
-    font-weight: var(--typography-antworten-buttons-font-weight);
-    font-style: var(--typography-antworten-buttons-font-style);
-    letter-spacing: var(--typography-antworten-buttons-letter-spacing);
-    text-align: center;
-    color: #FFF; /* White color as specified */
-    text-transform: uppercase; /* Uppercase as specified */
-    display: flex;
-    width: auto; /* Auto width to accommodate text length */
-    min-width: 13.0625rem; /* Minimum width for consistency */
-    height: 2.625rem; /* Fixed height as specified */
-    flex-direction: column;
-    justify-content: center;
-    white-space: nowrap; /* Prevent text wrapping */
-  }
+.language-button {
+  width: var(--language-button-width);
+  height: var(--language-button-height);
+  border-radius: var(--language-button-radius);
+  border: 2px solid;
+  padding: min(0.625rem, 1.5vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-  .text-answer {
-    @apply typography-antworten-buttons;
-    color: var(--color-schiefer);
-    overflow-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
-    line-height: 1.2;
-    padding: 0.25rem 0.5rem;
-  }
+.language-button-active {
+  background-color: var(--color-language-button-active);
+  border-color: var(--color-language-button-active);
+  color: var(--color-white);
+}
 
-  /* Feedback screen styles */
-  .feedback-title {
-    @apply typography-fragen;
-    color: var(--color-white);
-    overflow-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    white-space: normal;
-    line-height: 1.1;
-    padding: 0.5rem;
-  }
+.language-button-inactive {
+  background-color: transparent;
+  border-color: var(--color-language-button-inactive);
+  color: var(--color-neutral-light);
+}
 
-  /* Color utility classes */
-  .bg-overlay {
-    background-color: var(--color-overlay);
-  }
+.language-buttons-container {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--language-buttons-gap);
+}
 
-  .text-primary {
-    color: var(--color-text-primary);
-  }
+.language-button-text {
+  flex: 1;
+  font-size: var(--language-button-text-size);
+  line-height: var(--language-button-text-line-height);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.6rem;
+}
 
-  /* Button styles */
-  .btn-answer {
-    @apply typography-antworten-buttons;
-    background-color: var(--color-white);
-    color: var(--color-primary);
-    border: 2px solid var(--color-neutral-light);
-    padding: var(--spacing-lg) var(--spacing-xl);
-    border-radius: var(--border-radius-md);
-    cursor: pointer;
-    min-width: 12rem;
-  }
+/* Results title typography - Head & Auswertung */
+.title-results {
+  color: var(--Neutral_Light, #D9D9D9) !important;
+  font-family: "Tisa Pro" !important;
+  font-size: 6rem !important;
+  font-style: italic !important;
+  font-weight: 700 !important;
+  line-height: 120% !important; /* 7.2rem */
+}
 
-  /* Admin Panel Styles */
-  .admin-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: var(--color-overlay);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 50;
-  }
+/* Admin Panel Styles */
+.admin-corner-trigger {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  z-index: 9999;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 
-  .admin-panel {
-    background-color: var(--color-white-overlay);
-    border-radius: var(--border-radius-md);
-    padding: var(--spacing-2xl);
-    width: 100%;
-    max-width: min(24rem, 85vw);
-    margin: var(--spacing-md);
-  }
+.admin-corner-trigger:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
 
-  .admin-panel-wide {
-    background-color: var(--color-white-overlay);
-    border-radius: var(--border-radius-md);
-    padding: var(--spacing-2xl);
-    width: 100%;
-    max-width: min(26rem, 90vw);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.admin-corner-trigger:active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 
-  .admin-title {
-    font-size: var(--admin-font-size-title);
-    font-weight: 500;
-    text-align: center;
-    color: var(--color-schiefer-dark);
-    margin-bottom: var(--spacing-xl);
-  }
+.admin-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
+}
 
-  .admin-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-lg);
-  }
+.admin-panel {
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  padding: 32px;
+  min-width: 500px;
+  max-width: 650px;
+  min-height: 300px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
 
-  .admin-form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+.admin-title {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
 
-  .admin-input {
-    width: 100%;
-    padding: min(0.875rem, 1.75vw) var(--spacing-md);
-    border: 0;
-    background-color: var(--color-admin-input-bg);
-    border-radius: var(--border-radius-sm);
-    font-size: var(--admin-font-size);
-    color: var(--color-schiefer-dark);
-    outline: none;
-  }
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 8px;
+}
 
-  .admin-label {
-    font-size: var(--admin-font-size);
-    font-weight: 500;
-    color: var(--color-schiefer-dark);
-    margin-bottom: var(--spacing-sm);
-    display: block;
-  }
+.admin-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-  .admin-input:focus {
-    ring: 2px solid var(--color-primary);
-  }
+.admin-label {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
 
-  .admin-button-group {
-    display: flex;
-    gap: var(--spacing-sm);
-  }
+.admin-input {
+  background-color: #404040;
+  border: 1px solid #555555;
+  border-radius: 6px;
+  padding: 12px;
+  color: #ffffff;
+  font-size: 16px;
+  outline: none;
+}
 
-  .admin-button-group-spaced {
-    display: flex !important;
-    gap: 1.5rem !important;
-    width: 100% !important;
-  }
+.admin-input:focus {
+  border-color: #007acc;
+  box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.2);
+}
 
-  .admin-button-primary {
-    padding: min(0.875rem, 1.75vw) min(1.25rem, 2.5vw);
-    border-radius: var(--border-radius-sm);
-    font-size: var(--admin-font-size);
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-  }
+.admin-button-group-spaced {
+  display: flex;
+  gap: 12px;
+}
 
-  .admin-button-secondary {
-    padding: min(0.875rem, 1.75vw) min(1.25rem, 2.5vw);
-    border-radius: var(--border-radius-sm);
-    font-size: var(--admin-font-size);
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
-    background-color: var(--color-neutral-light);
-    color: var(--color-schiefer-dark);
-  }
+.admin-button-primary {
+  background-color: #007acc;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
 
-  .admin-button-danger {
-    padding: min(0.875rem, 1.75vw) min(1.25rem, 2.5vw);
-    border-radius: var(--border-radius-sm);
-    font-size: var(--admin-font-size);
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
-    background-color: var(--color-neutral-light);
-    color: var(--color-schiefer-dark);
-  }
+.admin-button-primary:hover {
+  background-color: #005a9e;
+}
 
-  .admin-button-full-width {
-    width: 100%;
-  }
+.admin-button-primary:active {
+  background-color: #004578;
+}
 
-  .admin-success-message {
-    color: var(--color-feedback-correct);
-    text-align: center;
-    border-radius: var(--border-radius-sm);
-    margin-bottom: var(--spacing-md);
-    padding: var(--spacing-sm);
-    background-color: var(--color-admin-success-bg);
-    font-size: var(--admin-font-size-sm);
-  }
+.admin-button-secondary {
+  background-color: #555555;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
 
-  .admin-error-message {
-    color: #dc2626;
-    text-align: center;
-    border-radius: var(--border-radius-sm);
-    margin-bottom: var(--spacing-md);
-    padding: var(--spacing-sm);
-    background-color: #fef2f2;
-    font-size: var(--admin-font-size-sm);
-    border: 1px solid #fecaca;
-  }
+.admin-button-secondary:hover {
+  background-color: #666666;
+}
 
-  .admin-separator {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--color-neutral-light), transparent);
-    margin: var(--spacing-xs) 0;
-  }
+.admin-button-danger {
+  background-color: #dc3545;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
 
-  .kiosk-item {
-    width: 100%;
-    padding: var(--spacing-md) min(1.25rem, 2.5vw);
-    border-radius: var(--border-radius-sm);
-    font-size: var(--admin-font-size);
-    font-weight: 500;
-    text-align: left;
-    border: none;
-    cursor: pointer;
-  }
+.admin-button-danger:hover {
+  background-color: #c82333;
+}
 
-  .kiosk-item-selected {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-  }
+.admin-separator {
+  height: 1px;
+  background-color: #555555;
+  margin: 16px 0;
+}
 
-  .kiosk-item-unselected {
-    background-color: var(--color-admin-input-bg);
-    color: var(--color-schiefer-dark);
-  }
+.admin-success-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
 
-  .kiosk-item-subtitle {
-    font-weight: 400;
-    font-size: var(--admin-font-size-sm);
-    opacity: 0.8;
-  }
+.admin-error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
 
-  .admin-timeout-option {
-    width: 100%;
-    padding: var(--spacing-md) min(1.25rem, 2.5vw);
-    border-radius: var(--border-radius-sm);
-    font-size: var(--admin-font-size);
-    font-weight: 500;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
+/* Kiosk Selector Styles */
+.admin-panel-wide {
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  padding: 32px;
+  min-width: 500px;
+  max-width: 700px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: both;
+}
 
-  .admin-timeout-selected {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-  }
+.kiosk-item {
+  background-color: #404040;
+  border: 2px solid #555555;
+  border-radius: 8px;
+  padding: 16px 20px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 80px;
+  justify-content: center;
+}
 
-  .admin-timeout-unselected {
-    background-color: var(--color-admin-input-bg);
-    color: var(--color-schiefer-dark);
-  }
+.kiosk-item:hover {
+  background-color: #4a4a4a;
+  border-color: #007acc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-  .admin-timeout-option:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-    opacity: 0.7;
-    font-size: var(--admin-font-size-sm);
-    margin-top: min(0.25rem, 0.5vw);
-  }
+.kiosk-item:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
 
-  .admin-corner-trigger {
-    position: fixed;
-    z-index: 50;
-    opacity: 0;
-    width: max(var(--spacing-xl), 60px); /* Minimum 60px for better touch targets */
-    height: max(var(--spacing-xl), 60px); /* Minimum 60px for better touch targets */
-    cursor: pointer;
-    touch-action: manipulation;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+.kiosk-item-selected {
+  background-color: #007acc;
+  border-color: #005a9e;
+  box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.3);
+}
 
- 
+.kiosk-item-selected:hover {
+  background-color: #005a9e;
+  border-color: #004578;
+}
 
-  /* Language Selector Styles */
-  .language-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(52, 66, 67, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 50;
-  }
+.kiosk-item-unselected {
+  background-color: #404040;
+  border-color: #555555;
+}
 
-  .language-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--language-gap);
-    width: auto;
-    max-width: 100vw;
-    padding: 0 min(2rem, 4vw);
-    min-height: 100vh;
-    padding-top: min(4rem, 6vw);
-    padding-bottom: min(5rem, 10vw);
-  }
+.kiosk-item-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #cccccc;
+  margin-top: 4px;
+}
 
-  .language-icon {
-    width: var(--language-icon-size);
-    height: var(--language-icon-size);
-    display: block;
-    opacity: 0.8;
-  }
+.kiosk-item-selected .kiosk-item-subtitle {
+  color: #e6f3ff;
+}
 
-  .language-title {
-    font-size: var(--language-title-size);
-    line-height: 130%;
-    margin: 0;
-    white-space: nowrap;
-  }
+.kiosk-item-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: inherit;
+  margin-bottom: 2px;
+}
 
-  .language-subtitle {
-    opacity: 0.6;
-    font-size: var(--language-title-size);
-    line-height: 130%;
-    margin: 0;
-    white-space: nowrap;
-  }
+/* Results subtitle typography - Subline */
+.subtitle-small {
+  color: var(--Blassgruen, #85AF8B) !important;
+  font-family: "Tisa Sans Pro" !important;
+  font-size: 4rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 120% !important; /* 4.8rem */
+}
 
-  .language-button {
-    width: var(--language-button-width);
-    height: var(--language-button-height);
-    border-radius: var(--language-button-radius);
-    border: 2px solid;
-    padding: min(0.625rem, 1.5vw);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .language-button-active {
-    background-color: var(--color-language-button-active);
-    border-color: var(--color-language-button-active);
-    color: var(--color-white);
-  }
-
-  .language-button-inactive {
-    background-color: transparent;
-    border-color: var(--color-language-button-inactive);
-    color: var(--color-neutral-light);
-  }
-
-  .language-buttons-container {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--language-buttons-gap);
-  }
-
-  .language-button-text {
-    flex: 1;
-    font-size: var(--language-button-text-size);
-    line-height: var(--language-button-text-line-height);
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 0.6rem;
-  }
-
-  /* Language Selector Icon Component */
-  .language-selector-icon-container {
-    flex-shrink: 0;
-    margin-bottom: var(--language-selector-margin-bottom);
-    margin-left: var(--language-selector-margin-left);
-  }
-
-  .language-selector-icon-button {
-    min-width: var(--language-selector-button-size);
-    min-height: var(--language-selector-button-size);
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-
-  .language-selector-icon-image {
-    width: var(--language-selector-icon-size);
-    height: var(--language-selector-icon-size);
-    display: block;
-  }
+/* Play again button text typography */
+.text-button-play-again {
+  color: var(--Neutral_Light, #D9D9D9) !important;
+  text-align: center !important;
+  font-family: "Tisa Sans Pro" !important;
+  font-size: 1.875rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 7rem !important; /* 373.333% */
+  text-transform: uppercase !important;
+  margin-right: 1.5rem !important;
+}
