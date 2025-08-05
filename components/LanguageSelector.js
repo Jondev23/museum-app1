@@ -33,14 +33,10 @@ const LanguageSelector = () => {
       // Show with simple fade-in animation
       setShouldRender(true);
       
-      // Wait for next frame to ensure element is in DOM
-      requestAnimationFrame(() => {
+      // Wait a small delay to ensure element is in DOM and avoid GSAP conflicts
+      setTimeout(() => {
         if (containerRef.current) {
-          // Set initial state
-          gsap.set(containerRef.current, {
-            opacity: 0
-          });
-          
+          // No need to set initial state since CSS handles it
           // Simple fade in
           gsap.to(containerRef.current, {
             opacity: 1,
@@ -48,7 +44,7 @@ const LanguageSelector = () => {
             ease: "power2.out"
           });
         }
-      });
+      }, 50); // 50ms delay to avoid interference with main timeline
     } else if (!isVisible && shouldRender) {
       // Hide with simple fade-out animation
       if (containerRef.current) {
@@ -68,7 +64,7 @@ const LanguageSelector = () => {
   if (!shouldRender || !contentData) return null;
 
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} className="language-selector-container">
       <LanguageOverlay onOverlayClick={handleOverlayClick}>
         <LanguageContainer onContentClick={handleContentClick}>
           <LanguageIcon />
