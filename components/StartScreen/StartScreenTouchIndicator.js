@@ -63,12 +63,16 @@ const StartScreenTouchIndicator = ({
     <div
       style={touchIndicatorContainerStyle}
     >
-      {/* Swipe indicator icon with GSAP animation - sin event handlers propios */}
+      {/* Swipe indicator icon with GSAP animation - ahora clickeable */}
       <img
         ref={iconRef}
         src="./images/OE_Swipe_128.svg"
         alt="Swipe indicator"
-        style={animationStyles}
+        style={{
+          ...animationStyles,
+          cursor: 'pointer',
+          pointerEvents: 'auto'
+        }}
       />
     </div>
   );

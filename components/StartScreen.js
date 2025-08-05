@@ -215,12 +215,14 @@ const StartScreen = () => {
         <StandardFooter>
           <div 
             ref={touchIndicatorRef} 
-            className="absolute left-1/2 transform -translate-x-1/2 flex justify-center items-center" 
+            className="absolute left-1/2 transform -translate-x-1/2 flex justify-center items-center cursor-pointer" 
             style={{ 
               bottom: '1.95rem',
               width: 'var(--touch-indicator-size)',
               height: 'var(--touch-indicator-size)'
             }}
+            onTouchStart={handleTouchStartWithAnimation}
+            onClick={handleClickWithAnimation}
           >
             <StartScreenTouchIndicator
               touchIndicatorContainerStyle={touchIndicatorContainerStyle}

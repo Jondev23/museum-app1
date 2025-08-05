@@ -77,13 +77,16 @@ export const useStartScreenStyles = (startContent) => ({
     height: '100%',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    cursor: 'pointer',
+    pointerEvents: 'auto'
   },
 
   touchIndicatorStyle: {
     width: '100%',
     height: '100%',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    pointerEvents: 'auto'
     // Removed CSS transition - now using GSAP
   }
 });
