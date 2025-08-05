@@ -34,7 +34,7 @@ const QuestionScreen = () => {
           <QuestionTitle question={question} />
         </div>
         
-        <div className="flex flex-col items-center justify-end flex-1 pb-[20.0rem]">
+        <div className="flex flex-col items-center justify-start mt-[3rem] flex-1 pb-[20.0rem]">
           <AnswerButtons
             question={question}
             handleAnswerClick={handleAnswerClick}
