@@ -30,12 +30,10 @@ const QuestionScreen = () => {
   return (
     <div className="fixed inset-0 flex flex-col z-25">
       <div className="relative z-10 flex flex-col h-full">
-        {/* Título en la parte superior */}
         <div className="flex flex-col items-center justify-start pt-[5rem] mt-[4.5rem]">
           <QuestionTitle question={question} />
         </div>
         
-        {/* Botones en la parte inferior */}
         <div className="flex flex-col items-center justify-end flex-1 pb-[20.0rem]">
           <AnswerButtons
             question={question}

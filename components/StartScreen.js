@@ -1,9 +1,7 @@
-// Import componentes y GSAP
 import StandardFooter from './shared/StandardFooter';
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { gsap } from 'gsap';
 
-// Import hooks y configuración  
 import { useStartScreen } from '../hooks/useStartScreen';
 import { useStartScreenStyles } from './StartScreen/StartScreenConfig';
 
@@ -16,7 +14,6 @@ import StartScreenTouchIndicator from './StartScreen/StartScreenTouchIndicator';
 const StartScreen = () => {
   const [screenPaddingTop, setScreenPaddingTop] = useState('12rem');
   
-  // Referencias para animaciones GSAP
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
   const touchIndicatorRef = useRef(null);
@@ -29,22 +26,16 @@ const StartScreen = () => {
       }
     };
 
-    // Ejecutar al montar el componente
     handleResize();
     
-    // Escuchar cambios de tamaño de ventana
     window.addEventListener('resize', handleResize);
     
-    // Limpiar el event listener
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Animaciones de entrada cuando el componente se monta
   useEffect(() => {
-    // No delay - start immediately when component mounts
     const tl = gsap.timeline();
     
-    // Establecer estados iniciales
     gsap.set([titleRef.current, descriptionRef.current, touchIndicatorRef.current], {
       opacity: 0,
       y: 50
@@ -55,7 +46,6 @@ const StartScreen = () => {
       scale: 0.95
     });
 
-    // Animar entrada secuencial
     tl.to(mainCardRef.current, {
       opacity: 1,
       scale: 1,
@@ -81,14 +71,13 @@ const StartScreen = () => {
       ease: "power2.out"
     }, "-=0.15");
 
-    // Animación pulsante para el indicador de toque
     gsap.to(touchIndicatorRef.current, {
       scale: 1.05,
       duration: 1.5,
       repeat: -1,
       yoyo: true,
       ease: "power2.inOut",
-      delay: 0.8 // Aumentado para mejor sincronización
+      delay: 0.8
     });
 
   }, []);
@@ -101,15 +90,11 @@ const StartScreen = () => {
     handleClick,
   } = useStartScreen();
 
-  // Estado para prevenir múltiples activaciones
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Función para manejar la animación de salida
   const handleExitAnimation = () => {
-    // Detener la animación pulsante
     gsap.killTweensOf(touchIndicatorRef.current);
     
-    // Fade out del indicador de toque
     gsap.to(touchIndicatorRef.current, {
       opacity: 0,
       duration: 0.2,
@@ -117,25 +102,20 @@ const StartScreen = () => {
     });
   };
 
-  // Handler unificado para navegación
   const handleNavigation = useCallback((e) => {
-    // Prevenir múltiples activaciones
     if (isTransitioning) return;
     
-    // Prevenir el comportamiento por defecto
     e?.preventDefault?.();
     e?.stopPropagation?.();
     
     setIsTransitioning(true);
     handleExitAnimation();
     
-    // Reducir el delay y llamar directamente
     setTimeout(() => {
       handleClick();
     }, 150);
   }, [isTransitioning, handleClick]);
 
-  // Handlers específicos que usan el handler unificado
   const handleTouchStartWithAnimation = useCallback((e) => {
     handleNavigation(e);
   }, [handleNavigation]);
@@ -161,12 +141,11 @@ const StartScreen = () => {
 
   return (
     <>
-      {/* Contenedor principal sin animación */}
       <div
         className="fixed inset-0 overflow-hidden cursor-pointer z-20"
         onTouchStart={handleTouchStartWithAnimation}
         onClick={handleClickWithAnimation}
-        style={{ touchAction: 'manipulation' }} // Mejora la respuesta táctil
+        style={{ touchAction: 'manipulation' }}
       >
         <div 
           className="relative z-10 h-full flex flex-col items-center w-full start-screen-container"
@@ -185,7 +164,6 @@ const StartScreen = () => {
                 className="flex flex-col items-center h-full"
                 style={contentSectionStyle}
               >
-                {/* Título */}
                 <div ref={titleRef} className="w-full flex flex-col items-center justify-center flex-shrink-0">
                   <StartScreenTitle
                     startContent={startContent}
@@ -194,7 +172,6 @@ const StartScreen = () => {
                   />
                 </div>
 
-                {/* Descripción */}
                 <div ref={descriptionRef} className="w-full flex items-start justify-center" style={descriptionSectionStyle}>
                   <StartScreenDescription
                     startContent={startContent}
@@ -210,7 +187,6 @@ const StartScreen = () => {
         </div>
       </div>
 
-      {/* Footer sin animación */}
       <div className="fixed bottom-0 left-0 right-0 z-50">
         <StandardFooter>
           <div 

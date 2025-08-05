@@ -13,13 +13,12 @@ const FeedbackButton = ({
     <ArrowButton
       buttonText={buttonText}
       onClick={nextQuestion}
-      position="bottom-right" // Posición global predeterminada
+      position="bottom-right"
       buttonStyle={buttonStyle}
       buttonTextStyle={buttonTextStyle}
       arrowStyle={arrowStyle}
       arrowAlt="Zur Auswertung"
       className="cursor-pointer"
-      // Si necesitas override del container style, usa position="custom"
       buttonContainerStyle={buttonContainerStyle}
     />
   );

@@ -84,24 +84,19 @@ const useResultsScreen = () => {
   }, []);
 
   const handlePlayAgain = useCallback(() => {
-    // Iniciar animación de salida manual
     setIsExiting(true);
     
-    // Animar elementos específicos antes de cambiar la pantalla
     const resultsTitle = document.querySelector('.title-results');
     const playAgainButton = document.querySelector('.text-button-play-again')?.parentElement;
     const scoreText = document.querySelector('.subtitle-small');
     const resultsContainer = document.querySelector('.fixed.inset-0.flex.flex-col');
     
-    // Timeline de animación de salida
     const exitTimeline = gsap.timeline({
       onComplete: () => {
-        // Solo después de que termine la animación, cambiar la pantalla
         beginQuiz();
       }
     });
     
-    // Animar elementos individuales
     if (resultsTitle) {
       exitTimeline.to(resultsTitle, {
         opacity: 0,
@@ -129,7 +124,6 @@ const useResultsScreen = () => {
       }, 0.2);
     }
     
-    // Finalmente, fade out del contenedor completo
     if (resultsContainer) {
       exitTimeline.to(resultsContainer, {
         opacity: 0,

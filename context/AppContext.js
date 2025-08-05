@@ -209,19 +209,16 @@ export const AppProvider = ({ children }) => {
     }
   }, [resetQuizState, content, language]);
 
-  // Nueva función para manejar la transición desde ResultsScreen
   const restartFromResults = useCallback(() => {
-    // Primero solicitar la transición (esto activará la animación de salida)
     setCurrentScreen('start');
     
-    // Después de un pequeño delay, resetear el quiz y reshuffle las preguntas
     setTimeout(() => {
       resetQuizState();
       if (content?.[language]?.questions) {
         const shuffled = [...content[language].questions].sort(() => Math.random() - 0.5);
         setQuestions(shuffled.slice(0, 5));
       }
-    }, 100); // Pequeño delay para permitir que la animación inicie
+    }, 100);
   }, [resetQuizState, content, language]);
 
   const startQuestions = useCallback(() => {
@@ -252,13 +249,11 @@ export const AppProvider = ({ children }) => {
 
   const nextQuestion = useCallback(() => {
     if (currentQuestionIndex < questions.length - 1) {
-      // Mantener el patrón original pero sincronizar ambos casos
       setCurrentScreen('question');
-      // Usar requestAnimationFrame para asegurar que la animación se inicie antes del cambio de índice
       requestAnimationFrame(() => {
         setTimeout(() => {
           setCurrentQuestionIndex(currentQuestionIndex + 1);
-        }, 900); // Duración completa de la animación de salida
+        }, 900);
       });
     } else {
       setCurrentScreen('results');

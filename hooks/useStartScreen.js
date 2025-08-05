@@ -2,15 +2,11 @@
 import { useCallback, useMemo, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 
-// Custom hook for start screen functionality
 export const useStartScreen = () => {
-  // Get app context functions and data
   const { startQuestions, content, language } = useApp();
   
-  // Ref para prevenir múltiples llamadas
   const isNavigatingRef = useRef(false);
 
-  // Memoized start screen content based on current language
   const startContent = useMemo(() => content?.[language]?.startScreen, [content, language]);
   
   // Check if we have valid data to display

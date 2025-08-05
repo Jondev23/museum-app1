@@ -36,14 +36,11 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
           duration: 0.9, 
           ease: "power2.in",
           onStart: () => {
-            // Identificar el botón seleccionado y crear animación secuencial
             const selectedButton = document.querySelector('.btn-answer:has(.selected)');
             if (selectedButton) {
-              // Obtener todos los botones excepto el seleccionado
               const allButtons = document.querySelectorAll('.btn-answer');
               const otherButtons = Array.from(allButtons).filter(btn => btn !== selectedButton);
               
-              // Animar primero el título de la pregunta
               const questionTitle = document.querySelector('[class*="QuestionTitle"], .question-title');
               if (questionTitle) {
                 gsap.to(questionTitle, {
@@ -54,7 +51,6 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
                 });
               }
               
-              // Animar los botones no seleccionados con stagger
               gsap.to(otherButtons, {
                 opacity: 0,
                 y: -15,
@@ -64,7 +60,6 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
                 ease: "power2.in"
               });
               
-              // Finalmente animar el botón seleccionado
               gsap.to(selectedButton, {
                 opacity: 0,
                 scale: 0.95,
@@ -83,7 +78,6 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
           duration: 0.6, 
           ease: "power2.out",
           onStart: () => {
-            // Animar primero FeedbackAnswer
             const feedbackAnswer = document.querySelector('.feedback-answer-text')?.parentElement;
             if (feedbackAnswer) {
               gsap.set(feedbackAnswer, { opacity: 0 });
@@ -94,7 +88,6 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
               });
             }
             
-            // Después animar el resto de elementos con delay
             const otherElements = [
               '.feedback-title',
               '.feedback-message-text',
@@ -114,17 +107,12 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
               }
             });
 
-            // Animar texto del botón e icono juntos al final - REMOVIDO: ahora se maneja con CSS
-            // El botón tendrá su propia animación CSS independiente
-            
-            // Aplicar clase CSS para fade in lento del botón después de un delay
             setTimeout(() => {
               const buttonText = document.querySelector('.text-button');
               if (buttonText) {
                 buttonText.classList.add('fade-in');
-                // La imagen se anima automáticamente con el selector + img en CSS
               }
-            }, 600); // Delay para que aparezca después de otros elementos
+            }, 600);
           }
         },
         exit: { 
@@ -133,12 +121,10 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
           duration: 0.9, 
           ease: "power2.in",
           onStart: () => {
-            // Aplicar clase CSS para fade out muy rápido del botón
             const buttonText = document.querySelector('.text-button');
             if (buttonText) {
-              buttonText.classList.remove('fade-in'); // Remover fade-in
-              buttonText.classList.add('fade-out');   // Aplicar fade-out
-              // La imagen se anima automáticamente con el selector + img en CSS
+              buttonText.classList.remove('fade-in');
+              buttonText.classList.add('fade-out');
             }
           }
         },
@@ -147,10 +133,8 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
       results: {
         enter: { x: 0, opacity: 1, duration: 0.9, ease: "power2.out" },
         exit: { 
-          // Deshabilitar animación automática - se maneja manualmente en useResultsScreen
           duration: 0,
           onStart: () => {
-            // No hacer nada - la animación se maneja en useResultsScreen
           }
         },
         initial: { x: "100%", opacity: 0 }
@@ -234,9 +218,7 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
           },
           onComplete: () => {
             console.log('🎬 Exit animation COMPLETED for', displayedScreen);
-            // Change screen after exit animation
             setDisplayedScreen(currentScreen);
-            // Solo actualizar displayedQuestionIndex si realmente cambió
             if (currentQuestionIndex !== displayedQuestionIndex) {
               setDisplayedQuestionIndex(currentQuestionIndex);
             }
