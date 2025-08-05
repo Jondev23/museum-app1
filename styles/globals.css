@@ -196,6 +196,7 @@
   font-size: 6rem !important;
   font-style: italic !important;
   font-weight: 700 !important;
+  line-height: 120%; /* 7.2rem */
 }
 
 /* Start screen subtitle typography */
@@ -205,6 +206,7 @@
   font-size: 4rem !important;
   font-style: normal !important;
   font-weight: 400 !important;
+  line-height: 120%; /* 7.2rem */
 }
 
 /* Start screen highlight text typography */
