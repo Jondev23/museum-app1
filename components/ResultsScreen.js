@@ -13,6 +13,7 @@ import ResultsProgress from './ResultsScreen/ResultsProgress';
 const ResultsScreen = () => {
   const {
     showContent,
+    isExiting,
     contentData,
     questions,
     answers,

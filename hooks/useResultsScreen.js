@@ -1,6 +1,7 @@
 // Import React hooks and app context
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useApp } from '../context/AppContext';
+import { gsap } from 'gsap';
 
 // Custom hook for results screen functionality
 const useResultsScreen = () => {
@@ -16,6 +17,7 @@ const useResultsScreen = () => {
 
   // Local state for content animation
   const [showContent, setShowContent] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
   
   // Refs to maintain stable score and questions data
   const stableScoreRef = useRef(null);
@@ -82,7 +84,59 @@ const useResultsScreen = () => {
   }, []);
 
   const handlePlayAgain = useCallback(() => {
-    beginQuiz();
+    // Iniciar animación de salida manual
+    setIsExiting(true);
+    
+    // Animar elementos específicos antes de cambiar la pantalla
+    const resultsTitle = document.querySelector('.title-results');
+    const playAgainButton = document.querySelector('.text-button-play-again')?.parentElement;
+    const scoreText = document.querySelector('.subtitle-small');
+    const resultsContainer = document.querySelector('.fixed.inset-0.flex.flex-col');
+    
+    // Timeline de animación de salida
+    const exitTimeline = gsap.timeline({
+      onComplete: () => {
+        // Solo después de que termine la animación, cambiar la pantalla
+        beginQuiz();
+      }
+    });
+    
+    // Animar elementos individuales
+    if (resultsTitle) {
+      exitTimeline.to(resultsTitle, {
+        opacity: 0,
+        y: -30,
+        duration: 0.4,
+        ease: "power2.in"
+      }, 0);
+    }
+    
+    if (scoreText) {
+      exitTimeline.to(scoreText, {
+        opacity: 0,
+        y: -20,
+        duration: 0.4,
+        ease: "power2.in"
+      }, 0.1);
+    }
+    
+    if (playAgainButton) {
+      exitTimeline.to(playAgainButton, {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.3,
+        ease: "power2.in"
+      }, 0.2);
+    }
+    
+    // Finalmente, fade out del contenedor completo
+    if (resultsContainer) {
+      exitTimeline.to(resultsContainer, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.in"
+      }, 0.4);
+    }
   }, [beginQuiz]);
 
   const handleTouchAnywhere = useCallback((e) => {
@@ -102,6 +156,7 @@ const useResultsScreen = () => {
 
   return {
     showContent,
+    isExiting,
     
     contentData,
     score,

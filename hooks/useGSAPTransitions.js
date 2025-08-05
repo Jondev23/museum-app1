@@ -163,7 +163,13 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
       },
       results: {
         enter: { x: 0, opacity: 1, duration: 0.9, ease: "power2.out" },
-        exit: { x: "-100%", opacity: 0, duration: 0.9, ease: "power2.in" },
+        exit: { 
+          // Deshabilitar animación automática - se maneja manualmente en useResultsScreen
+          duration: 0,
+          onStart: () => {
+            // No hacer nada - la animación se maneja en useResultsScreen
+          }
+        },
         initial: { x: "100%", opacity: 0 }
       }
     };
@@ -225,16 +231,22 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
     
     if (currentScreen !== displayedScreen && !isTransitioning && currentScreen !== 'screensaver' && displayedScreen !== 'screensaver') {
       console.log('🎬 Starting transition from', displayedScreen, 'to', currentScreen);
+      console.log('🎬 containerRef.current exists:', !!containerRef.current);
       setIsTransitioning(true);
       
       if (containerRef.current) {
         // Get exit animation config
         const exitConfig = getAnimationConfig(displayedScreen, 'exit');
+        console.log('🎬 Exit config for', displayedScreen, ':', exitConfig);
         
         // Apply exit animation
         gsap.to(containerRef.current, {
           ...exitConfig,
+          onStart: () => {
+            console.log('🎬 Exit animation STARTED for', displayedScreen);
+          },
           onComplete: () => {
+            console.log('🎬 Exit animation COMPLETED for', displayedScreen);
             // Change screen after exit animation
             setDisplayedScreen(currentScreen);
             // Solo actualizar displayedQuestionIndex si realmente cambió
