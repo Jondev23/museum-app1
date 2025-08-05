@@ -14,61 +14,60 @@ export const useStartScreenStyles = (startContent) => ({
 
   contentSectionStyle: {
     width: '100%',
-    height: '100%',
+    minHeight: 'calc(100% - 10rem)',
     display: 'flex',
     flexDirection: 'column',
-    paddingTop: 'clamp(3rem, 6vh, 5rem)',
-    paddingLeft: 'clamp(1rem, 3vw, 3rem)',
-    paddingRight: 'clamp(1rem, 3vw, 3rem)'
+    paddingTop: 'var(--startscreen-top-spacing)',
+    paddingBottom: '10rem',
+    boxSizing: 'border-box'
   },
 
   subtitleStyle: {
-    fontSize: '4rem',
-    fontFamily: '"Tisa Sans Pro"',
-    fontWeight: '400',
+    fontSize: 'var(--typography-subline-font-size)',
+    fontFamily: 'var(--typography-subline-font-family)',
+    fontWeight: 'var(--typography-subline-font-weight)',
     textAlign: 'center',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
-    lineHeight: '120%',
+    lineHeight: 'var(--typography-subline-line-height)',
     marginTop: '-1.0rem'
   },
 
   descriptionSectionStyle: {
-    height: '100%',
+    flex: '1 1 auto',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
-    paddingTop: 'clamp(3.5rem, 7vh, 5.5rem)',
-    paddingBottom: 'clamp(2rem, 6vh, 4rem)'
+    paddingTop: 'clamp(1rem, 4vh, 3.5rem)',
+    paddingBottom: 'clamp(1rem, 3vh, 2rem)',
+    overflow: 'hidden'
   },
 
   descriptionContainerStyle: {
     width: '100vw',
     maxWidth: '100vw',
     textAlign: 'center',
-    marginLeft: 'calc(-4 * clamp(1rem, 3vw, 3rem))',
-    marginRight: 'calc(-4 * clamp(1rem, 3vw, 3rem))',
     position: 'relative'
   },
 
   highlightTextStyle: {
-    fontSize: '2.25rem',
-    fontFamily: '"Tisa Pro"',
-    fontWeight: '700',
+    fontSize: 'var(--typography-antwort-fliess-font-size)',
+    fontFamily: 'var(--typography-antwort-fliess-font-family)',
+    fontWeight: 'var(--typography-antwort-fliess-bold-font-weight)',
     textAlign: 'center',
-    lineHeight: '140%',
-    letterSpacing: '0.0225rem',
+    lineHeight: 'var(--typography-antwort-fliess-line-height)',
+    letterSpacing: 'var(--typography-antwort-fliess-letter-spacing)',
     marginBottom: '0'
   },
 
   introTextStyle: {
-    fontSize: '2.25rem',
-    fontFamily: '"Tisa Pro"',
-    fontWeight: '400',
+    fontSize: 'var(--typography-antwort-fliess-font-size)',
+    fontFamily: 'var(--typography-antwort-fliess-font-family)',
+    fontWeight: 'var(--typography-antwort-fliess-font-weight)',
     textAlign: 'center',
-    lineHeight: '140%',
-    letterSpacing: '0.0225rem'
+    lineHeight: 'var(--typography-antwort-fliess-line-height)',
+    letterSpacing: 'var(--typography-antwort-fliess-letter-spacing)'
   },
 
   touchIndicatorContainerStyle: {

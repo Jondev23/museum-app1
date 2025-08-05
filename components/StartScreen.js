@@ -61,7 +61,7 @@ const StartScreen = () => {
     tl.to(mainCardRef.current, {
       opacity: 1,
       scale: 1,
-      duration: 0.6, // Reducido ligeramente para mejor sincronización
+      duration: 0.6, 
       ease: "power2.out"
     })
     .to(titleRef.current, {
@@ -151,7 +151,7 @@ const StartScreen = () => {
         onClick={handleClickWithAnimation}
       >
         <div 
-          className="relative z-10 h-full flex flex-col items-center w-full px-4 sm:px-6 md:px-8 start-screen-container"
+          className="relative z-10 h-full flex flex-col items-center w-full start-screen-container"
           style={{
             ...containerStyle,
             paddingTop: screenPaddingTop
@@ -159,7 +159,7 @@ const StartScreen = () => {
         >
           <div 
             ref={mainCardRef}
-            className="w-full max-w-7xl bg-transparent flex items-start justify-center flex-grow"
+            className="w-full bg-transparent flex items-start justify-center flex-grow"
             style={mainCardStyle}
           >
             <div className="w-full">
@@ -177,7 +177,7 @@ const StartScreen = () => {
                 </div>
 
                 {/* Descripción */}
-                <div ref={descriptionRef} className="flex-grow flex items-center justify-center w-full" style={descriptionSectionStyle}>
+                <div ref={descriptionRef} className="w-full flex items-start justify-center" style={descriptionSectionStyle}>
                   <StartScreenDescription
                     startContent={startContent}
                     defaultTexts={defaultTexts}
