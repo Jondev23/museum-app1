@@ -8,7 +8,8 @@ const ResultsTitle = ({ title }) => {
       style={{ 
         marginBottom: 'var(--results-title-margin)',
         paddingLeft: '10rem',
-        paddingRight: '10rem'
+        paddingRight: '10rem',
+        textAlign: 'left'
       }}
     >
       {processTextWithHTML(title)}
