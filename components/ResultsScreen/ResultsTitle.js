@@ -7,8 +7,8 @@ const ResultsTitle = ({ title }) => {
       className="title-results"
       style={{ 
         marginBottom: 'var(--results-title-margin)',
-        paddingLeft: '15rem',
-        paddingRight: '6rem'
+        paddingLeft: '10rem',
+        paddingRight: '10rem'
       }}
     >
       {processTextWithHTML(title)}

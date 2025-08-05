@@ -8,8 +8,8 @@ const ResultsScoreText = ({ scoreText, scoreTextColor }) => {
       style={{ 
         marginBottom: 'var(--results-title-margin)',
         color: scoreTextColor || 'var(--color-blassgruen)',
-        paddingLeft: '33.56rem',
-        paddingRight: '6rem'
+        paddingLeft: '29.00rem',
+        paddingRight: '10rem'
       }}
     >
       {processTextWithHTML(scoreText)}
