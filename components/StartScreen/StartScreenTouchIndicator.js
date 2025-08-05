@@ -57,17 +57,11 @@ const StartScreenTouchIndicator = ({
   // Clean animation styles - no more CSS animations
   const animationStyles = {
     ...touchIndicatorStyle,
-    cursor: 'pointer',
     // Remove CSS animation and transition properties
   };
 
   return (
     <div
-      onClick={handleSwipeLeft}
-      onMouseEnter={(e) => gsap.to(e.target, { scale: 1.1, duration: 0.2 })}
-      onMouseLeave={(e) => gsap.to(e.target, { scale: 1, duration: 0.2 })}
-      onMouseDown={(e) => gsap.to(e.target, { scale: 0.9, duration: 0.1 })}
-      onMouseUp={(e) => gsap.to(e.target, { scale: 1.1, duration: 0.1 })}
       style={touchIndicatorContainerStyle}
     >
       {/* Swipe indicator icon with GSAP animation */}
