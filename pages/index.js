@@ -16,6 +16,10 @@ import LanguageSelectorIcon from '../components/shared/LanguageSelectorIcon';
 import ProgressDots from '../components/shared/ProgressDots';
 import GlobalBackground from '../components/shared/GlobalBackground';
 import AdminPanel from '../components/AdminPanel';
+import FeedbackButton from '../components/FeedbackScreen/FeedbackButton';
+
+// Import hooks
+import { useFeedbackScreen } from '../hooks/useFeedbackScreen';
 
 // Main application component
 export default function Home() {
@@ -37,6 +41,16 @@ export default function Home() {
     isTransitioning,
     containerRef
   } = useGSAPTransitions(currentScreen, currentQuestionIndex);
+
+  // Get feedback screen data when needed
+  const feedbackData = useFeedbackScreen();
+  const {
+    buttonText,
+    nextQuestion: originalNextQuestion,
+    buttonStyle,
+    buttonTextStyle, 
+    arrowStyle
+  } = feedbackData || {};
 
   // Memoize the render screen function to prevent unnecessary re-renders
   const renderScreen = useCallback(() => {
@@ -144,6 +158,17 @@ export default function Home() {
               variant="default"
             />
           </div>
+        )}
+
+        {/* Global Feedback Button - outside of animated container */}
+        {currentScreen === 'feedback' && buttonText && (
+          <FeedbackButton
+            buttonText={buttonText}
+            nextQuestion={originalNextQuestion}
+            buttonStyle={buttonStyle}
+            buttonTextStyle={buttonTextStyle}
+            arrowStyle={arrowStyle}
+          />
         )}
       </div>
     </div>

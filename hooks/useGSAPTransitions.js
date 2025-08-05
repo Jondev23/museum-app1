@@ -107,29 +107,17 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
               }
             });
 
-            // Animar texto del botón e icono juntos al final
-            const buttonText = document.querySelector('.text-button');
-            const buttonIcon = document.querySelector('.text-button')?.parentElement?.querySelector('img');
+            // Animar texto del botón e icono juntos al final - REMOVIDO: ahora se maneja con CSS
+            // El botón tendrá su propia animación CSS independiente
             
-            if (buttonText) {
-              gsap.set(buttonText, { opacity: 0 });
-              gsap.to(buttonText, {
-                opacity: 1,
-                duration: 0.4,
-                delay: 0.6,
-                ease: "power2.out"
-              });
-            }
-            
-            if (buttonIcon) {
-              gsap.set(buttonIcon, { opacity: 0 });
-              gsap.to(buttonIcon, {
-                opacity: 1,
-                duration: 0.4,
-                delay: 0.6,
-                ease: "power2.out"
-              });
-            }
+            // Aplicar clase CSS para fade in lento del botón después de un delay
+            setTimeout(() => {
+              const buttonText = document.querySelector('.text-button');
+              if (buttonText) {
+                buttonText.classList.add('fade-in');
+                // La imagen se anima automáticamente con el selector + img en CSS
+              }
+            }, 600); // Delay para que aparezca después de otros elementos
           }
         },
         exit: { 
@@ -138,24 +126,12 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
           duration: 0.9, 
           ease: "power2.in",
           onStart: () => {
-            // Animar primero el button text y su icono para que desaparezcan antes
+            // Aplicar clase CSS para fade out muy rápido del botón
             const buttonText = document.querySelector('.text-button');
-            const buttonIcon = document.querySelector('.text-button')?.parentElement?.querySelector('img');
-            
             if (buttonText) {
-              gsap.to(buttonText, {
-                opacity: 0,
-                duration: 0.3,
-                ease: "power2.in"
-              });
-            }
-            
-            if (buttonIcon) {
-              gsap.to(buttonIcon, {
-                opacity: 0,
-                duration: 0.3,
-                ease: "power2.in"
-              });
+              buttonText.classList.remove('fade-in'); // Remover fade-in
+              buttonText.classList.add('fade-out');   // Aplicar fade-out
+              // La imagen se anima automáticamente con el selector + img en CSS
             }
           }
         },

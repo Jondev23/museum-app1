@@ -53,12 +53,14 @@ const ArrowButton = ({
     WebkitUserSelect: 'none',
     opacity: disabled ? 0.5 : 1,
     cursor: disabled ? 'not-allowed' : 'pointer'
+    // Transiciones removidas - se manejan en globals.css
   };
 
   const defaultArrowStyle = {
     touchAction: 'manipulation',
     pointerEvents: 'none',
     transform: 'translateY(-0.2rem)',
+    // Transiciones removidas - se manejan en globals.css
     ...arrowStyle
   };
 

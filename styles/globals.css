@@ -161,6 +161,27 @@
   font-weight: 400 !important;
   line-height: 7rem;
   text-transform: uppercase;
+  opacity: 0; /* Comenzar invisible */
+  transition: opacity 1.5s ease-out; 
+}
+
+/* Estilos para la imagen de la flecha del botón */
+.text-button + img {
+  opacity: 0; /* Comenzar invisible */
+  transition: opacity 1.5s ease-out;
+}
+
+/* Clase para hacer visible el botón con animación lenta */
+.text-button.fade-in,
+.text-button.fade-in + img {
+  opacity: 1 !important;
+}
+
+/* Fade out muy rápido para el botón */
+.text-button.fade-out,
+.text-button.fade-out + img {
+  opacity: 0 !important;
+  transition: opacity 0.1s ease-out !important; 
 }
 
 /* Feedback answer typography */
@@ -348,6 +369,7 @@
   align-items: center;
   justify-content: center;
   padding-top: 0.6rem;
+  opacity: 1 !important; /* Override text-button opacity for language selector */
 }
 
 /* Results title typography - Head & Auswertung */
