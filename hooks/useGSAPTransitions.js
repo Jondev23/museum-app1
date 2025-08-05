@@ -9,6 +9,13 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const containerRef = useRef(null);
 
+  // Initialize container to hidden state when first transitioning from screensaver
+  useEffect(() => {
+    if (containerRef.current && currentScreen !== 'screensaver' && displayedScreen === 'screensaver') {
+      gsap.set(containerRef.current, { opacity: 0 });
+    }
+  }, [currentScreen, displayedScreen]);
+
   // Animation configurations for different screen types
   const getAnimationConfig = (screenType, animationType) => {
     const configs = {
@@ -20,7 +27,7 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
       start: {
         enter: { x: 0, opacity: 1, duration: 0.7, ease: "power2.out" },
         exit: { x: "-100%", opacity: 0, duration: 0.9, ease: "power2.in" },
-        initial: { x: 0, opacity: 0 } // Cambio: sin desplazamiento inicial para evitar parpadeos
+        initial: { opacity: 0 } // Simplified - only control opacity
       },
       question: {
         enter: { x: 0, opacity: 1, duration: 0.9, ease: "power2.out" },
@@ -178,22 +185,26 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
       console.log('🎬 Transitioning FROM screensaver - coordinated update');
       setIsTransitioning(true);
       
-      // Small delay to ensure ScreensaverScreen fade out completes
+      // Wait for ScreensaverScreen fade out to complete
       setTimeout(() => {
         setDisplayedScreen(currentScreen);
         setDisplayedQuestionIndex(currentQuestionIndex);
         
-        // Set container to initial state for smooth enter animation
+        // Immediately set container to hidden state and make it ready for animation
         if (containerRef.current && currentScreen !== 'screensaver') {
-          const initialConfig = getAnimationConfig(currentScreen, 'initial');
-          if (initialConfig) {
-            gsap.set(containerRef.current, initialConfig);
-          }
+          // Force container to be completely hidden first
+          gsap.set(containerRef.current, { 
+            opacity: 0,
+            x: 0,
+            scale: 1,
+            clearProps: "visibility" // Clear any visibility properties
+          });
           
-          // Apply enter animation after setting initial state
+          // Start enter animation immediately after setting initial state
           const enterConfig = getAnimationConfig(currentScreen, 'enter');
           gsap.to(containerRef.current, {
             ...enterConfig,
+            delay: 0.1, // Small delay to ensure clean state
             onComplete: () => {
               setIsTransitioning(false);
             }
@@ -201,7 +212,7 @@ const useGSAPTransitions = (currentScreen, currentQuestionIndex) => {
         } else {
           setIsTransitioning(false);
         }
-      }, 300); // Match ScreensaverScreen fade out duration
+      }, 350); // Match ScreensaverScreen fade out duration exactly
       return;
     }
     

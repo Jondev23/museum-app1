@@ -27,6 +27,13 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  /* Disable all CSS transitions to let GSAP handle everything */
+  transition: none !important;
+}
+
+/* Disable any inherited transitions that might interfere */
+.screen-container * {
+  transition: none !important;
 }
 
 /* Prevent scroll during transitions */

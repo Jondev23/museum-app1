@@ -41,10 +41,8 @@ const StartScreen = () => {
 
   // Animaciones de entrada cuando el componente se monta
   useEffect(() => {
-    // Delay para coordinar con la transición del contenedor padre
-    const animationDelay = 100; // Pequeño delay para sincronizar
-    
-    const tl = gsap.timeline({ delay: animationDelay / 1000 });
+    // No delay - start immediately when component mounts
+    const tl = gsap.timeline();
     
     // Establecer estados iniciales
     gsap.set([titleRef.current, descriptionRef.current, touchIndicatorRef.current], {

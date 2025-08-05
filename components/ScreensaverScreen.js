@@ -49,7 +49,7 @@ const ScreensaverScreen = () => {
     if (containerRef.current) {
       gsap.to(containerRef.current, {
         opacity: 0,
-        duration: 0.3,
+        duration: 0.35, // Increased from 0.3 to 0.35 for smoother transition
         ease: "power2.out",
         onComplete: () => {
           handleTouch();

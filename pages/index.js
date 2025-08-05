@@ -109,7 +109,15 @@ export default function Home() {
 
       {/* Current screen content with GSAP animations - ONLY non-screensaver screens */}
       {currentScreen !== 'screensaver' && (
-        <div ref={containerRef} className="screen-container">
+        <div 
+          ref={containerRef} 
+          className="screen-container"
+          style={{ 
+            position: 'relative',
+            width: '100%',
+            height: '100%'
+          }}
+        >
           {renderScreen()}
         </div>
       )}
