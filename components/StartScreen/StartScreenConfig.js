@@ -7,7 +7,7 @@ export const useStartScreenStyles = (startContent) => ({
   },
 
   mainCardStyle: {
-    width: '100%',
+    width: '80%',
     height: '100%',
     minHeight: 'inherit'
   },

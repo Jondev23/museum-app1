@@ -166,8 +166,8 @@ export const useFeedbackScreenStyles = (startContent, isCorrect) => {
     ...feedbackContainerStyle,
     backgroundColor: isCorrect ? 'var(--color-feedback-correct)' : 'var(--color-feedback-incorrect)',
     borderRadius: '1.875rem',
-    paddingLeft: '4rem',
-    paddingRight: '4rem',
+    paddingLeft: '8rem',
+    paddingRight: '8rem',
   }), [feedbackContainerStyle, isCorrect]);
 
   return {
