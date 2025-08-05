@@ -3,7 +3,6 @@ import { gsap } from 'gsap';
 
 // Touch indicator component with swipe animation for start screen using GSAP
 const StartScreenTouchIndicator = ({ 
-  handleSwipeLeft, 
   touchIndicatorContainerStyle,
   touchIndicatorStyle 
 }) => {
@@ -64,7 +63,7 @@ const StartScreenTouchIndicator = ({
     <div
       style={touchIndicatorContainerStyle}
     >
-      {/* Swipe indicator icon with GSAP animation */}
+      {/* Swipe indicator icon with GSAP animation - sin event handlers propios */}
       <img
         ref={iconRef}
         src="./images/OE_Swipe_128.svg"

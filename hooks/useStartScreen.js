@@ -1,11 +1,14 @@
 // Import React hooks and app context
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 
 // Custom hook for start screen functionality
 export const useStartScreen = () => {
   // Get app context functions and data
   const { startQuestions, content, language } = useApp();
+  
+  // Ref para prevenir múltiples llamadas
+  const isNavigatingRef = useRef(false);
 
   // Memoized start screen content based on current language
   const startContent = useMemo(() => content?.[language]?.startScreen, [content, language]);
@@ -15,16 +18,19 @@ export const useStartScreen = () => {
 
   // Handle touch gestures for swiping left to start quiz
   const handleTouchStart = useCallback((e) => {
-    if (!e.touches || e.touches.length === 0) return;
+    if (isNavigatingRef.current || !e.touches || e.touches.length === 0) return;
     
     const startX = e.touches[0].clientX;
     
     const handleTouchMove = (e) => {
+      if (isNavigatingRef.current || !e.touches || e.touches.length === 0) return;
+      
       const currentX = e.touches[0].clientX;
       const diffX = startX - currentX;
       
       // If swipe left is detected (>100px), start the quiz
       if (diffX > 100) {
+        isNavigatingRef.current = true;
         startQuestions();
         document.removeEventListener('touchmove', handleTouchMove);
         document.removeEventListener('touchend', handleTouchEnd);
@@ -42,6 +48,9 @@ export const useStartScreen = () => {
 
   // Handle click/tap to start quiz
   const handleClick = useCallback(() => {
+    if (isNavigatingRef.current) return;
+    
+    isNavigatingRef.current = true;
     startQuestions();
   }, [startQuestions]);
 

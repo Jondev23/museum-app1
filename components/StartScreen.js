@@ -1,6 +1,6 @@
 // Import componentes y GSAP
 import StandardFooter from './shared/StandardFooter';
-import { useState, useEffect, useRef, memo } from 'react';
+import { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { gsap } from 'gsap';
 
 // Import hooks y configuración  
@@ -103,6 +103,9 @@ const StartScreen = () => {
     handleClick,
   } = useStartScreen();
 
+  // Estado para prevenir múltiples activaciones
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
   // Función para manejar la animación de salida
   const handleExitAnimation = () => {
     // Detener la animación pulsante
@@ -111,21 +114,37 @@ const StartScreen = () => {
     // Fade out del indicador de toque
     gsap.to(touchIndicatorRef.current, {
       opacity: 0,
-      duration: 0.3,
+      duration: 0.2,
       ease: "power2.out"
     });
   };
 
-  // Handlers modificados para incluir animación de salida
-  const handleTouchStartWithAnimation = (e) => {
+  // Handler unificado para navegación
+  const handleNavigation = useCallback((e) => {
+    // Prevenir múltiples activaciones
+    if (isTransitioning) return;
+    
+    // Prevenir el comportamiento por defecto
+    e?.preventDefault?.();
+    e?.stopPropagation?.();
+    
+    setIsTransitioning(true);
     handleExitAnimation();
-    setTimeout(() => handleTouchStart(e), 300);
-  };
+    
+    // Reducir el delay y llamar directamente
+    setTimeout(() => {
+      handleClick();
+    }, 150);
+  }, [isTransitioning, handleClick]);
 
-  const handleClickWithAnimation = (e) => {
-    handleExitAnimation();
-    setTimeout(() => handleClick(e), 300);
-  };
+  // Handlers específicos que usan el handler unificado
+  const handleTouchStartWithAnimation = useCallback((e) => {
+    handleNavigation(e);
+  }, [handleNavigation]);
+
+  const handleClickWithAnimation = useCallback((e) => {
+    handleNavigation(e);
+  }, [handleNavigation]);
 
   const {
     containerStyle,
@@ -149,6 +168,7 @@ const StartScreen = () => {
         className="fixed inset-0 overflow-hidden cursor-pointer z-20"
         onTouchStart={handleTouchStartWithAnimation}
         onClick={handleClickWithAnimation}
+        style={{ touchAction: 'manipulation' }} // Mejora la respuesta táctil
       >
         <div 
           className="relative z-10 h-full flex flex-col items-center w-full start-screen-container"
@@ -205,7 +225,6 @@ const StartScreen = () => {
             }}
           >
             <StartScreenTouchIndicator
-              handleSwipeLeft={handleClickWithAnimation}
               touchIndicatorContainerStyle={touchIndicatorContainerStyle}
               touchIndicatorStyle={touchIndicatorStyle}
             />
